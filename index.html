@@ -1,0 +1,2859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 13 — Revision · The Post That Disappeared</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C1330'/%3E%3Cpath d='M10 20a4 4 0 0 1 4-4h12l5 6h19a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4z' fill='%23FFC94A'/%3E%3Ccircle cx='30' cy='36' r='9' fill='none' stroke='%230C1330' stroke-width='4'/%3E%3Cpath d='M37 43l8 8' stroke='%230C1330' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#070B1C; --deep:#0C1330; --panel:#151E45; --panel2:#1D2757;
+  --line:rgba(167,139,250,.22); --line2:rgba(167,139,250,.42);
+  --blue:#4D7CFE; --lilac:#A78BFA; --pink:#FF5FA2; --amber:#FFC94A;
+  --mint:#5FE3B3; --alert:#FF6B4A;
+  --paper:#F6F7FC; --onpaper:#131A3A; --text:#E8EBFA; --muted:#9AA5D6;
+  --ok:#31C48D; --okbg:rgba(49,196,141,.16); --bad:#F08A8A; --badbg:rgba(240,138,138,.14);
+  --r:16px; --r-lg:24px; --z:1;
+  --alex:#C084FC; --jamie:#5FE3B3; --robin:#4D7CFE; --dana:#FFC94A;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--ink); color:var(--text);
+  font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(900px 520px at 10% -10%, rgba(77,124,254,.22), transparent 62%),
+    radial-gradient(820px 480px at 94% 4%, rgba(167,139,250,.18), transparent 60%),
+    radial-gradient(760px 520px at 50% 115%, rgba(255,95,162,.10), transparent 62%);
+}
+h1,h2,h3,h4{margin:0; font-weight:800; letter-spacing:-.01em}
+p{margin:0 0 .7em}
+button{font-family:inherit; font-size:inherit; cursor:pointer; border:0; background:none; color:inherit}
+input,textarea,select{font-family:inherit; font-size:16px}
+:focus-visible{outline:3px solid var(--amber); outline-offset:3px; border-radius:8px}
+.dsp{font-family:"Anton",Impact,sans-serif; font-weight:400; letter-spacing:.015em; line-height:1; text-transform:uppercase}
+.mono{font-family:"Space Mono",ui-monospace,monospace}
+.hidden{display:none !important}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------------- frame ---------------- */
+#app{position:relative; z-index:1; height:100dvh; display:grid; grid-template-rows:auto 1fr auto;
+     padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+#top{display:flex; align-items:center; gap:14px; padding:9px 16px; flex-wrap:nowrap;
+  background:linear-gradient(180deg,rgba(9,14,36,.97),rgba(9,14,36,.72));
+  border-bottom:1px solid var(--line); backdrop-filter:blur(8px)}
+.brand{display:flex; align-items:baseline; gap:9px; flex:0 0 auto}
+.brand b{font-family:"Anton",sans-serif; font-weight:400; font-size:19px; letter-spacing:.02em}
+.brand span{color:var(--muted); font-size:11px; letter-spacing:.14em; text-transform:uppercase}
+#dots{flex:1 1 auto; display:flex; align-items:center; gap:7px; overflow-x:auto; scrollbar-width:none; padding:4px 2px}
+#dots::-webkit-scrollbar{display:none}
+.dot{width:14px; height:14px; border-radius:50%; flex:0 0 auto; background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.24); transition:.22s; padding:0}
+.dot.opt{border-radius:4px; transform:rotate(45deg); width:12px; height:12px; border-color:var(--amber)}
+.dot.done{background:var(--lilac); border-color:var(--lilac)}
+.dot.now{background:var(--amber); border-color:var(--amber); box-shadow:0 0 0 5px rgba(255,201,74,.18)}
+.dot:hover{transform:scale(1.3)} .dot.opt:hover{transform:rotate(45deg) scale(1.3)}
+.tbtn{display:inline-flex; align-items:center; gap:7px; padding:8px 12px; border-radius:12px;
+  background:rgba(255,255,255,.06); border:1px solid var(--line); color:var(--text);
+  font-size:13px; font-weight:700; white-space:nowrap; transition:.16s}
+.tbtn:hover{background:rgba(255,255,255,.14); border-color:var(--line2)}
+.tbtn.on{background:rgba(255,201,74,.16); border-color:var(--amber); color:#FFE6A3}
+.tbtn.vault{background:rgba(167,139,250,.16); border-color:var(--line2)}
+.tbtn.back{padding:7px 12px; font-size:16px; line-height:1; text-decoration:none; flex:0 0 auto}
+.wm{height:24px; width:auto; opacity:.85; flex:0 0 auto}
+#wmbar{display:flex; justify-content:center; align-items:center; padding:5px 0 7px;
+  background:rgba(9,14,36,.97); border-top:1px solid rgba(167,139,250,.10)}
+#wmbar .wm{height:17px; opacity:.4; transition:opacity .2s}
+#wmbar .wm:hover{opacity:.85}
+.wm-end{display:block; height:22px; margin:26px auto 0; opacity:.5}
+#topRight{display:flex; align-items:center; gap:8px; flex:0 0 auto}
+.modeSwitch{display:flex; background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:12px; padding:3px}
+.modeSwitch button{padding:6px 11px; border-radius:9px; font-size:12.5px; font-weight:800; color:var(--muted)}
+.modeSwitch button.on{background:linear-gradient(135deg,var(--blue),#7C5CFF); color:#fff}
+
+#stage{position:relative; overflow-y:auto; overflow-x:hidden; padding:24px 18px 30px; zoom:var(--z)}
+.wrap{max-width:1060px; margin:0 auto}
+.scene{display:none}
+.scene.on{display:block; animation:enter .45s cubic-bezier(.2,.7,.3,1) both}
+@keyframes enter{from{opacity:0; transform:translateY(16px)}to{opacity:1; transform:none}}
+.pop{animation:pop .45s cubic-bezier(.2,.8,.3,1.2) both}
+@keyframes pop{from{opacity:0; transform:scale(.94)}to{opacity:1; transform:none}}
+
+#bottom{display:flex; align-items:center; gap:12px; padding:10px 16px; flex-wrap:wrap;
+  background:linear-gradient(0deg,rgba(9,14,36,.97),rgba(9,14,36,.7));
+  border-top:1px solid var(--line); backdrop-filter:blur(8px)}
+#sceneName{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+#progress{font-size:13px; color:var(--amber)}
+#bottom .spacer{flex:1}
+
+/* ---------------- blocks ---------------- */
+.eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap}
+.stamp{font-family:"Space Mono",monospace; font-size:12.5px; letter-spacing:.06em; color:var(--amber);
+  border:1px solid rgba(255,201,74,.42); border-radius:999px; padding:3px 12px; background:rgba(255,201,74,.08)}
+.badge{font-size:11px; font-weight:800; letter-spacing:.1em; padding:4px 10px; border-radius:999px; text-transform:uppercase}
+.badge.core{background:rgba(95,227,179,.14); color:var(--mint); border:1px solid rgba(95,227,179,.4)}
+.badge.opt{background:rgba(255,201,74,.14); color:var(--amber); border:1px solid rgba(255,201,74,.4)}
+.badge.time{background:rgba(255,255,255,.07); color:var(--muted); border:1px solid var(--line)}
+.h-scene{font-size:clamp(28px,4.2vw,50px); margin-bottom:8px}
+.sub{color:var(--muted); font-size:16px; max-width:70ch}
+.card{background:linear-gradient(180deg,var(--panel),var(--deep)); border:1px solid var(--line);
+  border-radius:var(--r-lg); padding:20px 22px}
+.card.paper{background:var(--paper); color:var(--onpaper); border-color:rgba(19,26,58,.12)}
+.card.paper .sub{color:#4A5480}
+.card.soft{background:rgba(255,255,255,.04)}
+.grid{display:grid; gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)} .g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)} .g5{grid-template-columns:repeat(5,1fr)}
+.row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.mt{margin-top:16px} .mt-s{margin-top:9px} .mt-l{margin-top:26px}
+.center{text-align:center}
+.small{font-size:14px; color:var(--muted)}
+.ua{color:#BFC8F2; font-size:15px; border-left:3px solid var(--line2); padding-left:11px; margin:8px 0}
+.card.paper .ua{color:#3C4676; border-left-color:rgba(19,26,58,.25)}
+body.noua .ua{display:none}
+.simple{color:#CBD3F7; font-size:15px; font-style:italic}
+.card.paper .simple{color:#4A5480}
+
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 19px;
+  border-radius:14px; font-weight:800; background:rgba(255,255,255,.07); border:1px solid var(--line2);
+  color:var(--text); transition:.16s; font-size:15px}
+.btn:hover{background:rgba(255,255,255,.14); transform:translateY(-1px)}
+.btn:active{transform:none}
+.btn.primary{background:linear-gradient(135deg,var(--blue),#7C5CFF); border-color:transparent; color:#fff;
+  box-shadow:0 10px 26px -12px rgba(77,124,254,.9)}
+.btn.amber{background:linear-gradient(135deg,#FFC94A,#FF9F45); border-color:transparent; color:#2A1B00}
+.btn.pink{background:linear-gradient(135deg,var(--pink),#B14BFF); border-color:transparent; color:#fff}
+.btn.ghost{background:transparent}
+.btn.sm{padding:8px 13px; font-size:13.5px; border-radius:11px}
+.btn.big{padding:16px 28px; font-size:18px; border-radius:16px}
+.btn[disabled]{opacity:.38; pointer-events:none}
+
+/* cast */
+.cast{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.who{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:var(--r); padding:13px; text-align:center}
+.who .av{width:74px; height:74px; display:block; margin:0 auto 9px}
+.who b{display:block; font-size:15.5px}
+.who span{font-size:12.5px; color:var(--muted); display:block; line-height:1.35; margin-top:3px}
+
+/* social cards */
+.post{background:linear-gradient(180deg,#1B2450,#141C40); border:1px solid var(--line); border-radius:20px; overflow:hidden}
+.post .head{display:flex; align-items:center; gap:10px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,.07)}
+.post .head .av{width:38px; height:38px}
+.post .head b{font-size:15px} .post .head span{font-size:12px; color:var(--muted)}
+.post .media{height:150px; position:relative; background:
+   linear-gradient(135deg,rgba(255,95,162,.4),rgba(124,92,255,.42),rgba(77,124,254,.4))}
+.post .media .glint{position:absolute; inset:0; background:
+   radial-gradient(120px 70px at 30% 35%, rgba(255,255,255,.35), transparent 70%),
+   radial-gradient(100px 60px at 72% 62%, rgba(255,201,74,.35), transparent 70%)}
+.post .cap{padding:12px 14px; font-size:14.5px}
+.post .bar{display:flex; gap:16px; padding:0 14px 13px; color:var(--muted); font-size:13px}
+.chat{display:flex; flex-direction:column; gap:9px}
+.bub{max-width:84%; padding:10px 14px; border-radius:16px; font-size:15px; line-height:1.45}
+.bub.them{background:rgba(255,255,255,.07); border:1px solid var(--line); border-bottom-left-radius:5px}
+.bub.me{align-self:flex-end; background:linear-gradient(135deg,var(--blue),#7C5CFF); border-bottom-right-radius:5px; color:#fff}
+.bub b{display:block; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; opacity:.75; margin-bottom:3px}
+
+/* phone illustration */
+.phone{width:176px; height:300px; border-radius:26px; background:linear-gradient(180deg,#1A2350,#0E1636);
+  border:1px solid var(--line2); padding:12px 10px; position:relative; box-shadow:0 26px 60px -30px rgba(124,92,255,.9); flex:0 0 auto}
+.phone::before{content:""; position:absolute; top:7px; left:50%; transform:translateX(-50%);
+  width:52px; height:5px; border-radius:99px; background:rgba(255,255,255,.18)}
+.phone .screen{margin-top:12px; height:calc(100% - 20px); border-radius:16px; background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07); padding:9px; display:flex; flex-direction:column; gap:8px; overflow:hidden}
+.ghostpost{border-radius:12px; height:96px; background:linear-gradient(135deg,rgba(255,95,162,.45),rgba(124,92,255,.5));
+  position:relative; animation:vanish 5.5s ease-in-out infinite}
+.ghostpost::after{content:"deleted"; position:absolute; inset:0; display:grid; place-items:center;
+  font-family:"Space Mono",monospace; font-size:12px; color:#fff; letter-spacing:.2em; opacity:0; animation:delword 5.5s ease-in-out infinite}
+@keyframes vanish{0%,42%{opacity:1; filter:none} 56%{opacity:.35; filter:blur(2px)} 70%,100%{opacity:.08; filter:blur(4px)}}
+@keyframes delword{0%,50%{opacity:0} 70%,88%{opacity:.9} 100%{opacity:0}}
+.phone-photo{position:relative; margin:0; width:212px; flex:0 0 auto; line-height:0;
+  -webkit-mask-image:radial-gradient(ellipse 78% 74% at 50% 50%, #000 58%, transparent 100%);
+  mask-image:radial-gradient(ellipse 78% 74% at 50% 50%, #000 58%, transparent 100%)}
+.phone-photo img{display:block; width:100%; height:auto}
+.phone-photo .ghostpost{position:absolute; left:13.5%; top:19%; width:55%; height:29%; border-radius:10px;
+  background:linear-gradient(135deg,rgba(255,95,162,.5),rgba(124,92,255,.55))}
+.phone-photo .ghostpost::after{font-size:11px; text-transform:uppercase}
+.skel{height:11px; border-radius:6px; background:rgba(255,255,255,.1)}
+.skel.s{width:58%} .skel.m{width:78%}
+
+/* options / quiz */
+.opts{display:grid; gap:9px}
+.opt{display:flex; align-items:center; gap:11px; text-align:left; width:100%; padding:12px 15px;
+  border-radius:13px; background:rgba(255,255,255,.05); border:1px solid var(--line); font-size:15.5px; transition:.15s}
+.opt:hover{background:rgba(255,255,255,.11)}
+.opt .mark{width:22px; height:22px; border-radius:7px; border:2px solid var(--line2); flex:0 0 auto}
+.opt.sel{border-color:var(--lilac); background:rgba(167,139,250,.16)}
+.opt.sel .mark{background:var(--lilac); border-color:var(--lilac)}
+.opt.correct{border-color:var(--ok); background:var(--okbg)}
+.opt.correct .mark{background:var(--ok); border-color:var(--ok)}
+.opt.wrong{border-color:var(--bad); background:var(--badbg)}
+.opt.wrong .mark{background:var(--bad); border-color:var(--bad)}
+.q{border-top:1px solid var(--line); padding-top:16px; margin-top:16px}
+.q:first-child{border-top:0; padding-top:0; margin-top:0}
+.q h4{font-size:17px; margin-bottom:10px}
+.q .num{color:var(--amber); font-family:"Space Mono",monospace; margin-right:6px}
+.why{margin-top:9px; font-size:14.5px; padding:10px 13px; border-radius:12px;
+  background:rgba(95,227,179,.10); border:1px solid rgba(95,227,179,.3); color:#BFF0DE}
+.why.ev{background:rgba(255,201,74,.09); border-color:rgba(255,201,74,.28); color:#F6E0AE}
+.hintbox{margin-top:10px; font-size:14.5px; padding:11px 14px; border-radius:12px;
+  background:rgba(167,139,250,.12); border:1px dashed var(--line2); color:#DDD6FE}
+
+/* matching */
+.matchWrap{display:grid; grid-template-columns:1.05fr 1fr; gap:16px}
+.mRow{display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:13px;
+  background:rgba(255,255,255,.04); border:1px solid var(--line); margin-bottom:8px}
+.mRow .w{font-weight:800; font-size:15.5px; flex:1; min-width:0}
+.mRow .n{font-family:"Space Mono",monospace; color:var(--muted); font-size:13px; width:20px}
+.slot{min-width:118px; min-height:42px; flex:0 0 auto; border-radius:11px; padding:7px 10px;
+  border:1px dashed var(--line2); background:rgba(255,255,255,.03); font-size:13.5px; color:var(--muted);
+  display:flex; align-items:center; gap:6px; text-align:left; max-width:230px}
+.slot.filled{border-style:solid; color:var(--text); background:rgba(167,139,250,.14)}
+.slot.correct{border-color:var(--ok); background:var(--okbg)}
+.slot.wrong{border-color:var(--bad); background:var(--badbg)}
+.slot.target{border-color:var(--amber); box-shadow:0 0 0 3px rgba(255,201,74,.18)}
+.pool{display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start}
+.chip{padding:9px 12px; border-radius:12px; background:rgba(255,255,255,.06); border:1px solid var(--line);
+  font-size:14px; text-align:left; max-width:100%; transition:.15s; line-height:1.35}
+.chip:hover{background:rgba(255,255,255,.13)}
+.chip.picked{border-color:var(--amber); background:rgba(255,201,74,.16); box-shadow:0 0 0 3px rgba(255,201,74,.16)}
+.chip .lt{font-family:"Space Mono",monospace; color:var(--amber); margin-right:6px; font-weight:700}
+.chip.drag{opacity:.5}
+
+/* clue banner */
+.clue{margin-top:18px; border-radius:20px; padding:18px 22px; position:relative; overflow:hidden;
+  background:linear-gradient(135deg,rgba(95,227,179,.16),rgba(77,124,254,.16)); border:1px solid rgba(95,227,179,.4)}
+.clue h3{font-family:"Anton",sans-serif; font-weight:400; font-size:26px; letter-spacing:.03em; color:var(--mint)}
+.clue p{margin:6px 0 0; font-size:16px}
+
+/* grammar cards */
+.gcard{background:linear-gradient(180deg,var(--panel2),var(--deep)); border:1px solid var(--line2); border-radius:20px; padding:18px}
+.gcard h4{font-size:18px; margin-bottom:8px}
+.formula{font-family:"Space Mono",monospace; font-size:16px; font-weight:700; color:#fff; background:rgba(255,255,255,.07);
+  border:1px solid var(--line2); border-radius:12px; padding:10px 13px; text-align:center; margin:8px 0; word-break:break-word}
+.formula em{font-style:normal; color:var(--amber)}
+.ex{background:rgba(255,201,74,.09); border:1px solid rgba(255,201,74,.3); border-radius:12px; padding:10px 13px; font-size:15.5px; margin-top:9px}
+.ex b{color:var(--amber)}
+.note{font-size:13.5px; color:var(--muted); margin-top:9px}
+.tip{margin-top:12px; padding:11px 14px; border-radius:14px; background:rgba(255,95,162,.12); border:1px solid rgba(255,95,162,.35); font-size:15px}
+.bigT{color:var(--pink); font-weight:800; font-size:1.18em; text-shadow:0 0 14px rgba(255,95,162,.6)}
+.sumline{display:flex; align-items:center; gap:10px; padding:10px 13px; border-radius:12px; background:rgba(255,255,255,.05);
+  border:1px solid var(--line); font-size:15px; flex-wrap:wrap}
+.sumline code{font-family:"Space Mono",monospace; color:var(--amber); font-size:14px}
+
+/* flip cards */
+.flipGrid{display:grid; grid-template-columns:repeat(5,1fr); gap:12px}
+.flip{position:relative; height:150px; border-radius:18px; border:1px solid var(--line2); overflow:hidden;
+  background:linear-gradient(160deg,#20295C,#131B40); display:grid; place-items:center; text-align:center; padding:12px; transition:.2s}
+.flip:hover{transform:translateY(-3px); border-color:var(--lilac)}
+.flip.used{opacity:.55}
+.flip .n{font-family:"Anton",sans-serif; font-size:40px; color:var(--lilac)}
+.flip .lb{font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:4px}
+.qopen{margin-top:16px}
+.ideas{display:grid; gap:7px; margin-top:10px}
+.ideas li{list-style:none; padding:9px 12px; border-radius:11px; background:rgba(255,255,255,.05); border:1px solid var(--line); font-size:15px}
+
+/* team workspace */
+.field{display:block; margin-bottom:12px}
+.field span{display:block; font-size:13px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:5px}
+.field input,.field textarea{width:100%; padding:11px 13px; border-radius:12px; background:rgba(255,255,255,.05);
+  border:1px solid var(--line); color:var(--text); resize:vertical}
+.field textarea{min-height:64px; line-height:1.5}
+.field input:focus,.field textarea:focus{border-color:var(--lilac); outline:none; box-shadow:0 0 0 3px rgba(167,139,250,.2)}
+.check{display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:12px;
+  background:rgba(255,255,255,.04); border:1px solid var(--line); font-size:14.5px; text-align:left; width:100%}
+.check .bx{width:22px; height:22px; border-radius:7px; border:2px solid var(--line2); flex:0 0 auto; display:grid; place-items:center; font-size:13px}
+.check.done{border-color:var(--ok); background:var(--okbg)} .check.done .bx{background:var(--ok); border-color:var(--ok); color:#06210f}
+.roleCard{padding:13px; border-radius:15px; background:rgba(255,255,255,.04); border:1px solid var(--line)}
+.roleCard b{display:block; font-size:15px; margin-bottom:3px}
+.roleCard.r1{border-color:rgba(192,132,252,.5)} .roleCard.r2{border-color:rgba(77,124,254,.5)}
+.roleCard.r3{border-color:rgba(95,227,179,.5)} .roleCard.r4{border-color:rgba(255,201,74,.5)}
+.timerBox{display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:13px 16px; border-radius:16px;
+  background:rgba(255,255,255,.04); border:1px solid var(--line)}
+#timerRead{font-family:"Space Mono",monospace; font-size:34px; font-weight:700; letter-spacing:.02em; min-width:104px}
+#timerRead.low{color:var(--amber)} #timerRead.done{color:var(--pink)}
+
+/* votes */
+.voteRow{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; margin-bottom:9px}
+.bar{height:34px; border-radius:11px; background:rgba(255,255,255,.05); border:1px solid var(--line); position:relative; overflow:hidden}
+.bar .fill{position:absolute; inset:0 auto 0 0; width:0; border-radius:10px;
+  background:linear-gradient(90deg,rgba(77,124,254,.65),rgba(255,95,162,.6)); transition:width .5s cubic-bezier(.2,.7,.3,1)}
+.bar .lbl{position:relative; z-index:1; display:flex; align-items:center; height:100%; padding:0 12px; font-size:14.5px}
+.bar.mine{border-color:var(--amber)}
+.tally{display:flex; align-items:center; gap:6px}
+.tally b{font-family:"Space Mono",monospace; min-width:22px; text-align:center}
+
+/* wall */
+.wall{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.note-card{padding:14px; border-radius:16px; background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid var(--line); font-size:15px; position:relative}
+.note-card b{display:block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--amber); margin-bottom:5px}
+.note-card .del{position:absolute; top:7px; right:9px; color:var(--muted); font-size:14px}
+
+/* reading text */
+.reading{font-size:17.5px; line-height:1.72}
+.reading p{margin:0 0 1em}
+.voc{background:rgba(124,92,255,.16); border-bottom:2px solid rgba(124,92,255,.55); border-radius:3px; padding:0 2px; cursor:help}
+.card.paper .voc{background:rgba(124,92,255,.16); border-bottom-color:rgba(124,92,255,.7)}
+.caus{background:rgba(255,201,74,.22); border-bottom:2px solid rgba(255,160,40,.7); border-radius:3px; padding:0 2px; font-weight:700}
+.glossary{margin-top:14px; display:grid; gap:8px}
+.glossary div{font-size:15px; padding:9px 12px; border-radius:11px; background:rgba(19,26,58,.06); border:1px solid rgba(19,26,58,.12)}
+.glossary b{color:#4C33C9}
+
+/* fix-the-text */
+.fixText{font-size:18px; line-height:2.1}
+.tok{padding:2px 4px; border-radius:7px; transition:.12s; border:1px solid transparent}
+.tok.cl{cursor:pointer}
+.tok.cl:hover{background:rgba(255,255,255,.1)}
+.tok.sel{background:rgba(167,139,250,.28); border-color:var(--lilac)}
+.tok.good{background:var(--okbg); border-color:var(--ok)}
+.tok.bad{background:var(--badbg); border-color:var(--bad)}
+.tok.miss{background:rgba(255,201,74,.22); border-color:var(--amber)}
+.fixList{display:grid; gap:7px; margin-top:12px}
+.fixList div{font-size:15px; padding:9px 12px; border-radius:11px; background:rgba(255,255,255,.05); border:1px solid var(--line)}
+.fixList b{color:var(--mint)}
+
+/* overlays */
+.overlay{position:fixed; inset:0; z-index:60; background:rgba(5,8,22,.72); backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center; padding:20px; animation:fade .25s both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.sheet{width:min(880px,100%); max-height:86vh; overflow-y:auto; border-radius:24px; padding:22px 24px;
+  background:linear-gradient(180deg,#18214C,#0B1230); border:1px solid var(--line2); box-shadow:0 30px 80px -30px #000}
+.sheet h3{font-size:22px} .sheet .x{position:sticky; top:0; float:right}
+.vaultGrid{display:grid; grid-template-columns:repeat(2,1fr); gap:11px; margin-top:14px}
+.vword{padding:12px 14px; border-radius:14px; background:rgba(255,255,255,.05); border:1px solid var(--line)}
+.vword b{font-size:16px; color:#fff} .vword .en{font-size:14.5px; color:#CBD3F7; margin-top:3px}
+.vword .uaw{font-size:14px; color:var(--muted); margin-top:2px}
+body.noua .vword .uaw{display:none}
+
+/* teacher drawer */
+#drawer{position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); z-index:70; transform:translateX(102%);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1); background:linear-gradient(180deg,#141C44,#0A1029);
+  border-left:1px solid var(--line2); box-shadow:-30px 0 70px -30px #000; display:flex; flex-direction:column}
+#drawer.open{transform:none}
+#drawer .dhead{padding:15px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:10px}
+#drawer .dbody{overflow-y:auto; padding:16px 18px 40px}
+.pace{display:flex; gap:6px; margin:10px 0 4px}
+.pace button{flex:1; padding:8px; border-radius:11px; font-size:12.5px; font-weight:700; background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--muted)}
+.pace button.on{background:rgba(255,201,74,.18); border-color:var(--amber); color:#FFE6A3}
+.tnote{border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.04); padding:13px 15px; margin-bottom:11px}
+.tnote h4{font-size:15px; display:flex; justify-content:space-between; align-items:baseline; gap:8px}
+.tnote h4 span{font-size:12px; color:var(--amber); font-family:"Space Mono",monospace; white-space:nowrap}
+.tnote dl{margin:9px 0 0; font-size:14px}
+.tnote dt{color:var(--lilac); font-weight:800; font-size:12px; letter-spacing:.08em; text-transform:uppercase; margin-top:9px}
+.tnote dd{margin:2px 0 0; color:#D6DCF8}
+.tnote .ans{font-family:"Space Mono",monospace; font-size:13px; color:#BFF0DE}
+.inline-note{margin-top:14px; border-radius:16px; padding:13px 16px; font-size:14.5px;
+  background:rgba(167,139,250,.10); border:1px dashed var(--line2)}
+.inline-note b{color:var(--lilac); letter-spacing:.06em; font-size:12px; text-transform:uppercase; display:block; margin-bottom:4px}
+body.student .teacherOnly{display:none !important}
+
+/* confetti */
+#confetti{position:fixed; inset:0; pointer-events:none; z-index:90; overflow:hidden}
+.cf{position:absolute; width:9px; height:14px; border-radius:2px; animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg); opacity:.1}}
+
+/* presentation mode */
+body.pres #top .hideInPres, body.pres #bottom .hideInPres, body.pres #wmbar{display:none}
+
+@media (max-width:900px){
+  .cast{grid-template-columns:repeat(2,1fr)}
+  .g3,.g4,.g5,.flipGrid,.wall,.vaultGrid,.matchWrap{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
+  .brand span{display:none}
+  #stage{padding:18px 13px 26px}
+  .flip{height:112px}
+  .slot{min-width:96px; max-width:none}
+  body{font-size:16.5px}
+}
+@media (max-width:620px){
+  #top{gap:8px; padding:8px 10px; flex-wrap:wrap}
+  #dots{order:3; width:100%; flex:1 0 100%}
+  #topRight{flex-wrap:wrap; gap:6px; flex:1 1 auto; justify-content:flex-end}
+  .modeSwitch button{padding:6px 9px; font-size:11.5px}
+  .tbtn{padding:7px 10px; font-size:12.5px}
+  .tbtn .lbl{display:none}
+  #wmbar .wm{height:14px}
+  .h-scene{font-size:27px}
+  .phone{width:148px; height:250px}
+  .phone-photo{width:176px}
+}
+</style>
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   НАЛАШТУВАННЯ ЖИВОЇ КІМНАТИ — єдине місце, яке треба редагувати
+   SUPABASE_URL / SUPABASE_KEY — Project URL і publishable key.
+   Без них кімната працює лише між вкладками одного комп'ютера.
+   ═══════════════════════════════════════════════════════════════ */
+window.LESSON_CONFIG = {
+  SUPABASE_URL : 'https://yhekszqxheljbxoucalt.supabase.co',
+  SUPABASE_KEY : 'sb_publishable_knHTxZLX-Ucg0WtnfP0RTw_ytJ2Dyoa'
+};
+</script>
+</head>
+<body class="teacher">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C084FC"/><stop offset="1" stop-color="#6D3FE0"/></linearGradient>
+  <linearGradient id="gJ" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5FE3B3"/><stop offset="1" stop-color="#1D8F79"/></linearGradient>
+  <linearGradient id="gR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B95FF"/><stop offset="1" stop-color="#2B45C0"/></linearGradient>
+  <linearGradient id="gD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD470"/><stop offset="1" stop-color="#E08A2B"/></linearGradient>
+  <symbol id="av-alex" viewBox="0 0 100 100">
+    <clipPath id="avClipAlex"><rect width="100" height="100" rx="26"/></clipPath>
+    <image href="img/avatars/alex.webp"
+      x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#avClipAlex)"/>
+  </symbol>
+  <symbol id="av-jamie" viewBox="0 0 100 100">
+    <clipPath id="avClipJamie"><rect width="100" height="100" rx="26"/></clipPath>
+    <image href="img/avatars/jamie.webp"
+      x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#avClipJamie)"/>
+  </symbol>
+  <symbol id="av-robin" viewBox="0 0 100 100">
+    <clipPath id="avClipRobin"><rect width="100" height="100" rx="26"/></clipPath>
+    <image href="img/avatars/robin.webp"
+      x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#avClipRobin)"/>
+  </symbol>
+  <symbol id="av-dana" viewBox="0 0 100 100">
+    <clipPath id="avClipDana"><rect width="100" height="100" rx="26"/></clipPath>
+    <image href="img/avatars/dana.webp"
+      x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" clip-path="url(#avClipDana)"/>
+  </symbol>
+</defs>
+</svg>
+
+<div id="app">
+
+  <!-- =============== TOP BAR =============== -->
+  <header id="top">
+    <a class="tbtn back hideInPres" id="backHub" href="../../" title="Назад на платформу курсу" aria-label="Back to the course">←</a>
+    <div class="brand"><b>CASE&nbsp;13</b><span>Advanced Kids</span></div>
+    <nav id="dots" aria-label="Scenes"></nav>
+    <div id="topRight">
+      <button class="tbtn" id="btnLive" title="Live room for students">📡 <span class="lbl" id="liveLabel">Connect</span></button>
+      <button class="tbtn hideInPres" id="btnFx" title="Animations on/off">✨</button>
+      <button class="tbtn vault" id="btnVault" title="Vocabulary Vault">🗝️ <span class="lbl">Vocabulary</span></button>
+      <button class="tbtn teacherOnly hideInPres" id="btnNotes" title="Teacher notes">📋 <span class="lbl">Teacher notes</span></button>
+      <button class="tbtn hideInPres" id="btnUA" title="Український переклад">УКР</button>
+      <button class="tbtn hideInPres" id="btnSize" title="Text size">A<span style="font-size:1.25em">A</span></button>
+      <button class="tbtn" id="btnPres" title="Presentation mode">⛶</button>
+      <div class="modeSwitch hideInPres" role="group" aria-label="Mode">
+        <button id="mTeacher" class="on">Teacher</button><button id="mStudent">Student</button>
+      </div>
+      <button class="tbtn hideInPres" id="btnReset" title="Reset lesson">↺</button>
+    </div>
+  </header>
+
+  <!-- =============== STAGE =============== -->
+  <main id="stage">
+  <div class="wrap">
+
+  <!-- ---------- SCENE 1 ---------- -->
+  <section class="scene" id="s0" aria-label="Mission Start">
+    <div class="eyebrow">
+      <span class="stamp">CASE FILE #13</span>
+      <span class="badge core">Core</span><span class="badge time">2 min</span>
+    </div>
+    <h1 class="h-scene dsp">Digital&nbsp;Alert</h1>
+    <p class="sub">Lesson 13 · Revision of Lessons 11–12 · <b>The Post That Disappeared</b></p>
+
+    <div class="art" id="artHero"></div>
+    <div class="row mt" style="align-items:stretch; gap:20px; flex-wrap:wrap">
+      <figure class="phone-photo" aria-hidden="true">
+        <img loading="lazy" decoding="async" src="img/02-phone-deleted-post.webp" alt="">
+        <span class="ghostpost"></span>
+      </figure>
+      <div class="card" style="flex:1 1 380px">
+        <p style="font-size:18.5px">Yesterday, Alex <span class="voc">dropped a post</span> from a school party. Hundreds of people saw it — but ten minutes later, it <b style="color:var(--pink)">disappeared</b>.</p>
+        <p style="font-size:18.5px">Why did Alex delete it?</p>
+        <p style="font-size:18.5px; margin-bottom:0"><b>Your team has 30–60 minutes to discover the truth.</b></p>
+        <div class="ua">Учора Алекс опублікував допис зі шкільної вечірки. Його побачили сотні людей — але через десять хвилин допис зник. Чому Алекс його видалив? У вашої команди є 30–60 хвилин, щоб дізнатися правду.</div>
+        <div class="row mt">
+          <button class="btn primary big" id="startBtn">🔍 Start the investigation</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="warmup" class="hidden">
+      <h3 class="mt-l" style="font-size:20px">Warm-up</h3>
+      <div class="card mt-s">
+        <p style="font-size:18px; margin-bottom:4px"><b>Have you ever posted something and then deleted it? Why?</b></p>
+        <p class="simple">Have you ever put a photo or message online and removed it later? What happened?</p>
+        <div class="ua">Чи публікували ви колись фото або повідомлення, а потім видаляли його? Що сталося?</div>
+        <div class="opts mt" id="poll1"></div>
+        <div class="row mt-s">
+          <button class="btn sm ghost" data-reset="poll1">↺ Reset task</button>
+        </div>
+        <div id="poll1res" class="mt hidden"></div>
+      </div>
+      <div class="card soft mt" >
+        <h4 style="font-size:16px; margin-bottom:10px">The people in this case file</h4>
+        <div class="cast">
+          <div class="who"><svg class="av"><use href="#av-alex"/></svg><b>Alex</b><span>posted the photo, then deleted it</span></div>
+          <div class="who"><svg class="av"><use href="#av-jamie"/></svg><b>Jamie</b><span>was in the photo — and wasn't happy</span></div>
+          <div class="who"><svg class="av"><use href="#av-robin"/></svg><b>Robin</b><span>Alex's friend — took 50+ pictures</span></div>
+          <div class="who"><svg class="av"><use href="#av-dana"/></svg><b>Dana</b><span>Alex's older sister — edited the photo</span></div>
+        </div>
+      </div>
+      <div class="inline-note teacherOnly"><b>Teacher note</b>Ask one or two students to explain their choice. Do not spend more than two minutes here.</div>
+    </div>
+  </section>
+
+  <!-- ---------- SCENE 2 ---------- -->
+  <section class="scene" id="s1" aria-label="Decode the Feed">
+    <div class="eyebrow">
+      <span class="stamp">CLUE 1</span><span class="badge core">Core</span><span class="badge time">4 min</span>
+    </div>
+    <h1 class="h-scene dsp">Decode the Feed</h1>
+    <p class="sub">Alex's messages contain social media expressions. Match each expression with its meaning to unlock the first clue.</p>
+    <div class="ua">Повідомлення Алекса містять вирази про соцмережі. Зістав кожен вираз із його значенням, щоб відкрити перший доказ.</div>
+
+    <div class="card soft mt" style="padding:14px 16px">
+      <div class="chat">
+        <div class="bub them"><b>Robin</b>Bro, you had me take like 50 pictures 😅 Was it <span class="voc">post-worthy</span> in the end?</div>
+        <div class="bub me"><b>Alex</b>It was! Until it wasn't. I deleted it.</div>
+        <div class="bub them"><b>Robin</b>?????</div>
+      </div>
+    </div>
+
+    <div class="art" id="artFeed"></div>
+    <div class="row mt" style="justify-content:space-between">
+      <div class="modeSwitch" role="group" aria-label="Challenge size">
+        <button id="chFull" class="on">Full challenge · 12 words</button><button id="chQuick">Quick challenge · 6 words</button>
+      </div>
+      <div class="row">
+        <button class="btn sm" id="mHint">💡 Show hint</button>
+        <button class="btn sm ghost" id="mReset">↺ Reset task</button>
+      </div>
+    </div>
+
+    <div class="card mt">
+      <p class="small" style="margin-bottom:12px">Tap a meaning, then tap the word it belongs to. On a computer you can also drag and drop. <span class="ua" style="display:inline-block; border:0; padding:0; margin:0">Натисни на значення, потім на слово. На комп'ютері працює й перетягування.</span></p>
+      <div class="matchWrap">
+        <div id="mWords"></div>
+        <div>
+          <p class="small" style="margin-bottom:8px">Meanings</p>
+          <div class="pool" id="mPool"></div>
+        </div>
+      </div>
+      <div id="mHintBox" class="hintbox hidden"></div>
+      <div class="row mt">
+        <button class="btn primary" id="mCheck">✓ Check answers</button>
+        <button class="btn" id="mReveal">👁 Reveal answers</button>
+        <span class="small" id="mScore" aria-live="polite"></span>
+      </div>
+    </div>
+
+    <div class="clue hidden pop" id="clue1">
+      <h3>CLUE 1 UNLOCKED</h3>
+      <p>Alex wanted to create something <b>"post-worthy"</b>.</p>
+    </div>
+    <div class="inline-note teacherOnly"><b>Teacher note</b>Use Quick challenge if students need more time or if the lesson is running late.</div>
+  </section>
+
+  <!-- ---------- SCENE 3 ---------- -->
+  <section class="scene" id="s2" aria-label="Read the Evidence">
+    <div class="eyebrow">
+      <span class="stamp">CLUE 2</span><span class="badge core">Core</span><span class="badge time">6–7 min</span>
+    </div>
+    <h1 class="h-scene dsp">The Perfect Night?</h1>
+    <p class="sub">Before you open the case file, make your prediction. You can choose more than one answer.</p>
+
+    <div class="card mt">
+      <p style="font-size:18px"><b>Why might someone delete a popular post?</b></p>
+      <div class="ua">Чому людина може видалити популярний допис? Можна обрати кілька варіантів.</div>
+      <div class="opts mt" id="pre1"></div>
+      <div class="row mt">
+        <button class="btn primary" id="openCase">📂 Open the case file</button>
+        <button class="btn sm ghost" data-reset="pre1">↺ Reset task</button>
+      </div>
+    </div>
+
+    <div id="readingBlock" class="hidden">
+      <div class="card paper mt pop">
+        <div class="row" style="justify-content:space-between; align-items:flex-start">
+          <div>
+            <h2 class="dsp" style="font-size:30px; color:#1B1247">The Perfect Night?</h2>
+            <p class="small" style="color:#5A639A; margin:4px 0 0">Evidence document · 210 words</p>
+          </div>
+          <button class="btn sm" id="simplifyBtn" style="background:#131A3A; color:#fff; border-color:transparent">🔤 Simplify difficult words</button>
+        </div>
+        <div class="art" id="artParty"></div>
+        <div class="reading mt">
+          <p>At 8:30 p.m., Alex <span class="voc">dropped a post</span> from the school party. The photo looked perfect: everyone was smiling, the lights were bright, and Alex's clothes looked amazing. The caption said, "Best night ever!"</p>
+          <p>However, the photo wasn't as natural as it seemed. Alex <span class="caus">had a friend take</span> more than fifty pictures before choosing one. Then Alex <span class="caus">got an older sister to edit</span> the final photo. She made the lights brighter, removed several objects and changed everyone's faces a little.</p>
+          <p>At first, Alex was excited. The post quickly got hundreds of likes. Some students who hadn't attended the party felt <span class="voc">FOMO</span>. They thought they had missed an incredible event.</p>
+          <p>But one person in the photo, Jamie, wasn't happy. Jamie had asked Alex not to share the picture. Alex had also <span class="caus">made Jamie stand</span> next to people they didn't really know. When Jamie saw the heavily <span class="voc">edited</span> photo, they sent Alex a message: "This isn't us. It's only a <span class="voc">highlight reel</span>."</p>
+          <p>Alex read the message while <span class="voc">doomscrolling</span> through the comments. Suddenly, the perfect post didn't feel <span class="voc">post-worthy</span> anymore. Alex deleted it and wrote to Jamie: "You're right. Next time, I'll try to <span class="voc">show up real</span>."</p>
+        </div>
+        <div id="glossary" class="glossary hidden">
+          <div><b>dropped a post</b> — published a new photo online.</div>
+          <div><b>the caption said</b> — the words under the photo said.</div>
+          <div><b>wasn't as natural as it seemed</b> — it looked real, but it was not real.</div>
+          <div><b>more than fifty pictures</b> — 50+ photos, only one was used.</div>
+          <div><b>removed several objects</b> — took some things out of the photo.</div>
+          <div><b>felt FOMO</b> — felt sad because other people were having fun without them.</div>
+          <div><b>heavily edited</b> — changed a lot with filters and editing tools.</div>
+          <div><b>a highlight reel</b> — only the best moments, not the full story.</div>
+          <div><b>doomscrolling</b> — reading negative comments for a long time.</div>
+          <div><b>post-worthy</b> — good or interesting enough to publish.</div>
+          <div><b>show up real</b> — show your real life and real personality.</div>
+        </div>
+        <p class="small mt" style="color:#5A639A">
+          <span style="background:rgba(124,92,255,.16); border-bottom:2px solid rgba(124,92,255,.7); padding:0 3px">purple</span> = lesson vocabulary ·
+          <span style="background:rgba(255,201,74,.32); border-bottom:2px solid rgba(255,160,40,.8); padding:0 3px"><b>yellow</b></span> = causative structures
+        </p>
+      </div>
+
+      <h3 class="mt-l" style="font-size:20px">Reading comprehension</h3>
+      <div class="card mt-s" id="readQuiz"></div>
+      <div class="row mt">
+        <button class="btn primary" id="rCheck">✓ Check answers</button>
+        <button class="btn" id="rReveal">👁 Reveal answers</button>
+        <button class="btn sm ghost" id="rReset">↺ Reset task</button>
+        <button class="btn sm" id="rHint">💡 Show hint</button>
+        <span class="small" id="rScore" aria-live="polite"></span>
+      </div>
+      <div id="rHintBox" class="hintbox hidden">Look at paragraph 2 for questions 1 and 2, paragraph 3 for question 3, and paragraph 4 for questions 4 and 5.</div>
+
+      <div class="clue hidden pop" id="clue2">
+        <h3>CLUE 2 UNLOCKED</h3>
+        <p>The post showed a <b>highlight reel</b>, not the full reality.</p>
+      </div>
+    </div>
+    <div class="inline-note teacherOnly"><b>Teacher note</b>Give students 2 minutes to read silently, or read the text aloud together. If you are behind schedule, ask only questions 1, 4 and 5.</div>
+  </section>
+
+  <!-- ---------- SCENE 4 ---------- -->
+  <section class="scene" id="s3" aria-label="Grammar Investigation">
+    <div class="eyebrow">
+      <span class="stamp">CLUE 3</span><span class="badge core">Core</span><span class="badge time">6–7 min</span>
+    </div>
+    <h1 class="h-scene dsp">Who Really Did It?</h1>
+    <p class="sub">The reading contains clues about who caused each action. Let's investigate the structures.</p>
+    <div class="ua">У тексті є підказки про те, хто спричинив кожну дію. Дослідімо ці конструкції.</div>
+
+    <div class="grid g3 mt">
+      <div class="gcard">
+        <div class="gico" data-g="1"></div>
+        <h4>1. Something done <span style="color:var(--amber)">FOR</span> you</h4>
+        <div class="formula">have / get + <em>object</em> + V3</div>
+        <p class="simple">We use this structure when another person does something for us. We arrange the action, but we do not do it ourselves.</p>
+        <div class="ua">Ми використовуємо цю конструкцію, коли інша людина щось робить для нас. Ми організовуємо дію, але не виконуємо її самі.</div>
+        <div class="ex">"Alex <b>got the final photo edited</b>."</div>
+        <p class="note">Alex didn't edit it. Alex's sister did it.</p>
+        <p class="note"><i>Get something done</i> is usually more informal than <i>have something done</i>.</p>
+      </div>
+      <div class="gcard">
+        <div class="gico" data-g="2"></div>
+        <h4>2. Asking or persuading someone</h4>
+        <div class="formula">have + <em>person</em> + V</div>
+        <div class="formula">get + <em>person</em> + to + V</div>
+        <p class="simple">Use <b>have</b> when you ask or tell someone to do something. Use <b>get</b> when you ask, persuade or convince someone to do something.</p>
+        <div class="ua">Використовуємо have, коли просимо або доручаємо комусь виконати дію. Використовуємо get, коли вмовляємо або переконуємо когось виконати дію.</div>
+        <div class="ex">"Alex <b>had a friend take</b> fifty pictures."</div>
+        <div class="ex">"Alex <b>got a sister to edit</b> the photo."</div>
+        <div class="tip">
+          <b>Memory tip:</b> ge<span class="bigT">T</span> → <span class="bigT">T</span>o<br>
+          Get someone <b>to do</b> something.<br>
+          <i>Have</i> has no final T → no <i>to</i>. Have someone <b>do</b> something.
+        </div>
+      </div>
+      <div class="gcard">
+        <div class="gico" data-g="3"></div>
+        <h4>3. Pressure or no real choice</h4>
+        <div class="formula">make + <em>person</em> + V</div>
+        <p class="simple">Use <b>make</b> when someone is forced or strongly pressured to do something.</p>
+        <div class="ua">Використовуємо make, коли когось змушують або сильно тиснуть на нього, щоб він виконав дію.</div>
+        <div class="ex">"Alex <b>made Jamie stand</b> near the group."</div>
+        <p class="note">After <b>make</b>, we do <b>not</b> use <i>to</i>.</p>
+      </div>
+    </div>
+
+    <h3 class="mt-l" style="font-size:20px">Grammar practice</h3>
+    <div class="card mt-s" id="gramQuiz"></div>
+    <div class="row mt">
+      <button class="btn primary" id="gCheck">✓ Check answers</button>
+      <button class="btn" id="gReveal">👁 Reveal answers</button>
+      <button class="btn sm ghost" id="gReset">↺ Reset task</button>
+      <button class="btn sm" id="gHint">💡 Show hint</button>
+      <span class="small" id="gScore" aria-live="polite"></span>
+    </div>
+    <div id="gHintBox" class="hintbox hidden">Ask yourself two questions: <b>1)</b> is the second word a <i>person</i> or a <i>thing</i>? <b>2)</b> is the verb <i>have</i>, <i>get</i> or <i>make</i>? Only <b>get + person</b> takes <i>to</i>.</div>
+
+    <div class="card soft mt" id="gSummary">
+      <h4 style="font-size:16px; margin-bottom:10px">Grammar summary</h4>
+      <div class="grid" style="gap:8px">
+        <div class="sumline"><code>have/get + thing + V3</code> → someone does it for you</div>
+        <div class="sumline"><code>have + person + V</code> → ask or tell someone</div>
+        <div class="sumline"><code>get + person + to + V</code> → persuade someone</div>
+        <div class="sumline"><code>make + person + V</code> → force or strongly pressure someone</div>
+      </div>
+    </div>
+
+    <div class="clue hidden pop" id="clue3">
+      <h3>CLUE 3 UNLOCKED</h3>
+      <p>Alex <b>arranged</b> the photos, <b>persuaded</b> someone to edit them and <b>pressured</b> Jamie to join the picture.</p>
+    </div>
+    <div class="row mt">
+      <button class="btn amber" id="toOptional">🧩 Open Optional Challenge</button>
+      <span class="small">Fix the Influencer's Story — skip if you are short of time.</span>
+    </div>
+  </section>
+
+  <!-- ---------- SCENE 5 ---------- -->
+  <section class="scene" id="s4" aria-label="Interview the Detectives">
+    <div class="eyebrow">
+      <span class="stamp">SPEAKING</span><span class="badge core">Core</span><span class="badge time">5–6 min</span>
+    </div>
+    <h1 class="h-scene dsp">Interview the Detectives</h1>
+    <p class="sub">Choose a card. Behind every card there is a question for the team.</p>
+    <div class="ua">Обери картку. За кожною карткою — запитання для команди.</div>
+
+    <div class="row mt-s">
+      <button class="btn primary" id="randCard">🎲 Pick a random question</button>
+      <button class="btn sm ghost" id="cardsReset">↺ Reset task</button>
+      <span class="small" id="cardsCount"></span>
+    </div>
+
+    <div class="flipGrid mt" id="flipGrid"></div>
+    <div id="cardOpen" class="qopen hidden"></div>
+    <div class="inline-note teacherOnly"><b>Teacher note</b>Ask each student one main question and one short follow-up. If students are quiet, show the helpful ideas or sentence starters.</div>
+  </section>
+
+  <!-- ---------- SCENE 6 ---------- -->
+  <section class="scene" id="s5" aria-label="Breakout Mission">
+    <div class="eyebrow">
+      <span class="stamp">TEAM MISSION</span><span class="badge core">Core</span><span class="badge time">7–8 min</span>
+    </div>
+    <h1 class="h-scene dsp">Rebuild the Post</h1>
+    <p class="sub">Alex wants to create a new post about the party. This time, the post must be honest, respectful and interesting.</p>
+    <div class="ua">Алекс хоче створити новий допис про вечірку. Цього разу допис має бути чесним, шанобливим і цікавим.</div>
+
+    <div class="card mt" style="background:linear-gradient(135deg,rgba(255,95,162,.18),rgba(77,124,254,.18)); border-color:var(--line2)">
+      <h2 class="dsp" style="font-size:clamp(24px,3.4vw,38px)">Create the new honest post</h2>
+      <div class="grid g2 mt-s" style="gap:10px">
+        <div class="sumline">1 · A short caption of 2–3 sentences</div>
+        <div class="sumline">2 · Three actions using three different causative structures</div>
+        <div class="sumline">3 · At least two vocabulary expressions from the lesson</div>
+        <div class="sumline">4 · One rule for responsible posting</div>
+        <div class="sumline">5 · A final decision: post it or don't post it?</div>
+        <div class="sumline"><code>have/get + object + V3 · have/get + person + (to) V · make + person + V</code></div>
+      </div>
+    </div>
+
+    <div class="art" id="artTeam"></div>
+    <h3 class="mt-l" style="font-size:19px">Team roles</h3>
+    <div class="grid g4 mt-s">
+      <div class="roleCard r1"><b>✍️ Writer</b><span class="small">writes the caption</span></div>
+      <div class="roleCard r2"><b>🔎 Grammar Detective</b><span class="small">checks the causative structures</span></div>
+      <div class="roleCard r3"><b>✅ Reality Checker</b><span class="small">checks that the post is honest and respectful</span></div>
+      <div class="roleCard r4"><b>🎤 Speaker</b><span class="small">presents the team's idea</span></div>
+    </div>
+    <p class="note">If there are only two students in your room, each person can take two roles.</p>
+    <div class="ua">Якщо у кімнаті лише двоє учнів, кожен може взяти дві ролі.</div>
+
+    <div class="timerBox mt">
+      <div id="timerRead">05:00</div>
+      <div class="row teacherOnly">
+        <button class="btn sm primary" id="tStart">▶ Start team timer</button>
+        <button class="btn sm" id="tPause">⏸ Pause</button>
+        <button class="btn sm ghost" id="tReset">↺ Reset timer</button>
+      </div>
+      <span class="small studentTimerNote">The teacher starts the timer. <span class="ua" style="display:inline-block; border:0; padding:0; margin:0">Таймер запускає вчитель.</span></span>
+    </div>
+
+    <div class="grid g2 mt" style="align-items:start">
+      <div class="card">
+        <h4 style="font-size:16px; margin-bottom:12px">Team workspace</h4>
+        <label class="field"><span>Team name</span><input id="f_team" placeholder="The Fact Checkers"></label>
+        <label class="field"><span>Our caption</span><textarea id="f_caption" placeholder="2–3 sentences…"></textarea></label>
+        <label class="field"><span>Action 1: We had / got… (thing + V3)</span><input id="f_a1" placeholder="We had the photo cropped…"></label>
+        <label class="field"><span>Action 2: We had / got someone… (person)</span><input id="f_a2" placeholder="We got everyone to check…"></label>
+        <label class="field"><span>Action 3: We made someone…</span><input id="f_a3" placeholder="We didn't make anyone…"></label>
+        <label class="field"><span>Vocabulary we used</span><input id="f_voc" placeholder="show up real, post-worthy"></label>
+        <label class="field"><span>Our posting rule: Before you post…</span><input id="f_rule" placeholder="…ask everyone in the photo."></label>
+        <div class="field"><span>Final decision</span>
+          <div class="row">
+            <button class="btn" id="dPost">✅ POST IT</button>
+            <button class="btn" id="dNo">🚫 DON'T POST IT</button>
+          </div>
+        </div>
+        <label class="field"><span>Why?</span><textarea id="f_why" placeholder="Because…"></textarea></label>
+      </div>
+
+      <div>
+        <div class="card">
+          <h4 style="font-size:16px; margin-bottom:10px">Mission checklist</h4>
+          <p class="small" style="margin-bottom:10px">Items tick automatically when the team uses them. You can also tick them yourself.</p>
+          <div class="grid" style="gap:8px" id="checklist"></div>
+          <p class="small mt-s" id="vocFound"></p>
+        </div>
+        <div class="row mt">
+          <button class="btn primary" id="saveDraft">💾 Save team draft</button>
+          <button class="btn" id="readyBtn">🚀 Ready to present</button>
+          <button class="btn sm" id="showExample">💡 Show example</button>
+          <button class="btn sm ghost" id="quickPres">🖥 Quick presentation</button>
+        </div>
+        <p class="small mt-s" id="saveMsg" aria-live="polite"></p>
+        <div id="exampleBox" class="card soft mt hidden pop">
+          <h4 style="font-size:15px; margin-bottom:8px">Example</h4>
+          <p><b>Our caption:</b> "The party wasn't perfect, but we had fun together. Here is one real moment from the evening."</p>
+          <p><b>Action 1:</b> We had the photo cropped, but we didn't over-edit it.</p>
+          <p><b>Action 2:</b> We got everyone to check the photo before posting it.</p>
+          <p><b>Action 3:</b> We didn't make anyone join the picture.</p>
+          <p><b>Vocabulary:</b> show up real, post-worthy.</p>
+          <p><b>Our rule:</b> Before you post, ask everyone in the photo.</p>
+          <p style="margin-bottom:0"><b>Decision:</b> POST IT, because the post is honest and respectful.</p>
+        </div>
+      </div>
+    </div>
+    <div class="inline-note teacherOnly"><b>Teacher note</b>Give teams 4–5 minutes. Each presentation should take no more than one minute. If time is short, use Quick presentation.</div>
+  </section>
+
+  <!-- ---------- SCENE 7 ---------- -->
+  <section class="scene" id="s6" aria-label="Final Reveal">
+    <div class="eyebrow">
+      <span class="stamp">CASE CLOSED</span><span class="badge core">Core</span><span class="badge time">3–4 min</span>
+    </div>
+    <h1 class="h-scene dsp">Case Closed</h1>
+    <div class="art" id="artFinal"></div>
+
+    <div class="row mt" style="gap:18px; align-items:stretch; flex-wrap:wrap">
+      <div class="card" style="flex:1 1 420px">
+        <p style="font-size:18px">Alex deleted the post because it was heavily <span class="voc">edited</span> and Jamie had not agreed to share it.</p>
+        <p style="font-size:18px; margin-bottom:0">The post showed a <span class="voc">highlight reel</span>, not the real experience. Alex understood that likes were less important than honesty and respect.</p>
+        <div class="ua">Алекс видалив допис, бо фото було сильно відредаговане, а Джеймі не погоджувався на публікацію. Допис показував лише добірку найкращих моментів, а не справжній досвід. Алекс зрозумів, що лайки менш важливі за чесність і повагу.</div>
+      </div>
+      <figure class="photo postshot" style="flex:0 1 330px">
+        <img loading="lazy" decoding="async" src="img/07-honest-post.webp"
+          alt="Новий чесний допис alex.real: селфі на набережній, підпис «Not perfect. Just real.», 84 вподобання">
+        <span class="sheen" aria-hidden="true"></span>
+      </figure>
+    </div>
+
+    <h3 class="mt-l" style="font-size:20px">Which lesson is the most important?</h3>
+    <div class="card mt-s">
+      <div class="opts" id="vote2"></div>
+      <div id="vote2res" class="mt"></div>
+      <div class="row mt-s">
+        <button class="btn sm ghost" data-reset="vote2">↺ Reset task</button>
+      </div>
+    </div>
+
+    <h3 class="mt-l dsp" style="font-size:26px">One last message</h3>
+    <p class="sub">Choose one sentence and finish it.</p>
+    <div class="card mt-s">
+      <div class="opts" id="exitStems"></div>
+      <label class="field mt"><span>Finish the sentence</span><input id="exitText" placeholder="…"></label>
+      <label class="field"><span>Your name (optional)</span><input id="exitName" placeholder="Anonymous detective"></label>
+      <div class="row">
+        <button class="btn primary" id="exitSend">📨 Send my message</button>
+        <button class="btn sm ghost" id="exitClear">↺ Clear the wall</button>
+      </div>
+    </div>
+    <div class="wall mt" id="exitWall"></div>
+
+    <div class="clue hidden pop mt-l" id="finalBanner" style="background:linear-gradient(135deg,rgba(255,201,74,.18),rgba(255,95,162,.18)); border-color:rgba(255,201,74,.45)">
+      <h3 style="color:var(--amber)">MISSION COMPLETED</h3>
+      <p>Great detective work! 🕵️ <span class="ua" style="display:inline-block; border:0; padding:0; margin:0">Чудова робота, детективи!</span></p>
+    </div>
+  </section>
+
+  <!-- ---------- OPTIONAL ---------- -->
+  <section class="scene" id="s7" aria-label="Optional Challenge">
+    <div class="eyebrow">
+      <span class="stamp">OPTIONAL</span><span class="badge opt">Optional challenge — skip if needed</span><span class="badge time">3–5 min</span>
+    </div>
+    <h1 class="h-scene dsp">Fix the Influencer's Story</h1>
+    <p class="sub">Find and correct five grammar mistakes. Tap the words that are wrong.</p>
+    <div class="ua">Знайди й виправ п'ять граматичних помилок. Натискай на слова, які є зайвими або неправильними.</div>
+
+    <div class="card mt">
+      <div class="fixText" id="fixText"></div>
+      <div class="row mt">
+        <button class="btn primary" id="fCheck">✓ Check answers</button>
+        <button class="btn" id="fReveal">👁 Reveal answers</button>
+        <button class="btn sm ghost" id="fReset">↺ Reset task</button>
+        <button class="btn sm" id="fHint">💡 Show hint</button>
+        <span class="small" id="fScore" aria-live="polite"></span>
+      </div>
+      <div id="fHintBox" class="hintbox hidden">Two mistakes are an extra <b>to</b>, one mistake is a missing <b>to</b>, one verb needs <b>V3</b>, and one verb must be the base form after <b>make</b>.</div>
+      <div id="fAnswer" class="hidden mt">
+        <div class="card soft">
+          <h4 style="font-size:16px; margin-bottom:8px">Correct version</h4>
+          <p style="font-size:17px">"Yesterday, I had my friend <b style="color:var(--mint)">take</b> some photos. Then I got one picture <b style="color:var(--mint)">edited</b>. My friend made me <b style="color:var(--mint)">use</b> a filter, but I didn't like it. I got her <b style="color:var(--mint)">to remove</b> the filter and had her <b style="color:var(--mint)">post</b> the natural photo."</p>
+          <div class="fixList">
+            <div>had my friend <b>take</b> → have + person + base verb</div>
+            <div>got one picture <b>edited</b> → get + object + V3</div>
+            <div>made me <b>use</b> → make + person + base verb</div>
+            <div>got her <b>to remove</b> → get + person + to + verb</div>
+            <div>had her <b>post</b> → have + person + base verb</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inline-note teacherOnly"><b>Teacher note</b>Skip this block completely if you are 10 minutes behind. If you have time, ask students to explain each correction using the grammar summary.</div>
+  </section>
+
+  </div>
+  </main>
+
+  <!-- =============== BOTTOM BAR =============== -->
+  <footer id="bottom">
+    <button class="btn sm" id="prevBtn">← Previous</button>
+    <div class="hideInPres">
+      <div id="sceneName">Mission Start</div>
+      <div id="progress">Case progress: 0/7 clues discovered</div>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn sm ghost hidden" id="skipBtn">⏭ Skip activity</button>
+    <button class="btn primary" id="nextBtn">Next clue →</button>
+  </footer>
+
+  <div id="wmbar"><img class="wm" src="img/watermark.png" alt="study less KIDS" onerror="this.parentNode.remove()"></div>
+</div>
+
+<!-- =============== VOCABULARY VAULT =============== -->
+<div class="overlay hidden" id="vaultOverlay" role="dialog" aria-modal="true" aria-label="Vocabulary Vault">
+  <div class="sheet">
+    <button class="btn sm x" id="vaultClose">✕ Close</button>
+    <h3 class="dsp" style="font-size:28px">🗝️ Vocabulary Vault</h3>
+    <p class="small">12 expressions from Lessons 11–12. <span class="ua" style="display:inline-block;border:0;padding:0;margin:0">12 виразів з уроків 11–12.</span></p>
+    <div class="vaultGrid" id="vaultGrid"></div>
+  </div>
+</div>
+
+<!-- =============== QUICK PRESENTATION =============== -->
+<div class="overlay hidden" id="presOverlay" role="dialog" aria-modal="true" aria-label="Quick presentation">
+  <div class="sheet" style="text-align:center">
+    <button class="btn sm x" id="presClose">✕ Close</button>
+    <h3 class="dsp" style="font-size:24px; color:var(--amber)" id="qpTeam">TEAM</h3>
+    <p style="font-size:clamp(20px,3vw,30px); line-height:1.4; margin-top:18px" id="qpCaption">—</p>
+    <p class="mono" style="font-size:19px; color:var(--mint)" id="qpAction">—</p>
+    <p style="font-size:18px" id="qpRule">—</p>
+    <p class="dsp" style="font-size:34px; margin-top:16px" id="qpDecision">—</p>
+  </div>
+</div>
+
+<!-- =============== RESET CONFIRM =============== -->
+<div class="overlay hidden" id="resetOverlay" role="dialog" aria-modal="true" aria-label="Reset lesson">
+  <div class="sheet" style="max-width:480px; text-align:center">
+    <h3>Reset the whole lesson?</h3>
+    <p class="small">All answers, votes, team drafts and exit tickets will be deleted.</p>
+    <div class="ua" style="text-align:left">Усі відповіді, голосування, чернетки команд та exit tickets буде видалено.</div>
+    <div class="row mt" style="justify-content:center">
+      <button class="btn" id="resetNo">Cancel</button>
+      <button class="btn pink" id="resetYes">Yes, reset everything</button>
+    </div>
+  </div>
+</div>
+
+<!-- =============== TEACHER DRAWER =============== -->
+<aside id="drawer" aria-label="Teacher notes">
+  <div class="dhead">
+    <b style="flex:1">📋 Teacher notes</b>
+    <button class="btn sm" id="drawerClose">✕</button>
+  </div>
+  <div class="dbody">
+    <div class="tnote" style="border-color:var(--line2)">
+      <h4>Lesson pace</h4>
+      <div class="pace" id="paceBtns">
+        <button data-p="0" class="on">On time</button>
+        <button data-p="1">5 min behind</button>
+        <button data-p="2">10 min behind</button>
+      </div>
+      <div id="paceAdvice" class="small mt-s"></div>
+    </div>
+    <div id="tnotes"></div>
+  </div>
+</aside>
+
+<div id="confetti" aria-hidden="true"></div>
+
+<script>
+"use strict";
+/* ===================================================================
+   LESSON 13 · THE POST THAT DISAPPEARED
+   Single-file interactive lesson. No build step, no dependencies.
+   Local-only state (localStorage). See LIVE HOOKS at the bottom for
+   the place where real-time (Supabase) can be connected later.
+   =================================================================== */
+
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ------------------------- DATA ------------------------- */
+const VOCAB = [
+  {w:"FOMO",            en:"fear that other people are having fun without you", ua:"страх пропустити щось цікаве", L:"G"},
+  {w:"doomscrolling",   en:"continuing to read negative content for a long time", ua:"тривале переглядання негативного контенту", L:"E"},
+  {w:"overshare",       en:"share too much private information", ua:"розповідати забагато особистого", L:"D"},
+  {w:"ghost follow",    en:"follow someone without liking or commenting", ua:"мовчки стежити за чиїмось профілем", L:"C"},
+  {w:"drop a post",     en:"publish a new post", ua:"опублікувати новий допис", L:"F"},
+  {w:"post and regret", en:"post something and later wish you hadn't", ua:"опублікувати й потім пошкодувати", L:"A"},
+  {w:"edited",          en:"changed using editing tools", ua:"відредагований", L:"H"},
+  {w:"highlight reel",  en:"only the best and most exciting moments", ua:"добірка лише найкращих моментів", L:"I"},
+  {w:"show up real",    en:"show your real life or personality", ua:"показати себе справжнім", L:"L"},
+  {w:"snap and scroll", en:"take a quick photo and continue scrolling", ua:"швидко сфотографувати й гортати далі", L:"J"},
+  {w:"over-edit",       en:"change a photo so much that it looks unnatural", ua:"надмірно редагувати", L:"K"},
+  {w:"post-worthy",     en:"good or interesting enough to post", ua:"вартий публікації", L:"B"}
+];
+const DEFS = {
+  A:"Share something online and later wish you hadn't.",
+  B:"Good or interesting enough to share online.",
+  C:"Follow someone silently without liking or commenting.",
+  D:"Share too much private information.",
+  E:"Continue reading negative content for a long time.",
+  F:"Publish a new photo, video or message.",
+  G:"Fear that other people are having fun without you.",
+  H:"Changed using filters or editing tools.",
+  I:"Show only the most exciting and successful moments.",
+  J:"Take a quick photo and immediately continue scrolling.",
+  K:"Change a photo so much that it looks unnatural.",
+  L:"Be honest and show your real life or real personality."
+};
+const QUICK = ["FOMO","doomscrolling","overshare","highlight reel","over-edit","show up real"];
+
+const POLL1 = ["It was embarrassing.","It was too personal.","Someone asked me to delete it.","It didn't get enough likes.","I never delete posts."];
+const PRE1  = ["The post was fake.","It shared something private.","Someone in the photo was unhappy.","The person didn't get enough likes."];
+const VOTE2 = ["Ask before posting someone's photo.","Don't over-edit everything.","A highlight reel isn't someone's complete life.","Don't let FOMO control you.","Sometimes it is better to show up real."];
+const STEMS = ["Today I remembered that…","One useful expression is…","Now I can use…","Before I drop a post, I should…","A post is post-worthy when…"];
+
+const READQ = [
+  {q:"Who took the photos?", o:["Alex","Alex's friend","Alex's sister"], a:1,
+   why:'Evidence: "Alex had a friend take more than fifty pictures before choosing one."'},
+  {q:"What did Alex's sister do?", o:["She organised the party.","She deleted the post.","She edited the photo."], a:2,
+   why:'Evidence: "Then Alex got an older sister to edit the final photo."'},
+  {q:"Why did some students feel FOMO?", o:["They thought they had missed an amazing party.","They wanted to edit the photo.","They didn\u2019t know Alex."], a:0,
+   why:'Evidence: "They thought they had missed an incredible event."'},
+  {q:"Why was Jamie unhappy?", o:["Jamie didn\u2019t like the party.","Jamie hadn\u2019t agreed to the post.","Jamie wanted more filters."], a:1,
+   why:'Evidence: "Jamie had asked Alex not to share the picture."'},
+  {q:"Why did Alex finally delete the post?", o:["It received no likes.","Alex\u2019s sister asked them to.","Alex realised it didn\u2019t show the real situation."], a:2,
+   why:'Evidence: "This isn\u2019t us. It\u2019s only a highlight reel."'}
+];
+const GRAMQ = [
+  {q:"Alex had a friend ___ fifty pictures.", o:["take","to take","taken"], a:0, why:"Have + person + base verb."},
+  {q:"Alex got the final photo ___.", o:["edit","edited","to edit"], a:1, why:"Get + thing + V3. Someone else edited it."},
+  {q:"Alex got a sister ___ the picture.", o:["edit","edited","to edit"], a:2, why:"Get + person + to + verb."},
+  {q:"Alex made Jamie ___ next to the group.", o:["stand","to stand","stood"], a:0, why:"Make + person + base verb. Do not use to."},
+  {q:"Jamie had Alex ___ the post.", o:["deleted","delete","to delete"], a:1, why:"Have + person + base verb."}
+];
+const SPEAK = [
+  {q:"Why do people over-edit their photos?", s:"Why do people change their photos too much?",
+   ua:"Чому люди надто сильно редагують свої фотографії?",
+   ideas:["They want more likes.","They don't feel confident.","They want to look perfect.","They think only perfect photos are post-worthy."],
+   f:["Can editing ever be useful?"]},
+  {q:"Can a highlight reel cause FOMO?", s:"Can perfect-looking posts make other people feel that they are missing something?",
+   ua:"Чи можуть ідеальні публікації викликати в інших людей страх, що вони пропускають щось цікаве?",
+   sample:"Yes, because we see someone's best moments but don't see their normal or difficult days.",
+   f:["How can we remember that social media isn't the full reality?"]},
+  {q:"Is it okay to post a photo of a friend without asking them?",
+   ua:"Чи нормально публікувати фотографію друга без його дозволу?",
+   sample:"I don't think it is okay. You should ask the person first because the photo may be private or embarrassing.",
+   f:["What should you do if your friend asks you to delete a photo?"]},
+  {q:"Is it better to look perfect online or show up real?", s:"Is it better to show a perfect life or your real life online?",
+   ua:"Краще показувати в інтернеті ідеальне чи справжнє життя?",
+   starters:["I think it is better to…","In my opinion…","People sometimes…","The problem with a highlight reel is…"],
+   f:[]},
+  {q:"Have you ever started doomscrolling and found it difficult to stop?",
+   ua:"Чи траплялося вам довго переглядати негативний контент і не могти зупинитися?",
+   f:["What were you watching?","How did you feel afterwards?","What can help people stop?"]}
+];
+const FIXTOKENS = [
+  {t:"Yesterday,"},{t:"I"},{t:"had"},{t:"my"},{t:"friend"},{t:"to",bad:1},{t:"take"},{t:"some"},{t:"photos."},
+  {t:"Then"},{t:"I"},{t:"got"},{t:"one"},{t:"picture"},{t:"edit.",bad:1},
+  {t:"My"},{t:"friend"},{t:"made"},{t:"me"},{t:"to",bad:1},{t:"use"},{t:"a"},{t:"filter,"},{t:"but"},{t:"I"},{t:"didn't"},{t:"like"},{t:"it."},
+  {t:"I"},{t:"got"},{t:"her"},{t:"remove",bad:1},{t:"the"},{t:"filter"},{t:"and"},{t:"had"},{t:"her"},{t:"to",bad:1},{t:"post"},{t:"the"},{t:"natural"},{t:"photo."}
+];
+const SCENES = [
+  {id:"s0", name:"Mission Start",           short:"Mission Start"},
+  {id:"s1", name:"Clue 1 · Decode the Feed",short:"Decode the Feed"},
+  {id:"s2", name:"Clue 2 · Read the Evidence", short:"Read the Evidence"},
+  {id:"s3", name:"Clue 3 · Grammar Investigation", short:"Grammar Investigation"},
+  {id:"s4", name:"Speaking · Interview the Detectives", short:"Interview the Detectives"},
+  {id:"s5", name:"Team Mission · Rebuild the Post", short:"Breakout Mission"},
+  {id:"s6", name:"Final Reveal · Case Closed", short:"Final Reveal"},
+  {id:"s7", name:"Optional Challenge · Fix the Story", short:"Optional Challenge", optional:true}
+];
+const TNOTES = [
+  {time:"2 min", aim:"Set the story, activate personal experience with deleting posts.",
+   say:"Read the DIGITAL ALERT aloud with a serious voice. Then ask the warm-up question and take two short answers.",
+   skip:"The cast strip can be skipped — just name Alex and Jamie.",
+   ans:"No right answers — it is a personal poll.",
+   tip:"Nominate students by name instead of waiting for volunteers; it saves 30–40 seconds."},
+  {time:"4 min", aim:"Revise 12 social media expressions from Lessons 11–12.",
+   say:"\u201cAlex's messages are full of internet slang. Decode them and we get our first clue.\u201d",
+   skip:"Switch to Quick challenge (6 words) if time is short.",
+   ans:"1-G · 2-E · 3-D · 4-C · 5-F · 6-A · 7-H · 8-I · 9-L · 10-J · 11-K · 12-B",
+   tip:"Let two or three students say the pairs aloud while you tap — it keeps everyone involved on Zoom."},
+  {time:"6–7 min", aim:"Read for gist and detail; meet the causative structures inside a text.",
+   say:"Give 2 minutes of silent reading, or read it aloud yourself while students follow.",
+   skip:"Ask only questions 1, 4 and 5. Use Simplify difficult words instead of translating.",
+   ans:"1 · Alex's friend | 2 · She edited the photo | 3 · They thought they had missed an amazing party | 4 · Jamie hadn't agreed to the post | 5 · Alex realised it didn't show the real situation",
+   tip:"Ask students to point at the sentence that proves their answer — it stops guessing."},
+  {time:"6–7 min", aim:"Revise have/get + object + V3, have/get + person, make + person.",
+   say:"\u201cThree structures, three different people. Who really did each action?\u201d Highlight the T in geT → To.",
+   skip:"The Optional Challenge after this scene can be skipped completely.",
+   ans:"1 · take | 2 · edited | 3 · to edit | 4 · stand | 5 · delete",
+   tip:"After each answer ask \u201cperson or thing?\u201d — it is the fastest way to choose the structure."},
+  {time:"5–6 min", aim:"Fluency practice with the lesson topic and vocabulary.",
+   say:"Ask each student one main question and one short follow-up.",
+   skip:"Use only three cards if you are behind schedule.",
+   ans:"Open answers. Encourage at least two sentences per student.",
+   tip:"If a student is quiet, open Helpful ideas and ask them to choose one idea and expand it."},
+  {time:"7–8 min", aim:"Collaborative production: causatives + vocabulary in a real task.",
+   say:"Assign roles before opening the rooms. Remind teams that all three structures are required.",
+   skip:"Use Quick presentation so each team shows only four lines.",
+   ans:"Model answer is behind the Show example button.",
+   tip:"Visit each breakout room once for 30 seconds; fix only causative mistakes, not everything."},
+  {time:"3–4 min", aim:"Summarise the case, personal reflection, exit ticket.",
+   say:"Reveal the conclusion, run the vote, then collect one finished sentence from every student.",
+   skip:"The vote can be done by show of hands instead of the screen.",
+   ans:"No right answers. Accept any completed sentence with correct structure.",
+   tip:"Read two or three exit tickets aloud — it ends the lesson on the students' words, not yours."},
+  {time:"3–5 min", aim:"Error correction: the five most common causative mistakes.",
+   say:"\u201cThis influencer wrote the story badly. Find five mistakes.\u201d",
+   skip:"Skip entirely if you are 10 minutes behind.",
+   ans:"had my friend take · got one picture edited · made me use · got her to remove · had her post",
+   tip:"Ask students to say the rule, not just the correction."}
+];
+const PACE = [
+  "<b>On time.</b> Run the full lesson: 12-word vocabulary challenge, all five reading questions, all speaking cards, and the Optional Challenge if there is time.",
+  "<b>5 minutes behind:</b><br>• use the <b>Quick vocabulary challenge</b> (6 words);<br>• ask only <b>three reading questions</b>;<br>• use only <b>three speaking cards</b>.",
+  "<b>10 minutes behind:</b><br>• <b>skip the Optional Challenge</b>;<br>• reveal the reading answers after a quick class discussion;<br>• use <b>Quick presentation</b> in the breakout task;<br>• ask only <b>one team question</b> after each presentation."
+];
+
+/* ------------------------- STATE ------------------------- */
+const KEY = "ak-lesson13-v1";
+const blank = () => ({
+  scene:0, returnTo:0, mode:"teacher", ua:true, zoom:1, pres:false, pace:0,
+  clues:[false,false,false,false,false,false,false],
+  poll1:null, poll1t:{}, pre1:[], matchMode:"full", match:{}, mAttempts:0, mDone:false,
+  read:{}, rAtt:0, gram:{}, gAtt:0, cards:[], team:{}, manual:{}, timer:300,
+  vote2:null, vote2t:{}, exits:[], exitStem:null, fix:[], fixAtt:0, fixDone:false
+});
+let S = blank();
+
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+function load(){
+  const base = blank();
+  let saved = null;
+  try{ saved = JSON.parse(localStorage.getItem(KEY) || "null"); }catch(e){ saved = null; }
+  S = base;
+  if(!saved || typeof saved !== "object" || Array.isArray(saved)) return;
+  /* copy field by field and keep the default whenever the stored type is wrong —
+     a save from an older version can never crash the lesson again */
+  Object.keys(base).forEach(k=>{
+    const want = base[k], got = saved[k];
+    if(got === undefined || got === null) return;
+    if(Array.isArray(want)){ if(Array.isArray(got)) S[k] = got; return; }
+    if(want && typeof want === "object"){ if(got && typeof got === "object" && !Array.isArray(got)) S[k] = got; return; }
+    if(typeof want === typeof got || want === null) S[k] = got;
+  });
+  if(S.clues.length !== 7) S.clues = base.clues;
+}
+
+/* ------------------------- CHROME ------------------------- */
+function applyChrome(){
+  document.body.classList.toggle("student", S.mode==="student");
+  document.body.classList.toggle("teacher", S.mode==="teacher");
+  document.body.classList.toggle("noua", !S.ua);
+  document.body.classList.toggle("pres", !!S.pres);
+  document.documentElement.style.setProperty("--z", S.zoom);
+  $("#mTeacher").classList.toggle("on", S.mode==="teacher");
+  $("#mStudent").classList.toggle("on", S.mode==="student");
+  $("#btnUA").classList.toggle("on", S.ua);
+  $("#btnPres").classList.toggle("on", !!S.pres);
+  $$(".studentTimerNote").forEach(el=>el.classList.toggle("hidden", S.mode==="teacher"));
+  if(S.mode==="student") $("#drawer").classList.remove("open");
+  updateRevealButtons();
+}
+function updateRevealButtons(){
+  const t = S.mode==="teacher";
+  const set = (id, ok) => { const b=$(id); if(!b) return; b.disabled = !ok;
+    b.title = ok ? "Show the correct answers" : "In Student Mode the answers stay closed — your teacher opens them"; };
+  const quizDone = (data,key) => data.every((d,i)=>S[key][i]===d.a);
+  set("#mReveal", t || S.mDone);
+  set("#rReveal", t || quizDone(READQ,"read"));
+  set("#gReveal", t || quizDone(GRAMQ,"gram"));
+  set("#fReveal", t || S.fixDone);
+}
+
+/* ------------------------- NAVIGATION ------------------------- */
+function buildDots(){
+  const n = $("#dots"); n.innerHTML = "";
+  SCENES.forEach((sc,i)=>{
+    const b = document.createElement("button");
+    b.className = "dot" + (sc.optional?" opt":"");
+    b.title = sc.name;
+    b.setAttribute("aria-label", sc.name);
+    b.addEventListener("click", ()=>go(i));
+    n.appendChild(b);
+  });
+}
+function refreshDots(){
+  $$("#dots .dot").forEach((d,i)=>{
+    d.classList.toggle("now", i===S.scene);
+    d.classList.toggle("done", i<7 ? !!S.clues[i] : !!S.fixDone);
+  });
+}
+function go(i){
+  if(i<0 || i>=SCENES.length) return;
+  if(i===7) S.returnTo = (S.scene<7 ? S.scene : S.returnTo);
+  S.scene = i; save(); render();
+  $("#stage").scrollTo({top:0, behavior:"smooth"});
+}
+function next(){
+  if(S.scene===7){ go(S.returnTo+1 <= 6 ? S.returnTo+1 : 6); return; }
+  if(S.scene<6){ go(S.scene+1); return; }
+  /* last scene: close the case */
+  grant(6);
+  const b = $("#finalBanner");
+  if(b.classList.contains("hidden")){ b.classList.remove("hidden"); confetti(); }
+  b.scrollIntoView({behavior:"smooth", block:"center"});
+}
+function prev(){
+  if(S.scene===7){ go(S.returnTo); return; }
+  if(S.scene>0) go(S.scene-1);
+}
+function grant(i){
+  if(i>=0 && i<7 && !S.clues[i]){ S.clues[i]=true; save(); refreshProgress(); refreshDots(); }
+}
+function refreshProgress(){
+  const n = S.clues.filter(Boolean).length;
+  $("#progress").textContent = `Case progress: ${n}/7 clues discovered`;
+}
+function render(){
+  $$(".scene").forEach((s,i)=>s.classList.toggle("on", SCENES[i].id===SCENES[S.scene].id));
+  $("#sceneName").textContent = SCENES[S.scene].name;
+  $("#prevBtn").disabled = (S.scene===0);
+  $("#nextBtn").textContent = S.scene===6 ? "Finish case ✓" : "Next clue →";
+  $("#nextBtn").disabled = false;
+  $("#skipBtn").classList.toggle("hidden", S.scene===6);
+  refreshDots(); refreshProgress(); updateRevealButtons();
+}
+
+/* ------------------------- CONFETTI ------------------------- */
+function confetti(){
+  const box = $("#confetti");
+  const colors = ["#FFC94A","#5FE3B3","#A78BFA","#4D7CFE","#FF5FA2"];
+  for(let i=0;i<44;i++){
+    const d = document.createElement("div");
+    d.className = "cf";
+    d.style.left = Math.random()*100+"vw";
+    d.style.top = "-20px";
+    d.style.background = colors[i%colors.length];
+    d.style.animationDuration = (1.6+Math.random()*1.5)+"s";
+    d.style.animationDelay = (Math.random()*.35)+"s";
+    box.appendChild(d);
+    setTimeout(()=>d.remove(), 3600);
+  }
+}
+function unlock(sel, sceneIdx){
+  const el = $(sel);
+  if(el && el.classList.contains("hidden")){ el.classList.remove("hidden"); confetti(); }
+  grant(sceneIdx);
+}
+
+/* ------------------------- VOCABULARY VAULT ------------------------- */
+function buildVault(){
+  $("#vaultGrid").innerHTML = VOCAB.map((v,i)=>`
+    <div class="vword"><b>${i+1}. ${esc(v.w)}</b>
+      <div class="en">${esc(v.en)}</div>
+      <div class="uaw">${esc(v.ua)}</div></div>`).join("");
+}
+function openOverlay(id){ $(id).classList.remove("hidden"); }
+function closeOverlay(id){ $(id).classList.add("hidden"); }
+
+/* ------------------------- TEACHER NOTES ------------------------- */
+function buildNotes(){
+  $("#tnotes").innerHTML = TNOTES.map((n,i)=>`
+    <div class="tnote" data-i="${i}">
+      <h4>${i+1}. ${esc(SCENES[i].short)} <span>${esc(n.time)}</span></h4>
+      <dl>
+        <dt>Aim</dt><dd>${n.aim}</dd>
+        <dt>What to say</dt><dd>${n.say}</dd>
+        <dt>Can be skipped</dt><dd>${n.skip}</dd>
+        <dt>Answers</dt><dd class="ans">${n.ans}</dd>
+        <dt>Classroom tip</dt><dd>${n.tip}</dd>
+      </dl>
+      <div class="row mt-s"><button class="btn sm jump" data-go="${i}">Go to this scene →</button></div>
+    </div>`).join("");
+  $$("#tnotes .jump").forEach(b=>b.addEventListener("click",()=>{ go(+b.dataset.go); }));
+}
+function setPace(p){
+  S.pace = p; save();
+  $$("#paceBtns button").forEach(b=>b.classList.toggle("on", +b.dataset.p===p));
+  $("#paceAdvice").innerHTML = PACE[p];
+}
+</script>
+
+<script>
+"use strict";
+
+/* ================= SCENE 1 · WARM-UP POLL ================= */
+function buildPoll(host, list, stateKey, tallyKey, resHost, sceneIdx){
+  const el = $(host);
+  el.innerHTML = list.map((t,i)=>`<button class="opt" data-i="${i}"><span class="mark"></span><span>${esc(t)}</span></button>`).join("");
+  $$(".opt", el).forEach(b=>b.addEventListener("click",()=>{
+    const i = +b.dataset.i;
+    if(S[stateKey]===i){ S[stateKey]=null; } else {
+      if(S[stateKey]===null || S[stateKey]===undefined){
+        S[tallyKey][i] = (S[tallyKey][i]||0)+1;
+      } else {
+        S[tallyKey][S[stateKey]] = Math.max(0,(S[tallyKey][S[stateKey]]||1)-1);
+        S[tallyKey][i] = (S[tallyKey][i]||0)+1;
+      }
+      S[stateKey]=i;
+    }
+    save(); paintPoll(host,list,stateKey,tallyKey,resHost);
+    if(S[stateKey]!==null) grant(sceneIdx);
+  }));
+  paintPoll(host,list,stateKey,tallyKey,resHost);
+}
+function paintPoll(host,list,stateKey,tallyKey,resHost){
+  $$(".opt", $(host)).forEach(b=>b.classList.toggle("sel", +b.dataset.i===S[stateKey]));
+  const res = $(resHost); if(!res) return;
+  const tally = S[tallyKey]||{};
+  const lv = (typeof liveVotes==="function") ? liveVotes(tallyKey) : [];
+  const count = i => (tally[i]||0) + (lv[i]||0);
+  const total = list.reduce((a,_,i)=>a+count(i),0);
+  if(S[stateKey]===null && total===0){ res.classList.add("hidden"); return; }
+  res.classList.remove("hidden");
+  res.innerHTML = `<p class="small" style="margin-bottom:8px">Class results ${S.mode==="teacher"?'· add votes from Zoom with + / −':'· your choice is highlighted'}</p>` +
+    list.map((t,i)=>{
+      const c = count(i), pct = total? Math.round(c/total*100):0;
+      return `<div class="voteRow">
+        <div class="bar ${i===S[stateKey]?'mine':''}"><div class="fill" style="width:${pct}%"></div>
+          <div class="lbl">${esc(t)}${i===S[stateKey]?' <b style="color:var(--amber); margin-left:6px">← you</b>':''}</div></div>
+        <div class="tally">
+          <button class="btn sm ghost teacherOnly" data-t="${tallyKey}" data-d="-1" data-i="${i}">−</button>
+          <b>${c}</b>
+          <button class="btn sm ghost teacherOnly" data-t="${tallyKey}" data-d="1" data-i="${i}">+</button>
+        </div></div>`;
+    }).join("");
+  $$("[data-t]", res).forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.t, i=+b.dataset.i, d=+b.dataset.d;
+    S[k][i] = Math.max(0,(S[k][i]||0)+d); save();
+    paintPoll(host,list,stateKey,tallyKey,resHost);
+  }));
+}
+
+/* ================= SCENE 3 · MULTI-SELECT PREDICTION ================= */
+function buildMulti(host, list, key){
+  const el = $(host);
+  el.innerHTML = list.map((t,i)=>`<button class="opt" data-i="${i}"><span class="mark"></span><span>${esc(t)}</span></button>`).join("");
+  $$(".opt", el).forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.i, arr=S[key];
+    const p = arr.indexOf(i); if(p>=0) arr.splice(p,1); else arr.push(i);
+    save(); paintMulti(host,key);
+  }));
+  paintMulti(host,key);
+}
+function paintMulti(host,key){ $$(".opt",$(host)).forEach(b=>b.classList.toggle("sel", S[key].includes(+b.dataset.i))); }
+
+/* ================= SCENE 2 · MATCHING ================= */
+let picked = null;
+function activeWords(){
+  return S.matchMode==="quick" ? VOCAB.filter(v=>QUICK.includes(v.w)) : VOCAB;
+}
+function buildMatch(){
+  const words = activeWords();
+  const wrap = $("#mWords");
+  wrap.innerHTML = words.map((v,i)=>`
+    <div class="mRow" data-w="${esc(v.w)}">
+      <span class="n">${i+1}</span><span class="w">${esc(v.w)}</span>
+      <button class="slot" data-slot="${esc(v.w)}">drop meaning</button>
+    </div>`).join("");
+  const letters = words.map(v=>v.L);
+  const order = letters.slice().sort(()=>Math.random()-.5);
+  $("#mPool").innerHTML = order.map(L=>`
+    <button class="chip" draggable="true" data-l="${L}"><span class="lt">${L}</span>${esc(DEFS[L])}</button>`).join("");
+  wireMatch();
+  paintMatch();
+}
+function wireMatch(){
+  $$("#mPool .chip").forEach(c=>{
+    c.addEventListener("click", ()=>{
+      if(picked===c.dataset.l){ picked=null; } else { picked=c.dataset.l; }
+      paintMatch();
+    });
+    c.addEventListener("dragstart", e=>{ picked=c.dataset.l; c.classList.add("drag"); e.dataTransfer.setData("text/plain", c.dataset.l); });
+    c.addEventListener("dragend", ()=>c.classList.remove("drag"));
+  });
+  $$("#mWords .slot").forEach(s=>{
+    s.addEventListener("click", ()=>{
+      const w = s.dataset.slot;
+      if(S.match[w]){ delete S.match[w]; save(); paintMatch(); return; }
+      if(picked){ place(w, picked); }
+    });
+    s.addEventListener("dragover", e=>{ e.preventDefault(); s.classList.add("target"); });
+    s.addEventListener("dragleave", ()=>s.classList.remove("target"));
+    s.addEventListener("drop", e=>{ e.preventDefault(); s.classList.remove("target");
+      const L = e.dataTransfer.getData("text/plain") || picked; if(L) place(s.dataset.slot, L); });
+  });
+}
+function place(word, L){
+  Object.keys(S.match).forEach(k=>{ if(S.match[k]===L) delete S.match[k]; });
+  S.match[word] = L; picked = null; save(); paintMatch();
+}
+function paintMatch(){
+  const words = activeWords(), used = Object.values(S.match);
+  $$("#mWords .mRow").forEach(r=>{
+    const w = r.dataset.w, slot = $(".slot", r), L = S.match[w];
+    slot.className = "slot" + (L?" filled":"");
+    slot.innerHTML = L ? `<span class="lt" style="color:var(--amber); font-family:'Space Mono',monospace; font-weight:700">${L}</span> ${esc(DEFS[L])}` : "drop meaning";
+  });
+  $$("#mPool .chip").forEach(c=>{
+    const u = used.includes(c.dataset.l);
+    c.style.display = u ? "none" : "";
+    c.classList.toggle("picked", picked===c.dataset.l);
+  });
+  const filled = words.filter(v=>S.match[v.w]).length;
+  $("#mScore").textContent = `${filled}/${words.length} matched`;
+}
+function checkMatch(reveal){
+  const words = activeWords();
+  if(reveal){ words.forEach(v=>{ S.match[v.w]=v.L; }); }
+  else S.mAttempts++;
+  save(); paintMatch();
+  let ok = 0;
+  $$("#mWords .mRow").forEach(r=>{
+    const w = r.dataset.w, slot = $(".slot", r), L = S.match[w];
+    const correct = VOCAB.find(v=>v.w===w).L;
+    if(!L) return;
+    if(L===correct){ slot.classList.add("correct"); ok++; } else { slot.classList.add("wrong"); }
+  });
+  $("#mScore").textContent = `${ok}/${words.length} correct`;
+  if(ok===words.length){
+    S.mDone = true; save();
+    unlock("#clue1", 1);
+  } else if(S.mAttempts>=2){
+    $("#mHintBox").classList.remove("hidden");
+    $("#mHintBox").innerHTML = "Hint: <b>FOMO</b> is about a feeling, <b>doomscrolling</b> is about time, and three expressions start with <b>post</b> — read those three very carefully.";
+  }
+  updateRevealButtons();
+}
+
+/* ================= GENERIC QUIZ ================= */
+function buildQuiz(host, data, key, whyClass){
+  $(host).innerHTML = data.map((d,i)=>`
+    <div class="q" data-q="${i}">
+      <h4><span class="num">${i+1}.</span>${esc(d.q)}</h4>
+      <div class="opts">${d.o.map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}"><span class="mark"></span><span>${esc(o)}</span></button>`).join("")}</div>
+      <div class="why ${whyClass||""} hidden">${esc(d.why)}</div>
+    </div>`).join("");
+  $$(".opt", $(host)).forEach(b=>b.addEventListener("click",()=>{
+    S[key][b.dataset.q] = +b.dataset.o; save(); paintQuiz(host, data, key);
+  }));
+  paintQuiz(host, data, key);
+}
+function paintQuiz(host, data, key){
+  $$(".q", $(host)).forEach(q=>{
+    const i=q.dataset.q;
+    $$(".opt", q).forEach(b=>{
+      b.className = "opt" + (S[key][i]===+b.dataset.o ? " sel":"");
+    });
+  });
+}
+function checkQuiz(host, data, key, scoreEl, attKey, clueSel, sceneIdx, reveal){
+  if(reveal){ data.forEach((d,i)=>{ S[key][i]=d.a; }); } else { S[attKey]++; }
+  save();
+  let ok=0;
+  $$(".q", $(host)).forEach(q=>{
+    const i=q.dataset.q, d=data[i], pick=S[key][i];
+    const why=$(".why", q);
+    $$(".opt", q).forEach(b=>{
+      const j=+b.dataset.o; b.className="opt";
+      if(pick===j){ b.classList.add(j===d.a ? "correct":"wrong"); }
+      if(reveal && j===d.a) b.classList.add("correct");
+    });
+    if(pick===d.a){ ok++; why.classList.remove("hidden"); }
+    else if(reveal){ why.classList.remove("hidden"); }
+    else { why.classList.add("hidden"); }
+  });
+  $(scoreEl).textContent = `${ok}/${data.length} correct`;
+  if(ok===data.length){ unlock(clueSel, sceneIdx); }
+  else if(S[attKey]>=2){ const hb=$(scoreEl.replace("Score","HintBox")); if(hb) hb.classList.remove("hidden"); }
+  updateRevealButtons();
+  return ok;
+}
+
+/* ================= SCENE 5 · SPEAKING CARDS ================= */
+function buildCards(){
+  $("#flipGrid").innerHTML = SPEAK.map((c,i)=>`
+    <button class="flip" data-c="${i}"><div>${(window.ART&&ART.cardIcon)?ART.cardIcon(i):''}<div class="n">${i+1}</div><div class="lb">Detective card</div></div></button>`).join("");
+  $$(".flip").forEach(b=>b.addEventListener("click",()=>openCard(+b.dataset.c)));
+  paintCards();
+}
+function paintCards(){
+  $$(".flip").forEach(b=>b.classList.toggle("used", S.cards.includes(+b.dataset.c)));
+  $("#cardsCount").textContent = `${S.cards.length}/5 questions opened`;
+}
+function openCard(i){
+  const c = SPEAK[i];
+  if(!S.cards.includes(i)){ S.cards.push(i); save(); }
+  if(S.cards.length>=3) grant(4);
+  paintCards();
+  const box = $("#cardOpen");
+  box.classList.remove("hidden");
+  box.innerHTML = `
+    <div class="card pop">
+      <div class="eyebrow"><span class="stamp">CARD ${i+1}</span></div>
+      <h3 style="font-size:clamp(20px,2.8vw,28px)">${esc(c.q)}</h3>
+      ${c.s?`<p class="simple mt-s">${esc(c.s)}</p>`:""}
+      <div class="ua">${esc(c.ua)}</div>
+      ${c.ideas?`<p class="small mt">Helpful ideas</p><ul class="ideas">${c.ideas.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+      ${c.starters?`<p class="small mt">Helpful sentence starters</p><ul class="ideas">${c.starters.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+      ${c.sample?`<div class="why mt">Sample answer: ${esc(c.sample)}</div>`:""}
+      ${c.f && c.f.length?`<p class="small mt">Follow-up</p><ul class="ideas">${c.f.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+      <div class="row mt"><button class="btn sm" id="closeCard">✕ Close card</button></div>
+    </div>`;
+  $("#closeCard").addEventListener("click",()=>{ box.classList.add("hidden"); });
+  box.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+/* ================= SCENE 6 · TEAM WORKSPACE ================= */
+const TEAMFIELDS = ["f_team","f_caption","f_a1","f_a2","f_a3","f_voc","f_rule","f_why"];
+const CHECKS = [
+  {k:"cap",  t:"Caption of 2–3 sentences"},
+  {k:"st1",  t:"have / get + thing + V3"},
+  {k:"st2",  t:"have / get + person + (to) V"},
+  {k:"st3",  t:"make + person + V"},
+  {k:"voc",  t:"Two lesson expressions"},
+  {k:"rule", t:"One posting rule"},
+  {k:"dec",  t:"Final decision + reason"}
+];
+function teamText(){
+  return TEAMFIELDS.map(f=>S.team[f]||"").join(" \n ");
+}
+function autoChecks(){
+  const txt = " " + teamText().toLowerCase().replace(/[’]/g,"'") + " ";
+  const cap = (S.team.f_caption||"").trim();
+  const sentences = cap.split(/[.!?]+/).filter(x=>x.trim().length>3).length;
+  const v3 = "(\\w+ed|done|taken|made|cut|put|sent|written|shot|drawn|chosen|seen|built|kept)";
+  const r = {
+    cap: sentences>=2,
+    st1: new RegExp("\\b(had|got|have|get)\\s+[a-z'\\- ]{1,28}?\\b"+v3+"\\b").test(txt),
+    st2: /\b(got|get)\s+[a-z'\- ]{1,24}?\bto\s+[a-z]+/.test(txt) ||
+         /\b(had|have)\s+(someone|somebody|everyone|anyone|him|her|them|us|my|our|the|a|an|each|all)\s+(?!to\b)[a-z]+/.test(txt),
+    st3: /\b(made|make)\s+(someone|somebody|everyone|anyone|nobody|him|her|them|us|me|my|our|the|a|an|each|all|[a-z]+)\s+(?!to\b)[a-z]+/.test(txt),
+    voc: vocFound().length>=2,
+    rule: (S.team.f_rule||"").trim().length>4,
+    dec: !!S.team.decision && (S.team.f_why||"").trim().length>3
+  };
+  return r;
+}
+function vocFound(){
+  const txt = " " + teamText().toLowerCase().replace(/[’]/g,"'") + " ";
+  const variants = {
+    "FOMO":["fomo"], "doomscrolling":["doomscroll"], "overshare":["overshar"],
+    "ghost follow":["ghost follow","ghost-follow"], "drop a post":["drop a post","dropped a post","drop the post","dropped the post"],
+    "post and regret":["post and regret","posted and regret"], "edited":["edit"],
+    "highlight reel":["highlight reel"], "show up real":["show up real","showed up real","showing up real"],
+    "snap and scroll":["snap and scroll"], "over-edit":["over-edit","over edit","overedit"],
+    "post-worthy":["post-worthy","post worthy"]
+  };
+  const out = [];
+  Object.keys(variants).forEach(k=>{ if(variants[k].some(v=>txt.includes(v))) out.push(k); });
+  return out;
+}
+function paintTeam(){
+  TEAMFIELDS.forEach(f=>{ const el=$("#"+f); if(el && document.activeElement!==el) el.value = S.team[f]||""; });
+  $("#dPost").classList.toggle("primary", S.team.decision==="POST IT");
+  $("#dNo").classList.toggle("pink", S.team.decision==="DON'T POST IT");
+  const auto = autoChecks();
+  $("#checklist").innerHTML = CHECKS.map(c=>{
+    const on = auto[c.k] || S.manual[c.k];
+    return `<button class="check ${on?'done':''}" data-k="${c.k}"><span class="bx">${on?'✓':''}</span><span>${esc(c.t)}${auto[c.k]?' <b style="color:var(--mint); font-size:12px">auto</b>':''}</span></button>`;
+  }).join("");
+  $$("#checklist .check").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.k; S.manual[k]=!S.manual[k]; save(); paintTeam();
+  }));
+  const vf = vocFound();
+  $("#vocFound").innerHTML = vf.length ? `Expressions detected: <b style="color:var(--mint)">${vf.map(esc).join(", ")}</b>` : "No lesson expressions detected yet.";
+}
+function wireTeam(){
+  TEAMFIELDS.forEach(f=>{
+    const el = $("#"+f);
+    el.addEventListener("input", ()=>{ S.team[f]=el.value; save(); paintTeam(); });
+  });
+  $("#dPost").addEventListener("click", ()=>{ S.team.decision = S.team.decision==="POST IT"?null:"POST IT"; save(); paintTeam(); });
+  $("#dNo").addEventListener("click", ()=>{ S.team.decision = S.team.decision==="DON'T POST IT"?null:"DON'T POST IT"; save(); paintTeam(); });
+  $("#saveDraft").addEventListener("click", ()=>{
+    save(); grant(5);
+    $("#saveMsg").textContent = "Draft saved on this device ✓ " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+  });
+  $("#readyBtn").addEventListener("click", ()=>{
+    grant(5); confetti();
+    $("#saveMsg").textContent = "Team marked as ready to present 🚀";
+  });
+  $("#showExample").addEventListener("click", ()=>$("#exampleBox").classList.toggle("hidden"));
+  $("#quickPres").addEventListener("click", ()=>{
+    $("#qpTeam").textContent = S.team.f_team || "OUR TEAM";
+    $("#qpCaption").textContent = S.team.f_caption || "(no caption yet)";
+    $("#qpAction").textContent = S.team.f_a1 || S.team.f_a2 || S.team.f_a3 || "(no causative sentence yet)";
+    $("#qpRule").textContent = S.team.f_rule ? "Before you post, " + S.team.f_rule.replace(/^before you post,?\s*/i,"") : "(no rule yet)";
+    $("#qpDecision").textContent = S.team.decision || "—";
+    openOverlay("#presOverlay");
+  });
+}
+/* timer */
+let tId = null;
+function paintTimer(){
+  const m = Math.floor(S.timer/60), s = S.timer%60;
+  const el = $("#timerRead");
+  el.textContent = `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+  el.classList.toggle("low", S.timer<=60 && S.timer>0);
+  el.classList.toggle("done", S.timer===0);
+}
+function startTimer(){
+  if(tId) return;
+  tId = setInterval(()=>{
+    if(S.timer>0){ S.timer--; paintTimer(); if(S.timer%10===0) save(); }
+    if(S.timer===0){ clearInterval(tId); tId=null; save(); $("#timerRead").textContent="TIME"; }
+  },1000);
+}
+function pauseTimer(){ if(tId){ clearInterval(tId); tId=null; save(); } }
+function resetTimer(){ pauseTimer(); S.timer=300; save(); paintTimer(); }
+
+/* ================= SCENE 7 · EXIT TICKETS ================= */
+function buildStems(){
+  $("#exitStems").innerHTML = STEMS.map((t,i)=>`<button class="opt" data-i="${i}"><span class="mark"></span><span>${esc(t)}</span></button>`).join("");
+  $$("#exitStems .opt").forEach(b=>b.addEventListener("click",()=>{
+    S.exitStem = (S.exitStem===+b.dataset.i)?null:+b.dataset.i; save(); paintStems();
+  }));
+  paintStems();
+}
+function paintStems(){ $$("#exitStems .opt").forEach(b=>b.classList.toggle("sel", S.exitStem===+b.dataset.i)); }
+function paintWall(){
+  const w = $("#exitWall");
+  w.innerHTML = S.exits.map((e,i)=>`
+    <div class="note-card pop"><b>${esc(e.name||"Detective")}</b>${esc(e.stem)} ${esc(e.text)}
+      <button class="del teacherOnly" data-i="${i}" title="Remove">✕</button></div>`).join("");
+  $$("#exitWall .del").forEach(b=>b.addEventListener("click",()=>{
+    S.exits.splice(+b.dataset.i,1); save(); paintWall();
+  }));
+}
+
+/* ================= OPTIONAL · FIX THE STORY ================= */
+function buildFix(){
+  $("#fixText").innerHTML = '“' + FIXTOKENS.map((t,i)=>
+    `<span class="tok cl" data-i="${i}">${esc(t.t)}</span>`).join(" ") + '”';
+  $$("#fixText .tok").forEach(el=>el.addEventListener("click",()=>{
+    const i=+el.dataset.i, p=S.fix.indexOf(i);
+    if(p>=0) S.fix.splice(p,1); else S.fix.push(i);
+    save(); paintFix();
+  }));
+  paintFix();
+}
+function paintFix(){
+  $$("#fixText .tok").forEach(el=>{
+    el.className = "tok cl" + (S.fix.includes(+el.dataset.i) ? " sel":"");
+  });
+  $("#fScore").textContent = `${S.fix.length} marked`;
+}
+function checkFix(reveal){
+  const bad = FIXTOKENS.map((t,i)=>t.bad?i:-1).filter(i=>i>=0);
+  if(reveal){ S.fix = bad.slice(); save(); }
+  else S.fixAtt++;
+  let ok=0;
+  $$("#fixText .tok").forEach(el=>{
+    const i=+el.dataset.i, sel=S.fix.includes(i), isBad=bad.includes(i);
+    el.className = "tok cl";
+    if(sel && isBad){ el.classList.add("good"); ok++; }
+    else if(sel && !isBad){ el.classList.add("bad"); }
+    else if(!sel && isBad && reveal){ el.classList.add("miss"); }
+  });
+  $("#fScore").textContent = `${ok}/5 mistakes found`;
+  if(ok===5 || reveal){ $("#fAnswer").classList.remove("hidden"); if(ok===5){ S.fixDone=true; if(!reveal) confetti(); } }
+  else if(S.fixAtt>=2){ $("#fHintBox").classList.remove("hidden"); }
+  save(); refreshDots(); updateRevealButtons();
+}
+
+/* ================= INIT ================= */
+function init(){
+  load();
+  buildDots(); buildVault(); buildNotes(); setPace(S.pace||0);
+  buildPoll("#poll1", POLL1, "poll1", "poll1t", "#poll1res", 0);
+  buildMulti("#pre1", PRE1, "pre1");
+  buildMatch();
+  buildQuiz("#readQuiz", READQ, "read", "ev");
+  buildQuiz("#gramQuiz", GRAMQ, "gram");
+  buildCards();
+  wireTeam(); paintTeam(); paintTimer();
+  buildPoll("#vote2", VOTE2, "vote2", "vote2t", "#vote2res", 6);
+  buildStems(); paintWall();
+  buildFix();
+
+  /* restore revealed blocks */
+  if(S.poll1!==null) $("#warmup").classList.remove("hidden");
+  if(S.pre1.length || Object.keys(S.read).length) $("#readingBlock").classList.remove("hidden");
+  if(S.mDone) $("#clue1").classList.remove("hidden");
+  if(S.clues[2]) $("#clue2").classList.remove("hidden");
+  if(S.clues[3]) $("#clue3").classList.remove("hidden");
+  if(S.exits.length || S.clues[6]) $("#finalBanner").classList.remove("hidden");
+  if(S.fixDone) $("#fAnswer").classList.remove("hidden");
+  $("#chFull").classList.toggle("on", S.matchMode!=="quick");
+  $("#chQuick").classList.toggle("on", S.matchMode==="quick");
+
+  applyChrome(); render();
+
+  /* ---- navigation ---- */
+  $("#nextBtn").addEventListener("click", next);
+  $("#prevBtn").addEventListener("click", prev);
+  $("#skipBtn").addEventListener("click", ()=>{
+    if(S.scene<7){ grant(S.scene); next(); } else { go(S.returnTo); }
+  });
+  document.addEventListener("keydown", e=>{
+    const tag = (e.target.tagName||"").toLowerCase();
+    if(tag==="input" || tag==="textarea") return;
+    if(e.key==="ArrowRight") next();
+    if(e.key==="ArrowLeft") prev();
+    if(e.key==="Escape"){ $$(".overlay").forEach(o=>o.classList.add("hidden")); $("#drawer").classList.remove("open"); }
+  });
+
+  /* ---- chrome ---- */
+  $("#mTeacher").addEventListener("click", ()=>{ S.mode="teacher"; save(); applyChrome(); paintTeam(); });
+  $("#mStudent").addEventListener("click", ()=>{ S.mode="student"; save(); applyChrome(); paintTeam(); });
+  $("#btnUA").addEventListener("click", ()=>{ S.ua=!S.ua; save(); applyChrome(); });
+  $("#btnSize").addEventListener("click", ()=>{
+    S.zoom = S.zoom>=1.24 ? 1 : (S.zoom>=1.11 ? 1.25 : 1.12);
+    save(); applyChrome();
+  });
+  $("#btnPres").addEventListener("click", ()=>{
+    S.pres = !S.pres; save(); applyChrome();
+    try{ if(S.pres && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+         else if(document.fullscreenElement && document.exitFullscreen) document.exitFullscreen(); }catch(e){}
+  });
+  $("#btnVault").addEventListener("click", ()=>openOverlay("#vaultOverlay"));
+  $("#vaultClose").addEventListener("click", ()=>closeOverlay("#vaultOverlay"));
+  $("#presClose").addEventListener("click", ()=>closeOverlay("#presOverlay"));
+  $$(".overlay").forEach(o=>o.addEventListener("click", e=>{ if(e.target===o) o.classList.add("hidden"); }));
+  $("#btnNotes").addEventListener("click", ()=>$("#drawer").classList.toggle("open"));
+  $("#drawerClose").addEventListener("click", ()=>$("#drawer").classList.remove("open"));
+  $$("#paceBtns button").forEach(b=>b.addEventListener("click",()=>setPace(+b.dataset.p)));
+  $("#btnReset").addEventListener("click", ()=>openOverlay("#resetOverlay"));
+  $("#resetNo").addEventListener("click", ()=>closeOverlay("#resetOverlay"));
+  $("#resetYes").addEventListener("click", ()=>{
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    location.reload();
+  });
+
+  /* ---- scene 1 ---- */
+  $("#startBtn").addEventListener("click", ()=>{
+    $("#warmup").classList.remove("hidden");
+    $("#warmup").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  /* ---- scene 2 ---- */
+  $("#chFull").addEventListener("click", ()=>{ S.matchMode="full"; S.match={}; S.mDone=false; save();
+    $("#chFull").classList.add("on"); $("#chQuick").classList.remove("on"); buildMatch(); });
+  $("#chQuick").addEventListener("click", ()=>{ S.matchMode="quick"; S.match={}; S.mDone=false; save();
+    $("#chQuick").classList.add("on"); $("#chFull").classList.remove("on"); buildMatch(); });
+  $("#mCheck").addEventListener("click", ()=>checkMatch(false));
+  $("#mReveal").addEventListener("click", ()=>checkMatch(true));
+  $("#mReset").addEventListener("click", ()=>{ S.match={}; S.mAttempts=0; S.mDone=false; picked=null; save();
+    $("#mHintBox").classList.add("hidden"); $("#clue1").classList.add("hidden"); buildMatch(); updateRevealButtons(); });
+  $("#mHint").addEventListener("click", ()=>{
+    const box=$("#mHintBox"); box.classList.toggle("hidden");
+    box.innerHTML = "Hint: look for the word inside the expression. <b>over-</b>edit = too much editing, <b>over</b>share = too much sharing, <b>ghost</b> = silent and invisible.";
+  });
+
+  /* ---- scene 3 ---- */
+  $("#openCase").addEventListener("click", ()=>{
+    $("#readingBlock").classList.remove("hidden");
+    $("#readingBlock").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+  $("#simplifyBtn").addEventListener("click", ()=>{
+    const g=$("#glossary"); g.classList.toggle("hidden");
+    $("#simplifyBtn").textContent = g.classList.contains("hidden") ? "🔤 Simplify difficult words" : "🔤 Hide simple explanations";
+  });
+  $("#rCheck").addEventListener("click", ()=>checkQuiz("#readQuiz", READQ, "read", "#rScore", "rAtt", "#clue2", 2, false));
+  $("#rReveal").addEventListener("click", ()=>checkQuiz("#readQuiz", READQ, "read", "#rScore", "rAtt", "#clue2", 2, true));
+  $("#rReset").addEventListener("click", ()=>{ S.read={}; S.rAtt=0; save(); buildQuiz("#readQuiz", READQ, "read", "ev");
+    $("#rScore").textContent=""; $("#rHintBox").classList.add("hidden"); updateRevealButtons(); });
+  $("#rHint").addEventListener("click", ()=>$("#rHintBox").classList.toggle("hidden"));
+
+  /* ---- scene 4 ---- */
+  $("#gCheck").addEventListener("click", ()=>checkQuiz("#gramQuiz", GRAMQ, "gram", "#gScore", "gAtt", "#clue3", 3, false));
+  $("#gReveal").addEventListener("click", ()=>checkQuiz("#gramQuiz", GRAMQ, "gram", "#gScore", "gAtt", "#clue3", 3, true));
+  $("#gReset").addEventListener("click", ()=>{ S.gram={}; S.gAtt=0; save(); buildQuiz("#gramQuiz", GRAMQ, "gram");
+    $("#gScore").textContent=""; $("#gHintBox").classList.add("hidden"); updateRevealButtons(); });
+  $("#gHint").addEventListener("click", ()=>$("#gHintBox").classList.toggle("hidden"));
+  $("#toOptional").addEventListener("click", ()=>go(7));
+
+  /* ---- scene 5 ---- */
+  $("#randCard").addEventListener("click", ()=>{
+    const left = [0,1,2,3,4].filter(i=>!S.cards.includes(i));
+    const pool = left.length? left : [0,1,2,3,4];
+    openCard(pool[Math.floor(Math.random()*pool.length)]);
+  });
+  $("#cardsReset").addEventListener("click", ()=>{ S.cards=[]; save(); paintCards(); $("#cardOpen").classList.add("hidden"); });
+
+  /* ---- scene 6 ---- */
+  $("#tStart").addEventListener("click", startTimer);
+  $("#tPause").addEventListener("click", pauseTimer);
+  $("#tReset").addEventListener("click", resetTimer);
+
+  /* ---- scene 7 ---- */
+  $("#exitSend").addEventListener("click", ()=>{
+    const t = $("#exitText").value.trim();
+    if(S.exitStem===null || !t){
+      $("#exitText").focus();
+      $("#exitText").placeholder = "Choose a sentence above and finish it…";
+      return;
+    }
+    S.exits.push({stem:STEMS[S.exitStem], text:t, name:$("#exitName").value.trim()});
+    S.exitStem=null; save();
+    $("#exitText").value=""; paintStems(); paintWall();
+    grant(6);
+    $("#finalBanner").classList.remove("hidden"); confetti();
+  });
+  $("#exitClear").addEventListener("click", ()=>{ S.exits=[]; save(); paintWall(); });
+
+  /* ---- optional ---- */
+  $("#fCheck").addEventListener("click", ()=>checkFix(false));
+  $("#fReveal").addEventListener("click", ()=>checkFix(true));
+  $("#fReset").addEventListener("click", ()=>{ S.fix=[]; S.fixAtt=0; S.fixDone=false; save(); buildFix();
+    $("#fAnswer").classList.add("hidden"); $("#fHintBox").classList.add("hidden"); updateRevealButtons(); });
+  $("#fHint").addEventListener("click", ()=>$("#fHintBox").classList.toggle("hidden"));
+
+  /* ---- generic reset buttons ---- */
+  $$("[data-reset]").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.reset;
+    if(k==="poll1"){ S.poll1=null; S.poll1t={}; save(); paintPoll("#poll1",POLL1,"poll1","poll1t","#poll1res"); }
+    if(k==="pre1"){ S.pre1=[]; save(); paintMulti("#pre1","pre1"); }
+    if(k==="vote2"){ S.vote2=null; S.vote2t={}; save(); paintPoll("#vote2",VOTE2,"vote2","vote2t","#vote2res"); }
+  }));
+
+  window.addEventListener("beforeunload", save);
+}
+
+/* ===================================================================
+   LIVE HOOKS — ready for a future real-time backend (e.g. Supabase).
+   Nothing here is faked: the lesson works fully offline right now.
+   To connect later, implement these four functions and call
+   LIVE.enable() — every poll, vote and exit ticket already goes
+   through them.
+   =================================================================== */
+const LIVE = {
+  enabled:false,
+  room:null,          // lesson code, e.g. "POST13"
+  enable(){ /* connect to the channel here */ },
+  join(name){ /* student joins with a name */ },
+  send(type, payload){ /* poll vote, exit ticket, team draft */ },
+  onMessage(cb){ /* teacher receives student answers */ }
+};
+
+window.L13 = {get S(){return S;}, save, render, go, grant, paintPoll, paintWall, confetti,
+  POLL1, VOTE2, STEMS, READQ, GRAMQ, SPEAK, VOCAB, DEFS, QUICK, SCENES,
+  refreshProgress, refreshDots, $, $$, esc};
+document.addEventListener("DOMContentLoaded", init);
+</script>
+
+<!-- ============================================================
+     LAYER 2 · ANIMATION · ILLUSTRATIONS · LIVE STUDENT ROOM
+     ============================================================ -->
+<style>
+/* ---------- ambient animated background ---------- */
+#fx{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+#fx .blob{position:absolute; border-radius:50%; filter:blur(60px); opacity:.5; animation:drift 34s ease-in-out infinite}
+#fx .blob.b1{width:520px; height:520px; left:-9%; top:-14%; background:radial-gradient(circle,rgba(77,124,254,.5),transparent 68%)}
+#fx .blob.b2{width:460px; height:460px; right:-8%; top:4%; background:radial-gradient(circle,rgba(167,139,250,.42),transparent 68%); animation-duration:46s; animation-direction:reverse}
+#fx .blob.b3{width:540px; height:540px; left:34%; bottom:-22%; background:radial-gradient(circle,rgba(255,95,162,.30),transparent 68%); animation-duration:58s}
+@keyframes drift{0%,100%{transform:translate3d(0,0,0) scale(1)}33%{transform:translate3d(6%,4%,0) scale(1.12)}66%{transform:translate3d(-5%,-3%,0) scale(.94)}}
+#fx .p{position:absolute; font-size:20px; opacity:0; animation:rise linear infinite; filter:drop-shadow(0 0 10px rgba(255,95,162,.4))}
+@keyframes rise{0%{transform:translateY(0) scale(.7); opacity:0}12%{opacity:.75}88%{opacity:.5}100%{transform:translateY(-92vh) scale(1.05); opacity:0}}
+#fx .grid{position:absolute; inset:0; opacity:.16; background-image:
+  linear-gradient(rgba(167,139,250,.14) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(167,139,250,.14) 1px, transparent 1px);
+  background-size:52px 52px; mask-image:radial-gradient(ellipse at 50% 30%, #000 20%, transparent 74%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%, #000 20%, transparent 74%); animation:gridpan 40s linear infinite}
+@keyframes gridpan{to{background-position:52px 104px, 104px 52px}}
+body.nofx #fx .p, body.nofx #fx .grid{display:none}
+body.nofx #fx .blob{animation:none}
+
+/* ---------- progress bar under the top bar ---------- */
+#pbar{position:relative; height:3px; background:rgba(255,255,255,.07); overflow:hidden}
+#pbar i{display:block; height:100%; width:0; border-radius:0 3px 3px 0;
+  background:linear-gradient(90deg,var(--blue),var(--lilac),var(--pink)); transition:width .7s cubic-bezier(.2,.7,.3,1);
+  box-shadow:0 0 14px rgba(167,139,250,.8)}
+#app{grid-template-rows:auto auto 1fr auto auto}
+
+/* ---------- entrance choreography ---------- */
+.scene.on > *{animation:rise-in .5s cubic-bezier(.2,.7,.3,1) both}
+.scene.on > *:nth-child(1){animation-delay:.02s} .scene.on > *:nth-child(2){animation-delay:.07s}
+.scene.on > *:nth-child(3){animation-delay:.12s} .scene.on > *:nth-child(4){animation-delay:.17s}
+.scene.on > *:nth-child(5){animation-delay:.22s} .scene.on > *:nth-child(n+6){animation-delay:.27s}
+@keyframes rise-in{from{opacity:0; transform:translateY(18px)}to{opacity:1; transform:none}}
+
+/* ---------- feedback animations ---------- */
+.opt.correct, .slot.correct, .tok.good{animation:okpulse .55s cubic-bezier(.2,.8,.3,1.2)}
+@keyframes okpulse{0%{transform:scale(1)}40%{transform:scale(1.035); box-shadow:0 0 0 6px rgba(49,196,141,.18)}100%{transform:scale(1)}}
+.opt.wrong, .slot.wrong, .tok.bad{animation:shake .42s}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
+.clue.pop{animation:slam .6s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes slam{0%{opacity:0; transform:scale(1.5) rotate(-4deg)}60%{opacity:1; transform:scale(.97) rotate(1deg)}100%{opacity:1; transform:none}}
+.clue::after{content:""; position:absolute; inset:0; background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 62%);
+  transform:translateX(-120%); animation:sweep 1.5s .35s ease-out}
+@keyframes sweep{to{transform:translateX(120%)}}
+.btn.primary{position:relative; overflow:hidden}
+.btn.primary::after{content:""; position:absolute; top:0; left:-60%; width:45%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent); transform:skewX(-18deg); animation:glide 4.6s ease-in-out infinite}
+@keyframes glide{0%,72%{left:-60%}100%{left:130%}}
+.stamp{animation:blink 4s ease-in-out infinite}
+@keyframes blink{0%,100%{box-shadow:0 0 0 rgba(255,201,74,0)}50%{box-shadow:0 0 16px -2px rgba(255,201,74,.45)}}
+.wf{display:inline-block; opacity:0; transform:translateY(6px); animation:wf .5s forwards}
+@keyframes wf{to{opacity:1; transform:none}}
+.h-scene{position:relative}
+.glitch{position:relative}
+.glitch::before,.glitch::after{content:attr(data-t); position:absolute; left:0; top:0; width:100%; pointer-events:none}
+.glitch::before{color:var(--pink); clip-path:inset(0 0 64% 0); animation:gl1 4.2s infinite steps(2)}
+.glitch::after{color:#63E6FF; clip-path:inset(60% 0 0 0); animation:gl2 5.1s infinite steps(2)}
+@keyframes gl1{0%,90%,100%{transform:none}92%{transform:translate(-3px,-2px)}96%{transform:translate(3px,1px)}}
+@keyframes gl2{0%,86%,100%{transform:none}88%{transform:translate(4px,2px)}94%{transform:translate(-4px,-1px)}}
+.flip{perspective:700px}
+.flip:hover{transform:translateY(-4px) rotateX(5deg) rotateY(-4px); box-shadow:0 22px 40px -26px rgba(167,139,250,.9)}
+.flip .ico{width:50px; height:50px; margin:0 auto 4px; display:block; animation:bob 4.5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.who .av{transition:.25s} .who:hover .av{transform:translateY(-4px) scale(1.06)}
+.who:hover{border-color:var(--line2)}
+.bub{animation:bubin .45s cubic-bezier(.2,.8,.3,1.2) both}
+.bub:nth-child(2){animation-delay:.5s} .bub:nth-child(3){animation-delay:1s}
+@keyframes bubin{from{opacity:0; transform:translateY(10px) scale(.97)}to{opacity:1; transform:none}}
+.likeCount{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){
+  #fx .p,#fx .grid{display:none}
+  *{animation-duration:.01ms !important; animation-iteration-count:1 !important}
+}
+
+/* ---------- artwork ---------- */
+.art{margin:14px 0; border-radius:22px; overflow:hidden; border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(21,30,69,.85),rgba(12,19,48,.85))}
+.art svg{display:block; width:100%; height:auto}
+.photo{position:relative; margin:0; overflow:hidden; border-radius:22px; line-height:0}
+.photo img{display:block; width:100%; height:auto; transform:scale(1.02); animation:kenburns 28s ease-in-out infinite alternate}
+.photo .sheen{position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(115deg,transparent 34%,rgba(255,255,255,.14) 48%,transparent 60%);
+  transform:translateX(-120%); animation:heroSheen 9s 1.2s ease-in-out infinite}
+.photo::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:22px;
+  box-shadow:inset 0 0 70px rgba(7,11,28,.55)}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.07)}}
+@keyframes heroSheen{0%{transform:translateX(-120%)}22%,100%{transform:translateX(120%)}}
+body.nofx .photo img{animation:none; transform:none} body.nofx .photo .sheen{display:none}
+.photo.teamshot img{animation:kenburns 34s ease-in-out infinite alternate, teamFloat 7s ease-in-out infinite}
+@keyframes teamFloat{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.photo.teamshot .glow{position:absolute; bottom:27%; height:7%; border-radius:99px; pointer-events:none;
+  box-shadow:0 0 22px 5px currentColor; opacity:0; animation:roleGlow 9s ease-in-out infinite}
+.photo.teamshot .g1{left:3.5%; width:11.5%; color:#C084FC; animation-delay:0s}
+.photo.teamshot .g2{left:18%;  width:12.5%; color:#4D7CFE; animation-delay:1.1s}
+.photo.teamshot .g3{left:69.5%;width:13%;   color:#5FE3B3; animation-delay:2.2s}
+.photo.teamshot .g4{left:86.5%;width:10.5%; color:#FFC94A; animation-delay:3.3s}
+@keyframes roleGlow{0%,72%,100%{opacity:0; transform:translateY(0)}
+  80%{opacity:.55; transform:translateY(-3px)} 88%{opacity:.25; transform:translateY(0)}}
+body.nofx .photo.teamshot .glow{display:none}
+.photo.closed img{animation:kenburns 36s ease-in-out infinite alternate}
+.photo.closed .stampglow{position:absolute; left:32%; top:16%; width:36%; height:66%; pointer-events:none;
+  border-radius:14px; box-shadow:0 0 34px 8px #5FE3B3; opacity:0; animation:stampPulse 6.5s ease-in-out infinite}
+@keyframes stampPulse{0%,62%,100%{opacity:0}72%{opacity:.30}84%{opacity:.10}}
+body.nofx .photo.closed .stampglow{display:none}
+.photo.postshot{align-self:center}
+.photo.postshot img{animation:none; transform:none}
+.gico{width:46px; height:46px; margin-bottom:8px}
+.gico svg{width:100%; height:100%}
+.float-a{animation:bob 5s ease-in-out infinite}
+.float-b{animation:bob 6.4s ease-in-out infinite .6s}
+.float-c{animation:bob 7.2s ease-in-out infinite 1.2s}
+.spin-slow{transform-origin:center; animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.flick{animation:flick 5.5s ease-in-out infinite}
+@keyframes flick{0%,42%{opacity:1}56%{opacity:.35}70%,100%{opacity:.12}}
+.pulse-r{transform-origin:center; animation:pr 3.4s ease-in-out infinite}
+@keyframes pr{0%,100%{transform:scale(1); opacity:.5}50%{transform:scale(1.25); opacity:0}}
+
+/* before / after slider */
+.cmp{position:relative; user-select:none; touch-action:none}
+.cmp .layer{position:absolute; inset:0}
+.cmp .layer.base{position:relative; inset:auto}
+.cmp .layer svg{display:block; width:100%; height:auto}
+.cmp .layer.top{clip-path:inset(0 0 0 50%)}
+.cmp input[type=range]{position:absolute; left:0; right:0; bottom:10px; width:94%; margin:0 3%; z-index:4; accent-color:var(--amber)}
+.cmp .divider{position:absolute; top:0; bottom:0; width:2px; background:var(--amber); box-shadow:0 0 12px var(--amber); z-index:3; pointer-events:none}
+.cmp .tag{position:absolute; top:10px; z-index:3; font-family:"Space Mono",monospace; font-size:11px; letter-spacing:.14em;
+  padding:4px 9px; border-radius:99px; background:rgba(7,11,28,.7); border:1px solid var(--line)}
+.cmp .tag.l{left:10px; color:var(--mint)} .cmp .tag.r{right:10px; color:var(--pink)}
+
+/* ---------- LIVE: connect panel ---------- */
+.code{font-family:"Space Mono",monospace; font-size:44px; font-weight:700; letter-spacing:.22em; color:var(--amber)}
+.linkbox{display:flex; gap:8px; align-items:center; background:rgba(0,0,0,.32); border:1px solid var(--line); border-radius:12px; padding:9px 12px}
+.linkbox input{flex:1; background:none; border:0; color:var(--text); font-family:"Space Mono",monospace; font-size:12.5px; min-width:0}
+.qr{width:150px; height:150px; border-radius:14px; background:#fff; padding:8px}
+.led{width:9px; height:9px; border-radius:50%; background:#6B7399; flex:0 0 auto}
+.led.on{background:var(--mint); box-shadow:0 0 10px var(--mint); animation:ledpulse 2s ease-in-out infinite}
+.led.warn{background:var(--amber)}
+@keyframes ledpulse{0%,100%{opacity:1}50%{opacity:.45}}
+.pdot{width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.14); display:inline-block; margin:0 3px}
+.pdot.on{background:var(--mint); box-shadow:0 0 8px var(--mint)}
+.chipnet{font-size:12px; padding:4px 10px; border-radius:99px; background:rgba(255,255,255,.07); border:1px solid var(--line)}
+.tbtn.live{background:rgba(95,227,179,.16); border-color:var(--mint); color:#BFF0DE}
+
+/* ---------- LIVE: teacher dock ---------- */
+#dock{position:fixed; right:14px; bottom:82px; width:min(360px,94vw); z-index:56; display:none;
+  background:linear-gradient(180deg,#141D48,#0B1230); border:1px solid var(--line2); border-radius:20px;
+  box-shadow:0 30px 70px -30px #000; animation:rise-in .4s both}
+#dock.on{display:block}
+#dock .dh{display:flex; align-items:center; gap:8px; padding:11px 13px; border-bottom:1px solid var(--line); font-size:14px}
+#dock .db{padding:13px; max-height:52vh; overflow-y:auto}
+.taskchips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px}
+.taskchip{font-size:12px; padding:6px 10px; border-radius:10px; background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--muted)}
+.taskchip.on{background:rgba(167,139,250,.18); border-color:var(--lilac); color:#fff}
+.ans-item{background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:12px; padding:9px 11px; margin-bottom:7px; font-size:14px}
+.ans-item b{color:var(--amber); font-size:11.5px; display:block; letter-spacing:.06em; text-transform:uppercase}
+.bar-res{height:9px; border-radius:99px; background:rgba(255,255,255,.1); overflow:hidden; margin-top:5px}
+.bar-res i{display:block; height:100%; background:linear-gradient(90deg,var(--blue),var(--lilac)); transition:width .7s}
+.bar-res.ok i{background:linear-gradient(90deg,var(--ok),var(--mint))}
+.handchip{display:inline-flex; gap:6px; align-items:center; font-size:12.5px; padding:5px 10px; border-radius:99px;
+  background:rgba(255,201,74,.16); border:1px solid var(--amber); color:#FFE6A3; margin:0 5px 5px 0; animation:okpulse .6s}
+
+/* ---------- LIVE: student device ---------- */
+body.remote #app, body.remote #drawer, body.remote .overlay{display:none !important}
+body.remote{overflow:auto}
+#studentApp{display:none; position:relative; z-index:2; min-height:100dvh; padding:16px 14px 96px;
+  padding-top:calc(16px + env(safe-area-inset-top,0px))}
+body.remote #studentApp{display:block}
+.stu{max-width:560px; margin:0 auto}
+.stu-top{display:flex; align-items:center; gap:9px; padding:6px 0 16px}
+.stu-top b{font-family:"Anton",sans-serif; font-weight:400; font-size:19px; letter-spacing:.03em}
+.stu-live{margin-left:auto; display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted)}
+.stu-card{background:linear-gradient(180deg,var(--panel),var(--deep)); border:1px solid var(--line); border-radius:24px; padding:20px; animation:rise-in .4s both}
+.stu-opt{display:block; width:100%; text-align:left; padding:15px 17px; border-radius:16px; margin-bottom:9px; font-size:16.5px; font-weight:700;
+  background:rgba(255,255,255,.06); border:1px solid var(--line2); color:var(--text); transition:.15s}
+.stu-opt:active{transform:scale(.99)}
+.stu-opt.sel{background:linear-gradient(135deg,var(--blue),#7C5CFF); border-color:transparent; color:#fff; box-shadow:0 12px 28px -16px var(--blue)}
+.stu-wait{text-align:center; padding:26px 10px}
+.stu-wait .big{font-size:44px; margin-bottom:10px; animation:bob 3.4s ease-in-out infinite}
+.stu-input{width:100%; padding:13px 15px; border-radius:14px; background:rgba(255,255,255,.06);
+  border:1px solid var(--line2); color:var(--text); font-size:16px}
+.hand{position:fixed; right:14px; bottom:14px; z-index:20; border-radius:18px; padding:14px 18px; font-size:16px; font-weight:800;
+  background:rgba(255,201,74,.16); border:1px solid var(--amber); color:#FFE6A3; display:none}
+body.remote .hand{display:block}
+</style>
+
+<div id="fx" aria-hidden="true">
+  <div class="grid"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+</div>
+
+<!-- ================= CONNECT PANEL ================= -->
+<div class="overlay hidden" id="liveOverlay" role="dialog" aria-modal="true" aria-label="Student connect">
+  <div class="sheet" style="max-width:680px">
+    <button class="btn sm x" id="liveClose">✕ Close</button>
+    <h3 class="dsp" style="font-size:26px">📡 Student connect</h3>
+    <p class="small">Учні заходять за посиланням і бачать лише те завдання, яке ви відкрили. Історія, відповіді та підказки залишаються на вашому екрані.</p>
+
+    <div class="center mt">
+      <div class="small">Room code</div>
+      <div class="code" id="roomCode">0000</div>
+      <div class="small mt-s">Connected: <b id="conCount">0</b></div>
+      <div id="conDots" class="mt-s"></div>
+    </div>
+
+    <div class="card soft mt" style="padding:15px">
+      <div class="small" style="margin-bottom:8px">Student link — надішліть у чат Zoom</div>
+      <div class="linkbox"><input id="joinLink" readonly><button class="btn sm" id="copyLink">Copy</button></div>
+      <div class="row mt-s" style="align-items:flex-start">
+        <img class="qr" id="qrImg" alt="QR code for the student link">
+        <div style="flex:1 1 210px">
+          <p class="small" style="margin:0 0 8px">Учень відкриває посилання, вводить ім'я — і чекає. Далі він тисне лише те, що ви відкрили.</p>
+          <button class="btn sm" id="testStudent">Open a student view (test)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card soft mt" style="padding:15px">
+      <div class="row" style="justify-content:space-between">
+        <b style="font-size:15px">Live connection</b>
+        <span class="chipnet" id="netKind">not started</span>
+      </div>
+      <p class="small mt-s" style="margin:0" id="keyNote"></p>
+      <div class="row mt-s" id="keyRow">
+        <input class="stu-input" id="anonKey" style="flex:1 1 250px" placeholder="sb_publishable_… (or a legacy anon key)">
+        <button class="btn sm" id="saveKey">Save key</button>
+      </div>
+      <div class="row mt-s">
+        <button class="btn primary" id="goLive">Start live room</button>
+        <button class="btn sm ghost" id="stopLive">Stop</button>
+        <button class="btn sm" id="newCode">New code</button>
+        <button class="btn sm" id="exportCsv">⬇ Export answers (CSV)</button>
+      </div>
+    </div>
+
+    <div class="grid g2 mt">
+      <div class="card soft" style="padding:14px"><b style="font-size:15px">Учні можуть:</b><p class="small" style="margin:6px 0 0">голосувати, обирати варіанти, надсилати коротку відповідь, здавати exit ticket, піднімати руку</p></div>
+      <div class="card soft" style="padding:14px"><b style="font-size:15px">Учні не можуть:</b><p class="small" style="margin:6px 0 0">гортати урок, бачити правильні відповіді чи teacher notes, відкривати завдання без вашого дозволу</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TEACHER DOCK ================= -->
+<aside id="dock" aria-label="Live room">
+  <div class="dh"><span class="led" id="dockLed"></span><b style="flex:1" id="dockTitle">Live room</b>
+    <span class="small" id="dockCount">0 joined</span>
+    <button class="btn sm ghost" id="dockMin">▾</button></div>
+  <div class="db" id="dockBody"></div>
+</aside>
+
+<!-- ================= STUDENT DEVICE APP ================= -->
+<div id="studentApp">
+  <div class="stu">
+    <div class="stu-top"><b>CASE 13</b><span class="small" id="stuRoom">room</span>
+      <span class="stu-live"><span class="led" id="stuLed"></span><span id="stuStatus">connecting…</span></span></div>
+    <div id="stuBody"></div>
+    <img class="wm wm-end" src="img/watermark.png" alt="study less KIDS" onerror="this.remove()">
+  </div>
+  <button class="hand" id="handBtn">🙋 Raise hand</button>
+</div>
+
+<script>
+/* ============================================================
+   ART · inline SVG illustrations (no external images)
+   ============================================================ */
+(function(){
+"use strict";
+const A = {};
+window.ART = A;
+
+/* ---- shared bits ---- */
+const defs = `
+<defs>
+  <linearGradient id="skyG" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#1B2450"/><stop offset="1" stop-color="#0B1230"/></linearGradient>
+  <linearGradient id="hotG" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FF5FA2"/><stop offset=".5" stop-color="#7C5CFF"/><stop offset="1" stop-color="#4D7CFE"/></linearGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FFD470"/><stop offset="1" stop-color="#FF9F45"/></linearGradient>
+  <linearGradient id="mintG" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8CF0CE"/><stop offset="1" stop-color="#2BA88C"/></linearGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>`;
+const heart = (x,y,s,c,cls) => `<path class="${cls||''}" transform="translate(${x},${y}) scale(${s})" fill="${c}"
+  d="M10 17S1.5 11.3 1.5 6.2A4.7 4.7 0 0 1 10 3.6a4.7 4.7 0 0 1 8.5 2.6C18.5 11.3 10 17 10 17z"/>`;
+
+/* ---- 1 · HERO: the case board (photo) ---- */
+A.hero = `
+<figure class="photo">
+  <img loading="lazy" decoding="async" src="img/01-case-board.webp"
+    alt="Дошка розслідування: приколоті знімки Джеймі та Робіна, телефон із видаленим дописом і папка CASE #13 під лупою">
+  <span class="sheen" aria-hidden="true"></span>
+</figure>`;
+
+/* ---- 2 · FEED strip (photo) ---- */
+A.feed = `
+<figure class="photo">
+  <img loading="lazy" decoding="async" src="img/03-feed-post.webp"
+    alt="Допис у стрічці: аватар Джеймі, 512 вподобань і 31 коментар">
+  <span class="sheen" aria-hidden="true"></span>
+</figure>`;
+
+/* ---- 3 · PARTY photo: real vs over-edited ---- */
+function party(mode){
+  const edited = mode==="edited";
+  const sky = edited
+    ? `<linearGradient id="pg${mode}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF7AC4"/><stop offset=".5" stop-color="#9B6BFF"/><stop offset="1" stop-color="#48B8FF"/></linearGradient>`
+    : `<linearGradient id="pg${mode}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26305F"/><stop offset="1" stop-color="#141B3E"/></linearGradient>`;
+  const skin = edited ? ["#FFE3C8","#FFD9B8","#F7CBA4","#FFE0C2"] : ["#E8C0A0","#DCB08F","#D3A785","#E5C3A6"];
+  const light = edited ? .95 : .5;
+  const person = (x,y,s,c,i,turn)=>`
+    <g transform="translate(${x},${y}) scale(${s})">
+      <ellipse cx="0" cy="96" rx="34" ry="8" fill="#000" opacity=".25"/>
+      <path d="M-26 96 q4 -54 26 -54 q22 0 26 54z" fill="${c}"/>
+      <circle cx="${turn?-6:0}" cy="24" r="19" fill="${skin[i]}"/>
+      <path d="M${turn?-24:-19} 20 q${turn?7:5} -22 ${turn?20:19} -22 q19 0 19 22 q-4 -9 -19 -9 t-19 9z" fill="#23193F"/>
+      <circle cx="${turn?-12:-6}" cy="24" r="2.2" fill="#23193F"/><circle cx="${turn?-1:7}" cy="24" r="2.2" fill="#23193F"/>
+      <path d="M${turn?-13:-7} 32 q7 ${edited?7:4} 14 0" stroke="#23193F" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    </g>`;
+  return `<svg viewBox="0 0 640 340" role="img" aria-label="${edited?"The over-edited version of the party photo":"The real party photo"}">
+  <defs>${sky}
+    <radialGradient id="fl${mode}"><stop offset="0" stop-color="#fff" stop-opacity="${edited?.75:.35}"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="640" height="340" fill="url(#pg${mode})"/>
+  <rect y="250" width="640" height="90" fill="#0B1026" opacity="${edited?.35:.6}"/>
+  <!-- string lights -->
+  <path d="M0 42 Q160 96 320 46 T640 52" stroke="#FFD470" stroke-opacity=".55" fill="none" stroke-width="2"/>
+  ${Array.from({length:9},(_,i)=>{const x=20+i*76, y=[52,74,84,80,64,56,66,76,70][i];
+    return `<circle cx="${x}" cy="${y}" r="${edited?9:7}" fill="#FFD470" opacity="${light}" class="float-${"abc"[i%3]}"/>
+            <circle cx="${x}" cy="${y}" r="16" fill="#FFD470" opacity="${edited?.28:.12}"/>`;}).join("")}
+  <!-- people -->
+  ${person(150,150,1,"#4D7CFE",0,false)}
+  ${person(250,160,1.08,"#FF5FA2",1,false)}
+  ${person(350,152,1,"#5FE3B3",2,!edited)}
+  ${person(450,158,1.04,"#FFC94A",3,false)}
+  <!-- floor clutter: removed in the edited version -->
+  ${edited?"":`<g opacity=".8"><rect x="60" y="286" width="46" height="18" rx="4" fill="#2B3566"/>
+     <circle cx="548" cy="296" r="12" fill="#2B3566"/><rect x="566" y="284" width="34" height="24" rx="5" fill="#2B3566"/>
+     <path d="M96 300 l22 -8 4 10z" fill="#3A4680"/></g>`}
+  <!-- camera flash -->
+  <circle cx="540" cy="86" r="70" fill="url(#fl${mode})"/>
+  ${edited?`<g opacity=".9">
+     <path d="M96 120 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6z" fill="#fff" class="float-a"/>
+     <path d="M580 214 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z" fill="#fff" class="float-c"/>
+     <path d="M300 56 l4 11 11 4 -11 4 -4 11 -4 -11 -11 -4 11 -4z" fill="#fff" class="float-b"/></g>`:""}
+  <text x="20" y="326" font-family="Space Mono, monospace" font-size="13" fill="#fff" opacity=".65">${edited?"“Best night ever!” · edited":"20:14 · the real room"}</text>
+</svg>`;
+}
+A.party = `
+<div class="cmp" id="cmpParty">
+  <div class="layer base">${party("real")}</div>
+  <div class="layer top" id="cmpTop">${party("edited")}</div>
+  <div class="divider" id="cmpDiv" style="left:50%"></div>
+  <span class="tag l">REAL</span><span class="tag r">OVER-EDITED</span>
+  <input type="range" min="0" max="100" value="50" id="cmpRange" aria-label="Compare the real photo with the edited photo">
+</div>`;
+
+/* ---- 4 · grammar icons ---- */
+A.gicon = n => ({
+1:`<svg viewBox="0 0 48 48"><rect x="4" y="10" width="28" height="22" rx="4" fill="#151E45" stroke="#FFC94A" stroke-width="2"/>
+   <circle cx="13" cy="18" r="3" fill="#FFC94A"/><path d="M7 29l8-8 6 6 5-4 7 6z" fill="#FFC94A" opacity=".7"/>
+   <g class="spin-slow" transform="translate(36,32)"><circle r="8" fill="none" stroke="#5FE3B3" stroke-width="2.5" stroke-dasharray="4 3"/><circle r="2.5" fill="#5FE3B3"/></g></svg>`,
+2:`<svg viewBox="0 0 48 48"><circle cx="13" cy="16" r="7" fill="#A78BFA"/><path d="M4 40c0-6 4-10 9-10s9 4 9 10z" fill="#A78BFA" opacity=".7"/>
+   <rect x="24" y="8" width="21" height="16" rx="5" fill="#151E45" stroke="#4D7CFE" stroke-width="2"/>
+   <path d="M30 24l-1 7 7-7z" fill="#4D7CFE"/><circle cx="31" cy="16" r="1.8" fill="#4D7CFE"/><circle cx="35" cy="16" r="1.8" fill="#4D7CFE"/><circle cx="39" cy="16" r="1.8" fill="#4D7CFE"/></svg>`,
+3:`<svg viewBox="0 0 48 48"><circle cx="24" cy="30" r="7" fill="#FF5FA2"/><path d="M14 44c0-6 4-9 10-9s10 3 10 9z" fill="#FF5FA2" opacity=".7"/>
+   <path d="M24 4v12" stroke="#FF6B4A" stroke-width="4" stroke-linecap="round" class="float-a"/>
+   <path d="M16 14l8 8 8-8" fill="none" stroke="#FF6B4A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="float-a"/></svg>`
+})[n];
+
+/* ---- 5 · speaking card icons ---- */
+A.cardIcon = i => ['<svg class="ico" viewBox="0 0 48 48"><rect x="5" y="11" width="38" height="28" rx="5" fill="#1B2450" stroke="#A78BFA" stroke-width="2"/><path d="M9 34l10-10 7 7 6-5 7 8z" fill="#A78BFA" opacity=".8"/><circle cx="16" cy="19" r="3.5" fill="#FFC94A"/><path d="M5 25h38" stroke="#FF5FA2" stroke-width="2" stroke-dasharray="3 3"/></svg>',
+'<svg class="ico" viewBox="0 0 48 48"><path d="M24 40S6 29 6 18.5A9 9 0 0 1 24 14a9 9 0 0 1 18 4.5C42 29 24 40 24 40z" fill="#FF5FA2" opacity=".85"/><circle cx="24" cy="21" r="6" fill="#0C1330"/><circle cx="24" cy="21" r="2.5" fill="#FFC94A"/></svg>',
+'<svg class="ico" viewBox="0 0 48 48"><rect x="6" y="15" width="28" height="21" rx="4" fill="#1B2450" stroke="#5FE3B3" stroke-width="2"/><circle cx="20" cy="25" r="6" fill="none" stroke="#5FE3B3" stroke-width="2"/><path d="M14 15l3-5h6l3 5" fill="none" stroke="#5FE3B3" stroke-width="2"/><rect x="33" y="24" width="12" height="12" rx="3" fill="#FFC94A"/><path d="M36 24v-3a3 3 0 0 1 6 0v3" fill="none" stroke="#FFC94A" stroke-width="2"/></svg>',
+'<svg class="ico" viewBox="0 0 48 48"><path d="M6 24a12 12 0 0 1 24 0 12 12 0 0 1-24 0z" fill="#A78BFA" opacity=".85"/><path d="M18 24a12 12 0 0 1 24 0 12 12 0 0 1-24 0z" fill="#5FE3B3" opacity=".7"/><circle cx="14" cy="22" r="2" fill="#0C1330"/><circle cx="34" cy="26" r="2" fill="#0C1330"/></svg>',
+'<svg class="ico" viewBox="0 0 48 48"><rect x="13" y="4" width="22" height="40" rx="6" fill="#1B2450" stroke="#4D7CFE" stroke-width="2"/><rect x="17" y="10" width="14" height="8" rx="2" fill="#FF6B4A" opacity=".8" class="float-a"/><rect x="17" y="21" width="14" height="8" rx="2" fill="#A78BFA" opacity=".7" class="float-b"/><rect x="17" y="32" width="14" height="6" rx="2" fill="#4D7CFE" opacity=".6" class="float-c"/></svg>'][i];
+
+/* ---- 6 · team mission (photo) ---- */
+A.team = `
+<figure class="photo teamshot">
+  <img loading="lazy" decoding="async" src="img/05-team-mission.webp"
+    alt="Команда розслідування: Writer, Grammar Detective, Reality Checker і Speaker навколо чеклиста THE NEW HONEST POST">
+  <span class="sheen" aria-hidden="true"></span>
+  <span class="glow g1" aria-hidden="true"></span><span class="glow g2" aria-hidden="true"></span>
+  <span class="glow g3" aria-hidden="true"></span><span class="glow g4" aria-hidden="true"></span>
+</figure>`;
+
+/* ---- 7 · case closed (photo) ---- */
+A.final = `
+<figure class="photo closed">
+  <img loading="lazy" decoding="async" src="img/06-case-closed.webp"
+    alt="Закрита справа: папка з доказами, печатка CASE CLOSED, Алекс і Джеймі знову друзі">
+  <span class="sheen" aria-hidden="true"></span>
+  <span class="stampglow" aria-hidden="true"></span>
+</figure>`;
+
+/* ============================================================
+   MOUNT ART + ANIMATIONS
+   ============================================================ */
+function mountArt(){
+  const set = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
+  set("artHero", A.hero); set("artFeed", A.feed); set("artTeam", A.team); set("artFinal", A.final);
+  const p = document.getElementById("artParty"); if(p){ p.className = "art"; p.innerHTML = A.party; wireCompare(); }
+  document.querySelectorAll(".gico").forEach(g => g.innerHTML = A.gicon(+g.dataset.g));
+}
+/* Chrome treats every file:// page as its own origin, so <use href="#id"> is
+   refused when the lesson is opened from the disk. Copying the symbol content
+   into the document removes the reference completely — the art then renders
+   from a folder, from a local server and from GitHub Pages alike. */
+function inlineUses(){
+  const NS = "http://www.w3.org/2000/svg";
+  const defsSrc = document.querySelector("svg defs");
+  const grads = defsSrc ? Array.from(defsSrc.querySelectorAll("linearGradient")).map(g=>g.outerHTML).join("") : "";
+  let guard = 0;
+  while(guard++ < 8){
+    const uses = Array.from(document.querySelectorAll("use")).filter(u=>{
+      const h = u.getAttribute("href") || u.getAttribute("xlink:href") || "";
+      return h.indexOf("#av-") === 0;
+    });
+    if(!uses.length) break;
+    uses.forEach(u=>{
+      const h = u.getAttribute("href") || u.getAttribute("xlink:href");
+      const sym = document.querySelector(h);
+      if(!sym){ u.remove(); return; }
+      const svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("viewBox", sym.getAttribute("viewBox") || "0 0 100 100");
+      ["x","y","width","height","class","opacity","transform"].forEach(a=>{
+        if(u.hasAttribute(a)) svg.setAttribute(a, u.getAttribute(a));
+      });
+      svg.innerHTML = "<defs>" + grads + "</defs>" + sym.innerHTML;
+      u.replaceWith(svg);
+    });
+  }
+}
+function wireCompare(){
+  const r = document.getElementById("cmpRange"), top = document.getElementById("cmpTop"), div = document.getElementById("cmpDiv");
+  if(!r) return;
+  const paint = () => { const v = r.value; top.style.clipPath = `inset(0 0 0 ${v}%)`; div.style.left = v + "%"; };
+  r.addEventListener("input", paint); paint();
+}
+
+/* ---- floating particles ---- */
+function particles(){
+  const host = document.getElementById("fx"); if(!host) return;
+  const glyphs = ["♥","👍","✦","#","💬","★","📸"];
+  for(let i=0;i<16;i++){
+    const s = document.createElement("span");
+    s.className = "p";
+    s.textContent = glyphs[i % glyphs.length];
+    s.style.left = (4 + Math.random()*92) + "vw";
+    s.style.bottom = "-40px";
+    s.style.fontSize = (13 + Math.random()*16) + "px";
+    s.style.animationDuration = (17 + Math.random()*20) + "s";
+    s.style.animationDelay = (-Math.random()*30) + "s";
+    s.style.color = ["#FF5FA2","#A78BFA","#4D7CFE","#FFC94A","#5FE3B3"][i%5];
+    host.appendChild(s);
+  }
+}
+
+/* ---- progress bar mirrors the clue counter ---- */
+function progressBar(){
+  const top = document.getElementById("top");
+  const bar = document.createElement("div");
+  bar.id = "pbar"; bar.innerHTML = "<i></i>";
+  top.insertAdjacentElement("afterend", bar);
+  const fill = bar.querySelector("i"), label = document.getElementById("progress");
+  const paint = () => {
+    const m = /(\d+)\/(\d+)/.exec(label.textContent || "");
+    if(m) fill.style.width = (m[1]/m[2]*100) + "%";
+  };
+  new MutationObserver(paint).observe(label, {childList:true, characterData:true, subtree:true});
+  paint();
+}
+
+/* ---- title effects ---- */
+function titleFx(){
+  [["s0","Digital Alert"],["s6","Case Closed"]].forEach(([id,txt])=>{
+    const h = document.querySelector("#"+id+" .h-scene");
+    if(h){ h.classList.add("glitch"); h.setAttribute("data-t", txt); }
+  });
+  /* word-by-word reveal of the alert text */
+  /* wrap words of TEXT NODES only — tags like <span class="voc"> stay intact */
+  document.querySelectorAll('#s0 .card p').forEach((p,i)=>{
+    if(i>2) return;
+    let j = 0;
+    const walk = node => {
+      Array.from(node.childNodes).forEach(ch=>{
+        if(ch.nodeType === 3){
+          const frag = document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(t=>{
+            if(!t) return;
+            if(/^\s+$/.test(t)){ frag.appendChild(document.createTextNode(t)); return; }
+            const s = document.createElement("span");
+            s.className = "wf"; s.textContent = t;
+            s.style.animationDelay = (i*.25 + (j++)*.045).toFixed(2) + "s";
+            frag.appendChild(s);
+          });
+          ch.replaceWith(frag);
+        } else if(ch.nodeType === 1){ walk(ch); }
+      });
+    };
+    walk(p);
+  });
+}
+
+/* ---- like counter ticks up when the final post appears ---- */
+function likeTicker(){
+  const bar = document.querySelector("#s6 .post .bar span");
+  if(!bar) return;
+  bar.classList.add("likeCount");
+  let shown = false;
+  const run = () => {
+    if(shown || !document.getElementById("s6").classList.contains("on")) return;
+    shown = true; let n = 0;
+    const id = setInterval(()=>{ n += 3; bar.textContent = "♥ " + n; if(n>=84){ clearInterval(id); bar.textContent = "♥ 84"; } }, 26);
+  };
+  new MutationObserver(run).observe(document.getElementById("s6"), {attributes:true, attributeFilter:["class"]});
+  run();
+}
+
+/* ---- animation on/off ---- */
+function fxToggle(){
+  const btn = document.getElementById("btnFx"); if(!btn) return;
+  let off = false;
+  try{ off = localStorage.getItem("l13fx") === "off"; }catch(e){}
+  const paint = () => { document.body.classList.toggle("nofx", off); btn.classList.toggle("on", !off); btn.title = off ? "Animations off" : "Animations on"; };
+  btn.addEventListener("click", ()=>{ off = !off; try{ localStorage.setItem("l13fx", off?"off":"on"); }catch(e){} paint(); });
+  paint();
+}
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  mountArt(); inlineUses(); particles(); progressBar(); titleFx(); likeTicker(); fxToggle();
+});
+})();
+</script>
+
+<script>
+/* ============================================================
+   LIVE ROOM — the teacher hosts, students join by link.
+   Transport: Supabase Realtime broadcast (CDN, loaded on demand).
+   Fallback: BroadcastChannel between tabs of the same browser.
+   Nothing is faked — if there is no connection, the page says so.
+   ============================================================ */
+(function(){
+"use strict";
+const $ = (s,r)=>(r||document).querySelector(s);
+const $$ = (s,r)=>Array.from((r||document).querySelectorAll(s));
+const esc = s => String(s==null?"":s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uid = () => Math.random().toString(36).slice(2,9);
+const ls = {
+  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+};
+
+const CONFIG = Object.assign({SUPABASE_URL:"", SUPABASE_KEY:""}, window.LESSON_CONFIG||{});
+if(!CONFIG.SUPABASE_KEY && CONFIG.SUPABASE_ANON_KEY) CONFIG.SUPABASE_KEY = CONFIG.SUPABASE_ANON_KEY;
+const configured = () => /^https:\/\/[a-z0-9-]+\.supabase\.co/i.test((CONFIG.SUPABASE_URL||"").trim());
+const ANON = () => (CONFIG.SUPABASE_KEY || ls.get("l13key") || "").trim();
+
+const qs = new URLSearchParams(location.search);
+const ROLE = qs.get("role")==="student" ? "student" : "teacher";
+if(qs.get("k")) ls.set("l13key", qs.get("k"));
+let ROOM = (qs.get("room") || ls.get("l13room") || String(Math.floor(1000+Math.random()*9000))).replace(/[^0-9A-Za-z]/g,"").slice(0,8);
+if(ROLE==="teacher") ls.set("l13room", ROOM);
+
+/* ---------------- transport ---------------- */
+const Net = {
+  kind:null, sb:null, ch:null, bc:null, me:null, peers:{}, hb:null, prune:null,
+  onEvent:()=>{}, onPeers:()=>{}, onStatus:()=>{},
+  async connect(o){
+    this.me = {id:uid(), name:o.name||"", role:o.role};
+    this.onEvent = o.onEvent||(()=>{}); this.onPeers = o.onPeers||(()=>{}); this.onStatus = o.onStatus||(()=>{});
+    const key = ANON();
+    if(key && configured()){
+      try{
+        const { createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
+        this.sb = createClient(CONFIG.SUPABASE_URL, key);
+        this.ch = this.sb.channel("lesson13-"+o.room, {config:{presence:{key:this.me.id}, broadcast:{self:false}}});
+        this.ch.on("broadcast", {event:"msg"}, ({payload})=> this.onEvent(payload));
+        this.ch.on("presence", {event:"sync"}, ()=>{
+          const st = this.ch.presenceState(), list = [];
+          Object.values(st).forEach(v=> list.push(v[0]));
+          this.onPeers(list);
+        });
+        await new Promise((res,rej)=>{
+          const to = setTimeout(()=>rej(new Error("timeout")), 9000);
+          this.ch.subscribe(async st=>{
+            this.onStatus(st);
+            if(st==="SUBSCRIBED"){ clearTimeout(to); await this.ch.track(this.me); res(); }
+            if(st==="CHANNEL_ERROR"||st==="TIMED_OUT"){ clearTimeout(to); rej(new Error(st)); }
+          });
+        });
+        this.kind = "supabase"; return this.kind;
+      }catch(e){ console.warn("Supabase realtime unavailable:", e.message||e); this.sb=null; this.ch=null; }
+    }
+    try{
+      this.bc = new BroadcastChannel("lesson13-"+o.room);
+      this.bc.onmessage = e=>{
+        const m = e.data; if(!m || !m.from) return;
+        this.peers[m.from.id] = Object.assign({}, m.from, {ts:Date.now()});
+        this.flush();
+        if(m.t!=="__hb") this.onEvent(m);
+      };
+      this.hb = setInterval(()=> this.send({t:"__hb"}), 2500);
+      this.prune = setInterval(()=>{
+        const now = Date.now(); let ch=false;
+        for(const k in this.peers) if(now-this.peers[k].ts>9000){ delete this.peers[k]; ch=true; }
+        if(ch) this.flush();
+      }, 3000);
+      this.send({t:"__hb"});
+      this.kind = "local"; return this.kind;
+    }catch(e){ this.kind="none"; return "none"; }
+  },
+  flush(){ this.onPeers(Object.values(this.peers)); },
+  send(p){
+    if(!this.me) return;
+    const msg = Object.assign({}, p, {from:this.me});
+    if(this.kind==="supabase" && this.ch) this.ch.send({type:"broadcast", event:"msg", payload:msg});
+    else if(this.bc) this.bc.postMessage(msg);
+  },
+  stop(){
+    clearInterval(this.hb); clearInterval(this.prune);
+    if(this.ch){ try{ this.ch.unsubscribe(); }catch(e){} }
+    if(this.bc){ try{ this.bc.close(); }catch(e){} }
+    this.kind=null; this.ch=null; this.bc=null; this.peers={};
+  }
+};
+
+/* ---------------- what students may touch, scene by scene ---------------- */
+let TASKS = {};
+function buildTasks(){
+  const L = window.L13; if(!L) return;
+  TASKS = {
+    0:[{id:"p1", kind:"choice", title:"Have you ever posted something and then deleted it? Why?", options:L.POLL1, bind:"poll1t"}],
+    1:[{id:"v1", kind:"choice", title:"Which expression means “only the best moments”?",
+        options:["FOMO","highlight reel","ghost follow","snap and scroll"], answer:1},
+       {id:"v2", kind:"choice", title:"Which expression means “share too much private information”?",
+        options:["overshare","over-edit","post-worthy","doomscrolling"], answer:0},
+       {id:"v3", kind:"text", title:"Write one sentence with a lesson expression", hint:"e.g. I never overshare in my stories."}],
+    2:L.READQ.map((q,i)=>({id:"r"+(i+1), kind:"choice", title:(i+1)+". "+q.q, options:q.o, answer:q.a})),
+    3:L.GRAMQ.map((q,i)=>({id:"g"+(i+1), kind:"choice", title:(i+1)+". "+q.q, options:q.o, answer:q.a})),
+    4:[{id:"s1", kind:"text", title:"Answer the detective question in 1–2 sentences", hint:"Use the ideas on your teacher's screen."},
+       {id:"s2", kind:"choice", title:"Is it better to look perfect online or show up real?",
+        options:["Look perfect online","Show up real","It depends on the post"]}],
+    5:[{id:"t1", kind:"text", title:"Send your team's caption", hint:"2–3 sentences."},
+       {id:"t2", kind:"text", title:"Send one causative sentence from your post", hint:"We had / got / made…"},
+       {id:"t3", kind:"choice", title:"Your team's final decision", options:["POST IT","DON'T POST IT"]}],
+    6:[{id:"vote", kind:"choice", title:"Which lesson is the most important?", options:L.VOTE2, bind:"vote2t"},
+       {id:"exit", kind:"exit", title:"One last message", stems:L.STEMS}],
+    7:[{id:"f1", kind:"choice", title:"Which sentence is correct?",
+        options:["I had my friend to take some photos.","I had my friend take some photos."], answer:1},
+       {id:"f2", kind:"choice", title:"Which sentence is correct?",
+        options:["I got one picture edited.","I got one picture edit."], answer:0},
+       {id:"f3", kind:"choice", title:"Which sentence is correct?",
+        options:["I got her to remove the filter.","I got her remove the filter."], answer:0}]
+  };
+}
+
+/* ---------------- teacher ---------------- */
+const LIVE = {on:false, open:false, showRes:false, count:0, sel:{}};
+const LVOTE = {};   /* taskId → {studentId: choiceIndex} */
+const LTEXT = {};   /* taskId → {studentId: {name, text}} */
+const LHAND = {};
+const NAMES = {};
+
+const TASKBIND = {poll1t:"p1", vote2t:"vote"};
+window.liveVotes = function(tallyKey){
+  const id = TASKBIND[tallyKey]; if(!id || !LVOTE[id]) return [];
+  const out = [];
+  Object.values(LVOTE[id]).forEach(c=>{ out[c] = (out[c]||0)+1; });
+  return out;
+};
+function sceneIdx(){ const L=window.L13; return L ? L.S.scene : 0; }
+function tasksHere(){ return TASKS[sceneIdx()] || []; }
+function curTask(){
+  const t = tasksHere(); if(!t.length) return null;
+  const i = Math.min(LIVE.sel[sceneIdx()]||0, t.length-1);
+  return t[i];
+}
+function tallyOf(t){
+  if(!t || t.kind!=="choice") return null;
+  const v = LVOTE[t.id]||{}, out = t.options.map(()=>0);
+  Object.values(v).forEach(c=>{ if(out[c]!==undefined) out[c]++; });
+  return out;
+}
+function pubState(){
+  if(!LIVE.on) return;
+  const L = window.L13, t = curTask();
+  Net.send({t:"state",
+    scene: L.SCENES[sceneIdx()].short,
+    task: LIVE.open && t ? t : null,
+    showRes: LIVE.showRes,
+    res: LIVE.showRes ? tallyOf(t) : null});
+}
+function onTeacherMsg(m){
+  if(!m || (m.from && m.from.role==="teacher")) return;
+  const id = m.from ? m.from.id : "anon";
+  if(m.from && m.from.name) NAMES[id] = m.from.name;
+  const L = window.L13;
+  if(m.t==="hello"){ pubState(); paintDock(); return; }
+  if(m.t==="vote"){
+    (LVOTE[m.task] = LVOTE[m.task]||{})[id] = m.choice;
+    if(m.task==="p1") L.paintPoll("#poll1", L.POLL1, "poll1", "poll1t", "#poll1res");
+    if(m.task==="vote") L.paintPoll("#vote2", L.VOTE2, "vote2", "vote2t", "#vote2res");
+  }
+  if(m.t==="text"){ (LTEXT[m.task] = LTEXT[m.task]||{})[id] = {name:NAMES[id]||"student", text:m.text}; }
+  if(m.t==="exit"){
+    const name = NAMES[id] || "Detective";
+    const i = L.S.exits.findIndex(e=>e.sid===id);
+    const entry = {stem:m.stem, text:m.text, name, sid:id};
+    if(i>=0) L.S.exits[i] = entry; else L.S.exits.push(entry);
+    (LTEXT.exit = LTEXT.exit||{})[id] = {name, text:(m.stem||"")+" "+(m.text||"")};
+    L.save(); L.paintWall(); L.grant(6);
+    const b = $("#finalBanner"); if(b && b.classList.contains("hidden")) b.classList.remove("hidden");
+  }
+  if(m.t==="hand"){ LHAND[id] = {name:NAMES[id]||"student", ts:Date.now()}; }
+  paintDock();
+  if(LIVE.showRes) pubState();
+}
+function onPeers(list){
+  const st = list.filter(p=>p.role==="student");
+  LIVE.count = st.length;
+  $("#conCount").textContent = LIVE.count;
+  $("#conDots").innerHTML = Array.from({length:Math.max(5,LIVE.count)},(_,i)=>`<span class="pdot${i<LIVE.count?" on":""}"></span>`).join("");
+  $("#dockCount").textContent = LIVE.count + " joined";
+  $("#liveLabel").textContent = LIVE.on ? ("Live · "+LIVE.count) : "Connect";
+  paintDock();
+}
+function paintDock(){
+  if(!LIVE.on) return;
+  const body = $("#dockBody"), list = tasksHere(), t = curTask();
+  let h = "";
+  if(!list.length){
+    h += `<p class="small" style="margin:0">На цій сцені учні нічого не тиснуть — на їхніх екранах написано «слухай і дивись».</p>`;
+  } else {
+    h += `<div class="taskchips">` + list.map((x,i)=>
+      `<button class="taskchip ${x===t?"on":""}" data-sel="${i}">${esc(x.id.toUpperCase())}</button>`).join("") + `</div>`;
+    h += `<div style="font-weight:800; font-size:14.5px">${esc(t.title)}</div>
+      <div class="small" style="margin-bottom:9px">${t.kind==="text"?"short answer":t.kind==="exit"?"exit ticket":"choice"} ·
+      ${Object.keys(LVOTE[t.id]||LTEXT[t.id]||{}).length} received</div>
+      <div class="row" style="gap:7px">
+        <button class="btn sm ${LIVE.open?"":"primary"}" id="dockOpen">${LIVE.open?"Close activity":"Open on devices"}</button>
+        <button class="btn sm ${LIVE.showRes?"amber":""}" id="dockRes">${LIVE.showRes?"Hide results":"Show results"}</button>
+        <button class="btn sm ghost" id="dockClear">Clear</button>
+      </div>`;
+    if(t.kind==="choice"){
+      const tal = tallyOf(t)||[], tot = tal.reduce((a,b)=>a+b,0);
+      h += `<div style="margin-top:11px">` + t.options.map((o,i)=>{
+        const pc = tot ? Math.round(tal[i]/tot*100) : 0, ok = t.answer===i;
+        return `<div style="margin-bottom:7px">
+          <div class="row" style="justify-content:space-between; font-size:13px; gap:8px">
+            <span>${ok?"✔ ":""}${esc(o)}</span><b>${tal[i]||0} · ${pc}%</b></div>
+          <div class="bar-res ${ok?"ok":""}"><i style="width:${pc}%"></i></div></div>`;
+      }).join("") + `</div>`;
+    }
+    const answers = Object.values(LTEXT[t.id]||{});
+    if(answers.length) h += `<div style="margin-top:11px">` + answers.map(a=>
+      `<div class="ans-item"><b>${esc(a.name)}</b>${esc(a.text)}</div>`).join("") + `</div>`;
+  }
+  const hands = Object.values(LHAND).filter(x=>Date.now()-x.ts<90000);
+  if(hands.length) h += `<div style="margin-top:11px">` + hands.map(x=>`<span class="handchip">🙋 ${esc(x.name)}</span>`).join("") + `</div>`;
+  body.innerHTML = h;
+  $$("[data-sel]", body).forEach(b=>b.onclick=()=>{
+    LIVE.sel[sceneIdx()] = +b.dataset.sel; LIVE.showRes=false; pubState(); paintDock();
+  });
+  const ob = $("#dockOpen"); if(ob) ob.onclick = ()=>{
+    LIVE.open = !LIVE.open; if(!LIVE.open) LIVE.showRes = false; pubState(); paintDock();
+  };
+  const rb = $("#dockRes"); if(rb) rb.onclick = ()=>{ LIVE.showRes = !LIVE.showRes; pubState(); paintDock(); };
+  const cb = $("#dockClear"); if(cb) cb.onclick = ()=>{
+    if(t){ delete LVOTE[t.id]; delete LTEXT[t.id]; }
+    Object.keys(LHAND).forEach(k=>delete LHAND[k]);
+    const L = window.L13;
+    L.paintPoll("#poll1", L.POLL1, "poll1", "poll1t", "#poll1res");
+    L.paintPoll("#vote2", L.VOTE2, "vote2", "vote2t", "#vote2res");
+    pubState(); paintDock();
+  };
+  $("#dockLed").className = "led " + (Net.kind==="supabase" ? "on" : "warn");
+  $("#dockTitle").textContent = "Room " + ROOM + (Net.kind==="local" ? " · this device only" : "");
+}
+
+/* ---- link + QR ---- */
+function joinURL(){
+  const baked = (CONFIG.SUPABASE_KEY||"").trim();
+  const saved = (ls.get("l13key")||"").trim();
+  const base = location.href.split("?")[0].split("#")[0];
+  const url = base + "?room=" + ROOM + "&role=student";
+  return (!baked && saved) ? url + "&k=" + encodeURIComponent(saved) : url;
+}
+function paintLink(){
+  $("#joinLink").value = joinURL();
+  $("#roomCode").textContent = ROOM;
+  const img = $("#qrImg");
+  img.onerror = ()=>{ img.style.display = "none"; };
+  img.src = "https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=4&data=" + encodeURIComponent(joinURL());
+}
+function exportCSV(){
+  const rows = [["type","task","student","answer"]];
+  Object.keys(LVOTE).forEach(tid=>{
+    const task = (Object.values(TASKS).flat().find(x=>x.id===tid))||{options:[]};
+    Object.keys(LVOTE[tid]).forEach(sid=>{
+      rows.push(["vote", tid, NAMES[sid]||sid, task.options ? task.options[LVOTE[tid][sid]] : LVOTE[tid][sid]]);
+    });
+  });
+  Object.keys(LTEXT).forEach(tid=>Object.keys(LTEXT[tid]).forEach(sid=>{
+    rows.push(["text", tid, LTEXT[tid][sid].name, LTEXT[tid][sid].text]);
+  }));
+  (window.L13.S.exits||[]).forEach(e=> rows.push(["exit-ticket","exit", e.name||"", (e.stem||"")+" "+(e.text||"")]));
+  const csv = rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
+  a.download = "lesson13-room-" + ROOM + ".csv";
+  a.click();
+}
+
+/* ---- teacher wiring ---- */
+function wireTeacher(){
+  buildTasks(); paintLink();
+  $("#btnLive").addEventListener("click", ()=>{ paintLink(); $("#liveOverlay").classList.remove("hidden"); });
+  const back = $("#backHub");
+  if(back) back.addEventListener("click", e=>{
+    if(LIVE.on && !confirm("Live-кімната ще працює. Вийти на платформу і завершити заняття?")) e.preventDefault();
+  });
+  $("#liveClose").addEventListener("click", ()=>$("#liveOverlay").classList.add("hidden"));
+  $("#copyLink").addEventListener("click", async()=>{
+    try{ await navigator.clipboard.writeText(joinURL()); $("#copyLink").textContent = "Copied ✓";
+         setTimeout(()=>$("#copyLink").textContent="Copy", 1800); }
+    catch(e){ $("#joinLink").select(); }
+  });
+  $("#testStudent").addEventListener("click", ()=> window.open(joinURL(), "_blank"));
+  $("#newCode").addEventListener("click", ()=>{
+    ROOM = String(Math.floor(1000+Math.random()*9000)); ls.set("l13room", ROOM); paintLink();
+    if(LIVE.on){ Net.stop(); LIVE.on=false; $("#dock").classList.remove("on"); $("#netKind").textContent="stopped — start again"; $("#liveLabel").textContent="Connect"; $("#btnLive").classList.remove("live"); }
+  });
+  $("#exportCsv").addEventListener("click", exportCSV);
+  $("#anonKey").value = ls.get("l13key") || "";
+  $("#saveKey").addEventListener("click", ()=>{ ls.set("l13key", $("#anonKey").value.trim()); paintLink(); });
+  (function keyNote(){
+    const baked = !!(CONFIG.SUPABASE_KEY||"").trim() && configured();
+    $("#keyNote").innerHTML = baked
+      ? 'Ключ уже всередині файлу, тому посилання коротке: <span class="mono">?room=…&amp;role=student</span>. Реальний час працює через <span class="mono">'+esc(CONFIG.SUPABASE_URL.replace("https://",""))+'</span>.'
+      : 'У файлі ще немає проєкту. Впишіть <b>Project URL</b> і <b>publishable key</b> у <span class="mono">window.LESSON_CONFIG</span> угорі файлу — один раз, для всіх пристроїв. Поле нижче — швидка альтернатива: ключ збережеться в цьому браузері й подорожуватиме всередині учнівського посилання. Без ключа кімната працює лише між вкладками цього комп\'ютера.';
+    if(baked) $("#keyRow").style.display = "none";
+    if(location.protocol === "file:"){
+      $("#keyNote").innerHTML = '<b style="color:var(--amber)">Сторінку відкрито з диска (file://).</b> Урок працює повністю, але жива кімната — ні: браузер не пускає файл із диска в мережу. Завантажте урок на GitHub Pages (або відкрийте через локальний сервер) — і посилання для учнів запрацює. Зараз доступна лише «кімната» між вкладками цього комп\'ютера.';
+    }
+  })();
+  $("#goLive").addEventListener("click", async()=>{
+    $("#netKind").textContent = "connecting…";
+    const kind = await Net.connect({room:ROOM, role:"teacher", name:"teacher", onEvent:onTeacherMsg, onPeers:onPeers});
+    LIVE.on = kind!=="none";
+    $("#netKind").textContent = kind==="supabase" ? "live · Supabase" : kind==="local" ? "local only (same browser)" : "unavailable";
+    $("#dock").classList.toggle("on", LIVE.on);
+    $("#btnLive").classList.toggle("live", LIVE.on);
+    $("#liveLabel").textContent = LIVE.on ? "Live · 0" : "Connect";
+    paintDock(); pubState();
+  });
+  $("#stopLive").addEventListener("click", ()=>{
+    Net.stop(); LIVE.on=false; $("#dock").classList.remove("on");
+    $("#netKind").textContent = "stopped"; $("#liveLabel").textContent = "Connect"; $("#btnLive").classList.remove("live");
+  });
+  $("#dockMin").addEventListener("click", ()=>{
+    const b = $("#dockBody"); const hidden = b.style.display==="none";
+    b.style.display = hidden ? "block" : "none"; $("#dockMin").textContent = hidden ? "▾" : "▴";
+  });
+  /* a new scene closes whatever was open on the phones */
+  const nameEl = $("#sceneName");
+  new MutationObserver(()=>{ LIVE.open=false; LIVE.showRes=false; pubState(); paintDock(); })
+    .observe(nameEl, {childList:true, characterData:true, subtree:true});
+  setInterval(()=>{ if(LIVE.on && Object.keys(LHAND).length) paintDock(); }, 20000);
+}
+
+/* ---------------- student device ---------------- */
+function studentApp(){
+  document.body.classList.add("remote");
+  const body = $("#stuBody");
+  $("#stuRoom").textContent = "room " + ROOM;
+  let state = null, myName = ls.get("l13name") || "", sent = {};
+  try{ sent = JSON.parse(ls.get("l13sent-"+ROOM) || "{}"); }catch(e){ sent = {}; }
+  const remember = ()=> ls.set("l13sent-"+ROOM, JSON.stringify(sent));
+  const status = (cls, text)=>{ $("#stuLed").className = "led "+cls; $("#stuStatus").textContent = text; };
+
+  function askName(){
+    body.innerHTML = `<div class="stu-card">
+      <h2 class="dsp" style="font-size:28px; margin-bottom:6px">Join the investigation</h2>
+      <p class="small">Room ${esc(ROOM)}. Введи ім'я, яке впізнає вчитель.</p>
+      <input class="stu-input mt-s" id="stuName" placeholder="Your name" maxlength="24" value="${esc(myName)}">
+      <button class="btn primary mt" id="stuJoin" style="width:100%">Join the case</button>
+      <p class="small mt-s" style="margin:0">Твій телефон — для голосування й коротких відповідей. Історія залишається на екрані вчителя.</p>
+    </div>`;
+    $("#stuJoin").onclick = ()=>{
+      const v = $("#stuName").value.trim(); if(!v){ $("#stuName").focus(); return; }
+      myName = v; ls.set("l13name", v); go();
+    };
+    $("#stuName").addEventListener("keydown", e=>{ if(e.key==="Enter") $("#stuJoin").click(); });
+  }
+  async function go(){
+    body.innerHTML = `<div class="stu-card stu-wait"><div class="big">🔌</div><p>Connecting to room ${esc(ROOM)}…</p></div>`;
+    const kind = await Net.connect({room:ROOM, role:"student", name:myName,
+      onEvent:m=>{ if(m.t==="state"){ state = m; render(); } },
+      onStatus:st=>{
+        if(st==="SUBSCRIBED") status("on","connected");
+        else if(/ERROR|TIMED_OUT|CLOSED/.test(st)) status("warn","reconnecting…");
+      }});
+    status(kind==="supabase"?"on":kind==="local"?"warn":"", kind==="supabase"?"connected":kind==="local"?"same-device room":"offline");
+    if(kind==="none"){
+      body.innerHTML = `<div class="stu-card stu-wait"><div class="big">📶</div>
+        <p><b>Could not join room ${esc(ROOM)}.</b></p>
+        <p class="small">Перевір інтернет і відкрий посилання вчителя ще раз.</p>
+        <button class="btn primary mt" id="stuRetry" style="width:100%">Try again</button></div>`;
+      $("#stuRetry").onclick = go; return;
+    }
+    Net.send({t:"hello"});
+    clearInterval(window._stuHb);
+    window._stuHb = setInterval(()=> Net.send({t:"hello"}), 20000);
+    render();
+  }
+  function results(t){
+    if(!state.showRes || !state.res) return "";
+    const tot = state.res.reduce((a,b)=>a+b,0)||1;
+    return `<div class="mt">` + t.options.map((o,i)=>{
+      const pc = Math.round((state.res[i]||0)/tot*100);
+      return `<div style="margin-bottom:9px"><div class="row" style="justify-content:space-between"><span>${esc(o)}</span><b>${pc}%</b></div>
+        <div class="bar-res"><i style="width:${pc}%"></i></div></div>`;
+    }).join("") + `</div>`;
+  }
+  function render(){
+    const t = state && state.task;
+    if(!state){
+      body.innerHTML = `<div class="stu-card stu-wait"><div class="big">👀</div><p><b>You're in.</b></p>
+        <p class="small">Чекай, поки вчитель щось відкриє.</p></div>`; return;
+    }
+    if(!t){
+      body.innerHTML = `<div class="stu-card stu-wait"><div class="big">🕵️</div>
+        <p><b>${esc(state.scene)}</b></p><p class="small">Зараз нічого тиснути — слухай, дивись і будь готовий говорити.</p></div>`;
+      return;
+    }
+    let h = `<div class="stu-card"><div class="small">${esc(state.scene)}</div>
+      <h2 style="font-size:21px; margin:6px 0 15px">${esc(t.title)}</h2>`;
+    if(t.kind==="choice"){
+      h += t.options.map((o,i)=>`<button class="stu-opt${sent[t.id]===i?" sel":""}" data-c="${i}">${esc(o)}</button>`).join("");
+      h += results(t);
+    }
+    if(t.kind==="text"){
+      h += `<textarea class="stu-input" id="stuText" rows="3" placeholder="${esc(t.hint||"")}"></textarea>
+        <button class="btn primary mt" id="stuSend" style="width:100%">Send to teacher</button>
+        <p class="small mt-s" id="stuNote" style="margin:0">${sent[t.id]!==undefined?"Sent ✓ — можеш змінити й надіслати ще раз.":""}</p>`;
+    }
+    if(t.kind==="exit"){
+      h += (t.stems||[]).map((s,i)=>`<button class="stu-opt${sent.exitStem===i?" sel":""}" data-s="${i}" style="font-size:15px; padding:12px 14px">${esc(s)}</button>`).join("");
+      h += `<textarea class="stu-input mt-s" id="stuText" rows="2" placeholder="…finish the sentence"></textarea>
+        <button class="btn primary mt" id="stuSend" style="width:100%">📨 Send my message</button>
+        <p class="small mt-s" id="stuNote" style="margin:0">${sent[t.id]!==undefined?"Sent ✓":""}</p>`;
+    }
+    h += `</div>`;
+    body.innerHTML = h;
+    $$("[data-c]").forEach(b=> b.onclick = ()=>{
+      const i = +b.dataset.c; sent[t.id] = i; remember();
+      Net.send({t:"vote", task:t.id, choice:i}); render();
+    });
+    $$("[data-s]").forEach(b=> b.onclick = ()=>{
+      sent.exitStem = +b.dataset.s; remember(); render();
+    });
+    const ta = $("#stuText");
+    if(ta && typeof sent[t.id]==="string") ta.value = sent[t.id];
+    const sb = $("#stuSend");
+    if(sb) sb.onclick = ()=>{
+      const v = ($("#stuText").value||"").trim(); if(!v) return;
+      if(t.kind==="exit"){
+        if(sent.exitStem===undefined){ $("#stuNote").textContent = "Спершу обери речення вгорі."; return; }
+        Net.send({t:"exit", stem:t.stems[sent.exitStem], text:v});
+      } else {
+        Net.send({t:"text", task:t.id, text:v});
+      }
+      sent[t.id] = v; remember();
+      $("#stuNote").textContent = "Sent ✓ — можеш змінити й надіслати ще раз.";
+    };
+  }
+  $("#handBtn").onclick = ()=>{
+    Net.send({t:"hand"});
+    $("#handBtn").textContent = "🙋 Hand raised";
+    setTimeout(()=>$("#handBtn").textContent = "🙋 Raise hand", 2500);
+  };
+  if(myName) go(); else askName();
+}
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  buildTasks();
+  if(ROLE==="student"){ studentApp(); }
+  else { wireTeacher(); }
+});
+})();
+</script>
+
+</body>
+</html>
