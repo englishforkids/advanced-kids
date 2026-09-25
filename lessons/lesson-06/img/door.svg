@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 500" preserveAspectRatio="none">
+  <rect x="0" y="0" width="300" height="500" rx="16" fill="#3E4AA0"/>
+  <rect x="16" y="16" width="268" height="484" rx="10" fill="#2E3984"/>
+  <g fill="none" stroke="#3E4AA0" stroke-width="6">
+    <rect x="44" y="210" width="94" height="120" rx="8"/><rect x="162" y="210" width="94" height="120" rx="8"/>
+    <rect x="44" y="352" width="94" height="120" rx="8"/><rect x="162" y="352" width="94" height="120" rx="8"/>
+  </g>
+  <rect x="104" y="34" width="92" height="30" rx="6" fill="#FFE3A3"/>
+  <text x="150" y="55" text-anchor="middle" font-family="Anton,Impact,sans-serif" font-size="18" fill="#1B1E33">ROOM 6</text>
+  <circle cx="252" cy="280" r="11" fill="#FFD45C"/><circle cx="252" cy="280" r="5" fill="#C99A1E"/>
+  <rect x="244" y="300" width="16" height="22" rx="4" fill="#C99A1E"/>
+</svg>

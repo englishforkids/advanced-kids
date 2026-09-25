@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232C6B"/><stop offset=".75" stop-color="#171E4D"/></linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B2340"/><stop offset="1" stop-color="#140F25"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy="0" r=".9"><stop offset="0" stop-color="#FFE3A3" stop-opacity=".35"/><stop offset="1" stop-color="#FFE3A3" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#wall)"/>
+  <g fill="none" stroke="#FFFFFF" stroke-opacity=".05" stroke-width="3">
+    <rect x="40" y="120" width="340" height="400" rx="10"/><rect x="430" y="120" width="340" height="400" rx="10"/><rect x="820" y="120" width="340" height="400" rx="10"/>
+  </g>
+  <!-- ceiling rail + spotlights -->
+  <rect x="0" y="0" width="1200" height="26" fill="#10153A"/>
+  <rect x="80" y="30" width="1040" height="8" rx="4" fill="#0D1233"/>
+  <g fill="#0B0F2B">
+    <g transform="translate(210 38) rotate(12)"><rect x="-6" y="0" width="12" height="18"/><rect x="-18" y="16" width="36" height="30" rx="8"/></g>
+    <g transform="translate(600 38)"><rect x="-6" y="0" width="12" height="18"/><rect x="-18" y="16" width="36" height="30" rx="8"/></g>
+    <g transform="translate(990 38) rotate(-12)"><rect x="-6" y="0" width="12" height="18"/><rect x="-18" y="16" width="36" height="30" rx="8"/></g>
+  </g>
+  <g fill="#FFE3A3"><circle cx="205" cy="84" r="7" opacity=".8"/><circle cx="600" cy="84" r="7" opacity=".8"/><circle cx="995" cy="84" r="7" opacity=".8"/></g>
+  <!-- string lights -->
+  <path d="M0 58 Q150 92 300 58 T600 58 T900 58 T1200 58" fill="none" stroke="#0D1233" stroke-width="2"/>
+  <g fill="#FFD45C"><circle cx="75" cy="72" r="4"/><circle cx="150" cy="79" r="4"/><circle cx="225" cy="72" r="4"/><circle cx="375" cy="72" r="4"/><circle cx="450" cy="79" r="4"/><circle cx="525" cy="72" r="4"/><circle cx="675" cy="72" r="4"/><circle cx="750" cy="79" r="4"/><circle cx="825" cy="72" r="4"/><circle cx="975" cy="72" r="4"/><circle cx="1050" cy="79" r="4"/><circle cx="1125" cy="72" r="4"/></g>
+  <g fill="#FF7AB6" opacity=".9"><circle cx="112" cy="77" r="3.5"/><circle cx="412" cy="77" r="3.5"/><circle cx="712" cy="77" r="3.5"/><circle cx="1012" cy="77" r="3.5"/></g>
+  <!-- floor -->
+  <path d="M0 560 H1200 V700 H0Z" fill="url(#floor)"/>
+  <rect x="0" y="552" width="1200" height="10" fill="#0E1233"/>
+  <g stroke="#FFFFFF" stroke-opacity=".05" stroke-width="2">
+    <path d="M0 600 H1200 M0 645 H1200"/><path d="M100 562 L60 700 M300 562 L280 700 M500 562 L495 700 M700 562 L705 700 M900 562 L920 700 M1100 562 L1140 700"/>
+  </g>
+  <ellipse cx="600" cy="600" rx="520" ry="40" fill="url(#glow)"/>
+  <!-- bench -->
+  <g transform="translate(70 520)"><rect x="0" y="36" width="190" height="16" rx="6" fill="#6B4A3A"/><rect x="0" y="30" width="190" height="10" rx="5" fill="#8A604A"/><rect x="14" y="50" width="12" height="40" fill="#3A2A26"/><rect x="164" y="50" width="12" height="40" fill="#3A2A26"/></g>
+  <!-- plant -->
+  <g transform="translate(1080 470)">
+    <path d="M0 80 Q-40 20 -8 -30" stroke="#1F8F66" stroke-width="5" fill="none"/>
+    <path d="M0 80 Q30 10 50 -20" stroke="#1F8F66" stroke-width="5" fill="none"/>
+    <path d="M-8 -30 C-60 -20 -60 30 -20 30 C-10 10 -8 -10 -8 -30Z" fill="#2FBF8A"/>
+    <path d="M50 -20 C100 -10 90 40 50 35 C45 15 45 0 50 -20Z" fill="#35D39A"/>
+    <path d="M10 10 C-30 30 -20 70 10 60 C14 40 12 25 10 10Z" fill="#23A877"/>
+    <path d="M-30 80 H40 L30 130 H-20Z" fill="#E9E2D2"/><rect x="-34" y="76" width="78" height="12" rx="4" fill="#F4EFE4"/>
+  </g>
+</svg>
