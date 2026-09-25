@@ -684,6 +684,23 @@ body.student #app{grid-template-rows:auto 1fr}
 .avph svg{display:none!important}
 .avph.fail img{display:none}
 .avph.fail svg{display:block!important}
+
+/* cast on the start screen */
+.cast{margin-top:12px}
+.castlbl{font-weight:800; font-size:.78em; color:var(--glow); margin-bottom:10px}
+.castrow{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.castc{display:flex; flex-direction:column; align-items:center; text-align:center; gap:0; padding:9px 6px 8px; border-radius:18px;
+  background:var(--glass); border:1px solid var(--edge); transition:transform .2s, border-color .2s, background .2s}
+.castc:hover{transform:translateY(-4px); border-color:var(--c); background:var(--glass2)}
+.castc b{font-size:1em; margin-top:5px}
+.castc small{font-size:.7em; color:var(--muted); font-weight:700; line-height:1.25}
+.pav2{position:relative; display:block; width:clamp(48px,4.4vw,78px); aspect-ratio:1; border-radius:50%; overflow:hidden;
+  background:var(--c); box-shadow:0 0 0 3px var(--c), 0 10px 22px -10px rgba(0,0,0,.8); animation:bob 4.5s ease-in-out infinite; animation-delay:var(--bd,0s)}
+.pav2 img{display:block; width:100%; height:100%; object-fit:cover}
+.pav2 svg{display:none; width:100%; height:100%}
+.pav2.fail img{display:none}
+.pav2.fail svg{display:block}
+@media (max-width:640px){ .castrow{gap:8px} .castc{padding:10px 4px 8px} .castc small{font-size:.62em} }
 /* reduced motion */
 body.calm *, body.calm *::before, body.calm *::after{animation:none!important; transition:none!important}
 @media (prefers-reduced-motion:reduce){
@@ -827,9 +844,10 @@ const THING_FX = {
 };
 const thingPic = (k, cls='thingpic')=>`<span class="thingwrap ${cls}"><img src="img/things-${k}.webp" alt="${PEOPLE[k].name}: ${PEOPLE[k].thing}" onerror="this.onerror=null;this.parentNode.classList.add('svg');this.src='img/things-${k}.svg'">${
   (THING_FX[k]||[]).map(([t,x,y,w,h])=>`<i class="gl ${t}" style="left:${x}%;top:${y}%;${w?`width:${w}%;height:${h}%;`:''}"></i>`).join('')}</span>`;
-const av = (k,size=64)=> k==='ava'   /* Ава — фото (img/photo-ava.webp); якщо не завантажиться — намальована */
-  ? `<span class="av avph" style="--c:${PEOPLE[k].c}; width:${size}px; height:${size}px"><img src="img/photo-ava.webp" alt="Ava" onerror="this.parentNode.classList.add('fail')">${face(k)}</span>`
-  : `<span class="av" style="--c:${PEOPLE[k].c}; width:${size}px; height:${size}px">${face(k)}</span>`;
+/* кругле фото героя (img/avatar-*.webp, у Ави — photo-ava.webp); якщо не завантажиться — намальований */
+const AVATAR = {mia:'avatar-mia.webp', leo:'avatar-leo.webp', sam:'avatar-sam.webp', ava:'photo-ava.webp'};
+const avImg = k=>`<img src="img/${AVATAR[k]}" alt="${PEOPLE[k].name}" onerror="this.parentNode.classList.add('fail')">${face(k)}`;
+const av = (k,size=64)=>`<span class="av avph" style="--c:${PEOPLE[k].c}; width:${size}px; height:${size}px">${avImg(k)}</span>`;
 
 /* ═══════════════ 2 · TASKS (correct answer = index in o, null = poll) ═══════════════ */
 const QS = {
@@ -1064,9 +1082,9 @@ function qCard(id, n, cls=''){ return `<div class="tf"><div class="qhead"><div c
 function posterHTML(k, {mode='people', rot=0, data=null}={}){
   const p=PEOPLE[k];
   if(mode==='blank') return `<div class="poster" style="--rot:${rot}deg"><div class="blank">?</div><div class="pn">&nbsp;</div><span class="scrawl">${p.label}</span></div>`;
-  if(mode==='people') return `<div class="poster" style="--rot:${rot}deg"><div class="pav" style="--c:${p.c}">${face(k)}</div><div class="pn">${p.name}</div><span class="scrawl ${labelOff(k)?'off':''}">${p.label}</span></div>`;
+  if(mode==='people') return `<div class="poster" style="--rot:${rot}deg"><div class="pav avph" style="--c:${p.c}">${avImg(k)}</div><div class="pn">${p.name}</div><span class="scrawl ${labelOff(k)?'off':''}">${p.label}</span></div>`;
   const d=data||posterFor(k), kk=PEOPLE[d.ch]?d.ch:'mia';
-  return `<div class="poster" style="--rot:${rot}deg"><div class="pav" style="--c:${PEOPLE[kk].c}">${face(kk)}</div>
+  return `<div class="poster" style="--rot:${rot}deg"><div class="pav avph" style="--c:${PEOPLE[kk].c}">${avImg(kk)}</div>
     <div class="pn">${PEOPLE[kk].name}${d.old?` · <s class="hand" style="color:#C23A48">${esc(d.old.replace(/[“”"]/g,''))}</s>`:''}</div>
     <div class="ptitle">${esc(d.title||'Untitled')}</div>
     ${d.show?`<div class="pline">Wants to show: <b>${esc(d.show)}</b></div>`:''}
@@ -1106,6 +1124,9 @@ const quote = (k, bold)=> bold ? QUOTES[k] : QUOTES[k].replace(/<\/?b>/g,'');
 const roomsPic = cls=>`<img class="${cls} roomsimg" src="img/rooms.webp" alt="Three breakout rooms with students talking, writing and presenting" onerror="this.onerror=null;this.src='img/rooms.svg'">`;
 /* ═══════════════ 6 · SCENES (teacher screen) ═══════════════ */
 const R = {};
+const CAST = [['mia','builds robots'],['leo','has his own style'],['sam','tries to fit in'],['ava','exhibition team']];
+/* фото-аватар героя: img/photo-*.webp, якщо немає — намальований */
+const photoAv = k=>`<span class="pav2"><img src="img/${AVATAR[k]}" alt="${PEOPLE[k].name}" onerror="this.parentNode.classList.add('fail')">${face(k)}</span>`;
 R.cover = ()=>`<div class="cover"><div>
     <div class="kick">Advanced Kids · Lesson 6 · Revision of Lessons 4–5</div>
     <h1 class="title">The <span class="lb">Unlabelled</span> Room</h1>
@@ -1118,7 +1139,11 @@ R.cover = ()=>`<div class="cover"><div>
     </div>
     <div class="meta"><span>7 scenes</span><span>60 minutes</span><span>breakout rooms</span></div>
     <img src="../../assets/watermark.png" alt="" onerror="this.remove()" style="height:22px;width:auto;opacity:.35;margin-top:26px">
-  </div><div class="art">${gallery({mode:'blank', lit:.3})}</div></div>`;
+  </div><div class="art">${gallery({mode:'blank', lit:.3})}
+    <div class="cast"><div class="castlbl">Meet the characters</div>
+      <div class="castrow">${CAST.map(([k,role],i)=>`<div class="castc" style="--c:${PEOPLE[k].c}; --bd:${-i*1.1}s">
+        <span class="cph">${photoAv(k)}</span><b>${PEOPLE[k].name}</b><small>${role}</small></div>`).join('')}</div></div>
+  </div></div>`;
 
 R.arrival = st=>`<div class="split top"><div>
     <div class="scn"><span class="n">Scene 1</span><span>Arrival</span></div>${gallery({mode:'blank', lit:.35})}
@@ -1351,7 +1376,7 @@ SR.rooms = ()=>{ const l=STU.bt?btLeft(STU.bt):null;
   ${l!=null?`<div class="timer ${l===0?'up':''}"><div class="ring" id="stuRing" style="--p:${Math.min(1,l/300)}"><div class="tv" id="stuTv">${fmt(l)}</div></div><div class="small muted">time left</div></div>`:''}${stuPosterForm()}`; };
 SR.present = ()=>`<div class="h2">Present your poster</div><div class="frame">We chose ___. Their old label was ___. Our new poster is called ___. We think ___.</div>${stuPosterForm()}`;
 SR.exhibit = ()=>`<div class="h2">The posters are finally ready.</div><p class="lead">This time, the students chose their own stories. Look at the main screen!</p>
-  <div class="pwall card" style="grid-template-columns:1fr 1fr">${['mia','leo','sam'].map(k=>`<div class="poster" style="padding:14px 8px"><div class="pav" style="--c:${PEOPLE[k].c}">${face(k)}</div><div class="ptitle" style="font-size:18px">${PEOPLE[k].name}</div></div>`).join('')}</div>`;
+  <div class="pwall card" style="grid-template-columns:1fr 1fr">${['mia','leo','sam'].map(k=>`<div class="poster" style="padding:14px 8px"><div class="pav avph" style="--c:${PEOPLE[k].c}">${avImg(k)}</div><div class="ptitle" style="font-size:18px">${PEOPLE[k].name}</div></div>`).join('')}</div>`;
 SR.exit = ()=>`<div class="q">${esc(QS.exit.p)}</div>${qOpts('exit')}${STU.ans.exit!=null?'<p class="small muted card">Thanks! You can change your choice while the task is open.</p>':''}`;
 SR.end = ()=>`<div style="position:relative">${gallery({mode:'final', lit:1, stamp:true})}</div><div class="h2 card">Lesson complete!</div><p class="lead">No labels on the wall. Just stories. Thanks for taking part, ${esc(STU.name)}.</p>`;
 </script>
@@ -1416,7 +1441,7 @@ function sceneCard(sc){
 }
 function postRender(){
   const two = f=>requestAnimationFrame(()=>requestAnimationFrame(f));
-  $$('.opts,.spk,.cards,.notes3,.mem,.tfgrid,.roles,.fields,.pwall,.minis,.wallrow,.tagcloud,.wlist,.strip').forEach(c=>{ c.setAttribute('data-st',''); [...c.children].forEach((e,i)=>e.style.setProperty('--i',i)); });
+  $$('.opts,.spk,.cards,.notes3,.mem,.tfgrid,.roles,.fields,.pwall,.minis,.wallrow,.tagcloud,.wlist,.strip,.castrow').forEach(c=>{ c.setAttribute('data-st',''); [...c.children].forEach((e,i)=>e.style.setProperty('--i',i)); });
   const fresh=[...FRESH];
   two(()=>{
     $$('[data-drop]').forEach(e=>{ e.classList.add('off'); const m=e.closest('.mini'); if(m) m.classList.add('bump'); });
