@@ -54,6 +54,7 @@ const LESSONS = [
     blurb   : 'Шкільна виставка «How Others See Me»: хтось уже написав ярлики на постерах Мії, Лео й Сема. Учні повторюють лексику уроку 4 та інверсію, слухають голосове від Ави й у breakout rooms повертають героям їхні постери.',
     minutes : '30–35 / 60 min',
     cover   : 'img/cover.webp',
+    guide   : 'Lesson-06-The-Unlabelled-Room-Teachers-Guide.pdf',
     tags    : ['Live room', 'Revision', 'Story episode']
   },
   {
@@ -78,18 +79,31 @@ const LESSONS = [
     minutes : '30–40 / 60 min',
     cover   : 'img/cover.webp',
     tags    : ['Live room', 'Story quest', 'Vocabulary']
+  },
+  {
+    n       : 15,
+    dir     : 'lessons/lesson-15/',
+    home    : 'lesson-15.html',
+    title   : 'If Only I Had Known…',
+    grammar : 'Mixed Conditionals',
+    blurb   : 'Мія знаходить свій старий допис — і часова лінія ламається. Учні повторюють 10 виразів уроку 14, слухають історію Мії та Лео, самі відкривають змішані умовні речення й у breakout rooms лагодять чужі таймлайни.',
+    minutes : '33–37 / 60 min',
+    cover   : 'img/cover.webp',
+    tags    : ['Live room', 'Story quest', 'Grammar']
   }
 
-  /* Наступний урок — папка lessons/lesson-06/ і скопійований блок:
+  /* Наступний урок — папка lessons/lesson-16/ і скопійований блок.
+     Кома перед { відділяє його від попереднього уроку:
   ,{
-    n       : 6,
-    dir     : 'lessons/lesson-06/',
-    home    : 'lesson-06.html',
+    n       : 16,
+    dir     : 'lessons/lesson-16/',
+    home    : 'lesson-16.html',
     title   : 'Назва історії',
     grammar : 'Граматична тема',
     blurb   : 'Один-два речення про епізод.',
-    minutes : '45 min',
-    cover   : 'img/cover.jpg',
+    minutes : '40 / 60 min',
+    cover   : 'img/cover.webp',
+    guide   : 'docs/teacher-guide.pdf',
     tags    : ['Live room']
   }
   */
@@ -324,7 +338,7 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
     <div class="lessons" id="lessonList"></div>
     <div class="ghost" style="margin-top:16px">
       <h3>Наступний епізод</h3>
-      <p>Щоб додати урок: покладіть його папку в <code>lessons/</code> (наприклад <code>lessons/lesson-06/</code> з файлом <code>lesson-06.html</code> та своїми <code>img/</code>) і допишіть один блок у список <code>LESSONS</code> на початку цього файлу.</p>
+      <p>Щоб додати урок: покладіть його папку в <code>lessons/</code> (наприклад <code>lessons/lesson-16/</code> з файлом <code>lesson-16.html</code> та своїми <code>img/</code>) і допишіть один блок у список <code>LESSONS</code> на початку цього файлу.</p>
     </div>
   </section>
 
