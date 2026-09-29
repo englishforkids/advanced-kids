@@ -19,7 +19,9 @@ lessons/lesson-16/
 ├── img/speak.webp      сцена 5: Speak up
 ├── img/rooms.webp      сцена 6: breakout rooms
 ├── img/ending.webp     сцена 7: Case closed
-└── img/cover.webp   обкладинка картки на платформі
+├── img/cover.webp   обкладинка картки на платформі
+├── img/chat/*.webp   10 однокласників у чаті сцени 2 (max, ola, dan, kate, sam, ivy, tom, liz, ben, zoe)
+└── docs/Lesson-16-teacher-guide.pdf   повний сценарій уроку для вчителя (34 с.)
 ```
 
 ## Картинки та анімації

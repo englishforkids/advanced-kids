@@ -210,6 +210,10 @@ mark.v{background:linear-gradient(transparent 58%,rgba(255,79,163,.45) 58%); col
 .fire-chat .bar{display:flex; gap:10px; align-items:center; padding:12px 16px; background:linear-gradient(90deg,rgba(255,79,163,.18),rgba(255,138,61,.12)); border-bottom:1px solid var(--edge)}
 .fire-chat .bar b{font-size:17px}
 .fire-chat .chat{padding:22px}
+.fire-chat .msg{align-items:center; max-width:100%}
+.fire-chat .msg .av{box-shadow:0 0 0 3px var(--ink), 0 0 0 5px var(--c), 0 10px 24px -8px #000}
+.mate-b{font-size:clamp(22px,2.3vw,28px); padding:14px 20px; border-radius:22px}
+.mate-b .who{font-size:17px}
 .explain{margin-top:16px; padding:18px 20px; border-radius:18px; background:rgba(67,229,160,.1); border:1px solid rgba(67,229,160,.5)}
 .explain .ph{font-family:"Anton",Impact,sans-serif; text-transform:uppercase; font-size:clamp(28px,3vw,40px); color:var(--ok); letter-spacing:.02em}
 
@@ -500,6 +504,8 @@ body.student #app, body.student #wm{display:none}
 }
 @media (max-width:720px){
   body{font-size:17px}
+  .fire-chat .msg .av{--s:64px!important}
+  .mate-b{font-size:19px}
   .shead .thumb{width:64px; height:64px; flex-basis:64px; border-radius:18px}
   .shead .thumb span{font-size:20px}
   .cast{grid-template-columns:1fr}
@@ -652,6 +658,9 @@ function av(k,size=52){
   return `<i class="av emo" style="--s:${size}px;--c:#3A4390" aria-hidden="true">${k}</i>`;   // k = emoji
 }
 
+/* classmates in the Scene 2 chat: photo from img/chat/<id>.webp, first letter if the photo is missing */
+function mate(w,size=46){ return `<i class="av" style="--s:${size}px;--c:${w[2]}" role="img" aria-label="${esc(w[1])}">${esc(w[1][0])}<img src="img/chat/${w[0]}.webp" alt="" onerror="this.remove()"></i>`; }
+
 /* ---------- 4 · lesson content (edit texts here) ---------- */
 const SCENES = [
   {n:1, e:'📩', t:'A message from Mia',  min:3, temp:95, img:'img/mia-alert.webp'},
@@ -676,16 +685,16 @@ const WARMUP = [
 
 /* who = [emoji, name] of the classmate who writes the message */
 const VOCAB = [
-  {n:1,  core:true,  who:['🦊','Max'],  sit:'Please remove that embarrassing post.',                              ph:'take it down',              opts:['take it down','back off','check out'],                              en:'Remove it from the internet.',            ua:'Видалити публікацію'},
-  {n:2,  core:true,  who:['🐼','Ola'],  sit:'It was one small mistake, but people act like it’s a disaster!',   ph:'blow it out of proportion', opts:['get over it','blow it out of proportion','go for it'],              en:'Make a problem seem much bigger.',        ua:'Роздувати проблему'},
-  {n:3,  core:false, who:['🐸','Dan'],  sit:'Leo loves trying new apps.',                                        ph:'be into something',         opts:['be into something','look up to','back off'],                        en:'Really like or be interested in it.',     ua:'Захоплюватися чимось'},
-  {n:4,  core:false, who:['🐱','Kate'], sit:'Let’s look at the original video.',                                 ph:'check out',                 opts:['take it down','check out','live up to the hype'],                   en:'Look at it to learn more.',               ua:'Переглянути, перевірити'},
-  {n:5,  core:true,  who:['🐙','Sam'],  sit:'Everyone said the app was fantastic, but it’s just okay.',          ph:'live up to the hype',       opts:['blow it out of proportion','go for it','live up to the hype'],      en:'Be as good as people said.',              ua:'Виправдати ажіотаж'},
-  {n:6,  core:false, who:['🦄','Ivy'],  sit:'The comments upset Mia, but she feels better now.',                 ph:'get over it',               opts:['get over it','be all about something','check out'],                en:'Feel better after something difficult.',  ua:'Оговтатися'},
-  {n:7,  core:false, who:['🐯','Tom'],  sit:'You have a good idea. Try it!',                                     ph:'go for it',                 opts:['back off','go for it','be into something'],                        en:'Do it; try your idea.',                   ua:'Спробуй, дій'},
-  {n:8,  core:false, who:['🐧','Liz'],  sit:'This channel only talks about getting likes.',                      ph:'be all about something',    opts:['be all about something','look up to','take it down'],             en:'Mainly focus on something.',              ua:'Бути насамперед пов’язаним із чимось'},
-  {n:9,  core:true,  who:['🦉','Ben'],  sit:'Mia admires her older sister.',                                     ph:'look up to',                opts:['live up to the hype','look up to','get over it'],                  en:'Admire and respect someone.',             ua:'Брати з когось приклад'},
-  {n:10, core:true,  who:['🐺','Zoe'],  sit:'Stop sending me angry messages.',                                   ph:'back off',                  opts:['go for it','check out','back off'],                                en:'Stop pressuring or bothering someone.',   ua:'Припинити тиснути'}
+  {n:1,  core:true,  who:['max','Max','#FFD447'],  sit:'Please remove that embarrassing post.',                              ph:'take it down',              opts:['take it down','back off','check out'],                              en:'Remove it from the internet.',            ua:'Видалити публікацію'},
+  {n:2,  core:true,  who:['ola','Ola','#FF4FA3'],  sit:'It was one small mistake, but people act like it’s a disaster!',   ph:'blow it out of proportion', opts:['get over it','blow it out of proportion','go for it'],              en:'Make a problem seem much bigger.',        ua:'Роздувати проблему'},
+  {n:3,  core:false, who:['dan','Dan','#22F0D5'],  sit:'Leo loves trying new apps.',                                        ph:'be into something',         opts:['be into something','look up to','back off'],                        en:'Really like or be interested in it.',     ua:'Захоплюватися чимось'},
+  {n:4,  core:false, who:['kate','Kate','#B77CFF'], sit:'Let’s look at the original video.',                                 ph:'check out',                 opts:['take it down','check out','live up to the hype'],                   en:'Look at it to learn more.',               ua:'Переглянути, перевірити'},
+  {n:5,  core:true,  who:['sam','Sam','#FF9F40'],  sit:'Everyone said the app was fantastic, but it’s just okay.',          ph:'live up to the hype',       opts:['blow it out of proportion','go for it','live up to the hype'],      en:'Be as good as people said.',              ua:'Виправдати ажіотаж'},
+  {n:6,  core:false, who:['ivy','Ivy','#43E5A0'],  sit:'The comments upset Mia, but she feels better now.',                 ph:'get over it',               opts:['get over it','be all about something','check out'],                en:'Feel better after something difficult.',  ua:'Оговтатися'},
+  {n:7,  core:false, who:['tom','Tom','#FF4B6E'],  sit:'You have a good idea. Try it!',                                     ph:'go for it',                 opts:['back off','go for it','be into something'],                        en:'Do it; try your idea.',                   ua:'Спробуй, дій'},
+  {n:8,  core:false, who:['liz','Liz','#C77DFF'],  sit:'This channel only talks about getting likes.',                      ph:'be all about something',    opts:['be all about something','look up to','take it down'],             en:'Mainly focus on something.',              ua:'Бути насамперед пов’язаним із чимось'},
+  {n:9,  core:true,  who:['ben','Ben','#4D9BFF'],  sit:'Mia admires her older sister.',                                     ph:'look up to',                opts:['live up to the hype','look up to','get over it'],                  en:'Admire and respect someone.',             ua:'Брати з когось приклад'},
+  {n:10, core:true,  who:['zoe','Zoe','#FFD447'],  sit:'Stop sending me angry messages.',                                   ph:'back off',                  opts:['go for it','check out','back off'],                                en:'Stop pressuring or bothering someone.',   ua:'Припинити тиснути'}
 ];
 
 /* Evidence text — EXACT text of the lesson. {v|…} highlights a phrase, {g|…|key} marks a glossary word.
@@ -917,8 +926,8 @@ STEPS.push({
       <span class="grow"></span><div class="cdots">${list.map((x,i)=>`<button data-card="${i}" class="${i===p?'cur':''} ${(d.shown||{})[x.n]?'done':''}" aria-label="Card ${i+1}">${x.n}</button>`).join('')}</div></div>
       <div class="two wide-l">
         <div class="fire-chat"><div class="bar">🔥 <b>School chat 8-B</b><span class="small grow" style="text-align:right">card ${p+1} of ${list.length}</span></div>
-          <div class="chat">${(FX.has('part')||FX.has('enter')||FX.has('card'))&&!REDUCED?`<div class="msg tgone">${av(v.who[0],46)}<div class="bub typing" aria-hidden="true"><i></i><i></i><i></i></div></div>`:''}
-            <div class="msg ${(FX.has('part')||FX.has('enter')||FX.has('card'))?'late':''}">${av(v.who[0],46)}<div class="bub big-b"><span class="who" style="color:var(--yellow)">${esc(v.who[1])}</span>“${esc(v.sit)}”</div></div></div>
+          <div class="chat">${(FX.has('part')||FX.has('enter')||FX.has('card'))&&!REDUCED?`<div class="msg tgone">${mate(v.who,64)}<div class="bub typing" aria-hidden="true"><i></i><i></i><i></i></div></div>`:''}
+            <div class="msg ${(FX.has('part')||FX.has('enter')||FX.has('card'))?'late':''}">${mate(v.who,96)}<div class="bub big-b mate-b"><span class="who" style="color:${v.who[2]}">${esc(v.who[1])}</span>“${esc(v.sit)}”</div></div></div>
           <img class="illo" src="img/chat-fire.webp" alt="" loading="lazy" onerror="this.remove()" style="border:0;border-radius:0;box-shadow:none;max-height:230px;object-fit:cover"></div>
         <div><div class="mid">Which phrase fits?</div>
           <div class="poll">${v.opts.map((o,i)=>`<button class="popt ${shown&&i===right?'right '+fx('reveal'):''} ${shown&&i!==right?'dim':''} ${shown&&pick===i&&i!==right?'wrongpick '+fx('reveal'):''} ${!shown&&pick===i?'pick':''}" data-pick="${i}">
@@ -1636,7 +1645,8 @@ else {
     else if(k==='Escape') toggleTeacher(false);
   });
   if(S.i>=STEPS.length || !visible(S.i)) S.i=0;
-  SCENES.forEach(sc=>{ const im=new Image(); im.src=sc.img; }); ['img/hype-real.webp','img/glowup.webp'].forEach(src=>{ const im=new Image(); im.src=src; });
+  SCENES.forEach(sc=>{ const im=new Image(); im.src=sc.img; }); VOCAB.forEach(v=>{ const im=new Image(); im.src='img/chat/'+v.who[0]+'.webp'; });
+  ['img/hype-real.webp','img/glowup.webp'].forEach(src=>{ const im=new Image(); im.src=src; });
   draw(true);
   if(S.live) startLive(true);   // teacher refreshed the page → reopen the same room; phones stay connected
 }
