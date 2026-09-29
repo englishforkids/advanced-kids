@@ -927,8 +927,7 @@ STEPS.push({
       <div class="two wide-l">
         <div class="fire-chat"><div class="bar">🔥 <b>School chat 8-B</b><span class="small grow" style="text-align:right">card ${p+1} of ${list.length}</span></div>
           <div class="chat">${(FX.has('part')||FX.has('enter')||FX.has('card'))&&!REDUCED?`<div class="msg tgone">${mate(v.who,64)}<div class="bub typing" aria-hidden="true"><i></i><i></i><i></i></div></div>`:''}
-            <div class="msg ${(FX.has('part')||FX.has('enter')||FX.has('card'))?'late':''}">${mate(v.who,96)}<div class="bub big-b mate-b"><span class="who" style="color:${v.who[2]}">${esc(v.who[1])}</span>“${esc(v.sit)}”</div></div></div>
-          <img class="illo" src="img/chat-fire.webp" alt="" loading="lazy" onerror="this.remove()" style="border:0;border-radius:0;box-shadow:none;max-height:230px;object-fit:cover"></div>
+            <div class="msg ${(FX.has('part')||FX.has('enter')||FX.has('card'))?'late':''}">${mate(v.who,96)}<div class="bub big-b mate-b"><span class="who" style="color:${v.who[2]}">${esc(v.who[1])}</span>“${esc(v.sit)}”</div></div></div></div>
         <div><div class="mid">Which phrase fits?</div>
           <div class="poll">${v.opts.map((o,i)=>`<button class="popt ${shown&&i===right?'right '+fx('reveal'):''} ${shown&&i!==right?'dim':''} ${shown&&pick===i&&i!==right?'wrongpick '+fx('reveal'):''} ${!shown&&pick===i?'pick':''}" data-pick="${i}">
             <span class="L">${LET[i]}</span><span>${esc(o)}</span><span class="n">${n[i]||''}</span></button>`).join('')}</div>
