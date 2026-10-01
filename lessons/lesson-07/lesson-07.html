@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 7 — Voices in My Head · The Headspace Chat</title>
+<meta name="description" content="Advanced Kids · Lesson 7. The Headspace Chat: Who Gets the Mic? Mia doubts her comic before the school creativity show. Students learn 12 phrases about self-talk and help her choose a kinder, more believable thought.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   НАЛАШТУВАННЯ УРОКУ — єдине місце, яке треба редагувати
+   ───────────────────────────────────────────────────────────────
+   SUPABASE_URL / SUPABASE_KEY — той самий проєкт, що й в уроках 5, 13–16.
+     Потрібен лише Realtime (broadcast + presence), таблиці НЕ потрібні.
+     Порожні значення → кнопка Live просто повідомляє, що кімната недоступна;
+     звичайний урок через демонстрацію екрана працює повністю.
+   SAVE_ANSWERS — true пише голоси й відповіді в таблицю lesson_answers
+     (схема lessons/lesson-05/sql/schema.sql; див. README цього уроку).
+   Тексти уроку — розділ «3 · lesson content» нижче.
+   ═══════════════════════════════════════════════════════════════ */
+window.LESSON_CONFIG = {
+  SUPABASE_URL : 'https://yhekszqxheljbxoucalt.supabase.co',
+  SUPABASE_KEY : 'sb_publishable_knHTxZLX-Ucg0WtnfP0RTw_ytJ2Dyoa',
+  SAVE_ANSWERS : false
+};
+</script>
+<style>
+:root{
+  --ink:#08081F; --deep:#100F33; --navy:#18174A;
+  --violet:#8B5CF6; --lilac:#C9B6FF; --teal:#2DD4BF; --teal2:#14B8A6; --sun:#FFC857; --sun2:#FFAE3D;
+  --critic:#FF7A90; --hype:#FFC857; --coach:#2DD4BF; --mia:#C9A7FF; --leo:#6EB4FF;
+  --ok:#3DDC97; --bad:#FF7A90;
+  --text:#F1F0FF; --muted:#B0AEDB; --faint:#77759F;
+  --glass:rgba(255,255,255,.055); --glass2:rgba(255,255,255,.1);
+  --edge:rgba(255,255,255,.13); --edge2:rgba(255,255,255,.26);
+  --r-s:12px; --r:18px; --r-l:28px;
+  --shadow:0 24px 60px -26px rgba(2,2,16,.95);
+  --mono:"Space Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{font-size:clamp(17px, .7vw + 12px, 26px)}
+html,body{height:100%}
+body{margin:0; background:var(--ink); color:var(--text); font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:1rem; line-height:1.5; -webkit-font-smoothing:antialiased; overflow:hidden}
+body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+   radial-gradient(52vw 40vw at 0% -8%, rgba(139,92,246,.30), transparent 62%),
+   radial-gradient(48vw 38vw at 104% 2%, rgba(45,212,191,.16), transparent 62%),
+   radial-gradient(60vw 40vw at 60% 118%, rgba(255,200,87,.11), transparent 60%),
+   linear-gradient(180deg,#0E0C2C,#08081F 70%)}
+body::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.45;
+  background-image:radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.4px); background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 15%,transparent 75%); mask-image:radial-gradient(ellipse at 50% 40%,#000 15%,transparent 75%)}
+h1,h2,h3,h4{margin:0; line-height:1.15; font-weight:800; letter-spacing:-.01em}
+p{margin:0 0 .6em}
+button{font:inherit; color:inherit; background:none; border:0; cursor:pointer}
+a{color:inherit}
+input,textarea,select{font:inherit; color:inherit}
+:focus-visible{outline:3px solid var(--sun); outline-offset:3px; border-radius:10px}
+.dsp{font-family:"Anton",Impact,"Arial Narrow",sans-serif; font-weight:400; text-transform:uppercase; letter-spacing:.015em; line-height:1.02}
+.mono{font-family:var(--mono)}
+.hidden{display:none!important}
+.small{font-size:.72rem; color:var(--muted)}
+.muted{color:var(--muted)}
+.row{display:flex; gap:.6rem; flex-wrap:wrap; align-items:center}
+.grow{flex:1}
+.mt{margin-top:.8rem} .mt2{margin-top:1.3rem}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; align-items:start}
+.two.l{grid-template-columns:1.1fr .9fr}
+.two>*,.three>*{min-width:0}
+.three{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+.kick{font-family:var(--mono); font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:var(--teal)}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ─── shell ─── */
+#app{position:relative; z-index:1; height:100%; display:grid; grid-template-rows:auto 1fr auto; grid-template-columns:minmax(0,1fr)}
+#top{display:flex; align-items:center; gap:.6rem; padding:.45rem .8rem; border-bottom:1px solid var(--edge);
+  background:linear-gradient(180deg,rgba(8,8,31,.95),rgba(8,8,31,.7)); backdrop-filter:blur(10px); position:relative; z-index:5}
+.tb{height:2.2rem; min-width:2.2rem; padding:0 .6rem; border-radius:.6rem; background:var(--glass); border:1px solid var(--edge);
+  display:inline-flex; align-items:center; justify-content:center; gap:.35rem; font-weight:800; font-size:.68rem; text-decoration:none; transition:background .15s, border-color .15s; white-space:nowrap}
+.tb:hover{background:var(--glass2); border-color:var(--edge2)}
+.tb.on{border-color:var(--teal); box-shadow:0 0 0 1px var(--teal) inset}
+.tb.uatb.on{border-color:var(--sun); box-shadow:0 0 0 1px var(--sun) inset; color:var(--sun)}
+.tb.done{border-color:var(--sun); color:var(--sun)}
+.brand{display:flex; flex-direction:column; line-height:1.15; min-width:0}
+.brand b{font-family:"Anton",Impact,sans-serif; font-weight:400; letter-spacing:.05em; font-size:.88rem}
+.brand span{font-size:.62rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.tools{display:flex; gap:.35rem; margin-left:auto; flex-wrap:nowrap}
+#stage{overflow:auto; position:relative; scroll-behavior:smooth}
+.wrap{max-width:1240px; margin:0 auto; padding:1.1rem 1.2rem 2.4rem}
+#nav{display:flex; align-items:center; gap:.6rem; padding:.45rem .8rem; border-top:1px solid var(--edge); background:rgba(8,8,31,.92); backdrop-filter:blur(10px); position:relative; z-index:5}
+#navMid{flex:1; display:flex; flex-direction:column; align-items:center; gap:.3rem; min-width:0}
+#navInfo{font-family:var(--mono); font-size:.62rem; letter-spacing:.05em; color:var(--muted); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%}
+#navInfo b{color:var(--text)}
+#navInfo .o{color:var(--sun)}
+#dots{display:flex; gap:.3rem}
+#dots button{width:1.35rem; height:.42rem; border-radius:99px; background:rgba(255,255,255,.16); transition:width .2s, background .2s; padding:0}
+#dots button.done{background:var(--teal2)}
+#dots button.cur{background:var(--sun); width:2rem}
+.navr{display:flex; gap:.45rem; align-items:center}
+#wm{position:fixed; left:.8rem; bottom:3.6rem; z-index:2; opacity:.32; pointer-events:none}
+#wm img{height:1.5rem; width:auto; display:block}
+
+/* ─── buttons ─── */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:.4rem; padding:.5rem 1rem; border-radius:.7rem; font-weight:800; font-size:.8rem;
+  background:var(--glass2); border:1.5px solid var(--edge2); transition:transform .12s, background .2s, border-color .2s; text-decoration:none; user-select:none; min-height:2.3rem; line-height:1.2}
+.btn:hover{background:rgba(255,255,255,.16)}
+.btn:active{transform:scale(.97)}
+.btn[disabled]{opacity:.35; pointer-events:none}
+.btn.primary{background:linear-gradient(135deg,var(--violet),#6D3FE0); border-color:transparent; box-shadow:0 10px 30px -12px rgba(139,92,246,.9)}
+.btn.teal{background:linear-gradient(135deg,var(--teal),var(--teal2)); color:#03201C; border-color:transparent}
+.btn.sun{background:var(--sun); color:#231700; border-color:transparent}
+.btn.ghost{background:transparent}
+.btn.danger{border-color:var(--bad); color:#FFD3DA}
+.btn.danger.solid{background:#E5486A; color:#fff; border-color:transparent}
+.btn.sm{padding:.3rem .7rem; font-size:.66rem; min-height:1.85rem; border-radius:.55rem}
+.btn.on{border-color:var(--sun); color:var(--sun)}
+.k{font-family:var(--mono); font-size:.5rem; opacity:.6; border:1px solid currentColor; border-radius:4px; padding:0 .2rem}
+
+/* ─── cards & tags ─── */
+.card{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035)); border:1px solid var(--edge); border-radius:var(--r-l); padding:1.1rem 1.2rem; box-shadow:var(--shadow); position:relative}
+.card.teal{border-color:rgba(45,212,191,.5)}
+.card.sun{border-color:rgba(255,200,87,.5)}
+.card.violet{border-color:rgba(139,92,246,.6)}
+.tag{display:inline-flex; align-items:center; gap:.25rem; font-family:var(--mono); font-size:.52rem; letter-spacing:.1em; text-transform:uppercase; padding:.15rem .5rem; border-radius:99px; background:rgba(255,255,255,.08); border:1px solid var(--edge); white-space:nowrap}
+.tag.opt{background:rgba(255,200,87,.14); border-color:rgba(255,200,87,.55); color:var(--sun)}
+.tag.teal{background:rgba(45,212,191,.12); border-color:rgba(45,212,191,.5); color:#B8FFF3}
+.tag.vio{background:rgba(139,92,246,.18); border-color:rgba(139,92,246,.6); color:var(--lilac)}
+
+/* scene head */
+.shead{display:flex; align-items:flex-end; gap:1rem; margin-bottom:1rem; flex-wrap:wrap}
+.sico{width:2.9rem; height:2.9rem; border-radius:.9rem; display:grid; place-items:center; font-size:1.5rem; flex:0 0 auto;
+  background:linear-gradient(135deg,rgba(139,92,246,.55),rgba(45,212,191,.35)); border:1px solid var(--edge2); box-shadow:0 10px 30px -12px rgba(139,92,246,.8)}
+.shead h1{font-size:2.05rem}
+.shead .meta{display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.35rem}
+.lead{font-size:1.06rem; font-weight:700}
+.q{font-size:1.25rem; font-weight:800; line-height:1.3}
+.q.xl{font-size:1.55rem}
+
+/* ─── chat ─── */
+.phone{border-radius:2rem; padding:.7rem; background:linear-gradient(160deg,#25205F,#120F38); border:1px solid var(--edge2); box-shadow:0 40px 80px -40px rgba(0,0,0,.9), 0 0 0 6px rgba(255,255,255,.03)}
+.phone-in{border-radius:1.5rem; background:#0D0B2A; overflow:hidden}
+.chat-h{display:flex; align-items:center; gap:.6rem; padding:.6rem .8rem; background:rgba(255,255,255,.05); border-bottom:1px solid var(--edge)}
+.chat-h b{display:block; font-size:.85rem}
+.chat-h small{font-size:.58rem; color:var(--ok); font-family:var(--mono)}
+.chat-b{padding:.8rem; display:flex; flex-direction:column; gap:.55rem}
+.msg{display:flex; gap:.55rem; align-items:flex-end; max-width:96%}
+.msg .bub{padding:.6rem .85rem; border-radius:1.1rem 1.1rem 1.1rem .3rem; background:rgba(201,167,255,.16); border:1px solid rgba(201,167,255,.35); font-size:.92rem; line-height:1.4}
+.msg.me{align-self:flex-end; flex-direction:row-reverse}
+.msg.me .bub{border-radius:1.1rem 1.1rem .3rem 1.1rem; background:rgba(45,212,191,.16); border-color:rgba(45,212,191,.45)}
+.msg .who{font-family:var(--mono); font-size:.55rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:.15rem}
+.typing{display:inline-flex; gap:4px; padding:.55rem .8rem; border-radius:1rem; background:rgba(255,255,255,.07)}
+.typing i{width:7px; height:7px; border-radius:50%; background:var(--muted); animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s} .typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+.attach{border-radius:1rem; overflow:hidden; border:1px solid var(--edge2); background:#fff}
+.attach svg{display:block; width:100%; height:auto}
+.attach-cap{font-family:var(--mono); font-size:.55rem; color:var(--muted); padding:.25rem .1rem 0}
+
+/* avatars */
+.av{border-radius:50%; object-fit:cover; flex:0 0 auto; background:var(--navy); border:2px solid rgba(255,255,255,.25); display:inline-grid; place-items:center; font-weight:800; overflow:hidden}
+.av.ring-mia{border-color:var(--mia)} .av.ring-leo{border-color:var(--leo)}
+.vav{border-radius:50%; flex:0 0 auto; display:inline-grid; place-items:center; border:2px solid rgba(255,255,255,.3)}
+.vav svg{width:62%; height:62%}
+.vav.critic{background:radial-gradient(circle at 30% 25%,#FFB0BE,#E5486A)}
+.vav.hype{background:radial-gradient(circle at 30% 25%,#FFE6A6,#F59E0B)}
+.vav.coach{background:radial-gradient(circle at 30% 25%,#9FF3E6,#0F9C8C)}
+
+/* ─── UA & reveal ─── */
+.ua{display:none; margin-top:.45rem; padding:.45rem .7rem; border-radius:.7rem; background:rgba(255,200,87,.09); border-left:3px solid var(--sun); font-size:.85em; color:#FFF2D2; line-height:1.45}
+.ua::before{content:"UA · "; font-family:var(--mono); font-size:.75em; letter-spacing:.08em; color:var(--sun); font-weight:700}
+.ua.noflag::before{content:none}
+body.uaall .ua, .ua.open{display:block}
+span.ua{display:none} body.uaall span.ua, span.ua.open{display:inline-block}
+.uab{font-family:var(--mono); font-weight:700; font-size:.55rem; letter-spacing:.06em; padding:.12rem .45rem; border-radius:.45rem; border:1px solid rgba(255,200,87,.6); color:var(--sun); background:rgba(255,200,87,.08); vertical-align:middle}
+.uab[aria-pressed="true"]{background:var(--sun); color:#231700}
+.rev{display:none; margin-top:.6rem}
+.rev.open{display:block; animation:fadeUp .25s ease}
+.samples{display:grid; gap:.45rem}
+.sample{padding:.5rem .8rem; border-radius:.8rem; background:rgba(45,212,191,.09); border:1px solid rgba(45,212,191,.35); font-size:.92rem}
+.sample::before{content:"💬 "}
+.starters{display:flex; flex-wrap:wrap; gap:.4rem}
+.starters span{padding:.3rem .7rem; border-radius:99px; border:1.5px dashed rgba(201,182,255,.6); background:rgba(139,92,246,.12); font-weight:700; font-size:.85rem}
+
+/* ─── choices & exercises ─── */
+.opts{display:grid; gap:.55rem}
+.opt{display:flex; align-items:center; gap:.65rem; width:100%; text-align:left; padding:.6rem .85rem; border-radius:.9rem; background:var(--glass); border:1.5px solid var(--edge); font-weight:700; font-size:.92rem; transition:background .15s, border-color .15s}
+.opt:hover{background:var(--glass2); border-color:var(--edge2)}
+.opt .L{flex:0 0 auto; width:1.7rem; height:1.7rem; border-radius:.5rem; display:grid; place-items:center; background:rgba(255,255,255,.1); font-family:var(--mono); font-size:.7rem}
+.opt[aria-pressed="true"]{border-color:var(--lilac); background:rgba(139,92,246,.22)}
+.opt[aria-pressed="true"] .L{background:var(--violet)}
+.opt.key{border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset}
+.chips{display:flex; flex-wrap:wrap; gap:.4rem}
+.chip{padding:.35rem .75rem; border-radius:99px; border:1.5px solid var(--edge2); background:var(--glass); font-weight:800; font-size:.8rem}
+.chip[aria-pressed="true"]{background:var(--violet); border-color:var(--lilac)}
+.chip.key{border-color:var(--ok); box-shadow:0 0 0 1px var(--ok) inset}
+.item{padding:.75rem .9rem; border-radius:1rem; background:rgba(255,255,255,.04); border:1px solid var(--edge)}
+.item + .item{margin-top:.55rem}
+.item .num{font-family:var(--mono); font-size:.62rem; color:var(--muted); margin-right:.3rem}
+.res{margin-top:.4rem; font-size:.82rem; display:flex; gap:.4rem; align-items:baseline; flex-wrap:wrap}
+.res .ok{color:var(--ok); font-weight:800}
+.res .no{color:var(--bad); font-weight:800}
+.res .na{color:var(--muted); font-weight:700}
+.res .key{color:var(--sun); font-weight:800}
+.ctl{display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.8rem; align-items:center}
+.sum{font-weight:800; font-size:.8rem; color:var(--muted)}
+select.gap{appearance:none; -webkit-appearance:none; background:rgba(139,92,246,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C9B6FF' stroke-width='2'/%3E%3C/svg%3E") no-repeat right .55rem center;
+  border:1.5px dashed var(--lilac); border-radius:.55rem; padding:.12rem 1.7rem .12rem .55rem; font-weight:800; min-width:7.5rem; color:var(--text); font-size:.92rem}
+select.gap.filled{border-style:solid; background-color:rgba(139,92,246,.3)}
+select.gap.good{border-color:var(--ok)} select.gap.bad{border-color:var(--bad)}
+select.gap option{background:#18174A; color:#fff}
+.optional-item{position:relative}
+.optional-item .tag.opt{margin-left:.4rem}
+
+/* vocab deck */
+.deckbar{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.9rem}
+.deckbar button{padding:.3rem .7rem; border-radius:99px; border:1.5px solid var(--edge); background:var(--glass); font-weight:700; font-size:.7rem; color:var(--muted)}
+.deckbar button.seen{color:var(--text); border-color:var(--edge2)}
+.deckbar button.cur{background:var(--violet); border-color:var(--lilac); color:#fff}
+.wcard{display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:start}
+.wicon{width:5rem; height:5rem; border-radius:1.4rem; display:grid; place-items:center; font-size:2.6rem; background:linear-gradient(135deg,rgba(139,92,246,.45),rgba(45,212,191,.3)); border:1px solid var(--edge2)}
+.deck-b .wicon{background:linear-gradient(135deg,rgba(45,212,191,.45),rgba(255,200,87,.3))}
+.wword{font-size:2.9rem; color:#fff}
+.wdef{font-size:1.15rem; font-weight:700; margin-top:.35rem}
+.wex{margin-top:.8rem; padding:.65rem .9rem; border-radius:1rem; background:rgba(255,255,255,.05); border:1px solid var(--edge); font-size:1rem}
+.wex b{color:var(--sun)}
+.wex::before{content:"Example"; display:block; font-family:var(--mono); font-size:.55rem; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.15rem}
+.infm{font-family:var(--mono); font-size:.55rem; color:var(--sun); letter-spacing:.08em; text-transform:uppercase}
+
+/* reading */
+.para{font-size:1.08rem; line-height:1.65}
+.para + .para{margin-top:.9rem}
+.para.old{opacity:.72}
+.gl{color:var(--sun); font-weight:800; border-bottom:2px dotted var(--sun); padding:0 .05em; border-radius:.2rem; font-size:inherit; line-height:inherit}
+.gl:hover{background:rgba(255,200,87,.15)}
+#pop{position:fixed; z-index:70; max-width:min(26rem,92vw); padding:.7rem .9rem; border-radius:1rem; background:#1E1B55; border:1px solid var(--sun); box-shadow:var(--shadow); font-size:.82rem; display:none}
+#pop.on{display:block; animation:fadeUp .18s ease}
+#pop b{color:var(--sun); font-size:.95rem}
+
+/* voices */
+.voice{display:flex; gap:.8rem; align-items:flex-start; text-align:left; width:100%; padding:.9rem 1rem; border-radius:1.2rem; background:var(--glass); border:2px solid var(--edge); transition:border-color .2s, background .2s, transform .15s; position:relative}
+.voice:hover{background:var(--glass2)}
+.voice .vbody,.voice .vt{display:block}
+#stage:focus{outline:none}
+.voice .vn{font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; font-weight:700}
+.voice .vt{font-size:1.1rem; font-weight:800; line-height:1.35; margin-top:.15rem}
+.voice.critic .vn{color:var(--critic)} .voice.hype .vn{color:var(--hype)} .voice.coach .vn{color:var(--coach)}
+.voice[aria-pressed="true"]{border-color:var(--sun); background:rgba(255,200,87,.1)}
+.micb{position:absolute; top:-.8rem; right:.8rem; padding:.15rem .55rem; border-radius:99px; background:var(--sun); color:#231700; font-weight:800; font-size:.62rem; display:none}
+.voice[aria-pressed="true"] .micb{display:inline-block}
+.bars{display:grid; gap:.35rem; margin-top:.5rem; max-width:36rem}
+.bar{display:grid; grid-template-columns:5rem 1fr 2rem; gap:.5rem; align-items:center; font-size:.7rem; font-weight:700}
+.bar i{display:block; height:.7rem; border-radius:99px; background:linear-gradient(90deg,var(--teal),var(--sun)); min-width:.2rem}
+
+/* banners */
+.banner{display:flex; gap:.8rem; align-items:center; padding:.8rem 1rem; border-radius:1.1rem; background:linear-gradient(135deg,rgba(255,200,87,.16),rgba(139,92,246,.14)); border:1px solid rgba(255,200,87,.45)}
+.banner .bi{font-size:1.6rem}
+.banner b{font-size:1.08rem}
+.note{padding:.55rem .8rem; border-radius:.8rem; background:rgba(45,212,191,.08); border:1px dashed rgba(45,212,191,.5); font-size:.8rem}
+
+/* breakout */
+.steps4{display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem}
+.st4{padding:.9rem; border-radius:1.1rem; background:var(--glass); border:1px solid var(--edge)}
+.st4 .n{width:2rem; height:2rem; border-radius:.6rem; display:grid; place-items:center; font-family:"Anton",sans-serif; font-size:1.1rem; background:var(--violet); margin-bottom:.4rem}
+.st4 b{display:block; font-size:.88rem; letter-spacing:.03em}
+.st4 p{font-size:.78rem; margin:.25rem 0 0; color:#DCDAF5}
+.flow{display:grid; gap:.5rem}
+.fl{display:grid; grid-template-columns:9.5rem 1fr; gap:.7rem; align-items:center; padding:.6rem .8rem; border-radius:1rem; border:1.5px solid var(--edge)}
+.fl .lab{font-family:var(--mono); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
+.fl .tx{font-size:1rem; font-weight:800}
+.fl.sit{background:rgba(255,255,255,.04)}
+.fl.neg{background:rgba(255,122,144,.1); border-color:rgba(255,122,144,.5)} .fl.neg .lab{color:var(--critic)}
+.fl.bet{background:rgba(45,212,191,.1); border-color:rgba(45,212,191,.5)} .fl.bet .lab{color:var(--coach)}
+.fl.act{background:rgba(255,200,87,.1); border-color:rgba(255,200,87,.5)} .fl.act .lab{color:var(--sun)}
+.fl textarea{width:100%; min-height:3.1rem; resize:vertical; padding:.45rem .6rem; border-radius:.7rem; border:1.5px dashed var(--edge2); background:rgba(8,8,31,.55); font-weight:700; font-size:.95rem; line-height:1.35}
+.fl textarea:focus{border-style:solid; border-color:var(--sun); outline:none}
+.team{display:flex; flex-direction:column; gap:.55rem}
+.team-h{display:flex; align-items:center; gap:.65rem}
+.team-h .tn{font-family:var(--mono); font-size:.58rem; letter-spacing:.12em; color:var(--teal)}
+.team-h b{font-size:1.1rem}
+.neg-b{padding:.55rem .75rem; border-radius:.9rem; background:rgba(255,122,144,.12); border:1px solid rgba(255,122,144,.5); font-weight:800; font-size:.92rem}
+.neg-b::before{content:"Negative thought"; display:block; font-family:var(--mono); font-size:.52rem; letter-spacing:.1em; text-transform:uppercase; color:var(--critic); font-weight:700}
+.hintbox{display:grid; gap:.6rem}
+.hintbox h4{font-family:var(--mono); font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:.25rem}
+.hintbox ul{margin:0; padding-left:1.1rem; font-size:.82rem; font-weight:700}
+.wb{display:flex; flex-wrap:wrap; gap:.3rem}
+.wb span{padding:.18rem .55rem; border-radius:99px; background:rgba(255,200,87,.12); border:1px solid rgba(255,200,87,.45); font-size:.72rem; font-weight:800}
+.check{display:grid; gap:.5rem}
+.cq{display:flex; gap:.6rem; align-items:center; justify-content:space-between; flex-wrap:wrap; padding:.6rem .85rem; border-radius:1rem; background:var(--glass); border:1px solid var(--edge)}
+.cq b{font-size:1.02rem}
+.cq .a{color:var(--ok); font-weight:800}
+.stickers{display:flex; flex-wrap:wrap; gap:.45rem}
+.stk{padding:.4rem .85rem; border-radius:99px; border:2px solid var(--edge2); font-weight:800; font-size:.82rem; background:var(--glass)}
+.stk[aria-pressed="true"]{background:var(--sun); color:#231700; border-color:var(--sun)}
+.tabs{display:flex; gap:.4rem; flex-wrap:wrap}
+.tabs button{padding:.35rem .9rem; border-radius:99px; border:1.5px solid var(--edge); background:var(--glass); font-weight:800; font-size:.78rem; display:inline-flex; align-items:center; gap:.4rem}
+.tabs button[aria-selected="true"]{background:var(--violet); border-color:var(--lilac)}
+.path{display:grid; grid-template-columns:repeat(4,1fr); gap:.6rem; counter-reset:p}
+.path > div{padding:.9rem; border-radius:1.1rem; background:var(--glass); border:1px solid var(--edge); text-align:center; position:relative}
+.path .pi{font-size:1.8rem}
+.path b{display:block; font-size:.95rem; margin-top:.2rem}
+.wall{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem}
+.wall .wi{padding:.45rem .75rem; border-radius:.9rem; background:rgba(45,212,191,.12); border:1px solid rgba(45,212,191,.45); font-weight:700; font-size:.85rem}
+.wall .wi small{display:block; font-size:.55rem; color:var(--muted); font-family:var(--mono)}
+
+/* presentation overlay */
+#present{position:fixed; inset:0; z-index:80; background:radial-gradient(80vw 60vw at 10% 0%,rgba(139,92,246,.35),transparent 60%),#0A0926; display:none; overflow:auto; padding:1.2rem 1.6rem}
+#present.on{display:block}
+#present .pv{max-width:1500px; margin:0 auto; display:grid; gap:1rem}
+#present .fl{grid-template-columns:1fr; gap:.3rem; padding:1rem 1.3rem}
+#present .fl .lab{font-size:.75rem}
+#present .fl .tx{font-size:clamp(1.4rem,2.6vw,3rem); line-height:1.2}
+
+/* ─── side panels / modal ─── */
+#teacher{position:fixed; top:0; right:0; bottom:0; width:min(32rem,94vw); z-index:60; background:#0E0C2E; border-left:1px solid var(--edge2);
+  transform:translateX(102%); visibility:hidden; transition:transform .25s ease, visibility .25s; display:flex; flex-direction:column; box-shadow:-30px 0 60px -30px #000; font-size:.78rem}
+#teacher.on{transform:none; visibility:visible}
+.thd{display:flex; align-items:center; gap:.5rem; padding:.6rem .8rem; border-bottom:1px solid var(--edge)}
+.thd b{font-family:var(--mono); letter-spacing:.12em; font-size:.66rem}
+#tBody{overflow:auto; padding:.8rem; display:grid; gap:.7rem; align-content:start}
+.tn-sec{padding:.6rem .75rem; border-radius:.9rem; background:rgba(255,255,255,.04); border:1px solid var(--edge)}
+.tn-sec h4{font-family:var(--mono); font-size:.55rem; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin-bottom:.3rem}
+.tn-sec ul{margin:0; padding-left:1.05rem} .tn-sec li{margin:.15rem 0}
+.tn-sec.say{border-color:rgba(255,200,87,.45)}
+.tn-sec.say p{font-weight:700}
+.tn-sec.uk{border-color:rgba(139,92,246,.5)}
+#modal{position:fixed; inset:0; z-index:90; background:rgba(4,4,18,.72); backdrop-filter:blur(6px); display:flex; align-items:flex-start; justify-content:center; padding:5vh 1rem; overflow:auto}
+#mbox{width:min(52rem,100%); background:#121039; border:1px solid var(--edge2); border-radius:var(--r-l); padding:1.1rem 1.2rem; box-shadow:var(--shadow); animation:fadeUp .2s ease}
+#mbox h2{font-size:1.5rem}
+.mlist{display:grid; gap:.4rem; margin-top:.6rem}
+.mlist .sc{padding:.55rem .75rem; border-radius:.9rem; background:var(--glass); border:1px solid var(--edge)}
+.mlist .sc.cur{border-color:var(--sun)}
+.mlist .sc > b{display:flex; gap:.5rem; align-items:center; font-size:.85rem}
+.mlist .sts{display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.35rem}
+.mlist .sts button{font-size:.62rem; padding:.2rem .55rem; border-radius:.5rem; background:rgba(255,255,255,.06); border:1px solid var(--edge); font-weight:700}
+.mlist .sts button.cur{background:var(--violet); border-color:var(--lilac)}
+.mlist .sts button.o{color:var(--sun)}
+.vgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:.5rem; margin-top:.7rem}
+.vg{padding:.55rem .75rem; border-radius:.9rem; background:var(--glass); border:1px solid var(--edge); font-size:.78rem}
+.vg b{font-size:.9rem; color:var(--sun)}
+.vg i{display:block; font-style:normal; color:#FFF2D2; margin-top:.15rem}
+#toast{position:fixed; left:50%; bottom:4.4rem; transform:translateX(-50%); z-index:95; padding:.5rem .9rem; border-radius:.8rem; background:#232060; border:1px solid var(--edge2); font-weight:700; font-size:.75rem; display:none; max-width:92vw; text-align:center}
+#toast.on{display:block; animation:fadeUp .2s ease}
+.tpop{display:grid; gap:.7rem}
+.tbig{font-family:"Anton",sans-serif; font-size:3.6rem; letter-spacing:.03em; text-align:center; line-height:1}
+.tbig.end{color:var(--sun)}
+
+/* live dock */
+#dock{position:fixed; right:.8rem; bottom:3.8rem; z-index:50; width:min(19rem,92vw); max-height:52vh; display:none; flex-direction:column; border-radius:1rem; overflow:hidden; background:#120F3A; border:1px solid var(--edge2); box-shadow:var(--shadow); font-size:.68rem}
+#dock.on{display:flex}
+#dock .dh{display:flex; align-items:center; gap:.45rem; padding:.45rem .6rem; border-bottom:1px solid var(--edge)}
+#dock .db{overflow:auto; padding:.6rem; display:grid; gap:.4rem}
+#dock.min .db{display:none}
+.led{width:.55rem; height:.55rem; border-radius:50%; background:var(--faint); flex:0 0 auto}
+.led.on{background:var(--ok); box-shadow:0 0 8px var(--ok)} .led.warn{background:var(--sun)} .led.bad{background:var(--bad)}
+.names{display:flex; flex-wrap:wrap; gap:.25rem}
+.names span{padding:.08rem .4rem; border-radius:99px; background:rgba(255,255,255,.08); font-size:.6rem}
+.wq{display:flex; gap:.35rem; align-items:center; padding:.35rem .45rem; border-radius:.6rem; background:rgba(255,255,255,.05)}
+.wq p{margin:0; flex:1; font-size:.68rem}
+.wq small{display:block; color:var(--muted); font-size:.55rem}
+
+/* ─── student phone app & solo team card ─── */
+#stu,#solo{display:none; position:relative; z-index:1; height:100%; overflow:auto}
+body.student #app, body.solo #app, body.notes #app{display:none}
+body.student #wm, body.solo #wm, body.notes #wm{display:none}
+body.student #stu, body.solo #solo{display:block}
+body.student, body.solo{overflow:auto}
+.stu-top{position:sticky; top:0; z-index:3; display:flex; align-items:center; gap:.5rem; padding:.55rem .8rem; background:rgba(8,8,31,.94); border-bottom:1px solid var(--edge); font-size:.75rem}
+.stu-body{max-width:34rem; margin:0 auto; padding:1rem}
+.stu-wait{text-align:center; padding:2.5rem 1rem}
+.stu-wait .bigi{font-size:3rem}
+.stu-body label{display:block; font-weight:800; font-size:.8rem; margin:.8rem 0 .3rem}
+.stu-body input, .stu-body textarea{width:100%; padding:.6rem .8rem; border-radius:.8rem; border:1.5px solid var(--edge2); background:rgba(8,8,31,.6); font-size:1rem}
+.stu-body textarea{min-height:5rem; resize:vertical}
+.solo-wrap{max-width:1180px; margin:0 auto; padding:1rem 1.1rem 3rem}
+
+/* motion */
+@keyframes fadeUp{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+.scene-in{animation:fadeUp .35s cubic-bezier(.2,.8,.2,1)}
+.pop-in{animation:fadeUp .3s ease both}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important; transition:none!important; scroll-behavior:auto!important}
+}
+
+/* ─── responsive ─── */
+@media (max-width:1100px){
+  .steps4{grid-template-columns:repeat(2,1fr)}
+  .tb .lb{display:none}
+}
+@media (max-width:860px){
+  html{font-size:17px}
+  .two,.two.l,.three{grid-template-columns:1fr}
+  .path{grid-template-columns:repeat(2,1fr)}
+  .vgrid{grid-template-columns:1fr}
+  .shead h1{font-size:1.75rem}
+  .wword{font-size:2.2rem}
+  .wcard{grid-template-columns:1fr}
+  .wicon{width:3.6rem; height:3.6rem; font-size:1.9rem; border-radius:1rem}
+  .brand span{display:none}
+  #nav .lb{display:none}
+  #wm{display:none}
+}
+@media (max-width:560px){
+  html{font-size:16px}
+  .wrap{padding:.8rem .75rem 2rem}
+  .steps4{grid-template-columns:1fr}
+  .fl{grid-template-columns:1fr; gap:.25rem}
+  .tools .hm{display:none}
+  #top{gap:.35rem; padding:.4rem .5rem}
+  .tb{padding:0 .4rem}
+  #dots button{width:.8rem}
+  #dots button.cur{width:1.3rem}
+  .bar{grid-template-columns:4rem 1fr 1.6rem}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <header id="top">
+    <a class="tb" id="backHub" href="../../" title="Back to the course" aria-label="Back to the course">←</a>
+    <div class="brand"><b>LESSON 7 · VOICES IN MY HEAD</b><span>The Headspace Chat: Who Gets the Mic?</span></div>
+    <div class="tools">
+      <button class="tb" id="tchip" title="Timer" aria-label="Timer">⏱ <span class="lb" id="tchipT">Timer</span></button>
+      <button class="tb" id="btnMap" title="Scene menu (M)">🗺️ <span class="lb">Scenes</span></button>
+      <button class="tb hm" id="btnRoute" title="Full / Quick route">🧭 <span class="lb" id="routeLbl">Full</span></button>
+      <button class="tb uatb" id="btnUA" title="Ukrainian translation on this screen (U)" aria-pressed="false">UA</button>
+      <button class="tb hm" id="btnLive" title="Live Student Mode (optional)">📡 <span class="lb">Live</span></button>
+      <button class="tb" id="btnTeacher" title="Teacher Notes (T)">🧑‍🏫 <span class="lb">Teacher Notes</span></button>
+      <button class="tb hm" id="btnFull" title="Full screen (F)" aria-label="Full screen">⛶</button>
+    </div>
+  </header>
+
+  <main id="stage" tabindex="-1"><div class="wrap" id="scene"></div></main>
+
+  <footer id="nav">
+    <button class="btn sm" id="btnBack" title="Back (←)">← <span class="lb">Back</span></button>
+    <div id="navMid"><div id="navInfo" aria-live="polite"></div><div id="dots" role="group" aria-label="Scenes"></div></div>
+    <div class="navr">
+      <button class="btn sm sun hidden" id="btnSkip" title="Skip this optional task">⏭ <span class="lb">Skip optional</span></button>
+      <button class="btn sm primary" id="btnNext" title="Continue (→)"><span id="nextLbl">Continue</span> →</button>
+    </div>
+  </footer>
+</div>
+<div id="wm"><img src="../../assets/watermark.png" alt="" onerror="this.parentNode.remove()"></div>
+
+<aside id="teacher" aria-label="Teacher Notes" aria-hidden="true">
+  <div class="thd"><span>🧑‍🏫</span><b>TEACHER NOTES</b><span class="grow"></span><button class="btn sm ghost" id="tClose" aria-label="Close Teacher Notes">✕</button></div>
+  <div id="tBody"></div>
+</aside>
+
+<div id="dock" class="min" aria-live="polite">
+  <div class="dh"><span class="led" id="dockLed"></span><b id="dockTitle">Room</b><span class="small grow" id="dockCount"></span><button class="btn sm ghost" id="dockMin" aria-label="Show or hide live answers" aria-expanded="false">▸ answers</button></div>
+  <div class="db" id="dockBody"></div>
+</div>
+
+<div id="stu"><div class="stu-top"><span class="led" id="stuLed"></span><b>Lesson 7 · Headspace Chat</b><span class="grow"></span><span class="small" id="stuConn"></span><span class="small mono" id="stuRoom"></span></div><div class="stu-body" id="stuBody"></div></div>
+<div id="solo"></div>
+<div id="present" role="dialog" aria-modal="true" aria-label="Presentation view"></div>
+<div id="pop" role="tooltip"></div>
+<div id="modal" class="hidden" role="dialog" aria-modal="true"><div id="mbox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   Lesson 7 · Voices in My Head — The Headspace Chat: Who Gets the Mic?
+   Один файл, vanilla JS, без збірки.
+   1 · helpers   2 · state   3 · lesson content   4 · teacher notes
+   5 · components   6 · steps (scenes)   7 · navigation & UI
+   8 · team cards & presentation   9 · live room   10 · student app   11 · boot
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ---------- 1 · helpers ---------- */
+const CFG = window.LESSON_CONFIG || {};
+const $ = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const qs = new URLSearchParams(location.search);
+const rand4 = ()=>String(1000+Math.floor(Math.random()*9000));
+const mmss = s=>{ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+const LET = ['A','B','C','D','E','F'];
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- 3 · lesson content (усі тексти уроку) ---------- */
+const VOICES_EN = 'The ‘voices’ in this lesson are our thoughts and the things we say to ourselves.';
+const VOICES_UA = '«Голоси» в цьому уроці — це наші думки й те, що ми говоримо самі собі.';
+const PRINCIPLE = {en:'A reframe should be kind and believable.', ua:'Новий погляд має бути доброзичливим і таким, у який можна повірити.'};
+
+const MIA_MSG = {
+  parts:['Tomorrow, I’m showing my comic at the school creativity show.',
+         'I was excited… until someone said, ‘That’s a bit weird.’',
+         'Now my brain won’t stop talking. Can you help me?'],
+  ua:'Завтра я показуватиму свій комікс на шкільному творчому заході. Я була в захваті… поки хтось не сказав: “Це трохи дивно”. Тепер думки не дають мені спокою. Допоможете?'
+};
+const MISSION = {en:'Help Mia understand her thoughts and choose her next step.', ua:'Допоможіть Мії розібратися у своїх думках та обрати наступний крок.'};
+
+const WARM = [
+  {id:'wq1', q:'How do you usually feel before showing your work to other people?', ua:'Як ти зазвичай почуваєшся перед тим, як показати свою роботу іншим?',
+   opts:['Nervous','Excited','Both'], emo:['😬','🤩','🙃'],
+   samples:['I feel nervous.','I feel excited, but a little worried.','I’m okay if I know the people.']},
+  {id:'wq2', q:'What can help someone feel more confident?', ua:'Що може допомогти людині почуватися впевненіше?',
+   samples:['Practising can help.','A kind message from a friend.','Knowing what to say.']},
+  {id:'wq3', q:'Can someone feel nervous and still do something well?', ua:'Чи може людина хвилюватися й водночас добре щось зробити?', opt:true,
+   samples:['Yes. You can be nervous and still try.','Yes. You don’t have to feel confident all the time.']}
+];
+
+const REV = {
+  words:['stand out','fit in','label','quirky','peer pressure','fake it'],
+  wua:{'stand out':'виділятися','fit in':'вписуватися в компанію','label':'ярлик','quirky':'незвичайний, своєрідний','peer pressure':'тиск однолітків','fake it':'удавати'},
+  items:[
+    {a:'My comic is different. It might', b:'.', ans:'stand out', why:'It is different and easy to notice.', ua:'Мій комікс відрізняється від інших. Він може виділятися.'},
+    {a:'Sometimes I hide my interests because I want to', b:'.', ans:'fit in', why:'You want to feel part of the group.', ua:'Іноді я приховую свої інтереси, тому що хочу вписатися в компанію.'},
+    {a:'Calling someone “the weird kid” gives them a', b:'.', ans:'label', why:'It puts a person in a category.', ua:'Називаючи когось «дивною дитиною», ти навішуєш на цю людину ярлик.'},
+    {a:'My characters are unusual and funny. They’re', b:'.', ans:'quirky', why:'They are unusual in an interesting way.', ua:'Мої персонажі незвичайні й кумедні. Вони своєрідні.'},
+    {a:'Doing something because your friends expect it is', b:'.', ans:'peer pressure', why:'People your age push you to do something.', ua:'Робити щось через очікування друзів — це тиск однолітків.'},
+    {a:'I don’t feel confident, but I can smile and', b:'.', ans:'fake it', why:'You act as if you feel confident.', ua:'Я не почуваюся впевнено, проте можу усміхнутися й удати впевненість.'}
+  ],
+  bridge:{en:'Mia knows she doesn’t have to be like everyone else. But knowing this and feeling confident are different things.',
+          ua:'Мія знає, що їй не обов’язково бути як усі. Проте знати це й почуватися впевнено — різні речі.'}
+};
+
+const W1 = [
+  {w:'inner critic', i:'⚖️', def:'The part of your thinking that judges you harshly.', ua:'Внутрішній критик: думки, які суворо тебе оцінюють.',
+   ex:'My **inner critic** says my work isn’t good enough.', exua:'Мій внутрішній критик каже, що моя робота недостатньо хороша.'},
+  {w:'self-talk', i:'💬', def:'The things you say to yourself in your mind.', ua:'Внутрішній діалог; те, що говориш собі подумки.',
+   ex:'My **self-talk** gets kinder when I remember how much I’ve practised.', exua:'Мій внутрішній діалог стає доброзичливішим, коли я згадую, скільки тренувався.'},
+  {w:'negative loop', i:'🔁', def:'The same unhelpful thoughts coming back again and again.', ua:'Коло негативних думок, що повторюються.',
+   ex:'I keep thinking about one mistake. I’m stuck in a **negative loop**.', exua:'Я постійно думаю про одну помилку. Я застряг у колі негативних думок.'},
+  {w:'second-guess', i:'🤔', def:'To doubt a choice you have already made.', ua:'Сумніватися у вже прийнятому рішенні.',
+   ex:'I chose my comic, but now I’m **second-guessing** my choice.', exua:'Я обрала свій комікс, проте тепер сумніваюся у своєму виборі.'},
+  {w:'confidence boost', i:'🚀', def:'Something that helps you feel more confident.', ua:'Те, що додає впевненості.',
+   ex:'My friend’s message gave me a **confidence boost**.', exua:'Повідомлення друга додало мені впевненості.'},
+  {w:'empowering', i:'💪', def:'Helping you feel stronger and able to make choices.', ua:'Те, що додає сили та віри у власні можливості.',
+   ex:'Choosing for myself felt **empowering**.', exua:'Власний вибір дав мені відчуття сили.'}
+];
+const W2 = [
+  {w:'mental reset', i:'🌿', def:'A short break that helps you start thinking more clearly again.', ua:'Коротке ментальне перезавантаження.',
+   ex:'I took a short walk for a **mental reset**.', exua:'Я пішов на коротку прогулянку, щоб трохи перезавантажитися.'},
+  {w:'reframe', i:'🖼️', def:'To look at a situation in a different, more helpful way.', ua:'Переосмислити; подивитися на ситуацію інакше.',
+   ex:'I **reframed** the mistake as something I could learn from.', exua:'Я подивився на помилку як на можливість чогось навчитися.'},
+  {w:'hype yourself up', i:'📣', inf:true, def:'To encourage yourself and build your energy or confidence.', ua:'Підбадьорити себе; налаштувати себе на дію.',
+   ex:'I play my favourite song to **hype myself up**.', exua:'Я вмикаю улюблену пісню, щоб підбадьорити себе.'},
+  {w:'chill your brain', i:'🧊', inf:true, def:'To help your mind relax.', ua:'Дати голові відпочити; заспокоїти думки.',
+   ex:'A quiet break helps me **chill my brain**.', exua:'Спокійна перерва допомагає мені заспокоїти думки.'},
+  {w:'talk it out', i:'🗣️', def:'To talk about a problem with someone to understand it better.', ua:'Обговорити те, що турбує, щоб краще розібратися.',
+   ex:'Let’s **talk it out** before you delete your comic.', exua:'Давай обговоримо це, перш ніж ти видалиш свій комікс.'},
+  {w:'glow-up', i:'✨', inf:true, def:'A positive change in how someone looks, feels, or lives.', ua:'Позитивне перетворення: у зовнішності, самопочутті чи житті.',
+   ex:'Her **glow-up** was about confidence, not just a new hairstyle.', exua:'Її позитивне перетворення стосувалося впевненості, а не лише нової зачіски.'}
+];
+const ALLW = [...W1, ...W2];
+const WORD = Object.fromEntries(ALLW.map(x=>[x.w,x]));
+
+const NAME = {
+  opts:['second-guess','negative loop','confidence boost','inner critic'],
+  items:[
+    {q:'I chose this yesterday. Was it a bad choice?', ua:'Я обрав це вчора. Це був поганий вибір?', ans:'second-guess', why:'You doubt a choice you already made.', quick:true},
+    {q:'That one mistake keeps playing in my head.', ua:'Та одна помилка постійно прокручується в мене в голові.', ans:'negative loop', why:'The same thought keeps coming back.'},
+    {q:'My friend said, ‘Your story made me laugh!’ I feel braver now.', ua:'Друг сказав: “Твоя історія мене розсмішила!” Тепер я почуваюся сміливіше.', ans:'confidence boost', why:'The message helps you feel more confident.', quick:true},
+    {q:'Whatever I make, a part of me says it isn’t good enough.', ua:'Що б я не створював, частина мене каже, що це недостатньо добре.', ans:'inner critic', why:'This thought judges your work harshly.'}
+  ],
+  close:{en:'Self-talk can be kind or unkind. Today, we’ll help Mia make it more helpful.', ua:'Внутрішній діалог може бути доброзичливим або недоброзичливим. Сьогодні ми допоможемо Мії зробити його кориснішим.'}
+};
+
+const MOVE = [
+  {q:'Mia has been staring at her screen for an hour. What could she do first?', ua:'Мія вже годину дивиться на екран. Що вона могла б зробити спочатку?',
+   opts:[{t:'Read the same comment ten more times.', ua:'Перечитати той самий коментар ще десять разів.'},
+         {t:'Take a short break for a mental reset.', ua:'Зробити коротку перерву, щоб трохи перезавантажитися.'}],
+   ans:1, why:'A break can help her think more clearly.'},
+  {q:'Mia thinks, ‘One person didn’t like it, so my comic is terrible.’ Which reframe is more helpful?', ua:'Мія думає: “Одній людині не сподобалося, отже, мій комікс жахливий”. Яке переформулювання корисніше?',
+   opts:[{t:'“Everyone will definitely love my comic.”', ua:'«Усім точно сподобається мій комікс».'},
+         {t:'“One opinion doesn’t tell me what everyone thinks.”', ua:'«Одна думка не показує, що думають усі».'}],
+   ans:1, why:'It is fair and realistic.'}
+];
+
+const PRE = {q:'What do you think Mia will do: delete her comic, practise, or ask someone for help? Why?',
+  ua:'Як думаєте, що зробить Мія: видалить комікс, потренується чи попросить когось допомогти? Чому?',
+  opts:['Delete her comic','Practise','Ask someone for help'], emo:['🗑️','🎯','🤝']};
+
+/* [[фраза]] або [[як у тексті|слово зі словника]] — підсвічене слово з визначенням */
+const STORY = {
+  title:'Mia’s Chat: Before the Show',
+  paras:[
+   {en:'Tomorrow was the school creativity show. Mia had made a comic about a robot that wanted to fit in. She liked its quirky characters, but a classmate’s comment — “That’s a bit weird” — made her [[second-guess]] her choice. Her [[inner critic]] had plenty to say: “Everyone will laugh. You should choose something more mainstream.”',
+    ua:'Завтра мав відбутися шкільний творчий захід. Мія створила комікс про робота, який хотів вписатися в компанію. Їй подобалися його незвичайні персонажі, проте коментар однокласника — «Це трохи дивно» — змусив її засумніватися у своєму виборі. Її внутрішньому критику було що сказати: «Усі сміятимуться. Треба обрати щось більш популярне».'},
+   {en:'Soon, her [[self-talk]] became a [[negative loop]]. She read the comment again, imagined a terrible show, and nearly deleted her comic. Then Leo sent a message: “Want to [[talk it out]]?” Mia explained what had happened. “Did they say they hated it?” Leo asked. “No,” she replied. “Then we don’t actually know what they meant.”',
+    ua:'Невдовзі її внутрішній діалог перетворився на коло негативних думок. Вона знову перечитувала коментар, уявляла жахливий виступ і ледь не видалила свій комікс. Тоді Лео написав: «Хочеш це обговорити?» Мія пояснила, що сталося. «Він сказав, що ненавидить твій комікс?» — запитав Лео. «Ні», — відповіла вона. «Тоді ми насправді не знаємо, що він мав на увазі».'},
+   {en:'Mia put her phone down and took a short walk for a [[mental reset]]. It helped her [[chill her brain|chill your brain]]. Back home, she tried to [[reframe]] the situation: “One comment isn’t everyone’s opinion. I can ask for useful feedback.” She practised her opening lines. Getting through them gave her a small [[confidence boost]].',
+    ua:'Мія відклала телефон і пішла на коротку прогулянку, щоб трохи перезавантажитися. Це допомогло їй заспокоїти думки. Повернувшись додому, вона спробувала переосмислити ситуацію: «Один коментар — це не думка всіх. Я можу попросити корисний відгук». Вона потренувалася говорити вступні репліки. Те, що вона змогла їх вимовити, трохи додало їй впевненості.'},
+   {en:'Before the show, Mia played her favourite song to [[hype herself up|hype yourself up]]. She still felt nervous, but she showed her comic anyway. Making her own choice felt [[empowering]]. Later, she told Leo, “Maybe this is my [[glow-up]]: I don’t need everyone’s approval to try something I care about.”',
+    ua:'Перед виступом Мія ввімкнула улюблену пісню, щоб підбадьорити себе. Вона все ще хвилювалася, проте все одно показала свій комікс. Власне рішення додало їй відчуття сили. Пізніше вона сказала Лео: «Можливо, це і є моє позитивне перетворення: мені не потрібне схвалення всіх, щоб спробувати щось важливе для мене».'}
+  ]
+};
+
+const FPO = {
+  opts:['Fact','Prediction','Opinion'],
+  items:[
+    {q:'A classmate called the comic “a bit weird.”', ua:'Однокласник назвав комікс трохи дивним.', ans:'Fact', why:'The classmate said this.'},
+    {q:'Everyone will laugh at Mia.', ua:'Усі сміятимуться з Мії.', ans:'Prediction', why:'Mia imagines what will happen.'},
+    {q:'Mia practised her opening lines.', ua:'Мія потренувалася говорити вступні репліки.', ans:'Fact', why:'She did this at home.'},
+    {q:'Mia must choose something mainstream.', ua:'Мія повинна обрати щось популярне.', ans:'Opinion', why:'This is her inner critic’s idea, not a rule.'}
+  ]
+};
+
+const POST = [
+  {id:'pq1', q:'What did Leo help Mia notice?', ua:'Що Лео допоміг Мії помітити?', samples:['They didn’t know what the classmate meant. One comment wasn’t everyone’s opinion.']},
+  {id:'pq2', q:'Did Mia stop feeling nervous completely?', ua:'Чи Мія повністю перестала хвилюватися?', samples:['No. She was still nervous, but she showed her comic.']},
+  {id:'pq3', q:'Which helped Mia most: talking, taking a break, or practising? Explain your choice.', ua:'Що найбільше допомогло Мії: розмова, перерва чи тренування? Поясніть свій вибір.', opt:true,
+   note:'There is no single right answer. Any choice is fine if students explain it.'}
+];
+
+const MIC = {
+  voices:[
+    {k:'critic', n:'Inner Critic', t:'You’ll make a mistake, so don’t try.', ua:'Ти припустишся помилки, тому не пробуй.'},
+    {k:'hype',   n:'Hype Voice',   t:'You’re perfect. Everyone will love you.', ua:'Ти ідеальна. Усім ти сподобаєшся.'},
+    {k:'coach',  n:'Helpful Coach', t:'You might make a mistake. You can prepare and keep going.', ua:'Ти можеш припуститися помилки. Ти можеш підготуватися й продовжувати.'}
+  ],
+  q:'Which message is the most helpful? Why?', ua:'Яке повідомлення найкорисніше? Чому?',
+  answer:'C is the most helpful. It doesn’t promise a perfect show, but it gives Mia a next step.',
+  speak:{q:'What would you say to a friend who is nervous about showing their work?', ua:'Що ти сказав би другу, який хвилюється перед тим, як показати свою роботу?',
+    starters:['It’s okay to…','One comment doesn’t…','You could…','Let’s…'],
+    samples:['It’s okay to feel nervous. You could practise with me first.','One comment doesn’t decide how good your work is. Let’s ask for useful feedback.']},
+  extra:[
+    {q:'What gives you a confidence boost?', ua:'Що додає тобі впевненості?'},
+    {q:'How do you hype yourself up before something difficult?', ua:'Як ти підбадьорюєш себе перед чимось складним?'},
+    {q:'When is it useful to talk it out with someone?', ua:'Коли корисно обговорити те, що турбує, з кимось?'}
+  ],
+  tip:{en:'You can answer about yourself or an imaginary character.', ua:'Можеш відповідати про себе або вигаданого персонажа.'}
+};
+
+const BR = {
+  title:'Help Your Character: Change the Thought',
+  steps:[
+    {t:'READ.', d:'Read the situation and the character’s negative thought.', ut:'ПРОЧИТАЙТЕ.', ud:'Прочитайте ситуацію та негативну думку персонажа.'},
+    {t:'CHANGE THE THOUGHT.', d:'Write a kinder, more realistic thought. What could a good friend say?', ut:'ЗМІНІТЬ ДУМКУ.', ud:'Напишіть доброзичливішу й реалістичнішу думку. Що міг би сказати хороший друг?'},
+    {t:'CHOOSE ONE ACTION.', d:'What can the character do next? Choose one small, specific action.', ut:'ОБЕРІТЬ ОДНУ ДІЮ.', ud:'Що персонаж може зробити далі? Оберіть одну маленьку, конкретну дію.'},
+    {t:'SHARE.', d:'Read your three sentences to the class: the negative thought, your new thought, and your action.', ut:'ПРЕЗЕНТУЙТЕ.', ud:'Прочитайте класу три речення: негативну думку, вашу нову думку та вашу дію.'}
+  ],
+  intro:{en:'Work together. Help your character.', ua:'Працюйте разом. Допоможіть своєму персонажу.'},
+  rules:{en:['You have 6 minutes.','Write one sentence in each empty box.','Use at least ONE phrase from the word bank.'],
+         ua:['У вас 6 хвилин.','У кожному порожньому полі напишіть одне речення.','Використайте хоча б ОДИН вислів із підказок.']},
+  example:{name:'Nina', sit:'Nina got one answer wrong in English.', situa:'Ніна неправильно відповіла на одне запитання на уроці англійської.',
+    neg:'I’m terrible at English.', negua:'Я зовсім не знаю англійської.',
+    bet:'One wrong answer doesn’t mean I’m terrible at English.', betua:'Одна неправильна відповідь не означає, що я зовсім не знаю англійської.',
+    act:'I can talk it out with my teacher and practise this question.', actua:'Я можу обговорити це з учителем і потренуватися відповідати на це запитання.'},
+  why:{en:'Your new thought should be something the character can believe. Your action should be something they can do.',
+       ua:'Нова думка має бути такою, у яку персонаж може повірити. Дія — такою, яку він може виконати.'},
+  checks:[
+    {q:'Do you write a long story?', a:'No. Only two new sentences.'},
+    {q:'What do you change?', a:'The negative thought.'},
+    {q:'What else do you choose?', a:'One small action.'}
+  ],
+  hintsBetter:['One mistake doesn’t mean…','Being different doesn’t mean…','I don’t know if…','I can still…'],
+  hintsAction:['I can talk it out with…','I can take a short break for a mental reset.','I can practise…','I can ask… for help.'],
+  bank:['inner critic','reframe','confidence boost','mental reset','talk it out','hype yourself up'],
+  roles:{en:['Student 1: reads the situation and negative thought.','Student 2: suggests a better thought.','Student 3: suggests a next action.','Everyone discusses and agrees.'],
+         ua:['Учень 1 читає ситуацію й негативну думку.','Учень 2 пропонує нову думку.','Учень 3 пропонує дію.','Усі обговорюють і погоджують відповіді.']},
+  pairs:{en:'In pairs, one student can take two roles. Choose one speaker, or read the sentences in turns.',
+         ua:'У парах один учень може взяти дві ролі. Команда може обрати одного спікера або прочитати речення по черзі.'},
+  after:{q:'Was the new thought believable? Was the next step useful?', ua:'Чи можна повірити в нову думку? Чи корисний наступний крок?'},
+  stickers:['Helpful reframe','Useful action','Great teamwork']
+};
+const TEAMS = [
+  {id:'leo', n:1, name:'Leo', img:'img/leo.webp', sit:'Leo made a mistake during a team game.', ua:'Лео припустився помилки в командній грі.',
+   neg:'Nobody wants me on the team.', sb:'I made one mistake. I don’t know what everyone thinks.', sa:'I’ll talk it out with my teammates and practise that move.'},
+  {id:'alex', n:2, name:'Alex', img:'img/alex.webp', sit:'Alex wants to show a drawing, but it looks different from the other drawings.', ua:'Алекс хоче показати малюнок, проте він відрізняється від інших.',
+   neg:'My drawing is different, so it must be bad.', sb:'A different style can be interesting. I don’t have to copy everyone.', sa:'I’ll ask a friend for useful feedback. It might give me a confidence boost.'},
+  {id:'sam', n:3, name:'Sam', img:'img/sam.webp', sit:'Sam forgot a line while practising for a show.', ua:'Сем забув репліку під час репетиції виступу.',
+   neg:'I’ll ruin the whole show.', sb:'One mistake in practice doesn’t decide what happens at the show.', sa:'I’ll take a mental reset, then practise the difficult part.'}
+];
+
+const FINAL = {
+  mia:'My inner critic still has something to say. But now it doesn’t get the whole microphone. Thanks for helping me find a more useful voice!',
+  miaua:'Моєму внутрішньому критику все ще є що сказати. Проте тепер мікрофон належить не лише йому. Дякую, що допомогли мені знайти корисніший голос!',
+  exit:{q:'Choose ONE sentence and complete it.', ua:'Оберіть ОДНЕ речення й завершіть його.',
+    items:[{t:'A confidence boost for me is…', ua:'Мені додає впевненості…'},
+           {t:'A helpful reframe for “I can’t do this” is…', ua:'Корисне переформулювання думки “Я не можу цього зробити” — це…'},
+           {t:'One phrase I remember is… It means…', ua:'Один вислів, який я запам’ятав, — це… Він означає…'}],
+    samples:['A confidence boost for me is practising before a presentation.','I can’t do this yet, but I can start with one small step.','‘Talk it out’ means talking about a problem with someone.']},
+  path:[{i:'👀', en:'Notice the thought.', ua:'Поміть думку.'},{i:'🔎', en:'Check what you know.', ua:'Перевір, що ти справді знаєш.'},
+        {i:'🖼️', en:'Reframe it.', ua:'Переосмисли її.'},{i:'👣', en:'Choose a small next step.', ua:'Обери маленький наступний крок.'}]
+};
+</script>
+<script>
+/* ---------- 4 · teacher notes ---------- */
+const GENERAL_NOTES = [
+  'Основний маршрут — приблизно <b>30 хвилин</b> активностей. Пояснення, відповіді учнів, переходи в Zoom і презентації команд (45–60 с на команду) потребують додаткового часу — разом урок займає 60 хвилин.',
+  'Усі 12 нових слів представлені, але для активного використання найважливіші: <b>inner critic, self-talk, confidence boost, reframe, mental reset, talk it out</b>.',
+  'Не потрібно опитувати всіх на кожному етапі. 1–2 відповіді на запитання достатньо.',
+  'Неактивним учням спочатку запропонуйте вибір (A / B, кнопки) або початок речення.',
+  'Учні завжди можуть відповідати про Мію чи вигаданого персонажа замість особистих історій. Не просіть особистих зізнань — це урок мови, а не психологічна розмова.',
+  'Головна ідея: <b>A reframe should be kind and believable.</b> Ми не вчимо «завжди бути позитивним» чи «не хвилюватися» — Мія хвилюється до кінця й усе одно показує комікс.',
+  '<b>🧭 Full / Quick</b> угорі: Quick ховає всі Optional-завдання й у сцені 3 залишає лише повідомлення № 1 і № 3. Будь-яке Optional-завдання можна також пропустити кнопкою <b>⏭ Skip optional</b>.',
+  'Continue ніколи не блокується: можна йти далі без перевірки вправи.',
+  'Клавіші: <b>→ / пробіл</b> — далі, <b>←</b> — назад, <b>U</b> — переклад, <b>T</b> — ця панель, <b>M</b> — меню сцен, <b>F</b> — повний екран, <b>Esc</b> — закрити.',
+  '📡 <b>Live</b> (необов’язково): учні заходять з телефона за кодом і ніком. Панель кімнати внизу праворуч <b>видно на вашому спільному екрані</b>, тому вона згорнута: розгортайте «▸ answers», коли хочете подивитися голоси й відповіді, або діліться лише вікном браузера. Результати голосування на головному екрані з’являються тільки після «📊 Show class results».',
+  'Ця панель — допоміжна, вона <b>не захищена паролем</b>. Якщо учень сам відкриє файл уроку, він теж зможе її відкрити. Під час демонстрації екрана відкривайте нотатки в окремому вікні (кнопка нижче) й діліться лише вікном уроку.'
+];
+
+const NOTES = {
+ 1:{goal:'Зацікавити історією Мії, пояснити метафору «голосів», коротко розігрітися.', time:'3 хв',
+    say:['Mia has sent us a message. Let’s read it.','In this lesson, “voices” are our thoughts — the things we say to ourselves.','How do you usually feel before showing your work to other people?'],
+    ua:['Continue відкриває повідомлення Мії, місію, а потім пояснення «голосів».','Поставте два запитання. Приймайте короткі відповіді. Запросіть одного-двох учнів пояснити свій вибір. Не потрібно, щоб кожен відповідав на кожне запитання.','Кнопки Nervous / Excited / Both — підсвітіть те, що каже більшість (у Live-режимі учні голосують із телефонів).'],
+    answers:['Q1: I feel nervous. / I feel excited, but a little worried. / I’m okay if I know the people.','Q2: Practising can help. / A kind message from a friend. / Knowing what to say.','Optional: Yes. You can be nervous and still try.'],
+    skip:'Optional-запитання 3.'},
+ 2:{goal:'Повторити 6 знайомих слів про індивідуальність і бажання вписатися.', time:'2 хв',
+    say:['Complete the messages with the words above.','Which word fits? Why?'],
+    ua:['Учні кажуть відповідь усно — ви обираєте слово в меню (або клацніть слово з банку, а потім пропуск). Check показує результат і коротке пояснення.','Наприкінці прочитайте перехідну репліку: знати й почуватися впевнено — різні речі.'],
+    keys:['1 stand out','2 fit in','3 label','4 quirky','5 peer pressure','6 fake it'],
+    skip:'Якщо бракує часу — зробіть 3–4 речення усно й натисніть Show answers.'},
+ 3:{goal:'Ввести 6 слів про негативний внутрішній діалог.', time:'4 хв',
+    say:['This is Mia’s inner chat. Let’s meet the words.','Read the example. Can you say it in your own words?','Which word or phrase matches each message?'],
+    ua:['Continue відкриває картки по одній (можна клацнути слово у верхньому рядку). Переклад — кнопка UA.','Name the Thought: у Quick-маршруті лише повідомлення № 1 і № 3.','Завершіть реплікою: Self-talk can be kind or unkind.'],
+    keys:['1 second-guess','2 negative loop','3 confidence boost','4 inner critic'],
+    skip:'Повідомлення № 2 і № 4 у Name the Thought.'},
+ 4:{goal:'Ввести 6 слів про те, як змінити внутрішній чат; принцип «kind and believable».', time:'4 хв',
+    say:['Now let’s change the chat. Here are six helpful phrases.','What could Mia do first?','Which reframe is more helpful? Why?'],
+    ua:['“Hype yourself up”, “chill your brain” і “glow-up” — неформальні вирази. “Chill your brain” — грайлива розмовна фраза; нейтральніші варіанти: “relax”, “give your brain a break”.','У питанні 2 варіант A звучить «позитивно», але в нього важко повірити й він обіцяє те, чого ніхто не знає. Наголосіть: A reframe should be kind and believable.'],
+    keys:['Q1 — B (A break can help her think more clearly.)','Q2 — B (It is fair and realistic.)'],
+    skip:'Приклади до карток можна не читати всі — достатньо 2–3.'},
+ 5:{goal:'Читання з розумінням: факт, прогноз чи думка; як Мія змінила внутрішній діалог.', time:'6 хв',
+    say:['What do you think Mia will do: delete her comic, practise, or ask someone for help? Why?','Let’s read. Click a yellow word if you forget what it means.','Is this a fact from the story, a prediction, or an opinion?'],
+    ua:['Після двох припущень відкривайте текст. Continue відкриває абзаци по одному; під кожним — кнопка UA.','Жовті слова клікабельні — коротке визначення.','Optional-питання не має однієї правильної відповіді: приймайте будь-який вибір із поясненням.'],
+    keys:['1 Fact','2 Prediction','3 Fact','4 Opinion'],
+    answers:['What did Leo help Mia notice? — They didn’t know what the classmate meant. One comment wasn’t everyone’s opinion.','Did Mia stop feeling nervous completely? — No. She was still nervous, but she showed her comic.'],
+    skip:'Optional-питання після читання. Абзаци можна читати по черзі учнями або вголос учителем.'},
+ 6:{goal:'Порівняти три «голоси»; говоріння: що сказати другові.', time:'3 хв',
+    say:['Three voices want the microphone. Which message is the most helpful? Why?','What would you say to a friend who is nervous about showing their work?','You can answer about yourself or an imaginary character.'],
+    ua:['Учні обирають картку; пояснення відкривайте лише кнопкою. B звучить приємно, але це обіцянка, а не план. C чесний і дає наступний крок.','Підказки-початки речень — кнопка Hint. Зразки — Sample answers.'],
+    keys:['C — It doesn’t promise a perfect show, but it gives Mia a next step.'],
+    answers:['It’s okay to feel nervous. You could practise with me first.','One comment doesn’t decide how good your work is. Let’s ask for useful feedback.'],
+    skip:'Optional-запитання для говоріння (усі три).'},
+ 7:{goal:'Мініпроєкт: команда змінює негативну думку персонажа й обирає одну дію.', time:'6 хв у кімнатах + 45–60 с на презентацію кожної команди',
+    say:['Work together. Help your character.','You write only TWO new sentences: a better thought and one small action.','Was the new thought believable? Was the next step useful?'],
+    ua:['Порядок: інструкція → приклад з Ніною → 3 перевірочні запитання → командні картки → кімнати → презентації.','Перед відкриттям кімнат: «📋 Copy team task» або «🔗 Copy link» → вставте в чат кімнати (Zoom: Broadcast message або чат кімнати). Картка команди відкривається окремо, без попередніх сцен.','<b>Без Live-режиму синхронізації немає.</b> Команда обговорює відповідь у Zoom, і ОДИН спікер записує речення на своєму пристрої (картка за посиланням зберігає чернетку на цьому пристрої) або в чаті кімнати. На презентації спікер читає з екрана або ви вставляєте текст у поля на кроці «Presentations».','У Live-режимі учасники однієї команди пишуть у два спільні поля, і текст одразу з’являється у вас.','Таймер запускається лише вручну: 6:00 або Short version 4:00. На презентацію — 1:00.','Реакції Helpful reframe / Useful action / Great teamwork — без балів і рейтингів.'],
+    keys:['Concept check: No — only two new sentences. / The negative thought. / One small action.'],
+    teams:true,
+    skip:'Short version: 4 хвилини. Можна залишити лише одну реакцію на команду.'},
+ 8:{goal:'Завершити історію, рефлексія й підсумок.', time:'2 хв',
+    say:['Mia has one more message for us.','Choose ONE sentence and complete it.','Notice the thought. Check what you know. Reframe it. Choose a small next step.'],
+    ua:['Exit ticket: кожен обирає ОДНЕ речення — усно, у чаті Zoom або з телефона в Live-режимі.','Vocabulary Recap — довідник із 12 слів, не обов’язкове завдання.'],
+    answers:['A confidence boost for me is practising before a presentation.','I can’t do this yet, but I can start with one small step.','‘Talk it out’ means talking about a problem with someone.'],
+    skip:'Підсумок можна прочитати разом за 20 секунд.'}
+};
+</script>
+<script>
+/* ---------- 2 · state ---------- */
+const MODE = qs.has('team') ? 'solo' : (qs.get('role')==='student' || qs.has('join')) ? 'student' : qs.has('notes') ? 'notes' : 'teacher';
+const KEY = MODE==='solo' ? 'l07-solo' : 'l07-state';
+const TKEY = id=>'l07-team-'+id;
+const defaults = ()=>({i:0, sub:0, route:'full', sel:{}, stick:{}, wall:{}, lv:{}, room:rand4(), live:false, timer:null, pteam:'leo'});
+function load(){ try{ const o=JSON.parse(localStorage.getItem(KEY)||'{}'); return Object.assign(defaults(), (o&&typeof o==='object')?o:{}); }catch(e){ return defaults(); } }
+let S = load();
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+const R = {checked:{}, shown:{}, rev:{}, ua:{}, uaAll:false, res:{}, seen:{}, tTab:'scene', wallq:[], peers:[], live:false, lastGap:null};
+function getTeam(id){ try{ const o=JSON.parse(localStorage.getItem(TKEY(id))||'{}'); return (o&&typeof o==='object')?o:{}; }catch(e){ return {}; } }
+function setTeam(id,f,v){ const t=getTeam(id); t[f]=String(v||'').slice(0,240); try{ localStorage.setItem(TKEY(id), JSON.stringify(t)); }catch(e){} }
+
+/* ---------- 5 · components ---------- */
+const PH = {mia:'img/mia.webp', leo:'img/leo.webp', alex:'img/alex.webp', sam:'img/sam.webp'};
+const cap = s=>s.charAt(0).toUpperCase()+s.slice(1);
+function initAv(name,size){ return `<span class="av" style="width:${size}rem;height:${size}rem;font-size:${(size*.42).toFixed(2)}rem;background:linear-gradient(135deg,#8B5CF6,#2DD4BF)" aria-hidden="true">${esc(String(name).charAt(0).toUpperCase())}</span>`; }
+function av(who,size=2.4){ const src=PH[who]; if(!src) return initAv(who,size);
+  return `<img class="av ring-${who}" src="${src}" alt="${cap(who)}" style="width:${size}rem;height:${size}rem" onerror="this.outerHTML=initAv('${who}',${size})">`; }
+const VICON = {
+  critic:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="#fff"/></svg>',
+  hype:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h3l7 4V6l-7 4H3z" fill="#fff"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8.5 8.5 0 010 12" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
+  coach:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2.2" fill="none"/><path d="M16 8l-2.5 5.5L8 16l2.5-5.5z" fill="#fff"/></svg>'
+};
+const vav = (k,size=2.6)=>`<span class="vav ${k}" style="width:${size}rem;height:${size}rem">${VICON[k]}</span>`;
+const bold = s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+const uaBtn = k=>`<button class="uab" data-a="ua" data-k="${k}" aria-pressed="${!!R.ua[k]}" title="Ukrainian translation">UA</button>`;
+const uaBox = (k,text,tag='div')=>`<${tag} class="ua ${R.ua[k]?'open':''}" data-uk="${k}" lang="uk">${esc(text)}</${tag}>`;
+const revBtn = (k,label)=>`<button class="btn sm ${R.rev[k]?'on':''}" data-a="rev" data-k="${k}" aria-expanded="${!!R.rev[k]}">${label}</button>`;
+const revBox = (k,html)=>`<div class="rev ${R.rev[k]?'open':''}" data-rk="${k}">${html}</div>`;
+const samplesHtml = list=>`<div class="samples">${list.map(s=>`<div class="sample">${esc(s)}</div>`).join('')}</div>`;
+const startersHtml = list=>`<div class="starters">${list.map(s=>`<span>${esc(s)}</span>`).join('')}</div>`;
+const optTag = '<span class="tag opt">Optional</span>';
+
+/* Mia’s comic “BOLT” — inline SVG */
+function comic(){
+  const ink='#1B1A3A', font="'Comic Sans MS','Chalkboard SE','Comic Neue',Manrope,sans-serif";
+  const box=(x,y,c='#C9CCD8')=>`<g transform="translate(${x} ${y})"><line x1="15" y1="-9" x2="15" y2="0" stroke="${ink}" stroke-width="3"/><circle cx="15" cy="-11" r="3.5" fill="${ink}"/><rect width="30" height="24" rx="3" fill="${c}" stroke="${ink}" stroke-width="3"/><rect x="7" y="8" width="5" height="5" fill="${ink}"/><rect x="18" y="8" width="5" height="5" fill="${ink}"/><rect x="-3" y="27" width="36" height="32" rx="3" fill="${c}" stroke="${ink}" stroke-width="3"/><rect x="6" y="59" width="6" height="12" fill="${ink}"/><rect x="18" y="59" width="6" height="12" fill="${ink}"/></g>`;
+  const bolt=(x,y,o={})=>`<g transform="translate(${x} ${y})"><path d="M15 -4 C 10 -14, 26 -16, 20 -26" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="20" cy="-30" r="6" fill="#FFC857" stroke="${ink}" stroke-width="2.5"/>
+    <circle cx="15" cy="10" r="16" fill="#B79CFF" stroke="${ink}" stroke-width="3"/><circle cx="9" cy="8" r="5" fill="#fff" stroke="${ink}" stroke-width="2"/><circle cx="21" cy="8" r="5" fill="#fff" stroke="${ink}" stroke-width="2"/><circle cx="10" cy="9" r="2.2" fill="${ink}"/><circle cx="22" cy="9" r="2.2" fill="${ink}"/>
+    <path d="${o.sad?'M9 20 Q15 15 21 20':'M9 17 Q15 23 21 17'}" stroke="${ink}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <rect x="-1" y="28" width="32" height="30" rx="13" fill="#2DD4BF" stroke="${ink}" stroke-width="3"/>
+    ${o.up?`<path d="M2 36 L-12 20 M28 36 L42 20" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>`:`<path d="M1 38 L-9 52 M29 38 L39 52" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>`}
+    <path d="M8 58 L6 71 M22 58 L24 71" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>
+    ${o.box?`<rect x="-7" y="-8" width="44" height="38" rx="2" fill="#D9A86C" stroke="${ink}" stroke-width="3"/><path d="M-7 4 H37" stroke="${ink}" stroke-width="1.5" opacity=".45"/><rect x="5" y="9" width="7" height="6" fill="${ink}"/><rect x="18" y="9" width="7" height="6" fill="${ink}"/>`:''}</g>`;
+  const pan=(x,fill)=>`<rect x="${x}" y="8" width="190" height="214" rx="10" fill="${fill}" stroke="${ink}" stroke-width="4"/><line x1="${x+3}" y1="197" x2="${x+187}" y2="197" stroke="${ink}" stroke-width="2" opacity=".3"/>`;
+  const bub=(x,y,w,t,tx)=>`<g><path d="M${tx} ${y+28} L${tx-4} ${y+46} L${tx+10} ${y+28}" fill="#fff" stroke="${ink}" stroke-width="2.5" stroke-linejoin="round"/><rect x="${x}" y="${y}" width="${w}" height="30" rx="14" fill="#fff" stroke="${ink}" stroke-width="2.5"/><text x="${x+w/2}" y="${y+20}" text-anchor="middle" font-family="${font}" font-size="14" font-weight="700" fill="${ink}">${t}</text></g>`;
+  return `<svg viewBox="0 0 610 230" role="img" aria-label="Mia’s comic: a quirky robot called Bolt wants to fit in with square robots."><rect width="610" height="230" fill="#FFFDF7"/>
+   ${pan(8,'#F1EBFF')}<rect x="16" y="16" width="86" height="22" rx="5" fill="#FFC857" stroke="${ink}" stroke-width="2.5"/><text x="59" y="32" text-anchor="middle" font-family="${font}" font-size="13" font-weight="700" fill="${ink}">BOLT · by Mia</text>
+   ${box(22,126)}${box(62,126)}${bolt(106,126,{sad:true})}${box(152,126)}${bub(56,50,140,'I want to fit in…',118)}
+   ${pan(205,'#E4FAF6')}${box(222,126)}${bolt(286,126,{box:true})}${box(350,126)}${bub(240,50,130,'Better now?',300)}
+   ${pan(402,'#FFF5DB')}${box(416,126)}${bolt(472,126,{up:true})}${box(548,126)}<rect x="514" y="182" width="24" height="15" rx="2" fill="#D9A86C" stroke="${ink}" stroke-width="2.5"/>
+   <text x="438" y="96" font-size="22" fill="#8B5CF6">♪</text><text x="540" y="84" font-size="20" fill="#14B8A6">♫</text>${bub(470,40,124,'Cool moves!',560)}
+  </svg>`;
+}
+
+/* quiz helpers: S.sel[qid] = {itemIndex: value}; R.checked / R.shown — тільки на поточну сесію */
+const qsel = id=>(S.sel[id] && typeof S.sel[id]==='object') ? S.sel[id] : (S.sel[id]={});
+function resLine(id,it,val,keyText){
+  const c=R.checked[id], sh=R.shown[id]; let h='';
+  const has = val!==undefined && val!==null && val!=='';
+  if(c){ if(!has) h+=`<span class="na">• No answer yet.</span>`; else if(val===it.ans) h+=`<span class="ok">✓ Correct.</span><span>${esc(it.why)}</span>`; else h+=`<span class="no">✗ Not quite.</span><span class="muted">Try again.</span>`; }
+  if(sh && !(c && val===it.ans)) h+=`<span class="key">🔑 Answer: ${esc(keyText)}.</span><span>${esc(it.why)}</span>`;
+  return h?`<div class="res">${h}</div>`:'';
+}
+const qctl = id=>`<div class="ctl"><button class="btn sm teal" data-a="check" data-q="${id}">✓ Check</button><button class="btn sm" data-a="retry" data-q="${id}">↺ Try again</button><button class="btn sm ${R.shown[id]?'on':''}" data-a="showans" data-q="${id}" aria-pressed="${!!R.shown[id]}">🔑 Show answers</button></div>`;
+
+/* choice row for polls (teacher highlights; Live votes behind “Show class results”) */
+function pickRow(id,opts,emo){
+  return `<div class="three mt">${opts.map((o,i)=>`<button class="opt" data-a="pick" data-q="${id}" data-i="${i}" aria-pressed="${S.sel[id]===i}" style="justify-content:center;font-size:1.05rem;padding:.85rem"><span style="font-size:1.6rem" aria-hidden="true">${emo[i]}</span>${esc(o)}</button>`).join('')}</div>${liveBars(id,opts)}`;
+}
+function counts(id,n){ const c=Array(n).fill(0); Object.values(S.lv[id]||{}).forEach(v=>{ if(v>=0&&v<n) c[v]++; }); return c; }
+function liveBars(id,opts){
+  if(!R.live) return '';
+  const c=counts(id,opts.length), tot=c.reduce((a,b)=>a+b,0);
+  return `<div class="ctl"><button class="btn sm ${R.res[id]?'on':''}" data-a="res" data-q="${id}" aria-pressed="${!!R.res[id]}">📊 ${R.res[id]?'Hide':'Show'} class results</button><span class="small">${tot} vote${tot===1?'':'s'} from phones</span></div>`+
+    (R.res[id]?`<div class="bars">${opts.map((o,i)=>`<div class="bar"><span>${esc(o)}</span><i style="width:${tot?Math.round(c[i]/tot*100):0}%"></i><b class="mono">${c[i]}</b></div>`).join('')}</div>`:'');
+}
+function wallHtml(id){ const w=S.wall[id]||[]; if(!w.length) return '';
+  return `<div class="wall" aria-label="Answers from the class">${w.map((x,j)=>`<div class="wi">${esc(x.text)}<small>${esc(x.by)}${MODE==='teacher'?` · <button class="small" data-a="wdel" data-q="${id}" data-i="${j}" aria-label="Remove answer">✕</button>`:''}</small></div>`).join('')}</div>`; }
+
+function speakCard(o){
+  return `<div class="card ${o.opt?'sun':''}">
+    <div class="row" style="align-items:flex-start;flex-wrap:nowrap">${o.icon?`<span style="font-size:2.4rem;line-height:1" aria-hidden="true">${o.icon}</span>`:''}<div class="grow">
+    ${o.opt?optTag:''}<p class="q ${o.small?'':'xl'}" style="margin:.2rem 0 .3rem">${esc(o.q)} ${uaBtn(o.id)}</p>${uaBox(o.id,o.ua)}</div></div>
+    ${o.body||''}
+    ${(o.hint||o.samples)?`<div class="ctl">${o.hint?revBtn(o.id+'-h','💡 Hint'):''}${o.samples?revBtn(o.id+'-s','💬 Sample answers'):''}</div>`:''}
+    ${o.hint?revBox(o.id+'-h',startersHtml(o.hint)):''}${o.samples?revBox(o.id+'-s',samplesHtml(o.samples)):''}
+    ${o.note?`<p class="small mt">${o.note}</p>`:''}${wallHtml(o.id)}</div>`;
+}
+function glossify(t){ let out='', last=0;
+  t.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,(m,d,k,off)=>{ out+=esc(t.slice(last,off))+`<button class="gl" data-a="gl" data-g="${esc(k||d)}">${esc(d)}</button>`; last=off+m.length; return m; });
+  return out+esc(t.slice(last)); }
+function deck(list,pre,cls,stepId){
+  const i=Math.min(S.sub,list.length-1), w=list[i]; R.seen[stepId]=Math.max(R.seen[stepId]||0,i);
+  return `<div class="${cls}"><div class="deckbar" role="group" aria-label="Words">${list.map((x,j)=>`<button data-a="sub" data-i="${j}" class="${j===i?'cur':j<=R.seen[stepId]?'seen':''}" aria-current="${j===i}">${j+1}. ${esc(x.w)}</button>`).join('')}</div>
+   <div class="card ${cls==='deck-b'?'teal':'violet'} pop-in" style="padding:1.4rem 1.5rem"><div class="wcard"><div class="wicon" aria-hidden="true">${w.i}</div><div>
+     <div class="row"><span class="kick">New phrase ${i+1} / ${list.length}</span>${w.inf?'<span class="infm">· informal</span>':''}<span class="grow"></span>${uaBtn(pre+i)}</div>
+     <h2 class="dsp wword">${esc(w.w)}</h2><p class="wdef">${esc(w.def)}</p>${uaBox(pre+i,w.ua)}
+     <div class="wex">${bold(w.ex)}${uaBox(pre+i,w.exua)}</div></div></div></div>
+   ${i<list.length-1?`<p class="small mt">Continue → opens the next phrase.</p>`:''}</div>`;
+}
+function voiceBtn(v,i,sel){ return `<button class="voice ${v.k}" data-a="pick" data-q="mic" data-i="${i}" aria-pressed="${sel===i}">${vav(v.k,3)}<span class="grow vbody"><span class="vn">${LET[i]} · ${esc(v.n)}</span><span class="vt">“${esc(v.t)}”</span>${uaBox('mv'+i,v.ua,'span')}</span><span class="micb">🎤 has the mic</span></button>`; }
+
+/* team card pieces */
+const teamURL = id=>baseURL()+'?team='+id;
+function teamText(t,mins){
+  return [`Lesson 7 · ${BR.title}`, `TEAM ${t.n} — ${t.name.toUpperCase()}`, '',
+    `Situation: ${t.sit}`, `Negative thought: “${t.neg}”`, '',
+    BR.intro.en, ...BR.steps.map((s,i)=>`${i+1}. ${s.t} ${s.d}`), '',
+    `You have ${mins||6} minutes.`, BR.rules.en[1], BR.rules.en[2], '',
+    'Better thought: ______________________', 'Next action: ______________________', '',
+    'Better thought starters: '+BR.hintsBetter.join(' / '), 'Next action starters: '+BR.hintsAction.join(' / '),
+    'Word bank: '+BR.bank.join(' · '), '', 'Roles:', ...BR.roles.en.map(r=>'– '+r), BR.pairs.en, '',
+    'Your team card: '+teamURL(t.id)].join('\n');
+}
+function hintsHtml(){ return `<div class="hintbox"><div><h4>💡 Better thought</h4><ul>${BR.hintsBetter.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+  <div><h4>👣 Next action</h4><ul>${BR.hintsAction.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+  <div><h4>📚 Word bank</h4><div class="wb">${BR.bank.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div>`; }
+function rolesHtml(){ return `<div class="hintbox"><div><h4>👥 Roles</h4><ul>${BR.roles.en.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div>${uaBox('roles',BR.roles.ua.join(' · '))}<p class="small" style="margin:.4rem 0 0">${esc(BR.pairs.en)}</p>${uaBox('roles',BR.pairs.ua)}`; }
+function teamFields(t,big){
+  const w=getTeam(t.id);
+  return `<div class="flow">
+    <div class="fl neg"><span class="lab">Negative thought<br><small style="opacity:.75">ready</small></span><span class="tx">“${esc(t.neg)}”</span></div>
+    <div class="fl bet"><label class="lab" for="tf-${t.id}-b">💡 Better thought</label><textarea id="tf-${t.id}-b" data-tf="better" data-team="${t.id}" maxlength="240" placeholder="One mistake doesn’t mean…" ${big?'style="font-size:1.15rem"':''}>${esc(w.better||'')}</textarea></div>
+    <div class="fl act"><label class="lab" for="tf-${t.id}-a">👣 Next action</label><textarea id="tf-${t.id}-a" data-tf="action" data-team="${t.id}" maxlength="240" placeholder="I can…" ${big?'style="font-size:1.15rem"':''}>${esc(w.action||'')}</textarea></div>
+  </div>`;
+}
+
+/* ---------- 6 · steps (scenes) ---------- */
+const SCENES = [
+  {n:1,t:'New Message',e:'📩',min:3}, {n:2,t:'Previously…',e:'⏪',min:2}, {n:3,t:'Inside the Chat',e:'💭',min:4},
+  {n:4,t:'Change the Chat',e:'🔄',min:4}, {n:5,t:'Read Mia’s Story',e:'📖',min:6}, {n:6,t:'Who Gets the Mic?',e:'🎤',min:3},
+  {n:7,t:'Help Your Character',e:'🛟',min:6}, {n:8,t:'Final Message',e:'💌',min:2}
+];
+
+const STEPS = [
+ /* SCENE 1 */
+ {sc:1, id:'msg', t:'A new message from Mia', subs:3, render(){ const s=S.sub;
+   return `<div class="two l">
+    <div class="phone"><div class="phone-in">
+      <div class="chat-h">${av('mia',2.4)}<div><b>Mia</b><small>● online</small></div><span class="grow"></span><span class="tag vio">📩 new</span></div>
+      <div class="chat-b">
+        ${MIA_MSG.parts.map((p,i)=>`<div class="msg pop-in" style="animation-delay:${i*.2}s"><div class="bub">${esc(p)}</div></div>`).join('')}
+        <div class="msg pop-in" style="animation-delay:.6s;max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic()}</div><div class="attach-cap">📎 my comic for the creativity show</div></div></div>
+        <div>${uaBtn('m1')}${uaBox('m1',MIA_MSG.ua)}</div>
+      </div></div></div>
+    <div style="display:grid;gap:1rem">
+      <div class="card"><div class="kick">The story</div><div class="row mt">${av('mia',3.4)}<div><b>Mia</b><div class="small">draws comics</div></div><span style="width:.6rem"></span>${av('leo',3.4)}<div><b>Leo</b><div class="small">Mia’s friend</div></div></div></div>
+      ${s>=1?`<div class="card sun pop-in" ${s===1?'data-newest':''}><div class="kick" style="color:var(--sun)">🎯 Your mission</div><p class="q xl" style="margin:.3rem 0">${esc(MISSION.en)}</p>${uaBtn('mis')}${uaBox('mis',MISSION.ua)}</div>`:''}
+      ${s>=2?`<div class="card teal pop-in" data-newest><div class="kick">🎤 What are the “voices”?</div><p class="q" style="margin:.3rem 0">${esc(VOICES_EN)}</p>${uaBtn('voi')}${uaBox('voi',VOICES_UA)}<div class="row mt">${vav('critic',2.3)}${vav('hype',2.3)}${vav('coach',2.3)}<span class="small grow">Today, these voices talk in Mia’s head.</span></div></div>`:''}
+      ${s<2?`<p class="small">Continue → opens the ${s===0?'mission':'next card'}.</p>`:''}
+    </div></div>`; }},
+ {sc:1, id:'w1', t:'Warm-up', live:()=>({kind:'choice', id:'wq1', q:WARM[0].q, opts:WARM[0].opts}),
+  render:()=>speakCard({id:'wq1', icon:'🙋', q:WARM[0].q, ua:WARM[0].ua, samples:WARM[0].samples, body:pickRow('wq1',WARM[0].opts,WARM[0].emo)})},
+ {sc:1, id:'w2', t:'Warm-up', live:()=>({kind:'text', id:'wq2', q:WARM[1].q, ph:'e.g. Practising can help.'}),
+  render:()=>speakCard({id:'wq2', icon:'💡', q:WARM[1].q, ua:WARM[1].ua, samples:WARM[1].samples})},
+ {sc:1, id:'w3', t:'Warm-up', opt:true,
+  render:()=>speakCard({id:'wq3', icon:'🤔', q:WARM[2].q, ua:WARM[2].ua, samples:WARM[2].samples, opt:true})},
+
+ /* SCENE 2 */
+ {sc:2, id:'rev', t:'Complete the messages', render(){ const sel=qsel('rev');
+   return `<div class="card"><div class="row"><p class="lead grow" style="margin:0">Complete the messages with the words above. ${uaBtn('revi')}</p></div>${uaBox('revi','Доповніть повідомлення словами вище.')}
+    <div class="chips mt" role="group" aria-label="Word bank">${REV.words.map(w=>`<button class="chip" data-a="bank" data-v="${esc(w)}" title="Put this word into the selected gap">${esc(w)}<span class="ua noflag" data-uk="revw" style="margin:0 0 0 .35rem;padding:0 .3rem;font-size:.75em">${esc(REV.wua[w])}</span></button>`).join('')}</div>
+    <p class="small" style="margin:.4rem 0 .8rem">Choose a word in each gap — or click a word above, and it goes into the selected (or the first empty) gap.</p>
+    ${REV.items.map((it,i)=>{ const v=sel[i]; const st=R.checked.rev&&v?(v===it.ans?'good':'bad'):'';
+      return `<div class="item"><span class="num">${i+1}</span>${esc(it.a)} <select class="gap ${v?'filled':''} ${st}" data-q="rev" data-i="${i}" aria-label="Gap ${i+1}"><option value="">— choose —</option>${REV.words.map(w=>`<option ${v===w?'selected':''}>${esc(w)}</option>`).join('')}</select>${esc(it.b)} ${uaBtn('rv'+i)}${uaBox('rv'+i,it.ua)}${resLine('rev',it,v,it.ans)}</div>`; }).join('')}
+    ${qctl('rev')}</div>
+    <div class="msg mt2" style="max-width:100%">${av('mia',2.6)}<div class="bub"><span class="who">Mia</span>${esc(REV.bridge.en)} ${uaBtn('brg')}${uaBox('brg',REV.bridge.ua)}</div></div>`; }},
+
+ /* SCENE 3 */
+ {sc:3, id:'w-in', t:'Six words for the inner chat', subs:6, render:()=>deck(W1,'wa','deck-a','w-in')},
+ {sc:3, id:'name', t:'Name the Thought', render(){ const sel=qsel('name'), quick=S.route==='quick';
+   return `<p class="lead">Which word or phrase matches each message? ${uaBtn('nmi')}</p>${uaBox('nmi','Яке слово або словосполучення відповідає кожному повідомленню?')}
+    ${quick?'<p class="small">Quick route: messages 1 and 3.</p>':''}
+    <div class="two mt">${NAME.items.map((it,i)=> (quick&&!it.quick)?'':`<div class="card" style="padding:1rem">
+      <div class="msg" style="max-width:100%">${av('mia',2.2)}<div class="bub"><span class="who">Mia’s thought ${i+1}${it.quick?'':' · <span style="color:var(--sun)">optional</span>'}</span>“${esc(it.q)}” ${uaBtn('nt'+i)}${uaBox('nt'+i,it.ua)}</div></div>
+      <div class="chips mt">${NAME.opts.map(o=>`<button class="chip ${R.shown.name&&o===it.ans?'key':''}" data-a="opt" data-q="name" data-i="${i}" data-v="${esc(o)}" aria-pressed="${sel[i]===o}">${esc(o)}</button>`).join('')}</div>
+      ${resLine('name',it,sel[i],it.ans)}</div>`).join('')}</div>
+    ${qctl('name')}
+    <div class="banner mt2"><span class="bi">💬</span><div><b>${esc(NAME.close.en)}</b> ${uaBtn('nmc')}${uaBox('nmc',NAME.close.ua)}</div></div>`; }},
+
+ /* SCENE 4 */
+ {sc:4, id:'w-ch', t:'Six ways to change the chat', subs:6, render:()=>deck(W2,'wb','deck-b','w-ch')},
+ {sc:4, id:'move', t:'Choose Mia’s Next Move', render(){ const sel=qsel('move');
+   return `<div class="two">${MOVE.map((it,i)=>`<div class="card"><span class="kick">Question ${i+1}</span>
+      <p class="q" style="margin:.3rem 0">${esc(it.q)} ${uaBtn('mq'+i)}</p>${uaBox('mq'+i,it.ua)}
+      <div class="opts mt">${it.opts.map((o,j)=>`<button class="opt ${R.shown.move&&j===it.ans?'key':''}" data-a="opt" data-q="move" data-i="${i}" data-v="${j}" aria-pressed="${sel[i]===j}"><span class="L">${LET[j]}</span><span>${esc(o.t)}${uaBox('mq'+i,o.ua,'span')}</span></button>`).join('')}</div>
+      ${resLine('move',it,sel[i],LET[it.ans])}</div>`).join('')}</div>
+    ${qctl('move')}
+    <div class="banner mt2"><span class="bi">🖼️</span><div><span class="kick" style="color:var(--sun)">The rule for today</span><br><b style="font-size:1.3rem">${esc(PRINCIPLE.en)}</b> ${uaBtn('pr')}${uaBox('pr',PRINCIPLE.ua)}</div></div>`; }},
+
+ /* SCENE 5 */
+ {sc:5, id:'pre', t:'Before you read', live:()=>({kind:'choice', id:'pre', q:PRE.q, opts:PRE.opts}),
+  render:()=>speakCard({id:'pre', icon:'🔮', q:PRE.q, ua:PRE.ua, body:pickRow('pre',PRE.opts,PRE.emo)+`<div class="ctl"><button class="btn primary" data-a="next">📖 Open the story →</button><span class="small">Hear two guesses first.</span></div>`})},
+ {sc:5, id:'read', t:STORY.title, subs:4, render(){ const s=S.sub;
+   return `<div class="row" style="margin-bottom:.8rem">${av('mia',2.4)}${av('leo',2.4)}<span class="small grow">Click a <b style="color:var(--sun)">yellow phrase</b> to see what it means.</span></div>
+    ${STORY.paras.slice(0,s+1).map((p,i)=>`<div class="card ${i===s?'violet pop-in':''}" ${i===s?'data-newest':''} style="margin-bottom:.8rem"><div class="row" style="margin-bottom:.35rem"><span class="tag">Part ${i+1} / 4</span><span class="grow"></span>${uaBtn('rp'+i)}</div><p class="para" style="margin:0">${glossify(p.en)}</p>${uaBox('rp'+i,p.ua)}</div>`).join('')}
+    ${s<3?`<p class="small">Continue → opens part ${s+2}.</p>`:''}`; }},
+ {sc:5, id:'fpo', t:'Fact, Prediction, or Opinion?', render(){ const sel=qsel('fpo');
+   return `<p class="lead">Is this a fact from the story, a prediction, or an opinion? ${uaBtn('fpi')}</p>${uaBox('fpi','Це факт з історії, припущення про майбутнє чи думка?')}
+    <div class="mt">${FPO.items.map((it,i)=>`<div class="item"><div class="row" style="justify-content:space-between"><p style="margin:0;font-weight:800;font-size:1.05rem"><span class="num">${i+1}</span>${esc(it.q)} ${uaBtn('fp'+i)}</p>
+      <div class="chips">${FPO.opts.map(o=>`<button class="chip ${R.shown.fpo&&o===it.ans?'key':''}" data-a="opt" data-q="fpo" data-i="${i}" data-v="${o}" aria-pressed="${sel[i]===o}">${o}</button>`).join('')}</div></div>
+      ${uaBox('fp'+i,it.ua)}${resLine('fpo',it,sel[i],it.ans)}</div>`).join('')}</div>${qctl('fpo')}`; }},
+ {sc:5, id:'post', t:'After reading', render:()=>`<div class="two">${POST.slice(0,2).map(p=>speakCard({id:p.id, q:p.q, ua:p.ua, samples:p.samples, small:true})).join('')}</div>`},
+ {sc:5, id:'post3', t:'After reading', opt:true, render:()=>speakCard({id:'pq3', icon:'⚖️', q:POST[2].q, ua:POST[2].ua, opt:true, note:esc(POST[2].note)})},
+
+ /* SCENE 6 */
+ {sc:6, id:'mic', t:'Three voices want the mic', live:()=>({kind:'choice', id:'mic', q:MIC.q, opts:MIC.voices.map((v,i)=>LET[i]+' · '+v.n)}),
+  render(){ const sel=S.sel.mic;
+   return `<div class="row" style="margin-bottom:.8rem">${av('mia',2.6)}<p class="q grow" style="margin:0">${esc(MIC.q)} ${uaBtn('mcq')}</p></div>${uaBox('mcq',MIC.ua)}
+    <div class="three mt2">${MIC.voices.map((v,i)=>voiceBtn(v,i,sel)).join('')}</div>
+    <div class="row mt">${uaBtn('mv0')}<span class="small">translations · click a card to give it the mic</span></div>
+    ${liveBars('mic',MIC.voices.map((v,i)=>LET[i]+' · '+v.n))}
+    <div class="ctl">${revBtn('mic-x','💡 Show explanation')}</div>${revBox('mic-x',`<div class="banner"><span class="bi">${vav('coach',2.4)}</span><b>${esc(MIC.answer)}</b></div>`)}`; },
+  after(){ /* одна кнопка UA відкриває переклади всіх трьох голосів */ const b=$('[data-k="mv0"]'); if(b) b.dataset.group='mv0,mv1,mv2'; }},
+ {sc:6, id:'speak', t:'Speak up', live:()=>({kind:'text', id:'spk', q:MIC.speak.q, ph:'It’s okay to…'}),
+  render:()=>speakCard({id:'spk', icon:'🗣️', q:MIC.speak.q, ua:MIC.speak.ua, hint:MIC.speak.starters, samples:MIC.speak.samples,
+    note:`🙂 ${esc(MIC.tip.en)} ${uaBtn('tip')}${uaBox('tip',MIC.tip.ua)}`})},
+ {sc:6, id:'speak2', t:'More to talk about', opt:true, render:()=>`<div class="card sun">${optTag}<div class="mt" style="display:grid;gap:.7rem">
+    ${MIC.extra.map((x,i)=>`<div class="item"><p class="q" style="margin:0"><span class="num">${i+1}</span>${esc(x.q)} ${uaBtn('ox'+i)}</p>${uaBox('ox'+i,x.ua)}</div>`).join('')}</div>
+    <p class="small mt">🙂 ${esc(MIC.tip.en)} ${uaBtn('tip')}</p>${uaBox('tip',MIC.tip.ua)}</div>`},
+
+ /* SCENE 7 */
+ {sc:7, id:'how', t:BR.title, render:()=>`<p class="lead">${esc(BR.intro.en)} ${uaBtn('bri')}</p>${uaBox('bri',BR.intro.ua)}
+    <div class="steps4 mt">${BR.steps.map((s,i)=>`<div class="st4"><div class="n">${i+1}</div><b>${esc(s.t)}</b><p>${esc(s.d)}</p>${uaBox('bri',s.ut+' '+s.ud)}</div>`).join('')}</div>
+    <div class="two mt"><div class="card sun"><div class="kick" style="color:var(--sun)">⏱ The rules</div><ul style="margin:.4rem 0 0;padding-left:1.1rem;font-weight:800">${BR.rules.en.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>${uaBox('bri',BR.rules.ua.join(' '))}</div>
+    <div class="card">${rolesHtml()}</div></div>`},
+ {sc:7, id:'example', t:'A full example', render:()=>{ const e=BR.example;
+   return `<div class="card"><div class="team-h">${initAv('Nina',3)}<div><span class="tn">EXAMPLE</span><br><b>${esc(e.name)}</b></div><span class="grow"></span>${uaBtn('ex')}</div>
+    <div class="flow mt"><div class="fl sit"><span class="lab">Situation</span><span class="tx">${esc(e.sit)}${uaBox('ex',e.situa)}</span></div>
+     <div class="fl neg"><span class="lab">Negative thought</span><span class="tx">“${esc(e.neg)}”${uaBox('ex',e.negua)}</span></div>
+     <div class="fl bet"><span class="lab">💡 Better thought</span><span class="tx">“${esc(e.bet)}”${uaBox('ex',e.betua)}</span></div>
+     <div class="fl act"><span class="lab">👣 Next action</span><span class="tx">“${esc(e.act)}”${uaBox('ex',e.actua)}</span></div></div></div>
+    <div class="banner mt"><span class="bi">✅</span><div><b>${esc(BR.why.en)}</b> ${uaBtn('why')}${uaBox('why',BR.why.ua)}</div></div>`; }},
+ {sc:7, id:'check', t:'Ready for the rooms?', render:()=>`<p class="lead">Three quick questions before the breakout rooms.</p>
+    <div class="check mt">${BR.checks.map((c,i)=>`<div class="cq"><b>${i+1}. ${esc(c.q)}</b><span>${R.rev['ck'+i]?`<span class="a pop-in">✓ ${esc(c.a)}</span>`:`<button class="btn sm" data-a="rev" data-k="ck${i}">Show answer</button>`}</span></div>`).join('')}</div>`},
+ {sc:7, id:'teams', t:'Team cards', live:()=>({kind:'team', id:'team', teams:TEAMS.map(t=>({id:t.id,n:t.n,name:t.name,sit:t.sit,neg:t.neg})), work:Object.fromEntries(TEAMS.map(t=>[t.id,getTeam(t.id)]))}),
+  render:()=>`<div class="card sun" style="padding:.8rem 1rem"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Breakout timer</span><b class="tdisp mono" style="font-size:1.4rem">${timerTxt()}</b><span class="grow"></span>
+     <button class="btn sm sun" data-a="tstart" data-s="360" data-l="Breakout rooms">▶ Start 6:00</button><button class="btn sm" data-a="tstart" data-s="240" data-l="Breakout rooms (short)">Short version 4:00</button><button class="btn sm ghost" data-a="tpause">⏸ Pause</button><button class="btn sm ghost" data-a="treset">↺ Reset</button></div></div>
+    <div class="three mt">${TEAMS.map(t=>`<div class="card team"><div class="team-h">${av(t.id,3)}<div><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div></div>
+      <p style="margin:0;font-weight:700">${esc(t.sit)} ${uaBtn('ts'+t.id)}</p>${uaBox('ts'+t.id,t.ua)}
+      <div class="neg-b">“${esc(t.neg)}”</div>
+      <div class="small">💡 Better thought: …<br>👣 Next action: …</div>
+      <div class="row" style="gap:.35rem"><a class="btn sm" href="?team=${t.id}" target="_blank" rel="noopener">↗ Open card</a><button class="btn sm" data-a="copy" data-t="link" data-id="${t.id}">🔗 Copy link</button><button class="btn sm" data-a="copy" data-t="task" data-id="${t.id}">📋 Copy team task</button></div></div>`).join('')}</div>
+    <div class="two mt"><div class="card">${hintsHtml()}</div><div class="card">${rolesHtml()}</div></div>`},
+ {sc:7, id:'present', t:'Presentations', live:()=>({kind:'react', id:'react-'+S.pteam, q:'Team '+(TEAMS.find(t=>t.id===S.pteam)||TEAMS[0]).name+' is presenting', opts:BR.stickers}),
+  render(){ const t=TEAMS.find(x=>x.id===S.pteam)||TEAMS[0], st=S.stick[t.id]||{};
+   return `<div class="row"><div class="tabs" role="tablist">${TEAMS.map(x=>`<button role="tab" data-a="ptab" data-id="${x.id}" aria-selected="${x.id===t.id}">${av(x.id,1.5)} Team ${x.n} · ${esc(x.name)}</button>`).join('')}</div><span class="grow"></span>
+     <b class="tdisp mono">${timerTxt()}</b><button class="btn sm" data-a="tstart" data-s="60" data-l="Team presentation">▶ 1:00</button></div>
+    <div class="card mt"><div class="team-h">${av(t.id,3)}<div><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div><span class="grow"></span><button class="btn sm sun" data-a="present" data-id="${t.id}">⛶ Presentation view</button></div>
+      <p class="mt" style="margin-bottom:.6rem;font-weight:700">${esc(t.sit)} ${uaBtn('ps')}</p>${uaBox('ps',t.ua)}${teamFields(t,true)}
+      <p class="small mt">Type or paste what the team says (or read it from their card). Saved on this device.</p></div>
+    <div class="card mt"><p class="q" style="margin:0">${esc(BR.after.q)} ${uaBtn('aft')}</p>${uaBox('aft',BR.after.ua)}
+      <div class="stickers mt">${BR.stickers.map(k=>`<button class="stk" data-a="stk" data-id="${t.id}" data-v="${esc(k)}" aria-pressed="${!!st[k]}">${k==='Helpful reframe'?'🖼️':k==='Useful action'?'👣':'🤝'} ${esc(k)}</button>`).join('')}</div></div>`; }},
+
+ /* SCENE 8 */
+ {sc:8, id:'final', t:'Mia’s last message', live:()=>({kind:'text', id:'exit', q:FINAL.exit.q, starters:FINAL.exit.items.map(x=>x.t), ph:'A confidence boost for me is…'}),
+  render:()=>`<div class="two l"><div class="phone"><div class="phone-in"><div class="chat-h">${av('mia',2.4)}<div><b>Mia</b><small>● online</small></div></div>
+     <div class="chat-b"><div class="msg" style="max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic()}</div><div class="attach-cap">✓ shown at the creativity show</div></div></div>
+     <div class="msg pop-in"><div class="bub">${esc(FINAL.mia)}</div></div><div>${uaBtn('fm')}${uaBox('fm',FINAL.miaua)}</div></div></div></div>
+    <div class="card sun"><span class="kick" style="color:var(--sun)">🎟️ Exit ticket</span><p class="q xl" style="margin:.3rem 0">${esc(FINAL.exit.q)} ${uaBtn('xt')}</p>${uaBox('xt',FINAL.exit.ua)}
+     <div style="display:grid;gap:.5rem" class="mt">${FINAL.exit.items.map((x,i)=>`<div class="item" style="margin:0"><b><span class="num">${i+1}</span>${esc(x.t)}</b>${uaBox('xt',x.ua)}</div>`).join('')}</div>
+     <div class="ctl">${revBtn('xt-s','💬 Sample answers')}</div>${revBox('xt-s',samplesHtml(FINAL.exit.samples))}${wallHtml('exit')}</div></div>`},
+ {sc:8, id:'sum', t:'How to change the chat', render:()=>`<div class="path">${FINAL.path.map((p,i)=>`<div class="pop-in" style="animation-delay:${i*.12}s"><div class="pi" aria-hidden="true">${p.i}</div><span class="kick">Step ${i+1}</span><b>${esc(p.en)}</b>${uaBox('pth',p.ua)}</div>`).join('')}</div>
+    <div class="row mt">${uaBtn('pth')}</div>
+    <div class="banner mt2"><span class="bi">🖼️</span><div><b style="font-size:1.25rem">${esc(PRINCIPLE.en)}</b> ${uaBtn('pr2')}${uaBox('pr2',PRINCIPLE.ua)}</div></div>
+    <div class="ctl mt2"><button class="btn primary" data-a="vocab">📚 Vocabulary Recap</button><a class="btn" href="../../">← Back to the course</a></div>
+    <p class="small mt">🎉 Story complete — Mia found a more useful voice.</p>`}
+];
+
+/* ---------- 7 · navigation & UI ---------- */
+const visible = i=>!(STEPS[i].opt && S.route==='quick');
+const cur = ()=>STEPS[S.i];
+function sceneSteps(n){ return STEPS.map((s,i)=>({s,i})).filter(x=>x.s.sc===n && visible(x.i)); }
+function go(i,sub=0){ hidePop(); S.i=i; S.sub=sub; save(); draw(true); $('#stage').focus({preventScroll:true}); }
+function next(){ const st=cur(); if(st.subs && S.sub<st.subs-1){ S.sub++; save(); draw(false,false,true); return; }
+  for(let j=S.i+1;j<STEPS.length;j++) if(visible(j)) return go(j,0); toast('This is the last screen of the lesson.'); }
+function back(){ if(S.sub>0){ S.sub--; save(); draw(false,true); return; }
+  for(let j=S.i-1;j>=0;j--) if(visible(j)) return go(j,(STEPS[j].subs||1)-1); }
+function skipOpt(){ for(let j=S.i+1;j<STEPS.length;j++) if(!STEPS[j].opt) return go(j,0); }
+function shead(st,sc){ return `<div class="shead"><div class="sico" aria-hidden="true">${sc.e}</div><div class="grow"><div class="kick">Scene ${sc.n} of 8 · ${esc(sc.t)}</div><h1>${esc(st.t)}</h1>
+  <div class="meta"><span class="tag">⏱ ${sc.min} min</span>${st.opt?optTag:''}${st.subs?`<span class="tag vio">${S.sub+1} / ${st.subs}</span>`:''}</div></div></div>`; }
+function draw(anim=true,keep=false,subAdv=false){
+  if(MODE!=='teacher') return;
+  if(!visible(S.i)){ for(let j=S.i;j<STEPS.length;j++) if(visible(j)){ S.i=j; break; } }
+  const st=cur(), sc=SCENES[st.sc-1], top=$('#stage').scrollTop;
+  if(st.subs) S.sub=Math.min(Math.max(0,S.sub),st.subs-1); else S.sub=0;
+  hidePop();
+  $('#scene').innerHTML = shead(st,sc)+`<div class="${anim?'scene-in':''}">${st.render()}</div>`;
+  if(keep) $('#stage').scrollTop=top; else if(!subAdv) $('#stage').scrollTop=0;
+  if(subAdv){ const el=$('[data-newest]'); if(el) el.scrollIntoView({block:'nearest', behavior:REDUCED?'auto':'smooth'}); }
+  st.after && st.after();
+  paintNav(); paintTeacher(); paintTimer(); pubState(); paintDock();
+}
+function paintNav(){
+  const st=cur(), sc=SCENES[st.sc-1], list=sceneSteps(sc.n), k=list.findIndex(x=>x.i===S.i)+1;
+  $('#navInfo').innerHTML=`Scene ${sc.n} of 8 · <b>${esc(sc.t)}</b>${list.length>1?` · ${k}/${list.length}`:''}${st.opt?' · <span class="o">optional</span>':''}`;
+  $('#dots').innerHTML=SCENES.map(s=>`<button data-a="scene" data-n="${s.n}" class="${s.n<sc.n?'done':s.n===sc.n?'cur':''}" title="Scene ${s.n} · ${esc(s.t)}" aria-label="Scene ${s.n}: ${esc(s.t)}" ${s.n===sc.n?'aria-current="step"':''}></button>`).join('');
+  let first=0; for(let j=0;j<STEPS.length;j++) if(visible(j)){ first=j; break; }
+  $('#btnBack').disabled = S.i===first && S.sub===0;
+  $('#btnSkip').classList.toggle('hidden',!st.opt);
+  let last=true; for(let j=S.i+1;j<STEPS.length;j++) if(visible(j)){ last=false; break; }
+  $('#nextLbl').textContent = (last && !(st.subs && S.sub<st.subs-1)) ? 'The end' : 'Continue';
+  $('#routeLbl').textContent = S.route==='quick'?'Quick':'Full';
+  $('#btnRoute').classList.toggle('on',S.route==='quick');
+}
+function setRoute(r){ S.route=r; save(); draw(false,true); toast(r==='quick'?'Quick route: optional tasks are hidden.':'Full route: all tasks are shown.'); }
+function setUA(on){ R.uaAll=on; document.body.classList.toggle('uaall',on); const b=$('#btnUA'); if(b){ b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); } }
+
+/* popover for highlighted words */
+function showPop(btn){ const w=WORD[btn.dataset.g]; if(!w) return; const p=$('#pop');
+  p.innerHTML=`<b>${esc(w.w)}</b>${w.inf?' <span class="infm">informal</span>':''}<div style="margin-top:.2rem;font-weight:700">${esc(w.def)}</div><div class="ua">${esc(w.ua)}</div>`;
+  p.classList.add('on'); const r=btn.getBoundingClientRect(), pw=p.offsetWidth, ph=p.offsetHeight;
+  let x=Math.min(Math.max(8,r.left), innerWidth-pw-8), y=r.bottom+8; if(y+ph>innerHeight-8) y=r.top-ph-8;
+  p.style.left=x+'px'; p.style.top=y+'px'; }
+function hidePop(){ const p=$('#pop'); if(p) p.classList.remove('on'); }
+
+/* modal & toast */
+let lastFocus=null;
+function openModal(html,after){ lastFocus=document.activeElement; $('#mbox').innerHTML=html; $('#modal').classList.remove('hidden');
+  const f=$('#mbox button, #mbox textarea, #mbox a'); f&&f.focus(); after&&after(); }
+function closeModal(){ $('#modal').classList.add('hidden'); $('#mbox').innerHTML=''; lastFocus&&lastFocus.focus&&lastFocus.focus(); }
+let toastT=null;
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),2600); }
+async function copy(text,msg){
+  let ok=false;
+  try{ if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(text); ok=true; } }catch(e){}
+  if(!ok){ try{ const ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.cssText='position:fixed;top:0;left:0;opacity:0'; document.body.appendChild(ta); ta.select(); ok=document.execCommand('copy'); ta.remove(); }catch(e){} }
+  if(ok) toast(msg||'Copied');
+  else openModal(`<h2 class="dsp">Copy this text</h2><p class="small">Your browser blocked automatic copying. The text is selected — press Ctrl+C (⌘+C on Mac).</p><textarea id="cpTa" style="width:100%;min-height:14rem;padding:.6rem;border-radius:.8rem;background:#0B0A26;border:1px solid var(--edge2);font-size:.75rem">${esc(text)}</textarea><div class="ctl"><button class="btn sm" data-a="close">Close</button></div>`,()=>{ const t=$('#cpTa'); t.focus(); t.select(); });
+}
+
+/* scene menu, vocabulary, reset */
+function showMap(){
+  const c=cur();
+  openModal(`<div class="row"><h2 class="dsp grow">🗺️ Scenes</h2><button class="btn sm ghost" data-a="close" aria-label="Close">✕</button></div>
+   <div class="mlist">${SCENES.map(sc=>`<div class="sc ${sc.n===c.sc?'cur':''}"><b>${sc.e} ${sc.n}. ${esc(sc.t)} <span class="small">· ${sc.min} min</span></b>
+     <div class="sts">${STEPS.map((s,i)=>({s,i})).filter(x=>x.s.sc===sc.n).map(x=>`<button data-a="goto" data-i="${x.i}" class="${x.i===S.i?'cur':''} ${x.s.opt?'o':''}">${esc(x.s.t)}${x.s.opt?' · optional':''}${!visible(x.i)?' (hidden in Quick)':''}</button>`).join('')}</div></div>`).join('')}</div>
+   <div class="ctl mt"><button class="btn sm" data-a="route">🧭 Route: ${S.route==='quick'?'Quick':'Full'}</button><button class="btn sm" data-a="vocab">📚 Vocabulary Recap</button><span class="grow"></span><button class="btn sm danger" data-a="reset">↺ Reset lesson</button></div>`);
+}
+function showVocab(){
+  openModal(`<div class="row"><h2 class="dsp grow">📚 Vocabulary Recap</h2><button class="btn sm ghost" data-a="close" aria-label="Close">✕</button></div>
+   <p class="small">All 12 new phrases. A reference, not a task.</p>
+   <div class="vgrid">${ALLW.map(w=>`<div class="vg"><b>${w.i} ${esc(w.w)}</b>${w.inf?' <span class="infm">informal</span>':''}<div>${esc(w.def)}</div><i lang="uk">${esc(w.ua)}</i></div>`).join('')}</div>`);
+}
+function askReset(){
+  openModal(`<h2 class="dsp">↺ Reset lesson?</h2><p class="mt">This clears the current scene, all answers, team drafts and the timer <b>on this device</b>. Use it before a new group.</p>
+   <div class="ctl"><button class="btn danger solid" data-a="doreset">Yes, reset</button><button class="btn" data-a="close">Cancel</button></div>`);
+}
+function doReset(){
+  if(R.live){ Net.send({t:'end'}); Net.stop(); }
+  try{ localStorage.removeItem('l07-state'); TEAMS.forEach(t=>localStorage.removeItem(TKEY(t.id))); }catch(e){}
+  location.href=baseURL();
+}
+
+/* timer — тільки ручний запуск, без звуку */
+function tLeft(){ const t=S.timer; if(!t) return 0; return t.run ? Math.max(0,(t.end-Date.now())/1000) : t.left; }
+function timerTxt(){ if(!S.timer) return 'ready'; const l=tLeft(); return l<=0 ? '⏰ Time!' : (S.timer.run?'':'⏸ ')+mmss(l); }
+function tStart(sec,label){ S.timer={total:sec, end:Date.now()+sec*1000, left:sec, run:true, label:label||''}; save(); paintTimer(); pubState(); }
+function tPause(){ const t=S.timer; if(!t) return; if(t.run){ t.left=tLeft(); t.run=false; } else if(t.left>0){ t.end=Date.now()+t.left*1000; t.run=true; } save(); paintTimer(); pubState(); }
+function tReset(){ S.timer=null; save(); paintTimer(); pubState(); }
+function paintTimer(){
+  const c=$('#tchip'), tt=$('#tchipT'), l=tLeft(), done=S.timer && l<=0;
+  if(tt) tt.textContent = S.timer ? timerTxt() : 'Timer';
+  if(c){ c.classList.toggle('on',!!(S.timer&&S.timer.run&&!done)); c.classList.toggle('done',!!done); }
+  $$('.tdisp').forEach(e=>e.textContent=timerTxt());
+  const big=$('#tmBig'); if(big){ big.textContent=S.timer?timerTxt():'0:00'; big.classList.toggle('end',!!done); }
+}
+function showTimer(){
+  openModal(`<div class="row"><h2 class="dsp grow">⏱ Timer</h2><button class="btn sm ghost" data-a="close" aria-label="Close">✕</button></div>
+   <div class="tpop mt"><div class="tbig" id="tmBig" aria-live="off">0:00</div><p class="small" style="text-align:center;margin:0">${S.timer&&S.timer.label?esc(S.timer.label)+' · ':''}starts only when you press a button · no sound</p>
+   <div class="row" style="justify-content:center">${[1,2,3,4,6].map(m=>`<button class="btn sm" data-a="tstart" data-s="${m*60}" data-l="${m} min">${m}:00</button>`).join('')}</div>
+   <div class="row" style="justify-content:center"><button class="btn sm sun" data-a="tpause">⏸ Pause / resume</button><button class="btn sm" data-a="treset">↺ Reset</button></div></div>`);
+  paintTimer();
+}
+
+/* teacher notes */
+function toggleTeacher(force){ const t=$('#teacher'), on=force===undefined?!t.classList.contains('on'):force; t.classList.toggle('on',on); t.setAttribute('aria-hidden',!on); $('#btnTeacher')?.classList.toggle('on',on); if(on){ paintTeacher(); $('#tClose').focus(); } }
+function paintTeacher(){
+  const t=$('#teacher'); if(!t || (MODE==='teacher' && !t.classList.contains('on'))) return;
+  const st=cur(), sc=SCENES[st.sc-1], N=NOTES[sc.n]||{};
+  const li=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  const tabs=`<div class="tabs" role="tablist">${[['scene','This scene'],['general','General'],['tools','Tools']].map(([k,l])=>`<button role="tab" data-a="ttab" data-id="${k}" aria-selected="${R.tTab===k}">${l}</button>`).join('')}</div>`;
+  let h='';
+  if(R.tTab==='scene'){
+    h=`<div class="tn-sec"><h4>Scene ${sc.n} · ${esc(sc.t)} · now: ${esc(st.t)}</h4><p style="margin:0"><b>Мета:</b> ${N.goal}</p><p style="margin:.2rem 0 0"><b>Час:</b> ${N.time}</p></div>
+      <div class="tn-sec say"><h4>Say (English)</h4>${li(N.say.map(esc))}</div>
+      <div class="tn-sec uk"><h4>Українською</h4>${li(N.ua)}</div>
+      ${N.keys?`<div class="tn-sec"><h4>🔑 Keys</h4>${li(N.keys.map(esc))}</div>`:''}
+      ${N.answers?`<div class="tn-sec"><h4>💬 Possible answers</h4>${li(N.answers.map(esc))}</div>`:''}
+      ${N.teams?`<div class="tn-sec"><h4>💬 Team sample answers (only here)</h4>${TEAMS.map(x=>`<p style="margin:.2rem 0"><b>Team ${esc(x.name)}</b><br>💡 ${esc(x.sb)}<br>👣 ${esc(x.sa)}</p>`).join('')}</div>`:''}
+      <div class="tn-sec"><h4>⏭ Можна пропустити</h4><p style="margin:0">${N.skip}</p></div>`;
+  } else if(R.tTab==='general'){
+    h=`<div class="tn-sec"><h4>Загальні нотатки</h4>${li(GENERAL_NOTES)}</div>
+      <div class="tn-sec"><h4>Маршрут · ≈30 хв активностей</h4>${li(SCENES.map(s=>`${s.e} ${s.n}. ${esc(s.t)} — ${s.min} хв`))}<p class="small" style="margin:.3rem 0 0">+ 45–60 с на презентацію кожної команди.</p></div>`;
+  } else {
+    h=`<div class="tn-sec"><h4>Route</h4><div class="row"><button class="btn sm ${S.route==='full'?'on':''}" data-a="setroute" data-id="full">Full</button><button class="btn sm ${S.route==='quick'?'on':''}" data-a="setroute" data-id="quick">Quick</button></div><p class="small" style="margin:.3rem 0 0">Quick hides every Optional task and keeps messages 1 and 3 in Name the Thought.</p></div>
+      <div class="tn-sec"><h4>Go to</h4><div class="row" style="gap:.3rem">${SCENES.map(s=>`<button class="btn sm" data-a="scene" data-n="${s.n}">${s.e} ${s.n}</button>`).join('')}</div></div>
+      <div class="tn-sec"><h4>Second screen</h4><button class="btn sm" data-a="noteswin">↗ Open Teacher Notes in a separate window</button><p class="small" style="margin:.3rem 0 0">The window follows the lesson. Share only the lesson window in Zoom.</p></div>
+      <div class="tn-sec"><h4>Other</h4><div class="row"><button class="btn sm" data-a="vocab">📚 Vocabulary Recap</button><button class="btn sm" data-a="timer">⏱ Timer</button><button class="btn sm danger" data-a="reset">↺ Reset lesson</button></div></div>`;
+  }
+  $('#tBody').innerHTML = (MODE==='notes'?'':tabs) + h;
+}
+
+/* ---------- 8 · team cards (?team=leo) & presentation view ---------- */
+function openPresent(id){
+  const t=TEAMS.find(x=>x.id===id); if(!t) return; const w=getTeam(id), p=$('#present');
+  p.innerHTML=`<div class="pv"><div class="row">${av(t.id,3.4)}<div><span class="kick">TEAM ${t.n}</span><h2 class="dsp" style="font-size:2.4rem">${esc(t.name)}</h2></div><span class="grow"></span><button class="btn" data-a="pclose">✕ Close <span class="k">Esc</span></button></div>
+    <p class="lead" style="margin:0">${esc(t.sit)}</p>
+    <div class="fl neg"><span class="lab">Negative thought</span><span class="tx">“${esc(t.neg)}”</span></div>
+    <div class="fl bet"><span class="lab">💡 Better thought</span><span class="tx">${w.better?esc(w.better):'<span class="muted">…</span>'}</span></div>
+    <div class="fl act"><span class="lab">👣 Next action</span><span class="tx">${w.action?esc(w.action):'<span class="muted">…</span>'}</span></div></div>`;
+  p.classList.add('on'); p.dataset.id=id; $('[data-a="pclose"]',p).focus();
+}
+function closePresent(){ const p=$('#present'); p.classList.remove('on'); p.dataset.id=''; }
+
+function soloApp(){
+  document.body.classList.add('solo');
+  const id=(qs.get('team')||'').toLowerCase(), t=TEAMS.find(x=>x.id===id);
+  const box=$('#solo');
+  if(!t){ box.innerHTML=`<div class="solo-wrap"><h1 class="dsp" style="font-size:2.2rem">Choose your team</h1><div class="three mt">${TEAMS.map(x=>`<a class="card team" style="text-decoration:none" href="?team=${x.id}"><div class="team-h">${av(x.id,3)}<div><span class="tn">TEAM ${x.n}</span><br><b>${esc(x.name)}</b></div></div><p style="margin:0">${esc(x.sit)}</p></a>`).join('')}</div></div>`; return; }
+  box.innerHTML=`<div class="stu-top"><b>Lesson 7 · Team card</b><span class="grow"></span><b class="tdisp mono" aria-live="off"></b><button class="tb uatb" id="soloUA" aria-pressed="false">UA</button></div>
+   <div class="solo-wrap">
+    <div class="tabs" style="margin-bottom:.8rem">${TEAMS.map(x=>`<a class="btn sm ${x.id===t.id?'on':''}" href="?team=${x.id}" ${x.id===t.id?'aria-current="page"':''}>Team ${x.n} · ${esc(x.name)}</a>`).join('')}</div>
+    <div class="two l">
+     <div class="card team"><div class="team-h">${av(t.id,4)}<div><span class="tn">TEAM ${t.n}</span><h1 class="dsp" style="font-size:2.3rem">${esc(t.name)}</h1></div></div>
+      <div class="fl sit"><span class="lab">Situation</span><span class="tx">${esc(t.sit)}${uaBox('s',t.ua)}</span></div>
+      ${teamFields(t)}
+      <p class="small" id="soloSaved" aria-live="polite">Write one sentence in each empty box. Saved on this device.</p>
+      <div class="row"><button class="btn sun" data-a="present" data-id="${t.id}">⛶ Presentation view</button><button class="btn sm" data-a="copy" data-t="task" data-id="${t.id}">📋 Copy team task</button><button class="btn sm ghost" data-a="soloclear" data-id="${t.id}">Clear</button></div>
+     </div>
+     <div style="display:grid;gap:1rem">
+      <div class="card sun"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Timer</span><b class="tdisp mono" style="font-size:1.3rem"></b></div>
+        <div class="row mt" style="gap:.35rem"><button class="btn sm sun" data-a="tstart" data-s="360" data-l="Team work">▶ 6:00</button><button class="btn sm" data-a="tstart" data-s="240" data-l="Short version">Short version 4:00</button><button class="btn sm ghost" data-a="tpause">⏸ Pause</button><button class="btn sm ghost" data-a="treset">↺ Reset</button></div></div>
+      <div class="card"><span class="kick">What to do</span><ol style="margin:.4rem 0 0;padding-left:1.2rem;font-size:.85rem">${BR.steps.map(s=>`<li><b>${esc(s.t)}</b> ${esc(s.d)}${uaBox('s',s.ut+' '+s.ud)}</li>`).join('')}</ol>
+        <p class="small" style="margin:.5rem 0 0">${BR.rules.en.map(esc).join(' ')}</p>${uaBox('s',BR.rules.ua.join(' '))}</div>
+      <div class="card">${hintsHtml()}</div>
+      <div class="card">${rolesHtml()}</div>
+     </div></div></div>`;
+  const ua=$('#soloUA'); ua.onclick=()=>{ const on=!document.body.classList.contains('uaall'); document.body.classList.toggle('uaall',on); ua.classList.toggle('on',on); ua.setAttribute('aria-pressed',on); };
+  paintTimer();
+}
+
+/* ---------- 9 · live room (Supabase Realtime broadcast + presence) ----------
+   Той самий механізм, що в уроках 5, 13–16: таблиці не потрібні.
+   Учитель — єдине джерело стану: сцену, завдання й таймер надсилає тільки він.
+   Учні можуть надіслати лише hello / ans / work / react. Якщо Supabase недоступний,
+   кімната НЕ відкривається (жодної імітації). */
+const configured = ()=>/^https:\/\/[a-z0-9-]+\.supabase\.co/i.test((CFG.SUPABASE_URL||'').trim()) && !!(CFG.SUPABASE_KEY||'').trim();
+const uid = ()=>Math.random().toString(36).slice(2,10);
+const NAMES = {};
+const Net = {
+  status:'off', ch:null, sb:null, me:null,
+  setStatus(s){ this.status=s; this.onStatus && this.onStatus(s); },
+  async connect(o){
+    this.stop();
+    let sid=null; try{ sid=o.role==='student' && sessionStorage.getItem('l07sid'); }catch(e){}
+    this.me={id:sid||uid(), name:o.name||'', role:o.role};
+    if(o.role==='student') try{ sessionStorage.setItem('l07sid',this.me.id); }catch(e){}
+    this.onEvent=o.onEvent; this.onPeers=o.onPeers||(()=>{}); this.onStatus=o.onStatus||(()=>{});
+    if(!configured()){ this.setStatus('off'); return false; }
+    this.setStatus('connecting');
+    try{
+      const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+      this.sb=createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY);
+      this.ch=this.sb.channel('lesson07-'+o.room, {config:{presence:{key:this.me.id}, broadcast:{self:false}}});
+      this.ch.on('broadcast',{event:'msg'},({payload})=>{ try{ this.onEvent(payload); }catch(e){ console.warn(e); } });
+      this.ch.on('presence',{event:'sync'},()=>{ const st=this.ch.presenceState(), list=[]; Object.values(st).forEach(v=>v&&v[0]&&list.push(v[0])); this.onPeers(list); });
+      let first=true;
+      await new Promise((res,rej)=>{ const to=setTimeout(()=>rej(new Error('timeout')),10000);
+        this.ch.subscribe(async st=>{
+          if(st==='SUBSCRIBED'){ try{ await this.ch.track(this.me); }catch(e){} this.setStatus('live'); if(first){ first=false; clearTimeout(to); res(); } }
+          else if(st==='CHANNEL_ERROR'||st==='TIMED_OUT'||st==='CLOSED'){ if(first){ first=false; clearTimeout(to); rej(new Error(st)); } else if(this.ch) this.setStatus('reconnecting'); }
+        }); });
+      return true;
+    }catch(e){ console.warn('Live room unavailable:', e&&e.message||e); try{ this.sb&&this.ch&&this.sb.removeChannel(this.ch); }catch(_){} this.sb=null; this.ch=null; this.setStatus('off'); return false; }
+  },
+  send(p){ if(!this.ch) return; const msg=Object.assign({},p,{from:this.me}); try{ this.ch.send({type:'broadcast', event:'msg', payload:msg}); }catch(e){} },
+  stop(){ if(this.ch){ try{ this.sb.removeChannel(this.ch); }catch(e){} } this.ch=null; this.sb=null; this.status='off'; }
+};
+const Store = { async log(kind,task,sid,value){ if(!(CFG.SAVE_ANSWERS && Net.sb)) return;
+  try{ await Net.sb.from('lesson_answers').insert({room:String(S.room), lesson:'lesson07-voices', chapter:cur().id, task, kind, student_id:sid, student_name:NAMES[sid]||null, value:String(value).slice(0,500)}); }
+  catch(e){ console.warn('Supabase insert failed:', e.message||e); } } };
+
+const baseURL = ()=>location.href.split('?')[0].split('#')[0];
+const joinURL = ()=>baseURL()+'?room='+S.room+'&role=student';
+function curTask(){ const c=cur(); try{ return c.live ? c.live() : null; }catch(e){ return null; } }
+let pubT=null;
+function pubState(){
+  if(!R.live || MODE!=='teacher') return;
+  clearTimeout(pubT); pubT=setTimeout(()=>{ const c=cur(), sc=SCENES[c.sc-1], task=curTask();
+    if(task && task.kind==='choice') task.shown=!!R.res[task.id];
+    Net.send({t:'state', sc:sc.n, title:sc.t, e:sc.e, task, timer:{left:Math.ceil(tLeft()), run:!!(S.timer&&S.timer.run), on:!!S.timer}}); },120);
+}
+let redrawT=null;
+function softRedraw(){ clearTimeout(redrawT); redrawT=setTimeout(()=>{ const a=document.activeElement; if(a && a.closest && a.closest('#scene textarea, #scene select')) { paintDock(); return; } draw(false,true); },300); }
+function onTeacherMsg(m){
+  const f=m&&m.from; if(!f || f.role!=='student' || !f.id) return;
+  const id=f.id; if(f.name) NAMES[id]=String(f.name).slice(0,20);
+  const task=curTask();
+  if(m.t==='hello'){ pubState(); return; }
+  if(m.t==='react'){ if(task && task.kind==='react' && BR.stickers.includes(m.v)) floatReact(m.v, NAMES[id]); return; }
+  if(m.t==='ans' && task && m.task===task.id){
+    if(task.kind==='choice'){ const v=+m.v; if(!(Number.isInteger(v) && v>=0 && v<task.opts.length)) return; (S.lv[task.id]=S.lv[task.id]||{})[id]=v; save(); Store.log('vote',task.id,id,v); if(R.res[task.id]) softRedraw(); else paintDock(); return; }
+    if(task.kind==='text'){ const text=String(m.v||'').replace(/\s+/g,' ').trim().slice(0,160); if(!text) return;
+      const k=R.wallq.findIndex(w=>w.task===task.id && w.sid===id), item={id:uid(), task:task.id, sid:id, text, by:NAMES[id]||'student'};
+      if(k>=0) R.wallq[k]=item; else R.wallq.unshift(item); Store.log('text',task.id,id,text); paintDock(); return; }
+  }
+  if(m.t==='work' && task && task.kind==='team'){
+    const tm=String(m.team||''), fl=String(m.f||''); if(!TEAMS.some(t=>t.id===tm) || !['better','action'].includes(fl)) return;
+    setTeam(tm,fl,String(m.v||'').slice(0,240)); Store.log('work','team-'+tm+'-'+fl,id,m.v); pubState(); softRedraw();
+    if($('#present').dataset.id===tm) openPresent(tm);
+  }
+}
+function floatReact(label,by){
+  const d=document.createElement('div'); d.className='stk'; d.setAttribute('aria-hidden','true');
+  d.style.cssText=`position:fixed;right:${1+Math.random()*8}rem;bottom:5rem;z-index:85;background:var(--sun);color:#231700;border-color:var(--sun);pointer-events:none;transition:transform 2.2s ease, opacity 2.2s ease`;
+  d.textContent=(label==='Helpful reframe'?'🖼️ ':label==='Useful action'?'👣 ':'🤝 ')+label+(by?' · '+by:'');
+  document.body.appendChild(d);
+  requestAnimationFrame(()=>{ d.style.transform=REDUCED?'none':'translateY(-40vh)'; d.style.opacity='0'; });
+  setTimeout(()=>d.remove(),2400);
+}
+function paintDock(){
+  const d=$('#dock'); if(!d) return; d.classList.toggle('on',R.live && MODE==='teacher'); if(!R.live) return;
+  const st=Net.status, txt={live:'● live', reconnecting:'● reconnecting…', connecting:'● connecting…', off:'● offline'}[st]||st;
+  $('#dockTitle').textContent='Room '+S.room; $('#dockLed').className='led '+(st==='live'?'on':st==='off'?'bad':'warn');
+  const studs=R.peers.filter(p=>p&&p.role==='student'); $('#dockCount').textContent=`${studs.length} joined · ${txt}`;
+  const task=curTask(); let h=studs.length?`<div class="names">${studs.slice(0,40).map(p=>`<span>${esc(p.name||'?')}</span>`).join('')}</div>`:`<div class="small">Nobody yet — share the link or code (📡 Live).</div>`;
+  if(!task) h+=`<div class="small">No phone task on this screen — phones show “Look at the main screen”.</div>`;
+  else if(task.kind==='choice'){ const n=counts(task.id,task.opts.length); h+=`<div class="small">Votes (hidden on the main screen until you press “Show class results”)</div>`+task.opts.map((o,i)=>`<div class="row" style="gap:.4rem"><b class="mono" style="color:var(--teal);min-width:1.2rem">${n[i]}</b><span class="small">${esc(o)}</span></div>`).join(''); }
+  else if(task.kind==='text'){ const list=R.wallq.filter(w=>w.task===task.id); h+= list.length?list.map(w=>`<div class="wq"><p>${esc(w.text)}<small>${esc(w.by)}</small></p><button class="btn sm" data-a="wshow" data-id="${w.id}">Show</button><button class="btn sm ghost" data-a="whide" data-id="${w.id}" aria-label="Hide">✕</button></div>`).join(''):`<div class="small">Waiting for answers…</div>`; }
+  else if(task.kind==='team'){ h+=TEAMS.map(t=>{ const w=getTeam(t.id), n=['better','action'].filter(k=>w[k]).length; return `<div class="small">Team ${esc(t.name)}: ${n?`<b style="color:var(--ok)">${n}/2 written</b>`:'…'}</div>`; }).join(''); }
+  else if(task.kind==='react') h+=`<div class="small">Phones can send: ${BR.stickers.map(esc).join(' · ')}</div>`;
+  $('#dockBody').innerHTML=h;
+}
+function liveStatus(){ if(!R.live) return configured()?'not started':'not available';
+  const n=R.peers.filter(p=>p&&p.role==='student').length;
+  return (Net.status==='live'?'<span style="color:var(--ok)">● live</span>':`<span style="color:var(--sun)">● ${esc(Net.status)}</span>`)+` · ${n} joined`; }
+async function startLive(silent){
+  const ok=await Net.connect({room:S.room, role:'teacher', name:'teacher', onEvent:onTeacherMsg,
+    onPeers:list=>{ R.peers=list; paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); },
+    onStatus:()=>{ paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); }});
+  R.live=ok; S.live=ok; save(); $('#btnLive').classList.toggle('on',ok);
+  if(ok){ pubState(); draw(false,true); }
+  if(!silent) toast(ok?'Live room open — share the link, QR or code':'Could not connect to the live server. The lesson works fully without Live mode.');
+  return ok;
+}
+function stopLive(){ Net.send({t:'end'}); setTimeout(()=>Net.stop(),300); R.live=false; S.live=false; R.peers=[]; save(); $('#btnLive').classList.remove('on'); draw(false,true); }
+function openLive(){
+  if(!configured()){ openModal(`<div class="row"><h2 class="dsp grow">📡 Live Student Mode</h2><button class="btn sm ghost" data-a="close" aria-label="Close">✕</button></div><p class="mt">Live mode is not set up in this file (SUPABASE_URL / SUPABASE_KEY are empty). The lesson works fully by screen sharing.</p>`); return; }
+  openModal(`<div class="row"><h2 class="dsp grow">📡 Live Student Mode</h2><button class="btn sm ghost" data-a="close" aria-label="Close">✕</button></div>
+   <p class="small">Optional. Students join on a phone with the code and a nickname, vote, send short answers and write one shared card per team. You control the scenes.</p>
+   ${R.live?`<div class="two mt" style="align-items:center"><div><div class="small">Room code</div><div class="dsp" style="font-size:3.6rem">${S.room}</div>
+     <div class="small" style="word-break:break-all">${esc(joinURL())}</div><div class="small" style="margin-top:.4rem">Or open <b>${esc(baseURL())}?join</b> and type the code.</div>
+     <div class="small mt" id="lvStatus">Status: ${liveStatus()}</div></div>
+     <img alt="QR code for the student link" width="200" height="200" style="border-radius:1rem;background:#fff;justify-self:end" src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=8&data=${encodeURIComponent(joinURL())}" onerror="this.remove()"></div>
+     <div class="ctl"><button class="btn" data-a="livestop">⏹ End session</button><button class="btn sm ghost" data-a="livecopy">📋 Copy link</button></div>`
+   :`<div class="ctl mt"><button class="btn primary" data-a="livestart">▶ Create session</button><span class="small" id="lvStatus">Status: ${liveStatus()}</span></div>`}`);
+}
+
+/* ---------- 10 · student app (?room=1234&role=student  or  ?join) ---------- */
+function studentApp(){
+  document.body.classList.add('student');
+  const B=$('#stuBody');
+  let room=(qs.get('room')||'').replace(/\D/g,'').slice(0,6), st=null, name='', sent={}, myTeam='', taskKey='';
+  try{ name=localStorage.getItem('l07-name')||''; }catch(e){}
+  const setConn=s=>{ $('#stuLed').className='led '+(s==='live'?'on':s==='off'?'bad':'warn'); $('#stuConn').textContent={live:'connected', reconnecting:'reconnecting…', connecting:'connecting…', off:'offline'}[s]||''; };
+  const ask=()=>{
+    B.innerHTML=`<div class="card"><div class="row">${av('mia',2.8)}${av('leo',2.8)}</div><h2 class="dsp mt" style="font-size:2rem">Join the Headspace Chat</h2>
+      <label for="rc">Room code</label><input id="rc" inputmode="numeric" maxlength="6" value="${esc(room)}" placeholder="1234" autocomplete="off">
+      <label for="nm">Your nickname</label><input id="nm" maxlength="20" value="${esc(name)}" placeholder="e.g. Fox 🦊" autocomplete="off">
+      <p class="small mt">A nickname or first name only. No surname, no personal data.</p><button class="btn primary mt" id="jn" style="width:100%">Join →</button></div>`;
+    $('#jn').onclick=()=>{ const r=$('#rc').value.replace(/\D/g,''), v=$('#nm').value.trim().slice(0,20); if(r.length<4) return $('#rc').focus(); if(!v) return $('#nm').focus();
+      room=r; name=v; try{ localStorage.setItem('l07-name',name); }catch(e){} join(); };
+    $('#nm').onkeydown=e=>{ if(e.key==='Enter') $('#jn').click(); };
+  };
+  const join=async()=>{
+    $('#stuRoom').textContent='room '+room; try{ myTeam=localStorage.getItem('l07-steam-'+room)||''; }catch(e){}
+    B.innerHTML=`<div class="stu-wait"><div class="bigi">🔌</div><p>Connecting to room ${esc(room)}…</p></div>`;
+    const ok=await Net.connect({room, role:'student', name, onStatus:setConn, onEvent:m=>{
+      if(!m || !m.from || m.from.role!=='teacher') return;
+      if(m.t==='state'){ const k=JSON.stringify([m.sc, m.task && Object.assign({},m.task,{work:undefined})]); const changed=k!==taskKey; st=m; if(changed){ taskKey=k; render(); } else { paintT(); syncTeam(); } }
+      if(m.t==='end') ended();
+    }});
+    if(!ok){ B.innerHTML=`<div class="stu-wait"><div class="bigi">📶</div><p><b>Could not join.</b></p><p class="small">Check your internet and try again. You can still follow the lesson on the main screen.</p><button class="btn primary mt" id="rt">Try again</button></div>`; $('#rt').onclick=join; return; }
+    Net.send({t:'hello'}); render();
+    setTimeout(()=>{ if(!st) Net.send({t:'hello'}); },2500);
+    setTimeout(()=>{ if(!st && B.querySelector('.stu-wait')) B.querySelector('.stu-wait p').innerHTML=`Hi ${esc(name)}! Waiting for your teacher…<br><span class="small">Room ${esc(room)} — is the code right? <a href="?join" style="color:var(--teal)">Change</a></span>`; },6000);
+  };
+  const ended=()=>{ Net.stop(); setConn('off'); B.innerHTML=`<div class="stu-wait"><div class="bigi">🎤✨</div><h2 class="dsp" style="font-size:2rem">Session ended</h2><p class="small">Thanks, ${esc(name)}! You can close this page.</p></div>`; };
+  const paintT=()=>{ const t=$('#stuT'); if(t&&st&&st.timer) t.textContent=st.timer.on?((st.timer.run?'⏱ ':'⏸ ')+mmss(st.timer.left)):''; };
+  setInterval(()=>{ if(st&&st.timer&&st.timer.run&&st.timer.left>0){ st.timer.left--; paintT(); } },1000);
+  const syncTeam=()=>{ if(!st||!st.task||st.task.kind!=='team'||!myTeam) return; const w=(st.task.work||{})[myTeam]||{};
+    $$('[data-sf]',B).forEach(ta=>{ if(document.activeElement!==ta && typeof w[ta.dataset.sf]==='string' && ta.value!==w[ta.dataset.sf]) ta.value=w[ta.dataset.sf]; }); };
+  const render=()=>{
+    if(!st){ B.innerHTML=`<div class="stu-wait"><div class="bigi">👀</div><p>Hi ${esc(name)}! Waiting for your teacher…</p></div>`; return; }
+    const T=st.task, head=`<div class="small mono" style="letter-spacing:.1em;margin-bottom:.6rem">${st.e||''} SCENE ${st.sc} OF 8 · ${esc(st.title||'')}</div>`;
+    if(!T){ B.innerHTML=head+`<div class="card stu-wait"><div class="bigi">👀</div><p><b>Look at the main screen.</b></p><p class="small">Your teacher will send a task soon.</p></div>`; return; }
+    if(T.kind==='choice'){ const my=sent[T.id];
+      B.innerHTML=head+`<div class="card"><p class="q">${esc(T.q)}</p><div class="opts mt">${T.opts.map((o,i)=>`<button class="opt" data-i="${i}" aria-pressed="${my===i}"><span class="L">${LET[i]}</span><span>${esc(o)}</span></button>`).join('')}</div>
+        <p class="small mt">${T.shown?'📊 The class results are on the main screen.':my!==undefined?'✓ Sent! You can change it.':'Tap your answer.'}</p></div>`;
+      $$('[data-i]',B).forEach(b=>b.onclick=()=>{ sent[T.id]=+b.dataset.i; Net.send({t:'ans', task:T.id, v:+b.dataset.i}); render(); }); return; }
+    if(T.kind==='text'){
+      B.innerHTML=head+`<div class="card"><p class="q">${esc(T.q)}</p>${T.starters?`<div class="starters mt">${T.starters.map(s=>`<span>${esc(s)}</span>`).join('')}</div>`:''}
+        <label for="tx" class="sr">Your answer</label><input id="tx" class="mt" maxlength="160" placeholder="${esc(T.ph||'')}" autocomplete="off"><button class="btn primary mt" id="sd" style="width:100%">Send ➤</button>
+        <p class="small mt">${sent[T.id]?'✓ Sent: “'+esc(sent[T.id])+'”. You can send a new version.':'Your teacher can show your answer on the main screen.'}</p></div>`;
+      const go=()=>{ const v=$('#tx').value.trim(); if(!v) return; sent[T.id]=v; Net.send({t:'ans', task:T.id, v}); render(); };
+      $('#sd').onclick=go; $('#tx').onkeydown=e=>{ if(e.key==='Enter') go(); }; return; }
+    if(T.kind==='team'){
+      const t=T.teams.find(x=>x.id===myTeam);
+      if(!t){ B.innerHTML=head+`<div class="card"><p class="q">Which team are you in?</p><div class="opts mt">${T.teams.map(x=>`<button class="opt" data-tm="${esc(x.id)}"><span class="L">${x.n}</span><span>Team ${esc(x.name)}</span></button>`).join('')}</div></div>`;
+        $$('[data-tm]',B).forEach(b=>b.onclick=()=>{ myTeam=b.dataset.tm; try{ localStorage.setItem('l07-steam-'+room,myTeam); }catch(e){} render(); }); return; }
+      const w=(T.work||{})[myTeam]||{};
+      B.innerHTML=head+`<div class="card team"><div class="team-h">${av(t.id,2.8)}<div class="grow"><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div><b class="mono" id="stuT"></b><button class="btn sm ghost" id="chg">change</button></div>
+        <p style="margin:0;font-weight:700">${esc(t.sit)}</p><div class="neg-b">“${esc(t.neg)}”</div>
+        <p class="small" style="margin:0">Shared card — your whole team sees the same text. Choose one writer.</p>
+        <label for="sb">💡 Better thought</label><textarea id="sb" data-sf="better" maxlength="240" placeholder="One mistake doesn’t mean…">${esc(w.better||'')}</textarea>
+        <label for="sa">👣 Next action</label><textarea id="sa" data-sf="action" maxlength="240" placeholder="I can…">${esc(w.action||'')}</textarea>
+        <details class="mt"><summary class="small" style="cursor:pointer">💡 Hints & word bank</summary><div class="mt">${hintsHtml()}</div></details>
+        <p class="small mt" id="ok" aria-live="polite">Saves automatically.</p></div>`;
+      paintT(); $('#chg').onclick=()=>{ myTeam=''; try{ localStorage.removeItem('l07-steam-'+room); }catch(e){} render(); };
+      $$('[data-sf]',B).forEach(ta=>{ let tm=null; ta.oninput=()=>{ $('#ok').textContent='…'; clearTimeout(tm); tm=setTimeout(()=>{ Net.send({t:'work', team:myTeam, f:ta.dataset.sf, v:ta.value.slice(0,240)}); $('#ok').textContent='✓ Saved — your teacher can see it.'; },600); }; });
+      return; }
+    if(T.kind==='react'){
+      B.innerHTML=head+`<div class="card"><p class="q">🎤 ${esc(T.q)}</p><p class="small">Was the new thought believable? Was the next step useful? Tap to react.</p>
+        <div class="opts mt">${T.opts.map(o=>`<button class="opt" data-r="${esc(o)}"><span class="L">${o==='Helpful reframe'?'🖼️':o==='Useful action'?'👣':'🤝'}</span><span>${esc(o)}</span></button>`).join('')}</div></div>`;
+      $$('[data-r]',B).forEach(b=>b.onclick=()=>{ Net.send({t:'react', v:b.dataset.r}); b.setAttribute('aria-pressed','true'); setTimeout(()=>b.setAttribute('aria-pressed','false'),600); }); return; }
+  };
+  (room && name) ? join() : ask();
+}
+
+/* ---------- actions (event delegation) ---------- */
+const ACT = {
+  ua(b){ const keys=(b.dataset.group||b.dataset.k).split(','), on=!R.ua[keys[0]];
+    keys.forEach(k=>{ R.ua[k]=on; $$(`[data-uk="${k}"]`).forEach(e=>e.classList.toggle('open',on)); }); b.setAttribute('aria-pressed',on); },
+  rev(b){ const k=b.dataset.k; R.rev[k]=!R.rev[k];
+    if(k.startsWith('ck')){ draw(false,true); return; }
+    $$(`[data-rk="${k}"]`).forEach(e=>e.classList.toggle('open',R.rev[k])); b.classList.toggle('on',R.rev[k]); b.setAttribute('aria-expanded',R.rev[k]); },
+  pick(b){ const q=b.dataset.q, i=+b.dataset.i; S.sel[q] = S.sel[q]===i ? undefined : i; save(); draw(false,true); },
+  opt(b){ const q=b.dataset.q, i=b.dataset.i, raw=b.dataset.v, v=(q==='move')?+raw:raw, s=qsel(q); s[i] = s[i]===v ? undefined : v; save(); draw(false,true); },
+  bank(b){ const s=qsel('rev'); let i=R.lastGap; if(i===null || i===undefined) i=REV.items.findIndex((_,j)=>!s[j]);
+    if(i<0){ toast('All gaps are filled. Click a gap first, then a word, to change it.'); return; } s[i]=b.dataset.v; R.lastGap=null; save(); draw(false,true); },
+  check(b){ R.checked[b.dataset.q]=true; draw(false,true); },
+  retry(b){ const q=b.dataset.q; S.sel[q]={}; R.checked[q]=false; R.shown[q]=false; save(); draw(false,true); },
+  showans(b){ const q=b.dataset.q; R.shown[q]=!R.shown[q]; draw(false,true); },
+  sub(b){ S.sub=+b.dataset.i; save(); draw(false,true); },
+  gl(b,e){ e.stopPropagation(); const p=$('#pop'); if(p.classList.contains('on') && p.dataset.g===b.dataset.g){ hidePop(); return; } p.dataset.g=b.dataset.g; showPop(b); },
+  next(){ next(); }, scene(b){ const l=sceneSteps(+b.dataset.n); if(l.length){ closeModal(); go(l[0].i,0); } },
+  goto(b){ closeModal(); go(+b.dataset.i,0); }, close(){ closeModal(); },
+  route(){ closeModal(); setRoute(S.route==='quick'?'full':'quick'); }, setroute(b){ setRoute(b.dataset.id); },
+  vocab(){ showVocab(); }, reset(){ askReset(); }, doreset(){ doReset(); }, timer(){ showTimer(); },
+  tstart(b){ tStart(+b.dataset.s, b.dataset.l); toast('Timer started: '+mmss(+b.dataset.s)); }, tpause(){ tPause(); }, treset(){ tReset(); },
+  copy(b){ const t=TEAMS.find(x=>x.id===b.dataset.id); if(!t) return;
+    if(b.dataset.t==='link') copy(teamURL(t.id),'Link copied — paste it into the breakout room chat');
+    else copy(teamText(t, S.timer&&S.timer.total===240?4:6),'Team task copied — paste it into the breakout room chat'); },
+  present(b){ openPresent(b.dataset.id); }, pclose(){ closePresent(); },
+  ptab(b){ S.pteam=b.dataset.id; save(); draw(false,true); },
+  stk(b){ const id=b.dataset.id, k=b.dataset.v; S.stick[id]=S.stick[id]||{}; S.stick[id][k]=!S.stick[id][k]; save(); b.setAttribute('aria-pressed',!!S.stick[id][k]); },
+  res(b){ const q=b.dataset.q; R.res[q]=!R.res[q]; draw(false,true); },
+  ttab(b){ R.tTab=b.dataset.id; paintTeacher(); },
+  noteswin(){ window.open(baseURL()+'?notes','l07notes','width=560,height=820'); },
+  wdel(b){ const a=S.wall[b.dataset.q]||[]; a.splice(+b.dataset.i,1); save(); draw(false,true); },
+  wshow(b){ const k=R.wallq.findIndex(w=>w.id===b.dataset.id); if(k<0) return; const w=R.wallq.splice(k,1)[0]; (S.wall[w.task]=S.wall[w.task]||[]).push({text:w.text, by:w.by}); save(); draw(false,true); },
+  whide(b){ const k=R.wallq.findIndex(w=>w.id===b.dataset.id); if(k>=0) R.wallq.splice(k,1); paintDock(); },
+  livestart(b){ b.disabled=true; b.textContent='Connecting…'; startLive().then(()=>openLive()); },
+  livestop(){ stopLive(); openLive(); }, livecopy(){ copy(joinURL(),'Link copied — paste it into the Zoom chat'); },
+  soloclear(b){ if(!confirm('Clear both sentences on this device?')) return; try{ localStorage.removeItem(TKEY(b.dataset.id)); }catch(e){} soloApp(); }
+};
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]');
+  if(!b){ if(!e.target.closest('#pop')) hidePop(); if(e.target.id==='modal') closeModal(); return; }
+  if(b.dataset.a!=='gl') hidePop();
+  const f=ACT[b.dataset.a]; if(f){ if(b.tagName==='A') return; f(b,e); }
+});
+document.addEventListener('change',e=>{
+  const s=e.target.closest('select.gap'); if(!s) return;
+  qsel(s.dataset.q)[s.dataset.i]=s.value||undefined; save(); draw(false,true);
+  const n=$(`select.gap[data-i="${s.dataset.i}"]`); n&&n.focus();
+});
+document.addEventListener('focusin',e=>{ const s=e.target.closest&&e.target.closest('select.gap'); if(s) R.lastGap=+s.dataset.i; });
+document.addEventListener('input',e=>{
+  const ta=e.target.closest('textarea[data-tf]'); if(!ta) return;
+  setTeam(ta.dataset.team, ta.dataset.tf, ta.value);
+  const sv=$('#soloSaved'); if(sv) sv.textContent='✓ Saved on this device.';
+  if(R.live){ pubState(); paintDock(); }
+});
+$('#stage').addEventListener('scroll',hidePop,{passive:true});
+
+/* ---------- 11 · boot ---------- */
+setInterval(paintTimer,500);
+setInterval(()=>{ if(R.live) pubState(); },6000);
+if(MODE==='student') studentApp();
+else if(MODE==='solo'){ soloApp(); document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closePresent(); closeModal(); } }); }
+else if(MODE==='notes'){
+  document.body.classList.add('notes'); const t=$('#teacher'); t.classList.add('on'); t.style.width='100%'; t.setAttribute('aria-hidden','false'); $('#tClose').classList.add('hidden');
+  R.tTab='scene'; paintTeacher();
+  addEventListener('storage',e=>{ if(e.key===KEY){ S=load(); paintTeacher(); } });
+}
+else {
+  $('#btnNext').onclick=next; $('#btnBack').onclick=back; $('#btnSkip').onclick=skipOpt;
+  $('#btnTeacher').onclick=()=>toggleTeacher(); $('#tClose').onclick=()=>toggleTeacher(false);
+  $('#btnMap').onclick=showMap; $('#btnRoute').onclick=()=>setRoute(S.route==='quick'?'full':'quick');
+  $('#btnUA').onclick=()=>setUA(!R.uaAll); $('#btnLive').onclick=openLive; $('#tchip').onclick=showTimer;
+  $('#btnFull').onclick=()=>{ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); };
+  $('#dockMin').onclick=()=>{ const d=$('#dock'), open=d.classList.toggle('min')===false; $('#dockMin').textContent=open?'▾ hide':'▸ answers'; $('#dockMin').setAttribute('aria-expanded',open); };
+  document.addEventListener('keydown',e=>{
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    if(e.key==='Escape'){ if($('#present').classList.contains('on')) return closePresent(); if(!$('#modal').classList.contains('hidden')) return closeModal(); if($('#pop').classList.contains('on')) return hidePop(); return toggleTeacher(false); }
+    if(e.target.closest('input,textarea,select') || !$('#modal').classList.contains('hidden') || $('#present').classList.contains('on')) return;
+    const k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||(k===' '&&!e.target.closest('button,a'))){ e.preventDefault(); next(); }
+    else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); back(); }
+    else if(k==='t'||k==='T') toggleTeacher();
+    else if(k==='m'||k==='M') showMap();
+    else if(k==='u'||k==='U') setUA(!R.uaAll);
+    else if(k==='f'||k==='F') $('#btnFull').click();
+  });
+  if(!(S.i>=0 && S.i<STEPS.length)) { S.i=0; S.sub=0; }
+  draw(true);
+  if(S.live) startLive(true);
+}
+</script>
+</body>
+</html>
