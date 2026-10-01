@@ -10,6 +10,7 @@ advanced-kids/
 └── lessons/
     ├── lesson-05/lesson-05.html   The Night Everything Went Wrong
     ├── lesson-06/lesson-06.html   The Unlabelled Room
+    ├── lesson-07/lesson-07.html   Voices in My Head
     ├── lesson-13/lesson-13.html   The Post That Disappeared
     ├── lesson-14/lesson-14.html   Likes Don't Equal Love
     ├── lesson-15/lesson-15.html   If Only I Had Known…
