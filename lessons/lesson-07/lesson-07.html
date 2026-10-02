@@ -385,6 +385,163 @@ body.student, body.solo{overflow:auto}
   *,*::before,*::after{animation:none!important; transition:none!important; scroll-behavior:auto!important}
 }
 
+
+/* ═════ v2 · illustrations & motion ═════ */
+#amb{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+#amb span{position:absolute; bottom:-3rem; opacity:0; animation:ambUp var(--t) linear var(--d) infinite; font-size:var(--s); filter:saturate(.9)}
+@keyframes ambUp{0%{transform:translateY(0) rotate(0); opacity:0}10%{opacity:var(--o)}88%{opacity:var(--o)}100%{transform:translateY(-112vh) rotate(var(--r)); opacity:0}}
+
+/* who has the mic — story meter */
+.micm{flex:1; max-width:21rem; min-width:12rem; margin-left:auto}
+.micm-l{display:flex; justify-content:space-between; gap:.4rem; font-family:var(--mono); font-size:.48rem; letter-spacing:.12em; color:var(--muted); margin-bottom:.25rem; white-space:nowrap}
+.micm-l b{color:var(--text); font-size:.52rem}
+.micbar{position:relative; height:.55rem; border-radius:99px; background:linear-gradient(90deg,rgba(255,122,144,.35),rgba(255,200,87,.3),rgba(45,212,191,.35)); border:1px solid var(--edge)}
+.micbar i{position:absolute; inset:0 auto 0 0; border-radius:99px; background:linear-gradient(90deg,var(--critic),var(--sun) 55%,var(--coach)); background-size:21rem 100%; transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.micbar span{position:absolute; top:50%; transform:translate(-50%,-50%); font-size:.95rem; transition:left 1.1s cubic-bezier(.2,.8,.2,1); filter:drop-shadow(0 2px 6px #000)}
+.micm + .tools{margin-left:.6rem}
+
+/* scene intro card */
+#scard{position:fixed; inset:0; z-index:58; display:grid; place-items:center; pointer-events:none; opacity:0; visibility:hidden}
+#scard::before{content:""; position:absolute; inset:0; background:rgba(5,5,22,.72); backdrop-filter:blur(6px)}
+#scard .in{position:relative; text-align:center; padding:0 1rem}
+#scard img{width:min(34rem,82vw); border-radius:1.5rem; box-shadow:0 30px 80px -20px #000, 0 0 0 2px rgba(255,255,255,.22); display:block; margin:0 auto}
+#scard .k{font-family:var(--mono); letter-spacing:.2em; color:var(--teal); margin-top:.8rem; font-size:.7rem}
+#scard h2{font-family:"Anton",Impact,sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(2rem,4.6vw,3.6rem); margin-top:.15rem; text-shadow:0 6px 30px #000}
+#scard.on{visibility:visible; animation:scardIn 1.5s cubic-bezier(.2,.8,.2,1) forwards}
+#scard.on .in{animation:scardScale 1.5s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes scardIn{0%{opacity:0}12%{opacity:1}74%{opacity:1}100%{opacity:0; visibility:hidden}}
+@keyframes scardScale{0%{transform:scale(.88) translateY(20px)}24%{transform:none}100%{transform:scale(1.04)}}
+
+/* scene thumbnail in the header */
+.sico{position:relative; overflow:hidden}
+.sico img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+
+/* hero pictures */
+.hero{margin:0; border-radius:1.4rem; overflow:hidden; border:1px solid var(--edge2); box-shadow:var(--shadow); position:relative; background:#0B0A28; aspect-ratio:1200/640}
+.hero img{display:block; width:100%; height:100%; object-fit:cover}
+.hero.strip{aspect-ratio:auto; height:clamp(7rem,19vh,11.5rem)}
+.hero figcaption{position:absolute; left:.7rem; bottom:.6rem; padding:.2rem .6rem; border-radius:99px; background:rgba(8,8,31,.78); border:1px solid var(--edge2); font-size:.6rem; font-weight:800}
+.kb{animation:kb 16s ease-out both}
+@keyframes kb{from{transform:scale(1.12) translate(-1.5%,1%)} to{transform:none}}
+.cast{display:flex; gap:.7rem; align-items:center; flex-wrap:wrap; margin-top:.7rem}
+.side2{display:grid; grid-template-columns:minmax(0,1fr) minmax(14rem,21rem); gap:1.1rem; align-items:start}
+.side2 > aside{position:sticky; top:0; display:grid; gap:.8rem}
+
+/* entrance helpers: .ent0 = only when the screen opens, .ent = also when Continue opens a new card */
+.ent0.rise, .ent.rise{animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) both; animation-delay:var(--d,0s)}
+.ent.flipin{animation:flipIn .6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes flipIn{from{opacity:0; transform:perspective(900px) rotateY(-14deg) translateX(30px)} to{opacity:1; transform:none}}
+.ent.slidein{animation:slideIn .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes slideIn{from{opacity:0; transform:translateX(44px)} to{opacity:1; transform:none}}
+#scene.calm .ent, #scene:not(.fresh) .ent0{animation:none!important}
+
+/* typing → message */
+.tseq{animation:typeLife .8s var(--d) both; overflow:hidden; align-self:flex-start}
+@keyframes typeLife{0%{opacity:0; max-height:0}12%{opacity:1; max-height:3rem}82%{opacity:1; max-height:3rem}100%{opacity:0; max-height:0; padding-top:0; padding-bottom:0; margin:0}}
+.mseq{animation:msgIn .42s var(--d) cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes msgIn{from{opacity:0; transform:translateY(10px) scale(.96)} to{opacity:1; transform:none}}
+#scene:not(.fresh) .tseq{display:none}
+
+/* Mia’s comic comes alive */
+.bsad{animation:sway 3.2s ease-in-out infinite; transform-box:fill-box; transform-origin:50% 100%}
+.bdance{animation:dance 1.1s ease-in-out infinite; transform-box:fill-box; transform-origin:50% 100%}
+.bpeek{animation:peek 2.6s ease-in-out infinite; transform-box:fill-box; transform-origin:50% 100%}
+.ant{animation:ant 1.6s ease-in-out infinite; transform-box:fill-box; transform-origin:0% 100%}
+.cnote{animation:noteUp 2.6s ease-in-out infinite; transform-box:fill-box}
+.cnote.n2{animation-delay:-1.3s}
+@keyframes sway{50%{transform:rotate(-4deg)}}
+@keyframes dance{0%,100%{transform:none}25%{transform:translateY(-6px) rotate(-5deg)}75%{transform:translateY(-6px) rotate(5deg)}}
+@keyframes peek{0%,60%,100%{transform:none}75%{transform:translateY(-5px)}}
+@keyframes ant{50%{transform:rotate(-9deg)}}
+@keyframes noteUp{0%{transform:translateY(4px); opacity:.3}50%{opacity:1}100%{transform:translateY(-12px); opacity:.2}}
+.attach{position:relative}
+.stamp{position:absolute; right:6%; bottom:10%; padding:.1rem .6rem; border:4px solid var(--ok); border-radius:.6rem; color:var(--ok); background:rgba(255,255,255,.88); font-family:"Anton",sans-serif; font-size:1.3rem; letter-spacing:.04em; transform:rotate(-9deg)}
+.stamp.ent0{animation:stampIn .5s 1s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes stampIn{0%{opacity:0; transform:scale(1.8) rotate(-14deg)}100%{opacity:1; transform:rotate(-9deg)}}
+
+/* word cards with pictures */
+.wcard.pic{grid-template-columns:minmax(12rem,44%) 1fr; gap:1.4rem; align-items:center}
+.wart{margin:0; position:relative; border-radius:1.2rem; overflow:hidden; border:1px solid var(--edge2); aspect-ratio:3/2; background:#0B0A28; box-shadow:0 20px 40px -24px #000}
+.wart img{width:100%; height:100%; object-fit:cover; display:block}
+.wart .wbadge{position:absolute; left:.5rem; top:.5rem; width:2.6rem; height:2.6rem; border-radius:.8rem; display:grid; place-items:center; font-size:1.4rem; background:rgba(8,8,31,.75); border:1px solid var(--edge2)}
+.wword.ent{animation:wordIn .6s .15s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes wordIn{from{opacity:0; letter-spacing:.2em; filter:blur(4px)} to{opacity:1; filter:none}}
+.wdef.ent, .wex.ent{animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) both}
+.wdef.ent{animation-delay:.3s} .wex.ent{animation-delay:.45s}
+.wart img.ent{animation:kb 9s ease-out both}
+
+/* answer feedback */
+.just{animation:pressPop .28s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes pressPop{50%{transform:scale(1.07)}}
+.item:has(> .res.fx-ok), .card:has(> .res.fx-ok){animation:rightPulse .8s ease-out}
+.item:has(> .res.fx-no), .card:has(> .res.fx-no){animation:shake .45s ease-in-out}
+.res.fx-ok .ok, .res.fx-no .no{display:inline-block; animation:okPop .45s cubic-bezier(.2,.9,.3,1.4) both}
+@keyframes rightPulse{30%{box-shadow:0 0 0 4px rgba(61,220,151,.35), 0 0 30px rgba(61,220,151,.25)}100%{box-shadow:none}}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes okPop{from{transform:scale(.4); opacity:0} to{transform:none; opacity:1}}
+.spark{position:fixed; z-index:57; width:.45rem; height:.45rem; border-radius:50%; pointer-events:none; animation:sparkFly .7s ease-out forwards}
+@keyframes sparkFly{from{transform:translate(-50%,-50%) scale(1); opacity:1} to{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.3); opacity:0}}
+.confetti{position:fixed; inset:0; z-index:57; pointer-events:none; overflow:hidden}
+.confetti i{position:absolute; top:-5vh; width:.5rem; height:.9rem; border-radius:2px; animation:fall var(--t) var(--d) cubic-bezier(.3,.6,.5,1) forwards; opacity:.95}
+@keyframes fall{to{transform:translate(var(--x),112vh) rotate(var(--r)); opacity:.8}}
+
+/* reading with pictures */
+.rp{display:grid; grid-template-columns:minmax(11rem,36%) 1fr; gap:1.1rem; align-items:start}
+.rp .hero{aspect-ratio:1200/640}
+.rp.old .hero{opacity:.85}
+.newp .gl{animation:glWord 1.4s .7s ease-out both}
+@keyframes glWord{0%{background:rgba(255,200,87,0)}40%{background:rgba(255,200,87,.35)}100%{background:rgba(255,200,87,0)}}
+
+/* voices */
+.three .voice{animation:floaty 5.5s ease-in-out infinite}
+.three .voice:nth-child(2){animation-delay:-1.8s} .three .voice:nth-child(3){animation-delay:-3.6s}
+@keyframes floaty{50%{transform:translateY(-6px)}}
+.voice[aria-pressed="true"]::after{content:""; position:absolute; inset:-4px; border-radius:1.4rem; border:2px solid var(--sun); animation:ring 2.2s ease-out infinite; pointer-events:none}
+@keyframes ring{0%{opacity:.8; transform:scale(1)}100%{opacity:0; transform:scale(1.05)}}
+.voice[aria-pressed="true"] .vav{animation:micBob 1s ease-in-out infinite}
+@keyframes micBob{50%{transform:scale(1.08)}}
+
+/* teams */
+.tsit{margin:-1.1rem -1.2rem .2rem; border-radius:var(--r-l) var(--r-l) 0 0; overflow:hidden; aspect-ratio:720/400; background:#0B0A28}
+.tsit img{width:100%; height:100%; object-fit:cover; display:block}
+.team .tsit + .team-h{margin-top:-1.9rem; position:relative}
+.team .tsit + .team-h .av{border-width:3px; box-shadow:0 8px 20px -6px #000}
+.team.ent0{animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) both; animation-delay:var(--d,0s)}
+.tring{display:inline-flex; align-items:center; gap:.45rem}
+.tring svg{width:2.2rem; height:2.2rem; transform:rotate(-90deg)}
+.tring .trbg{fill:none; stroke:rgba(255,255,255,.12); stroke-width:5}
+.tring .trfg{fill:none; stroke:var(--sun); stroke-width:5; stroke-linecap:round; transition:stroke-dashoffset .5s linear, stroke .4s}
+.tring.hurry .trfg{stroke:var(--critic)}
+.tring.done .trfg{stroke:var(--ok)}
+
+/* final path */
+.path{position:relative}
+.path > div.ent0{animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) both; animation-delay:var(--d,0s)}
+.path .pi{display:block}
+.path > div.ent0 .pi{animation:bounceIn .6s cubic-bezier(.2,.9,.3,1.5) both; animation-delay:calc(var(--d,0s) + .2s)}
+@keyframes bounceIn{from{transform:scale(.3); opacity:0} to{transform:none; opacity:1}}
+.banner .bi img{width:3.4rem; height:3.4rem; border-radius:.8rem; object-fit:cover; display:block; border:1px solid var(--edge2)}
+
+/* nav polish */
+#btnNext .arr{display:inline-block; transition:transform .2s}
+#btnNext:hover .arr{transform:translateX(4px)}
+.stu-img{width:100%; border-radius:1rem; margin-bottom:.7rem; border:1px solid var(--edge2); aspect-ratio:1200/640; object-fit:cover}
+
+@media (max-width:1180px){ .micm{display:none} }
+.sumgrid{display:grid; grid-template-columns:minmax(14rem,38%) 1fr; gap:1.1rem; align-items:start}
+.sumgrid .path{grid-template-columns:repeat(2,1fr)}
+.howrow{display:grid; grid-template-columns:minmax(14rem,1.1fr) 1fr 1fr; gap:1rem; align-items:start}
+@media (max-width:1000px){ .sumgrid,.howrow{grid-template-columns:1fr} }
+@media (max-width:860px){
+  .wcard.pic{grid-template-columns:1fr}
+  .side2{grid-template-columns:1fr} .side2 > aside{position:static}
+  .rp{grid-template-columns:1fr}
+  .rp.old .hero{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  #amb, #scard, .tseq, .confetti, .spark{display:none!important}
+}
+
 /* ─── responsive ─── */
 @media (max-width:1100px){
   .steps4{grid-template-columns:repeat(2,1fr)}
@@ -418,10 +575,12 @@ body.student, body.solo{overflow:auto}
 </style>
 </head>
 <body>
+<div id="amb" aria-hidden="true"></div>
 <div id="app">
   <header id="top">
     <a class="tb" id="backHub" href="../../" title="Back to the course" aria-label="Back to the course">←</a>
     <div class="brand"><b>LESSON 7 · VOICES IN MY HEAD</b><span>The Headspace Chat: Who Gets the Mic?</span></div>
+    <div class="micm" aria-hidden="true" title="Who has the mic in Mia’s head?"><div class="micm-l"><span>⚡ CRITIC</span><b>WHO HAS THE MIC?</b><span>COACH 🧭</span></div><div class="micbar"><i id="micFill"></i><span id="micKnob">🎤</span></div></div>
     <div class="tools">
       <button class="tb" id="tchip" title="Timer" aria-label="Timer">⏱ <span class="lb" id="tchipT">Timer</span></button>
       <button class="tb" id="btnMap" title="Scene menu (M)">🗺️ <span class="lb">Scenes</span></button>
@@ -440,7 +599,7 @@ body.student, body.solo{overflow:auto}
     <div id="navMid"><div id="navInfo" aria-live="polite"></div><div id="dots" role="group" aria-label="Scenes"></div></div>
     <div class="navr">
       <button class="btn sm sun hidden" id="btnSkip" title="Skip this optional task">⏭ <span class="lb">Skip optional</span></button>
-      <button class="btn sm primary" id="btnNext" title="Continue (→)"><span id="nextLbl">Continue</span> →</button>
+      <button class="btn sm primary" id="btnNext" title="Continue (→)"><span id="nextLbl">Continue</span> <span class="arr">→</span></button>
     </div>
   </footer>
 </div>
@@ -460,6 +619,7 @@ body.student, body.solo{overflow:auto}
 <div id="solo"></div>
 <div id="present" role="dialog" aria-modal="true" aria-label="Presentation view"></div>
 <div id="pop" role="tooltip"></div>
+<div id="scard" aria-hidden="true"><div class="in"><img id="scImg" alt=""><div class="k" id="scK"></div><h2 id="scT"></h2></div></div>
 <div id="modal" class="hidden" role="dialog" aria-modal="true"><div id="mbox"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
@@ -782,21 +942,21 @@ const optTag = '<span class="tag opt">Optional</span>';
 function comic(){
   const ink='#1B1A3A', font="'Comic Sans MS','Chalkboard SE','Comic Neue',Manrope,sans-serif";
   const box=(x,y,c='#C9CCD8')=>`<g transform="translate(${x} ${y})"><line x1="15" y1="-9" x2="15" y2="0" stroke="${ink}" stroke-width="3"/><circle cx="15" cy="-11" r="3.5" fill="${ink}"/><rect width="30" height="24" rx="3" fill="${c}" stroke="${ink}" stroke-width="3"/><rect x="7" y="8" width="5" height="5" fill="${ink}"/><rect x="18" y="8" width="5" height="5" fill="${ink}"/><rect x="-3" y="27" width="36" height="32" rx="3" fill="${c}" stroke="${ink}" stroke-width="3"/><rect x="6" y="59" width="6" height="12" fill="${ink}"/><rect x="18" y="59" width="6" height="12" fill="${ink}"/></g>`;
-  const bolt=(x,y,o={})=>`<g transform="translate(${x} ${y})"><path d="M15 -4 C 10 -14, 26 -16, 20 -26" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="20" cy="-30" r="6" fill="#FFC857" stroke="${ink}" stroke-width="2.5"/>
+  const bolt=(x,y,o={})=>`<g transform="translate(${x} ${y})"><g class="${o.cls||''}"><g class="ant"><path d="M15 -4 C 10 -14, 26 -16, 20 -26" stroke="${ink}" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="20" cy="-30" r="6" fill="#FFC857" stroke="${ink}" stroke-width="2.5"/></g>
     <circle cx="15" cy="10" r="16" fill="#B79CFF" stroke="${ink}" stroke-width="3"/><circle cx="9" cy="8" r="5" fill="#fff" stroke="${ink}" stroke-width="2"/><circle cx="21" cy="8" r="5" fill="#fff" stroke="${ink}" stroke-width="2"/><circle cx="10" cy="9" r="2.2" fill="${ink}"/><circle cx="22" cy="9" r="2.2" fill="${ink}"/>
     <path d="${o.sad?'M9 20 Q15 15 21 20':'M9 17 Q15 23 21 17'}" stroke="${ink}" stroke-width="2.5" fill="none" stroke-linecap="round"/>
     <rect x="-1" y="28" width="32" height="30" rx="13" fill="#2DD4BF" stroke="${ink}" stroke-width="3"/>
     ${o.up?`<path d="M2 36 L-12 20 M28 36 L42 20" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>`:`<path d="M1 38 L-9 52 M29 38 L39 52" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>`}
     <path d="M8 58 L6 71 M22 58 L24 71" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/>
-    ${o.box?`<rect x="-7" y="-8" width="44" height="38" rx="2" fill="#D9A86C" stroke="${ink}" stroke-width="3"/><path d="M-7 4 H37" stroke="${ink}" stroke-width="1.5" opacity=".45"/><rect x="5" y="9" width="7" height="6" fill="${ink}"/><rect x="18" y="9" width="7" height="6" fill="${ink}"/>`:''}</g>`;
+    ${o.box?`<rect x="-7" y="-8" width="44" height="38" rx="2" fill="#D9A86C" stroke="${ink}" stroke-width="3"/><path d="M-7 4 H37" stroke="${ink}" stroke-width="1.5" opacity=".45"/><rect x="5" y="9" width="7" height="6" fill="${ink}"/><rect x="18" y="9" width="7" height="6" fill="${ink}"/>`:''}</g></g>`;
   const pan=(x,fill)=>`<rect x="${x}" y="8" width="190" height="214" rx="10" fill="${fill}" stroke="${ink}" stroke-width="4"/><line x1="${x+3}" y1="197" x2="${x+187}" y2="197" stroke="${ink}" stroke-width="2" opacity=".3"/>`;
   const bub=(x,y,w,t,tx)=>`<g><path d="M${tx} ${y+28} L${tx-4} ${y+46} L${tx+10} ${y+28}" fill="#fff" stroke="${ink}" stroke-width="2.5" stroke-linejoin="round"/><rect x="${x}" y="${y}" width="${w}" height="30" rx="14" fill="#fff" stroke="${ink}" stroke-width="2.5"/><text x="${x+w/2}" y="${y+20}" text-anchor="middle" font-family="${font}" font-size="14" font-weight="700" fill="${ink}">${t}</text></g>`;
   return `<svg viewBox="0 0 610 230" role="img" aria-label="Mia’s comic: a quirky robot called Bolt wants to fit in with square robots."><rect width="610" height="230" fill="#FFFDF7"/>
    ${pan(8,'#F1EBFF')}<rect x="16" y="16" width="86" height="22" rx="5" fill="#FFC857" stroke="${ink}" stroke-width="2.5"/><text x="59" y="32" text-anchor="middle" font-family="${font}" font-size="13" font-weight="700" fill="${ink}">BOLT · by Mia</text>
-   ${box(22,126)}${box(62,126)}${bolt(106,126,{sad:true})}${box(152,126)}${bub(56,50,140,'I want to fit in…',118)}
-   ${pan(205,'#E4FAF6')}${box(222,126)}${bolt(286,126,{box:true})}${box(350,126)}${bub(240,50,130,'Better now?',300)}
-   ${pan(402,'#FFF5DB')}${box(416,126)}${bolt(472,126,{up:true})}${box(548,126)}<rect x="514" y="182" width="24" height="15" rx="2" fill="#D9A86C" stroke="${ink}" stroke-width="2.5"/>
-   <text x="438" y="96" font-size="22" fill="#8B5CF6">♪</text><text x="540" y="84" font-size="20" fill="#14B8A6">♫</text>${bub(470,40,124,'Cool moves!',560)}
+   ${box(22,126)}${box(62,126)}${bolt(106,126,{sad:true,cls:'bsad'})}${box(152,126)}${bub(56,50,140,'I want to fit in…',118)}
+   ${pan(205,'#E4FAF6')}${box(222,126)}${bolt(286,126,{box:true,cls:'bpeek'})}${box(350,126)}${bub(240,50,130,'Better now?',300)}
+   ${pan(402,'#FFF5DB')}${box(416,126)}${bolt(472,126,{up:true,cls:'bdance'})}${box(548,126)}<rect x="514" y="182" width="24" height="15" rx="2" fill="#D9A86C" stroke="${ink}" stroke-width="2.5"/>
+   <text class="cnote" x="438" y="96" font-size="22" fill="#8B5CF6">♪</text><text class="cnote n2" x="540" y="84" font-size="20" fill="#14B8A6">♫</text>${bub(470,40,124,'Cool moves!',560)}
   </svg>`;
 }
 
@@ -807,7 +967,8 @@ function resLine(id,it,val,keyText){
   const has = val!==undefined && val!==null && val!=='';
   if(c){ if(!has) h+=`<span class="na">• No answer yet.</span>`; else if(val===it.ans) h+=`<span class="ok">✓ Correct.</span><span>${esc(it.why)}</span>`; else h+=`<span class="no">✗ Not quite.</span><span class="muted">Try again.</span>`; }
   if(sh && !(c && val===it.ans)) h+=`<span class="key">🔑 Answer: ${esc(keyText)}.</span><span>${esc(it.why)}</span>`;
-  return h?`<div class="res">${h}</div>`:'';
+  const fx = (R.fxNow===id && c && has) ? (val===it.ans?' fx-ok':' fx-no') : '';
+  return h?`<div class="res${fx}">${h}</div>`:'';
 }
 const qctl = id=>`<div class="ctl"><button class="btn sm teal" data-a="check" data-q="${id}">✓ Check</button><button class="btn sm" data-a="retry" data-q="${id}">↺ Try again</button><button class="btn sm ${R.shown[id]?'on':''}" data-a="showans" data-q="${id}" aria-pressed="${!!R.shown[id]}">🔑 Show answers</button></div>`;
 
@@ -840,12 +1001,15 @@ function glossify(t){ let out='', last=0;
 function deck(list,pre,cls,stepId){
   const i=Math.min(S.sub,list.length-1), w=list[i]; R.seen[stepId]=Math.max(R.seen[stepId]||0,i);
   return `<div class="${cls}"><div class="deckbar" role="group" aria-label="Words">${list.map((x,j)=>`<button data-a="sub" data-i="${j}" class="${j===i?'cur':j<=R.seen[stepId]?'seen':''}" aria-current="${j===i}">${j+1}. ${esc(x.w)}</button>`).join('')}</div>
-   <div class="card ${cls==='deck-b'?'teal':'violet'} pop-in" style="padding:1.4rem 1.5rem"><div class="wcard"><div class="wicon" aria-hidden="true">${w.i}</div><div>
+   <div class="card ${cls==='deck-b'?'teal':'violet'} ent flipin" style="padding:1.3rem 1.4rem"><div class="wcard pic"><figure class="wart"><img class="ent" src="${wordImg(w)}" alt="${esc(w.w)}: picture" onerror="this.remove()"><span class="wbadge" aria-hidden="true">${w.i}</span></figure><div>
      <div class="row"><span class="kick">New phrase ${i+1} / ${list.length}</span>${w.inf?'<span class="infm">· informal</span>':''}<span class="grow"></span>${uaBtn(pre+i)}</div>
-     <h2 class="dsp wword">${esc(w.w)}</h2><p class="wdef">${esc(w.def)}</p>${uaBox(pre+i,w.ua)}
-     <div class="wex">${bold(w.ex)}${uaBox(pre+i,w.exua)}</div></div></div></div>
+     <h2 class="dsp wword ent">${esc(w.w)}</h2><p class="wdef ent">${esc(w.def)}</p>${uaBox(pre+i,w.ua)}
+     <div class="wex ent">${bold(w.ex)}${uaBox(pre+i,w.exua)}</div></div></div></div>
    ${i<list.length-1?`<p class="small mt">Continue → opens the next phrase.</p>`:''}</div>`;
 }
+const wordImg = w=>'img/w-'+w.w.replace(/\s+/g,'-')+'.webp';
+const SCENE_IMG = {1:'img/scene-1.webp',2:'img/scene-2.webp',3:'img/scene-3.webp',4:'img/scene-4.webp',5:'img/story-1.webp',6:'img/scene-6.webp',7:'img/scene-7.webp',8:'img/scene-8.webp'};
+const hero = (src,alt,cls='',cap='')=>`<figure class="hero ${cls}"><img class="kb ent0" src="${src}" alt="${esc(alt)}" onerror="this.parentNode.remove()">${cap?`<figcaption>${cap}</figcaption>`:''}</figure>`;
 function voiceBtn(v,i,sel){ return `<button class="voice ${v.k}" data-a="pick" data-q="mic" data-i="${i}" aria-pressed="${sel===i}">${vav(v.k,3)}<span class="grow vbody"><span class="vn">${LET[i]} · ${esc(v.n)}</span><span class="vt">“${esc(v.t)}”</span>${uaBox('mv'+i,v.ua,'span')}</span><span class="micb">🎤 has the mic</span></button>`; }
 
 /* team card pieces */
@@ -864,6 +1028,7 @@ function hintsHtml(){ return `<div class="hintbox"><div><h4>💡 Better thought<
   <div><h4>👣 Next action</h4><ul>${BR.hintsAction.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
   <div><h4>📚 Word bank</h4><div class="wb">${BR.bank.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div>`; }
 function rolesHtml(){ return `<div class="hintbox"><div><h4>👥 Roles</h4><ul>${BR.roles.en.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div>${uaBox('roles',BR.roles.ua.join(' · '))}<p class="small" style="margin:.4rem 0 0">${esc(BR.pairs.en)}</p>${uaBox('roles',BR.pairs.ua)}`; }
+const tring = (big)=>`<span class="tring"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="trbg" cx="22" cy="22" r="18"/><circle class="trfg" cx="22" cy="22" r="18" stroke-dasharray="113.1" stroke-dashoffset="0"/></svg><b class="tdisp mono" style="font-size:${big?'1.4rem':'1rem'}">${timerTxt()}</b></span>`;
 function teamFields(t,big){
   const w=getTeam(t.id);
   return `<div class="flow">
@@ -873,6 +1038,10 @@ function teamFields(t,big){
   </div>`;
 }
 
+const STORY_ALT=['Mia holds her robot comic; a classmate’s comment and her inner critic appear next to her.',
+  'Mia’s phone shows the same comment again and again; Leo asks: Want to talk it out?',
+  'Mia walks in the park with her phone away and writes a new, kinder thought.',
+  'Mia shows her comic on stage; classmates watch and clap.'];
 /* ---------- 6 · steps (scenes) ---------- */
 const SCENES = [
   {n:1,t:'New Message',e:'📩',min:3}, {n:2,t:'Previously…',e:'⏪',min:2}, {n:3,t:'Inside the Chat',e:'💭',min:4},
@@ -887,14 +1056,15 @@ const STEPS = [
     <div class="phone"><div class="phone-in">
       <div class="chat-h">${av('mia',2.4)}<div><b>Mia</b><small>● online</small></div><span class="grow"></span><span class="tag vio">📩 new</span></div>
       <div class="chat-b">
-        ${MIA_MSG.parts.map((p,i)=>`<div class="msg pop-in" style="animation-delay:${i*.2}s"><div class="bub">${esc(p)}</div></div>`).join('')}
-        <div class="msg pop-in" style="animation-delay:.6s;max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic()}</div><div class="attach-cap">📎 my comic for the creativity show</div></div></div>
+        ${MIA_MSG.parts.map((p,i)=>`<div class="typing tseq" style="--d:${(i*1.15).toFixed(2)}s"><i></i><i></i><i></i></div><div class="msg mseq ent0" style="--d:${(i*1.15+.75).toFixed(2)}s"><div class="bub">${esc(p)}</div></div>`).join('')}
+        <div class="msg mseq ent0" style="--d:3.9s;max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic()}</div><div class="attach-cap">📎 my comic for the creativity show</div></div></div>
         <div>${uaBtn('m1')}${uaBox('m1',MIA_MSG.ua)}</div>
       </div></div></div>
     <div style="display:grid;gap:1rem">
-      <div class="card"><div class="kick">The story</div><div class="row mt">${av('mia',3.4)}<div><b>Mia</b><div class="small">draws comics</div></div><span style="width:.6rem"></span>${av('leo',3.4)}<div><b>Leo</b><div class="small">Mia’s friend</div></div></div></div>
-      ${s>=1?`<div class="card sun pop-in" ${s===1?'data-newest':''}><div class="kick" style="color:var(--sun)">🎯 Your mission</div><p class="q xl" style="margin:.3rem 0">${esc(MISSION.en)}</p>${uaBtn('mis')}${uaBox('mis',MISSION.ua)}</div>`:''}
-      ${s>=2?`<div class="card teal pop-in" data-newest><div class="kick">🎤 What are the “voices”?</div><p class="q" style="margin:.3rem 0">${esc(VOICES_EN)}</p>${uaBtn('voi')}${uaBox('voi',VOICES_UA)}<div class="row mt">${vav('critic',2.3)}${vav('hype',2.3)}${vav('coach',2.3)}<span class="small grow">Today, these voices talk in Mia’s head.</span></div></div>`:''}
+      <div class="card ent0 rise" style="padding:.7rem"><div class="kick" style="margin:.1rem .3rem .5rem">The story</div>${hero('img/scene-1.webp','Mia looks at her comic and a comment that says it is a bit weird.')}
+        <div class="cast">${av('mia',2.8)}<div><b>Mia</b><div class="small">draws comics</div></div><span style="width:.4rem"></span>${av('leo',2.8)}<div><b>Leo</b><div class="small">Mia’s friend</div></div></div></div>
+      ${s>=1?`<div class="card sun ${s===1?'ent rise':''}" ${s===1?'data-newest':''}><div class="kick" style="color:var(--sun)">🎯 Your mission</div><p class="q xl" style="margin:.3rem 0">${esc(MISSION.en)}</p>${uaBtn('mis')}${uaBox('mis',MISSION.ua)}</div>`:''}
+      ${s>=2?`<div class="card teal ${s===2?'ent rise':''}" data-newest><div class="kick">🎤 What are the “voices”?</div><p class="q" style="margin:.3rem 0">${esc(VOICES_EN)}</p>${uaBtn('voi')}${uaBox('voi',VOICES_UA)}<div class="row mt">${vav('critic',2.3)}${vav('hype',2.3)}${vav('coach',2.3)}<span class="small grow">Today, these voices talk in Mia’s head.</span></div></div>`:''}
       ${s<2?`<p class="small">Continue → opens the ${s===0?'mission':'next card'}.</p>`:''}
     </div></div>`; }},
  {sc:1, id:'w1', t:'Warm-up', live:()=>({kind:'choice', id:'wq1', q:WARM[0].q, opts:WARM[0].opts}),
@@ -906,13 +1076,14 @@ const STEPS = [
 
  /* SCENE 2 */
  {sc:2, id:'rev', t:'Complete the messages', render(){ const sel=qsel('rev');
-   return `<div class="card"><div class="row"><p class="lead grow" style="margin:0">Complete the messages with the words above. ${uaBtn('revi')}</p></div>${uaBox('revi','Доповніть повідомлення словами вище.')}
+   return `<div class="side2"><div class="card"><div class="row"><p class="lead grow" style="margin:0">Complete the messages with the words above. ${uaBtn('revi')}</p></div>${uaBox('revi','Доповніть повідомлення словами вище.')}
     <div class="chips mt" role="group" aria-label="Word bank">${REV.words.map(w=>`<button class="chip" data-a="bank" data-v="${esc(w)}" title="Put this word into the selected gap">${esc(w)}<span class="ua noflag" data-uk="revw" style="margin:0 0 0 .35rem;padding:0 .3rem;font-size:.75em">${esc(REV.wua[w])}</span></button>`).join('')}</div>
     <p class="small" style="margin:.4rem 0 .8rem">Choose a word in each gap — or click a word above, and it goes into the selected (or the first empty) gap.</p>
     ${REV.items.map((it,i)=>{ const v=sel[i]; const st=R.checked.rev&&v?(v===it.ans?'good':'bad'):'';
       return `<div class="item"><span class="num">${i+1}</span>${esc(it.a)} <select class="gap ${v?'filled':''} ${st}" data-q="rev" data-i="${i}" aria-label="Gap ${i+1}"><option value="">— choose —</option>${REV.words.map(w=>`<option ${v===w?'selected':''}>${esc(w)}</option>`).join('')}</select>${esc(it.b)} ${uaBtn('rv'+i)}${uaBox('rv'+i,it.ua)}${resLine('rev',it,v,it.ans)}</div>`; }).join('')}
     ${qctl('rev')}</div>
-    <div class="msg mt2" style="max-width:100%">${av('mia',2.6)}<div class="bub"><span class="who">Mia</span>${esc(REV.bridge.en)} ${uaBtn('brg')}${uaBox('brg',REV.bridge.ua)}</div></div>`; }},
+    <aside>${hero('img/scene-2.webp','A sticky-note board with the six words from earlier lessons.','','⏪ Previously…')}
+    <div class="msg ent0 rise" style="max-width:100%;--d:.4s">${av('mia',2.6)}<div class="bub"><span class="who">Mia</span>${esc(REV.bridge.en)} ${uaBtn('brg')}${uaBox('brg',REV.bridge.ua)}</div></div></aside></div>`; }},
 
  /* SCENE 3 */
  {sc:3, id:'w-in', t:'Six words for the inner chat', subs:6, render:()=>deck(W1,'wa','deck-a','w-in')},
@@ -934,14 +1105,14 @@ const STEPS = [
       <div class="opts mt">${it.opts.map((o,j)=>`<button class="opt ${R.shown.move&&j===it.ans?'key':''}" data-a="opt" data-q="move" data-i="${i}" data-v="${j}" aria-pressed="${sel[i]===j}"><span class="L">${LET[j]}</span><span>${esc(o.t)}${uaBox('mq'+i,o.ua,'span')}</span></button>`).join('')}</div>
       ${resLine('move',it,sel[i],LET[it.ans])}</div>`).join('')}</div>
     ${qctl('move')}
-    <div class="banner mt2"><span class="bi">🖼️</span><div><span class="kick" style="color:var(--sun)">The rule for today</span><br><b style="font-size:1.3rem">${esc(PRINCIPLE.en)}</b> ${uaBtn('pr')}${uaBox('pr',PRINCIPLE.ua)}</div></div>`; }},
+    <div class="banner mt2"><span class="bi"><img src="img/w-reframe.webp" alt="" onerror="this.replaceWith('🖼️')"></span><div><span class="kick" style="color:var(--sun)">The rule for today</span><br><b style="font-size:1.3rem">${esc(PRINCIPLE.en)}</b> ${uaBtn('pr')}${uaBox('pr',PRINCIPLE.ua)}</div></div>`; }},
 
  /* SCENE 5 */
  {sc:5, id:'pre', t:'Before you read', live:()=>({kind:'choice', id:'pre', q:PRE.q, opts:PRE.opts}),
   render:()=>speakCard({id:'pre', icon:'🔮', q:PRE.q, ua:PRE.ua, body:pickRow('pre',PRE.opts,PRE.emo)+`<div class="ctl"><button class="btn primary" data-a="next">📖 Open the story →</button><span class="small">Hear two guesses first.</span></div>`})},
  {sc:5, id:'read', t:STORY.title, subs:4, render(){ const s=S.sub;
    return `<div class="row" style="margin-bottom:.8rem">${av('mia',2.4)}${av('leo',2.4)}<span class="small grow">Click a <b style="color:var(--sun)">yellow phrase</b> to see what it means.</span></div>
-    ${STORY.paras.slice(0,s+1).map((p,i)=>`<div class="card ${i===s?'violet pop-in':''}" ${i===s?'data-newest':''} style="margin-bottom:.8rem"><div class="row" style="margin-bottom:.35rem"><span class="tag">Part ${i+1} / 4</span><span class="grow"></span>${uaBtn('rp'+i)}</div><p class="para" style="margin:0">${glossify(p.en)}</p>${uaBox('rp'+i,p.ua)}</div>`).join('')}
+    ${STORY.paras.slice(0,s+1).map((p,i)=>`<div class="card ${i===s?'violet ent slidein newp':''}" ${i===s?'data-newest':''} style="margin-bottom:.8rem"><div class="rp ${i<s?'old':''}">${hero('img/story-'+(i+1)+'.webp',STORY_ALT[i])}<div><div class="row" style="margin-bottom:.35rem"><span class="tag">Part ${i+1} / 4</span><span class="grow"></span>${uaBtn('rp'+i)}</div><p class="para" style="margin:0">${glossify(p.en)}</p>${uaBox('rp'+i,p.ua)}</div></div></div>`).join('')}
     ${s<3?`<p class="small">Continue → opens part ${s+2}.</p>`:''}`; }},
  {sc:5, id:'fpo', t:'Fact, Prediction, or Opinion?', render(){ const sel=qsel('fpo');
    return `<p class="lead">Is this a fact from the story, a prediction, or an opinion? ${uaBtn('fpi')}</p>${uaBox('fpi','Це факт з історії, припущення про майбутнє чи думка?')}
@@ -961,16 +1132,16 @@ const STEPS = [
     <div class="ctl">${revBtn('mic-x','💡 Show explanation')}</div>${revBox('mic-x',`<div class="banner"><span class="bi">${vav('coach',2.4)}</span><b>${esc(MIC.answer)}</b></div>`)}`; },
   after(){ /* одна кнопка UA відкриває переклади всіх трьох голосів */ const b=$('[data-k="mv0"]'); if(b) b.dataset.group='mv0,mv1,mv2'; }},
  {sc:6, id:'speak', t:'Speak up', live:()=>({kind:'text', id:'spk', q:MIC.speak.q, ph:'It’s okay to…'}),
-  render:()=>speakCard({id:'spk', icon:'🗣️', q:MIC.speak.q, ua:MIC.speak.ua, hint:MIC.speak.starters, samples:MIC.speak.samples,
-    note:`🙂 ${esc(MIC.tip.en)} ${uaBtn('tip')}${uaBox('tip',MIC.tip.ua)}`})},
+  render:()=>`<div class="side2">${speakCard({id:'spk', icon:'🗣️', q:MIC.speak.q, ua:MIC.speak.ua, hint:MIC.speak.starters, samples:MIC.speak.samples,
+    note:`🙂 ${esc(MIC.tip.en)} ${uaBtn('tip')}${uaBox('tip',MIC.tip.ua)}`})}<aside>${hero('img/scene-6.webp','Three voices around a microphone: the inner critic, the hype voice and the helpful coach.','','🎤 Give the mic to the coach')}</aside></div>`},
  {sc:6, id:'speak2', t:'More to talk about', opt:true, render:()=>`<div class="card sun">${optTag}<div class="mt" style="display:grid;gap:.7rem">
     ${MIC.extra.map((x,i)=>`<div class="item"><p class="q" style="margin:0"><span class="num">${i+1}</span>${esc(x.q)} ${uaBtn('ox'+i)}</p>${uaBox('ox'+i,x.ua)}</div>`).join('')}</div>
     <p class="small mt">🙂 ${esc(MIC.tip.en)} ${uaBtn('tip')}</p>${uaBox('tip',MIC.tip.ua)}</div>`},
 
  /* SCENE 7 */
  {sc:7, id:'how', t:BR.title, render:()=>`<p class="lead">${esc(BR.intro.en)} ${uaBtn('bri')}</p>${uaBox('bri',BR.intro.ua)}
-    <div class="steps4 mt">${BR.steps.map((s,i)=>`<div class="st4"><div class="n">${i+1}</div><b>${esc(s.t)}</b><p>${esc(s.d)}</p>${uaBox('bri',s.ut+' '+s.ud)}</div>`).join('')}</div>
-    <div class="two mt"><div class="card sun"><div class="kick" style="color:var(--sun)">⏱ The rules</div><ul style="margin:.4rem 0 0;padding-left:1.1rem;font-weight:800">${BR.rules.en.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>${uaBox('bri',BR.rules.ua.join(' '))}</div>
+    <div class="steps4 mt">${BR.steps.map((s,i)=>`<div class="st4 ent0 rise" style="--d:${(i*.12+.1).toFixed(2)}s"><div class="n">${i+1}</div><b>${esc(s.t)}</b><p>${esc(s.d)}</p>${uaBox('bri',s.ut+' '+s.ud)}</div>`).join('')}</div>
+    <div class="howrow mt">${hero('img/scene-7.webp','Three breakout rooms: Team Leo, Team Alex and Team Sam.','','🛟 3 teams · 3 characters')}<div class="card sun"><div class="kick" style="color:var(--sun)">⏱ The rules</div><ul style="margin:.4rem 0 0;padding-left:1.1rem;font-weight:800">${BR.rules.en.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>${uaBox('bri',BR.rules.ua.join(' '))}</div>
     <div class="card">${rolesHtml()}</div></div>`},
  {sc:7, id:'example', t:'A full example', render:()=>{ const e=BR.example;
    return `<div class="card"><div class="team-h">${initAv('Nina',3)}<div><span class="tn">EXAMPLE</span><br><b>${esc(e.name)}</b></div><span class="grow"></span>${uaBtn('ex')}</div>
@@ -982,9 +1153,9 @@ const STEPS = [
  {sc:7, id:'check', t:'Ready for the rooms?', render:()=>`<p class="lead">Three quick questions before the breakout rooms.</p>
     <div class="check mt">${BR.checks.map((c,i)=>`<div class="cq"><b>${i+1}. ${esc(c.q)}</b><span>${R.rev['ck'+i]?`<span class="a pop-in">✓ ${esc(c.a)}</span>`:`<button class="btn sm" data-a="rev" data-k="ck${i}">Show answer</button>`}</span></div>`).join('')}</div>`},
  {sc:7, id:'teams', t:'Team cards', live:()=>({kind:'team', id:'team', teams:TEAMS.map(t=>({id:t.id,n:t.n,name:t.name,sit:t.sit,neg:t.neg})), work:Object.fromEntries(TEAMS.map(t=>[t.id,getTeam(t.id)]))}),
-  render:()=>`<div class="card sun" style="padding:.8rem 1rem"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Breakout timer</span><b class="tdisp mono" style="font-size:1.4rem">${timerTxt()}</b><span class="grow"></span>
+  render:()=>`<div class="card sun" style="padding:.8rem 1rem"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Breakout timer</span>${tring(true)}<span class="grow"></span>
      <button class="btn sm sun" data-a="tstart" data-s="360" data-l="Breakout rooms">▶ Start 6:00</button><button class="btn sm" data-a="tstart" data-s="240" data-l="Breakout rooms (short)">Short version 4:00</button><button class="btn sm ghost" data-a="tpause">⏸ Pause</button><button class="btn sm ghost" data-a="treset">↺ Reset</button></div></div>
-    <div class="three mt">${TEAMS.map(t=>`<div class="card team"><div class="team-h">${av(t.id,3)}<div><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div></div>
+    <div class="three mt">${TEAMS.map((t,k)=>`<div class="card team ent0" style="--d:${(k*.15).toFixed(2)}s"><div class="tsit"><img src="img/team-${t.id}.webp" alt="${esc(t.sit)}" onerror="this.parentNode.remove()"></div><div class="team-h">${av(t.id,3)}<div><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div></div>
       <p style="margin:0;font-weight:700">${esc(t.sit)} ${uaBtn('ts'+t.id)}</p>${uaBox('ts'+t.id,t.ua)}
       <div class="neg-b">“${esc(t.neg)}”</div>
       <div class="small">💡 Better thought: …<br>👣 Next action: …</div>
@@ -993,9 +1164,9 @@ const STEPS = [
  {sc:7, id:'present', t:'Presentations', live:()=>({kind:'react', id:'react-'+S.pteam, q:'Team '+(TEAMS.find(t=>t.id===S.pteam)||TEAMS[0]).name+' is presenting', opts:BR.stickers}),
   render(){ const t=TEAMS.find(x=>x.id===S.pteam)||TEAMS[0], st=S.stick[t.id]||{};
    return `<div class="row"><div class="tabs" role="tablist">${TEAMS.map(x=>`<button role="tab" data-a="ptab" data-id="${x.id}" aria-selected="${x.id===t.id}">${av(x.id,1.5)} Team ${x.n} · ${esc(x.name)}</button>`).join('')}</div><span class="grow"></span>
-     <b class="tdisp mono">${timerTxt()}</b><button class="btn sm" data-a="tstart" data-s="60" data-l="Team presentation">▶ 1:00</button></div>
+     ${tring(false)}<button class="btn sm" data-a="tstart" data-s="60" data-l="Team presentation">▶ 1:00</button></div>
     <div class="card mt"><div class="team-h">${av(t.id,3)}<div><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div><span class="grow"></span><button class="btn sm sun" data-a="present" data-id="${t.id}">⛶ Presentation view</button></div>
-      <p class="mt" style="margin-bottom:.6rem;font-weight:700">${esc(t.sit)} ${uaBtn('ps')}</p>${uaBox('ps',t.ua)}${teamFields(t,true)}
+      <div class="row mt" style="align-items:center;flex-wrap:nowrap"><img src="img/team-${t.id}.webp" alt="" style="width:9rem;border-radius:.8rem;border:1px solid var(--edge2);flex:0 0 auto" onerror="this.remove()"><p style="margin:0;font-weight:700">${esc(t.sit)} ${uaBtn('ps')}</p></div>${uaBox('ps',t.ua)}${teamFields(t,true)}
       <p class="small mt">Type or paste what the team says (or read it from their card). Saved on this device.</p></div>
     <div class="card mt"><p class="q" style="margin:0">${esc(BR.after.q)} ${uaBtn('aft')}</p>${uaBox('aft',BR.after.ua)}
       <div class="stickers mt">${BR.stickers.map(k=>`<button class="stk" data-a="stk" data-id="${t.id}" data-v="${esc(k)}" aria-pressed="${!!st[k]}">${k==='Helpful reframe'?'🖼️':k==='Useful action'?'👣':'🤝'} ${esc(k)}</button>`).join('')}</div></div>`; }},
@@ -1003,13 +1174,13 @@ const STEPS = [
  /* SCENE 8 */
  {sc:8, id:'final', t:'Mia’s last message', live:()=>({kind:'text', id:'exit', q:FINAL.exit.q, starters:FINAL.exit.items.map(x=>x.t), ph:'A confidence boost for me is…'}),
   render:()=>`<div class="two l"><div class="phone"><div class="phone-in"><div class="chat-h">${av('mia',2.4)}<div><b>Mia</b><small>● online</small></div></div>
-     <div class="chat-b"><div class="msg" style="max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic()}</div><div class="attach-cap">✓ shown at the creativity show</div></div></div>
-     <div class="msg pop-in"><div class="bub">${esc(FINAL.mia)}</div></div><div>${uaBtn('fm')}${uaBox('fm',FINAL.miaua)}</div></div></div></div>
+     <div class="chat-b"><div class="msg" style="max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic()}<span class="stamp ent0" aria-hidden="true">SHOWN ✓</span></div><div class="attach-cap">✓ shown at the creativity show</div></div></div>
+     <div class="typing tseq" style="--d:.5s"><i></i><i></i><i></i></div><div class="msg mseq ent0" style="--d:1.25s"><div class="bub">${esc(FINAL.mia)}</div></div><div>${uaBtn('fm')}${uaBox('fm',FINAL.miaua)}</div></div></div></div>
     <div class="card sun"><span class="kick" style="color:var(--sun)">🎟️ Exit ticket</span><p class="q xl" style="margin:.3rem 0">${esc(FINAL.exit.q)} ${uaBtn('xt')}</p>${uaBox('xt',FINAL.exit.ua)}
      <div style="display:grid;gap:.5rem" class="mt">${FINAL.exit.items.map((x,i)=>`<div class="item" style="margin:0"><b><span class="num">${i+1}</span>${esc(x.t)}</b>${uaBox('xt',x.ua)}</div>`).join('')}</div>
      <div class="ctl">${revBtn('xt-s','💬 Sample answers')}</div>${revBox('xt-s',samplesHtml(FINAL.exit.samples))}${wallHtml('exit')}</div></div>`},
- {sc:8, id:'sum', t:'How to change the chat', render:()=>`<div class="path">${FINAL.path.map((p,i)=>`<div class="pop-in" style="animation-delay:${i*.12}s"><div class="pi" aria-hidden="true">${p.i}</div><span class="kick">Step ${i+1}</span><b>${esc(p.en)}</b>${uaBox('pth',p.ua)}</div>`).join('')}</div>
-    <div class="row mt">${uaBtn('pth')}</div>
+ {sc:8, id:'sum', t:'How to change the chat', render:()=>`<div class="sumgrid">${hero('img/scene-8.webp','Mia shows her comic on stage; Leo and the class cheer.','','🎉 Mia showed her comic')}<div><div class="path">${FINAL.path.map((p,i)=>`<div class="ent0" style="--d:${(i*.22+.15).toFixed(2)}s"><div class="pi" aria-hidden="true">${p.i}</div><span class="kick">Step ${i+1}</span><b>${esc(p.en)}</b>${uaBox('pth',p.ua)}</div>`).join('')}</div>
+    <div class="row mt">${uaBtn('pth')}</div></div></div>
     <div class="banner mt2"><span class="bi">🖼️</span><div><b style="font-size:1.25rem">${esc(PRINCIPLE.en)}</b> ${uaBtn('pr2')}${uaBox('pr2',PRINCIPLE.ua)}</div></div>
     <div class="ctl mt2"><button class="btn primary" data-a="vocab">📚 Vocabulary Recap</button><a class="btn" href="../../">← Back to the course</a></div>
     <p class="small mt">🎉 Story complete — Mia found a more useful voice.</p>`}
@@ -1025,7 +1196,7 @@ function next(){ const st=cur(); if(st.subs && S.sub<st.subs-1){ S.sub++; save()
 function back(){ if(S.sub>0){ S.sub--; save(); draw(false,true); return; }
   for(let j=S.i-1;j>=0;j--) if(visible(j)) return go(j,(STEPS[j].subs||1)-1); }
 function skipOpt(){ for(let j=S.i+1;j<STEPS.length;j++) if(!STEPS[j].opt) return go(j,0); }
-function shead(st,sc){ return `<div class="shead"><div class="sico" aria-hidden="true">${sc.e}</div><div class="grow"><div class="kick">Scene ${sc.n} of 8 · ${esc(sc.t)}</div><h1>${esc(st.t)}</h1>
+function shead(st,sc){ return `<div class="shead"><div class="sico" aria-hidden="true">${sc.e}<img src="${SCENE_IMG[sc.n]}" alt="" onerror="this.remove()"></div><div class="grow"><div class="kick">Scene ${sc.n} of 8 · ${esc(sc.t)}</div><h1>${esc(st.t)}</h1>
   <div class="meta"><span class="tag">⏱ ${sc.min} min</span>${st.opt?optTag:''}${st.subs?`<span class="tag vio">${S.sub+1} / ${st.subs}</span>`:''}</div></div></div>`; }
 function draw(anim=true,keep=false,subAdv=false){
   if(MODE!=='teacher') return;
@@ -1033,7 +1204,13 @@ function draw(anim=true,keep=false,subAdv=false){
   const st=cur(), sc=SCENES[st.sc-1], top=$('#stage').scrollTop;
   if(st.subs) S.sub=Math.min(Math.max(0,S.sub),st.subs-1); else S.sub=0;
   hidePop();
+  const adv = subAdv || R.forceAdv; R.forceAdv=false;
+  $('#scene').className = 'wrap ' + (anim ? 'fresh' : adv ? 'adv' : 'calm');
   $('#scene').innerHTML = shead(st,sc)+`<div class="${anim?'scene-in':''}">${st.render()}</div>`;
+  R.fxNow=null;
+  if(R.fxSpark){ const q=R.fxSpark; R.fxSpark=null; $$('.res.fx-ok .ok').forEach(el=>sparks(el)); }
+  if(anim){ if(R.lastSc!==undefined && R.lastSc!==sc.n) splash(sc); if(st.id==='final') setTimeout(()=>{ if(cur().id==='final') confetti(); },1900); }
+  R.lastSc=sc.n; paintAmb(sc.n); paintMic(sc.n);
   if(keep) $('#stage').scrollTop=top; else if(!subAdv) $('#stage').scrollTop=0;
   if(subAdv){ const el=$('[data-newest]'); if(el) el.scrollIntoView({block:'nearest', behavior:REDUCED?'auto':'smooth'}); }
   st.after && st.after();
@@ -1053,6 +1230,36 @@ function paintNav(){
 }
 function setRoute(r){ S.route=r; save(); draw(false,true); toast(r==='quick'?'Quick route: optional tasks are hidden.':'Full route: all tasks are shown.'); }
 function setUA(on){ R.uaAll=on; document.body.classList.toggle('uaall',on); const b=$('#btnUA'); if(b){ b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); } }
+
+/* ---------- motion helpers ---------- */
+function splash(sc){
+  if(REDUCED || MODE!=='teacher') return; const el=$('#scard'); if(!el) return;
+  $('#scImg').src=SCENE_IMG[sc.n]; $('#scK').textContent='SCENE '+sc.n+' OF 8'; $('#scT').textContent=sc.e+' '+sc.t;
+  el.classList.remove('on'); void el.offsetWidth; el.classList.add('on');
+}
+const AMB = [[1,3,['💭','❓','💬','⚡','…','😬']],[4,5,['🌿','🍃','🖼️','🎵','💬','🧊']],[6,8,['✨','⭐','💜','🎤','🎉','💛']]];
+let ambGroup=-1;
+function paintAmb(n){
+  if(REDUCED) return; const g=AMB.findIndex(a=>n>=a[0]&&n<=a[1]); if(g===ambGroup) return; ambGroup=g;
+  const set=AMB[g][2], box=$('#amb'); if(!box) return; let h='';
+  for(let k=0;k<14;k++){ const t=22+Math.random()*16; h+=`<span style="left:${(k/14*100+Math.random()*5).toFixed(1)}%;--t:${t.toFixed(1)}s;--d:${(-Math.random()*t).toFixed(1)}s;--s:${(1.1+Math.random()*1.3).toFixed(2)}rem;--o:${(.06+Math.random()*.07).toFixed(2)};--r:${Math.round(Math.random()*80-40)}deg">${set[k%set.length]}</span>`; }
+  box.innerHTML=h;
+}
+const MICPOS=[8,14,22,42,60,78,90,100];
+function paintMic(n){ const p=MICPOS[n-1]||0, f=$('#micFill'), k=$('#micKnob'); if(f) f.style.width=p+'%'; if(k) k.style.left='calc('+p+'% '+(p>95?'- .5rem':p<6?'+ .5rem':'+ 0rem')+')'; }
+function sparks(el){
+  if(REDUCED || !el) return; const r=el.getBoundingClientRect(), cx=r.left+10, cy=r.top+r.height/2, cols=['#3DDC97','#FFC857','#2DD4BF','#C9B6FF'];
+  for(let k=0;k<10;k++){ const s=document.createElement('i'); s.className='spark'; const a=k/10*Math.PI*2, d=26+Math.random()*22;
+    s.style.cssText=`left:${cx}px;top:${cy}px;background:${cols[k%4]};--dx:${(Math.cos(a)*d).toFixed(0)}px;--dy:${(Math.sin(a)*d).toFixed(0)}px`;
+    document.body.appendChild(s); setTimeout(()=>s.remove(),800); }
+}
+function confetti(){
+  if(REDUCED) return; const box=document.createElement('div'); box.className='confetti'; box.setAttribute('aria-hidden','true');
+  const cols=['#8B5CF6','#2DD4BF','#FFC857','#C9B6FF','#FF9AAD','#5EEAD4']; let h='';
+  for(let k=0;k<46;k++) h+=`<i style="left:${(Math.random()*100).toFixed(1)}%;background:${cols[k%6]};--t:${(2.4+Math.random()*1.6).toFixed(2)}s;--d:${(Math.random()*.6).toFixed(2)}s;--x:${Math.round(Math.random()*160-80)}px;--r:${Math.round(Math.random()*720-360)}deg"></i>`;
+  box.innerHTML=h; document.body.appendChild(box); setTimeout(()=>box.remove(),4800);
+}
+function pressFx(sel){ const el=$(sel); if(el && !REDUCED){ el.classList.remove('just'); void el.offsetWidth; el.classList.add('just'); } }
 
 /* popover for highlighted words */
 function showPop(btn){ const w=WORD[btn.dataset.g]; if(!w) return; const p=$('#pop');
@@ -1111,6 +1318,8 @@ function paintTimer(){
   if(tt) tt.textContent = S.timer ? timerTxt() : 'Timer';
   if(c){ c.classList.toggle('on',!!(S.timer&&S.timer.run&&!done)); c.classList.toggle('done',!!done); }
   $$('.tdisp').forEach(e=>e.textContent=timerTxt());
+  const frac = S.timer && S.timer.total ? Math.max(0,Math.min(1,l/S.timer.total)) : 1;
+  $$('.tring').forEach(r=>{ const c=$('.trfg',r); if(c) c.style.strokeDashoffset=(113.1*(1-frac)).toFixed(1); r.classList.toggle('hurry',!!(S.timer && l>0 && l<=30)); r.classList.toggle('done',!!done); });
   const big=$('#tmBig'); if(big){ big.textContent=S.timer?timerTxt():'0:00'; big.classList.toggle('end',!!done); }
 }
 function showTimer(){
@@ -1153,7 +1362,7 @@ function paintTeacher(){
 function openPresent(id){
   const t=TEAMS.find(x=>x.id===id); if(!t) return; const w=getTeam(id), p=$('#present');
   p.innerHTML=`<div class="pv"><div class="row">${av(t.id,3.4)}<div><span class="kick">TEAM ${t.n}</span><h2 class="dsp" style="font-size:2.4rem">${esc(t.name)}</h2></div><span class="grow"></span><button class="btn" data-a="pclose">✕ Close <span class="k">Esc</span></button></div>
-    <p class="lead" style="margin:0">${esc(t.sit)}</p>
+    <div class="row" style="flex-wrap:nowrap"><img src="img/team-${t.id}.webp" alt="" style="width:12rem;border-radius:1rem;border:1px solid var(--edge2)" onerror="this.remove()"><p class="lead" style="margin:0">${esc(t.sit)}</p></div>
     <div class="fl neg"><span class="lab">Negative thought</span><span class="tx">“${esc(t.neg)}”</span></div>
     <div class="fl bet"><span class="lab">💡 Better thought</span><span class="tx">${w.better?esc(w.better):'<span class="muted">…</span>'}</span></div>
     <div class="fl act"><span class="lab">👣 Next action</span><span class="tx">${w.action?esc(w.action):'<span class="muted">…</span>'}</span></div></div>`;
@@ -1171,13 +1380,14 @@ function soloApp(){
     <div class="tabs" style="margin-bottom:.8rem">${TEAMS.map(x=>`<a class="btn sm ${x.id===t.id?'on':''}" href="?team=${x.id}" ${x.id===t.id?'aria-current="page"':''}>Team ${x.n} · ${esc(x.name)}</a>`).join('')}</div>
     <div class="two l">
      <div class="card team"><div class="team-h">${av(t.id,4)}<div><span class="tn">TEAM ${t.n}</span><h1 class="dsp" style="font-size:2.3rem">${esc(t.name)}</h1></div></div>
+      <div class="tsit" style="margin:0;border-radius:1rem"><img src="img/team-${t.id}.webp" alt="${esc(t.sit)}" onerror="this.parentNode.remove()"></div>
       <div class="fl sit"><span class="lab">Situation</span><span class="tx">${esc(t.sit)}${uaBox('s',t.ua)}</span></div>
       ${teamFields(t)}
       <p class="small" id="soloSaved" aria-live="polite">Write one sentence in each empty box. Saved on this device.</p>
       <div class="row"><button class="btn sun" data-a="present" data-id="${t.id}">⛶ Presentation view</button><button class="btn sm" data-a="copy" data-t="task" data-id="${t.id}">📋 Copy team task</button><button class="btn sm ghost" data-a="soloclear" data-id="${t.id}">Clear</button></div>
      </div>
      <div style="display:grid;gap:1rem">
-      <div class="card sun"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Timer</span><b class="tdisp mono" style="font-size:1.3rem"></b></div>
+      <div class="card sun"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Timer</span>${tring(true)}</div>
         <div class="row mt" style="gap:.35rem"><button class="btn sm sun" data-a="tstart" data-s="360" data-l="Team work">▶ 6:00</button><button class="btn sm" data-a="tstart" data-s="240" data-l="Short version">Short version 4:00</button><button class="btn sm ghost" data-a="tpause">⏸ Pause</button><button class="btn sm ghost" data-a="treset">↺ Reset</button></div></div>
       <div class="card"><span class="kick">What to do</span><ol style="margin:.4rem 0 0;padding-left:1.2rem;font-size:.85rem">${BR.steps.map(s=>`<li><b>${esc(s.t)}</b> ${esc(s.d)}${uaBox('s',s.ut+' '+s.ud)}</li>`).join('')}</ol>
         <p class="small" style="margin:.5rem 0 0">${BR.rules.en.map(esc).join(' ')}</p>${uaBox('s',BR.rules.ua.join(' '))}</div>
@@ -1237,7 +1447,7 @@ function pubState(){
   if(!R.live || MODE!=='teacher') return;
   clearTimeout(pubT); pubT=setTimeout(()=>{ const c=cur(), sc=SCENES[c.sc-1], task=curTask();
     if(task && task.kind==='choice') task.shown=!!R.res[task.id];
-    Net.send({t:'state', sc:sc.n, title:sc.t, e:sc.e, task, timer:{left:Math.ceil(tLeft()), run:!!(S.timer&&S.timer.run), on:!!S.timer}}); },120);
+    Net.send({t:'state', sc:sc.n, title:sc.t, e:sc.e, img:SCENE_IMG[sc.n], task, timer:{left:Math.ceil(tLeft()), run:!!(S.timer&&S.timer.run), on:!!S.timer}}); },120);
 }
 let redrawT=null;
 function softRedraw(){ clearTimeout(redrawT); redrawT=setTimeout(()=>{ const a=document.activeElement; if(a && a.closest && a.closest('#scene textarea, #scene select')) { paintDock(); return; } draw(false,true); },300); }
@@ -1341,7 +1551,8 @@ function studentApp(){
     $$('[data-sf]',B).forEach(ta=>{ if(document.activeElement!==ta && typeof w[ta.dataset.sf]==='string' && ta.value!==w[ta.dataset.sf]) ta.value=w[ta.dataset.sf]; }); };
   const render=()=>{
     if(!st){ B.innerHTML=`<div class="stu-wait"><div class="bigi">👀</div><p>Hi ${esc(name)}! Waiting for your teacher…</p></div>`; return; }
-    const T=st.task, head=`<div class="small mono" style="letter-spacing:.1em;margin-bottom:.6rem">${st.e||''} SCENE ${st.sc} OF 8 · ${esc(st.title||'')}</div>`;
+    const pic = /^img\/[a-z0-9-]+\.webp$/.test(st.img||'') ? `<img class="stu-img" src="${st.img}" alt="" onerror="this.remove()">` : '';
+    const T=st.task, head=`<div class="small mono" style="letter-spacing:.1em;margin-bottom:.6rem">${st.e||''} SCENE ${st.sc} OF 8 · ${esc(st.title||'')}</div>`+(T&&T.kind==='team'?'':pic);
     if(!T){ B.innerHTML=head+`<div class="card stu-wait"><div class="bigi">👀</div><p><b>Look at the main screen.</b></p><p class="small">Your teacher will send a task soon.</p></div>`; return; }
     if(T.kind==='choice'){ const my=sent[T.id];
       B.innerHTML=head+`<div class="card"><p class="q">${esc(T.q)}</p><div class="opts mt">${T.opts.map((o,i)=>`<button class="opt" data-i="${i}" aria-pressed="${my===i}"><span class="L">${LET[i]}</span><span>${esc(o)}</span></button>`).join('')}</div>
@@ -1383,14 +1594,14 @@ const ACT = {
   rev(b){ const k=b.dataset.k; R.rev[k]=!R.rev[k];
     if(k.startsWith('ck')){ draw(false,true); return; }
     $$(`[data-rk="${k}"]`).forEach(e=>e.classList.toggle('open',R.rev[k])); b.classList.toggle('on',R.rev[k]); b.setAttribute('aria-expanded',R.rev[k]); },
-  pick(b){ const q=b.dataset.q, i=+b.dataset.i; S.sel[q] = S.sel[q]===i ? undefined : i; save(); draw(false,true); },
-  opt(b){ const q=b.dataset.q, i=b.dataset.i, raw=b.dataset.v, v=(q==='move')?+raw:raw, s=qsel(q); s[i] = s[i]===v ? undefined : v; save(); draw(false,true); },
+  pick(b){ const q=b.dataset.q, i=+b.dataset.i; S.sel[q] = S.sel[q]===i ? undefined : i; save(); draw(false,true); pressFx(`[data-a="pick"][data-q="${q}"][data-i="${i}"]`); },
+  opt(b){ const q=b.dataset.q, i=b.dataset.i, raw=b.dataset.v, v=(q==='move')?+raw:raw, s=qsel(q); s[i] = s[i]===v ? undefined : v; save(); draw(false,true); pressFx(`[data-a="opt"][data-q="${q}"][data-i="${i}"][data-v="${CSS.escape(raw)}"]`); },
   bank(b){ const s=qsel('rev'); let i=R.lastGap; if(i===null || i===undefined) i=REV.items.findIndex((_,j)=>!s[j]);
     if(i<0){ toast('All gaps are filled. Click a gap first, then a word, to change it.'); return; } s[i]=b.dataset.v; R.lastGap=null; save(); draw(false,true); },
-  check(b){ R.checked[b.dataset.q]=true; draw(false,true); },
+  check(b){ R.checked[b.dataset.q]=true; R.fxNow=b.dataset.q; R.fxSpark=true; draw(false,true); },
   retry(b){ const q=b.dataset.q; S.sel[q]={}; R.checked[q]=false; R.shown[q]=false; save(); draw(false,true); },
   showans(b){ const q=b.dataset.q; R.shown[q]=!R.shown[q]; draw(false,true); },
-  sub(b){ S.sub=+b.dataset.i; save(); draw(false,true); },
+  sub(b){ S.sub=+b.dataset.i; save(); R.forceAdv=true; draw(false,true); },
   gl(b,e){ e.stopPropagation(); const p=$('#pop'); if(p.classList.contains('on') && p.dataset.g===b.dataset.g){ hidePop(); return; } p.dataset.g=b.dataset.g; showPop(b); },
   next(){ next(); }, scene(b){ const l=sceneSteps(+b.dataset.n); if(l.length){ closeModal(); go(l[0].i,0); } },
   goto(b){ closeModal(); go(+b.dataset.i,0); }, close(){ closeModal(); },
@@ -1402,7 +1613,7 @@ const ACT = {
     else copy(teamText(t, S.timer&&S.timer.total===240?4:6),'Team task copied — paste it into the breakout room chat'); },
   present(b){ openPresent(b.dataset.id); }, pclose(){ closePresent(); },
   ptab(b){ S.pteam=b.dataset.id; save(); draw(false,true); },
-  stk(b){ const id=b.dataset.id, k=b.dataset.v; S.stick[id]=S.stick[id]||{}; S.stick[id][k]=!S.stick[id][k]; save(); b.setAttribute('aria-pressed',!!S.stick[id][k]); },
+  stk(b){ const id=b.dataset.id, k=b.dataset.v; S.stick[id]=S.stick[id]||{}; S.stick[id][k]=!S.stick[id][k]; save(); b.setAttribute('aria-pressed',!!S.stick[id][k]); if(S.stick[id][k]){ pressFx(`[data-a="stk"][data-v="${CSS.escape(k)}"]`); sparks(b); } },
   res(b){ const q=b.dataset.q; R.res[q]=!R.res[q]; draw(false,true); },
   ttab(b){ R.tTab=b.dataset.id; paintTeacher(); },
   noteswin(){ window.open(baseURL()+'?notes','l07notes','width=560,height=820'); },
@@ -1463,6 +1674,7 @@ else {
     else if(k==='f'||k==='F') $('#btnFull').click();
   });
   if(!(S.i>=0 && S.i<STEPS.length)) { S.i=0; S.sub=0; }
+  [...Object.values(SCENE_IMG),'img/scene-2.webp','img/story-2.webp','img/story-3.webp','img/story-4.webp',...ALLW.map(wordImg),...TEAMS.map(t=>'img/team-'+t.id+'.webp')].forEach(src=>{ const im=new Image(); im.src=src; });
   draw(true);
   if(S.live) startLive(true);
 }
