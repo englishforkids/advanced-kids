@@ -11,15 +11,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script>
 /* ═══════════════════════════════════════════════════════════════
-   НАЛАШТУВАННЯ УРОКУ — єдине місце, яке треба редагувати
+   LESSON SETTINGS — the only place you need to edit
    ───────────────────────────────────────────────────────────────
-   SUPABASE_URL / SUPABASE_KEY — той самий проєкт, що й в уроках 5, 13–16.
-     Потрібен лише Realtime (broadcast + presence), таблиці НЕ потрібні.
-     Порожні значення → кнопка Live просто повідомляє, що кімната недоступна;
-     звичайний урок через демонстрацію екрана працює повністю.
-   SAVE_ANSWERS — true пише голоси й відповіді в таблицю lesson_answers
-     (схема lessons/lesson-05/sql/schema.sql; див. README цього уроку).
-   Тексти уроку — розділ «3 · lesson content» нижче.
+   SUPABASE_URL / SUPABASE_KEY — the same project as Lessons 5, 13–16.
+     Only Realtime (broadcast + presence) is used; no tables are needed.
+     Empty values → the Live button just says the room is not available;
+     the normal lesson by screen sharing works fully.
+   SAVE_ANSWERS — true writes votes and answers to the lesson_answers table
+     (schema in lessons/lesson-05/sql/schema.sql; see this lesson’s README).
+   All lesson texts — section “3 · lesson content” below.
    ═══════════════════════════════════════════════════════════════ */
 window.LESSON_CONFIG = {
   SUPABASE_URL : 'https://yhekszqxheljbxoucalt.supabase.co',
@@ -456,6 +456,22 @@ body.student, body.solo{overflow:auto}
 @keyframes noteUp{0%{transform:translateY(4px); opacity:.3}50%{opacity:1}100%{transform:translateY(-12px); opacity:.2}}
 .attach{position:relative}
 .comicimg{display:block; width:100%; height:auto}
+.comicanim{position:relative; display:block; overflow:hidden}
+.comicanim .cbase{display:block; width:100%; height:auto}
+.comicanim .clayers{position:absolute; inset:0}
+.comicanim .clayers img{position:absolute; display:block; max-width:none; pointer-events:none}
+.comicanim .cbg{inset:0; width:100%; height:100%}
+.comicanim.nolayers .clayers{display:none}
+.comicanim .cs.bolt1{animation:cSigh 4.2s ease-in-out infinite; transform-origin:50% 92%}
+.comicanim .cs.bolt2{animation:cFidget 2.8s ease-in-out infinite; transform-origin:50% 92%}
+.comicanim .cs.bolt3{animation:cDance 1.25s ease-in-out infinite; transform-origin:46% 93%}
+.comicanim .cs.note1{animation:cNote 2.6s ease-in-out infinite}
+.comicanim .cs.note2{animation:cNote 2.6s ease-in-out -1.3s infinite}
+@keyframes cSigh{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.8deg) translateY(.6%)}}
+@keyframes cFidget{0%,100%{transform:none}20%{transform:rotate(-2deg)}40%{transform:rotate(1.5deg)}55%{transform:translateY(-1.5%)}70%{transform:none}}
+@keyframes cDance{0%,100%{transform:rotate(-5deg) translateY(0)}25%{transform:rotate(0) translateY(-5%)}50%{transform:rotate(5deg) translateY(0)}75%{transform:rotate(0) translateY(-5%)}}
+@keyframes cNote{0%{transform:translateY(12%) scale(.92); opacity:.25}40%{opacity:1}100%{transform:translateY(-28%) scale(1.05); opacity:0}}
+.comicanim.reveal{animation:comicReveal 1.5s var(--cd,0s) cubic-bezier(.3,.7,.2,1) both}
 .comicimg.reveal{animation:comicReveal 1.5s var(--cd,0s) cubic-bezier(.3,.7,.2,1) both}
 @keyframes comicReveal{0%{clip-path:inset(0 100% 0 0); filter:brightness(1.15)}100%{clip-path:inset(0 0 0 0); filter:none}}
 .stamp{position:absolute; right:6%; bottom:10%; padding:.1rem .6rem; border:4px solid var(--ok); border-radius:.6rem; color:var(--ok); background:rgba(255,255,255,.88); font-family:"Anton",sans-serif; font-size:1.3rem; letter-spacing:.04em; transform:rotate(-9deg)}
@@ -542,7 +558,7 @@ body.student, body.solo{overflow:auto}
   .rp.old .hero{display:none}
 }
 @media (prefers-reduced-motion: reduce){
-  #amb, #scard, .tseq, .confetti, .spark{display:none!important}
+  #amb, #scard, .tseq, .confetti, .spark, .comicanim .clayers{display:none!important}
 }
 
 /* ─── responsive ─── */
@@ -588,7 +604,6 @@ body.student, body.solo{overflow:auto}
       <button class="tb" id="tchip" title="Timer" aria-label="Timer">⏱ <span class="lb" id="tchipT">Timer</span></button>
       <button class="tb" id="btnMap" title="Scene menu (M)">🗺️ <span class="lb">Scenes</span></button>
       <button class="tb hm" id="btnRoute" title="Full / Quick route">🧭 <span class="lb" id="routeLbl">Full</span></button>
-      <button class="tb uatb" id="btnUA" title="Ukrainian translation on this screen (U)" aria-pressed="false">UA</button>
       <button class="tb hm" id="btnLive" title="Live Student Mode (optional)">📡 <span class="lb">Live</span></button>
       <button class="tb" id="btnTeacher" title="Teacher Notes (T)">🧑‍🏫 <span class="lb">Teacher Notes</span></button>
       <button class="tb hm" id="btnFull" title="Full screen (F)" aria-label="Full screen">⛶</button>
@@ -629,7 +644,7 @@ body.student, body.solo{overflow:auto}
 <script>
 /* ═══════════════════════════════════════════════════════════════
    Lesson 7 · Voices in My Head — The Headspace Chat: Who Gets the Mic?
-   Один файл, vanilla JS, без збірки.
+   One file, vanilla JS, no build step.
    1 · helpers   2 · state   3 · lesson content   4 · teacher notes
    5 · components   6 · steps (scenes)   7 · navigation & UI
    8 · team cards & presentation   9 · live room   10 · student app   11 · boot
@@ -646,71 +661,67 @@ const mmss = s=>{ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+Strin
 const LET = ['A','B','C','D','E','F'];
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---------- 3 · lesson content (усі тексти уроку) ---------- */
+/* ---------- 3 · lesson content (all lesson texts) ---------- */
 const VOICES_EN = 'The ‘voices’ in this lesson are our thoughts and the things we say to ourselves.';
-const VOICES_UA = '«Голоси» в цьому уроці — це наші думки й те, що ми говоримо самі собі.';
-const PRINCIPLE = {en:'A reframe should be kind and believable.', ua:'Новий погляд має бути доброзичливим і таким, у який можна повірити.'};
+const PRINCIPLE = {en:'A reframe should be kind and believable.'};
 
 const MIA_MSG = {
   parts:['Tomorrow, I’m showing my comic at the school creativity show.',
          'I was excited… until someone said, ‘That’s a bit weird.’',
-         'Now my brain won’t stop talking. Can you help me?'],
-  ua:'Завтра я показуватиму свій комікс на шкільному творчому заході. Я була в захваті… поки хтось не сказав: “Це трохи дивно”. Тепер думки не дають мені спокою. Допоможете?'
+         'Now my brain won’t stop talking. Can you help me?']
 };
-const MISSION = {en:'Help Mia understand her thoughts and choose her next step.', ua:'Допоможіть Мії розібратися у своїх думках та обрати наступний крок.'};
+const MISSION = {en:'Help Mia understand her thoughts and choose her next step.'};
 
 const WARM = [
-  {id:'wq1', q:'How do you usually feel before showing your work to other people?', ua:'Як ти зазвичай почуваєшся перед тим, як показати свою роботу іншим?',
+  {id:'wq1', q:'How do you usually feel before showing your work to other people?',
    opts:['Nervous','Excited','Both'], emo:['😬','🤩','🙃'],
    samples:['I feel nervous.','I feel excited, but a little worried.','I’m okay if I know the people.']},
-  {id:'wq2', q:'What can help someone feel more confident?', ua:'Що може допомогти людині почуватися впевненіше?',
+  {id:'wq2', q:'What can help someone feel more confident?',
    samples:['Practising can help.','A kind message from a friend.','Knowing what to say.']},
-  {id:'wq3', q:'Can someone feel nervous and still do something well?', ua:'Чи може людина хвилюватися й водночас добре щось зробити?', opt:true,
+  {id:'wq3', q:'Can someone feel nervous and still do something well?', opt:true,
    samples:['Yes. You can be nervous and still try.','Yes. You don’t have to feel confident all the time.']}
 ];
 
 const REV = {
   words:['stand out','fit in','label','quirky','peer pressure','fake it'],
-  wua:{'stand out':'виділятися','fit in':'вписуватися в компанію','label':'ярлик','quirky':'незвичайний, своєрідний','peer pressure':'тиск однолітків','fake it':'удавати'},
   items:[
-    {a:'My comic is different. It might', b:'.', ans:'stand out', why:'It is different and easy to notice.', ua:'Мій комікс відрізняється від інших. Він може виділятися.'},
-    {a:'Sometimes I hide my interests because I want to', b:'.', ans:'fit in', why:'You want to feel part of the group.', ua:'Іноді я приховую свої інтереси, тому що хочу вписатися в компанію.'},
-    {a:'Calling someone “the weird kid” gives them a', b:'.', ans:'label', why:'It puts a person in a category.', ua:'Називаючи когось «дивною дитиною», ти навішуєш на цю людину ярлик.'},
-    {a:'My characters are unusual and funny. They’re', b:'.', ans:'quirky', why:'They are unusual in an interesting way.', ua:'Мої персонажі незвичайні й кумедні. Вони своєрідні.'},
-    {a:'Doing something because your friends expect it is', b:'.', ans:'peer pressure', why:'People your age push you to do something.', ua:'Робити щось через очікування друзів — це тиск однолітків.'},
-    {a:'I don’t feel confident, but I can smile and', b:'.', ans:'fake it', why:'You act as if you feel confident.', ua:'Я не почуваюся впевнено, проте можу усміхнутися й удати впевненість.'}
+    {a:'My comic is different. It might', b:'.', ans:'stand out', why:'It is different and easy to notice.'},
+    {a:'Sometimes I hide my interests because I want to', b:'.', ans:'fit in', why:'You want to feel part of the group.'},
+    {a:'Calling someone “the weird kid” gives them a', b:'.', ans:'label', why:'It puts a person in a category.'},
+    {a:'My characters are unusual and funny. They’re', b:'.', ans:'quirky', why:'They are unusual in an interesting way.'},
+    {a:'Doing something because your friends expect it is', b:'.', ans:'peer pressure', why:'People your age push you to do something.'},
+    {a:'I don’t feel confident, but I can smile and', b:'.', ans:'fake it', why:'You act as if you feel confident.'}
   ],
-  bridge:{en:'Mia knows she doesn’t have to be like everyone else. But knowing this and feeling confident are different things.',
-          ua:'Мія знає, що їй не обов’язково бути як усі. Проте знати це й почуватися впевнено — різні речі.'}
+  bridge:{en:'Mia knows she doesn’t have to be like everyone else. But knowing this and feeling confident are different things.'}
 };
 
 const W1 = [
-  {w:'inner critic', i:'⚖️', def:'The part of your thinking that judges you harshly.', ua:'Внутрішній критик: думки, які суворо тебе оцінюють.',
-   ex:'My **inner critic** says my work isn’t good enough.', exua:'Мій внутрішній критик каже, що моя робота недостатньо хороша.'},
-  {w:'self-talk', i:'💬', def:'The things you say to yourself in your mind.', ua:'Внутрішній діалог; те, що говориш собі подумки.',
-   ex:'My **self-talk** gets kinder when I remember how much I’ve practised.', exua:'Мій внутрішній діалог стає доброзичливішим, коли я згадую, скільки тренувався.'},
-  {w:'negative loop', i:'🔁', def:'The same unhelpful thoughts coming back again and again.', ua:'Коло негативних думок, що повторюються.',
-   ex:'I keep thinking about one mistake. I’m stuck in a **negative loop**.', exua:'Я постійно думаю про одну помилку. Я застряг у колі негативних думок.'},
-  {w:'second-guess', i:'🤔', def:'To doubt a choice you have already made.', ua:'Сумніватися у вже прийнятому рішенні.',
-   ex:'I chose my comic, but now I’m **second-guessing** my choice.', exua:'Я обрала свій комікс, проте тепер сумніваюся у своєму виборі.'},
-  {w:'confidence boost', i:'🚀', def:'Something that helps you feel more confident.', ua:'Те, що додає впевненості.',
-   ex:'My friend’s message gave me a **confidence boost**.', exua:'Повідомлення друга додало мені впевненості.'},
-  {w:'empowering', i:'💪', def:'Helping you feel stronger and able to make choices.', ua:'Те, що додає сили та віри у власні можливості.',
-   ex:'Choosing for myself felt **empowering**.', exua:'Власний вибір дав мені відчуття сили.'}
+  {w:'inner critic', i:'⚖️', def:'The part of your thinking that judges you harshly.',
+   ex:'My **inner critic** says my work isn’t good enough.'},
+  {w:'self-talk', i:'💬', def:'The things you say to yourself in your mind.',
+   ex:'My **self-talk** gets kinder when I remember how much I’ve practised.'},
+  {w:'negative loop', i:'🔁', def:'The same unhelpful thoughts coming back again and again.',
+   ex:'I keep thinking about one mistake. I’m stuck in a **negative loop**.'},
+  {w:'second-guess', i:'🤔', def:'To doubt a choice you have already made.',
+   ex:'I chose my comic, but now I’m **second-guessing** my choice.'},
+  {w:'confidence boost', i:'🚀', def:'Something that helps you feel more confident.',
+   ex:'My friend’s message gave me a **confidence boost**.'},
+  {w:'empowering', i:'💪', def:'Helping you feel stronger and able to make choices.',
+   ex:'Choosing for myself felt **empowering**.'}
 ];
 const W2 = [
-  {w:'mental reset', i:'🌿', def:'A short break that helps you start thinking more clearly again.', ua:'Коротке ментальне перезавантаження.',
-   ex:'I took a short walk for a **mental reset**.', exua:'Я пішов на коротку прогулянку, щоб трохи перезавантажитися.'},
-  {w:'reframe', i:'🖼️', def:'To look at a situation in a different, more helpful way.', ua:'Переосмислити; подивитися на ситуацію інакше.',
-   ex:'I **reframed** the mistake as something I could learn from.', exua:'Я подивився на помилку як на можливість чогось навчитися.'},
-  {w:'hype yourself up', i:'📣', inf:true, def:'To encourage yourself and build your energy or confidence.', ua:'Підбадьорити себе; налаштувати себе на дію.',
-   ex:'I play my favourite song to **hype myself up**.', exua:'Я вмикаю улюблену пісню, щоб підбадьорити себе.'},
-  {w:'chill your brain', i:'🧊', inf:true, def:'To help your mind relax.', ua:'Дати голові відпочити; заспокоїти думки.',
-   ex:'A quiet break helps me **chill my brain**.', exua:'Спокійна перерва допомагає мені заспокоїти думки.'},
-  {w:'talk it out', i:'🗣️', def:'To talk about a problem with someone to understand it better.', ua:'Обговорити те, що турбує, щоб краще розібратися.',
-   ex:'Let’s **talk it out** before you delete your comic.', exua:'Давай обговоримо це, перш ніж ти видалиш свій комікс.'},
-  {w:'glow-up', i:'✨', inf:true, def:'A positive change in how someone looks, feels, or lives.', ua:'Позитивне перетворення: у зовнішності, самопочутті чи житті.',
-   ex:'Her **glow-up** was about confidence, not just a new hairstyle.', exua:'Її позитивне перетворення стосувалося впевненості, а не лише нової зачіски.'}
+  {w:'mental reset', i:'🌿', def:'A short break that helps you start thinking more clearly again.',
+   ex:'I took a short walk for a **mental reset**.'},
+  {w:'reframe', i:'🖼️', def:'To look at a situation in a different, more helpful way.',
+   ex:'I **reframed** the mistake as something I could learn from.'},
+  {w:'hype yourself up', i:'📣', inf:true, def:'To encourage yourself and build your energy or confidence.',
+   ex:'I play my favourite song to **hype myself up**.'},
+  {w:'chill your brain', i:'🧊', inf:true, def:'To help your mind relax.',
+   ex:'A quiet break helps me **chill my brain**.'},
+  {w:'talk it out', i:'🗣️', def:'To talk about a problem with someone to understand it better.',
+   ex:'Let’s **talk it out** before you delete your comic.'},
+  {w:'glow-up', i:'✨', inf:true, def:'A positive change in how someone looks, feels, or lives.',
+   ex:'Her **glow-up** was about confidence, not just a new hairstyle.'}
 ];
 const ALLW = [...W1, ...W2];
 const WORD = Object.fromEntries(ALLW.map(x=>[x.w,x]));
@@ -718,97 +729,90 @@ const WORD = Object.fromEntries(ALLW.map(x=>[x.w,x]));
 const NAME = {
   opts:['second-guess','negative loop','confidence boost','inner critic'],
   items:[
-    {q:'I chose this yesterday. Was it a bad choice?', ua:'Я обрав це вчора. Це був поганий вибір?', ans:'second-guess', why:'You doubt a choice you already made.', quick:true},
-    {q:'That one mistake keeps playing in my head.', ua:'Та одна помилка постійно прокручується в мене в голові.', ans:'negative loop', why:'The same thought keeps coming back.'},
-    {q:'My friend said, ‘Your story made me laugh!’ I feel braver now.', ua:'Друг сказав: “Твоя історія мене розсмішила!” Тепер я почуваюся сміливіше.', ans:'confidence boost', why:'The message helps you feel more confident.', quick:true},
-    {q:'Whatever I make, a part of me says it isn’t good enough.', ua:'Що б я не створював, частина мене каже, що це недостатньо добре.', ans:'inner critic', why:'This thought judges your work harshly.'}
+    {q:'I chose this yesterday. Was it a bad choice?', ans:'second-guess', why:'You doubt a choice you already made.', quick:true},
+    {q:'That one mistake keeps playing in my head.', ans:'negative loop', why:'The same thought keeps coming back.'},
+    {q:'My friend said, ‘Your story made me laugh!’ I feel braver now.', ans:'confidence boost', why:'The message helps you feel more confident.', quick:true},
+    {q:'Whatever I make, a part of me says it isn’t good enough.', ans:'inner critic', why:'This thought judges your work harshly.'}
   ],
-  close:{en:'Self-talk can be kind or unkind. Today, we’ll help Mia make it more helpful.', ua:'Внутрішній діалог може бути доброзичливим або недоброзичливим. Сьогодні ми допоможемо Мії зробити його кориснішим.'}
+  close:{en:'Self-talk can be kind or unkind. Today, we’ll help Mia make it more helpful.'}
 };
 
 const MOVE = [
-  {q:'Mia has been staring at her screen for an hour. What could she do first?', ua:'Мія вже годину дивиться на екран. Що вона могла б зробити спочатку?',
-   opts:[{t:'Read the same comment ten more times.', ua:'Перечитати той самий коментар ще десять разів.'},
-         {t:'Take a short break for a mental reset.', ua:'Зробити коротку перерву, щоб трохи перезавантажитися.'}],
+  {q:'Mia has been staring at her screen for an hour. What could she do first?',
+   opts:[{t:'Read the same comment ten more times.'},
+         {t:'Take a short break for a mental reset.'}],
    ans:1, why:'A break can help her think more clearly.'},
-  {q:'Mia thinks, ‘One person didn’t like it, so my comic is terrible.’ Which reframe is more helpful?', ua:'Мія думає: “Одній людині не сподобалося, отже, мій комікс жахливий”. Яке переформулювання корисніше?',
-   opts:[{t:'“Everyone will definitely love my comic.”', ua:'«Усім точно сподобається мій комікс».'},
-         {t:'“One opinion doesn’t tell me what everyone thinks.”', ua:'«Одна думка не показує, що думають усі».'}],
+  {q:'Mia thinks, ‘One person didn’t like it, so my comic is terrible.’ Which reframe is more helpful?',
+   opts:[{t:'“Everyone will definitely love my comic.”'},
+         {t:'“One opinion doesn’t tell me what everyone thinks.”'}],
    ans:1, why:'It is fair and realistic.'}
 ];
 
 const PRE = {q:'What do you think Mia will do: delete her comic, practise, or ask someone for help? Why?',
-  ua:'Як думаєте, що зробить Мія: видалить комікс, потренується чи попросить когось допомогти? Чому?',
   opts:['Delete her comic','Practise','Ask someone for help'], emo:['🗑️','🎯','🤝']};
 
-/* [[фраза]] або [[як у тексті|слово зі словника]] — підсвічене слово з визначенням */
+/* [[phrase]] or [[as in the text|dictionary word]] — highlighted word with a definition */
 const STORY = {
   title:'Mia’s Chat: Before the Show',
   paras:[
-   {en:'Tomorrow was the school creativity show. Mia had made a comic about a robot that wanted to fit in. She liked its quirky characters, but a classmate’s comment — “That’s a bit weird” — made her [[second-guess]] her choice. Her [[inner critic]] had plenty to say: “Everyone will laugh. You should choose something more mainstream.”',
-    ua:'Завтра мав відбутися шкільний творчий захід. Мія створила комікс про робота, який хотів вписатися в компанію. Їй подобалися його незвичайні персонажі, проте коментар однокласника — «Це трохи дивно» — змусив її засумніватися у своєму виборі. Її внутрішньому критику було що сказати: «Усі сміятимуться. Треба обрати щось більш популярне».'},
-   {en:'Soon, her [[self-talk]] became a [[negative loop]]. She read the comment again, imagined a terrible show, and nearly deleted her comic. Then Leo sent a message: “Want to [[talk it out]]?” Mia explained what had happened. “Did they say they hated it?” Leo asked. “No,” she replied. “Then we don’t actually know what they meant.”',
-    ua:'Невдовзі її внутрішній діалог перетворився на коло негативних думок. Вона знову перечитувала коментар, уявляла жахливий виступ і ледь не видалила свій комікс. Тоді Лео написав: «Хочеш це обговорити?» Мія пояснила, що сталося. «Він сказав, що ненавидить твій комікс?» — запитав Лео. «Ні», — відповіла вона. «Тоді ми насправді не знаємо, що він мав на увазі».'},
-   {en:'Mia put her phone down and took a short walk for a [[mental reset]]. It helped her [[chill her brain|chill your brain]]. Back home, she tried to [[reframe]] the situation: “One comment isn’t everyone’s opinion. I can ask for useful feedback.” She practised her opening lines. Getting through them gave her a small [[confidence boost]].',
-    ua:'Мія відклала телефон і пішла на коротку прогулянку, щоб трохи перезавантажитися. Це допомогло їй заспокоїти думки. Повернувшись додому, вона спробувала переосмислити ситуацію: «Один коментар — це не думка всіх. Я можу попросити корисний відгук». Вона потренувалася говорити вступні репліки. Те, що вона змогла їх вимовити, трохи додало їй впевненості.'},
-   {en:'Before the show, Mia played her favourite song to [[hype herself up|hype yourself up]]. She still felt nervous, but she showed her comic anyway. Making her own choice felt [[empowering]]. Later, she told Leo, “Maybe this is my [[glow-up]]: I don’t need everyone’s approval to try something I care about.”',
-    ua:'Перед виступом Мія ввімкнула улюблену пісню, щоб підбадьорити себе. Вона все ще хвилювалася, проте все одно показала свій комікс. Власне рішення додало їй відчуття сили. Пізніше вона сказала Лео: «Можливо, це і є моє позитивне перетворення: мені не потрібне схвалення всіх, щоб спробувати щось важливе для мене».'}
+   {en:'Tomorrow was the school creativity show. Mia had made a comic about a robot that wanted to fit in. She liked its quirky characters, but a classmate’s comment — “That’s a bit weird” — made her [[second-guess]] her choice. Her [[inner critic]] had plenty to say: “Everyone will laugh. You should choose something more mainstream.”'},
+   {en:'Soon, her [[self-talk]] became a [[negative loop]]. She read the comment again, imagined a terrible show, and nearly deleted her comic. Then Leo sent a message: “Want to [[talk it out]]?” Mia explained what had happened. “Did they say they hated it?” Leo asked. “No,” she replied. “Then we don’t actually know what they meant.”'},
+   {en:'Mia put her phone down and took a short walk for a [[mental reset]]. It helped her [[chill her brain|chill your brain]]. Back home, she tried to [[reframe]] the situation: “One comment isn’t everyone’s opinion. I can ask for useful feedback.” She practised her opening lines. Getting through them gave her a small [[confidence boost]].'},
+   {en:'Before the show, Mia played her favourite song to [[hype herself up|hype yourself up]]. She still felt nervous, but she showed her comic anyway. Making her own choice felt [[empowering]]. Later, she told Leo, “Maybe this is my [[glow-up]]: I don’t need everyone’s approval to try something I care about.”'}
   ]
 };
 
 const FPO = {
   opts:['Fact','Prediction','Opinion'],
   items:[
-    {q:'A classmate called the comic “a bit weird.”', ua:'Однокласник назвав комікс трохи дивним.', ans:'Fact', why:'The classmate said this.'},
-    {q:'Everyone will laugh at Mia.', ua:'Усі сміятимуться з Мії.', ans:'Prediction', why:'Mia imagines what will happen.'},
-    {q:'Mia practised her opening lines.', ua:'Мія потренувалася говорити вступні репліки.', ans:'Fact', why:'She did this at home.'},
-    {q:'Mia must choose something mainstream.', ua:'Мія повинна обрати щось популярне.', ans:'Opinion', why:'This is her inner critic’s idea, not a rule.'}
+    {q:'A classmate called the comic “a bit weird.”', ans:'Fact', why:'The classmate said this.'},
+    {q:'Everyone will laugh at Mia.', ans:'Prediction', why:'Mia imagines what will happen.'},
+    {q:'Mia practised her opening lines.', ans:'Fact', why:'She did this at home.'},
+    {q:'Mia must choose something mainstream.', ans:'Opinion', why:'This is her inner critic’s idea, not a rule.'}
   ]
 };
 
 const POST = [
-  {id:'pq1', q:'What did Leo help Mia notice?', ua:'Що Лео допоміг Мії помітити?', samples:['They didn’t know what the classmate meant. One comment wasn’t everyone’s opinion.']},
-  {id:'pq2', q:'Did Mia stop feeling nervous completely?', ua:'Чи Мія повністю перестала хвилюватися?', samples:['No. She was still nervous, but she showed her comic.']},
-  {id:'pq3', q:'Which helped Mia most: talking, taking a break, or practising? Explain your choice.', ua:'Що найбільше допомогло Мії: розмова, перерва чи тренування? Поясніть свій вибір.', opt:true,
+  {id:'pq1', q:'What did Leo help Mia notice?', samples:['They didn’t know what the classmate meant. One comment wasn’t everyone’s opinion.']},
+  {id:'pq2', q:'Did Mia stop feeling nervous completely?', samples:['No. She was still nervous, but she showed her comic.']},
+  {id:'pq3', q:'Which helped Mia most: talking, taking a break, or practising? Explain your choice.', opt:true,
    note:'There is no single right answer. Any choice is fine if students explain it.'}
 ];
 
 const MIC = {
   voices:[
-    {k:'critic', n:'Inner Critic', t:'You’ll make a mistake, so don’t try.', ua:'Ти припустишся помилки, тому не пробуй.'},
-    {k:'hype',   n:'Hype Voice',   t:'You’re perfect. Everyone will love you.', ua:'Ти ідеальна. Усім ти сподобаєшся.'},
-    {k:'coach',  n:'Helpful Coach', t:'You might make a mistake. You can prepare and keep going.', ua:'Ти можеш припуститися помилки. Ти можеш підготуватися й продовжувати.'}
+    {k:'critic', n:'Inner Critic', t:'You’ll make a mistake, so don’t try.'},
+    {k:'hype',   n:'Hype Voice',   t:'You’re perfect. Everyone will love you.'},
+    {k:'coach',  n:'Helpful Coach', t:'You might make a mistake. You can prepare and keep going.'}
   ],
-  q:'Which message is the most helpful? Why?', ua:'Яке повідомлення найкорисніше? Чому?',
+  q:'Which message is the most helpful? Why?',
   answer:'C is the most helpful. It doesn’t promise a perfect show, but it gives Mia a next step.',
-  speak:{q:'What would you say to a friend who is nervous about showing their work?', ua:'Що ти сказав би другу, який хвилюється перед тим, як показати свою роботу?',
+  speak:{q:'What would you say to a friend who is nervous about showing their work?',
     starters:['It’s okay to…','One comment doesn’t…','You could…','Let’s…'],
     samples:['It’s okay to feel nervous. You could practise with me first.','One comment doesn’t decide how good your work is. Let’s ask for useful feedback.']},
   extra:[
-    {q:'What gives you a confidence boost?', ua:'Що додає тобі впевненості?'},
-    {q:'How do you hype yourself up before something difficult?', ua:'Як ти підбадьорюєш себе перед чимось складним?'},
-    {q:'When is it useful to talk it out with someone?', ua:'Коли корисно обговорити те, що турбує, з кимось?'}
+    {q:'What gives you a confidence boost?'},
+    {q:'How do you hype yourself up before something difficult?'},
+    {q:'When is it useful to talk it out with someone?'}
   ],
-  tip:{en:'You can answer about yourself or an imaginary character.', ua:'Можеш відповідати про себе або вигаданого персонажа.'}
+  tip:{en:'You can answer about yourself or an imaginary character.'}
 };
 
 const BR = {
   title:'Help Your Character: Change the Thought',
   steps:[
-    {t:'READ.', d:'Read the situation and the character’s negative thought.', ut:'ПРОЧИТАЙТЕ.', ud:'Прочитайте ситуацію та негативну думку персонажа.'},
-    {t:'CHANGE THE THOUGHT.', d:'Write a kinder, more realistic thought. What could a good friend say?', ut:'ЗМІНІТЬ ДУМКУ.', ud:'Напишіть доброзичливішу й реалістичнішу думку. Що міг би сказати хороший друг?'},
-    {t:'CHOOSE ONE ACTION.', d:'What can the character do next? Choose one small, specific action.', ut:'ОБЕРІТЬ ОДНУ ДІЮ.', ud:'Що персонаж може зробити далі? Оберіть одну маленьку, конкретну дію.'},
-    {t:'SHARE.', d:'Read your three sentences to the class: the negative thought, your new thought, and your action.', ut:'ПРЕЗЕНТУЙТЕ.', ud:'Прочитайте класу три речення: негативну думку, вашу нову думку та вашу дію.'}
+    {t:'READ.', d:'Read the situation and the character’s negative thought.'},
+    {t:'CHANGE THE THOUGHT.', d:'Write a kinder, more realistic thought. What could a good friend say?'},
+    {t:'CHOOSE ONE ACTION.', d:'What can the character do next? Choose one small, specific action.'},
+    {t:'SHARE.', d:'Read your three sentences to the class: the negative thought, your new thought, and your action.'}
   ],
-  intro:{en:'Work together. Help your character.', ua:'Працюйте разом. Допоможіть своєму персонажу.'},
-  rules:{en:['You have 6 minutes.','Write one sentence in each empty box.','Use at least ONE phrase from the word bank.'],
-         ua:['У вас 6 хвилин.','У кожному порожньому полі напишіть одне речення.','Використайте хоча б ОДИН вислів із підказок.']},
-  example:{name:'Nina', sit:'Nina got one answer wrong in English.', situa:'Ніна неправильно відповіла на одне запитання на уроці англійської.',
-    neg:'I’m terrible at English.', negua:'Я зовсім не знаю англійської.',
-    bet:'One wrong answer doesn’t mean I’m terrible at English.', betua:'Одна неправильна відповідь не означає, що я зовсім не знаю англійської.',
-    act:'I can talk it out with my teacher and practise this question.', actua:'Я можу обговорити це з учителем і потренуватися відповідати на це запитання.'},
-  why:{en:'Your new thought should be something the character can believe. Your action should be something they can do.',
-       ua:'Нова думка має бути такою, у яку персонаж може повірити. Дія — такою, яку він може виконати.'},
+  intro:{en:'Work together. Help your character.'},
+  rules:{en:['You have 6 minutes.','Write one sentence in each empty box.','Use at least ONE phrase from the word bank.']},
+  example:{name:'Nina', sit:'Nina got one answer wrong in English.',
+    neg:'I’m terrible at English.',
+    bet:'One wrong answer doesn’t mean I’m terrible at English.',
+    act:'I can talk it out with my teacher and practise this question.'},
+  why:{en:'Your new thought should be something the character can believe. Your action should be something they can do.'},
   checks:[
     {q:'Do you write a long story?', a:'No. Only two new sentences.'},
     {q:'What do you change?', a:'The negative thought.'},
@@ -817,94 +821,91 @@ const BR = {
   hintsBetter:['One mistake doesn’t mean…','Being different doesn’t mean…','I don’t know if…','I can still…'],
   hintsAction:['I can talk it out with…','I can take a short break for a mental reset.','I can practise…','I can ask… for help.'],
   bank:['inner critic','reframe','confidence boost','mental reset','talk it out','hype yourself up'],
-  roles:{en:['Student 1: reads the situation and negative thought.','Student 2: suggests a better thought.','Student 3: suggests a next action.','Everyone discusses and agrees.'],
-         ua:['Учень 1 читає ситуацію й негативну думку.','Учень 2 пропонує нову думку.','Учень 3 пропонує дію.','Усі обговорюють і погоджують відповіді.']},
-  pairs:{en:'In pairs, one student can take two roles. Choose one speaker, or read the sentences in turns.',
-         ua:'У парах один учень може взяти дві ролі. Команда може обрати одного спікера або прочитати речення по черзі.'},
-  after:{q:'Was the new thought believable? Was the next step useful?', ua:'Чи можна повірити в нову думку? Чи корисний наступний крок?'},
+  roles:{en:['Student 1: reads the situation and negative thought.','Student 2: suggests a better thought.','Student 3: suggests a next action.','Everyone discusses and agrees.']},
+  pairs:{en:'In pairs, one student can take two roles. Choose one speaker, or read the sentences in turns.'},
+  after:{q:'Was the new thought believable? Was the next step useful?'},
   stickers:['Helpful reframe','Useful action','Great teamwork']
 };
 const TEAMS = [
-  {id:'leo', n:1, name:'Leo', img:'img/leo.webp', sit:'Leo made a mistake during a team game.', ua:'Лео припустився помилки в командній грі.',
+  {id:'leo', n:1, name:'Leo', img:'img/leo.webp', sit:'Leo made a mistake during a team game.',
    neg:'Nobody wants me on the team.', sb:'I made one mistake. I don’t know what everyone thinks.', sa:'I’ll talk it out with my teammates and practise that move.'},
-  {id:'alex', n:2, name:'Alex', img:'img/alex.webp', sit:'Alex wants to show a drawing, but it looks different from the other drawings.', ua:'Алекс хоче показати малюнок, проте він відрізняється від інших.',
+  {id:'alex', n:2, name:'Alex', img:'img/alex.webp', sit:'Alex wants to show a drawing, but it looks different from the other drawings.',
    neg:'My drawing is different, so it must be bad.', sb:'A different style can be interesting. I don’t have to copy everyone.', sa:'I’ll ask a friend for useful feedback. It might give me a confidence boost.'},
-  {id:'sam', n:3, name:'Sam', img:'img/sam.webp', sit:'Sam forgot a line while practising for a show.', ua:'Сем забув репліку під час репетиції виступу.',
+  {id:'sam', n:3, name:'Sam', img:'img/sam.webp', sit:'Sam forgot a line while practising for a show.',
    neg:'I’ll ruin the whole show.', sb:'One mistake in practice doesn’t decide what happens at the show.', sa:'I’ll take a mental reset, then practise the difficult part.'}
 ];
 
 const FINAL = {
   mia:'My inner critic still has something to say. But now it doesn’t get the whole microphone. Thanks for helping me find a more useful voice!',
-  miaua:'Моєму внутрішньому критику все ще є що сказати. Проте тепер мікрофон належить не лише йому. Дякую, що допомогли мені знайти корисніший голос!',
-  exit:{q:'Choose ONE sentence and complete it.', ua:'Оберіть ОДНЕ речення й завершіть його.',
-    items:[{t:'A confidence boost for me is…', ua:'Мені додає впевненості…'},
-           {t:'A helpful reframe for “I can’t do this” is…', ua:'Корисне переформулювання думки “Я не можу цього зробити” — це…'},
-           {t:'One phrase I remember is… It means…', ua:'Один вислів, який я запам’ятав, — це… Він означає…'}],
+  exit:{q:'Choose ONE sentence and complete it.',
+    items:[{t:'A confidence boost for me is…'},
+           {t:'A helpful reframe for “I can’t do this” is…'},
+           {t:'One phrase I remember is… It means…'}],
     samples:['A confidence boost for me is practising before a presentation.','I can’t do this yet, but I can start with one small step.','‘Talk it out’ means talking about a problem with someone.']},
-  path:[{i:'👀', en:'Notice the thought.', ua:'Поміть думку.'},{i:'🔎', en:'Check what you know.', ua:'Перевір, що ти справді знаєш.'},
-        {i:'🖼️', en:'Reframe it.', ua:'Переосмисли її.'},{i:'👣', en:'Choose a small next step.', ua:'Обери маленький наступний крок.'}]
+  path:[{i:'👀', en:'Notice the thought.'},{i:'🔎', en:'Check what you know.'},
+        {i:'🖼️', en:'Reframe it.'},{i:'👣', en:'Choose a small next step.'}]
 };
 </script>
 <script>
 /* ---------- 4 · teacher notes ---------- */
 const GENERAL_NOTES = [
-  'Основний маршрут — приблизно <b>30 хвилин</b> активностей. Пояснення, відповіді учнів, переходи в Zoom і презентації команд (45–60 с на команду) потребують додаткового часу — разом урок займає 60 хвилин.',
-  'Усі 12 нових слів представлені, але для активного використання найважливіші: <b>inner critic, self-talk, confidence boost, reframe, mental reset, talk it out</b>.',
-  'Не потрібно опитувати всіх на кожному етапі. 1–2 відповіді на запитання достатньо.',
-  'Неактивним учням спочатку запропонуйте вибір (A / B, кнопки) або початок речення.',
-  'Учні завжди можуть відповідати про Мію чи вигаданого персонажа замість особистих історій. Не просіть особистих зізнань — це урок мови, а не психологічна розмова.',
-  'Головна ідея: <b>A reframe should be kind and believable.</b> Ми не вчимо «завжди бути позитивним» чи «не хвилюватися» — Мія хвилюється до кінця й усе одно показує комікс.',
-  '<b>🧭 Full / Quick</b> угорі: Quick ховає всі Optional-завдання й у сцені 3 залишає лише повідомлення № 1 і № 3. Будь-яке Optional-завдання можна також пропустити кнопкою <b>⏭ Skip optional</b>.',
-  'Continue ніколи не блокується: можна йти далі без перевірки вправи.',
-  'Клавіші: <b>→ / пробіл</b> — далі, <b>←</b> — назад, <b>U</b> — переклад, <b>T</b> — ця панель, <b>M</b> — меню сцен, <b>F</b> — повний екран, <b>Esc</b> — закрити.',
-  '📡 <b>Live</b> (необов’язково): учні заходять з телефона за кодом і ніком. Панель кімнати внизу праворуч <b>видно на вашому спільному екрані</b>, тому вона згорнута: розгортайте «▸ answers», коли хочете подивитися голоси й відповіді, або діліться лише вікном браузера. Результати голосування на головному екрані з’являються тільки після «📊 Show class results».',
-  'Ця панель — допоміжна, вона <b>не захищена паролем</b>. Якщо учень сам відкриє файл уроку, він теж зможе її відкрити. Під час демонстрації екрана відкривайте нотатки в окремому вікні (кнопка нижче) й діліться лише вікном уроку.'
+  'The main route is about <b>30 minutes</b> of activities. Explanations, student answers, Zoom transitions and team presentations (45–60 seconds per team) take the rest of the 60-minute lesson.',
+  'All 12 new phrases are introduced. The most important ones for active use: <b>inner critic, self-talk, confidence boost, reframe, mental reset, talk it out</b>.',
+  'You don’t need to ask every student at every stage. One or two answers per question are enough.',
+  'For quiet students, offer a choice first (A / B, the buttons) or a sentence starter.',
+  'Students can always answer about Mia or an imaginary character instead of a personal story. Don’t ask for personal confessions — this is a language lesson, not a psychology session.',
+  'Key idea: <b>A reframe should be kind and believable.</b> We don’t teach “always be positive” or “never feel nervous” — Mia is still nervous at the end and shows her comic anyway.',
+  '<b>🧭 Full / Quick</b> at the top: Quick hides every Optional task and keeps only messages 1 and 3 in Name the Thought. You can also skip any Optional task with <b>⏭ Skip optional</b>.',
+  'Continue is never blocked: you can move on without checking an exercise.',
+  'Keys: <b>→ / Space</b> — next, <b>←</b> — back, <b>T</b> — this panel, <b>M</b> — scene menu, <b>F</b> — full screen, <b>Esc</b> — close.',
+  '📡 <b>Live</b> (optional): students join on a phone with the code and a nickname. The room panel (bottom right) is <b>visible on your shared screen</b>, so it starts collapsed: open “▸ answers” when you want to see votes and answers, or share only the browser window. Vote results appear on the main screen only after “📊 Show class results”.',
+  'This panel is a helper, <b>not password-protected</b>. If a student opens the lesson file, they can open it too. When you share your screen, open the notes in a separate window (button below) and share only the lesson window.'
 ];
 
 const NOTES = {
- 1:{goal:'Зацікавити історією Мії, пояснити метафору «голосів», коротко розігрітися.', time:'3 хв',
+ 1:{goal:'Get students interested in Mia’s story, explain the “voices” metaphor, short warm-up.', time:'3 min',
     say:['Mia has sent us a message. Let’s read it.','In this lesson, “voices” are our thoughts — the things we say to ourselves.','How do you usually feel before showing your work to other people?'],
-    ua:['Continue відкриває повідомлення Мії, місію, а потім пояснення «голосів».','Поставте два запитання. Приймайте короткі відповіді. Запросіть одного-двох учнів пояснити свій вибір. Не потрібно, щоб кожен відповідав на кожне запитання.','Кнопки Nervous / Excited / Both — підсвітіть те, що каже більшість (у Live-режимі учні голосують із телефонів).'],
+    notes:['Continue opens Mia’s messages, the mission and then the “voices” card.','Ask two questions. Accept short answers. Invite one or two students to explain their choice. Not every student needs to answer every question.','Nervous / Excited / Both buttons — highlight what most students say (in Live mode students vote from their phones).'],
     answers:['Q1: I feel nervous. / I feel excited, but a little worried. / I’m okay if I know the people.','Q2: Practising can help. / A kind message from a friend. / Knowing what to say.','Optional: Yes. You can be nervous and still try.'],
-    skip:'Optional-запитання 3.'},
- 2:{goal:'Повторити 6 знайомих слів про індивідуальність і бажання вписатися.', time:'2 хв',
+    skip:'Optional question 3.'},
+ 2:{goal:'Review 6 familiar words about individuality and wanting to fit in.', time:'2 min',
     say:['Complete the messages with the words above.','Which word fits? Why?'],
-    ua:['Учні кажуть відповідь усно — ви обираєте слово в меню (або клацніть слово з банку, а потім пропуск). Check показує результат і коротке пояснення.','Наприкінці прочитайте перехідну репліку: знати й почуватися впевнено — різні речі.'],
+    notes:['Students say the answer — you choose the word in the gap menu (or click a word in the word bank, then a gap). Check shows the result and a short reason.','At the end, read Mia’s message: knowing and feeling confident are different things.'],
     keys:['1 stand out','2 fit in','3 label','4 quirky','5 peer pressure','6 fake it'],
-    skip:'Якщо бракує часу — зробіть 3–4 речення усно й натисніть Show answers.'},
- 3:{goal:'Ввести 6 слів про негативний внутрішній діалог.', time:'4 хв',
+    skip:'Short on time? Do 3–4 sentences orally and press Show answers.'},
+ 3:{goal:'Introduce 6 phrases about negative self-talk.', time:'4 min',
     say:['This is Mia’s inner chat. Let’s meet the words.','Read the example. Can you say it in your own words?','Which word or phrase matches each message?'],
-    ua:['Continue відкриває картки по одній (можна клацнути слово у верхньому рядку). Переклад — кнопка UA.','Name the Thought: у Quick-маршруті лише повідомлення № 1 і № 3.','Завершіть реплікою: Self-talk can be kind or unkind.'],
+    notes:['Continue opens the word cards one by one (or click a word in the top row).','Name the Thought: in the Quick route only messages 1 and 3.','Finish with: Self-talk can be kind or unkind.'],
     keys:['1 second-guess','2 negative loop','3 confidence boost','4 inner critic'],
-    skip:'Повідомлення № 2 і № 4 у Name the Thought.'},
- 4:{goal:'Ввести 6 слів про те, як змінити внутрішній чат; принцип «kind and believable».', time:'4 хв',
+    skip:'Messages 2 and 4 in Name the Thought.'},
+ 4:{goal:'Introduce 6 phrases for changing the chat; the “kind and believable” rule.', time:'4 min',
     say:['Now let’s change the chat. Here are six helpful phrases.','What could Mia do first?','Which reframe is more helpful? Why?'],
-    ua:['“Hype yourself up”, “chill your brain” і “glow-up” — неформальні вирази. “Chill your brain” — грайлива розмовна фраза; нейтральніші варіанти: “relax”, “give your brain a break”.','У питанні 2 варіант A звучить «позитивно», але в нього важко повірити й він обіцяє те, чого ніхто не знає. Наголосіть: A reframe should be kind and believable.'],
+    notes:['“Hype yourself up”, “chill your brain” and “glow-up” are informal. “Chill your brain” is a playful conversational phrase; more neutral options: “relax”, “give your brain a break”.','In question 2, option A sounds positive, but it is hard to believe and promises something nobody knows. Stress the rule: A reframe should be kind and believable.'],
     keys:['Q1 — B (A break can help her think more clearly.)','Q2 — B (It is fair and realistic.)'],
-    skip:'Приклади до карток можна не читати всі — достатньо 2–3.'},
- 5:{goal:'Читання з розумінням: факт, прогноз чи думка; як Мія змінила внутрішній діалог.', time:'6 хв',
+    skip:'You don’t need to read every example — 2–3 are enough.'},
+ 5:{goal:'Reading for understanding: fact, prediction or opinion; how Mia changed her self-talk.', time:'6 min',
     say:['What do you think Mia will do: delete her comic, practise, or ask someone for help? Why?','Let’s read. Click a yellow word if you forget what it means.','Is this a fact from the story, a prediction, or an opinion?'],
-    ua:['Після двох припущень відкривайте текст. Continue відкриває абзаци по одному; під кожним — кнопка UA.','Жовті слова клікабельні — коротке визначення.','Optional-питання не має однієї правильної відповіді: приймайте будь-який вибір із поясненням.'],
+    notes:['After two guesses, open the story. Continue opens the parts one by one.','Yellow words are clickable — a short definition appears.','The Optional question has no single right answer: accept any choice with a reason.'],
     keys:['1 Fact','2 Prediction','3 Fact','4 Opinion'],
     answers:['What did Leo help Mia notice? — They didn’t know what the classmate meant. One comment wasn’t everyone’s opinion.','Did Mia stop feeling nervous completely? — No. She was still nervous, but she showed her comic.'],
-    skip:'Optional-питання після читання. Абзаци можна читати по черзі учнями або вголос учителем.'},
- 6:{goal:'Порівняти три «голоси»; говоріння: що сказати другові.', time:'3 хв',
+    skip:'The Optional question after reading. Students can read the parts in turns, or you read aloud.'},
+ 6:{goal:'Compare three “voices”; speaking: what to say to a friend.', time:'3 min',
     say:['Three voices want the microphone. Which message is the most helpful? Why?','What would you say to a friend who is nervous about showing their work?','You can answer about yourself or an imaginary character.'],
-    ua:['Учні обирають картку; пояснення відкривайте лише кнопкою. B звучить приємно, але це обіцянка, а не план. C чесний і дає наступний крок.','Підказки-початки речень — кнопка Hint. Зразки — Sample answers.'],
+    notes:['Students choose a card; open the explanation only with the button. B sounds nice, but it is a promise, not a plan. C is honest and gives a next step.','Sentence starters — the Hint button. Examples — Sample answers.'],
     keys:['C — It doesn’t promise a perfect show, but it gives Mia a next step.'],
     answers:['It’s okay to feel nervous. You could practise with me first.','One comment doesn’t decide how good your work is. Let’s ask for useful feedback.'],
-    skip:'Optional-запитання для говоріння (усі три).'},
- 7:{goal:'Мініпроєкт: команда змінює негативну думку персонажа й обирає одну дію.', time:'6 хв у кімнатах + 45–60 с на презентацію кожної команди',
+    skip:'The Optional speaking questions (all three).'},
+ 7:{goal:'Mini-project: each team changes a character’s negative thought and chooses one action.', time:'6 min in rooms + 45–60 sec per team presentation',
     say:['Work together. Help your character.','You write only TWO new sentences: a better thought and one small action.','Was the new thought believable? Was the next step useful?'],
-    ua:['Порядок: інструкція → приклад з Ніною → 3 перевірочні запитання → командні картки → кімнати → презентації.','Перед відкриттям кімнат: «📋 Copy team task» або «🔗 Copy link» → вставте в чат кімнати (Zoom: Broadcast message або чат кімнати). Картка команди відкривається окремо, без попередніх сцен.','<b>Без Live-режиму синхронізації немає.</b> Команда обговорює відповідь у Zoom, і ОДИН спікер записує речення на своєму пристрої (картка за посиланням зберігає чернетку на цьому пристрої) або в чаті кімнати. На презентації спікер читає з екрана або ви вставляєте текст у поля на кроці «Presentations».','У Live-режимі учасники однієї команди пишуть у два спільні поля, і текст одразу з’являється у вас.','Таймер запускається лише вручну: 6:00 або Short version 4:00. На презентацію — 1:00.','Реакції Helpful reframe / Useful action / Great teamwork — без балів і рейтингів.'],
+    notes:['Order: instructions → Nina’s example → 3 check questions → team cards → rooms → presentations.','Before opening the rooms: “📋 Copy team task” or “🔗 Copy link” → paste into the room chat (Zoom: Broadcast message or the room chat). A team card opens on its own, without the earlier scenes.','<b>Without Live mode there is no syncing.</b> The team discusses in Zoom, and ONE speaker types the sentences on their device (the card link keeps a draft on that device) or in the room chat. At the presentations, the speaker reads from their screen, or you paste the text into the fields on the “Presentations” step.','In Live mode, team members write in two shared fields, and the text appears on your screen at once.','The timer starts only when you press it: 6:00 or Short version 4:00. For a presentation — 1:00.','Reactions Helpful reframe / Useful action / Great teamwork — no points, no rankings.'],
     keys:['Concept check: No — only two new sentences. / The negative thought. / One small action.'],
     teams:true,
-    skip:'Short version: 4 хвилини. Можна залишити лише одну реакцію на команду.'},
- 8:{goal:'Завершити історію, рефлексія й підсумок.', time:'2 хв',
+    skip:'Short version: 4 minutes. You can give just one reaction per team.'},
+ 8:{goal:'Finish the story, reflection and summary.', time:'2 min',
     say:['Mia has one more message for us.','Choose ONE sentence and complete it.','Notice the thought. Check what you know. Reframe it. Choose a small next step.'],
-    ua:['Exit ticket: кожен обирає ОДНЕ речення — усно, у чаті Zoom або з телефона в Live-режимі.','Vocabulary Recap — довідник із 12 слів, не обов’язкове завдання.'],
+    notes:['Exit ticket: each student chooses ONE sentence — orally, in the Zoom chat or from a phone in Live mode.','Vocabulary Recap is a reference with all 12 phrases, not an extra task.'],
     answers:['A confidence boost for me is practising before a presentation.','I can’t do this yet, but I can start with one small step.','‘Talk it out’ means talking about a problem with someone.'],
-    skip:'Підсумок можна прочитати разом за 20 секунд.'}
+    skip:'You can read the summary together in 20 seconds.'}
 };
 </script>
 <script>
@@ -944,8 +945,13 @@ const optTag = '<span class="tag opt">Optional</span>';
 /* Mia’s comic “BOLT” — inline SVG */
 /* Mia’s comic — the picture img/comic.webp; the drawn SVG below is only a fallback if the file is missing */
 const COMIC_ALT='Mia’s comic BOLT: a purple robot wants to fit in with square grey robots, hides its head in a cardboard box, then takes the box off and dances.';
+const COMIC_PARTS = {"bolt1": {"l": 14.932, "t": 34.808, "w": 10.181, "h": 55.162}, "bolt2": {"l": 44.344, "t": 35.103, "w": 10.633, "h": 54.867}, "bolt3": {"l": 73.869, "t": 33.628, "w": 12.783, "h": 56.342}, "note1": {"l": 71.154, "t": 26.254, "w": 4.638, "h": 13.864}, "note2": {"l": 86.878, "t": 27.434, "w": 5.204, "h": 15.044}};
 function comic(o={}){
-  return `<img class="comicimg ${o.reveal?'ent0 reveal':''}" src="img/comic.webp" alt="${esc(COMIC_ALT)}" ${o.delay?`style="--cd:${o.delay}"`:''} onerror="this.outerHTML=comicSvg()">`;
+  const layer=(n,p)=>`<img class="cs ${n}" src="img/comic-${n}.webp" alt="" style="left:${p.l}%;top:${p.t}%;width:${p.w}%;height:${p.h}%" onerror="this.closest('.comicanim').classList.add('nolayers')">`;
+  return `<div class="comicanim ${o.reveal?'ent0 reveal':''}" ${o.delay?`style="--cd:${o.delay}"`:''} role="img" aria-label="${esc(COMIC_ALT)}">`+
+    `<img class="cbase" src="img/comic.webp" alt="" onerror="this.closest('.comicanim').outerHTML=comicSvg()">`+
+    `<div class="clayers" aria-hidden="true"><img class="cbg" src="img/comic-bg.webp" alt="" onerror="this.closest('.comicanim').classList.add('nolayers')">`+
+    Object.entries(COMIC_PARTS).map(([n,p])=>layer(n,p)).join('')+`</div></div>`;
 }
 function comicSvg(){
   const ink='#1B1A3A', font="'Comic Sans MS','Chalkboard SE','Comic Neue',Manrope,sans-serif";
@@ -968,7 +974,7 @@ function comicSvg(){
   </svg>`;
 }
 
-/* quiz helpers: S.sel[qid] = {itemIndex: value}; R.checked / R.shown — тільки на поточну сесію */
+/* quiz helpers: S.sel[qid] = {itemIndex: value}; R.checked / R.shown — current session only */
 const qsel = id=>(S.sel[id] && typeof S.sel[id]==='object') ? S.sel[id] : (S.sel[id]={});
 function resLine(id,it,val,keyText){
   const c=R.checked[id], sh=R.shown[id]; let h='';
@@ -997,7 +1003,7 @@ function wallHtml(id){ const w=S.wall[id]||[]; if(!w.length) return '';
 function speakCard(o){
   return `<div class="card ${o.opt?'sun':''}">
     <div class="row" style="align-items:flex-start;flex-wrap:nowrap">${o.icon?`<span style="font-size:2.4rem;line-height:1" aria-hidden="true">${o.icon}</span>`:''}<div class="grow">
-    ${o.opt?optTag:''}<p class="q ${o.small?'':'xl'}" style="margin:.2rem 0 .3rem">${esc(o.q)} ${uaBtn(o.id)}</p>${uaBox(o.id,o.ua)}</div></div>
+    ${o.opt?optTag:''}<p class="q ${o.small?'':'xl'}" style="margin:.2rem 0 .3rem">${esc(o.q)} </p></div></div>
     ${o.body||''}
     ${(o.hint||o.samples)?`<div class="ctl">${o.hint?revBtn(o.id+'-h','💡 Hint'):''}${o.samples?revBtn(o.id+'-s','💬 Sample answers'):''}</div>`:''}
     ${o.hint?revBox(o.id+'-h',startersHtml(o.hint)):''}${o.samples?revBox(o.id+'-s',samplesHtml(o.samples)):''}
@@ -1010,15 +1016,15 @@ function deck(list,pre,cls,stepId){
   const i=Math.min(S.sub,list.length-1), w=list[i]; R.seen[stepId]=Math.max(R.seen[stepId]||0,i);
   return `<div class="${cls}"><div class="deckbar" role="group" aria-label="Words">${list.map((x,j)=>`<button data-a="sub" data-i="${j}" class="${j===i?'cur':j<=R.seen[stepId]?'seen':''}" aria-current="${j===i}">${j+1}. ${esc(x.w)}</button>`).join('')}</div>
    <div class="card ${cls==='deck-b'?'teal':'violet'} ent flipin" style="padding:1.3rem 1.4rem"><div class="wcard pic"><figure class="wart"><img class="ent" src="${wordImg(w)}" alt="${esc(w.w)}: picture" onerror="this.remove()"><span class="wbadge" aria-hidden="true">${w.i}</span></figure><div>
-     <div class="row"><span class="kick">New phrase ${i+1} / ${list.length}</span>${w.inf?'<span class="infm">· informal</span>':''}<span class="grow"></span>${uaBtn(pre+i)}</div>
-     <h2 class="dsp wword ent">${esc(w.w)}</h2><p class="wdef ent">${esc(w.def)}</p>${uaBox(pre+i,w.ua)}
-     <div class="wex ent">${bold(w.ex)}${uaBox(pre+i,w.exua)}</div></div></div></div>
+     <div class="row"><span class="kick">New phrase ${i+1} / ${list.length}</span>${w.inf?'<span class="infm">· informal</span>':''}<span class="grow"></span></div>
+     <h2 class="dsp wword ent">${esc(w.w)}</h2><p class="wdef ent">${esc(w.def)}</p>
+     <div class="wex ent">${bold(w.ex)}</div></div></div></div>
    ${i<list.length-1?`<p class="small mt">Continue → opens the next phrase.</p>`:''}</div>`;
 }
 const wordImg = w=>'img/w-'+w.w.replace(/\s+/g,'-')+'.webp';
 const SCENE_IMG = {1:'img/scene-1.webp',2:'img/scene-2.webp',3:'img/scene-3.webp',4:'img/scene-4.webp',5:'img/story-1.webp',6:'img/scene-6.webp',7:'img/scene-7.webp',8:'img/scene-8.webp'};
 const hero = (src,alt,cls='',cap='')=>`<figure class="hero ${cls}"><img class="kb ent0" src="${src}" alt="${esc(alt)}" onerror="this.parentNode.remove()">${cap?`<figcaption>${cap}</figcaption>`:''}</figure>`;
-function voiceBtn(v,i,sel){ return `<button class="voice ${v.k}" data-a="pick" data-q="mic" data-i="${i}" aria-pressed="${sel===i}">${vav(v.k,3)}<span class="grow vbody"><span class="vn">${LET[i]} · ${esc(v.n)}</span><span class="vt">“${esc(v.t)}”</span>${uaBox('mv'+i,v.ua,'span')}</span><span class="micb">🎤 has the mic</span></button>`; }
+function voiceBtn(v,i,sel){ return `<button class="voice ${v.k}" data-a="pick" data-q="mic" data-i="${i}" aria-pressed="${sel===i}">${vav(v.k,3)}<span class="grow vbody"><span class="vn">${LET[i]} · ${esc(v.n)}</span><span class="vt">“${esc(v.t)}”</span></span><span class="micb">🎤 has the mic</span></button>`; }
 
 /* team card pieces */
 const teamURL = id=>baseURL()+'?team='+id;
@@ -1035,7 +1041,7 @@ function teamText(t,mins){
 function hintsHtml(){ return `<div class="hintbox"><div><h4>💡 Better thought</h4><ul>${BR.hintsBetter.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
   <div><h4>👣 Next action</h4><ul>${BR.hintsAction.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
   <div><h4>📚 Word bank</h4><div class="wb">${BR.bank.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div></div>`; }
-function rolesHtml(){ return `<div class="hintbox"><div><h4>👥 Roles</h4><ul>${BR.roles.en.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div>${uaBox('roles',BR.roles.ua.join(' · '))}<p class="small" style="margin:.4rem 0 0">${esc(BR.pairs.en)}</p>${uaBox('roles',BR.pairs.ua)}`; }
+function rolesHtml(){ return `<div class="hintbox"><div><h4>👥 Roles</h4><ul>${BR.roles.en.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div></div><p class="small" style="margin:.4rem 0 0">${esc(BR.pairs.en)}</p>`; }
 const tring = (big)=>`<span class="tring"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="trbg" cx="22" cy="22" r="18"/><circle class="trfg" cx="22" cy="22" r="18" stroke-dasharray="113.1" stroke-dashoffset="0"/></svg><b class="tdisp mono" style="font-size:${big?'1.4rem':'1rem'}">${timerTxt()}</b></span>`;
 function teamFields(t,big){
   const w=getTeam(t.id);
@@ -1066,13 +1072,13 @@ const STEPS = [
       <div class="chat-b">
         ${MIA_MSG.parts.map((p,i)=>`<div class="typing tseq" style="--d:${(i*1.15).toFixed(2)}s"><i></i><i></i><i></i></div><div class="msg mseq ent0" style="--d:${(i*1.15+.75).toFixed(2)}s"><div class="bub">${esc(p)}</div></div>`).join('')}
         <div class="msg mseq ent0" style="--d:3.9s;max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic({reveal:true, delay:'4.05s'})}</div><div class="attach-cap">📎 my comic for the creativity show</div></div></div>
-        <div>${uaBtn('m1')}${uaBox('m1',MIA_MSG.ua)}</div>
+        <div></div>
       </div></div></div>
     <div style="display:grid;gap:1rem">
       <div class="card ent0 rise" style="padding:.7rem"><div class="kick" style="margin:.1rem .3rem .5rem">The story</div>${hero('img/scene-1.webp','Mia looks at her comic and a comment that says it is a bit weird.')}
         <div class="cast">${av('mia',2.8)}<div><b>Mia</b><div class="small">draws comics</div></div><span style="width:.4rem"></span>${av('leo',2.8)}<div><b>Leo</b><div class="small">Mia’s friend</div></div></div></div>
-      ${s>=1?`<div class="card sun ${s===1?'ent rise':''}" ${s===1?'data-newest':''}><div class="kick" style="color:var(--sun)">🎯 Your mission</div><p class="q xl" style="margin:.3rem 0">${esc(MISSION.en)}</p>${uaBtn('mis')}${uaBox('mis',MISSION.ua)}</div>`:''}
-      ${s>=2?`<div class="card teal ${s===2?'ent rise':''}" data-newest><div class="kick">🎤 What are the “voices”?</div><p class="q" style="margin:.3rem 0">${esc(VOICES_EN)}</p>${uaBtn('voi')}${uaBox('voi',VOICES_UA)}<div class="row mt">${vav('critic',2.3)}${vav('hype',2.3)}${vav('coach',2.3)}<span class="small grow">Today, these voices talk in Mia’s head.</span></div></div>`:''}
+      ${s>=1?`<div class="card sun ${s===1?'ent rise':''}" ${s===1?'data-newest':''}><div class="kick" style="color:var(--sun)">🎯 Your mission</div><p class="q xl" style="margin:.3rem 0">${esc(MISSION.en)}</p></div>`:''}
+      ${s>=2?`<div class="card teal ${s===2?'ent rise':''}" data-newest><div class="kick">🎤 What are the “voices”?</div><p class="q" style="margin:.3rem 0">${esc(VOICES_EN)}</p><div class="row mt">${vav('critic',2.3)}${vav('hype',2.3)}${vav('coach',2.3)}<span class="small grow">Today, these voices talk in Mia’s head.</span></div></div>`:''}
       ${s<2?`<p class="small">Continue → opens the ${s===0?'mission':'next card'}.</p>`:''}
     </div></div>`; }},
  {sc:1, id:'w1', t:'Warm-up', live:()=>({kind:'choice', id:'wq1', q:WARM[0].q, opts:WARM[0].opts}),
@@ -1084,87 +1090,86 @@ const STEPS = [
 
  /* SCENE 2 */
  {sc:2, id:'rev', t:'Complete the messages', render(){ const sel=qsel('rev');
-   return `<div class="side2"><div class="card"><div class="row"><p class="lead grow" style="margin:0">Complete the messages with the words above. ${uaBtn('revi')}</p></div>${uaBox('revi','Доповніть повідомлення словами вище.')}
-    <div class="chips mt" role="group" aria-label="Word bank">${REV.words.map(w=>`<button class="chip" data-a="bank" data-v="${esc(w)}" title="Put this word into the selected gap">${esc(w)}<span class="ua noflag" data-uk="revw" style="margin:0 0 0 .35rem;padding:0 .3rem;font-size:.75em">${esc(REV.wua[w])}</span></button>`).join('')}</div>
+   return `<div class="side2"><div class="card"><div class="row"><p class="lead grow" style="margin:0">Complete the messages with the words above. </p></div>
+    <div class="chips mt" role="group" aria-label="Word bank">${REV.words.map(w=>`<button class="chip" data-a="bank" data-v="${esc(w)}" title="Put this word into the selected gap">${esc(w)}</button>`).join('')}</div>
     <p class="small" style="margin:.4rem 0 .8rem">Choose a word in each gap — or click a word above, and it goes into the selected (or the first empty) gap.</p>
     ${REV.items.map((it,i)=>{ const v=sel[i]; const st=R.checked.rev&&v?(v===it.ans?'good':'bad'):'';
-      return `<div class="item"><span class="num">${i+1}</span>${esc(it.a)} <select class="gap ${v?'filled':''} ${st}" data-q="rev" data-i="${i}" aria-label="Gap ${i+1}"><option value="">— choose —</option>${REV.words.map(w=>`<option ${v===w?'selected':''}>${esc(w)}</option>`).join('')}</select>${esc(it.b)} ${uaBtn('rv'+i)}${uaBox('rv'+i,it.ua)}${resLine('rev',it,v,it.ans)}</div>`; }).join('')}
+      return `<div class="item"><span class="num">${i+1}</span>${esc(it.a)} <select class="gap ${v?'filled':''} ${st}" data-q="rev" data-i="${i}" aria-label="Gap ${i+1}"><option value="">— choose —</option>${REV.words.map(w=>`<option ${v===w?'selected':''}>${esc(w)}</option>`).join('')}</select>${esc(it.b)} ${resLine('rev',it,v,it.ans)}</div>`; }).join('')}
     ${qctl('rev')}</div>
     <aside>${hero('img/scene-2.webp','A sticky-note board with the six words from earlier lessons.','','⏪ Previously…')}
-    <div class="msg ent0 rise" style="max-width:100%;--d:.4s">${av('mia',2.6)}<div class="bub"><span class="who">Mia</span>${esc(REV.bridge.en)} ${uaBtn('brg')}${uaBox('brg',REV.bridge.ua)}</div></div></aside></div>`; }},
+    <div class="msg ent0 rise" style="max-width:100%;--d:.4s">${av('mia',2.6)}<div class="bub"><span class="who">Mia</span>${esc(REV.bridge.en)} </div></div></aside></div>`; }},
 
  /* SCENE 3 */
  {sc:3, id:'w-in', t:'Six words for the inner chat', subs:6, render:()=>deck(W1,'wa','deck-a','w-in')},
  {sc:3, id:'name', t:'Name the Thought', render(){ const sel=qsel('name'), quick=S.route==='quick';
-   return `<p class="lead">Which word or phrase matches each message? ${uaBtn('nmi')}</p>${uaBox('nmi','Яке слово або словосполучення відповідає кожному повідомленню?')}
+   return `<p class="lead">Which word or phrase matches each message? </p>
     ${quick?'<p class="small">Quick route: messages 1 and 3.</p>':''}
     <div class="two mt">${NAME.items.map((it,i)=> (quick&&!it.quick)?'':`<div class="card" style="padding:1rem">
-      <div class="msg" style="max-width:100%">${av('mia',2.2)}<div class="bub"><span class="who">Mia’s thought ${i+1}${it.quick?'':' · <span style="color:var(--sun)">optional</span>'}</span>“${esc(it.q)}” ${uaBtn('nt'+i)}${uaBox('nt'+i,it.ua)}</div></div>
+      <div class="msg" style="max-width:100%">${av('mia',2.2)}<div class="bub"><span class="who">Mia’s thought ${i+1}${it.quick?'':' · <span style="color:var(--sun)">optional</span>'}</span>“${esc(it.q)}” </div></div>
       <div class="chips mt">${NAME.opts.map(o=>`<button class="chip ${R.shown.name&&o===it.ans?'key':''}" data-a="opt" data-q="name" data-i="${i}" data-v="${esc(o)}" aria-pressed="${sel[i]===o}">${esc(o)}</button>`).join('')}</div>
       ${resLine('name',it,sel[i],it.ans)}</div>`).join('')}</div>
     ${qctl('name')}
-    <div class="banner mt2"><span class="bi">💬</span><div><b>${esc(NAME.close.en)}</b> ${uaBtn('nmc')}${uaBox('nmc',NAME.close.ua)}</div></div>`; }},
+    <div class="banner mt2"><span class="bi">💬</span><div><b>${esc(NAME.close.en)}</b> </div></div>`; }},
 
  /* SCENE 4 */
  {sc:4, id:'w-ch', t:'Six ways to change the chat', subs:6, render:()=>deck(W2,'wb','deck-b','w-ch')},
  {sc:4, id:'move', t:'Choose Mia’s Next Move', render(){ const sel=qsel('move');
    return `<div class="two">${MOVE.map((it,i)=>`<div class="card"><span class="kick">Question ${i+1}</span>
-      <p class="q" style="margin:.3rem 0">${esc(it.q)} ${uaBtn('mq'+i)}</p>${uaBox('mq'+i,it.ua)}
-      <div class="opts mt">${it.opts.map((o,j)=>`<button class="opt ${R.shown.move&&j===it.ans?'key':''}" data-a="opt" data-q="move" data-i="${i}" data-v="${j}" aria-pressed="${sel[i]===j}"><span class="L">${LET[j]}</span><span>${esc(o.t)}${uaBox('mq'+i,o.ua,'span')}</span></button>`).join('')}</div>
+      <p class="q" style="margin:.3rem 0">${esc(it.q)} </p>
+      <div class="opts mt">${it.opts.map((o,j)=>`<button class="opt ${R.shown.move&&j===it.ans?'key':''}" data-a="opt" data-q="move" data-i="${i}" data-v="${j}" aria-pressed="${sel[i]===j}"><span class="L">${LET[j]}</span><span>${esc(o.t)}</span></button>`).join('')}</div>
       ${resLine('move',it,sel[i],LET[it.ans])}</div>`).join('')}</div>
     ${qctl('move')}
-    <div class="banner mt2"><span class="bi"><img src="img/w-reframe.webp" alt="" onerror="this.replaceWith('🖼️')"></span><div><span class="kick" style="color:var(--sun)">The rule for today</span><br><b style="font-size:1.3rem">${esc(PRINCIPLE.en)}</b> ${uaBtn('pr')}${uaBox('pr',PRINCIPLE.ua)}</div></div>`; }},
+    <div class="banner mt2"><span class="bi"><img src="img/w-reframe.webp" alt="" onerror="this.replaceWith('🖼️')"></span><div><span class="kick" style="color:var(--sun)">The rule for today</span><br><b style="font-size:1.3rem">${esc(PRINCIPLE.en)}</b> </div></div>`; }},
 
  /* SCENE 5 */
  {sc:5, id:'pre', t:'Before you read', live:()=>({kind:'choice', id:'pre', q:PRE.q, opts:PRE.opts}),
   render:()=>speakCard({id:'pre', icon:'🔮', q:PRE.q, ua:PRE.ua, body:pickRow('pre',PRE.opts,PRE.emo)+`<div class="ctl"><button class="btn primary" data-a="next">📖 Open the story →</button><span class="small">Hear two guesses first.</span></div>`})},
  {sc:5, id:'read', t:STORY.title, subs:4, render(){ const s=S.sub;
    return `<div class="row" style="margin-bottom:.8rem">${av('mia',2.4)}${av('leo',2.4)}<span class="small grow">Click a <b style="color:var(--sun)">yellow phrase</b> to see what it means.</span></div>
-    ${STORY.paras.slice(0,s+1).map((p,i)=>`<div class="card ${i===s?'violet ent slidein newp':''}" ${i===s?'data-newest':''} style="margin-bottom:.8rem"><div class="rp ${i<s?'old':''}">${hero('img/story-'+(i+1)+'.webp',STORY_ALT[i])}<div><div class="row" style="margin-bottom:.35rem"><span class="tag">Part ${i+1} / 4</span><span class="grow"></span>${uaBtn('rp'+i)}</div><p class="para" style="margin:0">${glossify(p.en)}</p>${uaBox('rp'+i,p.ua)}</div></div></div>`).join('')}
+    ${STORY.paras.slice(0,s+1).map((p,i)=>`<div class="card ${i===s?'violet ent slidein newp':''}" ${i===s?'data-newest':''} style="margin-bottom:.8rem"><div class="rp ${i<s?'old':''}">${hero('img/story-'+(i+1)+'.webp',STORY_ALT[i])}<div><div class="row" style="margin-bottom:.35rem"><span class="tag">Part ${i+1} / 4</span><span class="grow"></span></div><p class="para" style="margin:0">${glossify(p.en)}</p></div></div></div>`).join('')}
     ${s<3?`<p class="small">Continue → opens part ${s+2}.</p>`:''}`; }},
  {sc:5, id:'fpo', t:'Fact, Prediction, or Opinion?', render(){ const sel=qsel('fpo');
-   return `<p class="lead">Is this a fact from the story, a prediction, or an opinion? ${uaBtn('fpi')}</p>${uaBox('fpi','Це факт з історії, припущення про майбутнє чи думка?')}
-    <div class="mt">${FPO.items.map((it,i)=>`<div class="item"><div class="row" style="justify-content:space-between"><p style="margin:0;font-weight:800;font-size:1.05rem"><span class="num">${i+1}</span>${esc(it.q)} ${uaBtn('fp'+i)}</p>
+   return `<p class="lead">Is this a fact from the story, a prediction, or an opinion? </p>
+    <div class="mt">${FPO.items.map((it,i)=>`<div class="item"><div class="row" style="justify-content:space-between"><p style="margin:0;font-weight:800;font-size:1.05rem"><span class="num">${i+1}</span>${esc(it.q)} </p>
       <div class="chips">${FPO.opts.map(o=>`<button class="chip ${R.shown.fpo&&o===it.ans?'key':''}" data-a="opt" data-q="fpo" data-i="${i}" data-v="${o}" aria-pressed="${sel[i]===o}">${o}</button>`).join('')}</div></div>
-      ${uaBox('fp'+i,it.ua)}${resLine('fpo',it,sel[i],it.ans)}</div>`).join('')}</div>${qctl('fpo')}`; }},
+      ${resLine('fpo',it,sel[i],it.ans)}</div>`).join('')}</div>${qctl('fpo')}`; }},
  {sc:5, id:'post', t:'After reading', render:()=>`<div class="two">${POST.slice(0,2).map(p=>speakCard({id:p.id, q:p.q, ua:p.ua, samples:p.samples, small:true})).join('')}</div>`},
  {sc:5, id:'post3', t:'After reading', opt:true, render:()=>speakCard({id:'pq3', icon:'⚖️', q:POST[2].q, ua:POST[2].ua, opt:true, note:esc(POST[2].note)})},
 
  /* SCENE 6 */
  {sc:6, id:'mic', t:'Three voices want the mic', live:()=>({kind:'choice', id:'mic', q:MIC.q, opts:MIC.voices.map((v,i)=>LET[i]+' · '+v.n)}),
   render(){ const sel=S.sel.mic;
-   return `<div class="row" style="margin-bottom:.8rem">${av('mia',2.6)}<p class="q grow" style="margin:0">${esc(MIC.q)} ${uaBtn('mcq')}</p></div>${uaBox('mcq',MIC.ua)}
+   return `<div class="row" style="margin-bottom:.8rem">${av('mia',2.6)}<p class="q grow" style="margin:0">${esc(MIC.q)} </p></div>
     <div class="three mt2">${MIC.voices.map((v,i)=>voiceBtn(v,i,sel)).join('')}</div>
-    <div class="row mt">${uaBtn('mv0')}<span class="small">translations · click a card to give it the mic</span></div>
+    <p class="small mt">Click a card to give it the mic.</p>
     ${liveBars('mic',MIC.voices.map((v,i)=>LET[i]+' · '+v.n))}
-    <div class="ctl">${revBtn('mic-x','💡 Show explanation')}</div>${revBox('mic-x',`<div class="banner"><span class="bi">${vav('coach',2.4)}</span><b>${esc(MIC.answer)}</b></div>`)}`; },
-  after(){ /* одна кнопка UA відкриває переклади всіх трьох голосів */ const b=$('[data-k="mv0"]'); if(b) b.dataset.group='mv0,mv1,mv2'; }},
+    <div class="ctl">${revBtn('mic-x','💡 Show explanation')}</div>${revBox('mic-x',`<div class="banner"><span class="bi">${vav('coach',2.4)}</span><b>${esc(MIC.answer)}</b></div>`)}`; },},
  {sc:6, id:'speak', t:'Speak up', live:()=>({kind:'text', id:'spk', q:MIC.speak.q, ph:'It’s okay to…'}),
   render:()=>`<div class="side2">${speakCard({id:'spk', icon:'🗣️', q:MIC.speak.q, ua:MIC.speak.ua, hint:MIC.speak.starters, samples:MIC.speak.samples,
-    note:`🙂 ${esc(MIC.tip.en)} ${uaBtn('tip')}${uaBox('tip',MIC.tip.ua)}`})}<aside>${hero('img/scene-6.webp','Three voices around a microphone: the inner critic, the hype voice and the helpful coach.','','🎤 Give the mic to the coach')}</aside></div>`},
+    note:`🙂 ${esc(MIC.tip.en)} `})}<aside>${hero('img/scene-6.webp','Three voices around a microphone: the inner critic, the hype voice and the helpful coach.','','🎤 Give the mic to the coach')}</aside></div>`},
  {sc:6, id:'speak2', t:'More to talk about', opt:true, render:()=>`<div class="card sun">${optTag}<div class="mt" style="display:grid;gap:.7rem">
-    ${MIC.extra.map((x,i)=>`<div class="item"><p class="q" style="margin:0"><span class="num">${i+1}</span>${esc(x.q)} ${uaBtn('ox'+i)}</p>${uaBox('ox'+i,x.ua)}</div>`).join('')}</div>
-    <p class="small mt">🙂 ${esc(MIC.tip.en)} ${uaBtn('tip')}</p>${uaBox('tip',MIC.tip.ua)}</div>`},
+    ${MIC.extra.map((x,i)=>`<div class="item"><p class="q" style="margin:0"><span class="num">${i+1}</span>${esc(x.q)} </p></div>`).join('')}</div>
+    <p class="small mt">🙂 ${esc(MIC.tip.en)} </p></div>`},
 
  /* SCENE 7 */
- {sc:7, id:'how', t:BR.title, render:()=>`<p class="lead">${esc(BR.intro.en)} ${uaBtn('bri')}</p>${uaBox('bri',BR.intro.ua)}
-    <div class="steps4 mt">${BR.steps.map((s,i)=>`<div class="st4 ent0 rise" style="--d:${(i*.12+.1).toFixed(2)}s"><div class="n">${i+1}</div><b>${esc(s.t)}</b><p>${esc(s.d)}</p>${uaBox('bri',s.ut+' '+s.ud)}</div>`).join('')}</div>
-    <div class="howrow mt">${hero('img/scene-7.webp','Three breakout rooms: Team Leo, Team Alex and Team Sam.','','🛟 3 teams · 3 characters')}<div class="card sun"><div class="kick" style="color:var(--sun)">⏱ The rules</div><ul style="margin:.4rem 0 0;padding-left:1.1rem;font-weight:800">${BR.rules.en.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>${uaBox('bri',BR.rules.ua.join(' '))}</div>
+ {sc:7, id:'how', t:BR.title, render:()=>`<p class="lead">${esc(BR.intro.en)} </p>
+    <div class="steps4 mt">${BR.steps.map((s,i)=>`<div class="st4 ent0 rise" style="--d:${(i*.12+.1).toFixed(2)}s"><div class="n">${i+1}</div><b>${esc(s.t)}</b><p>${esc(s.d)}</p></div>`).join('')}</div>
+    <div class="howrow mt">${hero('img/scene-7.webp','Three breakout rooms: Team Leo, Team Alex and Team Sam.','','🛟 3 teams · 3 characters')}<div class="card sun"><div class="kick" style="color:var(--sun)">⏱ The rules</div><ul style="margin:.4rem 0 0;padding-left:1.1rem;font-weight:800">${BR.rules.en.map(r=>`<li>${esc(r)}</li>`).join('')}</ul></div>
     <div class="card">${rolesHtml()}</div></div>`},
  {sc:7, id:'example', t:'A full example', render:()=>{ const e=BR.example;
-   return `<div class="card"><div class="team-h">${initAv('Nina',3)}<div><span class="tn">EXAMPLE</span><br><b>${esc(e.name)}</b></div><span class="grow"></span>${uaBtn('ex')}</div>
-    <div class="flow mt"><div class="fl sit"><span class="lab">Situation</span><span class="tx">${esc(e.sit)}${uaBox('ex',e.situa)}</span></div>
-     <div class="fl neg"><span class="lab">Negative thought</span><span class="tx">“${esc(e.neg)}”${uaBox('ex',e.negua)}</span></div>
-     <div class="fl bet"><span class="lab">💡 Better thought</span><span class="tx">“${esc(e.bet)}”${uaBox('ex',e.betua)}</span></div>
-     <div class="fl act"><span class="lab">👣 Next action</span><span class="tx">“${esc(e.act)}”${uaBox('ex',e.actua)}</span></div></div></div>
-    <div class="banner mt"><span class="bi">✅</span><div><b>${esc(BR.why.en)}</b> ${uaBtn('why')}${uaBox('why',BR.why.ua)}</div></div>`; }},
+   return `<div class="card"><div class="team-h">${initAv('Nina',3)}<div><span class="tn">EXAMPLE</span><br><b>${esc(e.name)}</b></div><span class="grow"></span></div>
+    <div class="flow mt"><div class="fl sit"><span class="lab">Situation</span><span class="tx">${esc(e.sit)}</span></div>
+     <div class="fl neg"><span class="lab">Negative thought</span><span class="tx">“${esc(e.neg)}”</span></div>
+     <div class="fl bet"><span class="lab">💡 Better thought</span><span class="tx">“${esc(e.bet)}”</span></div>
+     <div class="fl act"><span class="lab">👣 Next action</span><span class="tx">“${esc(e.act)}”</span></div></div></div>
+    <div class="banner mt"><span class="bi">✅</span><div><b>${esc(BR.why.en)}</b> </div></div>`; }},
  {sc:7, id:'check', t:'Ready for the rooms?', render:()=>`<p class="lead">Three quick questions before the breakout rooms.</p>
     <div class="check mt">${BR.checks.map((c,i)=>`<div class="cq"><b>${i+1}. ${esc(c.q)}</b><span>${R.rev['ck'+i]?`<span class="a pop-in">✓ ${esc(c.a)}</span>`:`<button class="btn sm" data-a="rev" data-k="ck${i}">Show answer</button>`}</span></div>`).join('')}</div>`},
  {sc:7, id:'teams', t:'Team cards', live:()=>({kind:'team', id:'team', teams:TEAMS.map(t=>({id:t.id,n:t.n,name:t.name,sit:t.sit,neg:t.neg})), work:Object.fromEntries(TEAMS.map(t=>[t.id,getTeam(t.id)]))}),
   render:()=>`<div class="card sun" style="padding:.8rem 1rem"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Breakout timer</span>${tring(true)}<span class="grow"></span>
      <button class="btn sm sun" data-a="tstart" data-s="360" data-l="Breakout rooms">▶ Start 6:00</button><button class="btn sm" data-a="tstart" data-s="240" data-l="Breakout rooms (short)">Short version 4:00</button><button class="btn sm ghost" data-a="tpause">⏸ Pause</button><button class="btn sm ghost" data-a="treset">↺ Reset</button></div></div>
     <div class="three mt">${TEAMS.map((t,k)=>`<div class="card team ent0" style="--d:${(k*.15).toFixed(2)}s"><div class="tsit"><img src="img/team-${t.id}.webp" alt="${esc(t.sit)}" onerror="this.parentNode.remove()"></div><div class="team-h">${av(t.id,3)}<div><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div></div>
-      <p style="margin:0;font-weight:700">${esc(t.sit)} ${uaBtn('ts'+t.id)}</p>${uaBox('ts'+t.id,t.ua)}
+      <p style="margin:0;font-weight:700">${esc(t.sit)} </p>
       <div class="neg-b">“${esc(t.neg)}”</div>
       <div class="small">💡 Better thought: …<br>👣 Next action: …</div>
       <div class="row" style="gap:.35rem"><a class="btn sm" href="?team=${t.id}" target="_blank" rel="noopener">↗ Open card</a><button class="btn sm" data-a="copy" data-t="link" data-id="${t.id}">🔗 Copy link</button><button class="btn sm" data-a="copy" data-t="task" data-id="${t.id}">📋 Copy team task</button></div></div>`).join('')}</div>
@@ -1174,22 +1179,22 @@ const STEPS = [
    return `<div class="row"><div class="tabs" role="tablist">${TEAMS.map(x=>`<button role="tab" data-a="ptab" data-id="${x.id}" aria-selected="${x.id===t.id}">${av(x.id,1.5)} Team ${x.n} · ${esc(x.name)}</button>`).join('')}</div><span class="grow"></span>
      ${tring(false)}<button class="btn sm" data-a="tstart" data-s="60" data-l="Team presentation">▶ 1:00</button></div>
     <div class="card mt"><div class="team-h">${av(t.id,3)}<div><span class="tn">TEAM ${t.n}</span><br><b>${esc(t.name)}</b></div><span class="grow"></span><button class="btn sm sun" data-a="present" data-id="${t.id}">⛶ Presentation view</button></div>
-      <div class="row mt" style="align-items:center;flex-wrap:nowrap"><img src="img/team-${t.id}.webp" alt="" style="width:9rem;border-radius:.8rem;border:1px solid var(--edge2);flex:0 0 auto" onerror="this.remove()"><p style="margin:0;font-weight:700">${esc(t.sit)} ${uaBtn('ps')}</p></div>${uaBox('ps',t.ua)}${teamFields(t,true)}
+      <div class="row mt" style="align-items:center;flex-wrap:nowrap"><img src="img/team-${t.id}.webp" alt="" style="width:9rem;border-radius:.8rem;border:1px solid var(--edge2);flex:0 0 auto" onerror="this.remove()"><p style="margin:0;font-weight:700">${esc(t.sit)} </p></div>${teamFields(t,true)}
       <p class="small mt">Type or paste what the team says (or read it from their card). Saved on this device.</p></div>
-    <div class="card mt"><p class="q" style="margin:0">${esc(BR.after.q)} ${uaBtn('aft')}</p>${uaBox('aft',BR.after.ua)}
+    <div class="card mt"><p class="q" style="margin:0">${esc(BR.after.q)} </p>
       <div class="stickers mt">${BR.stickers.map(k=>`<button class="stk" data-a="stk" data-id="${t.id}" data-v="${esc(k)}" aria-pressed="${!!st[k]}">${k==='Helpful reframe'?'🖼️':k==='Useful action'?'👣':'🤝'} ${esc(k)}</button>`).join('')}</div></div>`; }},
 
  /* SCENE 8 */
  {sc:8, id:'final', t:'Mia’s last message', live:()=>({kind:'text', id:'exit', q:FINAL.exit.q, starters:FINAL.exit.items.map(x=>x.t), ph:'A confidence boost for me is…'}),
   render:()=>`<div class="two l"><div class="phone"><div class="phone-in"><div class="chat-h">${av('mia',2.4)}<div><b>Mia</b><small>● online</small></div></div>
      <div class="chat-b"><div class="msg" style="max-width:100%"><div class="bub" style="padding:.45rem;width:100%"><div class="attach">${comic()}<span class="stamp ent0" aria-hidden="true">SHOWN ✓</span></div><div class="attach-cap">✓ shown at the creativity show</div></div></div>
-     <div class="typing tseq" style="--d:.5s"><i></i><i></i><i></i></div><div class="msg mseq ent0" style="--d:1.25s"><div class="bub">${esc(FINAL.mia)}</div></div><div>${uaBtn('fm')}${uaBox('fm',FINAL.miaua)}</div></div></div></div>
-    <div class="card sun"><span class="kick" style="color:var(--sun)">🎟️ Exit ticket</span><p class="q xl" style="margin:.3rem 0">${esc(FINAL.exit.q)} ${uaBtn('xt')}</p>${uaBox('xt',FINAL.exit.ua)}
-     <div style="display:grid;gap:.5rem" class="mt">${FINAL.exit.items.map((x,i)=>`<div class="item" style="margin:0"><b><span class="num">${i+1}</span>${esc(x.t)}</b>${uaBox('xt',x.ua)}</div>`).join('')}</div>
+     <div class="typing tseq" style="--d:.5s"><i></i><i></i><i></i></div><div class="msg mseq ent0" style="--d:1.25s"><div class="bub">${esc(FINAL.mia)}</div></div><div></div></div></div></div>
+    <div class="card sun"><span class="kick" style="color:var(--sun)">🎟️ Exit ticket</span><p class="q xl" style="margin:.3rem 0">${esc(FINAL.exit.q)} </p>
+     <div style="display:grid;gap:.5rem" class="mt">${FINAL.exit.items.map((x,i)=>`<div class="item" style="margin:0"><b><span class="num">${i+1}</span>${esc(x.t)}</b></div>`).join('')}</div>
      <div class="ctl">${revBtn('xt-s','💬 Sample answers')}</div>${revBox('xt-s',samplesHtml(FINAL.exit.samples))}${wallHtml('exit')}</div></div>`},
- {sc:8, id:'sum', t:'How to change the chat', render:()=>`<div class="sumgrid">${hero('img/scene-8.webp','Mia shows her comic on stage; Leo and the class cheer.','','🎉 Mia showed her comic')}<div><div class="path">${FINAL.path.map((p,i)=>`<div class="ent0" style="--d:${(i*.22+.15).toFixed(2)}s"><div class="pi" aria-hidden="true">${p.i}</div><span class="kick">Step ${i+1}</span><b>${esc(p.en)}</b>${uaBox('pth',p.ua)}</div>`).join('')}</div>
-    <div class="row mt">${uaBtn('pth')}</div></div></div>
-    <div class="banner mt2"><span class="bi">🖼️</span><div><b style="font-size:1.25rem">${esc(PRINCIPLE.en)}</b> ${uaBtn('pr2')}${uaBox('pr2',PRINCIPLE.ua)}</div></div>
+ {sc:8, id:'sum', t:'How to change the chat', render:()=>`<div class="sumgrid">${hero('img/scene-8.webp','Mia shows her comic on stage; Leo and the class cheer.','','🎉 Mia showed her comic')}<div><div class="path">${FINAL.path.map((p,i)=>`<div class="ent0" style="--d:${(i*.22+.15).toFixed(2)}s"><div class="pi" aria-hidden="true">${p.i}</div><span class="kick">Step ${i+1}</span><b>${esc(p.en)}</b></div>`).join('')}</div>
+    <div class="row mt"></div></div></div>
+    <div class="banner mt2"><span class="bi">🖼️</span><div><b style="font-size:1.25rem">${esc(PRINCIPLE.en)}</b> </div></div>
     <div class="ctl mt2"><button class="btn primary" data-a="vocab">📚 Vocabulary Recap</button><a class="btn" href="../../">← Back to the course</a></div>
     <p class="small mt">🎉 Story complete — Mia found a more useful voice.</p>`}
 ];
@@ -1237,7 +1242,6 @@ function paintNav(){
   $('#btnRoute').classList.toggle('on',S.route==='quick');
 }
 function setRoute(r){ S.route=r; save(); draw(false,true); toast(r==='quick'?'Quick route: optional tasks are hidden.':'Full route: all tasks are shown.'); }
-function setUA(on){ R.uaAll=on; document.body.classList.toggle('uaall',on); const b=$('#btnUA'); if(b){ b.classList.toggle('on',on); b.setAttribute('aria-pressed',on); } }
 
 /* ---------- motion helpers ---------- */
 function splash(sc){
@@ -1271,7 +1275,7 @@ function pressFx(sel){ const el=$(sel); if(el && !REDUCED){ el.classList.remove(
 
 /* popover for highlighted words */
 function showPop(btn){ const w=WORD[btn.dataset.g]; if(!w) return; const p=$('#pop');
-  p.innerHTML=`<b>${esc(w.w)}</b>${w.inf?' <span class="infm">informal</span>':''}<div style="margin-top:.2rem;font-weight:700">${esc(w.def)}</div><div class="ua">${esc(w.ua)}</div>`;
+  p.innerHTML=`<b>${esc(w.w)}</b>${w.inf?' <span class="infm">informal</span>':''}<div style="margin-top:.2rem;font-weight:700">${esc(w.def)}</div>`;
   p.classList.add('on'); const r=btn.getBoundingClientRect(), pw=p.offsetWidth, ph=p.offsetHeight;
   let x=Math.min(Math.max(8,r.left), innerWidth-pw-8), y=r.bottom+8; if(y+ph>innerHeight-8) y=r.top-ph-8;
   p.style.left=x+'px'; p.style.top=y+'px'; }
@@ -1303,7 +1307,7 @@ function showMap(){
 function showVocab(){
   openModal(`<div class="row"><h2 class="dsp grow">📚 Vocabulary Recap</h2><button class="btn sm ghost" data-a="close" aria-label="Close">✕</button></div>
    <p class="small">All 12 new phrases. A reference, not a task.</p>
-   <div class="vgrid">${ALLW.map(w=>`<div class="vg"><b>${w.i} ${esc(w.w)}</b>${w.inf?' <span class="infm">informal</span>':''}<div>${esc(w.def)}</div><i lang="uk">${esc(w.ua)}</i></div>`).join('')}</div>`);
+   <div class="vgrid">${ALLW.map(w=>`<div class="vg"><b>${w.i} ${esc(w.w)}</b>${w.inf?' <span class="infm">informal</span>':''}<div>${esc(w.def)}</div></div>`).join('')}</div>`);
 }
 function askReset(){
   openModal(`<h2 class="dsp">↺ Reset lesson?</h2><p class="mt">This clears the current scene, all answers, team drafts and the timer <b>on this device</b>. Use it before a new group.</p>
@@ -1315,7 +1319,7 @@ function doReset(){
   location.href=baseURL();
 }
 
-/* timer — тільки ручний запуск, без звуку */
+/* timer — manual start only, no sound */
 function tLeft(){ const t=S.timer; if(!t) return 0; return t.run ? Math.max(0,(t.end-Date.now())/1000) : t.left; }
 function timerTxt(){ if(!S.timer) return 'ready'; const l=tLeft(); return l<=0 ? '⏰ Time!' : (S.timer.run?'':'⏸ ')+mmss(l); }
 function tStart(sec,label){ S.timer={total:sec, end:Date.now()+sec*1000, left:sec, run:true, label:label||''}; save(); paintTimer(); pubState(); }
@@ -1347,16 +1351,16 @@ function paintTeacher(){
   const tabs=`<div class="tabs" role="tablist">${[['scene','This scene'],['general','General'],['tools','Tools']].map(([k,l])=>`<button role="tab" data-a="ttab" data-id="${k}" aria-selected="${R.tTab===k}">${l}</button>`).join('')}</div>`;
   let h='';
   if(R.tTab==='scene'){
-    h=`<div class="tn-sec"><h4>Scene ${sc.n} · ${esc(sc.t)} · now: ${esc(st.t)}</h4><p style="margin:0"><b>Мета:</b> ${N.goal}</p><p style="margin:.2rem 0 0"><b>Час:</b> ${N.time}</p></div>
-      <div class="tn-sec say"><h4>Say (English)</h4>${li(N.say.map(esc))}</div>
-      <div class="tn-sec uk"><h4>Українською</h4>${li(N.ua)}</div>
+    h=`<div class="tn-sec"><h4>Scene ${sc.n} · ${esc(sc.t)} · now: ${esc(st.t)}</h4><p style="margin:0"><b>Goal:</b> ${N.goal}</p><p style="margin:.2rem 0 0"><b>Time:</b> ${N.time}</p></div>
+      <div class="tn-sec say"><h4>Say</h4>${li(N.say.map(esc))}</div>
+      <div class="tn-sec uk"><h4>Notes</h4>${li(N.notes)}</div>
       ${N.keys?`<div class="tn-sec"><h4>🔑 Keys</h4>${li(N.keys.map(esc))}</div>`:''}
       ${N.answers?`<div class="tn-sec"><h4>💬 Possible answers</h4>${li(N.answers.map(esc))}</div>`:''}
       ${N.teams?`<div class="tn-sec"><h4>💬 Team sample answers (only here)</h4>${TEAMS.map(x=>`<p style="margin:.2rem 0"><b>Team ${esc(x.name)}</b><br>💡 ${esc(x.sb)}<br>👣 ${esc(x.sa)}</p>`).join('')}</div>`:''}
-      <div class="tn-sec"><h4>⏭ Можна пропустити</h4><p style="margin:0">${N.skip}</p></div>`;
+      <div class="tn-sec"><h4>⏭ Can skip</h4><p style="margin:0">${N.skip}</p></div>`;
   } else if(R.tTab==='general'){
-    h=`<div class="tn-sec"><h4>Загальні нотатки</h4>${li(GENERAL_NOTES)}</div>
-      <div class="tn-sec"><h4>Маршрут · ≈30 хв активностей</h4>${li(SCENES.map(s=>`${s.e} ${s.n}. ${esc(s.t)} — ${s.min} хв`))}<p class="small" style="margin:.3rem 0 0">+ 45–60 с на презентацію кожної команди.</p></div>`;
+    h=`<div class="tn-sec"><h4>General notes</h4>${li(GENERAL_NOTES)}</div>
+      <div class="tn-sec"><h4>Route · about 30 min of activities</h4>${li(SCENES.map(s=>`${s.e} ${s.n}. ${esc(s.t)} — ${s.min} min`))}<p class="small" style="margin:.3rem 0 0">+ 45–60 sec for each team presentation.</p></div>`;
   } else {
     h=`<div class="tn-sec"><h4>Route</h4><div class="row"><button class="btn sm ${S.route==='full'?'on':''}" data-a="setroute" data-id="full">Full</button><button class="btn sm ${S.route==='quick'?'on':''}" data-a="setroute" data-id="quick">Quick</button></div><p class="small" style="margin:.3rem 0 0">Quick hides every Optional task and keeps messages 1 and 3 in Name the Thought.</p></div>
       <div class="tn-sec"><h4>Go to</h4><div class="row" style="gap:.3rem">${SCENES.map(s=>`<button class="btn sm" data-a="scene" data-n="${s.n}">${s.e} ${s.n}</button>`).join('')}</div></div>
@@ -1383,13 +1387,13 @@ function soloApp(){
   const id=(qs.get('team')||'').toLowerCase(), t=TEAMS.find(x=>x.id===id);
   const box=$('#solo');
   if(!t){ box.innerHTML=`<div class="solo-wrap"><h1 class="dsp" style="font-size:2.2rem">Choose your team</h1><div class="three mt">${TEAMS.map(x=>`<a class="card team" style="text-decoration:none" href="?team=${x.id}"><div class="team-h">${av(x.id,3)}<div><span class="tn">TEAM ${x.n}</span><br><b>${esc(x.name)}</b></div></div><p style="margin:0">${esc(x.sit)}</p></a>`).join('')}</div></div>`; return; }
-  box.innerHTML=`<div class="stu-top"><b>Lesson 7 · Team card</b><span class="grow"></span><b class="tdisp mono" aria-live="off"></b><button class="tb uatb" id="soloUA" aria-pressed="false">UA</button></div>
+  box.innerHTML=`<div class="stu-top"><b>Lesson 7 · Team card</b><span class="grow"></span><b class="tdisp mono" aria-live="off"></b></div>
    <div class="solo-wrap">
     <div class="tabs" style="margin-bottom:.8rem">${TEAMS.map(x=>`<a class="btn sm ${x.id===t.id?'on':''}" href="?team=${x.id}" ${x.id===t.id?'aria-current="page"':''}>Team ${x.n} · ${esc(x.name)}</a>`).join('')}</div>
     <div class="two l">
      <div class="card team"><div class="team-h">${av(t.id,4)}<div><span class="tn">TEAM ${t.n}</span><h1 class="dsp" style="font-size:2.3rem">${esc(t.name)}</h1></div></div>
       <div class="tsit" style="margin:0;border-radius:1rem"><img src="img/team-${t.id}.webp" alt="${esc(t.sit)}" onerror="this.parentNode.remove()"></div>
-      <div class="fl sit"><span class="lab">Situation</span><span class="tx">${esc(t.sit)}${uaBox('s',t.ua)}</span></div>
+      <div class="fl sit"><span class="lab">Situation</span><span class="tx">${esc(t.sit)}</span></div>
       ${teamFields(t)}
       <p class="small" id="soloSaved" aria-live="polite">Write one sentence in each empty box. Saved on this device.</p>
       <div class="row"><button class="btn sun" data-a="present" data-id="${t.id}">⛶ Presentation view</button><button class="btn sm" data-a="copy" data-t="task" data-id="${t.id}">📋 Copy team task</button><button class="btn sm ghost" data-a="soloclear" data-id="${t.id}">Clear</button></div>
@@ -1397,20 +1401,19 @@ function soloApp(){
      <div style="display:grid;gap:1rem">
       <div class="card sun"><div class="row"><span class="kick" style="color:var(--sun)">⏱ Timer</span>${tring(true)}</div>
         <div class="row mt" style="gap:.35rem"><button class="btn sm sun" data-a="tstart" data-s="360" data-l="Team work">▶ 6:00</button><button class="btn sm" data-a="tstart" data-s="240" data-l="Short version">Short version 4:00</button><button class="btn sm ghost" data-a="tpause">⏸ Pause</button><button class="btn sm ghost" data-a="treset">↺ Reset</button></div></div>
-      <div class="card"><span class="kick">What to do</span><ol style="margin:.4rem 0 0;padding-left:1.2rem;font-size:.85rem">${BR.steps.map(s=>`<li><b>${esc(s.t)}</b> ${esc(s.d)}${uaBox('s',s.ut+' '+s.ud)}</li>`).join('')}</ol>
-        <p class="small" style="margin:.5rem 0 0">${BR.rules.en.map(esc).join(' ')}</p>${uaBox('s',BR.rules.ua.join(' '))}</div>
+      <div class="card"><span class="kick">What to do</span><ol style="margin:.4rem 0 0;padding-left:1.2rem;font-size:.85rem">${BR.steps.map(s=>`<li><b>${esc(s.t)}</b> ${esc(s.d)}</li>`).join('')}</ol>
+        <p class="small" style="margin:.5rem 0 0">${BR.rules.en.map(esc).join(' ')}</p></div>
       <div class="card">${hintsHtml()}</div>
       <div class="card">${rolesHtml()}</div>
      </div></div></div>`;
-  const ua=$('#soloUA'); ua.onclick=()=>{ const on=!document.body.classList.contains('uaall'); document.body.classList.toggle('uaall',on); ua.classList.toggle('on',on); ua.setAttribute('aria-pressed',on); };
   paintTimer();
 }
 
 /* ---------- 9 · live room (Supabase Realtime broadcast + presence) ----------
-   Той самий механізм, що в уроках 5, 13–16: таблиці не потрібні.
-   Учитель — єдине джерело стану: сцену, завдання й таймер надсилає тільки він.
-   Учні можуть надіслати лише hello / ans / work / react. Якщо Supabase недоступний,
-   кімната НЕ відкривається (жодної імітації). */
+   Same mechanism as Lessons 5, 13–16: no tables needed.
+   The teacher is the only source of state: only the teacher page sends the scene, task and timer.
+   Students can send only hello / ans / work / react. If Supabase is unreachable,
+   the room does NOT open (no simulation). */
 const configured = ()=>/^https:\/\/[a-z0-9-]+\.supabase\.co/i.test((CFG.SUPABASE_URL||'').trim()) && !!(CFG.SUPABASE_KEY||'').trim();
 const uid = ()=>Math.random().toString(36).slice(2,10);
 const NAMES = {};
@@ -1597,8 +1600,6 @@ function studentApp(){
 
 /* ---------- actions (event delegation) ---------- */
 const ACT = {
-  ua(b){ const keys=(b.dataset.group||b.dataset.k).split(','), on=!R.ua[keys[0]];
-    keys.forEach(k=>{ R.ua[k]=on; $$(`[data-uk="${k}"]`).forEach(e=>e.classList.toggle('open',on)); }); b.setAttribute('aria-pressed',on); },
   rev(b){ const k=b.dataset.k; R.rev[k]=!R.rev[k];
     if(k.startsWith('ck')){ draw(false,true); return; }
     $$(`[data-rk="${k}"]`).forEach(e=>e.classList.toggle('open',R.rev[k])); b.classList.toggle('on',R.rev[k]); b.setAttribute('aria-expanded',R.rev[k]); },
@@ -1666,7 +1667,7 @@ else {
   $('#btnNext').onclick=next; $('#btnBack').onclick=back; $('#btnSkip').onclick=skipOpt;
   $('#btnTeacher').onclick=()=>toggleTeacher(); $('#tClose').onclick=()=>toggleTeacher(false);
   $('#btnMap').onclick=showMap; $('#btnRoute').onclick=()=>setRoute(S.route==='quick'?'full':'quick');
-  $('#btnUA').onclick=()=>setUA(!R.uaAll); $('#btnLive').onclick=openLive; $('#tchip').onclick=showTimer;
+  $('#btnLive').onclick=openLive; $('#tchip').onclick=showTimer;
   $('#btnFull').onclick=()=>{ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); };
   $('#dockMin').onclick=()=>{ const d=$('#dock'), open=d.classList.toggle('min')===false; $('#dockMin').textContent=open?'▾ hide':'▸ answers'; $('#dockMin').setAttribute('aria-expanded',open); };
   document.addEventListener('keydown',e=>{
@@ -1678,11 +1679,10 @@ else {
     else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); back(); }
     else if(k==='t'||k==='T') toggleTeacher();
     else if(k==='m'||k==='M') showMap();
-    else if(k==='u'||k==='U') setUA(!R.uaAll);
     else if(k==='f'||k==='F') $('#btnFull').click();
   });
   if(!(S.i>=0 && S.i<STEPS.length)) { S.i=0; S.sub=0; }
-  [...Object.values(SCENE_IMG),'img/scene-2.webp','img/story-2.webp','img/story-3.webp','img/story-4.webp',...ALLW.map(wordImg),...TEAMS.map(t=>'img/team-'+t.id+'.webp')].forEach(src=>{ const im=new Image(); im.src=src; });
+  [...Object.values(SCENE_IMG),'img/scene-2.webp','img/story-2.webp','img/story-3.webp','img/story-4.webp',...ALLW.map(wordImg),...TEAMS.map(t=>'img/team-'+t.id+'.webp'),'img/comic.webp','img/comic-bg.webp',...Object.keys(COMIC_PARTS).map(n=>'img/comic-'+n+'.webp')].forEach(src=>{ const im=new Image(); im.src=src; });
   draw(true);
   if(S.live) startLive(true);
 }
