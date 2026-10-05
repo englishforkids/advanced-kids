@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 18 — Who Actually Said That? · Reported Speech</title>
+<meta name="description" content="Advanced Kids · Lesson 18. Reported speech and reporting verbs. A rumour about Mia spreads through the class chat — students investigate who actually said what.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕵️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   НАЛАШТУВАННЯ УРОКУ — єдине місце, яке треба редагувати
+   ───────────────────────────────────────────────────────────────
+   SUPABASE_URL / SUPABASE_KEY — той самий проєкт, що й в уроках 5, 13–17.
+     Потрібен лише Realtime (broadcast + presence), таблиці НЕ потрібні.
+     Порожні значення → Live-режим працює тільки в межах одного браузера
+     (для перевірки), а звичайний урок через демонстрацію екрана — як завжди.
+   SAVE_ANSWERS — true пише відповіді в таблицю lesson_answers
+     (схема lessons/lesson-05/sql/schema.sql).
+   Тексти уроку — розділ «4 · lesson content» нижче.
+   ═══════════════════════════════════════════════════════════════ */
+window.LESSON_CONFIG = {
+  SUPABASE_URL : 'https://yhekszqxheljbxoucalt.supabase.co',
+  SUPABASE_KEY : 'sb_publishable_knHTxZLX-Ucg0WtnfP0RTw_ytJ2Dyoa',
+  SAVE_ANSWERS : false
+};
+</script>
+<style>
+:root{
+  --bg:#06080F; --bg2:#0B0F1D; --panel:#111628; --panel2:#171D33;
+  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.18); --line3:rgba(255,255,255,.3);
+  --text:#ECEFF8; --muted:#9AA3BF; --faint:#636B88;
+  --cyan:#39D8F6; --cyan2:#169CC0; --red:#FF5470; --red2:#C7304D; --amber:#FFC14D; --green:#36E09B; --violet:#8D7BFF;
+  --mia:#FF8FC7; --leo:#5AA9FF; --nora:#43E5A0; --max:#FFB054;
+  --ok:#36E09B; --bad:#FF5470;
+  --r-s:12px; --r:18px; --r-l:26px;
+  --shadow:0 24px 60px -28px rgba(0,0,0,.95);
+  --dsp:"Syne","Manrope",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; background:var(--bg); color:var(--text); font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:19px; line-height:1.5; -webkit-font-smoothing:antialiased; overflow:hidden}
+body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+   radial-gradient(800px 560px at 0% -8%, rgba(57,216,246,.13), transparent 62%),
+   radial-gradient(760px 560px at 102% 104%, rgba(255,84,112,.12), transparent 60%),
+   radial-gradient(900px 600px at 70% -20%, rgba(141,123,255,.12), transparent 60%),
+   linear-gradient(180deg,#090C18,#06080F 70%)}
+body::after{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.55;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:44px 44px; mask-image:radial-gradient(ellipse at 50% 35%,#000 20%,transparent 78%)}
+h1,h2,h3,h4{margin:0; line-height:1.1; font-weight:800; letter-spacing:-.015em}
+p{margin:0 0 .6em}
+button{font:inherit; color:inherit; background:none; border:0; cursor:pointer}
+input,textarea{font:inherit; color:inherit}
+:focus-visible{outline:3px solid var(--cyan); outline-offset:3px; border-radius:10px}
+.dsp{font-family:var(--dsp); font-weight:800; letter-spacing:-.02em; line-height:1}
+.mono{font-family:var(--mono)}
+.hidden{display:none!important}
+.small{font-size:15px; color:var(--muted)}
+.row{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+.grow{flex:1}
+.mt{margin-top:18px} .mt2{margin-top:30px}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start}
+.two>*{min-width:0}
+.two.wl{grid-template-columns:1.1fr .9fr}
+.two.wr{grid-template-columns:.85fr 1.15fr}
+.kick{font-family:var(--mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--cyan)}
+.center{text-align:center}
+
+/* ─── shell ─── */
+#app{position:relative; z-index:1; height:100%; display:grid; grid-template-rows:auto auto 1fr auto; grid-template-columns:minmax(0,1fr)}
+#top{display:flex; align-items:center; gap:14px; padding:9px 16px; border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(6,8,15,.95),rgba(6,8,15,.7)); backdrop-filter:blur(10px)}
+.tb{height:44px; min-width:44px; padding:0 12px; border-radius:12px; background:rgba(255,255,255,.05); border:1px solid var(--line);
+  display:inline-flex; align-items:center; justify-content:center; gap:7px; font-weight:800; font-size:15px; text-decoration:none; transition:.15s; white-space:nowrap; position:relative}
+.tb:hover{background:rgba(255,255,255,.1); border-color:var(--line2)}
+.tb.on{border-color:var(--cyan); box-shadow:0 0 0 1px var(--cyan) inset, 0 0 18px -4px var(--cyan)}
+.tb.warn{border-color:var(--amber); color:var(--amber)}
+.tb .badge{font-family:var(--mono); font-size:12px; padding:1px 7px; border-radius:99px; background:rgba(255,193,77,.16); color:var(--amber); border:1px solid rgba(255,193,77,.4)}
+.tb.bump{animation:tbBump .7s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes tbBump{30%{transform:scale(1.18); box-shadow:0 0 30px var(--amber)}}
+.brand{display:flex; flex-direction:column; line-height:1.15; min-width:0; flex:1}
+.brand b{font-family:var(--mono); font-weight:700; letter-spacing:.16em; font-size:13px; color:var(--cyan)}
+.brand span{font-family:var(--dsp); font-weight:800; font-size:17px; white-space:nowrap}
+.tools{display:flex; gap:7px; margin-left:auto}
+
+/* story progress */
+#progRow{padding:7px 16px; border-bottom:1px solid var(--line); background:rgba(6,8,15,.55); overflow-x:auto; scrollbar-width:none}
+#progRow::-webkit-scrollbar{display:none}
+.prog{display:flex; align-items:center; justify-content:center; gap:5px; min-width:max-content; margin:0 auto}
+.prog .st{display:flex; align-items:center; gap:7px; padding:6px 11px; border-radius:99px; border:1px solid var(--line); background:rgba(255,255,255,.03);
+  font-size:13.5px; font-weight:800; color:var(--faint); white-space:nowrap; transition:.4s; cursor:pointer}
+.prog .st i{font-style:normal; font-size:16px; filter:grayscale(1); opacity:.6; transition:.4s}
+.prog .st.done{color:#BFF7DE; border-color:rgba(54,224,155,.45); background:rgba(54,224,155,.1)}
+.prog .st.done i{filter:none; opacity:1}
+.prog .st.cur{color:#fff; border-color:var(--cyan); background:rgba(57,216,246,.14); box-shadow:0 0 22px -6px var(--cyan)}
+.prog .st.cur i{filter:none; opacity:1}
+.prog .st.just{animation:stDone 1s ease}
+@keyframes stDone{0%{transform:scale(1)}30%{transform:scale(1.15); box-shadow:0 0 30px var(--green)}}
+.prog .ar{color:var(--faint); font-size:12px}
+.prog .st .lb2{display:inline}
+
+#stage{overflow:auto; position:relative}
+.wrap{max-width:1200px; margin:0 auto; padding:24px 28px 60px}
+.scene-in{animation:sceneIn .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes sceneIn{from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none}}
+.pop-in{animation:popIn .4s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes popIn{from{opacity:0; transform:scale(.94) translateY(8px)} to{opacity:1; transform:none}}
+.fade-in{animation:fadeIn .6s ease both}
+@keyframes fadeIn{from{opacity:0} to{opacity:1}}
+
+#nav{display:flex; align-items:center; gap:12px; padding:9px 16px; border-top:1px solid var(--line); background:rgba(6,8,15,.92); backdrop-filter:blur(10px)}
+#navMid{flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; min-width:0}
+#navInfo{font-family:var(--mono); font-size:13.5px; letter-spacing:.05em; color:var(--muted); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%}
+#navInfo b{color:var(--text)}
+#navInfo .optl{color:var(--amber)}
+#bar{width:min(420px,100%); height:5px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden}
+#bar i{display:block; height:100%; width:0; border-radius:99px; background:linear-gradient(90deg,var(--cyan),var(--violet),var(--red)); transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.navr{display:flex; gap:9px; align-items:center}
+
+/* ─── buttons ─── */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:13px 22px; border-radius:14px; font-weight:800; font-size:17px; letter-spacing:.01em;
+  background:rgba(255,255,255,.08); border:1.5px solid var(--line2); transition:transform .12s, box-shadow .2s, background .2s; text-decoration:none; user-select:none; min-height:50px}
+.btn:hover{background:rgba(255,255,255,.14)}
+.btn:active{transform:scale(.97)}
+.btn[disabled]{opacity:.3; pointer-events:none}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),var(--violet)); color:#050814; border-color:transparent; box-shadow:0 10px 30px -12px rgba(57,216,246,.8)}
+.btn.red{background:linear-gradient(135deg,var(--red),#FF8A5B); color:#1A0408; border-color:transparent; box-shadow:0 10px 30px -12px rgba(255,84,112,.8)}
+.btn.green{background:var(--green); color:#03140C; border-color:transparent}
+.btn.amber{background:var(--amber); color:#1A1200; border-color:transparent}
+.btn.ghost{background:transparent}
+.btn.danger{border-color:var(--bad); color:#FFD1D8}
+.btn.danger.solid{background:var(--bad); color:#fff}
+.btn.sm{padding:8px 14px; font-size:14.5px; min-height:40px; border-radius:11px}
+.btn.caps{text-transform:uppercase; letter-spacing:.06em; font-size:15.5px}
+.btn.pulse{animation:btnPulse 2.2s ease-in-out infinite}
+@keyframes btnPulse{50%{box-shadow:0 0 0 7px rgba(57,216,246,.12), 0 10px 30px -12px rgba(57,216,246,.8)}}
+
+/* ─── cards / tags ─── */
+.card{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.03)); border:1px solid var(--line); border-radius:var(--r-l); padding:26px; box-shadow:var(--shadow); position:relative}
+.card.cy{border-color:rgba(57,216,246,.4); box-shadow:0 0 0 1px rgba(57,216,246,.15) inset, var(--shadow)}
+.card.rd{border-color:rgba(255,84,112,.45); box-shadow:0 0 0 1px rgba(255,84,112,.15) inset, var(--shadow)}
+.card.gr{border-color:rgba(54,224,155,.45); box-shadow:0 0 0 1px rgba(54,224,155,.15) inset, var(--shadow)}
+.card.am{border-color:rgba(255,193,77,.45)}
+.tag{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:99px; background:rgba(255,255,255,.07); border:1px solid var(--line)}
+.tag.opt{background:rgba(255,193,77,.13); border-color:rgba(255,193,77,.5); color:var(--amber)}
+.tag.cy{background:rgba(57,216,246,.12); border-color:rgba(57,216,246,.5); color:#B9F2FF}
+.tag.rd{background:rgba(255,84,112,.13); border-color:rgba(255,84,112,.5); color:#FFC4CF}
+.tag.gr{background:rgba(54,224,155,.12); border-color:rgba(54,224,155,.5); color:#BDF8DE}
+
+.shead{display:flex; align-items:flex-end; gap:18px; margin-bottom:22px; flex-wrap:wrap}
+.shead .file{font-family:var(--mono); font-size:13px; letter-spacing:.2em; color:var(--cyan); display:flex; gap:10px; align-items:center}
+.shead .file::before{content:""; width:26px; height:2px; background:var(--cyan)}
+.shead h1{font-family:var(--dsp); font-size:clamp(32px,4.2vw,56px); margin-top:6px}
+.shead h1.long{font-size:clamp(27px,3.2vw,44px)}
+.shead .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+
+.big{font-size:clamp(24px,3vw,38px); font-weight:800; line-height:1.22; letter-spacing:-.01em}
+.mid{font-size:clamp(20px,2.2vw,27px); font-weight:700; line-height:1.35}
+.hl{background:linear-gradient(transparent 55%,rgba(57,216,246,.4) 55%); padding:0 3px; border-radius:3px; font-weight:800}
+.hlr{background:linear-gradient(transparent 55%,rgba(255,84,112,.45) 55%); padding:0 3px; border-radius:3px; font-weight:800}
+.hlg{background:linear-gradient(transparent 55%,rgba(54,224,155,.4) 55%); padding:0 3px; border-radius:3px; font-weight:800}
+.hla{background:linear-gradient(transparent 55%,rgba(255,193,77,.45) 55%); padding:0 3px; border-radius:3px; font-weight:800}
+
+/* avatars */
+.av{--s:52px; --c:var(--violet); position:relative; width:var(--s); height:var(--s); flex:0 0 var(--s); border-radius:50%; overflow:hidden; display:inline-grid; place-items:center;
+  background:var(--c); color:#0B0E1E; font-weight:800; font-size:calc(var(--s)*.42); box-shadow:0 0 0 2.5px var(--bg), 0 0 0 4.5px var(--c); font-style:normal}
+.av img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.av.emo{background:#1D2340; font-size:calc(var(--s)*.52)}
+
+/* phone + chat */
+.phone{max-width:440px; width:100%; margin:0 auto; border-radius:42px; padding:12px; background:linear-gradient(160deg,#1E2440,#0A0D1A 45%,#171C33); border:1px solid var(--line2);
+  box-shadow:0 40px 80px -36px #000, inset 0 0 0 2px rgba(255,255,255,.04); position:relative}
+.phone::before{content:""; position:absolute; top:20px; left:50%; transform:translateX(-50%); width:96px; height:24px; border-radius:99px; background:#000; z-index:3}
+.phone .scr{border-radius:32px; background:#0A0D18; overflow:hidden; min-height:440px; max-height:max(440px,calc(100vh - 300px)); display:flex; flex-direction:column; position:relative}
+.phone .chat{overflow-y:auto; scrollbar-width:thin}
+.sbar{display:flex; justify-content:space-between; padding:14px 26px 4px; font-family:var(--mono); font-size:13px; font-weight:700; color:#C9CEE0}
+.cbar{display:flex; align-items:center; gap:12px; padding:10px 16px 12px; border-bottom:1px solid var(--line); background:rgba(255,255,255,.03)}
+.cbar b{font-size:17px; display:block} .cbar small{display:block; color:var(--muted); font-size:13px; font-weight:600}
+.chat{display:flex; flex-direction:column; gap:11px; padding:16px 14px 18px; flex:1}
+.msg{display:flex; gap:9px; align-items:flex-end; max-width:92%}
+.msg.me{align-self:flex-end; flex-direction:row-reverse}
+.bub{padding:10px 14px; border-radius:18px 18px 18px 6px; background:#1B2138; border:1px solid var(--line); font-size:17px; line-height:1.4; position:relative}
+.msg.me .bub{border-radius:18px 18px 6px 18px; background:linear-gradient(135deg,#2563EB,#4F46E5); border-color:transparent}
+.bub .who{display:block; font-size:12.5px; font-weight:800; letter-spacing:.02em; margin-bottom:2px}
+.bub .tm{display:block; text-align:right; font-family:var(--mono); font-size:10.5px; color:rgba(255,255,255,.45); margin-top:3px}
+.bub.big-b{font-size:20px}
+.bub.alert{border-color:rgba(255,84,112,.6); background:linear-gradient(180deg,#2A1622,#1B1424)}
+.msg.late{animation:popIn .4s cubic-bezier(.2,.9,.3,1.3) both}
+.typing{display:inline-flex; gap:5px; padding:14px 16px}
+.typing i{width:8px; height:8px; border-radius:50%; background:#8A93B3; animation:typ 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes typ{0%,60%,100%{transform:none; opacity:.4}30%{transform:translateY(-5px); opacity:1}}
+.daysep{align-self:center; font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; color:var(--faint); padding:3px 10px; border-radius:99px; background:rgba(255,255,255,.04)}
+
+/* notification */
+.notif{margin:10px 12px 0; padding:12px 14px; border-radius:18px; background:rgba(40,46,74,.92); border:1px solid var(--line2); display:flex; gap:12px; align-items:center; box-shadow:0 14px 30px -14px #000}
+.notif .ic{width:40px; height:40px; border-radius:11px; display:grid; place-items:center; background:linear-gradient(135deg,var(--cyan),var(--violet)); font-size:20px; flex:0 0 40px}
+.notif b{display:block; font-size:15px} .notif span{font-size:14px; color:var(--muted)}
+.notif.drop{animation:drop .7s cubic-bezier(.2,.9,.3,1.25) both}
+@keyframes drop{from{opacity:0; transform:translateY(-40px) scale(.96)} to{opacity:1; transform:none}}
+.buzz{animation:buzz .5s linear 3}
+@keyframes buzz{0%,100%{transform:none}20%{transform:translateX(-4px) rotate(-1deg)}40%{transform:translateX(4px) rotate(1deg)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+
+/* status list (Previously) */
+.stl{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:16px 0}
+.stl div{display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:16px; background:rgba(255,255,255,.05); border:1px solid var(--line); font-weight:800; font-size:20px}
+.stl div span{flex:1; color:var(--muted); font-weight:700}
+.stl div b{font-family:var(--mono); font-size:16px; padding:4px 10px; border-radius:8px; background:rgba(54,224,155,.14); color:var(--green); border:1px solid rgba(54,224,155,.4)}
+.quiet{font-family:var(--dsp); font-size:clamp(30px,3.6vw,46px); font-weight:800}
+.until{font-family:var(--dsp); font-size:clamp(40px,6vw,82px); font-weight:800; color:var(--red); text-shadow:0 0 40px rgba(255,84,112,.5)}
+.bigcount{display:flex; align-items:center; gap:18px; padding:20px 24px; border-radius:22px; border:1px solid rgba(255,84,112,.55); background:linear-gradient(135deg,rgba(255,84,112,.16),rgba(141,123,255,.1)); margin-top:20px}
+.bigcount .n{font-family:var(--dsp); font-size:64px; line-height:1; color:#fff; min-width:80px}
+.bigcount b{font-family:var(--mono); letter-spacing:.14em; font-size:16px; color:#FFC4CF}
+.ringer{position:relative; width:64px; height:64px; display:grid; place-items:center; font-size:34px}
+.ringer::before,.ringer::after{content:""; position:absolute; inset:0; border-radius:50%; border:2px solid var(--red); animation:ring 1.8s ease-out infinite}
+.ringer::after{animation-delay:.9s}
+@keyframes ring{from{transform:scale(.7); opacity:.9} to{transform:scale(1.7); opacity:0}}
+
+/* title / cast */
+.hero{display:grid; grid-template-columns:1.15fr .85fr; gap:34px; align-items:center; min-height:calc(100vh - 230px)}
+.hero h1{font-family:var(--dsp); font-size:clamp(46px,6.4vw,92px); line-height:.95; letter-spacing:-.035em}
+.hero h1 em{font-style:normal; color:var(--red); text-shadow:0 0 34px rgba(255,84,112,.45)}
+.hero .sub{font-family:var(--mono); letter-spacing:.2em; color:var(--cyan); font-size:15px; margin-top:18px}
+.cast{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.castc{display:flex; gap:14px; align-items:center; padding:14px; border-radius:18px; background:rgba(255,255,255,.045); border:1px solid var(--line)}
+.castc b{display:block; font-size:19px} .castc span{display:block; font-size:14.5px; color:var(--muted); line-height:1.3}
+.stagger>*{animation:popIn .45s cubic-bezier(.2,.9,.3,1.3) both}
+.stagger>*:nth-child(2){animation-delay:.08s}.stagger>*:nth-child(3){animation-delay:.16s}.stagger>*:nth-child(4){animation-delay:.24s}.stagger>*:nth-child(5){animation-delay:.32s}.stagger>*:nth-child(6){animation-delay:.4s}.stagger>*:nth-child(7){animation-delay:.48s}.stagger>*:nth-child(8){animation-delay:.56s}
+.casefile{position:relative; border-radius:24px; padding:26px; background:linear-gradient(160deg,#1A1F36,#0E1222); border:1px solid var(--line2); box-shadow:var(--shadow); overflow:hidden}
+.casefile::after{content:"CONFIDENTIAL"; position:absolute; right:-36px; top:26px; transform:rotate(30deg); background:var(--red); color:#fff; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.2em; padding:5px 46px}
+.scan{position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,transparent 0,rgba(57,216,246,.12) 50%,transparent 100%); background-size:100% 40%; background-repeat:no-repeat; animation:scan 3.6s linear infinite}
+@keyframes scan{from{background-position:0 -40%} to{background-position:0 140%}}
+
+/* mission card */
+.mission{counter-reset:m; display:grid; gap:12px; margin:16px 0 0; padding:0; list-style:none}
+.mission li{display:flex; gap:14px; align-items:center; font-size:20px; font-weight:700; padding:12px 16px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid var(--line)}
+.mission li::before{counter-increment:m; content:counter(m); width:34px; height:34px; flex:0 0 34px; border-radius:10px; display:grid; place-items:center; background:var(--cyan); color:#04111A; font-family:var(--mono); font-weight:700}
+.wsw{font-family:var(--dsp); font-size:clamp(40px,5.6vw,76px); line-height:.95; letter-spacing:-.03em}
+.wsw span{color:var(--red)}
+
+/* options */
+.opts{display:grid; gap:11px}
+.opt{display:flex; align-items:center; gap:14px; text-align:left; width:100%; padding:14px 16px; border-radius:16px; background:rgba(255,255,255,.05); border:1.5px solid var(--line2); font-weight:700; font-size:19px; transition:.15s; position:relative}
+.opt:hover{background:rgba(255,255,255,.09)}
+.opt .L{width:36px; height:36px; flex:0 0 36px; border-radius:10px; display:grid; place-items:center; background:rgba(255,255,255,.08); font-family:var(--mono); font-size:15px; font-weight:700}
+.opt .n{margin-left:auto; font-family:var(--mono); font-size:14px; color:var(--cyan); min-width:20px; text-align:right}
+.opt.pick{border-color:var(--cyan); background:rgba(57,216,246,.1)}
+.opt.pick .L{background:var(--cyan); color:#04111A}
+.opt.right{border-color:var(--green); background:rgba(54,224,155,.14)}
+.opt.right .L{background:var(--green); color:#03140C}
+.opt.right::after{content:"✓"; position:absolute; right:-10px; top:-10px; width:30px; height:30px; border-radius:50%; background:var(--green); color:#03140C; display:grid; place-items:center; font-weight:900; font-size:16px}
+.opt.wrongpick{border-color:var(--bad); background:rgba(255,84,112,.12); animation:shake .45s}
+.opt.dim{opacity:.42}
+.opt.fx{animation:popIn .45s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.opts.chips{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.opts.chips .opt{justify-content:center; font-size:20px}
+
+.explain{margin-top:16px; padding:16px 18px; border-radius:16px; background:rgba(54,224,155,.09); border:1px solid rgba(54,224,155,.4)}
+.explain .k{font-family:var(--mono); font-size:12px; letter-spacing:.16em; color:var(--green)}
+.explain .a{font-family:var(--dsp); font-size:28px; margin:2px 0 4px}
+.explain p{margin:0; font-size:18px}
+.explain .ex{margin-top:8px; font-size:17px; color:#D6DAF0}
+.explain .ex b{color:#fff}
+.stamp{animation:stampIn .5s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes stampIn{from{opacity:0; transform:scale(1.25) rotate(-2deg)} to{opacity:1; transform:none}}
+
+.cdots{display:flex; gap:6px; flex-wrap:wrap}
+.cdots button{min-width:34px; height:34px; border-radius:10px; background:rgba(255,255,255,.06); border:1px solid var(--line); font-family:var(--mono); font-size:13px; font-weight:700; color:var(--muted)}
+.cdots button.done{background:rgba(54,224,155,.15); border-color:rgba(54,224,155,.5); color:var(--green)}
+.cdots button.cur{background:var(--cyan); color:#04111A; border-color:var(--cyan)}
+.deckbar{display:flex; gap:12px; align-items:center; margin-bottom:18px; flex-wrap:wrap}
+
+.sit{border-radius:22px; padding:28px; background:linear-gradient(160deg,#1A2038,#0F1325); border:1px solid var(--line2); position:relative; overflow:hidden; min-height:220px; display:flex; flex-direction:column; justify-content:center}
+.sit .num{position:absolute; right:18px; top:12px; font-family:var(--dsp); font-size:84px; color:rgba(255,255,255,.05); line-height:1}
+.sit .ico{font-size:52px; line-height:1; margin-bottom:12px}
+.sit p{font-size:clamp(22px,2.5vw,30px); font-weight:800; line-height:1.3; margin:0}
+
+.hintbox{margin-top:14px; padding:12px 16px; border-radius:14px; background:rgba(255,193,77,.1); border:1px dashed rgba(255,193,77,.55); color:#FFE3A8; font-size:17px}
+.hintbox b{color:#fff}
+
+/* flash cards */
+.flash{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.fc{perspective:900px; height:150px}
+.fc .in{position:relative; width:100%; height:100%; transition:transform .55s cubic-bezier(.2,.8,.2,1); transform-style:preserve-3d}
+.fc.on .in{transform:rotateY(180deg)}
+.fc .fa,.fc .fb{position:absolute; inset:0; backface-visibility:hidden; border-radius:18px; padding:16px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; border:1px solid var(--line2)}
+.fc .fa{background:linear-gradient(160deg,#1C2340,#121629); font-weight:800; font-size:20px}
+.fc .fa small{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--faint); margin-top:8px}
+.fc .fb{background:linear-gradient(160deg,rgba(57,216,246,.2),rgba(141,123,255,.18)); transform:rotateY(180deg); font-size:16.5px; font-weight:600}
+.fc .fb b{display:block; font-size:15px; color:var(--cyan); margin-bottom:5px}
+
+/* reported speech transformations */
+.qbox{border-radius:20px; padding:22px 24px; background:rgba(255,255,255,.05); border:1px solid var(--line2)}
+.qbox .lab{font-family:var(--mono); font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+.qbox .s{font-size:clamp(22px,2.4vw,30px); font-weight:800; line-height:1.35}
+.qbox.direct{border-color:rgba(255,143,199,.45)} .qbox.direct .lab{color:var(--mia)}
+.qbox.rep{border-color:rgba(57,216,246,.5)} .qbox.rep .lab{color:var(--cyan)}
+.swap{display:inline-block; padding:0 6px; border-radius:8px; background:rgba(57,216,246,.18); color:#fff; border:1px solid rgba(57,216,246,.5)}
+.swap.fx{animation:swapIn .7s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes swapIn{0%{opacity:0; transform:translateY(-14px) rotateX(80deg)} 100%{opacity:1; transform:none}}
+.tfgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+.tf{padding:14px; border-radius:16px; background:rgba(255,255,255,.05); border:1px solid var(--line); text-align:center; font-weight:800; font-size:20px}
+.tf .a{color:var(--mia)} .tf .b{color:var(--cyan)} .tf .x{display:block; color:var(--faint); font-size:15px; margin:2px 0}
+.back{display:flex; align-items:center; gap:16px; justify-content:center; padding:18px; border-radius:20px; background:linear-gradient(90deg,rgba(57,216,246,.1),rgba(141,123,255,.12)); border:1px solid var(--line2)}
+.back .w{font-family:var(--dsp); font-size:clamp(24px,3vw,38px)}
+.back .arr{position:relative; width:160px; height:6px; border-radius:99px; background:rgba(255,255,255,.12); overflow:hidden}
+.back .arr i{position:absolute; inset:0; background:linear-gradient(270deg,var(--cyan),transparent); animation:arrBack 1.6s ease-in-out infinite}
+@keyframes arrBack{from{transform:translateX(100%)} to{transform:translateX(-100%)}}
+
+/* time machine */
+.tm-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.tmc{border-radius:20px; padding:16px 18px; background:rgba(255,255,255,.045); border:1px solid var(--line); display:grid; gap:8px; transition:.3s; cursor:pointer; position:relative}
+.tmc .tense{display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; font-weight:700; color:var(--muted)}
+.tmc .tense b{color:var(--mia)} .tmc .tense em{font-style:normal; color:var(--cyan)}
+.tmc .d{display:flex; gap:10px; align-items:center; font-size:19px; font-weight:700}
+.tmc .r{font-size:19px; font-weight:800; color:#fff; padding:9px 12px; border-radius:12px; background:rgba(57,216,246,.1); border:1px dashed rgba(57,216,246,.45)}
+.tmc .r.q{color:var(--faint); font-weight:700; background:rgba(255,255,255,.03); border-color:var(--line2)}
+.tmc.on{border-color:rgba(57,216,246,.5); background:rgba(57,216,246,.06)}
+.tmc .r .v{color:var(--amber)}
+.tmc.fx{animation:popIn .45s cubic-bezier(.2,.9,.3,1.3)}
+.dial{display:flex; align-items:center; gap:16px}
+.dial .clock{width:74px; height:74px; border-radius:50%; border:3px solid var(--cyan); position:relative; box-shadow:0 0 30px -6px var(--cyan)}
+.dial .clock i{position:absolute; left:50%; top:50%; width:3px; height:28px; background:var(--cyan); transform-origin:50% 0; border-radius:3px; animation:rewind 2.4s linear infinite}
+.dial .clock i+i{height:18px; background:#fff; animation-duration:9s}
+@keyframes rewind{from{transform:rotate(180deg)} to{transform:rotate(-180deg)}}
+.think{margin-top:18px; text-align:center; font-family:var(--dsp); font-size:clamp(24px,3vw,36px)}
+
+/* what else changes */
+.ch3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.chc{border-radius:20px; padding:18px; background:rgba(255,255,255,.045); border:1px solid var(--line)}
+.chc h3{font-size:19px; font-family:var(--mono); letter-spacing:.12em; margin-bottom:10px}
+.chc div{display:flex; justify-content:space-between; gap:10px; padding:8px 0; border-bottom:1px solid var(--line); font-size:19px; font-weight:700}
+.chc div:last-child{border-bottom:0}
+.chc div span:first-child{color:var(--mia)} .chc div span:last-child{color:var(--cyan); text-align:right}
+
+/* voice message */
+.voice{display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:20px; background:#1B2138; border:1px solid var(--line2); max-width:460px; flex:1; min-width:220px}
+.voice .play{width:52px; height:52px; flex:0 0 52px; border-radius:50%; background:var(--nora); color:#03140C; display:grid; place-items:center; font-size:20px}
+.wave{flex:1; display:flex; align-items:center; gap:3px; height:42px}
+.wave i{flex:1; border-radius:3px; background:rgba(255,255,255,.3); height:var(--h)}
+.voice.playing .wave i{animation:wv .8s ease-in-out infinite; background:var(--nora)}
+@keyframes wv{50%{transform:scaleY(.4)}}
+.transcript{margin-top:12px; padding:14px 18px; border-radius:16px; background:rgba(67,229,160,.08); border:1px solid rgba(67,229,160,.35); font-size:22px; font-weight:800}
+.transcript small{display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; color:var(--nora); font-weight:700}
+
+.gapline{font-size:clamp(22px,2.6vw,32px); font-weight:800; line-height:1.9}
+.gap{display:inline-flex; min-width:150px; justify-content:center; padding:0 12px; margin:0 4px; border-radius:12px; border:2px dashed var(--line3); color:var(--faint); line-height:1.45; vertical-align:middle; transition:.2s}
+.gap.f{border-style:solid; border-color:var(--cyan); color:#fff; background:rgba(57,216,246,.1)}
+.gap.ok{border-color:var(--green); background:rgba(54,224,155,.14); color:#fff}
+.gap.no{border-color:var(--bad); background:rgba(255,84,112,.12); animation:shake .45s}
+.chipset{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+.chipset .lab{width:100%; font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--muted)}
+.chip{padding:10px 16px; border-radius:12px; background:rgba(255,255,255,.06); border:1.5px solid var(--line2); font-weight:800; font-size:18px}
+.chip:hover{background:rgba(255,255,255,.12)}
+.chip.on{border-color:var(--cyan); background:rgba(57,216,246,.14)}
+.recovered{display:flex; align-items:center; gap:16px; padding:18px 22px; border-radius:20px; background:linear-gradient(135deg,rgba(54,224,155,.18),rgba(57,216,246,.1)); border:1px solid rgba(54,224,155,.55)}
+.recovered .t{font-family:var(--dsp); font-size:clamp(24px,3vw,36px)}
+
+/* reporting verbs */
+.verbs{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.vb{--c:var(--cyan); border-radius:20px; padding:16px; background:rgba(255,255,255,.045); border:1px solid var(--line); border-top:4px solid var(--c); display:flex; flex-direction:column; gap:6px; text-align:left; transition:.25s}
+.vb .e{font-size:30px; line-height:1}
+.vb h3{font-family:var(--dsp); font-size:26px; color:var(--c)}
+.vb .def{font-size:16px; font-weight:600; color:#D6DAF0; line-height:1.35}
+.vb .exm{font-size:15.5px; font-weight:700; padding:9px 11px; border-radius:12px; background:rgba(255,255,255,.05); border:1px dashed var(--line2); margin-top:auto}
+.vb .exm.q{color:var(--faint); font-weight:600}
+.vb .exm b{color:var(--c)}
+.vb.on{background:rgba(255,255,255,.07); border-color:var(--line2)}
+.vb.fx{animation:popIn .45s cubic-bezier(.2,.9,.3,1.3)}
+
+.quote{display:flex; gap:16px; align-items:flex-end}
+.quote .bub{font-size:clamp(22px,2.5vw,30px); font-weight:800; padding:18px 22px; border-radius:24px 24px 24px 8px}
+
+/* reading */
+.read{display:grid; gap:16px}
+.chunk{display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; padding:18px 20px; border-radius:20px; background:rgba(255,255,255,.04); border:1px solid var(--line)}
+.chunk .t{font-size:clamp(19px,1.9vw,23px); line-height:1.55; font-weight:600}
+.chunk .t p{margin:0}
+.chunk .ix{width:54px; height:54px; border-radius:16px; display:grid; place-items:center; font-size:26px; background:rgba(57,216,246,.12); border:1px solid rgba(57,216,246,.35)}
+.chunk.fx{animation:popIn .5s cubic-bezier(.2,.9,.3,1.3)}
+.chunk .vis{grid-column:2; display:flex; gap:10px; flex-wrap:wrap; margin-top:4px}
+.mini{display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border-radius:14px; background:#1B2138; border:1px solid var(--line2); font-size:15.5px; font-weight:700}
+.mini.rd{border-color:rgba(255,84,112,.55); background:rgba(255,84,112,.1)}
+.mini.gr{border-color:rgba(54,224,155,.55); background:rgba(54,224,155,.1)}
+.mini .av{--s:26px !important}
+.gl{border-bottom:2px dotted var(--amber); cursor:help}
+.glbox{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.glbox span{font-size:15.5px; padding:6px 12px; border-radius:12px; background:rgba(255,193,77,.1); border:1px solid rgba(255,193,77,.4)}
+.glbox b{color:var(--amber)}
+.fulltext{font-size:clamp(18px,1.75vw,21px); line-height:1.75; font-weight:600}
+.fulltext p{margin:0 0 .8em}
+.tgt{cursor:pointer; border-radius:6px; padding:1px 2px; transition:.2s; border-bottom:2px solid transparent}
+.tgt:hover{background:rgba(255,255,255,.06)}
+.tgt.found{background:rgba(255,193,77,.25); border-bottom-color:var(--amber); color:#fff}
+.tgt.found.fx{animation:found .7s ease}
+@keyframes found{30%{background:rgba(255,193,77,.7); box-shadow:0 0 22px rgba(255,193,77,.6)}}
+.notgt{animation:shake .4s}
+.findlist{display:grid; gap:9px}
+.findlist div{display:flex; gap:10px; align-items:center; padding:10px 14px; border-radius:12px; background:rgba(255,255,255,.04); border:1px dashed var(--line2); font-weight:700; color:var(--faint)}
+.findlist div.ok{color:#fff; border-style:solid; border-color:rgba(255,193,77,.55); background:rgba(255,193,77,.1)}
+
+/* truth board */
+.board{position:relative; border-radius:28px; padding:28px; background:
+   radial-gradient(circle at 20% 10%,rgba(255,255,255,.04),transparent 40%),
+   repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 2px,transparent 2px 6px), #0E1220; border:1px solid var(--line2); overflow:hidden}
+.chain{display:grid; gap:0; justify-items:center}
+.node{position:relative; display:flex; gap:14px; align-items:center; width:min(100%,var(--w)); padding:14px 18px; border-radius:18px; border:1px solid var(--line2); background:#161B2E;
+  transform:rotate(var(--rot)); box-shadow:0 18px 30px -20px #000}
+.node .pin{position:absolute; top:-8px; left:50%; width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 35% 35%,#FF9AAA,var(--red2)); box-shadow:0 3px 6px rgba(0,0,0,.5)}
+.node .tx{font-weight:800; font-size:var(--fs); line-height:1.25}
+.node .tx small{display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; color:var(--muted); font-weight:700}
+.node.fx{animation:nodeIn .6s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes nodeIn{from{opacity:0; transform:rotate(var(--rot)) translateY(-18px) scale(.9)} to{opacity:1; transform:rotate(var(--rot))}}
+.node.rumour{background:linear-gradient(135deg,#3A0E1E,#25091A); border:2px solid var(--red); box-shadow:0 0 40px -6px rgba(255,84,112,.7)}
+.node.rumour .tx{color:#FFE1E7; text-transform:uppercase; letter-spacing:.01em; animation:glitch 2.4s infinite}
+@keyframes glitch{0%,92%,100%{text-shadow:none; transform:none}93%{text-shadow:-3px 0 var(--cyan),3px 0 var(--red); transform:translateX(2px)}96%{text-shadow:3px 0 var(--cyan),-3px 0 var(--red); transform:translateX(-2px)}}
+.link{height:46px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:var(--mono); font-size:12px; letter-spacing:.14em; font-weight:700}
+.link .ln{width:2px; flex:1; background:repeating-linear-gradient(180deg,var(--red) 0 6px,transparent 6px 10px)}
+.link span{padding:2px 10px; border-radius:99px; background:#2A1220; border:1px solid rgba(255,84,112,.5); color:#FFB4C2; white-space:nowrap}
+.strip{display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:22px}
+.strip span{font-family:var(--mono); font-weight:700; letter-spacing:.08em; padding:9px 14px; border-radius:12px; font-size:15px}
+.strip i{font-style:normal; color:var(--faint)}
+.strip.fx span{animation:popIn .4s both}
+.strip.fx span:nth-of-type(2){animation-delay:.15s}.strip.fx span:nth-of-type(3){animation-delay:.3s}.strip.fx span:nth-of-type(4){animation-delay:.45s}
+
+/* speaking */
+.spq{border-radius:26px; padding:30px; background:linear-gradient(160deg,#1A2038,#0F1325); border:1px solid var(--line2); position:relative}
+.spq .q{font-size:clamp(26px,3.1vw,40px); font-weight:800; line-height:1.22}
+.fu{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px}
+.fu button{padding:9px 14px; border-radius:12px; font-family:var(--mono); font-weight:700; font-size:14px; letter-spacing:.08em; border:1.5px solid var(--line2); background:rgba(255,255,255,.05)}
+.fu button.on{border-color:var(--amber); color:var(--amber); background:rgba(255,193,77,.1)}
+.fuq{margin-top:12px; display:grid; gap:8px}
+.fuq div{padding:12px 16px; border-radius:14px; background:rgba(255,193,77,.08); border-left:4px solid var(--amber); font-size:20px; font-weight:700}
+.sample{margin-top:16px; padding:14px 18px; border-radius:16px; background:rgba(54,224,155,.08); border:1px solid rgba(54,224,155,.4); font-size:20px; font-weight:700}
+.sample small{display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; color:var(--green)}
+.wall{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
+.wall .w{padding:10px 14px; border-radius:14px; background:rgba(57,216,246,.1); border:1px solid rgba(57,216,246,.4); font-weight:700; font-size:17px; animation:popIn .4s both}
+.wall .w small{display:block; font-size:12px; color:var(--muted)}
+
+/* rumour control unit */
+.rcu{display:flex; align-items:center; gap:16px; padding:16px 20px; border-radius:20px; background:linear-gradient(90deg,rgba(255,84,112,.18),rgba(255,84,112,.04)); border:1px solid rgba(255,84,112,.5); margin-bottom:18px}
+.siren{font-size:40px; animation:siren 1s steps(2) infinite}
+@keyframes siren{50%{filter:hue-rotate(200deg) brightness(1.3)}}
+.steps6{counter-reset:s; list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.steps6 li{display:flex; gap:14px; align-items:center; padding:12px 16px; border-radius:14px; background:rgba(255,255,255,.045); border:1px solid var(--line); font-size:19px; font-weight:700}
+.steps6 li::before{counter-increment:s; content:counter(s); width:36px; height:36px; flex:0 0 36px; border-radius:50%; display:grid; place-items:center; background:var(--red); color:#fff; font-family:var(--mono); font-weight:700}
+.steps6 li b{color:var(--amber)}
+.cf{border-radius:22px; padding:18px; background:#0E1222; border:1px solid var(--line2)}
+.cf .hd{display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:13px; letter-spacing:.14em; color:var(--muted); margin-bottom:10px}
+.cf .hd b{color:#fff; letter-spacing:.06em; font-size:15px}
+.cf .rum{padding:10px 14px; border-radius:14px; background:rgba(255,84,112,.1); border:1px dashed rgba(255,84,112,.55); font-weight:700; font-size:16.5px; margin-bottom:12px}
+.cf .rum small{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; color:#FF9AAE}
+.cf .chat{padding:0}
+.cf .bub{font-size:17.5px}
+.rep{display:grid; gap:8px}
+.rep div{padding:10px 14px; border-radius:12px; background:rgba(57,216,246,.08); border-left:4px solid var(--cyan); font-size:18px; font-weight:700}
+.rep div b{color:var(--amber)}
+.tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px}
+.tabs button{padding:10px 16px; border-radius:12px; border:1.5px solid var(--line2); background:rgba(255,255,255,.04); font-weight:800; font-size:16px}
+.tabs button.on{border-color:var(--cyan); background:rgba(57,216,246,.14); color:#fff}
+.vbank{display:flex; gap:7px; flex-wrap:wrap}
+.vbank span{font-family:var(--mono); font-size:13px; font-weight:700; padding:4px 10px; border-radius:99px; background:rgba(255,193,77,.1); border:1px solid rgba(255,193,77,.4); color:var(--amber)}
+
+/* timer ring */
+.ringbox{display:flex; flex-direction:column; align-items:center; gap:10px}
+.ring{position:relative; width:150px; height:150px}
+.ring svg{width:100%; height:100%; transform:rotate(-90deg)}
+.ring .bg{stroke:rgba(255,255,255,.08)}
+.ring .fg{stroke:url(#ringG); stroke-linecap:round; transition:stroke-dashoffset .5s linear}
+.ring .t{position:absolute; inset:0; display:grid; place-items:center; font-family:var(--mono); font-size:34px; font-weight:700}
+.ring .t.end{color:var(--red)}
+.ring.hurry{animation:hurry 1s ease-in-out infinite}
+@keyframes hurry{50%{transform:scale(1.04); filter:drop-shadow(0 0 16px var(--red))}}
+
+/* reports + vote */
+.checklist{display:grid; gap:8px}
+.checklist div{display:flex; gap:12px; align-items:center; font-size:19px; font-weight:700}
+.checklist div::before{content:"✓"; width:28px; height:28px; border-radius:8px; display:grid; place-items:center; background:rgba(54,224,155,.15); color:var(--green); border:1px solid rgba(54,224,155,.5); font-weight:900}
+.teams{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px}
+.tcard{border-radius:20px; padding:16px; background:rgba(255,255,255,.045); border:1px solid var(--line); display:flex; flex-direction:column; gap:10px}
+.tcard.done{border-color:rgba(54,224,155,.6); background:rgba(54,224,155,.08)}
+.tcard .tn{display:flex; align-items:center; gap:10px}
+.tcard .tn b{font-size:19px} .tcard .tn span{font-size:24px}
+.tcard .ws{font-size:15.5px; color:#D6DAF0; display:grid; gap:4px}
+.tcard .ws div{padding:6px 10px; border-radius:10px; background:rgba(255,255,255,.05)}
+.awards{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.award{border-radius:22px; padding:18px; background:rgba(255,255,255,.045); border:1.5px solid var(--line); text-align:center; cursor:pointer; transition:.2s}
+.award .e{font-size:44px}
+.award b{display:block; font-size:19px; margin-top:6px}
+.award.on{border-color:var(--amber); background:rgba(255,193,77,.08); box-shadow:0 0 30px -10px var(--amber)}
+.vbars{display:grid; gap:10px; margin-top:16px}
+.vbar{display:grid; grid-template-columns:150px 1fr 50px; gap:12px; align-items:center}
+.vbar button{text-align:left; font-weight:800; font-size:17px; padding:8px 12px; border-radius:12px; border:1px solid var(--line2); background:rgba(255,255,255,.04)}
+.vbar .tr{height:30px; border-radius:10px; background:rgba(255,255,255,.06); overflow:hidden}
+.vbar .tr i{display:block; height:100%; border-radius:10px; background:linear-gradient(90deg,var(--amber),var(--red)); transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.vbar .c{font-family:var(--mono); font-weight:700; font-size:18px}
+.vbar.win button{border-color:var(--amber); color:var(--amber)}
+.winners{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px}
+.winners div{padding:12px; border-radius:16px; border:1px solid rgba(255,193,77,.5); background:rgba(255,193,77,.08); text-align:center; font-weight:800}
+
+/* ending */
+.closed{position:relative; text-align:center; padding:30px; border-radius:28px; background:radial-gradient(circle at 50% 0%,rgba(54,224,155,.22),transparent 60%),#0E1322; border:1px solid rgba(54,224,155,.5); overflow:hidden}
+.closed .st{display:inline-block; white-space:nowrap; font-family:var(--dsp); font-size:clamp(34px,4.4vw,64px); color:var(--green); border:6px solid var(--green); border-radius:18px; padding:4px 26px; transform:rotate(-5deg); text-shadow:0 0 30px rgba(54,224,155,.5)}
+.closed .st.fx{animation:bigStamp .7s cubic-bezier(.2,.9,.3,1.4) both}
+@keyframes bigStamp{from{opacity:0; transform:rotate(-5deg) scale(2.2)} to{opacity:1; transform:rotate(-5deg) scale(1)}}
+.versions{display:flex; justify-content:center; gap:10px; margin:22px 0 10px; flex-wrap:wrap}
+.versions span{font-size:18px; font-weight:800; padding:8px 14px; border-radius:12px; background:rgba(255,255,255,.06); border:1px solid var(--line2)}
+.moral{font-family:var(--dsp); font-size:clamp(26px,3.2vw,42px); margin-top:12px}
+.moral em{font-style:normal; color:var(--cyan)}
+
+/* summary */
+.sum{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.sumc{border-radius:20px; padding:18px; background:rgba(255,255,255,.045); border:1px solid var(--line)}
+.sumc h3{font-family:var(--mono); font-size:13px; letter-spacing:.16em; color:var(--cyan); margin-bottom:10px}
+.sumc .l{display:flex; justify-content:space-between; gap:8px; padding:5px 0; font-size:18px; font-weight:700; border-bottom:1px solid var(--line)}
+.sumc .l:last-child{border-bottom:0}
+.sumc .l span:first-child{color:var(--mia)}
+.sumc .l span:last-child{color:var(--cyan); text-align:right}
+.sumc.span2{grid-column:span 2}
+.vchips{display:flex; gap:8px; flex-wrap:wrap}
+.vchips span{font-family:var(--dsp); font-size:22px; padding:6px 14px; border-radius:12px; background:rgba(255,255,255,.06); border:1px solid var(--line2)}
+.unlock{animation:unlock .6s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes unlock{from{opacity:0; transform:translateY(16px) scale(.95); filter:blur(4px)} to{opacity:1; transform:none; filter:none}}
+
+/* evidence board (modal) */
+.evb{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; padding:8px 4px 4px; position:relative}
+.evc{position:relative; border-radius:16px; padding:16px 16px 14px; min-height:150px; background:#F4EEDD; color:#20180A; box-shadow:0 18px 30px -16px #000; transform:rotate(var(--rot))}
+.evc .pin{position:absolute; top:-8px; left:50%; width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 35% 35%,#FF9AAA,var(--red2)); box-shadow:0 3px 6px rgba(0,0,0,.5)}
+.evc .k{font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.14em; color:#8A6A2E}
+.evc b{display:block; font-size:17px; margin:2px 0 6px}
+.evc p{margin:0; font-size:15.5px; font-weight:600; line-height:1.35}
+.evc .rp{margin-top:8px; font-size:14.5px; font-weight:700; color:#0E5A7A}
+.evc.lock{background:transparent; color:var(--faint); border:2px dashed var(--line2); box-shadow:none; display:grid; place-items:center; text-align:center}
+.evc.lock b{font-size:34px}
+.evc.new{animation:evNew 1s ease}
+@keyframes evNew{30%{transform:rotate(0) scale(1.06); box-shadow:0 0 40px var(--amber)}}
+.evhead{display:flex; align-items:center; gap:12px; margin-bottom:16px}
+.evbar{flex:1; height:10px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden}
+.evbar i{display:block; height:100%; background:linear-gradient(90deg,var(--amber),var(--green)); border-radius:99px; transition:width .6s}
+
+/* clue fly */
+#clueFx{position:fixed; inset:0; z-index:70; display:grid; place-items:center; pointer-events:none; opacity:0}
+#clueFx.on{animation:clueFade 2.4s ease forwards}
+#clueFx .cc{width:min(420px,86vw); border-radius:22px; padding:22px 24px; background:#F4EEDD; color:#20180A; box-shadow:0 40px 80px -20px #000, 0 0 0 4px rgba(255,193,77,.6); text-align:center}
+#clueFx .cc .k{font-family:var(--mono); font-weight:700; letter-spacing:.2em; color:#1A7F55; font-size:14px}
+#clueFx .cc b{display:block; font-family:var(--dsp); font-size:28px; margin:6px 0}
+#clueFx .cc p{margin:0; font-weight:700}
+#clueFx.on .cc{animation:clueFly 2.4s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes clueFade{0%{opacity:0}10%{opacity:1}80%{opacity:1}100%{opacity:0}}
+@keyframes clueFly{0%{transform:scale(.6) rotate(-6deg)}14%{transform:scale(1.05) rotate(2deg)}22%{transform:scale(1) rotate(-1deg)}72%{transform:scale(1) rotate(-1deg) translate(0,0)}100%{transform:translate(var(--dx),var(--dy)) scale(.1) rotate(10deg)}}
+
+/* scene card */
+#scard{position:fixed; inset:0; z-index:60; pointer-events:none; display:grid; place-items:center; opacity:0}
+#scard.on{animation:scard 1.5s ease forwards}
+#scard .in{text-align:center; padding:26px 46px; border-radius:26px; background:rgba(8,11,22,.88); border:1px solid var(--line2); backdrop-filter:blur(8px)}
+#scard .k{font-family:var(--mono); letter-spacing:.24em; color:var(--cyan); font-size:14px}
+#scard h2{font-family:var(--dsp); font-size:clamp(34px,5vw,60px); margin-top:8px}
+@keyframes scard{0%{opacity:0; transform:scale(.96)}15%{opacity:1; transform:none}75%{opacity:1}100%{opacity:0}}
+
+/* teacher panel, dock, modal, toast */
+#teacher{position:fixed; top:0; right:0; bottom:0; width:min(440px,94vw); z-index:50; background:#0B0F1E; border-left:1px solid var(--line2); box-shadow:-30px 0 60px -20px #000;
+  transform:translateX(105%); transition:transform .3s cubic-bezier(.2,.8,.2,1); display:flex; flex-direction:column}
+#teacher.on{transform:none}
+.thd{display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--line); font-family:var(--mono); letter-spacing:.12em}
+#tBody{overflow:auto; padding:14px 16px 30px; display:grid; gap:14px}
+.tsec{padding:14px; border-radius:16px; background:rgba(255,255,255,.04); border:1px solid var(--line); font-size:16px}
+.tsec h5{margin:0 0 8px; font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--cyan); text-transform:uppercase}
+.tsec ul{margin:0; padding-left:18px} .tsec li{margin:4px 0}
+.say{padding:10px 12px; border-radius:12px; background:rgba(57,216,246,.08); border-left:3px solid var(--cyan); font-weight:700}
+.tgrid{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.sw{display:flex; align-items:center; gap:10px; justify-content:space-between; padding:6px 0; font-size:15px}
+.sw button{width:46px; height:26px; border-radius:99px; background:rgba(255,255,255,.12); position:relative; transition:.2s; flex:0 0 46px}
+.sw button::after{content:""; position:absolute; left:3px; top:3px; width:20px; height:20px; border-radius:50%; background:#fff; transition:.2s}
+.sw button.on{background:var(--cyan)} .sw button.on::after{left:23px}
+.stg{display:grid; gap:6px}
+.stg button{display:flex; gap:10px; align-items:center; padding:7px 10px; border-radius:10px; border:1px solid var(--line); text-align:left; font-size:15px; font-weight:700}
+.stg button.on{border-color:rgba(54,224,155,.55); background:rgba(54,224,155,.1)}
+.tmap{display:grid; gap:4px}
+.tmap .sn{font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; color:var(--cyan); margin-top:10px}
+.tmap button{display:flex; gap:8px; align-items:center; padding:7px 10px; border-radius:10px; text-align:left; font-size:15px; border:1px solid transparent}
+.tmap button:hover{background:rgba(255,255,255,.06)}
+.tmap button.cur{border-color:var(--cyan); background:rgba(57,216,246,.1)}
+.tmap button.skip{opacity:.45}
+.tmap button span:first-child{flex:1}
+.tmap .m{font-family:var(--mono); font-size:12px; color:var(--faint)}
+
+#dock{position:fixed; left:16px; bottom:84px; z-index:40; width:330px; max-height:52vh; display:none; flex-direction:column; border-radius:18px; background:rgba(11,15,30,.96); border:1px solid var(--line2); box-shadow:var(--shadow); overflow:hidden}
+#dock.on{display:flex}
+#dock.min .db{display:none}
+.dh{display:flex; align-items:center; gap:9px; padding:10px 12px; border-bottom:1px solid var(--line)}
+.db{overflow:auto; padding:10px 12px; display:grid; gap:7px}
+.led{width:10px; height:10px; border-radius:50%; background:var(--faint); flex:0 0 10px}
+.led.on{background:var(--green); box-shadow:0 0 10px var(--green)} .led.warn{background:var(--amber)} .led.bad{background:var(--bad)}
+.names{display:flex; flex-wrap:wrap; gap:5px}
+.names span{font-size:13px; padding:2px 8px; border-radius:99px; background:rgba(255,255,255,.07)}
+.wallit{display:flex; gap:6px; align-items:center}
+.wallit p{flex:1; margin:0; font-size:14.5px} .wallit small{display:block; color:var(--muted); font-size:12px}
+.okm{color:var(--green); font-weight:900} .nom{color:var(--bad); font-weight:900}
+.dbar{display:grid; grid-template-columns:1fr 34px; gap:8px; align-items:center; font-size:14px}
+.dbar .tr{grid-column:1/-1; height:6px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden; margin-top:-4px}
+.dbar .tr i{display:block; height:100%; background:var(--cyan)}
+.dbar .tr i.ok{background:var(--green)}
+
+#modal{position:fixed; inset:0; z-index:80; background:rgba(3,4,10,.72); backdrop-filter:blur(6px); display:grid; place-items:center; padding:20px}
+#modal .box{width:min(980px,100%); max-height:90vh; overflow:auto; border-radius:26px; padding:26px; background:#0D1121; border:1px solid var(--line2); box-shadow:var(--shadow)}
+#toast{position:fixed; left:50%; bottom:90px; transform:translateX(-50%) translateY(20px); z-index:90; padding:12px 20px; border-radius:14px; background:#1A2038; border:1px solid var(--line2); font-weight:700; opacity:0; transition:.3s; pointer-events:none; max-width:90vw; text-align:center}
+#toast.on{opacity:1; transform:translateX(-50%)}
+#reacts{position:fixed; right:30px; bottom:90px; z-index:45; width:100px; height:60vh; pointer-events:none}
+#reacts span{position:absolute; bottom:0; font-size:38px; animation:rise 3s ease-out forwards}
+@keyframes rise{to{transform:translateY(-55vh) scale(1.3); opacity:0}}
+#confetti{position:fixed; inset:0; z-index:95; pointer-events:none}
+#wm{position:fixed; right:18px; bottom:76px; z-index:2; opacity:.16; pointer-events:none}
+#wm img{width:86px; display:block}
+
+/* student phone app */
+#student{display:none}
+body.student{overflow:auto}
+body.student #app, body.student #wm{display:none}
+body.student #student{display:flex; flex-direction:column; min-height:100vh; position:relative; z-index:1}
+.stu-top{position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:10px; padding:12px 16px; background:rgba(6,8,15,.94); border-bottom:1px solid var(--line); backdrop-filter:blur(10px)}
+.stu-top b{font-family:var(--mono); letter-spacing:.14em; font-size:13px; color:var(--cyan)}
+.connst{font-size:12px; color:var(--muted)}
+.stu-body{flex:1; padding:16px; max-width:560px; width:100%; margin:0 auto}
+.stu-card{padding:20px}
+.stu-card label{display:block; font-weight:800; font-size:15px; margin:14px 0 6px}
+.stu-card input,.stu-card textarea{width:100%; padding:13px 14px; border-radius:13px; background:rgba(255,255,255,.06); border:1.5px solid var(--line2); font-size:17px}
+.stu-card textarea{min-height:64px; resize:vertical}
+.stu-wait{text-align:center; padding:50px 10px}
+.stu-wait .bigi{font-size:60px}
+.stu-foot{position:sticky; bottom:0; display:flex; justify-content:center; gap:8px; padding:10px; background:rgba(6,8,15,.94); border-top:1px solid var(--line)}
+.stu-foot button{width:48px; height:48px; border-radius:14px; background:rgba(255,255,255,.06); font-size:24px}
+.stu-prog{display:flex; gap:4px; margin-bottom:12px}
+.stu-prog i{flex:1; height:5px; border-radius:99px; background:rgba(255,255,255,.1)}
+.stu-prog i.d{background:var(--green)} .stu-prog i.c{background:var(--cyan)}
+
+/* responsive */
+@media (max-width:1100px){ .prog .st:not(.cur) .lb2{display:none} .prog .st{padding:6px 9px} }
+@media (max-width:1080px){
+  .two,.two.wl,.two.wr,.hero{grid-template-columns:1fr}
+  .verbs,.flash{grid-template-columns:repeat(2,1fr)} .tfgrid{grid-template-columns:repeat(2,1fr)}
+  .ch3,.sum,.awards,.winners{grid-template-columns:1fr} .sumc.span2{grid-column:auto}
+  .evb{grid-template-columns:repeat(2,1fr)} .tm-grid{grid-template-columns:1fr}
+  .tools .hm .lb{display:none} .brand span{display:none}
+}
+@media (max-width:760px){
+  body{font-size:17px} .wrap{padding:16px 16px 50px}
+  .prog .ar{display:none} .prog{gap:3px} .prog .st{padding:5px 7px} .prog .st .lb2{display:none}
+  .tools .lb{display:none} .navr .lb{display:none} .brand{display:none}
+  .verbs,.flash,.evb,.tfgrid{grid-template-columns:1fr} .cast{grid-template-columns:1fr}
+  #navInfo{font-size:12px} #dock{width:calc(100vw - 32px)} .vbar{grid-template-columns:110px 1fr 40px}
+  .tb{height:40px; min-width:40px; padding:0 9px}
+  .node{width:100%; transform:none} .node .tx{font-size:min(var(--fs),20px)} .board{padding:18px 12px}
+}
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important; transition:none!important} }
+</style>
+</head>
+<body>
+<div id="app">
+  <header id="top">
+    <a class="tb" id="backHub" href="../../" title="Back to the course" aria-label="Back to the course">←</a>
+    <div class="brand"><b>LESSON 18 · REPORTED SPEECH</b><span>Who Actually Said That?</span></div>
+    <div class="tools">
+      <button class="tb hidden" id="tchip" title="Breakout timer">⏱ <span id="tchipT">5:00</span></button>
+      <button class="tb" id="btnEv" title="Evidence board (E)">🗂 <span class="lb">Evidence</span> <span class="badge" id="evCount">0/6</span></button>
+      <button class="tb hm" id="btnMap" title="All screens (M)">🗺️ <span class="lb">Screens</span></button>
+      <button class="tb hm" id="btnRoute" title="Full / Core route">🧭 <span class="lb" id="routeLbl">Full</span></button>
+      <button class="tb" id="btnLive" title="Live Student Mode">📡 <span class="lb">Live</span></button>
+      <button class="tb" id="btnTeacher" title="Teacher Mode (T)">🧑‍🏫 <span class="lb">Teacher</span></button>
+      <button class="tb hm" id="btnFull" title="Full screen (F)" aria-label="Full screen">⛶</button>
+    </div>
+  </header>
+  <div id="progRow"><nav class="prog" id="prog" aria-label="Story progress"></nav></div>
+
+  <main id="stage"><div class="wrap" id="scene"></div></main>
+
+  <footer id="nav">
+    <button class="btn sm" id="btnBack" title="Back (←)">← <span class="lb">Back</span></button>
+    <div id="navMid"><div id="navInfo" aria-live="polite"></div><div id="bar"><i id="barFill"></i></div></div>
+    <div class="navr">
+      <button class="btn sm" id="btnHint" title="Hint (H)">💡 <span class="lb">Hint</span></button>
+      <button class="btn sm" id="btnShow" title="Check / reveal (A)">👁 <span class="lb">Check answer</span></button>
+      <button class="btn sm amber hidden" id="btnSkip" title="Skip optional">⏭ <span class="lb">Skip optional</span></button>
+      <button class="btn sm primary" id="btnNext" title="Continue (→)"><span id="nextLbl">Continue</span> →</button>
+    </div>
+  </footer>
+</div>
+<div id="wm"><img src="../../assets/watermark.png" alt="" onerror="this.parentNode.remove()"></div>
+
+<aside id="teacher" aria-label="Teacher panel" aria-hidden="true">
+  <div class="thd"><span>🧑‍🏫</span><b>TEACHER MODE</b><span class="grow"></span><button class="btn sm ghost" id="tClose" aria-label="Close teacher panel">✕</button></div>
+  <div id="tBody"></div>
+</aside>
+
+<div id="dock" aria-live="polite">
+  <div class="dh"><span class="led" id="dockLed"></span><b id="dockTitle">Room</b><span class="small grow" id="dockCount">0 joined</span><button class="btn sm ghost" id="dockMin" aria-label="Collapse">▾</button></div>
+  <div class="db" id="dockBody"></div>
+</div>
+<div id="reacts"></div>
+<div id="scard" aria-hidden="true"></div>
+<div id="clueFx" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="ringG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#39D8F6"/><stop offset=".6" stop-color="#8D7BFF"/><stop offset="1" stop-color="#FF5470"/></linearGradient></defs></svg>
+<div id="modal" class="hidden" role="dialog" aria-modal="true"><div class="box" id="modalBox"></div></div>
+<div id="toast" role="status"></div>
+<canvas id="confetti"></canvas>
+
+<!-- Student phone app: lesson-18.html?room=1234&role=student  (or lesson-18.html?join) -->
+<div id="student">
+  <div class="stu-top"><span class="led" id="stuLed"></span><b>RUMOUR CONTROL</b><span class="small grow" id="stuRoom"></span><span class="connst" id="stuConn"></span></div>
+  <div class="stu-body" id="stuBody"></div>
+  <div class="stu-foot" id="stuFoot"></div>
+</div>
+
+<script>
+/* ============================================================
+   LESSON 18 · REPORTED SPEECH · "Who Actually Said That?"
+   Один файл, vanilla JS, без збірки. Архітектура як в уроках 15–17:
+   STEPS (екрани) → draw() → Teacher Mode → Live room (Supabase Realtime).
+   ============================================================ */
+const CFG = window.LESSON_CONFIG || {};
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const strip = s => String(s??'').replace(/<[^>]*>/g,'');
+const LET = ['A','B','C','D','E','F'];
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),2600); }
+const mmss = s => { s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+const rand4 = ()=> String(1000+Math.floor(Math.random()*9000));
+const qs = new URLSearchParams(location.search);
+const ROLE = (qs.get('role')==='student' || qs.has('join')) ? 'student' : 'teacher';
+
+/* ---------- 1 · state (autosaved to localStorage) ---------- */
+const KEY = 'lesson18-rumour-v1';
+const FRESH = ()=>({
+  i:0, sd:{}, core:false, sound:true,
+  ev:[],                       // collected clues (evidence board)
+  st:{},                       // story stages marked complete: n -> true
+  teams:4, work:{},            // case letter -> {s1..s4}
+  tdone:{},                    // team presentations complete: letter -> true
+  lv:{},                       // live answers: taskId -> {studentId: value}
+  taps:{},                     // votes the teacher tapped by hand: taskId -> [n...]
+  wall:{},                     // text answers shown on screen: taskId -> [{text, by}]
+  timer:{total:300, left:300, endAt:0},
+  clock:{start:0, acc:0},
+  live:false, room:rand4()
+});
+let S = FRESH();
+try{ const raw=localStorage.getItem(KEY); if(raw) S = Object.assign(FRESH(), JSON.parse(raw)); }catch(e){}
+let saveT=null;
+function save(){ if(ROLE==='student') return; clearTimeout(saveT); saveT=setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} },100); }
+const sd = id => (S.sd[id] = S.sd[id] || {});
+
+/* ---------- 2 · sound (WebAudio, no files) ---------- */
+const SFX = {
+  ctx:null,
+  tone(f,t=.12,type='sine',vol=.07,delay=0){
+    if(!S.sound) return;
+    try{ if(!this.ctx){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return; this.ctx=new C(); }
+      const c=this.ctx, o=c.createOscillator(), g=c.createGain(), t0=c.currentTime+delay;
+      o.type=type; o.frequency.value=f; g.gain.setValueAtTime(vol,t0); g.gain.exponentialRampToValueAtTime(.0001,t0+t);
+      o.connect(g).connect(c.destination); o.start(t0); o.stop(t0+t+.02); }catch(e){}
+  },
+  pop(){ this.tone(660,.09,'triangle',.06); },
+  ping(){ this.tone(1320,.12,'sine',.06); this.tone(1760,.16,'sine',.04,.08); },
+  ok(){ this.tone(740,.1,'sine',.07); this.tone(990,.14,'sine',.07,.09); },
+  no(){ this.tone(220,.18,'sawtooth',.04); },
+  clue(){ [523,659,784,1046].forEach((f,i)=>this.tone(f,.16,'triangle',.06,i*.08)); },
+  bell(){ [0,.35,.7].forEach(d=>{ this.tone(880,.3,'sine',.09,d); this.tone(1320,.25,'sine',.05,d); }); }
+};
+
+/* ---------- 3 · characters ---------- */
+const CHARS = {
+  mia  :{name:'Mia',  photo:'img/mia.webp',  c:'var(--mia)',  role:'Took control of her phone. Now there’s a rumour about her.'},
+  leo  :{name:'Leo',  photo:'img/leo.webp',  c:'var(--leo)',  role:'Mia’s friend. He talked to Max.'},
+  max  :{name:'Max',  photo:'img/max.webp',  c:'var(--max)',  role:'Heard something. Told Nora.'},
+  nora :{name:'Nora', photo:'img/nora.webp', c:'var(--nora)', role:'Posted in another group chat.'},
+  you  :{name:'You',  emo:'🕵️',              c:'var(--amber)', role:'The investigators. Find the truth.'},
+  emma :{name:'Emma', photo:'img/cast/emma.webp',  c:'#FF9F7A'},
+  josh :{name:'Josh', c:'#7FD1FF'},
+  sofia:{name:'Sofia',photo:'img/cast/sofia.webp', c:'#FF8FC7'},
+  ben  :{name:'Ben',  photo:'img/cast/ben.webp',   c:'#7FB2FF'},
+  liz  :{name:'Liz',  photo:'img/cast/liz.webp',   c:'#C8A2FF'},
+  kate :{name:'Kate', photo:'img/cast/kate.webp',  c:'#FFB054'},
+  dan  :{name:'Dan',  photo:'img/cast/dan.webp',   c:'#5BE0C2'},
+  tom  :{name:'Tom',  photo:'img/cast/tom.webp',   c:'#FFD166'},
+  sam  :{name:'Sam',  photo:'img/cast/sam.webp',   c:'#6FA8FF'},
+  zoe  :{name:'Zoe',  photo:'img/cast/zoe.webp',   c:'#FF7A9C'}
+};
+function av(k,size=52){
+  const C=CHARS[k];
+  if(!C) return `<i class="av emo" style="--s:${size}px;--c:#3A4390" aria-hidden="true">${k}</i>`;
+  if(C.emo) return `<i class="av emo" style="--s:${size}px;--c:${C.c}" role="img" aria-label="${C.name}">${C.emo}</i>`;
+  return `<i class="av" style="--s:${size}px;--c:${C.c}" role="img" aria-label="${C.name}">${C.name[0]}${C.photo?`<img src="${C.photo}" alt="" onerror="this.remove()">`:''}</i>`;
+}
+/* one chat bubble. o.me = Mia’s own phone (right side), o.tm = time, o.cls = extra class */
+function msg(k, html, o={}){
+  const C=CHARS[k]||{name:k,c:'#888'};
+  return `<div class="msg ${o.me?'me':''} ${o.late?'late':''}" style="${o.delay?`animation-delay:${o.delay}s`:''}">${o.me?'':av(k,o.size||38)}
+    <div class="bub ${o.cls||''}">${o.me?'':`<span class="who" style="color:${C.c}">${C.name}</span>`}${html}${o.tm?`<span class="tm">${o.tm}</span>`:''}</div></div>`;
+}
+const typing = k => `<div class="msg">${av(k,38)}<div class="bub typing" aria-label="${CHARS[k].name} is typing"><i></i><i></i><i></i></div></div>`;
+
+/* ---------- 4 · lesson content (edit texts here) ---------- */
+const STAGES = [
+  {n:1, e:'📱', t:'Rumour Detected'},
+  {n:2, e:'🔎', t:'First Clue'},
+  {n:3, e:'🧠', t:'Language Decoded'},
+  {n:4, e:'📖', t:'Message Chain Rebuilt'},
+  {n:5, e:'👥', t:'Team Investigation'},
+  {n:6, e:'✅', t:'Case Closed'}
+];
+
+const CLUES = [
+  {id:'c1', k:'CLUE 1 · LEO',   t:'Leo’s real words',        q:'“Mia wants to spend less time online.”',            rp:'Leo said that Mia wanted to spend less time online.'},
+  {id:'c2', k:'CLUE 2 · NORA',  t:'Nora’s voice message',    q:'“I saw the post, but I didn’t share it.”',          rp:'Nora said that she had seen the post but she hadn’t shared it.'},
+  {id:'c3', k:'CLUE 3 · MAX',   t:'Max’s confession',        q:'“I know who started the rumour… It was me.”',      rp:'Max confessed that he had started the rumour.'},
+  {id:'c4', k:'CLUE 4 · MIA',   t:'What Mia actually said',  q:'“I want to use my phone less.”',                    rp:'Mia said that she wanted to use her phone less. She wasn’t quitting social media.'},
+  {id:'c5', k:'CLUE 5 · CHAIN', t:'Where it first changed',  q:'Max misunderstood what Leo had told him.',          rp:'The story first changed between Leo and Max.'},
+  {id:'c6', k:'CLUE 6 · BOARD', t:'The full message chain',  q:'Small statement → misunderstanding → exaggeration → rumour.', rp:'A message can change every time someone reports it.'}
+];
+
+const VOCAB = [
+  {ico:'📳', sit:'Your phone suddenly makes a notification sound.', opts:['go off','pop up','zone out'], a:0,
+   why:'When a phone <b>goes off</b>, it suddenly makes a sound.', ex:'Mia’s phone <b>went off</b> seventeen times this morning.', ua:'go off — задзвонити, раптово подати сигнал'},
+  {ico:'🔔', sit:'You receive a notification.', opts:['binge-watch','get pinged','tune it out'], a:1,
+   why:'<b>Get pinged</b> = get a message or a notification.', ex:'Mia <b>got pinged</b> by the class chat before breakfast.', ua:'get pinged — отримати сповіщення'},
+  {ico:'📺', sit:'You watch many episodes one after another.', opts:['switch off','get pinged','binge-watch'], a:2,
+   why:'<b>Binge-watch</b> = watch a lot of episodes without stopping.', ex:'Leo <b>binge-watched</b> a whole series last weekend.', ua:'binge-watch — дивитися серію за серією'},
+  {ico:'😶', sit:'You stop paying attention because you are looking at your phone.', opts:['zone out','freak out over likes','go off'], a:0,
+   why:'<b>Zone out</b> = stop paying attention to what is around you.', ex:'Max <b>zoned out</b> in class and missed the homework.', ua:'zone out — «відключитися», перестати зважати'},
+  {ico:'📢', sit:'You stop listening to annoying ads.', opts:['pop up','stay plugged in','tune them out'], a:2,
+   why:'<b>Tune something out</b> = stop listening to it, so you don’t notice it.', ex:'Mia <b>tunes out</b> ads now. She doesn’t even hear them.', ua:'tune (them) out — перестати слухати, не помічати'},
+  {ico:'💬', sit:'Something suddenly appears on your screen.', opts:['switch off','pop up','get sucked in'], a:1,
+   why:'When something <b>pops up</b>, it suddenly appears.', ex:'A new message <b>popped up</b>: “Is this true?”', ua:'pop up — раптово зʼявитися'},
+  {ico:'🌙', sit:'You stop using your phone for a while.', opts:['switch off','zone out','get pinged'], a:0,
+   why:'<b>Switch off</b> = stop using screens and relax.', ex:'Mia wanted to <b>switch off</b> for a while.', ua:'switch off — відключитися, відпочити від гаджетів'},
+  {ico:'❤️', sit:'You become very worried about how many likes you get.', opts:['turn it into content','mute ads','freak out over likes'], a:2,
+   why:'<b>Freak out over likes</b> = get very worried about likes.', ex:'Nora said she sometimes <b>freaked out over likes</b>.', ua:'freak out over likes — дуже переживати через лайки'}
+];
+const FLASH = [
+  ['stay plugged in','stay online and connected all the time','бути постійно онлайн'],
+  ['scroll guilt','feeling bad after you scroll for too long','провина після довгого скролінгу'],
+  ['plugged it','promoted it — said good things so people buy or watch it','прорекламував(-ла) це'],
+  ['turn it into content','make a post or a video about it','зробити з цього контент'],
+  ['mute ads','turn off the sound of ads','вимкнути звук реклами'],
+  ['get inside your head','make you think about it again and again','засісти в голові'],
+  ['get sucked in','start watching and you can’t stop','затягнути (не можеш зупинитися)'],
+  ['switch it off','turn the device off','вимкнути (пристрій)']
+];
+
+const GUIDE = [
+  {q:'Did “wants” stay the same?', o:['Yes','No'], a:1},
+  {q:'What did it change to?', o:['wanting','wanted','will want'], a:1},
+  {q:'Are we repeating the exact words?', o:['Yes','No'], a:1},
+  {q:'Are we reporting something that was said earlier?', o:['Yes','No'], a:0}
+];
+
+const MACHINE = [
+  {from:'Present Simple', to:'Past Simple', who:'mia', d:'“I feel tired.”', r:'She said that she {felt} tired.', gap:'She said that she ___ tired.', opts:['feels','felt','has felt'], a:1},
+  {from:'Present Continuous', to:'Past Continuous', who:'leo', d:'“I am scrolling too much.”', r:'He said that he {was scrolling} too much.', gap:'He said that he ___ too much.', opts:['was scrolling','is scrolling','scrolls'], a:0},
+  {from:'Past Simple', to:'Past Perfect', who:'nora', d:'“I deleted the app.”', r:'She said that she {had deleted} the app.', gap:'She said that she ___ the app.', opts:['deleted','has deleted','had deleted'], a:2},
+  {from:'Present Perfect', to:'Past Perfect', who:'max', d:'“I have finished my homework.”', r:'He said that he {had finished} his homework.', gap:'He said that he ___ his homework.', opts:['had finished','has finished','finishes'], a:0},
+  {from:'will', to:'would', who:'leo', d:'“I will switch it off.”', r:'He said that he {would} switch it off.', gap:'He said that he ___ switch it off.', opts:['will','would','did'], a:1},
+  {from:'can', to:'could', who:'mia', d:'“I can ignore the notifications.”', r:'She said that she {could} ignore the notifications.', gap:'She said that she ___ ignore the notifications.', opts:['could','can','is able'], a:0}
+];
+const mach = s => esc(s).replace(/\{([^}]*)\}/g,'<span class="v">$1</span>');
+
+const ELSE_TASK = {q:'Mia: “I will post it here tomorrow.” Choose the correct reported version.',
+  opts:['Mia said she will post it here tomorrow.','Mia said she would post it there the next day.','Mia said I would post it there tomorrow.'], a:1};
+
+const FIX = [
+  {who:'max',  quote:'I am reading the messages.', opts:['Max said that he is reading the messages.','Max said that he was reading the messages.','Max said that he read the messages.'], a:1, why:'am reading → <b>was reading</b> (Present Continuous → Past Continuous).'},
+  {who:'nora', quote:'I have seen the screenshot.', opts:['Nora said that she had seen the screenshot.','Nora said that she has seen the screenshot.','Nora said that I had seen the screenshot.'], a:0, why:'have seen → <b>had seen</b>, and I → <b>she</b>.'},
+  {who:'leo',  quote:'I will talk to Max tomorrow.', opts:['Leo said that he will talk to Max tomorrow.','Leo said that he would talk to Max tomorrow.','Leo said that he would talk to Max the next day.'], a:2, why:'will → <b>would</b>, tomorrow → <b>the next day</b>.'},
+  {who:'mia',  quote:'I don’t want any drama.', opts:['Mia said that she didn’t want any drama.','Mia said that she doesn’t want any drama.','Mia said that she hadn’t want any drama.'], a:0, why:'don’t want → <b>didn’t want</b> (Present Simple → Past Simple).'}
+];
+
+const GAPS2 = [
+  {o:['saw','had seen','has seen'], a:1},
+  {o:['didn’t share','hadn’t shared','doesn’t share'], a:1}
+];
+
+const VERBS = [
+  {v:'said',      e:'💬', c:'#9AB4FF', def:'tells us someone’s words', ex:'Leo {said} that Mia wanted a break.', ua:'сказав(-ла)'},
+  {v:'admitted',  e:'😬', c:'#FFC14D', def:'said that something was true, often something uncomfortable or wrong', ex:'Max {admitted} that he had shared the screenshot.', ua:'визнав(-ла)'},
+  {v:'claimed',   e:'🤔', c:'#C8A2FF', def:'said something was true, but we are not sure if it really was', ex:'Nora {claimed} that everyone knew about it.', ua:'стверджував(-ла) (але це може бути неправдою)'},
+  {v:'warned',    e:'⚠️', c:'#FF8A5B', def:'told someone about a possible danger or problem', ex:'Mia {warned} them that rumours could spread quickly.', ua:'попередив(-ла)'},
+  {v:'confessed', e:'🤫', c:'#FF5470', def:'admitted something secret or wrong', ex:'Leo {confessed} that he had sent the screenshot first.', ua:'зізнався(-лася)'},
+  {v:'insisted',  e:'✊', c:'#39D8F6', def:'said strongly that something was true', ex:'Nora {insisted} that she hadn’t changed the message.', ua:'наполягав(-ла)'},
+  {v:'denied',    e:'🙅', c:'#36E09B', def:'said that something was NOT true', ex:'Mia {denied} that she wanted everyone to delete social media.', ua:'заперечив(-ла)'}
+];
+const vex = (s,c) => esc(s).replace(/\{([^}]*)\}/g,`<b style="color:${c}">$1</b>`);
+
+const WHO = [
+  {who:'leo',  quote:'Okay… I shared the screenshot.', opts:['admitted','warned','denied'], a:0, why:'He accepted that he had done it.', rp:'Leo admitted that he had shared the screenshot.'},
+  {who:'mia',  quote:'No! I didn’t write that message!', opts:['confessed','denied','claimed'], a:1, why:'She said it wasn’t true.', rp:'Mia denied that she had written that message.'},
+  {who:'max',  quote:'Trust me. This happened exactly like I said.', opts:['warned','admitted','insisted'], a:2, why:'He strongly said his version was true.', rp:'Max insisted that it had happened exactly like he said.'},
+  {who:'nora', quote:'Don’t repost it. This could really hurt someone.', opts:['warned','denied','insisted'], a:0, why:'She told them about a possible bad result.', rp:'Nora warned them that it could really hurt someone.'},
+  {who:'max',  quote:'I know who started the rumour… It was me.', opts:['claimed','said','confessed'], a:2, why:'He revealed something wrong or secret.', rp:'Max confessed that he had started the rumour.'}
+];
+
+/* reading — the text is split into 5 short chunks; {g|word|meaning} = glossary word (Hint shows it) */
+const READ = [
+  {ix:'🍽️', t:'At lunch, Mia told Leo that she wanted to use her phone less during the week. She said she sometimes {g|got sucked into|started watching and couldn’t stop} short videos and {g|lost track of time|forgot what time it was}. She also said she would keep using social media, but she wanted to control it better.',
+   vis:()=>`<span class="mini gr">${av('mia',26)} “I want to use my phone less.”</span>`},
+  {ix:'🔁', t:'Later, Leo told Max that Mia wanted to spend less time online. Max {g|misunderstood|understood it in the wrong way} him. He told Nora that Mia was tired of social media and might delete some apps.',
+   vis:()=>`<span class="mini">${av('leo',26)} → ${av('max',26)} → ${av('nora',26)}</span><span class="mini rd">“might delete some apps” 🤔</span>`},
+  {ix:'📸', t:'Nora then wrote in another group chat that Mia was “quitting social media.” Someone took a screenshot and sent it to another student. {g|Within twenty minutes|in less than twenty minutes}, the story had changed again. Now people were claiming that Mia wanted everyone in the class to stop using social media.',
+   vis:()=>`<span class="mini rd">📸 “Mia is QUITTING social media 😱”</span><span class="mini">⏱ 20 min later</span><span class="mini rd">🌐 “Mia wants EVERYONE to stop!”</span>`},
+  {ix:'🙅', t:'When Mia finally saw the messages, she denied saying any of those things. Leo admitted that he had spoken to Max, but insisted that he had never said Mia was deleting her accounts. Max confessed that he had misunderstood Leo’s message.',
+   vis:()=>`<span class="mini">${av('mia',26)} denied</span><span class="mini">${av('leo',26)} admitted · insisted</span><span class="mini">${av('max',26)} confessed</span>`},
+  {ix:'💡', t:'In the end, the rumour wasn’t started by one big lie. It grew because several people reported someone else’s words without checking what the person had actually said.',
+   vis:()=>`<span class="mini gr">✅ Check before you report.</span>`}
+];
+const readPlain = s => s.replace(/\{g\|([^|}]*)\|[^}]*\}/g,'$1');
+const readHTML = (s,gl) => esc(s).replace(/\{g\|([^|}]*)\|([^}]*)\}/g,(m,a,b)=> gl?`<span class="gl" title="${b}">${a}</span>`:a);
+
+const RQ = [
+  {q:'What did Mia actually say?', opts:['She was quitting social media.','She wanted to use her phone less, but she wasn’t quitting social media.','She wanted everyone to stop using social media.'], a:1,
+   why:'She wanted to use her phone less — but she was <b>not</b> quitting social media.'},
+  {q:'Where did the message first change?', opts:['When Mia talked to Leo at lunch.','When Max misunderstood what Leo had told him.','When someone took a screenshot.'], a:1,
+   why:'Leo reported it correctly. Max <b>misunderstood</b> him.'},
+  {q:'Did one person create one huge lie?', opts:['Yes. Nora invented the whole story.','Yes. Max lied on purpose.','No. The story changed little by little.'], a:2,
+   why:'No. Several people changed it <b>little by little</b>.'}
+];
+
+/* Find the reported speech: [[id|text]] = clickable target */
+const FIND_TEXT = [
+  'At lunch, Mia told Leo that she wanted to use her phone less during the week. [[f1|She said]] she sometimes got sucked into short videos and lost track of time. She also said she would keep using social media, but she wanted to control it better.',
+  'Later, Leo told Max that Mia wanted to spend less time online. Max misunderstood him. He told Nora that Mia was tired of social media and might delete some apps.',
+  'Nora then wrote in another group chat that Mia was “quitting social media.” Someone took a screenshot and sent it to another student. Within twenty minutes, the story had changed again. Now [[f2|people were claiming]] that Mia wanted everyone in the class to stop using social media.',
+  'When Mia finally saw the messages, [[f3|she denied]] saying any of those things. [[f4|Leo admitted]] that he had spoken to Max, but [[f5|insisted]] that he had never said Mia was deleting her accounts. [[f6|Max confessed]] that he had misunderstood Leo’s message.'
+];
+const FIND = [['f1','she said…'],['f2','people were claiming…'],['f3','Mia denied…'],['f4','Leo admitted…'],['f5','Leo insisted…'],['f6','Max confessed…']];
+
+const CHAIN = [
+  {who:'mia',  t:'“I want to use my phone less.”',                 st:'SMALL STATEMENT', w:60,  fs:19, rot:-1,   col:'#36E09B'},
+  {who:'leo',  t:'“Mia wants to spend less time online.”',          st:'STILL TRUE ✓',    w:68,  fs:20, rot:1.2,  col:'#9AB4FF', link:'REPORTED'},
+  {who:'max',  t:'“Maybe Mia wants to delete some apps.”',          st:'MISUNDERSTANDING', w:78, fs:22, rot:-1.6, col:'#FFC14D', link:'MISUNDERSTOOD'},
+  {who:'nora', t:'“I heard Mia is quitting social media.”',         st:'EXAGGERATION',    w:88,  fs:25, rot:2,    col:'#FF8A5B', link:'EXAGGERATED'},
+  {who:'🌐',   t:'“MIA WANTS EVERYONE TO DELETE SOCIAL MEDIA.”',    st:'ONLINE RUMOUR',   w:100, fs:31, rot:-2.2, col:'#FF5470', link:'SHARED ×100', rumour:true}
+];
+
+const FU_LBL = ['WHY?','GIVE AN EXAMPLE','WHAT WOULD YOU DO?','TELL US MORE'];
+const SPEAK = [
+  {q:'If a friend told you something surprising about another person, would you believe it immediately?', sample:'No. I would probably ask the person first.',
+   fu:['Why would you believe it — or not believe it?','Can you give an example of a surprising story you heard?','What would you do first: ask the person, ask other friends, or ignore it?','Does it depend on who tells you? Why?'],
+   ua:'Якби друг розповів тобі щось несподіване про іншу людину, ти б одразу повірив(-ла)?'},
+  {q:'Have you ever heard a story that changed after people repeated it?', sample:'Yes. Sometimes people add details that weren’t in the original story.',
+   fu:['Why do you think the story changed?','What was the original story? What did it become?','What would you do if a changed story was about you?','Who changed it — one person or many people?'], opt:true,
+   ua:'Ти колись чув(-ла) історію, яка змінилася після того, як її переказали?'},
+  {q:'Why do rumours spread so quickly online?', sample:'Because people share things without checking them.',
+   fu:['Why do people share things before they check them?','Can you think of an example from a chat, TikTok or YouTube?','What would you do before you repost something?','Are screenshots always true? Why or why not?'],
+   ua:'Чому чутки так швидко поширюються в інтернеті?'},
+  {q:'Which is worse: changing someone’s words by accident or doing it on purpose?', sample:'Doing it on purpose is worse because you know the information isn’t true.',
+   fu:['Why is it worse?','Can you give an example of each?','What would you do if you changed someone’s words by accident?','Should people say sorry in both cases?'], opt:true,
+   ua:'Що гірше: змінити чиїсь слова випадково чи навмисно?'}
+];
+const STARTERS = ['My friend said that…','I heard that…','Someone claimed that…','I would ask… first.'];
+
+const MISSION_STEPS = ['Read the <b>4 messages</b>.','Decide <b>what really happened</b>.','Prepare <b>3–4 sentences</b> using Reported Speech.','Use at least <b>TWO reporting verbs</b>.','Choose <b>ONE person</b> who will present your report.','Your presentation: about <b>30–45 seconds</b>.'];
+const EXAMPLE = {
+  msgs:[['emma','I can’t come to the party tonight.'],['josh','Emma told me she’s tired.'],['emma','I finished a huge project yesterday.'],['josh','Don’t keep messaging her. She needs some rest.']],
+  report:['Emma <b>said</b> that she couldn’t come to the party.','She <b>said</b> that she had finished a huge project the day before.','Josh <b>said</b> that she was tired.','He <b>warned</b> the others not to keep messaging her.']
+};
+const CASES = {
+  A:{e:'🎉', t:'The Cancelled Party', rumour:'“Sofia is angry with us. That’s why she isn’t coming!”',
+     msgs:[['sofia','I can’t come to the party on Saturday.'],['sofia','I’m not angry with anyone. I’m just exhausted after a really hard week.'],['ben','She had three tests and a project this week.'],['ben','Don’t send her angry messages. She needs to sleep.']],
+     report:['Sofia <b>said</b> that she couldn’t come to the party on Saturday.','She <b>denied</b> that she was angry with anyone.','She <b>said</b> that she was just exhausted after a really hard week.','Ben <b>said</b> that she had had three tests and a project.','He <b>warned</b> everyone not to send her angry messages.']},
+  B:{e:'📱', t:'The Deleted Post', rumour:'“Liz’s parents made her delete her post!”',
+     msgs:[['liz','I deleted my post last night.'],['kate','Her parents forced her to delete it! I know it!'],['liz','Nobody forced me. I just didn’t like the photo anymore.'],['liz','I will post a better one tomorrow.']],
+     report:['Liz <b>said</b> that she had deleted her post.','Kate <b>claimed</b> that Liz’s parents had forced her to delete it.','Liz <b>denied</b> that anyone had forced her.','She <b>said</b> that she hadn’t liked the photo anymore.','She <b>said</b> that she would post a better one the next day.']},
+  C:{e:'📚', t:'The Missing Homework', rumour:'“Dan didn’t do his homework again. He’s so lazy!”',
+     msgs:[['tom','Dan forgot his homework again. He’s so lazy.'],['dan','I did the homework! I finished it on Sunday.'],['dan','Oh no… I sent the wrong file. I sent my music playlist! 🎧'],['tom','Okay, I was wrong. Sorry, Dan.']],
+     report:['Tom <b>claimed</b> that Dan had forgotten his homework again.','Dan <b>insisted</b> that he had done the homework.','He <b>said</b> that he had finished it on Sunday.','He <b>admitted</b> that he had sent the wrong file.','Tom <b>admitted</b> that he had been wrong.']},
+  D:{e:'🎮', t:'The Gaming Drama', rumour:'“Sam left the team after a huge argument!”',
+     msgs:[['zoe','Sam left our team in the middle of the match. I think he’s angry with us.'],['sam','I’m not angry! My internet stopped working.'],['sam','It’s working now. I can play again.'],['zoe','Don’t believe everything in the chat, guys!']],
+     report:['Zoe <b>claimed</b> that Sam was angry with the team.','Sam <b>denied</b> that he was angry.','He <b>said</b> that his internet had stopped working.','He <b>said</b> that he could play again.','Zoe <b>warned</b> everyone not to believe everything in the chat.']}
+};
+const CASE_L = ['A','B','C','D'];
+const TEAMS = ()=> CASE_L.slice(0,S.teams).map((L,i)=>({L, n:i+1, e:CASES[L].e, name:'Team '+(i+1)+' · Case '+L}));
+const AWARDS = [['🕵️','Most Accurate'],['🎤','Clearest Explanation'],['🧠','Best Use of Reporting Verbs']];
+const VERB_BANK = ['said','admitted','claimed','warned','confessed','insisted','denied'];
+
+const FINAL = [
+  ['mia','So I didn’t say social media was destroying our lives?'],
+  ['leo','Nope.'],
+  ['mia','And I didn’t tell everyone to delete TikTok?'],
+  ['leo','Definitely nope. 😂'],
+  ['mia','Good. Because deleting my account wasn’t even the plan.'],
+  ['leo','It’s actually kind of scary how one normal sentence turned into all of that.'],
+  ['mia','Maybe before we report what someone said… we should make sure they actually said it.']
+];
+
+/* ---------- 5 · helpers ---------- */
+function sceneHead(s){
+  const st=STAGES[s.sc-1];
+  return `<div class="shead"><div class="grow"><div class="file">FILE ${String(s.file).padStart(2,'0')} · ${st.e} ${esc(st.t.toUpperCase())}</div>
+    <h1 class="${s.long?'long':''}">${s.title}</h1>
+    ${s.opt||s.chip?`<div class="meta">${s.opt?'<span class="tag opt">⏭ Optional — skip if short on time</span>':''}${s.chip?`<span class="tag cy">${s.chip}</span>`:''}</div>`:''}</div></div>`;
+}
+function counts(id,n){ const out=Array(n).fill(0); Object.values(S.lv[id]||{}).forEach(v=>{ if(Number.isInteger(v)&&v>=0&&v<n) out[v]++; }); const t=S.taps[id]||[]; return out.map((c,i)=>c+(t[i]||0)); }
+function wallHTML(id){ const w=S.wall[id]||[]; return w.length?`<div class="wall">${w.map(x=>`<div class="w">${esc(x.text)}<small>${esc(x.by)}</small></div>`).join('')}</div>`:''; }
+const FX = new Set();
+const fx = k => FX.has(k) ? 'fx' : '';
+let LOOPS = [];
+function loop(fn, ms){ LOOPS.push(setInterval(fn, ms)); }
+function later(fn, ms){ LOOPS.push(setTimeout(fn, ms)); }
+function burst(el, set=['✨','⭐','💥','✨']){
+  if(!el || REDUCED) return; const r=el.getBoundingClientRect();
+  for(let i=0;i<10;i++){ const s=document.createElement('span'); s.textContent=set[i%set.length];
+    s.style.cssText=`position:fixed;left:${r.left+r.width/2}px;top:${r.top+r.height/2}px;z-index:96;pointer-events:none;font-size:${18+Math.random()*16}px;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .9s`;
+    document.body.appendChild(s); const a=Math.random()*Math.PI*2, d=60+Math.random()*90;
+    requestAnimationFrame(()=>{ s.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) rotate(${Math.random()*180}deg)`; s.style.opacity='0'; });
+    setTimeout(()=>s.remove(),950); }
+}
+function hintBox(d, html){ return d.hint?`<div class="hintbox pop-in">💡 ${html}</div>`:''; }
+function starters(list){ return list.map(s=>`<b>${esc(s)}</b>`).join(' · '); }
+const norm = s => String(s||'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/[^a-z' ]+/g,' ').replace(/'/g,'').replace(/\s+/g,' ').trim();
+const has = (val, ...alts) => { const n=' '+norm(val)+' '; return alts.some(a=>n.includes(' '+norm(a)+' ')); };
+/* auto-check for phone text answers (null = no check) */
+const CHECKS = {
+  what : v => has(v,'she wanted') && has(v,'her phone','her') ,
+  clue2: v => has(v,'had seen') && has(v,'hadnt shared','had not shared')
+};
+
+/* options list for decks / tasks. key = state slot, n = vote counts */
+function optsHTML(key, opts, d, right, cls=''){
+  const shown=(d.shown||{})[key], pick=(d.pick||{})[key], n=counts(key, opts.length);
+  return `<div class="opts ${cls}">${opts.map((o,i)=>{
+    let c=''; if(shown){ c = i===right ? 'right '+fx('reveal') : (pick===i ? 'wrongpick' : 'dim'); } else if(pick===i) c='pick';
+    return `<button class="opt ${c}" data-pick="${key}" data-i="${i}"><span class="L">${LET[i]}</span><span>${o}</span><span class="n">${n[i]||''}</span></button>`; }).join('')}</div>`;
+}
+function bindPicks(root, d){
+  $$('[data-pick]',root).forEach(b=>b.onclick=()=>{ const k=b.dataset.pick; if((d.shown||{})[k]) return; d.pick=d.pick||{}; d.pick[k]= d.pick[k]===+b.dataset.i ? undefined : +b.dataset.i; save(); SFX.pop(); draw(false,true); });
+}
+function revealBurst(root){ if(FX.has('reveal')){ const r=$('.opt.right',root); if(r) setTimeout(()=>burst(r),60); } }
+
+/* a quick multiple-choice deck: one item per part (vocab, extra task, who said it, reading questions) */
+function deckStep(c){
+  const items=c.items;
+  const P = d => Math.min(d.p||0, items.length-1);
+  return Object.assign({
+    parts:()=>items.length,
+    render(d){
+      const p=P(d), it=items[p], key=c.id+'-'+p, shown=(d.shown||{})[key];
+      return `<div class="deckbar"><span class="kick">${c.kicker||''}</span><span class="grow"></span>
+        <div class="cdots">${items.map((x,i)=>`<button data-card="${i}" class="${i===p?'cur':''} ${(d.shown||{})[c.id+'-'+i]?'done':''}" aria-label="Item ${i+1}">${i+1}</button>`).join('')}</div></div>
+        <div class="two">
+          <div class="${fx('part')||fx('enter')?'pop-in':''}">${c.left(it,p)}</div>
+          <div><div class="mid" style="margin-bottom:12px">${c.q(it,p)}</div>
+            ${optsHTML(key, it.opts.map(o=>esc(o)), d, it.a, c.chips?'chips':'')}
+            ${hintBox(d, c.hintTxt?c.hintTxt(it):'Read it again. Which option fits best?')}
+            ${shown?`<div class="explain stamp">${c.explain(it)}</div>`:`<div class="row mt"><button class="btn primary caps" data-act="reveal">Check answer</button><span class="small">Say your answer first.</span></div>`}
+          </div></div>`;
+    },
+    bind(root,d){
+      bindPicks(root,d); revealBurst(root);
+      $$('[data-card]',root).forEach(b=>b.onclick=()=>{ d.p=+b.dataset.card; d.hint=false; FX.add('part'); save(); draw(false,true); });
+    },
+    hint(d){ d.hint=!d.hint; },
+    reveal(d){ const p=P(d), key=c.id+'-'+p; d.shown=d.shown||{}; d.shown[key]=!d.shown[key];
+      if(d.shown[key]){ const ok=(d.pick||{})[key]; (ok===undefined||ok===items[p].a)?SFX.ok():SFX.no(); c.onShow&&c.onShow(p,d); } },
+    revealLbl:'Check answer',
+    onPart(d){ d.hint=false; },
+    nextLbl(d){ return P(d)<items.length-1 ? (c.nextWord||'Next') : null; },
+    live(){ const d=sd(c.id), p=P(d), it=items[p], key=c.id+'-'+p, sh=(d.shown||{})[key];
+      return {kind:'choice', id:key, q:strip(c.liveQ?c.liveQ(it):c.q(it,p)), opts:it.opts, lock:!!sh, correct:sh?it.a:null}; }
+  }, c);
+}
+
+/* ---------- 6 · steps ----------
+   Кожен крок: id, sc (етап історії 1–6), file (номер сторінки брифу), name, min, opt,
+   parts() (скільки натискань Continue всередині екрана), render(d), bind(root,d),
+   hint(d)/reveal(d) (кнопки внизу), live() (завдання на телефони),
+   say / note / ans / ua (Teacher Mode). */
+const STEPS = [];
+
+/* 0 · title */
+STEPS.push({
+  id:'title', sc:1, file:0, name:'Title + the cast', min:.5, title:'',
+  say:'Today you are investigators. A rumour is spreading about Mia. Your job: find out who actually said what.',
+  note:'Титульний екран. Коротко представте героїв: Мія, Лео, Макс, Нора. Учні — слідчі. Continue → «Previously…».',
+  ans:['—'],
+  render(){
+    return `<div class="hero">
+      <div><div class="kick">ADVANCED KIDS · LESSON 18</div>
+        <h1 class="mt">Who <em>Actually</em><br>Said That?</h1>
+        <div class="sub">A REPORTED SPEECH MYSTERY</div>
+        <p class="mid mt2" style="color:#D6DAF0;max-width:560px">A rumour about Mia is spreading in the class chat. Every time someone repeats it, it changes. Your job: find the truth.</p>
+        <div class="row mt2"><button class="btn primary caps pulse" data-act="next">🔎 Open the case</button><span class="small">≈ 35 min · 6 stages · 6 clues</span></div>
+      </div>
+      <div class="casefile"><div class="scan"></div>
+        <div class="kick" style="color:var(--red)">CASE #18 · THE RUMOUR</div>
+        <div class="cast mt ${FX.has('enter')?'stagger':''}">${['mia','leo','max','nora'].map(k=>`<div class="castc">${av(k,58)}<div><b>${CHARS[k].name}</b><span>${esc(CHARS[k].role)}</span></div></div>`).join('')}</div>
+        <div class="castc mt" style="border-color:rgba(255,193,77,.45)">${av('you',58)}<div><b>You</b><span>${esc(CHARS.you.role)}</span></div></div>
+      </div></div>`;
+  }
+});
+/* PAGE 1 · Previously… */
+STEPS.push({
+  id:'prev', sc:1, file:1, name:'Previously…', min:.5, title:'Previously…',
+  say:'Yesterday, Mia finally took control of her phone. For once, her phone was quiet… until this morning.',
+  note:'Попросіть учня прочитати текст. Continue відкриває «Until this morning» і 17 нових повідомлень.',
+  ans:['Нагадування уроку 17: Мія вимкнула сповіщення, увімкнула study mode, ліміт 30 хв, вимкнула autoplay.'],
+  parts:()=>2,
+  nextLbl:d=> (d.p||0)===0 ? 'Continue' : 'Open the chat',
+  render(d){
+    const p=d.p||0;
+    return `<div class="two wl">
+      <div>
+        <p class="mid">Yesterday, Mia finally took control of her phone.</p>
+        <div class="stl ${FX.has('enter')?'stagger':''}">
+          <div>🔕 <span>Notifications</span><b>MUTED</b></div><div>📚 <span>Study Mode</span><b>ON</b></div>
+          <div>⏱️ <span>Screen Limit</span><b>30 MIN</b></div><div>▶️ <span>Autoplay</span><b>OFF</b></div></div>
+        <div class="quiet">For once, her phone was quiet.</div>
+        ${p===0?`<button class="btn primary caps mt2" data-act="next">Continue</button>`:
+         `<div class="until mt pop-in">Until this morning.</div>
+          <div class="bigcount pop-in" style="animation-delay:.5s"><div class="ringer">📱</div><div class="n" id="cnt">0</div><div><b>NEW MESSAGES</b><div style="font-weight:800;font-size:20px">Class Group Chat · 8-B</div></div></div>`}
+      </div>
+      <div class="phone ${p===1?'buzz':''}"><div class="scr" style="background:radial-gradient(circle at 50% 20%,#1B2350,#0A0D18 70%)">
+        <div class="sbar"><span>07:0${p?'3':'0'}</span><span>${p?'📶 🔋':'🔕 📶 🔋'}</span></div>
+        <div class="center" style="margin-top:40px"><div class="dsp" style="font-size:72px">07:0${p?'3':'0'}</div><div class="small">Tuesday · ${p?'Study Mode ON':'Study Mode ON · all quiet'}</div></div>
+        ${p===0?`<div class="center" style="margin-top:60px;font-size:54px;opacity:.6">🔕</div><div class="center small">No notifications</div>`
+        :`<div id="nstack">${[['Max','I heard Mia said social media was…'],['Nora','Guys… is this true? 😳'],['Class Group Chat · 8-B','15 more messages']].map((n,i)=>`<div class="notif drop" style="animation-delay:${.6+i*.45}s"><div class="ic">💬</div><div><b>${n[0]}</b><span>${esc(n[1])}</span></div></div>`).join('')}</div>`}
+      </div></div></div>`;
+  },
+  bind(root,d){
+    if((d.p||0)===1){ const el=$('#cnt'); let n=0; if(REDUCED||!FX.has('part')){ el.textContent='17'; return; }
+      later(()=>{ loop(()=>{ if(n<17){ n++; el.textContent=n; if(n%4===1) SFX.ping(); } },70); },600); }
+  }
+});
+/* PAGE 2 · The message */
+const CHAT2 = [['nora','Guys… is this true? 😳','07:01'],['max','I heard Mia said social media was ruining everyone’s life.','07:01'],['nora','Leo claimed she was going to delete all her accounts.','07:02'],['max','Someone also said she had warned everyone to stop using TikTok. 💀','07:02'],['mia','WHAT?! I never said that. 😭','07:03']];
+STEPS.push({
+  id:'chat', sc:1, file:2, name:'The group chat', min:1, title:'The Message',
+  say:'Read the group chat. What are people saying about Mia?',
+  note:'Учні по черзі читають повідомлення (Continue = наступне). Звернути увагу: I heard… / Leo claimed… / Someone said… — люди переказують чужі слова. Після 5-го повідомлення — заголовок і місія. Можна запустити голосування з телефонів.',
+  ans:['Чутка: Мія нібито сказала, що соцмережі руйнують життя, що видалить усі акаунти й закликала всіх перестати користуватися TikTok.'],
+  parts:()=>CHAT2.length+1,
+  nextLbl:d=>{ const p=d.p||0; return p<CHAT2.length-1?'Next message':p===CHAT2.length-1?'Reveal the case':'Start investigation'; },
+  hint(d){ d.hint=!d.hint; },
+  render(d){
+    const p=d.p||0, n=Math.min(p+1,CHAT2.length), anim=FX.has('part')||FX.has('enter');
+    const msgs=CHAT2.slice(0,n).map((m,i)=>{ const last=i===n-1&&anim&&p<CHAT2.length;
+      return (last&&!REDUCED?`<div class="tgone">${typing(m[0])}</div>`:'')+msg(m[0], esc(m[1]).replace(/(I heard|claimed|said|warned)/g,d.hint?'<span class="hla">$1</span>':'$1'), {tm:m[2], late:last, delay:last&&!REDUCED?.7:0, cls:m[0]==='mia'?'alert':''}); }).join('');
+    const right = p<CHAT2.length
+      ? `<div class="card cy"><span class="tag cy">📱 Class chat · 07:01</span><p class="mid mt">Read the messages.</p><p class="big" style="margin:4px 0 0">What is the rumour about Mia?</p>
+         ${hintBox(d,'Find the words people use to <b>report</b> other people: <b>I heard</b> · <b>claimed</b> · <b>said</b> · <b>warned</b>')}</div>
+         <div class="row mt">${av('mia',72)}<div class="small" style="max-width:320px">Mia muted almost everything yesterday. Only the class chat could still ping her…</div></div>`
+      : `<div class="pop-in"><div class="wsw">Who <span>actually</span><br>said what?</div>
+          <p class="mid mt" style="color:#D6DAF0">Somewhere between the original conversation and this group chat, the story changed.</p>
+          <div class="kick mt2" style="color:var(--red)">CLASS MISSION</div>
+          <ol class="mission"><li>Find the original statements.</li><li>Discover what changed.</li><li>Stop the rumour before it spreads.</li></ol>
+          <button class="btn red caps mt2 pulse" data-act="next">🔎 Start investigation</button></div>`;
+    return `<div class="two">
+      <div class="phone"><div class="scr"><div class="sbar"><span>07:03</span><span>📶 🔋</span></div>
+        <div class="cbar"><i class="av emo" style="--s:42px;--c:#4F46E5">🏫</i><div><b>Class Group Chat · 8-B</b><small>Nora, Max, Leo, Mia +22</small></div></div>
+        <div class="chat"><div class="daysep">TODAY</div>${msgs}</div></div></div>
+      <div>${right}</div></div>`;
+  },
+  bind(root,d){ $$('.tgone',root).forEach(t=>later(()=>t.remove(),700)); if((d.p||0)<CHAT2.length && (FX.has('part')||FX.has('enter'))) later(()=>SFX.ping(),700); },
+  live(){ const p=sd('chat').p||0; return p>=CHAT2.length-1 ? {kind:'choice', id:'believe', q:'Do you believe the rumour about Mia?', opts:['Yes, probably','No','Not sure — we need to check']} : null; }
+});
+/* PAGE 3 · Quick vocabulary reboot */
+STEPS.push(deckStep({
+  id:'vocab', sc:1, file:3, name:'Quick vocabulary reboot · 8 situations', min:2, title:'Quick Vocabulary Reboot', chip:'⚡ 2–4 minutes · Lesson 17 words',
+  kicker:'CHOOSE THE EXPRESSION', items:VOCAB, nextWord:'Next situation',
+  say:'Quick reboot! Read the situation. Which expression fits?',
+  note:'Швидко, 15–20 секунд на ситуацію. Учні кажуть відповідь (або голосують з телефонів) → Check answer → пояснення й приклад з історії Мії. Не затримуйтеся.',
+  get ans(){ return VOCAB.map((v,i)=>`${i+1}. ${v.opts[v.a]}`); },
+  get ua(){ return VOCAB.map((v,i)=>`${i+1}. ${v.ua}`); },
+  left:(it,p)=>`<div class="sit"><span class="num">${p+1}</span><div class="ico">${it.ico}</div><p>${esc(it.sit)}</p></div>`,
+  q:()=> 'Which expression fits?',
+  liveQ:it=>it.sit+' — which expression fits?',
+  hintTxt:it=>`It has <b>${it.opts[it.a].split(' ').length}</b> word${it.opts[it.a].split(' ').length>1?'s':''} and starts with <b>${esc(it.opts[it.a][0])}</b>.`,
+  explain:it=>`<div class="k">CORRECT</div><div class="a">${esc(it.opts[it.a])}</div><p>${it.why}</p><div class="ex">📱 ${it.ex}</div>`
+}));
+/* PAGE 3b · Flash review (optional) */
+STEPS.push({
+  id:'flash', sc:1, file:3, name:'Vocabulary flash review', min:.5, opt:true, title:'Vocabulary Flash Review', chip:'Tap a card to flip it',
+  say:'Eight more expressions from last lesson. Do you remember what they mean?',
+  note:'Необовʼязково. Учні називають значення, ви клікаєте картку (або Show all). Без окремої вправи — і одразу назад до справи.',
+  ans:FLASH.map(f=>`${f[0]} — ${f[1]}`), ua:FLASH.map(f=>`${f[0]} — ${f[2]}`),
+  render(d){ const on=d.on||{};
+    return `<div class="flash ${FX.has('enter')?'stagger':''}">${FLASH.map((f,i)=>`<button class="fc ${on[i]?'on':''}" data-fc="${i}" aria-label="${esc(f[0])}"><div class="in">
+      <div class="fa">${esc(f[0])}<small>WHAT DOES IT MEAN?</small></div><div class="fb"><b>${esc(f[0])}</b>${esc(f[1])}</div></div></button>`).join('')}</div>
+      <div class="row mt2"><button class="btn primary caps" data-act="next">Back to the case →</button></div>`; },
+  bind(root,d){ $$('[data-fc]',root).forEach(b=>b.onclick=()=>{ d.on=d.on||{}; d.on[b.dataset.fc]=!d.on[b.dataset.fc]; save(); b.classList.toggle('on'); SFX.pop(); }); },
+  reveal(d){ const all=FLASH.every((f,i)=>(d.on||{})[i]); d.on={}; if(!all) FLASH.forEach((f,i)=>d.on[i]=true); },
+  revealLbl:'Flip all',
+  nextLbl:()=> 'Back to the case'
+});
+/* PAGE 4 · First clue */
+STEPS.push({
+  id:'clue1', sc:2, file:4, name:'First clue: Leo’s words', min:2, title:'First Clue',
+  say:'Mia asks Leo what he really said. Then we see Max’s message. What changed?',
+  note:'1) Читаємо приватний чат. 2) Open message — що переказав Макс. 3) Питання «What changed?» — учні відповідають, ви клікаєте їхні варіанти, потім Check answer. 4) Пояснення + WELCOME TO REPORTED SPEECH. Правило не показуємо, доки учні не відповіли.',
+  ans:['Did “wants” stay the same? — No','What did it change to? — wanted','Exact words? — No','Reporting something said earlier? — Yes','Explanation: we report words later → the tense moves one step back: wants → wanted.'],
+  parts:()=>4,
+  nextLbl:d=>['Open Max’s message','What changed?','Reveal explanation','Continue'][d.p||0],
+  render(d){
+    const p=d.p||0, anim=FX.has('part')||FX.has('enter'), gs=d.gshown;
+    const priv = `<div class="phone"><div class="scr"><div class="sbar"><span>07:06</span><span>📶 🔋</span></div>
+      <div class="cbar">${av('leo',42)}<div><b>Leo</b><small style="color:var(--ok)">● online</small></div></div>
+      <div class="chat">${msg('mia','Leo, what did you <b>actually</b> tell Max?',{me:true,tm:'07:05'})}
+        ${p===0&&anim&&!REDUCED?`<div class="tgone">${typing('leo')}</div>`:''}
+        ${msg('leo','I said, <b>“Mia wants to spend less time online.”</b>',{tm:'07:06',late:p===0&&anim,delay:p===0&&anim&&!REDUCED?.8:0,cls:'big-b'})}</div></div></div>`;
+    let right='';
+    if(p===0) right=`<div class="card cy"><span class="tag cy">🔎 Clue 1</span><p class="big mt">These are Leo’s <span class="hl">exact words</span>.</p><p class="mid" style="color:#D6DAF0">But what did Max write later?</p>
+      <button class="btn primary caps mt" data-act="next">📩 Open message</button></div>`;
+    else {
+      right=`<div class="card rd ${p===1&&anim?'pop-in':''}"><span class="tag rd">📩 Max → Nora · 07:20</span>
+        <p class="big mt" style="margin-bottom:6px">“Leo said that Mia <span class="hlr">wanted</span> to spend less time online.”</p>
+        <div class="row mt" style="gap:10px;font-family:var(--mono);font-weight:700;font-size:22px"><span style="color:var(--mia)">wants</span><span style="color:var(--faint)">→</span><span style="color:var(--cyan)">wanted</span></div></div>`;
+      if(p>=2) right+=`<div class="card mt ${p===2&&anim?'pop-in':''}"><div class="mid">What changed?</div>
+        <div style="display:grid;gap:12px;margin-top:12px">${GUIDE.map((g,i)=>`<div><div style="font-weight:700;margin-bottom:6px">${i+1}. ${esc(g.q)}</div>
+          <div class="chipset">${g.o.map((o,j)=>{ const pk=(d.g||{})[i]; let c= gs||p>2 ? (j===g.a?'on':'') : (pk===j?'on':''); const st= (gs||p>2)&&j===g.a?'style="border-color:var(--green);background:rgba(54,224,155,.15)"':''; return `<button class="chip ${c}" ${st} data-g="${i}" data-j="${j}">${esc(o)}${(gs||p>2)&&j===g.a?' ✓':''}</button>`; }).join('')}</div></div>`).join('')}</div>
+        ${p===2&&!gs?`<button class="btn primary caps mt" data-act="reveal">Check answers</button>`:''}</div>`;
+    }
+    const expl = p>=3 ? `<div class="card gr mt2 pop-in"><div class="two" style="align-items:center"><div>
+        <p class="mid" style="margin:0">Max didn’t repeat Leo’s <b>exact</b> words. He <b>reported</b> them later.</p>
+        <p class="mid" style="color:var(--cyan)">So <b>wants</b> moved one step back → <b>wanted</b>.</p></div>
+        <div class="center"><div class="kick" style="color:var(--green)">YOU JUST FOUND IT</div><div class="dsp stamp" style="font-size:clamp(34px,4.6vw,58px);color:#fff;margin-top:8px">WELCOME TO<br><span style="color:var(--green)">REPORTED SPEECH</span></div>
+        ${S.ev.includes('c1')?'<div class="tag gr mt">📌 Clue 1 on the evidence board</div>':'<button class="btn amber caps mt" data-clue="c1">📌 Add to evidence board</button>'}</div></div></div>` : '';
+    return `<div class="two">${priv}<div>${right}</div></div>${expl}`;
+  },
+  bind(root,d){
+    $$('.tgone',root).forEach(t=>later(()=>t.remove(),800));
+    $$('[data-g]',root).forEach(b=>b.onclick=()=>{ if(d.gshown||(d.p||0)>2) return; d.g=d.g||{}; d.g[b.dataset.g]=+b.dataset.j; save(); SFX.pop(); draw(false,true); });
+    if(FX.has('reveal')) $$('.chip.on',root).forEach(c=>burst(c,['✓','✨']));
+  },
+  reveal(d){ if((d.p||0)<2){ d.p=2; } else if((d.p||0)===2){ d.gshown=!d.gshown; if(d.gshown) SFX.ok(); } },
+  revealLbl:'Check answers',
+  leave(){ addClue('c1'); },
+  live(){ const d=sd('clue1'), p=d.p||0; if(p<2) return null; const sh=d.gshown||p>2;
+    return {kind:'choice', id:'clue1-g', q:'Leo: “Mia wants…” → Max: “Leo said that Mia ___ to spend less time online.”', opts:['wants','wanted','will want'], lock:sh, correct:sh?1:null}; }
+});
+/* PAGE 5 · What is reported speech? */
+STEPS.push({
+  id:'what', sc:3, file:5, name:'What is reported speech?', min:1.5, title:'What Is Reported Speech?',
+  say:'Direct speech: the exact words. Reported speech: we tell another person what she said. How would Leo tell Max this?',
+  note:'Спершу лише пряма мова. Запитайте: «How would Leo tell Max this?» — учні пробують (можна з телефонів). Потім Transform: анімація змін I→she, want→wanted, my→her, today→that day. Далі правило «one step back».',
+  ans:['Mia said that she wanted to switch off her phone for a while that day.'],
+  parts:()=>3,
+  nextLbl:d=>['Transform it','Show the rule','Continue'][d.p||0],
+  render(d){
+    const p=d.p||0, f=(FX.has('part')&&p===1)?'fx':'';
+    const sw=(a,b,i)=> p>=1?`<span class="swap ${f}" style="animation-delay:${i*.25}s">${b}</span>`:a;
+    return `<div class="two">
+      <div class="qbox direct"><div class="lab">💬 Direct speech · the exact words</div><div class="row" style="gap:12px;align-items:flex-start">${av('mia',54)}<div class="s">Mia said:<br>“I want to switch off my phone for a while today.”</div></div></div>
+      <div class="qbox rep" style="${p<1?'border-style:dashed;opacity:.85':''}"><div class="lab">📣 Reported speech · we tell another person</div>
+        ${p<1?`<div class="s" style="color:var(--muted)">How would Leo tell Max this? 🤔<br><span class="small">Say it first!</span></div>${wallHTML('what')}`
+        :`<div class="s">Mia said that ${sw('I','she',0)} ${sw('want','wanted',1)} to switch off ${sw('my','her',2)} phone for a while ${sw('today','that day',3)}.</div>`}</div></div>
+      ${p>=1?`<div class="tfgrid mt2 ${f?'stagger':''}">${[['“I”','she'],['“want”','wanted'],['“my”','her'],['“today”','that day']].map(x=>`<div class="tf"><span class="a">${x[0]}</span><span class="x">↓</span><span class="b">${x[1]}</span></div>`).join('')}</div>`:''}
+      ${p>=2?`<div class="card cy mt2 pop-in"><div class="two" style="align-items:center"><p class="mid" style="margin:0">When we report something that was said <b>earlier</b>, the tense often moves <span class="hl">one step into the past</span>.</p>
+        <div class="back"><span class="w" style="color:var(--mia)">NOW</span><div class="arr"><i></i></div><span class="w" style="color:var(--cyan)">ONE STEP BACK</span></div></div></div>`:''}
+      ${p<1?`<div class="row mt2"><button class="btn primary caps" data-act="next">✨ Transform it</button></div>`:''}`;
+  },
+  live(){ return (sd('what').p||0)===0 ? {kind:'text', id:'what', q:'Mia: “I want to switch off my phone for a while today.” Report it: Mia said that…', ph:'Mia said that she…', chk:'what'} : null; }
+});
+/* PAGE 6 · The time machine */
+STEPS.push({
+  id:'machine', sc:3, file:6, name:'The Time Machine (backshift)', min:2, title:'The Time Machine ⏪',
+  say:'Look at the sentence. Say the reported version first — then we check.',
+  note:'Continue відкриває наступну картку (або клікніть картку). Перед кожною — учні кажуть варіант. Телефони отримують наступну картку як вибір із 3 варіантів. Без винятків і складних правил.',
+  ans:MACHINE.map(m=>strip(mach(m.r))),
+  parts:()=>MACHINE.length+1,
+  nextLbl:d=> (d.p||0)<MACHINE.length ? 'Next card' : null,
+  render(d){ const p=d.p||0, r=d.r||{};
+    return `<div class="row" style="margin-bottom:18px"><div class="dial"><div class="clock"><i></i><i></i></div><div><div class="mid" style="margin:0">Every tense goes <b style="color:var(--cyan)">one step back</b>.</div><div class="small">Say it first, then check.</div></div></div></div>
+      <div class="tm-grid">${MACHINE.map((m,i)=>{ const on=i<p||r[i]; const isNew=FX.has('part')&&i===p-1;
+        return `<button class="tmc ${on?'on':''} ${isNew?'fx':''}" data-tm="${i}"><div class="tense"><b>${m.from}</b> → <em>${m.to}</em></div>
+          <div class="d">${av(m.who,34)} ${esc(m.d)}</div><div class="r ${on?'':'q'}">${on?'→ '+mach(m.r):'→ '+esc(m.gap)}</div></button>`; }).join('')}</div>
+      <div class="think">💡 Think: <span style="color:var(--cyan)">ONE STEP BACK IN TIME.</span></div>`; },
+  bind(root,d){ $$('[data-tm]',root).forEach(b=>b.onclick=()=>{ const i=+b.dataset.tm; d.r=d.r||{}; d.r[i]=!d.r[i]; save(); SFX.pop(); draw(false,true); }); },
+  reveal(d){ const all=(d.p||0)>=MACHINE.length; d.p= all?0:MACHINE.length; d.r={}; },
+  revealLbl:'Show all / hide all',
+  live(){ const d=sd('machine'), p=d.p||0; const i=Math.min(p,MACHINE.length-1); const m=MACHINE[i]; const sh=p>i || (d.r||{})[i];
+    return {kind:'choice', id:'mach-'+i, q:`${CHARS[m.who].name}: ${m.d} → ${m.gap}`, opts:m.opts, lock:!!sh, correct:sh?m.a:null}; }
+});
+/* PAGE 7 · What else changes? */
+STEPS.push({
+  id:'else', sc:3, file:7, name:'What else changes? + quick task', min:1.5, title:'What Else Changes?',
+  say:'People, time and place words change too. Now try: which reported version is correct?',
+  note:'Пробіжіть три колонки (30 с). Continue → завдання A/B/C. Учні голосують, потім Check answer з короткою причиною.',
+  ans:['B — Mia said she would post it there the next day.','will → would · here → there · tomorrow → the next day'],
+  parts:()=>2,
+  nextLbl:d=> (d.p||0)===0 ? 'Try it' : null,
+  render(d){ const p=d.p||0, key='else', shown=(d.shown||{})[key];
+    return `<div class="ch3 ${FX.has('enter')?'stagger':''}">
+      <div class="chc"><h3>👤 PEOPLE</h3><div><span>I</span><span>he / she</span></div><div><span>my</span><span>his / her</span></div><div><span>we</span><span>they</span></div></div>
+      <div class="chc"><h3>⏰ TIME</h3><div><span>today</span><span>that day</span></div><div><span>tomorrow</span><span>the next day</span></div><div><span>yesterday</span><span>the day before</span></div><div><span>now</span><span>then</span></div></div>
+      <div class="chc"><h3>📍 PLACE</h3><div><span>here</span><span>there</span></div><p class="small" style="margin-top:14px">Why? When we report later, we are not in the same place or time anymore.</p></div></div>
+      ${p>=1?`<div class="two mt2 ${FX.has('part')?'pop-in':''}"><div class="quote">${av('mia',60)}<div class="bub">“I will post it here tomorrow.”</div></div>
+        <div><div class="mid" style="margin-bottom:12px">Choose the correct reported version.</div>${optsHTML(key, ELSE_TASK.opts.map(esc), d, 1)}
+        ${shown?`<div class="explain stamp"><div class="k">CORRECT · B</div><div class="row" style="gap:10px;font-family:var(--mono);font-weight:700;margin-top:6px"><span>will → would</span><span>·</span><span>here → there</span><span>·</span><span>tomorrow → the next day</span></div></div>`
+          :`<div class="row mt"><button class="btn primary caps" data-act="reveal">Check answer</button></div>`}</div></div>`:''}`; },
+  bind(root,d){ bindPicks(root,d); revealBurst(root); },
+  reveal(d){ if((d.p||0)<1){ d.p=1; return; } d.shown=d.shown||{}; d.shown.else=!d.shown.else; if(d.shown.else) SFX.ok(); },
+  revealLbl:'Check answer',
+  live(){ const d=sd('else'); if((d.p||0)<1) return null; const sh=(d.shown||{}).else; return {kind:'choice', id:'else', q:'Mia: “I will post it here tomorrow.” Which report is correct?', opts:ELSE_TASK.opts, lock:!!sh, correct:sh?1:null}; }
+});
+/* PAGE 7b · Quick fix (optional extra grammar task) */
+STEPS.push(deckStep({
+  id:'fix', sc:3, file:7, name:'Quick fix · extra grammar task', min:2, opt:true, title:'Quick Fix 🛠️', chip:'Extra practice',
+  kicker:'WHICH REPORT IS CORRECT?', items:FIX,
+  say:'Which report is correct? Remember: one step back, and change the people and time words.',
+  note:'Необовʼязкове додаткове завдання, 4 пункти. Якщо часу мало — Skip optional.',
+  ans:FIX.map((f,i)=>`${i+1}. ${f.opts[f.a]}`),
+  left:it=>`<div class="quote">${av(it.who,64)}<div class="bub"><span class="who" style="color:${CHARS[it.who].c}">${CHARS[it.who].name}</span>“${esc(it.quote)}”</div></div>`,
+  q:()=> 'Choose the correct reported sentence.',
+  liveQ:it=>`${CHARS[it.who].name}: “${it.quote}” — which report is correct?`,
+  hintTxt:()=> 'One step back: am → was · have → had · will → would · don’t → didn’t',
+  explain:it=>`<div class="k">CORRECT</div><p style="font-weight:800;font-size:20px">${esc(it.opts[it.a])}</p><div class="ex">${it.why}</div>`
+}));
+/* PAGE 8 · Second clue */
+STEPS.push({
+  id:'clue2', sc:3, file:8, name:'Second clue: Nora’s voice message', min:1.5, title:'Second Clue',
+  say:'Nora sent a voice message. Listen and read. Then complete the report.',
+  note:'▶ програє голосове (голос браузера; у Zoom увімкніть Share sound). Учні заповнюють пропуски усно, ви клікаєте варіанти → Check answer. Правильно: had seen / hadn’t shared. Доказ іде на дошку.',
+  ans:['Nora said that she had seen the post but she hadn’t shared it.','saw → had seen (Past Simple → Past Perfect) · didn’t share → hadn’t shared'],
+  hint(d){ d.hint=!d.hint; },
+  render(d){ const f=d.f||{}, sh=d.shown;
+    const gap=i=>{ const v=f[i]; let c= v===undefined?'':'f'; if(sh){ c = v===GAPS2[i].a ? 'ok' : (v===undefined?'ok':'no'); } const txt= sh&&v!==GAPS2[i].a ? GAPS2[i].o[GAPS2[i].a] : (v===undefined?'______':GAPS2[i].o[v]); return `<span class="gap ${c}">${esc(txt)}</span>`; };
+    const allOk = sh && f[0]===GAPS2[0].a && f[1]===GAPS2[1].a;
+    return `<div class="two wr">
+      <div><div class="kick">🎙️ ORIGINAL VOICE MESSAGE</div>
+        <div class="row mt" style="gap:12px;align-items:flex-end">${av('nora',54)}<div class="voice" id="voice"><button class="play" id="vplay" aria-label="Play voice message">▶</button>
+          <div class="wave">${Array.from({length:26},(_,i)=>`<i style="--h:${8+Math.round(Math.abs(Math.sin(i*1.7))*30)}px;animation-delay:${(i%6)*.08}s"></i>`).join('')}</div><span class="mono small">0:03</span></div></div>
+        <div class="transcript"><small>TRANSCRIPT · NORA</small>“I saw the post, but I didn’t share it.”</div>
+        ${hintBox(d,'<b>saw</b> is Past Simple → one step back = Past <b>Perfect</b> (had + 3rd form).')}
+      </div>
+      <div class="card"><div class="kick">COMPLETE THE REPORT</div>
+        <div class="gapline mt">Nora said that she ${gap(0)} the post but she ${gap(1)} it.</div>
+        ${GAPS2.map((g,i)=>`<div class="chipset"><span class="lab">GAP ${i+1}</span>${g.o.map((o,j)=>`<button class="chip ${f[i]===j?'on':''}" data-gf="${i}" data-j="${j}">${esc(o)}</button>`).join('')}</div>`).join('')}
+        ${sh?'':`<div class="row mt"><button class="btn primary caps" data-act="reveal">Check answer</button></div>`}
+        ${wallHTML('clue2')}
+      </div></div>
+      ${sh?`<div class="recovered mt2 stamp"><span style="font-size:44px">✅</span><div class="grow"><div class="t">CLUE RECOVERED</div><div class="small" style="color:#D6DAF0">${allOk?'Perfect report!':'Here is the correct report.'} Nora <b>saw</b> the post — but she did <b>not</b> share it.</div></div>
+        ${S.ev.includes('c2')?'<span class="tag gr">📌 On the board</span>':'<button class="btn amber caps" data-clue="c2">📌 Add to evidence board</button>'}</div>`:''}`; },
+  bind(root,d){
+    $$('[data-gf]',root).forEach(b=>b.onclick=()=>{ if(d.shown) return; d.f=d.f||{}; d.f[b.dataset.gf]=+b.dataset.j; save(); SFX.pop(); draw(false,true); });
+    const pl=$('#vplay',root); if(pl) pl.onclick=()=>speak('I saw the post, but I didn’t share it.', $('#voice',root), 'female');
+    if(FX.has('reveal')&&d.shown) setTimeout(()=>{ burst($('.recovered',root),['✅','🔎','✨']); },80);
+  },
+  reveal(d){ d.shown=!d.shown; if(d.shown){ SFX.ok(); setTimeout(()=>addClue('c2'),900); } },
+  revealLbl:'Check answer',
+  leave(){ addClue('c2'); },
+  live:()=>({kind:'text', id:'clue2', q:'Nora: “I saw the post, but I didn’t share it.” Report it: Nora said that she ___ the post but she ___ it.', ph:'Nora said that she…', chk:'clue2'})
+});
+/* PAGE 9 · Reporting verbs */
+STEPS.push({
+  id:'verbs', sc:3, file:9, name:'Reporting verbs', min:2, title:'Not Everyone Just “Said” Something', long:true,
+  say:'People don’t only “say” things. They admit, claim, warn, confess, insist and deny. Read the meaning. Then we see an example.',
+  note:'Учні читають визначення вголос по черзі. Continue відкриває приклад з історії під наступним дієсловом (або клікніть картку). Ключові пари: admit vs confess (confess = щось таємне/погане), claim (може бути неправдою), deny (заперечити).',
+  ans:VERBS.map(v=>`${v.v} — ${v.def}`), ua:VERBS.map(v=>`${v.v} — ${v.ua}`),
+  parts:()=>VERBS.length+1,
+  nextLbl:d=> (d.p||0)<VERBS.length ? 'Next example' : null,
+  render(d){ const p=d.p||0, o=d.o||{};
+    return `<div class="verbs ${FX.has('enter')?'stagger':''}">${VERBS.map((v,i)=>{ const on=i<p||o[i]; const isNew=FX.has('part')&&i===p-1;
+      return `<button class="vb ${on?'on':''} ${isNew?'fx':''}" style="--c:${v.c}" data-vb="${i}"><span class="e">${v.e}</span><h3>${v.v}</h3><div class="def">= ${esc(v.def)}</div>
+        <div class="exm ${on?'':'q'}">${on?vex(v.ex,v.c):'Example: tap to see'}</div></button>`; }).join('')}
+      <div class="vb" style="--c:var(--amber);justify-content:center"><span class="e">🔎</span><div class="def" style="font-size:17px">All these verbs <b>report</b> someone’s words. After them we use <b style="color:var(--amber)">one step back</b> too.</div></div></div>`; },
+  bind(root,d){ $$('[data-vb]',root).forEach(b=>b.onclick=()=>{ d.o=d.o||{}; d.o[b.dataset.vb]=!d.o[b.dataset.vb]; save(); SFX.pop(); draw(false,true); }); },
+  reveal(d){ const all=(d.p||0)>=VERBS.length; d.p=all?0:VERBS.length; d.o={}; },
+  revealLbl:'Show all examples'
+});
+/* PAGE 10 · Who said it? */
+STEPS.push(deckStep({
+  id:'who', sc:3, file:10, name:'Who said it? · reporting verbs', min:2, title:'Who Said It?', chip:'Fast round · 5 messages',
+  kicker:'CHOOSE THE BEST REPORTING VERB', items:WHO, nextWord:'Next message',
+  say:'Read the message. Which reporting verb fits best?',
+  note:'Швидкий раунд. Після Check answer — причина простою англійською і готове речення в непрямій мові (учні можуть прочитати його вголос). Після 5-го повідомлення на дошку додається зізнання Макса.',
+  ans:WHO.map((w,i)=>`${i+1}. ${w.opts[w.a]} — ${w.rp}`),
+  left:it=>`<div class="quote">${av(it.who,72)}<div class="bub"><span class="who" style="color:${CHARS[it.who].c}">${CHARS[it.who].name}</span>“${esc(it.quote)}”</div></div>`,
+  q:it=> `${CHARS[it.who].name} ___ …`,
+  liveQ:it=>`${CHARS[it.who].name}: “${it.quote}” — which reporting verb fits best?`,
+  chips:true,
+  hintTxt:()=> 'Is it true? Wrong? Secret? Dangerous? Or NOT true?',
+  explain:it=>`<div class="k">CORRECT</div><div class="a">${esc(it.opts[it.a])}</div><p>${esc(it.why)}</p><div class="ex">📣 <b>${esc(it.rp)}</b></div>`,
+  onShow:(p)=>{ if(p===WHO.length-1) setTimeout(()=>addClue('c3'),1100); }
+}));
+/* PAGE 11 · Reading mystery */
+STEPS.push({
+  id:'read', sc:4, file:11, name:'Reading: how one sentence became a rumour', min:2, title:'How One Sentence Became a Rumour', long:true,
+  say:'Let’s read the full story — part by part.',
+  note:'Учні читають уголос по абзацу (Continue = наступний). Hint підсвічує складні слова з поясненнями. Між абзацами — візуальні «докази».',
+  ans:['Ключ: Мія хотіла менше користуватися телефоном → Лео переказав правильно → Макс неправильно зрозумів → Нора перебільшила → скріншот → чутка.'],
+  get ua(){ return ['Глосарій: got sucked into — затягнуло; lost track of time — втратила відчуття часу; misunderstood — неправильно зрозумів; within twenty minutes — за двадцять хвилин.']; },
+  parts:()=>READ.length,
+  nextLbl:d=> (d.p||0)<READ.length-1 ? 'Next part' : null,
+  hint(d){ d.hint=!d.hint; }, hintLbl:'Difficult words',
+  render(d){ const p=d.p||0;
+    return `<div class="read">${READ.slice(0,p+1).map((r,i)=>`<div class="chunk ${FX.has('part')&&i===p?'fx':''}"><div class="ix">${r.ix}</div><div class="t"><p>${readHTML(r.t,d.hint)}</p></div><div class="vis">${r.vis()}</div></div>`).join('')}</div>
+      ${d.hint?`<div class="glbox">${READ.slice(0,p+1).flatMap(r=>[...r.t.matchAll(/\{g\|([^|}]*)\|([^}]*)\}/g)].map(m=>`<span><b>${esc(m[1])}</b> = ${esc(m[2])}</span>`)).join('')}</div>`:''}
+      <div class="row mt"><span class="small">Part ${p+1} of ${READ.length}</span>${p<READ.length-1?`<button class="btn sm primary" data-act="next">Next part →</button>`:''}</div>`; }
+});
+/* PAGE 12 · Reading mission */
+STEPS.push(deckStep({
+  id:'rq', sc:4, file:12, name:'Reading mission · 3 questions', min:1.5, title:'Reading Mission', chip:'3 questions',
+  kicker:'ANSWER FROM THE TEXT', items:RQ, nextWord:'Next question',
+  say:'Three questions. Find the answer in the text.',
+  note:'Лише 3 питання. Після питання 1 і 2 на дошку доказів додаються нові докази.',
+  ans:RQ.map((r,i)=>`${i+1}. ${r.opts[r.a]}`),
+  left:(it,p)=>`<div class="sit"><span class="num">${p+1}</span><div class="ico">${['🗣️','🔁','🤥'][p]}</div><p>${esc(it.q)}</p></div>`,
+  q:()=> 'Choose the best answer.',
+  liveQ:it=>it.q,
+  hintTxt:()=> 'Go back to the text: parts 1 and 2.',
+  explain:it=>`<div class="k">CORRECT</div><p style="font-weight:800;font-size:20px">${esc(it.opts[it.a])}</p><div class="ex">${it.why}</div>`,
+  onShow:(p)=>{ if(p===0) setTimeout(()=>addClue('c4'),1000); if(p===1) setTimeout(()=>addClue('c5'),1000); }
+}));
+/* PAGE 12b · Find the reported speech */
+STEPS.push({
+  id:'find', sc:4, file:12, name:'Find the reported speech', min:1, title:'Find the Reported Speech 🔎',
+  say:'Find six examples of reported speech in the text. Tell me where they are!',
+  note:'Учні називають фрази, ви клікаєте їх у тексті — вони підсвічуються. Show all — показати всі. 6 цілей: She said · people were claiming · she denied · Leo admitted · insisted · Max confessed.',
+  ans:FIND.map(f=>f[1]),
+  render(d){ const fd=d.found||{}, n=FIND.filter(f=>fd[f[0]]).length;
+    const txt=FIND_TEXT.map(p=>`<p>${esc(p).replace(/\[\[(f\d)\|([^\]]*)\]\]/g,(m,id,t)=>`<span class="tgt ${fd[id]?'found':''} ${FX.has('f-'+id)?'fx':''}" data-t="${id}">${t}</span>`)}</p>`).join('');
+    return `<div class="two wl"><div class="card fulltext">${txt}</div>
+      <div><div class="row"><div class="dsp" style="font-size:54px;color:var(--amber)">${n}/6</div><div class="small">found</div></div>
+        <div class="findlist mt">${FIND.map(f=>`<div class="${fd[f[0]]?'ok':''}">${fd[f[0]]?'✅':'🔍'} ${esc(f[1])}</div>`).join('')}</div>
+        ${n===6?'<div class="recovered mt stamp"><span style="font-size:34px">🔎</span><div class="t" style="font-size:26px">All found!</div></div>':''}</div></div>`; },
+  bind(root,d){ $$('[data-t]',root).forEach(b=>b.onclick=()=>{ d.found=d.found||{}; const id=b.dataset.t; d.found[id]=!d.found[id]; if(d.found[id]){ FX.add('f-'+id); SFX.ok(); } save(); draw(false,true); if(FIND.every(f=>d.found[f[0]])) setTimeout(()=>burst($('.recovered')),60); }); },
+  reveal(d){ const all=FIND.every(f=>(d.found||{})[f[0]]); d.found={}; if(!all){ FIND.forEach(f=>{ d.found[f[0]]=true; }); SFX.ok(); } },
+  revealLbl:'Show all'
+});
+/* PAGE 13 · The truth board */
+STEPS.push({
+  id:'board', sc:4, file:13, name:'The truth board', min:1, title:'The Truth Board',
+  say:'Look how the message changes at every step.',
+  note:'Continue додає наступну ланку ланцюжка. Повідомлення стає дедалі більшим і «червонішим». Наприкінці — SMALL STATEMENT → MISUNDERSTANDING → EXAGGERATION → RUMOUR і висновок.',
+  ans:['A message can change every time someone reports it.'],
+  parts:()=>CHAIN.length+1,
+  nextLbl:d=> (d.p||0)<CHAIN.length-1 ? 'Next message' : (d.p||0)===CHAIN.length-1 ? 'What happened?' : null,
+  render(d){ const p=d.p||0, n=Math.min(p+1,CHAIN.length);
+    const nodes=CHAIN.slice(0,n).map((c,i)=>`${c.link?`<div class="link"><div class="ln"></div><span>${c.link}</span><div class="ln"></div></div>`:''}
+      <div class="node ${c.rumour?'rumour':''} ${FX.has('part')&&i===n-1||FX.has('enter')?'fx':''}" style="--w:${c.w}%;--fs:${c.fs}px;--rot:${c.rot}deg;border-color:${c.col}"><span class="pin"></span>
+        ${CHARS[c.who]?av(c.who,c.rumour?58:46):`<i class="av emo" style="--s:58px;--c:var(--red)">${c.who}</i>`}<div class="tx"><small style="color:${c.col}">${CHARS[c.who]?CHARS[c.who].name.toUpperCase()+' · ':''}${c.st}</small>${esc(c.t)}</div></div>`).join('');
+    return `<div class="board"><div class="chain">${nodes}</div>
+      ${p>=CHAIN.length?`<div class="strip fx"><span style="background:rgba(54,224,155,.15);color:var(--green)">SMALL STATEMENT</span><i>→</i><span style="background:rgba(255,193,77,.15);color:var(--amber)">MISUNDERSTANDING</span><i>→</i><span style="background:rgba(255,138,91,.15);color:#FF8A5B">EXAGGERATION</span><i>→</i><span style="background:rgba(255,84,112,.18);color:var(--red)">RUMOUR</span></div>
+        <div class="moral center pop-in" style="animation-delay:.6s">A message can change <em>every time</em> someone reports it.</div>`:''}</div>`; },
+  onPart(d){ if((d.p||0)>=CHAIN.length) setTimeout(()=>addClue('c6'),1400); },
+  leave(){ addClue('c6'); }
+});
+/* PAGE 14 · Speaking */
+SPEAK.forEach((q,k)=>STEPS.push({
+  id:'sp'+(k+1), sc:4, file:14, name:'Speaking · question '+(k+1), min:1, opt:!!q.opt, title:'Would You Trust It?', chip:`Question ${k+1} of 4`,
+  say:q.q, note:(k===0?'Запитайте 2–3 учнів. Якщо відповідь коротка — кнопки WHY? / GIVE AN EXAMPLE / WHAT WOULD YOU DO? / TELL US MORE відкривають додаткові питання. ':'')+(q.opt?'Необовʼязкове питання — можна пропустити (Skip optional). ':'')+'Sample answer — за кнопкою.',
+  ans:['Sample: '+q.sample], ua:[q.ua],
+  hint(d){ d.hint=!d.hint; }, hintLbl:'Sentence starters',
+  render(d){ const f=d.f||{};
+    return `<div class="two wl"><div class="spq"><div class="kick">🎤 SPEAK · QUESTION ${k+1}</div><p class="q mt">${esc(q.q)}</p>
+        <div class="fu">${FU_LBL.map((l,i)=>`<button class="${f[i]?'on':''}" data-fu="${i}">${l}</button>`).join('')}</div>
+        <div class="fuq">${q.fu.map((x,i)=>f[i]?`<div class="pop-in">${esc(x)}</div>`:'').join('')}</div>
+        ${hintBox(d, starters(STARTERS))}
+        ${d.shown?`<div class="sample stamp"><small>POSSIBLE ANSWER</small>${esc(q.sample)}</div>`:''}
+        ${wallHTML('sp'+(k+1))}</div>
+      <div class="center">${k%2===0?`<div class="phone" style="max-width:330px"><div class="scr" style="min-height:340px"><div class="sbar"><span>12:40</span><span>📶</span></div><div class="chat">
+          ${msg('max',k===0?'Did you hear about Mia?? 😱':'Breaking news!!! 🔥🔥',{tm:'12:39'})}${msg('nora',k===0?'No way. Is it true?':'Repost before it gets deleted!',{tm:'12:40'})}${msg('leo','Did anyone actually ask her? 🤔',{tm:'12:40'})}</div></div></div>`
+        :`<div class="board" style="padding:22px"><div class="dsp" style="font-size:80px">${k===1?'🔁':'⚖️'}</div><p class="mid mt">${k===1?'A story… repeated… and repeated…':'By accident 😬 &nbsp;or&nbsp; on purpose 😈?'}</p></div>`}</div></div>`; },
+  bind(root,d){ $$('[data-fu]',root).forEach(b=>b.onclick=()=>{ d.f=d.f||{}; d.f[b.dataset.fu]=!d.f[b.dataset.fu]; save(); SFX.pop(); draw(false,true); }); },
+  reveal(d){ d.shown=!d.shown; }, revealLbl:'Sample answer',
+  live:()=>({kind:'text', id:'sp'+(k+1), q:q.q, ph:'Your short answer'})
+}));
+/* PAGE 15 · Breakout mission */
+STEPS.push({
+  id:'mission', sc:5, file:15, name:'Rumour Control Unit · mission + example', min:1.5, title:'🚨 Rumour Control Unit', long:true,
+  say:'Another rumour has appeared. Your team works for the Rumour Control Unit. You have the original messages. Tell the class what really happened.',
+  note:'Учні читають кроки місії самі. Покажіть приклад: спершу 4 повідомлення, потім Show example report. Далі — Case files + таймер.',
+  ans:EXAMPLE.report.map(strip),
+  render(d){
+    return `<div class="rcu"><span class="siren">🚨</span><div><div class="kick" style="color:#FFB4C2">NEW ALERT · SCHOOL GROUP CHAT</div><p class="mid" style="margin:4px 0 0">Another rumour has appeared. Your team works for the <b>Rumour Control Unit</b>. You have the original messages. Your job: tell the class <b>what really happened</b>.</p></div></div>
+      <div class="two"><div><div class="kick">YOUR MISSION</div><ol class="steps6 mt ${FX.has('enter')?'stagger':''}">${MISSION_STEPS.map(s=>`<li><span>${s}</span></li>`).join('')}</ol>
+        <div class="vbank mt">${VERB_BANK.map(v=>`<span>${v}</span>`).join('')}</div></div>
+      <div class="cf"><div class="hd">📁 <b>CASE FILE EXAMPLE</b><span class="grow"></span>4 messages</div>
+        <div class="chat">${EXAMPLE.msgs.map(m=>msg(m[0],esc('“'+m[1]+'”'),{size:34})).join('')}</div>
+        <div class="kick mt">EXAMPLE REPORT</div>
+        ${d.shown?`<div class="rep mt stamp">${EXAMPLE.report.map(r=>`<div>${r}</div>`).join('')}</div>`:`<button class="btn primary caps mt" data-act="reveal">👁 Show example report</button>`}</div></div>`; },
+  reveal(d){ d.shown=!d.shown; }, revealLbl:'Example report'
+});
+STEPS.push({
+  id:'cases', sc:5, file:15, name:'Case files A–D + 5-minute timer', min:5, title:'Case Files', chip:'Breakout rooms · 5 minutes',
+  say:'Each team gets one case file. Five minutes. Prepare 3–4 sentences with at least two reporting verbs.',
+  note:'Оберіть кількість команд (1–4). «📋 Copy for Zoom chat» копіює кейс команди — вставте в чат Zoom перед відкриттям кімнат. Start 5:00 → таймер працює й на інших екранах (⏱ угорі), дзвінок наприкінці. З телефонами: учні обирають свою команду й бачать кейс + спільні поля для речень.',
+  get ans(){ return TEAMS().flatMap(t=>[`${t.name} — ${CASES[t.L].t}:`].concat(CASES[t.L].report.map(r=>'   '+strip(r)))); },
+  render(d){ const tab=d.tab && CASE_L.indexOf(d.tab)<S.teams ? d.tab : 'A', C=CASES[tab], sh=(d.shown||{})[tab];
+    return `<div class="two wl"><div>
+        <div class="tabs">${TEAMS().map(t=>`<button class="${t.L===tab?'on':''}" data-tab="${t.L}">${t.e} Team ${t.n} · Case ${t.L}</button>`).join('')}</div>
+        <div class="cf ${FX.has('tab')?'pop-in':''}"><div class="hd">📁 <b>CASE FILE ${tab} — ${esc(C.t.toUpperCase())} ${C.e}</b></div>
+          <div class="rum"><small>THE RUMOUR</small>${esc(C.rumour)}</div>
+          <div class="kick" style="margin-bottom:8px">THE ORIGINAL MESSAGES</div>
+          <div class="chat">${C.msgs.map(m=>msg(m[0],esc('“'+m[1]+'”'),{size:36})).join('')}</div>
+          ${sh?`<div class="kick mt">SAMPLE REPORT</div><div class="rep mt stamp">${C.report.map(r=>`<div>${r}</div>`).join('')}</div>`:''}
+        </div>
+        <div class="row mt"><button class="btn sm" data-copy="${tab}">📋 Copy Case ${tab} for Zoom chat</button><button class="btn sm ghost" data-copyall>📋 Copy all cases</button><button class="btn sm ghost" data-act="reveal">${sh?'Hide':'👁 Sample'} report</button></div>
+      </div>
+      <div><div class="card"><div class="ringbox"><div class="kick">BREAKOUT TIMER</div>
+          <div class="ring" id="ring"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="10"/><circle class="fg" id="ringFg" cx="60" cy="60" r="52" fill="none" stroke-width="10" stroke-dasharray="326.73" stroke-dashoffset="0"/></svg><div class="t" id="bigClock">5:00</div></div>
+          <div class="row" style="justify-content:center"><button class="btn primary" id="tStart">${TIMER.run()?'⏸ Pause':'▶ Start '+mmss(TIMER.left()||S.timer.total)}</button><button class="btn sm ghost" id="tPlus">+1 min</button><button class="btn sm ghost" id="tRes">⟲</button></div></div></div>
+        <div class="card mt"><div class="kick">TEAMS</div><div class="row mt" style="gap:8px">${[1,2,3,4].map(n=>`<button class="btn sm ${S.teams===n?'primary':''}" data-teams="${n}">${n}</button>`).join('')}<span class="small">fewer groups → fewer case files</span></div>
+          <div class="kick mt">REMEMBER</div><div class="small" style="color:#D6DAF0;margin-top:6px">3–4 sentences · at least 2 reporting verbs · one presenter · 30–45 seconds</div>
+          <div class="vbank mt">${VERB_BANK.map(v=>`<span>${v}</span>`).join('')}</div></div></div></div>`; },
+  bind(root,d){
+    $$('[data-tab]',root).forEach(b=>b.onclick=()=>{ d.tab=b.dataset.tab; FX.add('tab'); save(); draw(false,true); });
+    $$('[data-teams]',root).forEach(b=>b.onclick=()=>{ S.teams=+b.dataset.teams; save(); draw(false,true); });
+    $$('[data-copy]',root).forEach(b=>b.onclick=()=>copy(caseText(b.dataset.copy),'Case copied — paste it into the Zoom chat'));
+    const ca=$('[data-copyall]',root); if(ca) ca.onclick=()=>copy(TEAMS().map(t=>caseText(t.L)).join('\n\n────────\n\n'),'All cases copied');
+    $('#tStart',root).onclick=()=>{ TIMER.run()?TIMER.pause():TIMER.start(); draw(false,true); };
+    $('#tPlus',root).onclick=()=>{ TIMER.add(60); draw(false,true); };
+    $('#tRes',root).onclick=()=>{ TIMER.reset(); draw(false,true); };
+  },
+  reveal(d){ const tab=d.tab||'A'; d.shown=d.shown||{}; d.shown[tab]=!d.shown[tab]; }, revealLbl:'Sample report',
+  live:()=>({kind:'team', id:'cases', teams:TEAMS(), work:S.work})
+});
+function caseText(L){ const C=CASES[L], n=CASE_L.indexOf(L)+1;
+  return `🚨 RUMOUR CONTROL UNIT — Team ${n} · CASE ${L}: ${C.t.toUpperCase()} ${C.e}\nThe rumour: ${C.rumour}\n\nOriginal messages:\n${C.msgs.map(m=>`${CHARS[m[0]].name}: “${m[1]}”`).join('\n')}\n\nYOUR MISSION:\n${MISSION_STEPS.map((s,i)=>`${i+1}. ${strip(s)}`).join('\n')}\nVerbs: ${VERB_BANK.join(' · ')}`; }
+/* PAGE 16 · Official reports */
+STEPS.push({
+  id:'reports', sc:5, file:16, name:'The official report · presentations', min:3, title:'The Official Report',
+  say:'Each team presents for 30 to 45 seconds. Listen: did they use reported speech and two reporting verbs?',
+  note:'Команди виступають по черзі. Після виступу — TEAM N COMPLETE. Якщо команди писали з телефонів, їхні речення видно на картці. Учні з телефонами можуть реагувати ✅ / 🧠 / 🕵️. Sample report для кожного кейсу — у Teacher Mode (Answers).',
+  get ans(){ return TEAMS().flatMap(t=>[`${t.name}:`].concat(CASES[t.L].report.map(r=>'   '+strip(r)))); },
+  render(){ const T=TEAMS(), nd=T.filter(t=>S.tdone[t.L]).length;
+    return `<div class="two wr"><div class="card cy"><div class="kick">PRESENTATION CHECKLIST</div><div class="checklist mt">
+        <div>What really happened?</div><div>Use Reported Speech.</div><div>Use at least 2 reporting verbs.</div><div>Keep it short and clear.</div></div>
+        <div class="row mt2"><div class="dsp" style="font-size:46px;color:var(--green)">${nd}/${T.length}</div><div class="small">teams reported</div></div></div>
+      <div class="teams">${T.map(t=>{ const w=S.work[t.L]||{}, lines=['s1','s2','s3','s4'].map(k=>w[k]).filter(Boolean);
+        return `<div class="tcard ${S.tdone[t.L]?'done':''}"><div class="tn"><span>${t.e}</span><b class="grow">Team ${t.n} · Case ${t.L}</b>${S.tdone[t.L]?'<span>✅</span>':''}</div>
+          <div class="small">${esc(CASES[t.L].t)}</div>
+          ${lines.length?`<div class="ws">${lines.map(l=>`<div>${esc(l)}</div>`).join('')}</div>`:''}
+          <button class="btn sm ${S.tdone[t.L]?'green':''} caps" data-td="${t.L}">${S.tdone[t.L]?'✓ Complete':'Team '+t.n+' complete'}</button></div>`; }).join('')}</div></div>`; },
+  bind(root){ $$('[data-td]',root).forEach(b=>b.onclick=()=>{ const L=b.dataset.td; S.tdone[L]=!S.tdone[L]; save(); if(S.tdone[L]) SFX.ok(); draw(false,true); if(S.tdone[L]) burst($(`[data-td="${L}"]`)); if(TEAMS().every(t=>S.tdone[t.L])) toast('All teams reported — great work, Rumour Control Unit! 🚨'); }); },
+  live:()=>({kind:'react3', id:'reports', q:'Listen to the team report.'})
+});
+/* PAGE 17 · Class vote (optional) */
+STEPS.push({
+  id:'vote', sc:5, file:17, name:'Class vote · awards', min:1.5, opt:true, title:'Class Vote 🗳️', chip:'Which team gave the clearest report?',
+  say:'Vote! Which team gave the clearest investigation report?',
+  note:'Необовʼязково. Оберіть нагороду → учні голосують з телефонів (або підніміть руки й клікайте команду: +1). Show winners — переможці й конфеті. Голосувати за свою команду не можна 🙂',
+  ans:['Немає правильної відповіді.'],
+  render(d){ const a=d.a||0, T=TEAMS(), id='vote-'+a, n=counts(id,T.length), mx=Math.max(1,...n), top=Math.max(...n);
+    return `<div class="awards">${AWARDS.map((w,i)=>`<button class="award ${i===a?'on':''}" data-aw="${i}"><div class="e">${w[0]}</div><b>${w[1]}</b><div class="small">${(()=>{ const c=counts('vote-'+i,T.length); const s=c.reduce((x,y)=>x+y,0); return s?s+' votes':'tap to choose'; })()}</div></button>`).join('')}</div>
+      <div class="card mt2"><div class="mid">${AWARDS[a][0]} ${AWARDS[a][1]} — which team?</div>
+        <div class="vbars">${T.map((t,i)=>`<div class="vbar ${d.shown&&n[i]===top&&top>0?'win':''}"><button data-vt="${i}" title="+1 vote">${t.e} Team ${t.n}</button><div class="tr"><i style="width:${n[i]/mx*100}%"></i></div><div class="c">${n[i]}</div></div>`).join('')}</div>
+        <div class="small mt">Tap a team to add a hand vote (+1). Phones vote live.</div></div>
+      ${d.shown?`<div class="winners stamp">${AWARDS.map((w,i)=>{ const c=counts('vote-'+i,T.length), m=Math.max(...c); const ws=T.filter((t,j)=>c[j]===m&&m>0).map(t=>'Team '+t.n); return `<div>${w[0]} ${w[1]}<br><span style="color:var(--amber);font-size:20px">${ws.length?ws.join(' & '):'—'}</span></div>`; }).join('')}</div>`:''}`; },
+  bind(root,d){
+    $$('[data-aw]',root).forEach(b=>b.onclick=()=>{ d.a=+b.dataset.aw; save(); SFX.pop(); draw(false,true); });
+    $$('[data-vt]',root).forEach(b=>b.onclick=()=>{ const id='vote-'+(d.a||0); const t=S.taps[id]=S.taps[id]||[]; t[+b.dataset.vt]=(t[+b.dataset.vt]||0)+1; save(); SFX.pop(); draw(false,true); });
+    if(FX.has('reveal')&&d.shown) confetti();
+  },
+  reveal(d){ d.shown=!d.shown; if(d.shown) SFX.bell(); }, revealLbl:'Show winners',
+  live(){ const a=sd('vote').a||0; return {kind:'choice', id:'vote-'+a, q:AWARDS[a][0]+' '+AWARDS[a][1]+' — which team?', opts:TEAMS().map(t=>t.e+' Team '+t.n)}; }
+});
+/* PAGE 18 · Final story */
+STEPS.push({
+  id:'final', sc:6, file:18, name:'The final chat · Case closed', min:1, title:'The Final Chat',
+  say:'Let’s go back to Mia and Leo.',
+  note:'Двоє учнів читають ролі Мії та Лео (Continue = наступне повідомлення). Наприкінці — штамп CASE CLOSED і висновок.',
+  ans:['Words change when we pass them on. Report them carefully.'],
+  parts:()=>FINAL.length+1,
+  nextLbl:d=> (d.p||0)<FINAL.length-1 ? 'Next message' : (d.p||0)===FINAL.length-1 ? 'Close the case' : null,
+  render(d){ const p=d.p||0, n=Math.min(p+1,FINAL.length), anim=FX.has('part')||FX.has('enter');
+    const chat=`<div class="phone"><div class="scr"><div class="sbar"><span>16:12</span><span>📶 🔋</span></div><div class="cbar">${av('leo',42)}<div><b>Leo</b><small style="color:var(--ok)">● online</small></div></div>
+      <div class="chat">${FINAL.slice(0,n).map((m,i)=>msg(m[0],esc(m[1]),{me:m[0]==='mia', late:anim&&i===n-1&&p<FINAL.length, tm:'16:1'+Math.min(9,i+2)})).join('')}</div></div></div>`;
+    return `<div class="two wr">${chat}<div>${p>=FINAL.length?`<div class="closed"><div class="st ${FX.has('part')?'fx':''}">CASE CLOSED</div><div style="font-size:54px;margin-top:10px">✅</div>
+        <div class="versions">${['One message.','Five people.','Five different versions.'].map((t,i)=>`<span class="pop-in" style="animation-delay:${.5+i*.3}s">${t}</span>`).join('')}</div>
+        <div class="moral pop-in" style="animation-delay:1.5s">Words change when we pass them on.<br><em>Report them carefully.</em></div></div>`
+      :`<div class="card"><div class="kick">EVIDENCE BOARD</div><div class="row mt">${CLUES.map(c=>`<span class="tag ${S.ev.includes(c.id)?'gr':''}">${S.ev.includes(c.id)?'📌':'🔒'} ${c.id.toUpperCase()}</span>`).join('')}</div>
+        <p class="mid mt">Mia and Leo finally talk about what happened.</p><div class="row">${av('mia',64)}${av('leo',64)}</div></div>`}</div></div>`; },
+  onPart(d){ if((d.p||0)>=FINAL.length){ CLUES.forEach(c=>{ if(!S.ev.includes(c.id)) S.ev.push(c.id); }); paintEv(); setTimeout(()=>{ confetti(); SFX.bell(); },350); } }
+});
+/* PAGE 19 · Summary */
+STEPS.push({
+  id:'summary', sc:6, file:19, name:'Summary · Today you unlocked', min:.5, title:'Today You Unlocked 🔓',
+  say:'Here is everything you unlocked today. Great investigation!',
+  note:'Коротке повторення. MISSION COMPLETE — конфеті й позначає всі етапи виконаними. Можна запустити швидке голосування «How do you feel about reported speech now?».',
+  ans:['—'],
+  render(d){
+    return `<div class="sum">
+      <div class="sumc span2 unlock"><h3>📣 REPORTED SPEECH</h3><p class="big" style="margin:0">“I feel tired.”</p><p class="big" style="margin:0;color:var(--cyan)">→ She said that she felt tired.</p></div>
+      <div class="sumc unlock" style="animation-delay:.1s"><h3>⏪ BACKSHIFT</h3><div class="l"><span>Present</span><span>Past</span></div><div class="l"><span>Past</span><span>Past Perfect</span></div><div class="l"><span>will</span><span>would</span></div><div class="l"><span>can</span><span>could</span></div></div>
+      <div class="sumc unlock" style="animation-delay:.2s"><h3>👤 PRONOUNS</h3><div class="l"><span>I</span><span>he / she</span></div><div class="l"><span>my</span><span>his / her</span></div></div>
+      <div class="sumc unlock" style="animation-delay:.3s"><h3>⏰ TIME</h3><div class="l"><span>today</span><span>that day</span></div><div class="l"><span>tomorrow</span><span>the next day</span></div><div class="l"><span>yesterday</span><span>the day before</span></div><div class="l"><span>now</span><span>then</span></div></div>
+      <div class="sumc unlock" style="animation-delay:.4s"><h3>🗣️ REPORTING VERBS</h3><div class="vchips">${VERBS.map(v=>`<span style="color:${v.c}">${v.v}</span>`).join('')}</div></div></div>
+      <div class="row mt2" style="justify-content:center"><button class="btn green caps ${d.done?'':'pulse'}" id="mDone" style="font-size:20px;padding:16px 30px">${d.done?'✅ Mission complete!':'Mission complete ✅'}</button></div>`; },
+  bind(root,d){ $('#mDone',root).onclick=()=>{ d.done=true; STAGES.forEach(s=>S.st[s.n]=true); save(); confetti(); SFX.bell(); draw(false,true); toast('Mission complete! Thanks, investigators 🕵️'); }; },
+  live:()=>({kind:'choice', id:'conf', q:'How do you feel about reported speech now?', opts:['😎 I can do it!','🙂 Mostly okay','🤔 I need more practice']})
+});
+
+/* ---------- 7 · navigation, story progress, evidence ---------- */
+const visible = k => { const s=STEPS[k]; return !!s && !(S.core && s.opt); };
+const cur = ()=> STEPS[S.i] || STEPS[0];
+const nparts = s => s.parts ? s.parts() : 1;
+let CUR = null;
+
+function next(){
+  const s=cur(), d=sd(s.id), n=nparts(s);
+  if((d.p||0) < n-1){ d.p=(d.p||0)+1; s.onPart&&s.onPart(d); FX.add('part'); save(); draw(true,true); return; }
+  let k=S.i+1; while(k<STEPS.length && !visible(k)) k++;
+  if(k<STEPS.length){ s.leave&&s.leave(d); go(k); } else toast('That’s the end of the lesson 🎉');
+}
+function back(){
+  const s=cur(), d=sd(s.id);
+  if((d.p||0)>0){ d.p--; s.onPart&&s.onPart(d); save(); draw(true,true); return; }
+  let k=S.i-1; while(k>=0 && !visible(k)) k--;
+  if(k>=0) go(k);
+}
+function go(k){
+  const prev=cur().sc; S.i=k; clockStart(); FX.add('enter');
+  const ns=STEPS[k].sc;
+  if(ns>prev){ for(let n=1;n<ns;n++){ if(!S.st[n]){ S.st[n]=true; FX.add('st-'+n); } } sceneCard(ns); }
+  save(); draw(true); $('#stage').scrollTop=0;
+}
+/* short, non-blocking title card when a new story stage starts (clicks go straight through) */
+function sceneCard(n){
+  if(REDUCED || ROLE!=='teacher') return; const st=STAGES[n-1], el=$('#scard');
+  el.innerHTML=`<div class="in"><div class="k">STAGE ${st.n} OF ${STAGES.length}</div><h2>${st.e} ${esc(st.t)}</h2></div>`;
+  el.classList.remove('on'); void el.offsetWidth; el.classList.add('on');
+  SFX.tone(420,.18,'sine',.05); SFX.tone(840,.22,'sine',.04,.12);
+}
+function paintProg(){
+  const c=cur().sc;
+  $('#prog').innerHTML=STAGES.map((st,i)=>`${i?'<span class="ar">→</span>':''}<button class="st ${S.st[st.n]?'done':''} ${st.n===c?'cur':''} ${FX.has('st-'+st.n)?'just':''}" data-st="${st.n}" title="${esc(st.t)}"><i>${S.st[st.n]&&st.n!==c?'✓':st.e}</i><span class="lb2">${esc(st.t)}</span></button>`).join('');
+  $$('#prog [data-st]').forEach(b=>b.onclick=()=>{ const k=STEPS.findIndex((x,i)=>x.sc===+b.dataset.st && visible(i)); if(k>=0) go(k); });
+}
+function paintEv(){ $('#evCount').textContent=S.ev.length+'/'+CLUES.length; $('#btnEv').classList.toggle('warn', S.ev.length>0 && S.ev.length<CLUES.length); }
+function addClue(id){
+  if(ROLE!=='teacher' || S.ev.includes(id)) return;
+  const c=CLUES.find(x=>x.id===id); if(!c) return;
+  S.ev.push(id); save(); SFX.clue();
+  const fxEl=$('#clueFx'), b=$('#btnEv').getBoundingClientRect();
+  fxEl.style.setProperty('--dx', (b.left+b.width/2 - innerWidth/2)+'px'); fxEl.style.setProperty('--dy', (b.top+b.height/2 - innerHeight/2)+'px');
+  fxEl.innerHTML=`<div class="cc" style="--dx:${b.left+b.width/2-innerWidth/2}px;--dy:${b.top+b.height/2-innerHeight/2}px"><div class="k">✅ CLUE RECOVERED · ${S.ev.length}/${CLUES.length}</div><b>${esc(c.t)}</b><p>${esc(c.q)}</p></div>`;
+  fxEl.classList.remove('on'); void fxEl.offsetWidth; fxEl.classList.add('on');
+  setTimeout(()=>{ paintEv(); const t=$('#btnEv'); t.classList.remove('bump'); void t.offsetWidth; t.classList.add('bump'); }, REDUCED?0:2100);
+  if(REDUCED) paintEv();
+  NEWCLUE=id;
+  const s=cur(); if(['clue1','clue2'].includes(s.id)) draw(false,true);
+}
+let NEWCLUE=null;
+function showEv(){
+  const n=S.ev.length;
+  openModal(`<div class="evhead"><h2 class="dsp" style="font-size:34px">🗂 Evidence Board</h2><div class="evbar"><i style="width:${n/CLUES.length*100}%"></i></div><b class="mono">${n}/${CLUES.length}</b><button class="btn sm ghost" onclick="closeModal()" aria-label="Close">✕</button></div>
+    <div class="evb">${CLUES.map((c,i)=>{ const on=S.ev.includes(c.id), rot=[-1.5,1.2,-.8,1.6,-1.1,.9][i];
+      return on?`<div class="evc ${NEWCLUE===c.id?'new':''}" style="--rot:${rot}deg"><span class="pin"></span><div class="k">${esc(c.k)}</div><b>${esc(c.t)}</b><p>${esc(c.q)}</p><div class="rp">📣 ${esc(c.rp)}</div></div>`
+        :`<div class="evc lock" style="--rot:0deg"><div><b>?</b><div class="small">Clue ${i+1} · keep investigating</div></div></div>`; }).join('')}</div>
+    ${n===CLUES.length?'<p class="mid center mt2" style="color:var(--green)">All six clues found. The case can be closed. ✅</p>':''}`);
+  NEWCLUE=null;
+}
+
+/* breakout timer: keeps running across screens and page refreshes */
+const TIMER = {
+  run: ()=> S.timer.endAt>0,
+  left: ()=> S.timer.endAt>0 ? Math.max(0,(S.timer.endAt-Date.now())/1000) : S.timer.left,
+  start(){ if(this.left()<=0) S.timer.left=S.timer.total=300; S.timer.endAt=Date.now()+S.timer.left*1000; save(); pubState(); SFX.pop(); },
+  pause(){ S.timer.left=this.left(); S.timer.endAt=0; save(); pubState(); },
+  reset(){ S.timer.total=300; S.timer.left=300; S.timer.endAt=0; save(); pubState(); },
+  add(sec){ if(this.run()) S.timer.endAt+=sec*1000; else S.timer.left=this.left()+sec; S.timer.total=Math.max(S.timer.total, Math.ceil(this.left())); save(); pubState(); },
+  tick(){
+    const l=this.left(), chip=$('#tchip');
+    const show = this.run() || (S.timer.left<S.timer.total && S.timer.left>0) || cur().id==='cases';
+    chip.classList.toggle('hidden', !show || ROLE==='student');
+    $('#tchipT').textContent=mmss(l); chip.classList.toggle('warn', this.run());
+    const bc=$('#bigClock'), rf=$('#ringFg'), rg=$('#ring'); if(bc){ bc.textContent=mmss(l); bc.classList.toggle('end',l<=0); }
+    if(rf) rf.style.strokeDashoffset=(326.73*(1-l/Math.max(1,S.timer.total))).toFixed(1); if(rg) rg.classList.toggle('hurry', this.run() && l<=30 && l>0);
+    const ts=$('#tStart'); if(ts) ts.textContent=this.run()?'⏸ Pause':'▶ Start '+mmss(l>0?l:300);
+    if(this.run() && l<=0){ S.timer.endAt=0; S.timer.left=0; save(); SFX.bell(); toast('⏰ Time’s up! Close the breakout rooms.'); pubState(); if(cur().id==='cases'){ draw(false,true); burst($('#ring'),['⏰','🔔','✨']); } }
+  }
+};
+$('#tchip').onclick=()=>{ const k=STEPS.findIndex(s=>s.id==='cases'); if(S.i!==k) go(k); else { TIMER.run()?TIMER.pause():TIMER.start(); draw(false,true); } };
+
+/* lesson clock for the teacher (starts on the first Continue) */
+function clockStart(){ if(!S.clock.start && !S.clock.paused){ S.clock.start=Date.now(); } }
+const clockNow = ()=> (S.clock.acc||0) + (S.clock.start? (Date.now()-S.clock.start)/1000 : 0);
+function routeMin(core){ let m=0; STEPS.forEach(s=>{ if(core&&s.opt) return; m+=s.min; }); return Math.round(m); }
+
+function draw(anim, keepScroll){
+  const s=cur(), d=sd(s.id); CUR=s;
+  const st=$('#stage'), top=st.scrollTop;
+  LOOPS.forEach(t=>{ clearInterval(t); clearTimeout(t); }); LOOPS=[];
+  $('#scene').innerHTML=`<div class="${anim&&!keepScroll?'scene-in':''}">${s.id==='title'?'':sceneHead(s)}${s.render(d)}</div>`;
+  s.bind && s.bind($('#scene'), d);
+  if(!anim || keepScroll) st.scrollTop=top;
+  $$('#scene .phone .chat').forEach(c=>{ c.scrollTop=c.scrollHeight; });
+  if(FX.has('part')||FX.has('reveal')) focusNew();
+  paintChrome(); pubState(); if($('#teacher').classList.contains('on')) paintTeacher(); paintDock();
+  FX.clear();
+}
+/* bring newly revealed content into view (screen sharing on small laptops) */
+function focusNew(){
+  const els=$$('#scene .pop-in, #scene .stamp, #scene .fx, #scene .late'); const el=els[els.length-1]; if(!el) return;
+  setTimeout(()=>{ const r=el.getBoundingClientRect(), sr=$('#stage').getBoundingClientRect(); if(r.bottom>sr.bottom-10 || r.top<sr.top) el.scrollIntoView({block:r.height>sr.height*.8?'start':'nearest', behavior:REDUCED?'auto':'smooth'}); },60);
+}
+function paintChrome(){
+  const s=cur(), d=sd(s.id), st=STAGES[s.sc-1], n=nparts(s), p=(d.p||0);
+  $('#navInfo').innerHTML=`<b>Stage ${st.n} of ${STAGES.length}</b> · ${esc(st.t)}${s.file?` · file ${String(s.file).padStart(2,'0')}`:''}${n>1?` · ${p+1}/${n}`:''}${s.opt?' · <span class="optl">optional</span>':''}`;
+  const vis=STEPS.map((x,i)=>i).filter(visible), pos=vis.indexOf(S.i);
+  $('#barFill').style.width=Math.round(((pos<0?0:pos)+(n>1?p/n:0))/Math.max(1,vis.length-1)*100)+'%';
+  $('#btnHint').disabled=!s.hint; $('#btnHint').querySelector('.lb').textContent=s.hintLbl||'Hint';
+  $('#btnShow').disabled=!s.reveal; $('#btnShow').querySelector('.lb').textContent=s.revealLbl||'Check answer';
+  $('#btnSkip').classList.toggle('hidden', !canSkip());
+  let k=S.i+1; while(k<STEPS.length && !visible(k)) k++;
+  const lbl = s.nextLbl && s.nextLbl(d);
+  $('#nextLbl').textContent = lbl || (p<n-1 ? 'Continue' : (k>=STEPS.length?'Finish':'Continue'));
+  $('#btnBack').disabled = S.i===0 && p===0;
+  $('#routeLbl').textContent=S.core?'Core':'Full'; $('#btnRoute').classList.toggle('on',S.core);
+  paintProg(); paintEv(); TIMER.tick();
+}
+function nextNonOpt(from){ let k=from; while(k<STEPS.length && (STEPS[k].opt || !visible(k))) k++; return k; }
+function canSkip(){ const s=cur(); if(s.opt) return true; if((sd(s.id).p||0)<nparts(s)-1) return false; let k=S.i+1; while(k<STEPS.length && !visible(k)) k++; return !!(STEPS[k] && STEPS[k].opt); }
+function skipOpt(){ const s=cur(); const k=nextNonOpt(s.opt?S.i:S.i+1); if(k<STEPS.length){ go(k); toast('Optional task skipped'); } }
+
+/* scene buttons inside the page (CONTINUE, CHECK ANSWER, ADD TO EVIDENCE BOARD …) */
+$('#scene').addEventListener('click',e=>{
+  const a=e.target.closest('[data-act]'); if(a){ if(a.dataset.act==='next') next(); else if(a.dataset.act==='reveal') doReveal(); return; }
+  const c=e.target.closest('[data-clue]'); if(c){ addClue(c.dataset.clue); }
+});
+
+/* ---------- 8 · teacher mode, screen menu, reset ---------- */
+function openModal(html){ $('#modalBox').innerHTML=html; $('#modal').classList.remove('hidden'); }
+function closeModal(){ $('#modal').classList.add('hidden'); }
+$('#modal').addEventListener('click',e=>{ if(e.target.id==='modal') closeModal(); });
+function copy(text,msg){ (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(()=>toast(msg)).catch(()=>{ openModal(`<h2 class="mid">Copy this text</h2><textarea style="width:100%;height:300px;margin-top:12px;background:#000;border-radius:12px;padding:12px">${esc(text)}</textarea><div class="row mt"><button class="btn" onclick="closeModal()">Close</button></div>`); }); }
+
+function mapHTML(){
+  let h='', last=0;
+  STEPS.forEach((s,i)=>{
+    if(s.sc!==last){ last=s.sc; const st=STAGES[s.sc-1]; const m=STEPS.filter((x,j)=>x.sc===s.sc&&visible(j)).reduce((a,x)=>a+x.min,0); h+=`<div class="sn">${st.e} STAGE ${st.n} · ${esc(st.t.toUpperCase())} · ≈${Math.round(m)} min ${S.st[st.n]?'✓':''}</div>`; }
+    h+=`<button class="${i===S.i?'cur':''} ${visible(i)?'':'skip'}" data-go="${i}"><span>${s.file?String(s.file).padStart(2,'0')+' · ':''}${esc(s.name)}</span>${s.opt?'<span class="tag opt" style="font-size:10px;padding:1px 6px">opt</span>':''}<span class="m">${s.min} min</span></button>`;
+  });
+  return `<div class="tmap">${h}</div>`;
+}
+function bindMap(root){ $$('[data-go]',root).forEach(b=>b.onclick=()=>{ const k=+b.dataset.go; if(!visible(k)){ S.core=false; toast('Full route on — optional task shown'); } closeModal(); go(k); }); }
+function showMap(){
+  openModal(`<div class="row"><h2 class="dsp grow" style="font-size:34px">All screens</h2><button class="btn sm ghost" onclick="closeModal()" aria-label="Close">✕</button></div>
+    <p class="small">Jump to any screen. Core ≈ ${routeMin(true)} min · Full ≈ ${routeMin(false)} min (+ transitions).</p>${mapHTML()}
+    <div class="row mt"><button class="btn sm danger" id="mReset">⟲ Reset lesson</button></div>`);
+  bindMap($('#modalBox')); $('#mReset').onclick=askReset;
+}
+function askReset(){
+  openModal(`<h2 class="dsp" style="font-size:36px">Reset lesson?</h2>
+    <p class="mid mt">Everything goes back to the start: answers, votes, clues, team work, timer and the route. A new room code is created for phones.</p>
+    <p class="small">Use this before a new group. It can’t be undone.</p>
+    <div class="row mt2"><button class="btn danger solid" id="rsYes">⟲ Yes, reset the lesson</button><button class="btn ghost" id="rsNo">Cancel</button></div>`);
+  $('#rsNo').onclick=closeModal;
+  $('#rsYes').onclick=()=>{ if(LIVE.on){ Net.send({t:'end'}); Net.stop(); } try{ localStorage.removeItem(KEY); }catch(e){} const snd=S.sound; S=FRESH(); S.sound=snd; save(); LIVE.on=false; WALLQ.length=0;
+    closeModal(); toggleTeacher(false); $('#btnLive').classList.remove('on'); go(0); toast('Lesson reset — ready for a new group'); };
+}
+/* restart only the current activity (answers, votes, reveals) */
+function restartTask(){
+  const s=cur(); const pre=[s.id, {chat:'believe', machine:'mach', summary:'conf'}[s.id]].filter(Boolean);
+  delete S.sd[s.id];
+  [S.lv,S.taps,S.wall].forEach(o=>Object.keys(o).forEach(k=>{ if(pre.some(p=>k===p||k.startsWith(p+'-'))) delete o[k]; }));
+  for(let i=WALLQ.length-1;i>=0;i--) if(pre.some(p=>WALLQ[i].task===p||WALLQ[i].task.startsWith(p+'-'))) WALLQ.splice(i,1);
+  if(s.id==='cases'){ S.work={}; TIMER.reset(); }
+  if(s.id==='reports') S.tdone={};
+  save(); FX.add('enter'); draw(true); toast('Activity restarted');
+}
+function toggleRoute(){ S.core=!S.core; save(); toast(S.core?`Core route ≈ ${routeMin(true)} min · optional tasks hidden`:`Full route ≈ ${routeMin(false)} min`); if(!visible(S.i)) { const k=nextNonOpt(S.i); go(k<STEPS.length?k:0); } else draw(); }
+function toggleTeacher(force){ const on = force ?? !$('#teacher').classList.contains('on'); $('#teacher').classList.toggle('on',on); $('#teacher').setAttribute('aria-hidden',String(!on)); $('#btnTeacher').classList.toggle('on',on); if(on) paintTeacher(); }
+function paintTeacher(){
+  const s=cur(), st=STAGES[s.sc-1], el=clockNow(), running=!!S.clock.start;
+  let planned=0; for(let i=0;i<S.i;i++){ if(visible(i)) planned+=STEPS[i].min; }
+  const ans = s.ans || [], ua = s.ua || [];
+  $('#tBody').innerHTML=`
+    <div class="tsec"><div class="row"><div class="grow"><h5>Lesson clock</h5><b class="mono" style="font-size:24px" id="tClock">${mmss(el)}</b>
+      <div class="small">Planned by now ≈ ${Math.round(planned)} min · route ≈ ${routeMin(S.core)} min</div></div>
+      <button class="btn sm ghost" id="tClk">${running?'⏸':'▶'}</button></div></div>
+    <div class="tsec"><h5>Now · Stage ${st.n} · ${esc(st.t)} · ${s.min} min</h5><b>${esc(s.name)}</b>${s.opt?' <span class="tag opt">optional</span>':''}
+      <div class="say mt" style="margin-top:10px">🗣️ ${esc(s.say||'')}</div>
+      <p class="mt" style="margin-top:10px;color:#D8DCFF">${esc(s.note||'')}</p></div>
+    <div class="tsec"><h5>Answers</h5><ul>${ans.map(a=>`<li>${esc(a)}</li>`).join('')}</ul></div>
+    ${ua.length?`<div class="tsec"><h5>🇺🇦 Українською · тільки для вчителя</h5><ul>${ua.map(a=>`<li>${esc(a)}</li>`).join('')}</ul></div>`:''}
+    <div class="tsec"><h5>Controls</h5><div class="tgrid">
+      <button class="btn sm" id="tBack">← Back</button><button class="btn sm primary" id="tNext">Continue →</button>
+      <button class="btn sm" id="tHint" ${s.hint?'':'disabled'}>💡 ${esc(s.hintLbl||'Hint')}</button><button class="btn sm" id="tShow" ${s.reveal?'':'disabled'}>👁 ${esc(s.revealLbl||'Check answer')}</button>
+      <button class="btn sm amber" id="tSkip" ${canSkip()?'':'disabled'}>⏭ Skip optional</button><button class="btn sm" id="tRestart">↺ Restart activity</button>
+      <button class="btn sm" id="tMap">🗺️ Screens</button><button class="btn sm" id="tEv">🗂 Evidence</button></div>
+      <div class="sw mt"><span>Core route (hide optional tasks)</span><button id="swCore" class="${S.core?'on':''}" aria-label="Core route"></button></div>
+      <div class="sw"><span>Sounds</span><button id="swSnd" class="${S.sound?'on':''}" aria-label="Sounds"></button></div></div>
+    <div class="tsec"><h5>Breakout timer</h5><div class="row" style="gap:8px"><b class="mono" style="font-size:20px">${mmss(TIMER.left())}</b><button class="btn sm" id="tT1">${TIMER.run()?'⏸ Pause':'▶ Start'}</button><button class="btn sm ghost" id="tT2">+1 min</button><button class="btn sm ghost" id="tT3">⟲ 5:00</button></div></div>
+    <div class="tsec"><h5>Story stages · mark complete</h5><div class="stg">${STAGES.map(x=>`<button class="${S.st[x.n]?'on':''}" data-stt="${x.n}">${S.st[x.n]?'✅':'⬜'} ${x.e} ${esc(x.t)}</button>`).join('')}</div></div>
+    <div class="tsec"><h5>Jump to a screen</h5>${mapHTML()}</div>
+    <div class="tsec"><h5>Keys</h5><div class="small">→ / Space continue · ← back · H hint · A check answer · E evidence · T teacher · M screens · F full screen</div></div>
+    <button class="btn danger" id="tReset" style="width:100%">⟲ Reset lesson</button>`;
+  const B=$('#tBody');
+  $('#tBack').onclick=back; $('#tNext').onclick=next; $('#tSkip').onclick=skipOpt; $('#tMap').onclick=showMap; $('#tEv').onclick=showEv;
+  $('#tHint').onclick=doHint; $('#tShow').onclick=doReveal; $('#tReset').onclick=askReset; $('#tRestart').onclick=restartTask;
+  $('#swCore').onclick=toggleRoute;
+  $('#swSnd').onclick=()=>{ S.sound=!S.sound; save(); paintTeacher(); };
+  $('#tT1').onclick=()=>{ TIMER.run()?TIMER.pause():TIMER.start(); draw(false,true); }; $('#tT2').onclick=()=>{ TIMER.add(60); draw(false,true); }; $('#tT3').onclick=()=>{ TIMER.reset(); draw(false,true); };
+  $$('[data-stt]',B).forEach(b=>b.onclick=()=>{ const n=+b.dataset.stt; S.st[n]=!S.st[n]; save(); draw(false,true); });
+  $('#tClk').onclick=()=>{ if(S.clock.start){ S.clock.acc=clockNow(); S.clock.start=0; S.clock.paused=true; } else { S.clock.start=Date.now(); S.clock.paused=false; } save(); paintTeacher(); };
+  bindMap(B);
+}
+function doHint(){ const s=cur(); if(!s.hint) return; s.hint(sd(s.id)); FX.add('hint'); save(); draw(false,true); }
+function doReveal(){ const s=cur(); if(!s.reveal) return; const d=sd(s.id), before=d.p; s.reveal(d); FX.add(d.p!==before?'part':'reveal'); save(); draw(false,true); }
+
+/* confetti (no library) */
+function confetti(){
+  if(REDUCED) return; const c=$('#confetti'), x=c.getContext('2d'); c.width=innerWidth; c.height=innerHeight;
+  const cols=['#39D8F6','#FF5470','#FFC14D','#8D7BFF','#36E09B'];
+  const P=Array.from({length:170},()=>({x:Math.random()*c.width, y:-20-Math.random()*c.height*.5, r:4+Math.random()*6, vx:-2+Math.random()*4, vy:2+Math.random()*4, a:Math.random()*6, c:cols[Math.floor(Math.random()*cols.length)]}));
+  let t=0; (function f(){ x.clearRect(0,0,c.width,c.height); P.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; p.a+=.1; x.save(); x.translate(p.x,p.y); x.rotate(p.a); x.fillStyle=p.c; x.fillRect(-p.r/2,-p.r/2,p.r,p.r*1.6); x.restore(); });
+    if(++t<230) requestAnimationFrame(f); else x.clearRect(0,0,c.width,c.height); })();
+}
+function floatEmoji(e){ if(!/^[\p{Extended_Pictographic}‍️✅]{1,8}$/u.test(e||'')) return; const s=document.createElement('span'); s.textContent=e; s.style.left=Math.random()*60+'px'; $('#reacts').appendChild(s); setTimeout(()=>s.remove(),3100); }
+
+/* voice message: browser text-to-speech (in Zoom turn on “Share sound”) */
+function speak(text, el, gender){
+  if(!('speechSynthesis' in window)){ toast('This browser cannot play the voice — read the transcript.'); return; }
+  const ss=window.speechSynthesis; if(ss.speaking){ ss.cancel(); el&&el.classList.remove('playing'); return; }
+  const u=new SpeechSynthesisUtterance(text); u.lang='en-GB'; u.rate=.92; u.pitch=gender==='female'?1.15:1;
+  const vs=ss.getVoices().filter(v=>/^en/i.test(v.lang));
+  const pref=vs.find(v=>/female|samantha|zira|karen|serena|victoria|libby|sonia|aria|jenny|hazel|susan|moira|tessa/i.test(v.name)) || vs.find(v=>/en-GB/i.test(v.lang)) || vs[0];
+  if(pref) u.voice=pref;
+  u.onstart=()=>el&&el.classList.add('playing'); u.onend=u.onerror=()=>el&&el.classList.remove('playing');
+  ss.speak(u);
+}
+
+/* ---------- 9 · live room (Supabase Realtime broadcast + presence; BroadcastChannel fallback) ----------
+   Той самий механізм, що в уроках 5, 13–17: таблиці не потрібні.
+   Учитель — єдине джерело стану: екран, завдання й таймер надсилає тільки він.
+   Учні можуть надіслати лише hello / ans / work / react; правильні відповіді їм не передаються,
+   доки вчитель не відкриє їх на головному екрані. */
+const configured = ()=> /^https:\/\/[a-z0-9-]+\.supabase\.co/i.test((CFG.SUPABASE_URL||'').trim()) && !!(CFG.SUPABASE_KEY||'').trim();
+const uid = ()=> Math.random().toString(36).slice(2,10);
+const LIVE = {on:false, peers:[]};
+const WALLQ = [];        // unshown text answers {id, task, sid, text, by, ok}
+const NAMES = {};
+
+const Net = {
+  kind:null, status:'off', ch:null, sb:null, bc:null, me:null, peers:{}, hb:null, prune:null,
+  setStatus(s){ this.status=s; this.onStatus && this.onStatus(s); },
+  async connect(o){
+    this.stop();
+    let sid=null; try{ sid=o.role==='student' && sessionStorage.getItem('l18sid'); }catch(e){}   // per tab, survives a refresh
+    this.me={id:sid || uid(), name:o.name||'', role:o.role};
+    if(o.role==='student') try{ sessionStorage.setItem('l18sid', this.me.id); }catch(e){}
+    this.onEvent=o.onEvent; this.onPeers=o.onPeers||(()=>{}); this.onStatus=o.onStatus||(()=>{});
+    this.setStatus('connecting');
+    if(configured()){
+      try{
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+        this.sb = createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY);
+        this.ch = this.sb.channel('lesson18-'+o.room, {config:{presence:{key:this.me.id}, broadcast:{self:false}}});
+        this.ch.on('broadcast',{event:'msg'},({payload})=>this.onEvent(payload));
+        this.ch.on('presence',{event:'sync'},()=>{ const st=this.ch.presenceState(), list=[]; Object.values(st).forEach(v=>v[0]&&list.push(v[0])); this.onPeers(list); });
+        let first=true;
+        await new Promise((res,rej)=>{ const to=setTimeout(()=>rej(new Error('timeout')),9000);
+          this.ch.subscribe(async st=>{
+            if(st==='SUBSCRIBED'){ try{ await this.ch.track(this.me); }catch(e){} this.setStatus('live'); if(first){ first=false; clearTimeout(to); res(); } }
+            else if(st==='CHANNEL_ERROR'||st==='TIMED_OUT'||st==='CLOSED'){ if(first){ first=false; clearTimeout(to); rej(new Error(st)); } else if(this.ch) this.setStatus('reconnecting'); }
+          }); });
+        this.kind='supabase'; return this.kind;
+      }catch(e){ console.warn('Supabase realtime unavailable:', e.message||e); try{ this.sb&&this.ch&&this.sb.removeChannel(this.ch); }catch(_){} this.sb=null; this.ch=null; }
+    }
+    try{
+      this.bc=new BroadcastChannel('lesson18-'+o.room);
+      this.bc.onmessage=e=>{ const m=e.data; if(!m||!m.from) return; this.peers[m.from.id]=Object.assign({},m.from,{ts:Date.now()}); this.flush(); if(m.t!=='__hb') this.onEvent(m); };
+      this.hb=setInterval(()=>this.send({t:'__hb'}),2500);
+      this.prune=setInterval(()=>{ const now=Date.now(); let ch=false; for(const k in this.peers) if(now-this.peers[k].ts>9000){ delete this.peers[k]; ch=true; } if(ch) this.flush(); },3000);
+      this.send({t:'__hb'}); this.kind='local'; this.setStatus('local'); return this.kind;
+    }catch(e){ this.kind='none'; this.setStatus('off'); return 'none'; }
+  },
+  flush(){ this.onPeers(Object.values(this.peers)); },
+  send(p){ const msg=Object.assign({},p,{from:this.me}); try{ if(this.kind==='supabase'&&this.ch) this.ch.send({type:'broadcast',event:'msg',payload:msg}); else if(this.bc) this.bc.postMessage(msg); }catch(e){} },
+  stop(){ clearInterval(this.hb); clearInterval(this.prune); if(this.ch){ try{ this.sb.removeChannel(this.ch); }catch(e){} } if(this.bc){ try{ this.bc.close(); }catch(e){} } this.kind=null; this.ch=null; this.bc=null; this.peers={}; this.status='off'; }
+};
+const Store = {
+  async log(kind, task, sid, value){
+    if(!(CFG.SAVE_ANSWERS && Net.sb)) return;
+    try{ await Net.sb.from('lesson_answers').insert({room:String(S.room), lesson:'lesson18-rumour', chapter:cur().id, task, kind, student_id:sid, student_name:NAMES[sid]||null, value:String(value).slice(0,500)}); }
+    catch(e){ console.warn('Supabase insert failed:', e.message||e); }
+  }
+};
+
+let pubT=null;
+function curTask(){ const c=cur(); try{ return c.live?c.live():null; }catch(e){ return null; } }
+function pubState(){
+  if(!LIVE.on || ROLE!=='teacher') return;
+  clearTimeout(pubT); pubT=setTimeout(()=>{
+    const c=cur(), st=STAGES[c.sc-1];
+    Net.send({t:'state', sc:st.n, title:st.t, e:st.e, task:curTask(), timer:{left:Math.ceil(TIMER.left()), run:TIMER.run()}});
+  },120);
+}
+setInterval(()=>{ if(LIVE.on) pubState(); },6000);
+setInterval(()=>{ if(ROLE==='teacher'){ TIMER.tick(); const tc=$('#tClock'); if(tc) tc.textContent=mmss(clockNow()); } },500);
+
+let redrawT=null;
+function onTeacherMsg(m){
+  const id=m.from&&m.from.id; if(!id || !m.from || m.from.role!=='student') return;
+  if(m.from.name) NAMES[id]=String(m.from.name).slice(0,20);
+  const task=curTask();
+  if(m.t==='hello'){ pubState(); return; }
+  if(m.t==='react'){ floatEmoji(m.e); return; }
+  if(m.t==='ans' && task && m.task===task.id){
+    if(task.kind==='choice'){ const v=+m.v; if(!(v>=0 && v<task.opts.length) || task.lock) return; (S.lv[task.id]=S.lv[task.id]||{})[id]=v; save(); Store.log('vote',task.id,id,v); clearTimeout(redrawT); redrawT=setTimeout(()=>draw(false,true),200); return; }
+    if(task.kind==='text'){ const text=String(m.v||'').replace(/\s+/g,' ').trim().slice(0,140); if(!text) return;
+      const chk=CHECKS[task.chk];
+      const k=WALLQ.findIndex(w=>w.task===task.id && w.sid===id); const item={id:uid(), task:task.id, sid:id, text, by:NAMES[id]||'student', ok:chk?chk(text):null};
+      if(k>=0) WALLQ[k]=item; else WALLQ.unshift(item); SFX.pop(); Store.log('text',task.id,id,text); paintDock(); return; }
+  }
+  if(m.t==='work' && task && task.kind==='team'){
+    const L=String(m.team||''), f=String(m.f||''); if(!TEAMS().some(t=>t.L===L) || !['s1','s2','s3','s4'].includes(f)) return;
+    S.work[L]=Object.assign({},S.work[L],{[f]:String(m.v||'').slice(0,200), by:NAMES[id]||''}); save(); pubState(); Store.log('work','team-'+L+'-'+f,id,m.v);
+    clearTimeout(redrawT); redrawT=setTimeout(()=>{ if(['cases','reports'].includes(cur().id)) draw(false,true); else paintDock(); },400); return;
+  }
+}
+function paintDock(){
+  const d=$('#dock'); d.classList.toggle('on',LIVE.on && ROLE==='teacher'); if(!LIVE.on) return;
+  const st=Net.status, stTxt={live:'● live', local:'● this browser only', reconnecting:'● reconnecting…', connecting:'● connecting…', off:'● offline'}[st]||st;
+  $('#dockTitle').textContent='Room '+S.room;
+  $('#dockLed').className='led '+(st==='live'?'on':st==='off'?'bad':'warn');
+  const studs=LIVE.peers.filter(p=>p&&p.role==='student');
+  $('#dockCount').textContent=`${studs.length} joined · ${stTxt}`;
+  const task=curTask(); let h='';
+  h+= studs.length?`<div class="names">${studs.slice(0,40).map(p=>`<span>${esc(p.name||'?')}</span>`).join('')}</div>`:`<div class="small">Nobody yet — share the link or code (📡 Live).</div>`;
+  if(!task) h+=`<div class="small">No phone task on this screen — phones show “Look at the main screen”.</div>`;
+  else if(task.kind==='choice'){ const n=counts(task.id,task.opts.length), tot=Object.keys(S.lv[task.id]||{}).length, mx=Math.max(1,...n);
+    h+=`<div class="small">${tot} answered · ${esc(task.q.slice(0,80))}</div>`+task.opts.map((o,i)=>`<div class="dbar"><span>${task.lock&&task.correct===i?'✅ ':''}${esc(o)}</span><b class="mono" style="color:var(--cyan);text-align:right">${n[i]}</b><div class="tr"><i class="${task.lock&&task.correct===i?'ok':''}" style="width:${n[i]/mx*100}%"></i></div></div>`).join(''); }
+  else if(task.kind==='text'){ const list=WALLQ.filter(w=>w.task===task.id); h+= list.length?`<div class="small">${list.length} answers — Show puts one on the screen</div>`+list.map(w=>`<div class="wallit"><p>${w.ok===true?'<span class="okm">✓</span> ':w.ok===false?'<span class="nom">✗</span> ':''}${esc(w.text)}<small>${esc(w.by)}</small></p><button class="btn sm" data-w="${w.id}">Show</button><button class="btn sm ghost" data-wx="${w.id}" aria-label="Hide">✕</button></div>`).join(''):`<div class="small">Waiting for answers…</div>`; }
+  else if(task.kind==='team'){ h+=TEAMS().map(t=>{ const w=S.work[t.L]||{}; const n=['s1','s2','s3','s4'].filter(f=>w[f]).length; return `<div class="small">${t.e} Team ${t.n} · Case ${t.L}: ${n?`<b style="color:var(--ok)">${n}/4 sentences</b>`:'…'}</div>`; }).join(''); }
+  else if(task.kind==='react3') h+=`<div class="small">Phones can send ✅ Clear · 🧠 Great verbs · 🕵️ Accurate.</div>`;
+  $('#dockBody').innerHTML=h;
+  $$('[data-w]',d).forEach(b=>b.onclick=()=>{ const k=WALLQ.findIndex(w=>w.id===b.dataset.w); if(k<0) return; const w=WALLQ.splice(k,1)[0]; (S.wall[w.task]=S.wall[w.task]||[]).push({text:w.text, by:w.by}); save(); draw(false,true); });
+  $$('[data-wx]',d).forEach(b=>b.onclick=()=>{ const k=WALLQ.findIndex(w=>w.id===b.dataset.wx); if(k>=0) WALLQ.splice(k,1); paintDock(); });
+}
+$('#dockMin').onclick=()=>$('#dock').classList.toggle('min');
+const baseURL = ()=> location.href.split('?')[0].split('#')[0];
+const joinURL = ()=> baseURL()+'?room='+S.room+'&role=student';
+async function startLive(silent){
+  const kind=await Net.connect({room:S.room, role:'teacher', name:'teacher', onEvent:onTeacherMsg,
+    onPeers:list=>{ LIVE.peers=list; paintDock(); if(!$('#modal').classList.contains('hidden') && $('#lvStatus')) $('#lvStatus').innerHTML='Status: '+liveStatus(); },
+    onStatus:()=>{ paintDock(); if($('#lvStatus')) $('#lvStatus').innerHTML='Status: '+liveStatus(); }});
+  LIVE.on = kind!=='none'; S.live=LIVE.on; save();
+  $('#btnLive').classList.toggle('on',LIVE.on);
+  pubState(); draw(false,true);
+  if(!silent) toast(kind==='supabase'?'Live room open — share the link, QR or code':kind==='local'?'Supabase is not reachable — room works in THIS browser only':'Live room could not start');
+  return kind;
+}
+function liveStatus(){
+  if(!LIVE.on) return 'not started';
+  const n=LIVE.peers.filter(p=>p&&p.role==='student').length;
+  const s = Net.status==='live' ? '<span style="color:var(--ok)">● live (Supabase)</span>' : Net.status==='local' ? '<span style="color:var(--amber)">● this browser only — Supabase is not configured or not reachable</span>' : `<span style="color:var(--amber)">● ${esc(Net.status)}</span>`;
+  return `${s} · ${n} joined`;
+}
+function openLive(){
+  openModal(`<div class="row"><h2 class="dsp grow" style="font-size:36px">📡 Live Student Mode</h2><button class="btn sm ghost" onclick="closeModal()" aria-label="Close">✕</button></div>
+   <p class="small">Optional. Students join from a phone with a nickname — no account. They answer, vote, send short answers and write their team report. The lesson works fully without it.</p>
+   <div class="two mt" style="align-items:center"><div><div class="small">Room code</div><div class="dsp" style="font-size:80px">${S.room}</div>
+     <div class="small" style="word-break:break-all">${esc(joinURL())}</div>
+     <div class="small mt" style="margin-top:8px">Or open <b>${esc(baseURL())}?join</b> and type the code.</div>
+     <div class="small mt" id="lvStatus">Status: ${liveStatus()}</div></div>
+     <img alt="QR code for the student link" width="210" height="210" style="border-radius:18px;background:#fff;justify-self:end" src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=8&data=${encodeURIComponent(joinURL())}" onerror="this.remove()"></div>
+   <div class="row mt2">${LIVE.on?`<button class="btn" id="lvStop">⏹ Stop room</button>`:`<button class="btn primary" id="lvStart">▶ Start live room</button>`}
+     <button class="btn sm ghost" id="lvCopy">📋 Copy link</button><button class="btn sm ghost" id="lvNew" ${LIVE.on?'disabled':''}>New code</button></div>
+   ${configured()?'':'<p class="small mt" style="color:var(--amber)">SUPABASE_URL / SUPABASE_KEY are empty at the top of this file → phones on other devices cannot connect.</p>'}`);
+  const st=$('#lvStart'); if(st) st.onclick=async()=>{ st.disabled=true; st.textContent='Connecting…'; await startLive(); openLive(); };
+  const sp=$('#lvStop'); if(sp) sp.onclick=()=>{ Net.send({t:'end'}); Net.stop(); LIVE.on=false; S.live=false; LIVE.peers=[]; save(); $('#btnLive').classList.remove('on'); draw(false,true); openLive(); };
+  $('#lvCopy').onclick=()=>copy(joinURL(),'Link copied — paste it into the Zoom chat');
+  $('#lvNew').onclick=()=>{ S.room=rand4(); save(); openLive(); };
+}
+
+/* ---------- 10 · student app (?room=1234&role=student  or  ?join) ---------- */
+function studentApp(){
+  document.body.classList.add('student');
+  const B=$('#stuBody');
+  let room=(qs.get('room')||'').replace(/\D/g,'').slice(0,6);
+  let st=null, name='', sent={}, myTeam='', taskKey='';
+  try{ name=localStorage.getItem('l18name')||''; }catch(e){}
+  const setConn=s=>{ $('#stuLed').className='led '+(s==='live'?'on':s==='off'?'bad':'warn');
+    $('#stuConn').textContent={live:'connected', local:'this browser only', reconnecting:'reconnecting…', connecting:'connecting…', off:'offline'}[s]||''; };
+  $('#stuFoot').innerHTML=['👍','😂','😮','🔥','✋','🕵️'].map(e=>`<button data-e="${e}" aria-label="React ${e}">${e}</button>`).join('');
+  $$('[data-e]',$('#stuFoot')).forEach(b=>b.onclick=()=>{ if(!Net.kind) return; Net.send({t:'react', e:b.dataset.e}); b.animate?.([{transform:'scale(1.4)'},{transform:'scale(1)'}],{duration:250}); });
+  const ask=()=>{
+    B.innerHTML=`<div class="card stu-card"><div class="row" style="gap:10px">${av('mia',46)}${av('leo',46)}${av('max',46)}${av('nora',46)}</div>
+      <h2 class="dsp mt" style="font-size:34px">Join the investigation 🕵️</h2>
+      <label for="rc">Room code</label><input id="rc" inputmode="numeric" maxlength="6" value="${esc(room)}" placeholder="1234" autocomplete="off">
+      <label for="nm">Your nickname</label><input id="nm" maxlength="20" value="${esc(name)}" placeholder="e.g. Detective Fox 🦊" autocomplete="off">
+      <p class="small mt" style="margin-top:8px">Use a nickname or first name only. No surname, no personal data.</p>
+      <button class="btn primary mt" id="jn" style="width:100%">Join →</button></div>`;
+    $('#jn').onclick=()=>{ const r=$('#rc').value.replace(/\D/g,''), v=$('#nm').value.trim().slice(0,20); if(r.length<4) return $('#rc').focus(); if(!v) return $('#nm').focus();
+      room=r; name=v; try{ localStorage.setItem('l18name',name); }catch(e){} join(); };
+    $('#nm').onkeydown=e=>{ if(e.key==='Enter') $('#jn').click(); };
+  };
+  const join=async()=>{
+    $('#stuRoom').textContent='room '+room;
+    try{ myTeam=localStorage.getItem('l18team-'+room)||''; }catch(e){}
+    B.innerHTML=`<div class="stu-wait"><div class="bigi">🔌</div><p>Connecting to room ${esc(room)}…</p></div>`;
+    const kind=await Net.connect({room, role:'student', name, onStatus:setConn, onEvent:m=>{
+      if(!m.from || m.from.role!=='teacher') return;
+      if(m.t==='state'){ const k=JSON.stringify([m.sc, m.task && Object.assign({},m.task,{work:undefined})]); const changed=k!==taskKey; st=m; if(changed){ taskKey=k; render(); } else { paintT(); syncTeam(); } }
+      if(m.t==='end') ended();
+    }});
+    if(kind==='none'){ B.innerHTML=`<div class="stu-wait"><div class="bigi">📶</div><p><b>Could not join.</b></p><p class="small">Check your internet and try again.</p><button class="btn primary mt" id="rt">Try again</button></div>`; $('#rt').onclick=join; return; }
+    Net.send({t:'hello'}); render();
+    setTimeout(()=>{ if(!st) Net.send({t:'hello'}); },2500);
+    setTimeout(()=>{ if(!st && B.querySelector('.stu-wait')) B.querySelector('.stu-wait p').innerHTML=`Hi ${esc(name)}! Waiting for your teacher…<br><span class="small">Room ${esc(room)} — is the code right? <a href="?join" style="color:var(--cyan)">Change</a></span>`; },6000);
+  };
+  const ended=()=>{ Net.stop(); setConn('off'); B.innerHTML=`<div class="stu-wait"><div class="bigi">✅🕵️</div><h2 class="dsp" style="font-size:34px">Case closed!</h2><p class="small">Thanks, ${esc(name)}! You can close this page.</p></div>`; };
+  const paintT=()=>{ const t=$('#stuT'); if(t&&st&&st.timer){ t.textContent=(st.timer.run?'⏱ ':'⏸ ')+mmss(st.timer.left); } };
+  setInterval(()=>{ if(st&&st.timer&&st.timer.run&&st.timer.left>0){ st.timer.left--; paintT(); } },1000);
+  const syncTeam=()=>{ if(!st||!st.task||st.task.kind!=='team'||!myTeam) return; const w=(st.task.work||{})[myTeam]||{};
+    $$('[data-tf]',B).forEach(ta=>{ if(document.activeElement!==ta && typeof w[ta.dataset.tf]==='string' && ta.value!==w[ta.dataset.tf]) ta.value=w[ta.dataset.tf]; }); };
+  const render=()=>{
+    if(!st){ B.innerHTML=`<div class="stu-wait"><div class="bigi">👀</div><p>Hi ${esc(name)}! Waiting for your teacher…</p></div>`; return; }
+    const T=st.task, head=`<div class="stu-prog">${STAGES.map(x=>`<i class="${x.n<st.sc?'d':x.n===st.sc?'c':''}"></i>`).join('')}</div><div class="small mono" style="letter-spacing:.12em;margin-bottom:10px">${st.e||''} STAGE ${st.sc} OF 6 · ${esc(st.title||'')}</div>`;
+    if(!T){ B.innerHTML=head+`<div class="stu-wait card stu-card" style="padding-top:26px"><div class="bigi">👀</div><p><b>Look at the main screen.</b></p><p class="small">Your teacher will send a task soon. You can tap an emoji below.</p></div>`; return; }
+    if(T.kind==='choice'){
+      const my=sent[T.id];
+      B.innerHTML=head+`<div class="card stu-card"><p style="font-size:20px;font-weight:800">${esc(T.q)}</p><div class="opts">${T.opts.map((o,i)=>`<button class="opt ${T.lock&&T.correct===i?'right':my===i?(T.lock?'wrongpick':'pick'):''}" data-i="${i}"><span class="L">${LET[i]}</span><span>${esc(o)}</span></button>`).join('')}</div>
+        <p class="small mt">${T.lock?(T.correct===null||T.correct===undefined?'✓ Voting closed.':my===T.correct?'🎉 Correct! The answer is on the main screen.':'✓ The answer is on the main screen.'):my!==undefined?'✓ Sent! You can change it.':'Tap your answer.'}</p></div>`;
+      $$('[data-i]',B).forEach(b=>b.onclick=()=>{ if(T.lock) return; sent[T.id]=+b.dataset.i; Net.send({t:'ans', task:T.id, v:+b.dataset.i}); render(); });
+      return;
+    }
+    if(T.kind==='text'){
+      B.innerHTML=head+`<div class="card stu-card"><p style="font-size:20px;font-weight:800">${esc(T.q)}</p><input id="tx" maxlength="140" placeholder="${esc(T.ph||'')}" autocomplete="off"><button class="btn primary mt" id="sd" style="width:100%">Send ➤</button>
+        <p class="small mt">${sent[T.id]?'✓ Sent: “'+esc(sent[T.id])+'”. You can send a new version.':T.chk?'Your teacher checks the answers.':'Your teacher can show your answer on the screen.'}</p></div>`;
+      const go=()=>{ const v=$('#tx').value.trim(); if(!v) return; sent[T.id]=v; Net.send({t:'ans', task:T.id, v}); render(); };
+      $('#sd').onclick=go; $('#tx').onkeydown=e=>{ if(e.key==='Enter') go(); };
+      return;
+    }
+    if(T.kind==='team'){
+      const t=(T.teams||[]).find(x=>x.L===myTeam);
+      if(!t){ B.innerHTML=head+`<div class="card stu-card"><p style="font-size:20px;font-weight:800">🚨 Which team are you in?</p><div class="opts">${T.teams.map(x=>`<button class="opt" data-tm="${x.L}"><span class="L">${x.e}</span><span>Team ${x.n} · Case ${x.L}</span></button>`).join('')}</div></div>`;
+        $$('[data-tm]',B).forEach(b=>b.onclick=()=>{ myTeam=b.dataset.tm; try{ localStorage.setItem('l18team-'+room,myTeam); }catch(e){} render(); }); return; }
+      const C=CASES[t.L], w=(T.work||{})[myTeam]||{};
+      B.innerHTML=head+`<div class="card stu-card"><div class="row"><span style="font-size:32px">${t.e}</span><div class="grow"><b style="font-size:19px">Team ${t.n} · Case ${t.L}</b><div class="small mono" id="stuT"></div></div><button class="btn sm ghost" id="chg">change</button></div>
+        <div class="cf mt"><div class="hd">📁 <b>${esc(C.t.toUpperCase())}</b></div><div class="rum"><small>THE RUMOUR</small>${esc(C.rumour)}</div>
+          <div class="chat">${C.msgs.map(m=>msg(m[0],esc('“'+m[1]+'”'),{size:30})).join('')}</div></div>
+        <p class="small mt">What really happened? Write 3–4 sentences in Reported Speech. Use at least TWO of: <b>${VERB_BANK.join(', ')}</b>. Your team sees the same text.</p>
+        ${['s1','s2','s3','s4'].map((f,i)=>`<label>Sentence ${i+1}${i===3?' (optional)':''}</label><textarea data-tf="${f}" maxlength="200" placeholder="${['… said that …','… denied / claimed that …','… admitted / warned …','…'][i]}">${esc(w[f]||'')}</textarea>`).join('')}
+        <p class="small mt" id="ok">Saves automatically.</p></div>`;
+      paintT();
+      $('#chg').onclick=()=>{ myTeam=''; try{ localStorage.removeItem('l18team-'+room); }catch(e){} render(); };
+      $$('[data-tf]',B).forEach(ta=>{ let tm=null; ta.oninput=()=>{ $('#ok').textContent='…'; clearTimeout(tm); tm=setTimeout(()=>{ Net.send({t:'work', team:myTeam, f:ta.dataset.tf, v:ta.value.slice(0,200)}); $('#ok').textContent='✓ Saved — your teacher can see it.'; },700); }; });
+      return;
+    }
+    if(T.kind==='react3'){
+      B.innerHTML=head+`<div class="card stu-card"><p style="font-size:22px;font-weight:800">🎤 ${esc(T.q)}</p><p class="small">How was it? Tap to react.</p>
+        <div class="opts">${[['✅','Clear'],['🧠','Great verbs'],['🕵️','Accurate']].map(([e,l])=>`<button class="opt" data-r="${e}"><span class="L">${e}</span><span>${l}</span></button>`).join('')}</div></div>`;
+      $$('[data-r]',B).forEach(b=>b.onclick=()=>{ Net.send({t:'react', e:b.dataset.r}); b.animate?.([{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:250}); });
+      return;
+    }
+  };
+  (room && name) ? join() : ask();
+}
+
+/* ---------- 11 · boot ---------- */
+if(ROLE==='student'){ studentApp(); }
+else {
+  $('#btnNext').onclick=next; $('#btnBack').onclick=back; $('#btnSkip').onclick=skipOpt;
+  $('#btnHint').onclick=doHint; $('#btnShow').onclick=doReveal;
+  $('#btnTeacher').onclick=()=>toggleTeacher(); $('#tClose').onclick=()=>toggleTeacher(false);
+  $('#btnMap').onclick=showMap; $('#btnRoute').onclick=toggleRoute; $('#btnLive').onclick=openLive; $('#btnEv').onclick=showEv;
+  $('#btnFull').onclick=()=>{ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); };
+  document.addEventListener('keydown',e=>{
+    if(e.target.closest('input,textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
+    if(!$('#modal').classList.contains('hidden')){ if(e.key==='Escape') closeModal(); return; }
+    const k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||(k===' '&&!e.target.closest('button'))){ e.preventDefault(); next(); }
+    else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); back(); }
+    else if(k==='t'||k==='T') toggleTeacher();
+    else if(k==='m'||k==='M') showMap();
+    else if(k==='e'||k==='E') showEv();
+    else if(k==='f'||k==='F') $('#btnFull').click();
+    else if(k==='h'||k==='H') doHint();
+    else if(k==='a'||k==='A'||k==='r'||k==='R') doReveal();
+    else if(k==='Escape') toggleTeacher(false);
+  });
+  if(S.i>=STEPS.length || !visible(S.i)) S.i=0;
+  Object.values(CHARS).forEach(c=>{ if(c.photo){ const im=new Image(); im.src=c.photo; } });
+  if('speechSynthesis' in window) speechSynthesis.getVoices();
+  draw(true);
+  if(S.live) startLive(true);   // teacher refreshed the page → reopen the same room; phones stay connected
+}
+</script>
+</body>
+</html>
