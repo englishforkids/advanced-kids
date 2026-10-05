@@ -7,6 +7,12 @@ advanced-kids/
 ├── index.html                       платформа (єдиний index.html у проєкті)
 ├── UPLOAD.md  .nojekyll
 ├── assets/watermark.png             спільний логотип для всіх уроків
+├── study/                           розділи Vocabulary і Grammar
+│   ├── study.css  study-core.js  vocabulary.js  grammar.js
+│   └── data/
+│       ├── course.js                юніти й уроки 1–51 (далі 52+)
+│       ├── vocabulary-data.js       слова
+│       └── grammar-data.js          граматичні теми
 └── lessons/
     ├── lesson-05/lesson-05.html   The Night Everything Went Wrong
     ├── lesson-06/lesson-06.html   The Unlabelled Room
@@ -54,6 +60,42 @@ advanced-kids/
 
 ---
 
+## Vocabulary і Grammar
+
+Обидва розділи будуються автоматично з трьох файлів у `study/data/`.
+Код (`study/*.js`, `study.css`) при додаванні уроків **не чіпаємо**.
+
+**Нове слово / новий урок зі словами** → `study/data/vocabulary-data.js`.
+Скопіюйте останній блок `{ unit, lesson, title, practisedIn, revisedIn, words: [...] }`
+і поставте кому перед ним. Одне слово — один рядок:
+`{ word: 'phrase', type: 'phrase', translation: '…', meaning: '…', example: '…' }`.
+Якщо слово вже було раніше — пишемо лише `{ word: 'fit in', repeat: true }`,
+дубля в словнику не буде.
+
+**Нова граматична тема** → `study/data/grammar-data.js`: скопіюйте будь-яку
+тему й змініть поля. Перші 5 питань у `practice` — це Mini Practice у темі,
+усі разом — вкладка Practice.
+
+**Урок 52+** → допишіть рядок у `study/data/course.js` (номер, тип, назва).
+
+Прогрес учнів (вивчені слова, обране, теми) зберігається в `localStorage`
+браузера — окремо на кожному пристрої, без сервера.
+
+### Посилання з уроку на словник і граматику
+
+Кнопки на картках уроків з'являються самі. Усередині файлу уроку можна
+поставити такі посилання:
+
+| Куди | href |
+|---|---|
+| Слова цього уроку | `../../#words?lesson=14` |
+| Практика слів уроку | `../../#words?tab=practice` |
+| Граматика уроку | `../../#grammar?lesson=15` |
+| Конкретна тема | `../../#grammar?topic=mixed-conditionals` |
+| Конкретне слово | `../../#words?word=u2-l14-take-it-down` |
+
+---
+
 ## Що всередині уроку
 
 - Кнопка **←** угорі зліва веде на `../../` — назад на платформу.
@@ -81,6 +123,8 @@ advanced-kids/
 | Сайт відкривається уроком, а не платформою | У корінь залили файл уроку під іменем `index.html` — відновіть платформу з історії GitHub |
 | Live room: `local only` | Урок відкрито з диска, а не з адреси GitHub Pages |
 | Змінив файл, а на сайті старе | GitHub Pages оновлюється до хвилини, далі Ctrl+Shift+R |
+| Vocabulary / Grammar показує «could not load» | Пропущена кома або лапка в `study/data/…` — відкрийте консоль браузера (F12) |
+| Розділи показують «Loading…» | Не завантажилась папка `study/` |
 
 Завантаження на GitHub **додає й замінює** файли, але ніколи не видаляє.
 Якщо файл став непотрібним — відкрийте його → **⋯ → Delete file** → Commit.

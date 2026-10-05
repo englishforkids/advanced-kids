@@ -8,20 +8,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="study/study.css">
 
 <script>
 /* ═══════════════════════════════════════════════════════════════
    ЄДИНИЙ БЛОК, ЯКИЙ ТРЕБА РЕДАГУВАТИ
 
-   1. LESSONS — список уроків. Новий урок = папка + один новий блок {...}.
-   2. WORDS   — словник для практики. Поки порожній.
-   3. GRAMMAR — граматика курсу. Поки порожня.
+   LESSONS — список уроків. Новий урок = папка + один новий блок {...}.
+
+   Словник і граматика живуть в окремих файлах у папці study/data/:
+     study/data/course.js           ← юніти й уроки курсу (1–51, далі 52+)
+     study/data/vocabulary-data.js  ← слова (розділ Vocabulary)
+     study/data/grammar-data.js     ← граматичні теми (розділ Grammar)
 
    Структура репозиторію:
      index.html                        ← цей файл, платформа
      assets/watermark.png              ← спільний логотип
      lessons/lesson-05/lesson-05.html  ← сам урок
      lessons/lesson-05/img/ docs/ sql/
+     study/                            ← Vocabulary & Grammar (css, js, data)
 
    Файл уроку НЕ називається index.html — так його неможливо
    випадково залити в корінь і затерти платформу.
@@ -132,21 +137,6 @@ const LESSONS = [
   */
 ];
 
-const WORDS = [
-  /* { en:'to blend in', ua:'зливатися з натовпом', lesson:5 },
-     { en:'stand out',   ua:'вирізнятися',          lesson:5 }, */
-];
-
-const GRAMMAR = [
-  /* {
-       title   : 'Inversion for emphasis',
-       lesson  : 5,
-       rule    : 'Після негативного тригера на початку речення підмет і допоміжне дієслово міняються місцями.',
-       formula : 'TRIGGER + AUXILIARY + SUBJECT + MAIN VERB',
-       examples: ['Never had Mia seen the corridor so dark.',
-                  'Little did Leo know what was waiting upstairs.']
-     }, */
-];
 </script>
 
 <style>
@@ -275,51 +265,29 @@ footer .wm:hover{opacity:.85}
 code{font-family:"Space Mono",monospace; font-size:.92em; background:rgba(255,255,255,.08);
      padding:2px 6px; border-radius:6px; color:#CFD6FF}
 
-/* ---------- words ---------- */
+/* ---------- words & grammar → study/study.css ---------- */
 .chips{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px}
 .chip{padding:7px 14px; border-radius:999px; font-size:13.5px; font-weight:800; color:var(--muted);
       border:1px solid var(--line); background:rgba(255,255,255,.04); transition:.18s}
 .chip:hover{color:var(--text)}
 .chip.on{color:#0B1224; background:var(--mint); border-color:var(--mint)}
-.flash{
-  position:relative; width:100%; max-width:560px; min-height:220px; margin:0 auto;
-  border-radius:var(--r-lg); border:1px solid var(--line2); cursor:pointer;
-  background:linear-gradient(180deg,var(--panel),var(--deep));
-  display:flex; align-items:center; justify-content:center; text-align:center; padding:34px 28px;
-  transition:border-color .18s;
-}
-.flash:hover{border-color:var(--mint)}
-.flash .side{font-family:"Anton",sans-serif; font-weight:400; font-size:clamp(28px,5vw,44px); line-height:1.08; text-transform:none}
-.flash .side.ua{color:var(--mint)}
-.flash .hint{position:absolute; bottom:14px; left:0; right:0; font-size:12.5px; color:var(--muted)}
-.wctl{display:flex; gap:12px; justify-content:center; align-items:center; margin-top:20px; flex-wrap:wrap}
-.wbar{max-width:560px; margin:18px auto 0; height:5px; border-radius:99px; background:rgba(255,255,255,.08); overflow:hidden}
-.wbar i{display:block; height:100%; background:var(--mint); width:0; transition:width .25s}
-.wmeta{max-width:560px; margin:10px auto 0; display:flex; justify-content:space-between; font-family:"Space Mono",monospace; font-size:12.5px; color:var(--muted)}
-
-/* ---------- grammar ---------- */
-.gitem{border:1px solid var(--line); border-radius:var(--r); background:rgba(255,255,255,.035); margin-bottom:10px; overflow:hidden}
-.gitem>button{display:flex; align-items:center; gap:13px; width:100%; text-align:left; padding:16px 18px; font-weight:800; font-size:17px}
-.gitem .lz{font-family:"Space Mono",monospace; font-size:11.5px; color:var(--amber); border:1px solid rgba(255,201,74,.38);
-           border-radius:999px; padding:2px 9px; background:rgba(255,201,74,.08)}
-.gitem .ar{margin-left:auto; color:var(--muted); transition:.2s}
-.gitem.open .ar{transform:rotate(90deg)}
-.gbody{display:none; padding:0 18px 18px; border-top:1px solid var(--line)}
-.gitem.open .gbody{display:block; padding-top:16px}
-.formula{font-family:"Space Mono",monospace; font-size:13.5px; color:var(--lilac); background:rgba(167,139,250,.1);
-         border:1px solid var(--line); border-radius:10px; padding:9px 13px; display:inline-block; margin:2px 0 12px}
-.gbody ul{margin:0; padding-left:20px} .gbody li{margin-bottom:5px}
+.tab .lbl-s{display:none}
 
 footer{border-top:1px solid var(--line); padding:22px 0 34px; color:var(--muted); font-size:13.5px}
 footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width:1060px; margin:0 auto; padding:0 20px}
 
 @media (max-width:760px){
   #top .in{gap:10px} .mark span{display:none}
+  .tab .lbl-l{display:none} .tab .lbl-s{display:inline}
   #hero{padding:38px 0 8px}
   .ep{grid-template-columns:1fr}
   .ep .cov{min-height:150px}
   .ep .cov::after{background:linear-gradient(180deg,transparent 35%,var(--panel) 99%)}
   .mins{margin-left:0; width:100%}
+}
+@media (max-width:420px){
+  #top{padding:10px 14px} .mark b{font-size:16px; white-space:nowrap}
+  nav{gap:2px} .tab{padding:8px 10px; font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important; transition:none!important}
@@ -334,7 +302,7 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
     <div class="mark"><b>ADVANCED KIDS</b><span>English · 11–15</span></div>
     <nav id="nav">
       <button class="tab on" data-view="lessons">Lessons</button>
-      <button class="tab" data-view="words">Words</button>
+      <button class="tab" data-view="words"><span class="lbl-l">Vocabulary</span><span class="lbl-s">Words</span></button>
       <button class="tab" data-view="grammar">Grammar</button>
     </nav>
   </div>
@@ -346,7 +314,7 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
   <p class="lede reveal">Кожен урок — окремий інтерактивний епізод для Zoom: одна історія, розділи під вашим контролем і живі відповіді з телефонів учнів.</p>
   <div class="cta reveal">
     <a class="btn primary" id="heroGo" href="#">Open the latest lesson</a>
-    <button class="btn ghost" data-jump="words">Practise words</button>
+    <a class="btn ghost" href="#words?tab=practice">Practise words</a>
   </div>
 </section>
 
@@ -365,42 +333,17 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
     </div>
   </section>
 
-  <!-- ══════════ WORDS ══════════ -->
+  <!-- ══════════ VOCABULARY (study/vocabulary.js) ══════════ -->
   <section class="view" id="v-words">
-    <div class="vhead">
-      <h2 class="dsp">Words</h2>
-      <p>Картки зі словами з пройдених уроків. Натисніть на картку, щоб перевернути.</p>
-    </div>
-    <div id="wordsUI" hidden>
-      <div class="chips" id="wordChips"></div>
-      <div class="flash" id="flash" role="button" tabindex="0" aria-label="Flip the card">
-        <span class="side" id="flashText"></span>
-        <span class="hint" id="flashHint">клік або пробіл — переклад</span>
-      </div>
-      <div class="wbar"><i id="wbar"></i></div>
-      <div class="wmeta"><span id="wpos"></span><span id="wleft"></span></div>
-      <div class="wctl">
-        <button class="btn" id="wAgain">Again</button>
-        <button class="btn primary" id="wKnow">I know it</button>
-        <button class="btn sm ghost" id="wRestart">Restart</button>
-      </div>
-    </div>
-    <div class="ghost" id="wordsEmpty">
-      <h3>Тут поки порожньо</h3>
-      <p>Додайте слова у список <code>WORDS</code> на початку цього файлу — по одному рядку на слово: англійське слово, переклад і номер уроку. Картки і фільтр за уроками з'являться самі.</p>
+    <div id="vocabApp">
+      <div class="ghost"><h3>Loading vocabulary…</h3><p>Якщо цей текст не зникає — перевірте, що папка <code>study/</code> завантажена в репозиторій.</p></div>
     </div>
   </section>
 
-  <!-- ══════════ GRAMMAR ══════════ -->
+  <!-- ══════════ GRAMMAR (study/grammar.js) ══════════ -->
   <section class="view" id="v-grammar">
-    <div class="vhead">
-      <h2 class="dsp">Grammar</h2>
-      <p>Коротко про правила, які ми розібрали на уроках.</p>
-    </div>
-    <div id="grammarList"></div>
-    <div class="ghost" id="grammarEmpty">
-      <h3>Тут поки порожньо</h3>
-      <p>Додайте теми у список <code>GRAMMAR</code> на початку цього файлу: назва, номер уроку, правило одним реченням, формула і кілька прикладів.</p>
+    <div id="grammarApp">
+      <div class="ghost"><h3>Loading grammar…</h3><p>Якщо цей текст не зникає — перевірте, що папка <code>study/</code> завантажена в репозиторій.</p></div>
     </div>
   </section>
 
@@ -414,6 +357,14 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
   </div>
 </footer>
 
+<!-- Vocabulary & Grammar: спочатку дані, потім модулі -->
+<script src="study/data/course.js"></script>
+<script src="study/data/vocabulary-data.js"></script>
+<script src="study/data/grammar-data.js"></script>
+<script src="study/study-core.js"></script>
+<script src="study/vocabulary.js"></script>
+<script src="study/grammar.js"></script>
+
 <script>
 /* ---------- tiny helpers ---------- */
 const $  = (s,r=document)=>r.querySelector(s);
@@ -426,15 +377,32 @@ const store = {
 };
 
 /* ---------- views ---------- */
+/* адреси: #lessons, #words, #words?lesson=14, #grammar?topic=mixed-conditionals */
+const STUDY = window.AKStudy;
+const viewOf = () => location.hash.slice(1).split('?')[0];
 function show(name){
   if(!['lessons','words','grammar'].includes(name)) name='lessons';
   $$('.view').forEach(v => v.classList.toggle('on', v.id === 'v-'+name));
-  $$('.tab').forEach(t => t.classList.toggle('on', t.dataset.view === name));
-  if(location.hash.slice(1) !== name) history.replaceState(null,'','#'+name);
+  $$('.tab').forEach(t => { t.classList.toggle('on', t.dataset.view === name); t.setAttribute('aria-current', t.dataset.view === name ? 'page' : 'false'); });
+  if(viewOf() !== name) history.replaceState(null,'','#'+name);
+  if(STUDY && STUDY.sections.words && STUDY.sections.words.closeOverlays && name !== 'words') STUDY.sections.words.closeOverlays();
 }
-$$('.tab').forEach(t => t.onclick = () => { show(t.dataset.view); window.scrollTo({top:0,behavior:'smooth'}); });
+/* перехід за посиланням з параметрами — показати потрібну вкладку/урок/тему */
+function follow(scroll){
+  const {view, params} = STUDY ? STUDY.parseHash() : {view: viewOf(), params:{}};
+  show(view);
+  if(STUDY && (view === 'words' || view === 'grammar')) STUDY.route(view, params, true);
+  if(scroll && Object.keys(params).length){
+    const v = $('#v-'+view); if(v) v.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+$$('.tab').forEach(t => t.onclick = () => {
+  show(t.dataset.view);
+  const v = $('#v-'+t.dataset.view);
+  window.scrollTo({top: t.dataset.view === 'lessons' ? 0 : Math.max(0, v.getBoundingClientRect().top + scrollY - 70), behavior:'smooth'});
+});
 $$('[data-jump]').forEach(b => b.onclick = () => { show(b.dataset.jump); $('#v-'+b.dataset.jump).scrollIntoView({behavior:'smooth',block:'start'}); });
-window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+window.addEventListener('hashchange', () => follow(true));
 
 /* ---------- lessons ---------- */
 const at   = (L, p) => (L.dir ? L.dir.replace(/\/?$/,'/') : '') + p;   // шлях у папці уроку
@@ -469,6 +437,7 @@ function renderLessons(){
         <div class="foot">
           <a class="btn primary" href="${esc(url(L))}">Open lesson</a>
           ${L.guide ? `<a class="btn sm ghost" href="${esc(at(L,L.guide))}" target="_blank" rel="noopener">Teacher guide</a>` : ''}
+          ${STUDY ? STUDY.lessonLinks(L.n).map(x => `<a class="btn sm ghost" href="${esc(x.href)}">${esc(x.label)}${x.count ? ` · ${x.count}` : ''}</a>`).join('') : ''}
           <button class="done${doneSet.has(L.n)?' is':''}" data-done="${L.n}">${doneSet.has(L.n)?'✓ Done':'Mark as done'}</button>
           <span class="mins">${esc(L.minutes||'')}</span>
         </div>
@@ -493,86 +462,12 @@ if(latest){
   $('#heroGo').remove();
 }
 
-/* ---------- words ---------- */
-let deck = [], idx = 0, flipped = false, filter = 'all';
-
-function buildDeck(){
-  const pool = WORDS.filter(w => filter === 'all' || String(w.lesson) === filter);
-  deck = pool.map(w => ({...w})).sort(() => Math.random() - .5);
-  idx = 0; flipped = false;
-  drawCard();
-}
-function drawCard(){
-  const c = deck[idx];
-  if(!c){
-    $('#flashText').textContent = deck.length ? 'Готово 🎉' : 'Немає слів для цього уроку';
-    $('#flashText').className = 'side';
-    $('#flashHint').textContent = deck.length ? 'натисніть Restart, щоб повторити' : '';
-    $('#wpos').textContent = ''; $('#wleft').textContent = '';
-    $('#wbar').style.width = '100%';
-    return;
-  }
-  $('#flashText').textContent = flipped ? c.ua : c.en;
-  $('#flashText').className = 'side' + (flipped ? ' ua' : '');
-  $('#flashHint').textContent = flipped ? 'знаю / ще раз' : 'клік або пробіл — переклад';
-  $('#wpos').textContent  = 'card ' + (idx+1) + ' / ' + deck.length;
-  $('#wleft').textContent = 'lesson ' + c.lesson;
-  $('#wbar').style.width = Math.round(idx / deck.length * 100) + '%';
-}
-function flip(){ if(deck[idx]){ flipped = !flipped; drawCard(); } }
-function next(again){
-  const c = deck[idx];
-  if(!c) return;
-  if(again) deck.push(c);
-  idx++; flipped = false;
-  drawCard();
-}
-
-function setupWords(){
-  if(!WORDS.length) return;
-  $('#wordsEmpty').hidden = true;
-  $('#wordsUI').hidden = false;
-
-  const lessonsWithWords = [...new Set(WORDS.map(w => String(w.lesson)))].sort((a,b)=>a-b);
-  $('#wordChips').innerHTML =
-    `<button class="chip on" data-f="all">All words</button>` +
-    lessonsWithWords.map(l => `<button class="chip" data-f="${esc(l)}">Lesson ${esc(l)}</button>`).join('');
-  $$('#wordChips .chip').forEach(ch => ch.onclick = () => {
-    filter = ch.dataset.f;
-    $$('#wordChips .chip').forEach(x => x.classList.toggle('on', x === ch));
-    buildDeck();
-  });
-
-  $('#flash').onclick = flip;
-  $('#flash').onkeydown = e => { if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); flip(); } };
-  $('#wKnow').onclick    = () => next(false);
-  $('#wAgain').onclick   = () => next(true);
-  $('#wRestart').onclick = buildDeck;
-  buildDeck();
-}
-setupWords();
-
-/* ---------- grammar ---------- */
-if(GRAMMAR.length){
-  $('#grammarEmpty').hidden = true;
-  $('#grammarList').innerHTML = [...GRAMMAR].sort((a,b) => a.lesson - b.lesson).map((g,i) => `
-    <div class="gitem" id="g${i}">
-      <button data-g="${i}">
-        <span class="lz">L${esc(g.lesson)}</span>
-        <span>${esc(g.title)}</span>
-        <span class="ar">›</span>
-      </button>
-      <div class="gbody">
-        ${g.rule ? `<p>${esc(g.rule)}</p>` : ''}
-        ${g.formula ? `<div class="formula">${esc(g.formula)}</div>` : ''}
-        ${(g.examples||[]).length ? `<ul>${g.examples.map(e=>`<li>${esc(e)}</li>`).join('')}</ul>` : ''}
-      </div>
-    </div>`).join('');
-  $$('[data-g]').forEach(b => b.onclick = () => $('#g'+b.dataset.g).classList.toggle('open'));
-}
-
 /* ---------- boot ---------- */
-show(location.hash.slice(1) || 'lessons');
+if(STUDY){
+  try{ STUDY.sections.words.mount($('#vocabApp')); }catch(e){ console.error(e); $('#vocabApp').innerHTML = '<div class="ghost"><h3>Vocabulary could not load</h3><p>Перевірте файл study/data/vocabulary-data.js (можливо, пропущена кома).</p></div>'; }
+  try{ STUDY.sections.grammar.mount($('#grammarApp')); }catch(e){ console.error(e); $('#grammarApp').innerHTML = '<div class="ghost"><h3>Grammar could not load</h3><p>Перевірте файл study/data/grammar-data.js (можливо, пропущена кома).</p></div>'; }
+}
+follow(true);
 </script>
 </body>
 </html>
