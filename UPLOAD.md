@@ -17,10 +17,13 @@ advanced-kids/
     ├── lesson-05/lesson-05.html   The Night Everything Went Wrong
     ├── lesson-06/lesson-06.html   The Unlabelled Room
     ├── lesson-07/lesson-07.html   Voices in My Head
+    ├── lesson-08/lesson-08.html   The Message That Was Never Sent
     ├── lesson-13/lesson-13.html   The Post That Disappeared
     ├── lesson-14/lesson-14.html   Likes Don't Equal Love
     ├── lesson-15/lesson-15.html   If Only I Had Known…
-    └── lesson-16/lesson-16.html   The Hype Detector
+    ├── lesson-16/lesson-16.html   The Hype Detector
+    ├── lesson-17/lesson-17.html   Who’s Controlling the Scroll?
+    └── lesson-18/lesson-18.html   Who Actually Said That?
 ```
 
 Головне правило: **файл уроку ніколи не називається `index.html`**. Так його
@@ -33,9 +36,9 @@ advanced-kids/
 
 ## Як додати наступний урок
 
-1. Папка `lessons/lesson-17/`, усередині `lesson-17.html` та `img/`.
+1. Папка `lessons/lesson-19/`, усередині `lesson-19.html` та `img/`.
 2. На GitHub зайдіть **у папку `lessons`** → **Add file → Upload files** →
-   перетягніть папку `lesson-17` цілком → **Commit changes**.
+   перетягніть папку `lesson-19` цілком → **Commit changes**.
 3. Відкрийте кореневий `index.html` → олівець ✏️ → знайдіть `const LESSONS = [`
    і допишіть блок після останнього уроку. Шаблон лежить там же в коментарі.
    Кома перед `{` обов'язкова.
