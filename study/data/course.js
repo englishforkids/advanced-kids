@@ -25,7 +25,7 @@ window.AK_COURSE = {
       { n: 5,  kind: 'grammar',       title: 'The Night Everything Went Wrong' },
       { n: 6,  kind: 'revision',      title: 'The Unlabelled Room', reviews: [4, 5] },
       { n: 7,  kind: 'vocab',         title: 'Inner Critic / Self-Talk' },
-      { n: 8,  kind: 'grammar',       title: 'Modal Verbs in the Past' },
+      { n: 8,  kind: 'grammar',       title: 'The Message That Was Never Sent' },
       { n: 9,  kind: 'revision',      title: 'Revision', reviews: [7, 8] },
       { n: 10, kind: 'unit-revision', title: 'Unit 1 Revision', reviews: [1, 9] }
     ]},
