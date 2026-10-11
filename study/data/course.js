@@ -38,7 +38,7 @@ window.AK_COURSE = {
       { n: 16, kind: 'revision',      title: 'The Hype Detector', reviews: [14, 15] },
       { n: 17, kind: 'vocab',         title: 'Algorithm & Screen Time' },
       { n: 18, kind: 'grammar',       title: 'Who Actually Said That?' },
-      { n: 19, kind: 'revision',      title: 'Revision', reviews: [17, 18] },
+      { n: 19, kind: 'revision',      title: 'Two Timelines: One Saturday', reviews: [17, 18] },
       { n: 20, kind: 'unit-revision', title: 'Unit 2 Revision', reviews: [11, 19] }
     ]},
     { n: 3, title: 'Relationships, Belonging & Conflict', lessons: [
