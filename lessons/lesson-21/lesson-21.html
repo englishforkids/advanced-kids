@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 21 — Real Ones Only · The Perfect Squad</title>
+<meta name="description" content="Advanced Kids · Lesson 21 · Unit 3. Real Ones Only — The Perfect Squad: Behind the Feed. 15 friendship expressions in an interactive teen story: Mia, Leo, Sophie and Noah.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=Figtree:ital,wght@0,400..800;1,400..600&display=swap" rel="stylesheet">
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   НАЛАШТУВАННЯ УРОКУ — єдине місце, яке треба редагувати
+   ───────────────────────────────────────────────────────────────
+   SUPABASE_URL / SUPABASE_KEY — той самий проєкт, що й в уроках 5, 13–20.
+     Публічний (publishable) ключ. Потрібен лише Realtime (broadcast + presence),
+     таблиці НЕ потрібні. Порожні значення → урок працює в Teacher-led mode.
+   PHOTOS — фото героїв (квадратні). Щоб замінити когось, покладіть свій файл
+     у img/cast/ і змініть шлях тут. mia_sad — та сама Мія, засмучена.
+   SCENES — фото сцен. Порожній рядок → сцену намальовано в коді.
+     Свої картинки: img/scenes/feed.webp (четверо друзів), concert.webp
+     (Софі, Лео, Ной на концерті), final.webp (четверо щиро розмовляють).
+   VOICE_NOTE — mp3 голосового повідомлення Мії (audio/mia-voice-note.mp3).
+     Якщо файлу немає — працює синтезований голос браузера (позначено на екрані).
+   Тексти уроку — розділ «2 · lesson content» нижче.
+   ═══════════════════════════════════════════════════════════════ */
+window.LESSON_CONFIG = {
+  SUPABASE_URL : 'https://yhekszqxheljbxoucalt.supabase.co',
+  SUPABASE_KEY : 'sb_publishable_knHTxZLX-Ucg0WtnfP0RTw_ytJ2Dyoa',
+  PHOTOS : { mia:'img/cast/mia.webp', mia_sad:'img/cast/mia-sad.webp', leo:'img/cast/leo.webp',
+             sophie:'img/cast/sophie.webp', noah:'img/cast/noah.webp' },
+  SCENES : { feed:'', concert:'', final:'' },
+  VOICE_NOTE : 'audio/mia-voice-note.mp3'
+};
+</script>
+<style>
+:root{
+  --night:#090C22; --ink:#10153A; --panel:#171E4A; --panel2:#202862; --line:rgba(160,170,255,.16); --line2:rgba(160,170,255,.32);
+  --plum:#6A45E8; --volt:#3D7BFF; --blush:#FF8FB8; --amber:#FFC27A; --mint:#58E0B0; --rose:#FF6B8B;
+  --text:#EEF0FF; --muted:#A3ABD6; --dim:#6E78AE;
+  --mia:#FF8FB8; --leo:#FFB547; --sophie:#B79BFF; --noah:#4FD1FF;
+  --disp:"Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:18px; --r-lg:28px;
+  --fs:clamp(17px, 1.05vw + 10px, 22px);
+  --bg: radial-gradient(1200px 700px at 80% -10%, rgba(106,69,232,.35), transparent 60%), radial-gradient(900px 600px at 0% 110%, rgba(61,123,255,.22), transparent 60%), var(--night);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; background:var(--bg); background-attachment:fixed; color:var(--text); font-family:var(--body); font-size:var(--fs); line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden; transition:background .8s ease}
+button,input,textarea,select{font:inherit; color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--blush); outline-offset:3px; border-radius:10px}
+img{max-width:100%}
+.hidden{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+h1,h2,h3,.dsp{font-family:var(--disp); font-weight:800; letter-spacing:-.02em; line-height:1.02; margin:0; font-variation-settings:"wdth" 88}
+p{margin:.35em 0}
+.small{font-size:.8em; color:var(--muted)}
+.muted{color:var(--muted)}
+.row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.grow{flex:1}
+.mt{margin-top:14px} .mt2{margin-top:26px}
+.center{text-align:center}
+
+/* scene atmospheres */
+body[data-sc="1"]{--bg: radial-gradient(900px 600px at 15% 0%, rgba(255,143,184,.38), transparent 60%), radial-gradient(1000px 700px at 100% 30%, rgba(124,108,255,.42), transparent 60%), linear-gradient(180deg,#1A1550,#0E1236)}
+body[data-sc="2"]{--bg: radial-gradient(1000px 700px at 85% 0%, rgba(61,123,255,.35), transparent 60%), radial-gradient(800px 600px at 0% 100%, rgba(183,155,255,.28), transparent 60%), #0B1030}
+body[data-sc="3"]{--bg: radial-gradient(900px 600px at 50% -20%, rgba(70,90,160,.30), transparent 65%), linear-gradient(180deg,#080B1C,#05060F)}
+body[data-sc="4"]{--bg: radial-gradient(700px 520px at 50% 40%, rgba(255,143,184,.20), transparent 70%), radial-gradient(1100px 800px at 50% 120%, rgba(106,69,232,.35), transparent 60%), #0B0820}
+body[data-sc="5"]{--bg: linear-gradient(180deg,#121735,#0C1028)}
+body[data-sc="6"]{--bg: linear-gradient(rgba(61,123,255,.06) 1px, transparent 1px) 0 0/44px 44px, linear-gradient(90deg, rgba(61,123,255,.06) 1px, transparent 1px) 0 0/44px 44px, radial-gradient(1000px 700px at 50% 0%, rgba(61,123,255,.30), transparent 60%), #080D26}
+body[data-sc="7"]{--bg: radial-gradient(1000px 700px at 50% 110%, rgba(255,170,90,.45), transparent 60%), radial-gradient(800px 600px at 0% 0%, rgba(255,143,184,.25), transparent 60%), linear-gradient(180deg,#1B1233,#2A1530)}
+
+/* ── top bar ── */
+#top{position:sticky; top:0; z-index:30; display:flex; align-items:center; gap:14px; padding:12px clamp(12px,2vw,26px); background:rgba(9,12,34,.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line)}
+#top .home{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line2);text-decoration:none;color:var(--text);font-size:20px;flex:none}
+#top .home:hover{background:var(--panel)}
+#top .brand{display:flex;align-items:center;gap:10px;min-width:0;flex:none}
+#top .brand img{height:30px;width:auto}
+#top .brand b{font-family:var(--disp);font-size:19px;white-space:nowrap}
+#top .brand span{font-size:13px;color:var(--muted);white-space:nowrap}
+#rail{flex:1; display:flex; gap:4px; justify-content:center; min-width:0; overflow:hidden}
+#rail button{display:flex;align-items:center;gap:7px;border:0;background:transparent;padding:6px 8px;border-radius:999px;color:var(--dim);font-size:13px;font-weight:700;white-space:nowrap}
+#rail button i{width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
+#rail button.done{color:var(--muted)} #rail button.done i{opacity:1;background:var(--mint)}
+#rail button.cur{color:var(--text);background:rgba(255,255,255,.08)} #rail button.cur i{background:var(--blush);opacity:1;box-shadow:0 0 0 4px rgba(255,143,184,.25)}
+#rail button span{display:none}
+#rail button.cur span{display:inline}
+@media (min-width:1900px){ #rail button span{display:inline} }
+.tb{display:flex;gap:8px;flex:none}
+.ib{height:44px;min-width:44px;padding:0 12px;border-radius:14px;border:1px solid var(--line2);background:rgba(255,255,255,.04);display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:15px;font-weight:700;white-space:nowrap}
+.ib:hover{background:rgba(255,255,255,.09)} .ib.on{background:var(--volt);border-color:var(--volt)}
+.ib .lbl{display:none} @media (min-width:1180px){ .ib .lbl{display:inline} }
+.ib .cnt{font-size:12px;background:var(--blush);color:#2A0F1E;border-radius:999px;padding:1px 7px}
+
+/* ── stage ── */
+#stage{min-height:calc(100vh - 69px - 78px); padding:clamp(18px,3vw,44px) clamp(14px,3vw,48px) 120px; display:flex; justify-content:center}
+.view{width:100%; max-width:1240px; animation:inview .45s ease both}
+@keyframes inview{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
+.scene-tag{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px}
+.scene-tag b{color:var(--text)}
+.h-xl{font-size:clamp(46px,7.6vw,118px)} .h-l{font-size:clamp(34px,4.4vw,62px)} .h-m{font-size:clamp(26px,2.8vw,40px)}
+.lead{font-size:1.15em;color:#D7DBF7;max-width:62ch}
+
+/* ── controls ── */
+#ctrl{position:fixed; left:0; right:0; bottom:0; z-index:25; display:flex; align-items:center; gap:10px; padding:12px clamp(12px,2vw,26px) calc(12px + env(safe-area-inset-bottom)); background:linear-gradient(180deg, transparent, rgba(6,8,24,.92) 36%)}
+#ctrl .info{flex:1; min-width:0; text-align:center; font-size:14px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+#ctrl .info b{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 22px;border-radius:16px;border:1px solid var(--line2);background:rgba(255,255,255,.05);font-weight:800;font-size:17px;transition:transform .12s, background .2s}
+.btn:hover{background:rgba(255,255,255,.1)} .btn:active{transform:scale(.97)}
+.btn.primary{background:var(--volt);border-color:var(--volt);color:#fff}
+.btn.primary:hover{background:#5A90FF}
+.btn.pink{background:var(--blush);border-color:var(--blush);color:#2A0F1E}
+.btn.warm{background:var(--amber);border-color:var(--amber);color:#2B1606}
+.btn.ghost{background:transparent}
+.btn.sm{min-height:40px;padding:0 14px;font-size:15px;border-radius:12px}
+.btn.big{min-height:62px;padding:0 34px;font-size:20px;border-radius:20px}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.kbd{font-size:11px;opacity:.6;border:1px solid currentColor;border-radius:5px;padding:0 4px}
+
+/* ── characters ── */
+.av{--c:var(--blush); position:relative; flex:none; width:var(--s,52px); height:var(--s,52px); border-radius:50%; overflow:hidden; background:var(--panel2); box-shadow:0 0 0 3px var(--c); display:grid; place-items:center; font-weight:800; font-family:var(--disp)}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.av.nob{box-shadow:none}
+.av .fb{position:absolute;inset:0;display:grid;place-items:center;font-size:calc(var(--s,52px)*.42);color:#fff;background:linear-gradient(135deg,var(--c),#2b2f6b)}
+.who{font-weight:800}
+.c-mia{--c:var(--mia)} .c-leo{--c:var(--leo)} .c-sophie{--c:var(--sophie)} .c-noah{--c:var(--noah)}
+.nm-mia{color:var(--mia)} .nm-leo{color:var(--leo)} .nm-sophie{color:var(--sophie)} .nm-noah{color:var(--noah)}
+
+/* ── vocabulary term ── */
+.v{all:unset; cursor:pointer; color:#FFE3EE; font-weight:800; background:linear-gradient(transparent 58%, rgba(255,143,184,.38) 58%); border-radius:3px; padding:0 2px; transition:background .2s}
+.v:hover,.v:focus-visible{background:rgba(255,143,184,.42)}
+.v:focus-visible{outline:3px solid var(--blush);outline-offset:2px}
+.v.rev{color:#D9F4FF; background:linear-gradient(transparent 60%, rgba(79,209,255,.32) 60%)}
+#pop{position:fixed; z-index:60; width:min(380px, calc(100vw - 24px)); background:#1B2154; border:1px solid var(--line2); border-radius:20px; padding:18px 18px 16px; box-shadow:0 24px 60px rgba(0,0,0,.55); animation:popin .18s ease}
+@keyframes popin{from{opacity:0;transform:translateY(6px) scale(.98)}}
+#pop .ex{font-family:var(--disp); font-size:28px; line-height:1.05; color:#FFE3EE}
+#pop .ua{color:var(--amber); font-weight:700}
+#pop .eg{font-style:italic; color:#D7DBF7; border-left:3px solid var(--blush); padding-left:10px; margin-top:10px}
+#pop .x{position:absolute; top:10px; right:10px}
+.newtag{font-size:12px;font-weight:800;color:#2A0F1E;background:var(--blush);border-radius:999px;padding:2px 8px;vertical-align:middle}
+.oldtag{font-size:12px;font-weight:800;color:#06233A;background:var(--noah);border-radius:999px;padding:2px 8px;vertical-align:middle}
+
+/* ── generic surfaces ── */
+.glass{background:rgba(23,30,74,.62); border:1px solid var(--line); border-radius:var(--r-lg); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px)}
+.pad{padding:clamp(18px,2.4vw,34px)}
+.split{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(18px,3vw,44px); align-items:center}
+.split.wide-l{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+@media (max-width:900px){ .split,.split.wide-l{grid-template-columns:1fr} }
+
+/* ── phone + feed ── */
+.phone{width:min(380px,100%); margin:0 auto; border-radius:40px; padding:12px; background:#05060F; box-shadow:0 30px 80px rgba(0,0,0,.5), inset 0 0 0 2px #2A2F55}
+.screen{border-radius:30px; overflow:hidden; background:#fff; color:#121426}
+.screen.dark{background:#0E1120; color:var(--text)}
+.ig-top{display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:15px}
+.ig-top b{font-weight:800}
+.prof{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center; padding:4px 16px 12px}
+.prof .stats{display:flex; gap:16px; justify-content:space-around; text-align:center; font-size:13px; color:#555A77}
+.prof .stats b{display:block; font-size:19px; color:#121426}
+.ring{padding:3px;border-radius:50%;background:conic-gradient(#FF8FB8,#FFC27A,#B79BFF,#4FD1FF,#FF8FB8)}
+.ring>.inner{background:#fff;border-radius:50%;padding:3px}
+.screen.dark .ring>.inner{background:#0E1120}
+.stack{display:flex} .stack .av{margin-left:-14px; box-shadow:0 0 0 3px #fff} .stack .av:first-child{margin-left:0}
+.screen.dark .stack .av{box-shadow:0 0 0 3px #0E1120}
+.post-acts{display:flex; gap:16px; padding:10px 14px 2px; font-size:24px}
+.post-acts button{all:unset; cursor:pointer; line-height:1}
+.post-acts .lk.on{animation:likebeat .4s ease}
+@keyframes likebeat{50%{transform:scale(1.35)}}
+.post-txt{padding:2px 14px 16px; font-size:16px; line-height:1.45}
+.post-txt b{font-weight:800}
+.post-txt .tags{color:#3D5BD8}
+.post-txt .cm{color:#7A7F9C; font-size:14px; margin-top:4px}
+.fic{font-size:12px; color:var(--dim); text-align:center; margin-top:10px}
+
+/* drawn scene "photos" */
+.shot{position:relative; aspect-ratio:1/1; overflow:hidden; isolation:isolate}
+.shot.real img.bgimg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.shot .crew{position:absolute; left:50%; bottom:13%; transform:translateX(-50%); display:flex; align-items:flex-end; z-index:3}
+.shot .crew .av{box-shadow:0 0 0 4px rgba(255,255,255,.95), 0 14px 30px rgba(0,0,0,.35); margin:0 -10px}
+.shot .crew .av:nth-child(odd){transform:translateY(-14px) rotate(-4deg)} .shot .crew .av:nth-child(even){transform:rotate(4deg)}
+.park{background:linear-gradient(180deg,#7C6CFF 0%,#FF7FAE 52%,#FFB38A 78%,#FFD39A 100%)}
+.park .sun{position:absolute;left:50%;top:36%;width:46%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#FFF4D6 0%,#FFD38A 45%,rgba(255,190,120,0) 70%)}
+.park .bok{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);filter:blur(1px)}
+.park svg.ground{position:absolute;left:0;right:0;bottom:0;width:100%;height:40%;z-index:2}
+.sticker{position:absolute; z-index:4; background:#fff; color:#121426; font-weight:800; font-size:14px; border-radius:10px; padding:5px 10px; box-shadow:0 6px 14px rgba(0,0,0,.2)}
+.concert{background:radial-gradient(60% 40% at 50% 18%, rgba(183,155,255,.55), transparent 70%), linear-gradient(180deg,#1A0B3A,#0A0418 70%)}
+.concert .beam{position:absolute; top:-10%; width:40%; height:120%; transform-origin:50% 0; background:linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,143,184,0) 80%); clip-path:polygon(46% 0,54% 0,100% 100%,0 100%); mix-blend-mode:screen; opacity:.55; animation:sweep 6s ease-in-out infinite alternate}
+.concert .beam.b2{left:45%; background:linear-gradient(180deg, rgba(120,170,255,.6), rgba(61,123,255,0) 80%); animation-delay:-2s}
+.concert .beam.b3{left:20%; background:linear-gradient(180deg, rgba(255,194,122,.55), rgba(255,194,122,0) 80%); animation-delay:-4s}
+@keyframes sweep{from{transform:rotate(-16deg)} to{transform:rotate(16deg)}}
+.concert .stage{position:absolute;left:8%;right:8%;top:30%;height:6%;border-radius:6px;background:linear-gradient(90deg,#FF8FB8,#B79BFF,#4FD1FF);filter:blur(10px);opacity:.8}
+.concert svg.crowd{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;z-index:2}
+.concert .conf{position:absolute;width:6px;height:10px;border-radius:2px;opacity:.85}
+.cafe{background:radial-gradient(70% 50% at 50% 70%, rgba(255,190,120,.65), transparent 70%), linear-gradient(180deg,#3B2148,#5A2F3E 60%,#2B1626)}
+.cafe .lights{position:absolute;left:0;right:0;top:9%;height:24%;z-index:1}
+.cafe .table{position:absolute;left:10%;right:10%;bottom:4%;height:20%;border-radius:50%/40%;background:radial-gradient(circle at 50% 30%,#8A5233,#4A2717);z-index:2;box-shadow:0 -6px 30px rgba(255,190,120,.35)}
+.cafe .cup{position:absolute;bottom:12%;z-index:4;font-size:28px}
+.cafe .crew{bottom:18%}
+.cafe .crew .av{transform:none!important; margin:0 4px}
+
+/* story */
+.story{position:relative; aspect-ratio:9/14; border-radius:22px; overflow:hidden; background:#000}
+.story .shot{position:absolute; inset:0; aspect-ratio:auto}
+.story .bars{position:absolute; top:10px; left:10px; right:10px; display:flex; gap:4px; z-index:6}
+.story .bars i{flex:1; height:3px; border-radius:3px; background:rgba(255,255,255,.35); overflow:hidden}
+.story .bars i b{display:block; height:100%; width:100%; background:#fff; transform-origin:left; animation:storybar 5s linear both}
+@keyframes storybar{from{transform:scaleX(0)}}
+.story .shead{position:absolute; top:22px; left:12px; right:12px; display:flex; align-items:center; gap:8px; z-index:6; color:#fff; font-size:14px; font-weight:700; text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.story .cap{position:absolute; left:50%; top:20%; transform:translateX(-50%) rotate(-3deg); z-index:6; background:#fff; color:#121426; font-weight:800; font-family:var(--disp); font-size:clamp(20px,2vw,28px); padding:6px 16px; border-radius:12px; white-space:nowrap}
+.notif{display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.95); color:#121426; border-radius:20px; padding:12px 16px; box-shadow:0 18px 40px rgba(0,0,0,.35); max-width:440px; margin:0 auto; animation:drop .5s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes drop{from{opacity:0; transform:translateY(-30px)}}
+.notif .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#FF8FB8,#B79BFF);font-size:20px;flex:none}
+.notif small{display:block;color:#6A6F8C;font-size:13px}
+.where{font-family:var(--disp); font-weight:700; font-size:clamp(40px,6vw,88px); line-height:1; letter-spacing:-.02em}
+
+/* ── title ── */
+.title-wrap{min-height:calc(100vh - 230px); display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(20px,4vw,60px); align-items:center}
+@media (max-width:900px){ .title-wrap{grid-template-columns:1fr} }
+.lessonno{font-family:var(--disp); font-weight:700; font-size:clamp(16px,1.3vw,20px); color:var(--blush); letter-spacing:.14em}
+.mega{font-family:var(--disp); font-weight:800; font-size:clamp(64px,10vw,168px); line-height:.88; letter-spacing:-.005em; font-variation-settings:"wdth" 80; margin:.1em 0 .14em}
+.mega span{display:block}
+.mega .o{color:var(--blush)}
+.storyname{font-family:var(--disp); font-weight:700; font-size:clamp(18px,1.8vw,26px); letter-spacing:.06em; color:#D7DBF7}
+.cast{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+.cast .cc{position:relative; border-radius:24px; overflow:hidden; aspect-ratio:3/4; background:var(--panel)}
+.cast .cc img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05)}
+.cast .cc span{position:absolute;left:12px;bottom:10px;font-family:var(--disp);font-weight:800;font-size:22px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.cast .cc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,6,20,.75))}
+.cast .cc span{z-index:2}
+.cast .cc:nth-child(2){transform:translateY(26px)} .cast .cc:nth-child(4){transform:translateY(26px)}
+
+/* ── options / quiz ── */
+.qcard{max-width:900px; margin:0 auto}
+.q{font-family:var(--disp); font-weight:700; font-size:clamp(26px,2.8vw,40px); line-height:1.12; letter-spacing:-.015em}
+.opts{display:grid; gap:12px; margin-top:20px}
+.opts.cols3{grid-template-columns:repeat(3,minmax(0,1fr))} @media (max-width:800px){ .opts.cols3{grid-template-columns:1fr} }
+.opts.cols4{grid-template-columns:repeat(4,minmax(0,1fr))} @media (max-width:800px){ .opts.cols4{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.opt{position:relative; display:flex; align-items:center; gap:14px; text-align:left; width:100%; min-height:64px; padding:14px 18px; border-radius:18px; border:2px solid var(--line2); background:rgba(255,255,255,.04); font-size:1.02em; font-weight:700; transition:background .2s, border-color .2s, transform .12s}
+.opt:hover{background:rgba(255,255,255,.08)}
+.opt .L{flex:none; width:38px; height:38px; border-radius:12px; display:grid; place-items:center; background:rgba(255,255,255,.1); font-family:var(--disp); font-weight:800}
+.opt .mk{margin-left:auto; flex:none; font-size:22px}
+.opt.pick{border-color:var(--volt); background:rgba(61,123,255,.18)}
+.opt.right{border-color:var(--mint); background:rgba(88,224,176,.16)}
+.opt.right .L{background:var(--mint); color:#05261A}
+.opt.wrong{border-color:var(--rose); background:rgba(255,107,139,.12); animation:shake .35s}
+.opt.wrong .L{background:var(--rose); color:#2A0610}
+.opt.dim{opacity:.45}
+@keyframes shake{25%{transform:translateX(-6px)} 75%{transform:translateX(6px)}}
+.opt .bar{position:absolute; left:0; top:0; bottom:0; border-radius:16px; background:rgba(255,255,255,.07); z-index:-1; transition:width .6s ease}
+.opt{z-index:0; overflow:hidden}
+.opt .pct{flex:none; font-family:var(--disp); font-weight:800; color:var(--muted)}
+.fb{margin-top:16px; padding:14px 18px; border-radius:16px; background:rgba(88,224,176,.12); border:1px solid rgba(88,224,176,.4); font-weight:600}
+.fb.no{background:rgba(255,107,139,.1); border-color:rgba(255,107,139,.4)}
+.fb.neutral{background:rgba(255,255,255,.06); border-color:var(--line2)}
+.qnav{display:flex; gap:8px; margin-bottom:14px}
+.qnav i{width:34px; height:6px; border-radius:6px; background:var(--line2)} .qnav i.c{background:var(--blush)} .qnav i.d{background:var(--mint)}
+.livecount{display:inline-flex; gap:8px; align-items:center; font-size:14px; color:var(--muted); background:rgba(255,255,255,.06); border-radius:999px; padding:4px 12px}
+
+/* ── profiles ── */
+.profiles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px}
+@media (max-width:1000px){ .profiles{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:520px){ .profiles{grid-template-columns:1fr} }
+.pc{--c:var(--blush); position:relative; text-align:left; border-radius:24px; border:1px solid var(--line); background:rgba(23,30,74,.7); padding:0; overflow:hidden; transition:transform .25s, border-color .25s, box-shadow .25s; display:flex; flex-direction:column}
+.pc:hover{transform:translateY(-3px)}
+.pc.open{border-color:var(--c); box-shadow:0 0 0 1px var(--c), 0 20px 40px rgba(0,0,0,.35)}
+.pc .ph{position:relative; aspect-ratio:5/4; overflow:hidden}
+.pc .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+.pc .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,12,34,.92))}
+.pc .ph .nmx{position:absolute; left:16px; bottom:10px; z-index:2}
+.pc .ph .nmx b{display:block; font-family:var(--disp); font-size:30px; line-height:1}
+.pc .ph .nmx span{font-size:14px; color:#D7DBF7}
+.pc .body{padding:14px 16px 18px; font-size:.9em}
+.pc .pers{color:var(--muted); font-size:.92em}
+.pc .quote{margin-top:10px; font-weight:700; line-height:1.35}
+.pc .xpl{margin-top:10px; padding:10px 12px; border-radius:14px; background:rgba(255,255,255,.06); font-size:.88em}
+.pc.locked{pointer-events:none}
+.pc.locked .ph img{filter:blur(14px) brightness(.5)}
+.pc.locked .ph::before{content:"🔒"; position:absolute; inset:0; display:grid; place-items:center; font-size:40px; z-index:3}
+.pc .tap{font-size:13px; color:var(--dim); margin-top:8px}
+.fact{display:flex; gap:12px; align-items:center; margin-top:16px; padding:12px 16px; border-radius:16px; background:rgba(255,255,255,.06); animation:popin .3s ease}
+
+/* ── chat ── */
+.chatwin{max-width:760px; margin:0 auto; border-radius:28px; overflow:hidden; background:rgba(12,15,36,.88); border:1px solid var(--line); box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.chathead{display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--line); background:rgba(255,255,255,.03)}
+.chathead b{font-size:17px} .chathead small{display:block; color:var(--muted); font-size:13px}
+.chatbody{padding:20px 18px 22px; display:flex; flex-direction:column; gap:14px; min-height:260px}
+.msg{display:flex; gap:10px; align-items:flex-end; max-width:86%; animation:msgin .35s ease both}
+@keyframes msgin{from{opacity:0; transform:translateY(12px) scale(.98)}}
+.msg .bub{padding:12px 16px; border-radius:20px 20px 20px 6px; background:#232A5C; font-size:1.02em; line-height:1.45}
+.msg .bub .nm{display:block; font-size:13px; font-weight:800; margin-bottom:2px}
+.msg.me{align-self:flex-end; flex-direction:row-reverse}
+.msg.me .bub{background:#3A4BC8; border-radius:20px 20px 6px 20px}
+.msg.sys{align-self:center; max-width:100%}
+.msg.sys .bub{background:transparent; color:var(--muted); font-size:14px; border:1px dashed var(--line2); border-radius:999px; padding:6px 14px}
+.typing{display:inline-flex; gap:5px; padding:14px 16px; border-radius:20px 20px 20px 6px; background:#232A5C}
+.typing i{width:8px;height:8px;border-radius:50%;background:var(--muted);animation:tdot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s} .typing i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,60%,100%{opacity:.3; transform:none} 30%{opacity:1; transform:translateY(-3px)}}
+.readhint{font-size:13px; color:var(--dim); text-align:center; margin-top:10px}
+.comments .cmt{display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--line); animation:msgin .35s ease both}
+.comments .anon{width:46px;height:46px;border-radius:50%;background:#2A3068;display:grid;place-items:center;font-size:22px;flex:none}
+.gossip{margin-top:14px; padding:12px 16px; border-radius:16px; border:1px dashed var(--amber); color:#FFE6C4; font-size:.92em}
+
+/* decision */
+.dec-h{font-family:var(--disp); font-weight:800; font-size:clamp(34px,4.6vw,66px); letter-spacing:-.03em; line-height:.95}
+.dec-opts{display:grid; gap:14px; margin-top:22px}
+.dopt{position:relative; overflow:hidden; text-align:left; display:flex; gap:16px; align-items:center; padding:18px 20px; border-radius:22px; border:2px solid var(--line2); background:rgba(255,255,255,.04); font-size:1.08em; font-weight:700; min-height:76px; z-index:0}
+.dopt:hover{background:rgba(255,255,255,.08)}
+.dopt .L{flex:none; width:46px; height:46px; border-radius:14px; display:grid; place-items:center; font-family:var(--disp); font-size:22px; font-weight:800; background:rgba(255,255,255,.1)}
+.dopt.chosen{border-color:var(--blush); background:rgba(255,143,184,.16)}
+.dopt.chosen .L{background:var(--blush); color:#2A0F1E}
+.dopt.faded{opacity:.4}
+.dopt .bar{position:absolute; left:0; top:0; bottom:0; background:rgba(255,255,255,.07); z-index:-1; transition:width .6s ease}
+.dopt .pct{margin-left:auto; flex:none; font-family:var(--disp); font-weight:800; color:var(--muted)}
+.react{margin-top:22px; display:flex; flex-direction:column; gap:12px}
+
+/* voice */
+.voice{max-width:720px; margin:0 auto; border-radius:32px; padding:clamp(20px,3vw,34px); background:linear-gradient(160deg, rgba(255,143,184,.16), rgba(106,69,232,.18)); border:1px solid rgba(255,143,184,.3); box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.vrow{display:flex; align-items:center; gap:18px}
+.vplay{width:78px; height:78px; border-radius:50%; border:0; background:var(--blush); color:#2A0F1E; font-size:30px; display:grid; place-items:center; flex:none; box-shadow:0 10px 30px rgba(255,143,184,.4)}
+.vplay:hover{transform:scale(1.04)}
+.wave{flex:1; display:flex; align-items:center; gap:3px; height:64px; cursor:pointer}
+.wave i{flex:1; border-radius:3px; background:rgba(255,255,255,.25); transition:background .2s}
+.wave i.on{background:var(--blush)}
+.wave.play i.on:last-of-type{}
+.vtime{font-family:var(--disp); font-weight:700; font-size:20px; min-width:110px; text-align:right}
+.vctl{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; align-items:center}
+.vctl .on{background:var(--blush); color:#2A0F1E; border-color:var(--blush)}
+.synth{display:inline-flex; gap:6px; align-items:center; font-size:13px; color:#FFE3EE; background:rgba(255,143,184,.15); border:1px solid rgba(255,143,184,.35); border-radius:999px; padding:3px 10px}
+.transcript{margin-top:18px; padding:18px 20px; border-radius:20px; background:rgba(8,10,28,.6); line-height:1.65; font-size:1.02em}
+.transcript .s{transition:background .2s, color .2s; border-radius:6px}
+.transcript .s.on{background:rgba(255,143,184,.22); color:#fff}
+
+/* real talk */
+.inbox{display:grid; grid-template-columns:300px minmax(0,1fr); gap:22px}
+@media (max-width:900px){ .inbox{grid-template-columns:1fr} }
+.thread{display:flex; flex-direction:column; gap:10px}
+.th{display:flex; gap:12px; align-items:center; text-align:left; padding:12px 14px; border-radius:18px; border:1px solid var(--line); background:rgba(255,255,255,.03)}
+.th.cur{background:rgba(255,255,255,.1); border-color:var(--line2)}
+.th.skip{opacity:.5}
+.th small{display:block; color:var(--muted); font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:200px}
+.advice{border-radius:28px; padding:clamp(20px,2.6vw,34px); background:rgba(23,30,74,.7); border:1px solid var(--line)}
+.advice .said{font-family:var(--disp); font-weight:700; font-size:clamp(24px,2.5vw,36px); line-height:1.15; letter-spacing:-.01em}
+.advice .ask{margin-top:18px; padding:16px 18px; border-radius:18px; background:rgba(61,123,255,.14); border:1px solid rgba(61,123,255,.4); font-weight:700; font-size:1.1em}
+.helpbox{margin-top:12px; padding:12px 16px; border-radius:16px; background:rgba(255,255,255,.06); animation:popin .25s}
+.helpbox b{color:var(--amber)}
+.wall{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+.wall .w{background:rgba(255,255,255,.08); border-radius:16px; padding:10px 14px; font-weight:600}
+.wall .w small{display:block; color:var(--muted); font-weight:500; font-size:12px}
+
+/* mission */
+.mission-h{font-family:var(--disp); font-weight:800; font-size:clamp(40px,5.4vw,80px); letter-spacing:-.035em; line-height:.92}
+.steps4{display:grid; gap:10px; margin-top:16px; counter-reset:s}
+.steps4 li{list-style:none; display:flex; gap:12px; align-items:center; padding:8px 14px; font-size:.92em; border-radius:16px; background:rgba(255,255,255,.05); font-weight:700}
+.problems{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:20px}
+@media (max-width:950px){ .problems{grid-template-columns:1fr} }
+.prob{border-radius:22px; padding:18px; background:rgba(16,21,58,.85); border:1px solid var(--line2); display:flex; flex-direction:column; gap:8px}
+.prob .pn{font-family:var(--disp); font-weight:800; font-size:15px; color:var(--noah)}
+.prob .pt{font-family:var(--disp); font-weight:700; font-size:1.25em; line-height:1.15}
+.prob .pq{color:#D7DBF7}
+.prob .pe{font-size:.88em; color:var(--muted); border-left:3px solid var(--noah); padding-left:10px}
+.prob textarea{width:100%; min-height:96px; resize:vertical; border-radius:14px; border:1px solid var(--line2); background:rgba(0,0,0,.25); padding:12px; font-size:.98em; line-height:1.4}
+.prob textarea:focus{outline:2px solid var(--noah); outline-offset:1px}
+.prob.off{opacity:.35}
+.teams-tabs{display:flex; gap:8px; flex-wrap:wrap}
+.teams-tabs button{border:1px solid var(--line2); background:rgba(255,255,255,.04); border-radius:14px; padding:8px 14px; font-weight:800}
+.teams-tabs button.on{background:var(--volt); border-color:var(--volt)}
+.teams-tabs button .ok{color:var(--mint)}
+.clock{font-family:var(--disp); font-weight:800; font-size:clamp(44px,5vw,72px); letter-spacing:-.02em; line-height:1; font-variant-numeric:tabular-nums}
+.clock.low{color:var(--amber)} .clock.out{color:var(--rose)}
+.vchips{display:flex; flex-wrap:wrap; gap:6px}
+.vchips .v{font-size:.85em}
+.used{display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:14px}
+.used span{background:rgba(88,224,176,.16); color:#BFF7DE; border-radius:999px; padding:2px 10px; font-weight:700}
+.rulebig{display:grid; gap:14px; margin-top:16px}
+.rulebig .rb{display:flex; gap:16px; align-items:flex-start; padding:18px 20px; border-radius:20px; background:rgba(255,255,255,.06); font-size:1.15em; font-weight:700}
+.rulebig .rb .n{flex:none; width:44px; height:44px; border-radius:14px; display:grid; place-items:center; background:var(--noah); color:#06233A; font-family:var(--disp); font-weight:800}
+
+/* final */
+.warmpost .screen{background:#FFF8F2}
+.ending{font-family:var(--disp); font-weight:700; font-size:1.05em; color:#8A3B12; background:#FFE9D2; border-radius:12px; padding:8px 12px; margin-top:8px; display:block}
+.codecard{border-radius:24px; padding:20px; background:rgba(255,194,122,.1); border:1px solid rgba(255,194,122,.35)}
+.codecard li{margin:6px 0}
+.starters{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+.starters span{padding:10px 16px; border-radius:999px; background:rgba(255,255,255,.08); font-weight:700}
+.fin{min-height:calc(100vh - 230px); display:grid; place-items:center; text-align:center}
+.fin .big{font-family:var(--disp); font-weight:800; font-size:clamp(48px,8vw,128px); letter-spacing:-.01em; line-height:.9; font-variation-settings:"wdth" 84}
+.fin .tag2{font-family:var(--disp); font-weight:700; font-size:clamp(22px,2.4vw,34px); margin-top:18px}
+.medal{width:130px; height:130px; margin:0 auto 18px; border-radius:50%; display:grid; place-items:center; font-size:58px; background:radial-gradient(circle at 35% 30%, #FFE3B8, #FFC27A 45%, #D9893D); box-shadow:0 0 0 8px rgba(255,194,122,.25), 0 20px 50px rgba(255,170,90,.4); animation:medal 1s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes medal{from{transform:scale(.3) rotate(-30deg); opacity:0}}
+.ach{position:fixed; inset:0; z-index:70; display:grid; place-items:center; background:rgba(6,8,24,.7); backdrop-filter:blur(6px); animation:fade .25s both; cursor:pointer}
+@keyframes fade{from{opacity:0}}
+.ach .box{text-align:center; animation:medal .7s cubic-bezier(.2,1.5,.4,1) both}
+.ach h2{font-size:clamp(44px,6vw,90px)}
+.hearts{position:fixed; inset:0; pointer-events:none; z-index:71; overflow:hidden}
+.hearts span{position:absolute; bottom:-40px; font-size:26px; animation:rise 2.6s ease-in forwards}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg); opacity:0}}
+
+/* teacher notes */
+#notes{position:fixed; top:0; right:0; bottom:0; z-index:40; width:min(470px,100vw); background:#0E1338; border-left:1px solid var(--line2); transform:translateX(102%); transition:transform .3s ease; display:flex; flex-direction:column; font-size:16px}
+#notes.on{transform:none; box-shadow:-30px 0 60px rgba(0,0,0,.45)}
+#notes header{display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--line)}
+#notes header b{font-family:var(--disp); font-size:20px; flex:1}
+#notesBody{overflow:auto; padding:14px 16px 40px}
+.tsec{padding:12px 14px; border-radius:14px; background:rgba(255,255,255,.04); margin-bottom:10px}
+.tsec h5{margin:0 0 6px; font-size:14px; color:var(--amber); font-weight:800}
+.tsec .ua{color:#FFE6C4}
+.tsec ul{margin:4px 0; padding-left:20px}
+.tsec .say{border-left:3px solid var(--volt); padding-left:10px; margin:6px 0}
+.tsec .say i{display:block; color:var(--muted); font-size:14px}
+.opttag{display:inline-block; font-size:12px; font-weight:800; color:#2B1606; background:var(--amber); border-radius:999px; padding:1px 8px; margin-left:6px; vertical-align:middle}
+.ttimer{display:flex; align-items:center; gap:10px}
+.ttimer .clk{font-family:var(--disp); font-size:30px; font-weight:800; font-variant-numeric:tabular-nums}
+.jump{display:grid; grid-template-columns:1fr; gap:4px; max-height:280px; overflow:auto}
+.jump button{text-align:left; border:0; background:transparent; padding:6px 8px; border-radius:8px; font-size:14px; color:var(--muted)}
+.jump button.cur{background:rgba(255,255,255,.08); color:var(--text)}
+.jump button:hover{background:rgba(255,255,255,.06)}
+.switch{display:flex; align-items:center; gap:10px; font-size:15px; padding:4px 0}
+.switch input{width:20px; height:20px; accent-color:var(--blush)}
+
+/* modal */
+#modal{position:fixed; inset:0; z-index:50; background:rgba(4,6,18,.72); backdrop-filter:blur(6px); display:grid; place-items:center; padding:16px}
+#modalBox{width:min(980px,100%); max-height:calc(100vh - 32px); overflow:auto; background:#121848; border:1px solid var(--line2); border-radius:28px; padding:clamp(18px,2.4vw,32px); font-size:17px}
+.vb-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:12px; margin-top:16px}
+.vbi{border-radius:18px; padding:14px 16px; background:rgba(255,255,255,.05); border:1px solid var(--line)}
+.vbi .t{font-family:var(--disp); font-size:22px; font-weight:800; line-height:1.05; color:#FFE3EE}
+.vbi .u{color:var(--amber); font-weight:700; font-size:15px}
+.vbi .e{font-size:15px; color:var(--muted); font-style:italic; margin-top:6px}
+.vbi.seen{border-color:rgba(255,143,184,.4)}
+.vsearch{width:100%; height:52px; border-radius:16px; border:1px solid var(--line2); background:rgba(0,0,0,.25); padding:0 16px; font-size:17px}
+.flash{perspective:1200px; max-width:560px; margin:20px auto 0}
+.flash .card3{position:relative; height:300px; transform-style:preserve-3d; transition:transform .5s; cursor:pointer}
+.flash .card3.flip{transform:rotateY(180deg)}
+.flash .face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:26px; display:grid; place-items:center; text-align:center; padding:24px; background:linear-gradient(150deg,#2A2F7A,#3E2A7A); border:1px solid var(--line2)}
+.flash .face.back{transform:rotateY(180deg); background:linear-gradient(150deg,#3A1F4E,#2A2F7A)}
+.flash .face .t{font-family:var(--disp); font-size:clamp(34px,4vw,52px); font-weight:800; line-height:1}
+.tabs{display:flex; gap:6px; background:rgba(255,255,255,.05); border-radius:14px; padding:4px; width:max-content}
+.tabs button{border:0; background:transparent; padding:8px 14px; border-radius:10px; font-weight:800; font-size:15px}
+.tabs button.on{background:var(--volt)}
+
+/* toast + dock */
+#toast{position:fixed; left:50%; bottom:100px; transform:translateX(-50%) translateY(20px); z-index:80; background:#fff; color:#121426; font-weight:700; border-radius:14px; padding:10px 18px; box-shadow:0 14px 40px rgba(0,0,0,.4); opacity:0; pointer-events:none; transition:all .25s; max-width:calc(100vw - 24px); text-align:center; font-size:16px}
+#toast.on{opacity:1; transform:translateX(-50%)}
+#dock{position:fixed; left:14px; bottom:86px; z-index:24; width:min(330px,calc(100vw - 28px)); background:rgba(14,19,56,.95); border:1px solid var(--line2); border-radius:18px; padding:12px 14px; font-size:14px; display:none; max-height:50vh; overflow:auto}
+#dock.on{display:block}
+#dock.min #dockBody{display:none}
+.led{display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--amber)} .led.on{background:var(--mint); box-shadow:0 0 8px var(--mint)} .led.bad{background:var(--rose)}
+.names{display:flex; flex-wrap:wrap; gap:4px; margin:6px 0} .names span{background:rgba(255,255,255,.08); border-radius:999px; padding:1px 8px; font-size:13px}
+.dbar{display:grid; grid-template-columns:1fr auto; gap:2px 8px; font-size:13px; margin-top:6px}
+.dbar .tr{grid-column:1/3; height:6px; border-radius:6px; background:rgba(255,255,255,.08)} .dbar .tr i{display:block; height:100%; border-radius:6px; background:var(--volt)}
+.wallit{display:flex; gap:6px; align-items:center; margin-top:6px} .wallit p{flex:1; margin:0} .wallit small{display:block; color:var(--muted)}
+#reacts{position:fixed; right:24px; bottom:100px; z-index:26; pointer-events:none; width:80px; height:300px}
+#reacts span{position:absolute; bottom:0; font-size:34px; animation:rise2 3s ease-out forwards}
+@keyframes rise2{to{transform:translateY(-280px); opacity:0}}
+.demo-badge{display:inline-flex; align-items:center; gap:6px; font-size:13px; color:var(--muted); border:1px solid var(--line2); border-radius:999px; padding:3px 10px}
+
+/* presentation mode: hide teacher-only things */
+body.present #notes, body.present #dock, body.present .tonly{display:none!important}
+body.present #ctrl .info{visibility:hidden}
+
+/* student app */
+#stu{display:none; max-width:560px; margin:0 auto; padding:16px 14px 110px}
+body.student #app, body.student #ctrl, body.student #notes, body.student #dock{display:none!important}
+body.student #stu{display:block}
+.stu-head{display:flex; align-items:center; gap:10px; padding:6px 0 14px}
+.stu-head b{font-family:var(--disp); font-size:20px}
+.stu-card{background:rgba(23,30,74,.8); border:1px solid var(--line); border-radius:24px; padding:18px}
+.stu-card label{display:block; font-weight:700; margin:12px 0 6px; font-size:15px}
+.stu-card input,.stu-card textarea{width:100%; min-height:50px; border-radius:14px; border:1px solid var(--line2); background:rgba(0,0,0,.25); padding:10px 14px; font-size:17px}
+.stu-card textarea{min-height:84px; resize:vertical}
+.stu-wait{text-align:center; padding:40px 10px} .stu-wait .bigi{font-size:54px}
+.avpick{display:flex; flex-wrap:wrap; gap:8px} .avpick button{width:46px; height:46px; border-radius:14px; border:1px solid var(--line2); background:rgba(255,255,255,.05); font-size:24px} .avpick button.on{background:var(--volt)}
+.stu-prog{display:flex; gap:4px; margin-bottom:10px} .stu-prog i{flex:1; height:5px; border-radius:5px; background:var(--line2)} .stu-prog i.d{background:var(--mint)} .stu-prog i.c{background:var(--blush)}
+#stuFoot{position:fixed; left:0; right:0; bottom:0; display:flex; justify-content:center; gap:8px; padding:10px 10px calc(10px + env(safe-area-inset-bottom)); background:rgba(9,12,34,.92); border-top:1px solid var(--line)}
+#stuFoot button{width:50px; height:50px; border-radius:16px; border:1px solid var(--line2); background:rgba(255,255,255,.05); font-size:24px}
+.verif{font-size:12px; color:var(--mint); margin-bottom:8px}
+
+/* responsive */
+@media (max-width:760px){
+  #top{gap:8px} #top .brand span, #top .brand img{display:none} #top .brand b{font-size:16px}
+  #rail{display:none}
+  .btn{min-height:46px; padding:0 14px; font-size:16px}
+  #ctrl .info{display:none}
+  #stage{padding-bottom:130px}
+  .cast .cc:nth-child(2), .cast .cc:nth-child(4){transform:none}
+}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important} }
+html.noanim *{animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important}
+.av img{position:relative; z-index:1}
+.phone .shot{aspect-ratio:1/.84}
+a.btn{color:var(--text); text-decoration:none}
+a.btn.primary{color:#fff}
+@media (max-width:520px){ #top .brand{display:none} #top{justify-content:space-between} }
+.fin .big .h{font-size:.55em; vertical-align:.25em; white-space:nowrap}
+.medal{width:110px;height:110px;font-size:50px}
+.still{animation:none!important}
+.warmpost .v{color:#A3245E; background:linear-gradient(transparent 60%, rgba(255,143,184,.35) 60%)}
+.pc[role=button]{cursor:pointer}
+.opt .av{margin-right:2px}
+</style>
+</head>
+<body data-sc="1">
+<div id="app">
+  <header id="top">
+    <a class="home tonly" href="../../" aria-label="Back to the course">←</a>
+    <div class="brand"><img src="../../assets/watermark.png" alt="" onerror="this.remove()"><div><b>Real Ones Only</b><br><span>Lesson 21 · Unit 3</span></div></div>
+    <nav id="rail" aria-label="Scenes"></nav>
+    <div class="tb">
+      <button class="ib" id="bWords" title="Vocabulary Bank (V)">📚 <span class="lbl">Words</span> <span class="cnt" id="wCnt">0/15</span></button>
+      <button class="ib tonly" id="bNotes" title="Teacher notes (T)">🧑‍🏫 <span class="lbl">Notes</span></button>
+      <button class="ib tonly" id="bLive" title="Live classroom (optional)">📡 <span class="lbl">Live</span></button>
+      <button class="ib" id="bPresent" title="Presentation mode (P)">📺 <span class="lbl">Present</span></button>
+    </div>
+  </header>
+  <main id="stage"><div id="view" class="view" aria-live="polite"></div></main>
+</div>
+
+<footer id="ctrl">
+  <button class="btn" id="bBack" aria-label="Back (left arrow)">◀ <span class="lbl2">Back</span></button>
+  <button class="btn sm ghost tonly" id="bRestart" title="Restart the lesson">⟲ Restart</button>
+  <div class="info" id="info"></div>
+  <button class="btn sm ghost" id="bReveal" title="Reveal (R)">👁 Reveal</button>
+  <button class="btn sm ghost tonly" id="bSkip" title="Skip this optional activity">⏭ Skip optional</button>
+  <button class="btn primary" id="bNext" aria-label="Next (right arrow or space)">Next ▶</button>
+</footer>
+
+<aside id="notes" aria-hidden="true" aria-label="Teacher notes">
+  <header><b>🧑‍🏫 Teacher notes</b><button class="btn sm ghost" id="notesX" aria-label="Close notes">✕</button></header>
+  <div id="notesBody"></div>
+</aside>
+
+<div id="dock" class="tonly" aria-label="Live classroom">
+  <div class="row" style="gap:8px"><span class="led" id="dockLed"></span><b id="dockTitle" class="grow">Room</b><button class="btn sm ghost" id="dockMin" aria-label="Minimise">▁</button></div>
+  <div class="small" id="dockCount"></div>
+  <div id="dockBody"></div>
+</div>
+
+<div id="modal" class="hidden" role="dialog" aria-modal="true"><div id="modalBox"></div></div>
+<div id="toast" role="status"></div>
+<div id="reacts" aria-hidden="true"></div>
+
+<div id="stu">
+  <div class="stu-head"><span class="led" id="stuLed"></span><b class="grow">Real Ones Only</b><span class="small" id="stuConn"></span><button class="ib" id="stuWords">📚</button></div>
+  <div class="small" id="stuRoom"></div>
+  <div id="stuBody"></div>
+  <div id="stuFoot"></div>
+</div>
+
+<script>
+/* ============================================================
+   Lesson 21 · Real Ones Only — The Perfect Squad: Behind the Feed
+   Vanilla JS, один файл, без збірки.
+   1 · helpers   2 · lesson content   3 · rendering helpers   4 · steps
+   5 · engine    6 · teacher panel    7 · live room           8 · student app
+   ============================================================ */
+const CFG = window.LESSON_CONFIG || {};
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LET = ['A','B','C','D'];
+const REDUCED_OS = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const qs = new URLSearchParams(location.search);
+const ROLE = (qs.get('role')==='student' || qs.has('join')) ? 'student' : 'teacher';
+const uid = ()=> Math.random().toString(36).slice(2,10);
+const rand4 = ()=> String(1000+Math.floor(Math.random()*9000));
+const mmss = s => { s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),2800); }
+
+/* ---------- 2 · lesson content ---------- */
+const PH = CFG.PHOTOS || {};
+const CH = {
+  mia:   {name:'Mia',    photo:PH.mia,    sad:PH.mia_sad||PH.mia, age:16, pers:'Kind, sensitive, loyal.', ua:'Добра, чутлива, віддана.'},
+  leo:   {name:'Leo',    photo:PH.leo,    age:16, pers:'Funny, outgoing, avoids serious conversations.', ua:'Веселий, товариський, уникає серйозних розмов.'},
+  sophie:{name:'Sophie', photo:PH.sophie, age:16, pers:'Creative, confident, manages the squad’s social media account.', ua:'Креативна, впевнена, веде акаунт компанії в соцмережах.'},
+  noah:  {name:'Noah',   photo:PH.noah,   age:16, pers:'Calm, thoughtful, sometimes too quiet.', ua:'Спокійний, вдумливий, іноді надто мовчазний.'}
+};
+
+/* 15 NEW expressions — exactly as in the lesson plan */
+const VOCAB = {
+  rod:      {t:'ride or die', en:'A friend who stays loyal and supports you in difficult times.', ua:'вірний друг, який завжди поруч', ex:'Mia thought Sophie was her ride or die.'},
+  click:    {t:'click with someone', en:'To become friendly with someone very easily.', ua:'одразу знайти спільну мову', ex:'Leo and Noah clicked when they first met.'},
+  fallout:  {t:'fall out', en:'To have an argument and stop being friendly.', ua:'посваритися', ex:'Mia doesn’t want to fall out with her friends.'},
+  squad:    {t:'squad', en:'A group of friends.', ua:'компанія друзів', ex:'Our squad loves spending time together.'},
+  drift:    {t:'drift apart', en:'To slowly become less close to someone.', ua:'поступово віддалятися', ex:'They started to drift apart after changing schools.'},
+  flaky:    {t:'flaky', en:'Someone who often changes plans or doesn’t keep promises.', ua:'ненадійний, необов’язковий', ex:'Leo can be flaky when making weekend plans.'},
+  there:    {t:'be there for someone', en:'To support someone when they need help.', ua:'бути поруч, підтримувати когось', ex:'Good friends are there for each other.'},
+  twofaced: {t:'two-faced', en:'Friendly to someone in person but unkind behind their back.', ua:'дволикий, лицемірний', ex:'A two-faced friend says nice things to you but insults you later.'},
+  tea:      {t:'spill (the) tea', en:'To share gossip or interesting personal information.', ua:'пліткувати, розповідати цікаві подробиці', ex:'Leo wanted to spill the tea about what happened.'},
+  showup:   {t:'show up for someone', en:'To make an effort to support someone when it matters.', ua:'підтримати когось у важливий момент', ex:'Noah showed up for Mia when she felt upset.'},
+  back:     {t:'have someone’s back', en:'To support, defend, or protect someone.', ua:'підтримувати, захищати когось', ex:'Real friends have each other’s backs.'},
+  bestie:   {t:'bestie energy', en:'A feeling or atmosphere of close friendship.', ua:'вайб найкращих друзів', ex:'Their funny videos have real bestie energy.'},
+  nodrama:  {t:'no drama', en:'No unnecessary arguments or conflicts.', ua:'без зайвих сварок і конфліктів', ex:'We just want a relaxing weekend with no drama.'},
+  third:    {t:'third wheel', en:'A person who feels unnecessary or left out when spending time with two other people, often a couple.', ua:'третій зайвий', ex:'Mia felt like a third wheel when Sophie and Leo ignored her.'},
+  bond:     {t:'bond over something', en:'To become closer because of a shared interest or experience.', ua:'зблизитися завдяки спільному інтересу', ex:'They bonded over music and video games.'}
+};
+const VORDER = ['rod','click','fallout','squad','drift','flaky','there','twofaced','tea','showup','back','bestie','nodrama','third','bond'];
+/* the three “support” expressions are related but not always interchangeable */
+const SUPPORT3 = [
+  ['there','General, ongoing support — you are available when a friend needs you.','загальна, постійна підтримка — ти поруч, коли друг потребує'],
+  ['showup','Action at an important moment — you make an effort and actually come / act.','дія у важливий момент — ти докладаєш зусиль і реально приходиш / дієш'],
+  ['back','Loyalty when someone is criticised or in trouble — you defend and protect them.','вірність, коли когось критикують чи він у біді — ти захищаєш']
+];
+/* revision (learned earlier — NOT new) */
+const REV = {
+  plugged:{t:'stay plugged in', en:'To stay connected online.', ua:'бути постійно онлайн', ex:'Sophie stays plugged in all day.'},
+  pinged: {t:'get pinged', en:'To receive a notification.', ua:'отримати сповіщення', ex:'Mia gets pinged every five minutes.'},
+  zone:   {t:'zone out', en:'To stop paying attention.', ua:'відключитися, «випасти»', ex:'Leo zoned out during the meeting.'},
+  highlight:{t:'highlight reel', en:'Only the best moments that people show online.', ua:'добірка найкращих моментів', ex:'Their feed is just a highlight reel.'},
+  doom:   {t:'doomscrolling', en:'Scrolling through bad or negative news for a long time.', ua:'думскролінг', ex:'Stop doomscrolling and go to sleep.'}
+};
+const REV_LIST = ['stay plugged in','scroll guilt','go off','get pinged','binge-watch','freak out over likes','switch off','turn it into content','zone out','mute ads','get inside your head','get sucked in','switch it off','pop up','tune it out','doomscrolling','ghost follow','highlight reel','overshare','back off','live up to the hype'];
+
+const SCENES = [
+  {n:1, t:'The Perfect Feed',   min:3, e:'📱'},
+  {n:2, t:'Meet the Squad',     min:6, e:'👥'},
+  {n:3, t:'The Missing Friend', min:7, e:'💬'},
+  {n:4, t:'The Voice Note',     min:4, e:'🎧'},
+  {n:5, t:'Real Talk',          min:4, e:'🗣️'},
+  {n:6, t:'Fix the Squad',      min:8, e:'🛡️'},
+  {n:7, t:'Real Ones Only',     min:3, e:'❤️'}
+];
+
+const POLL = {id:'poll', q:'Do you think social media shows real friendships?', opts:['Yes, most of the time.','Sometimes, but not always.','No, people often show only the good moments.']};
+const RECAP = [
+  {id:'rq1', q:'Sophie is always online and checks every notification.', opts:['stay plugged in','zone out','switch off'], a:0, why:'<b>Stay plugged in</b> means to stay connected online.', ua:'Stay plugged in — бути постійно онлайн.'},
+  {id:'rq2', q:'Leo stops listening because he’s thinking about something else.', opts:['get pinged','zone out','mute ads'], a:1, why:'<b>Zone out</b> means to stop paying attention.', ua:'Zone out — відключитися, перестати слухати.'},
+  {id:'rq3', q:'Mia receives a new phone notification.', opts:['get pinged','scroll guilt','tune it out'], a:0, why:'<b>Get pinged</b> means to receive a notification.', ua:'Get pinged — отримати сповіщення.'}
+];
+const PROFILES = [
+  {k:'mia',    quote:'I thought these people were my [[rod|ride or die]] friends. ❤️', v:'rod'},
+  {k:'leo',    quote:'We [[click|clicked]] when we first met. It was so easy to become friends!', v:'click'},
+  {k:'sophie', quote:'We’re the best [[squad|squad]] ever. Total [[bestie|bestie energy]]! 💅', v:'bestie', v2:'squad'},
+  {k:'noah',   quote:'We [[bond|bonded over]] gaming and music. 🎮', v:'bond'}
+];
+const WHO = [
+  {q:'“We clicked when we first met.”', a:'leo',    fact:'He usually makes everyone laugh.'},
+  {q:'“Total bestie energy!”',           a:'sophie', fact:'She plans most of their social media posts.'},
+  {q:'“We bonded over gaming and music.”', a:'noah', fact:'He notices when someone feels upset.'}
+];
+const WHO_OPTS = ['mia','leo','sophie','noah'];
+
+const DEC1 = {id:'dec1', title:'YOUR CHOICE MATTERS', q:'What should Mia say?', opts:[
+  {t:'“You are all fake friends. I’m done with you!”', who:'sophie', r:'That’s not fair! You don’t even know what happened!', fb:'Angry messages can make a misunderstanding worse.', ua:'Злі повідомлення можуть погіршити непорозуміння.', tone:'no'},
+  {t:'“Hey, I saw the photos. I feel left out. Can we talk?”', who:'noah', r:'I’m sorry, Mia. I didn’t know you weren’t invited. Let’s talk.', fb:'Explaining your feelings calmly can help.', ua:'Спокійно пояснити свої почуття — це допомагає.', tone:'ok'},
+  {t:'Say nothing and leave the group chat.', who:'leo', r:'Wait, why did Mia leave the chat? Did we do something wrong?', fb:'Silence may leave other people confused.', ua:'Мовчання може заплутати інших.', tone:'neutral'}
+]};
+const PRIVATE = [
+  ['mia','Did you guys go to the concert without me? 😕'],
+  ['noah','Yeah... Sophie said you were busy.'],
+  ['mia','What? She never asked me! I feel like a [[third|third wheel]] now.'],
+  ['noah','I’m sorry. I should have checked. I don’t want us to [[drift|drift apart]].']
+];
+const GROUP = [
+  ['leo','Sophie has been really [[flaky|flaky]] lately. She promised to invite everyone.'],
+  ['mia','I don’t want to [[fallout|fall out]] with anyone, but this really hurts.'],
+  ['noah','Real friends should [[there|be there for each other]] and [[back|have each other’s backs]].'],
+  ['sophie','Why is everyone talking about me? Can we have [[nodrama|no drama]], please?']
+];
+const COMP = {id:'comp', q:'Why is Mia upset?', opts:['She doesn’t like concerts.','Her friends went without inviting her.','She lost her phone.'], a:1, why:'She feels excluded because nobody invited her.', ua:'Вона почувається виключеною, бо її ніхто не запросив.'};
+
+const VOICE_SCRIPT = "Hey, Noah. I don't really know what to say. I saw the concert photos, and it hurt. I thought we were a real squad, but lately I've felt like a third wheel. Sophie didn't even ask if I wanted to come. I don't want to fall out with anyone. I just wish my friends would show up for me when it matters. Maybe we need to talk instead of pretending everything is perfect online.";
+const LISTEN = [
+  {id:'lq1', q:'Why is Mia upset?', opts:['She lost her phone.','Her friends went to a concert without her.','She doesn’t like concerts.'], a:1, why:'Her friends went without inviting her.', ua:'Друзі пішли без неї й не запросили.'},
+  {id:'lq2', q:'How does Mia feel?', opts:['Like a third wheel.','Very excited.','Angry about her followers.'], a:0, why:'She feels left out.', ua:'Вона почувається зайвою.'},
+  {id:'lq3', q:'What does Mia want?', opts:['To delete the group.','To get more likes.','To talk honestly with her friends.'], a:2, why:'She wants an honest conversation.', ua:'Вона хоче чесної розмови.'}
+];
+const DEC2 = {id:'dec2', title:'NOAH NEEDS YOUR HELP', q:'What should Noah say?', opts:[
+  {t:'“You’re overthinking it. It’s just a concert.”', who:'mia', r:'It might be just a concert to you, but it hurt me.', fb:'Saying “it’s nothing” can make a friend feel unheard.', ua:'Коли кажеш «це дрібниця», друг почувається непочутим.', tone:'no'},
+  {t:'“I’m sorry you feel left out. I’ve got your back.”', who:'mia', r:'Thanks, Noah. That means a lot. Maybe we can fix this.', fb:'Listening and offering support helps a friend feel safe.', ua:'Вислухати й підтримати — так друг почувається в безпеці.', tone:'ok'},
+  {t:'“I don’t want any drama. Talk to Sophie.”', who:'mia', r:'I understand, but I really needed a friend right now.', fb:'Avoiding the problem can leave a friend alone with it.', ua:'Уникаючи проблеми, ми залишаємо друга з нею наодинці.', tone:'neutral'}
+]};
+const NOAH_AFTER2 = 'I think we all need to talk honestly — you, me, Sophie and Leo. No more pretending.';
+
+const TALK = [
+  {id:'rt1', k:'sophie', said:'I didn’t mean to hurt Mia. Does that make me a bad friend?', q:'What would you tell Sophie?', ua:'Що б ти сказав / сказала Софі?',
+   starter:'I don’t think you’re a bad friend, but…', sample:'I don’t think she’s a bad friend, but she made a mistake. She should apologize and listen to Mia.',
+   follow:'Can someone hurt a friend without meaning to?', fua:'Чи можна образити друга ненавмисно?'},
+  {id:'rt2', k:'leo', said:'I knew Mia wasn’t invited, but I didn’t say anything. Was I wrong?', q:'What should Leo have done?', ua:'Що Лео мав зробити?',
+   starter:'He should have…', sample:'He should have spoken up and had Mia’s back.',
+   follow:'Is staying silent always the best way to avoid drama?', fua:'Чи мовчання — завжди найкращий спосіб уникнути драми?'},
+  {id:'rt3', k:'mia', said:'Can we still be friends after this?', q:'What makes a friendship worth saving?', ua:'Що робить дружбу вартою того, щоб її зберегти?',
+   starter:'I think a friendship is worth saving when…', sample:'I think friendship is worth saving when people care about each other and are ready to change.',
+   follow:'Can trust come back after an argument?', fua:'Чи може довіра повернутися після сварки?'}
+];
+
+const MISSION_STEPS = ['Your team has 4 minutes.','1. Read the three problems.','2. Write one friendship rule for each problem.','3. Use at least three new vocabulary expressions.','4. Choose one person to present your rules.','Keep your rules short and clear!'];
+const PROBLEMS = [
+  {f:'r1', t:'Mia was left out.', q:'How can friends make sure everyone feels included?', e:'Don’t make anyone feel like a third wheel.'},
+  {f:'r2', t:'Friends talked about each other instead of talking to each other.', q:'How can they avoid gossip and drama?', e:'Don’t be two-faced. Talk honestly to your friends.'},
+  {f:'r3', t:'Some friends didn’t speak up when Mia needed help.', q:'How can they show real support?', e:'Always have your friends’ backs when they need you.'}
+];
+const DEC3 = {id:'dec3', title:'WHAT MATTERS MOST IN A REAL FRIENDSHIP?', opts:[
+  {t:'Honesty.', e:'🗣️', end:'From now on, we’ll talk honestly instead of pretending everything is fine.'},
+  {t:'Support.', e:'🤝', end:'From now on, we’ll show up for each other when it really matters.'},
+  {t:'Including everyone.', e:'🫶', end:'From now on, we’ll make sure nobody feels left out.'}
+]};
+const ENDCHAT = [
+  ['sophie','Mia, I’m sorry. I should have asked you about the concert. I was too focused on making everything look perfect.'],
+  ['leo','Same here. I made jokes instead of helping. That wasn’t cool.'],
+  ['noah','Let’s stop pretending and actually [[there|be there for each other]].'],
+  ['mia','Thanks, guys. I still need a little time, but I’m glad we’re talking honestly. ❤️']
+];
+const FINAL_CAPTION = 'Real friendship isn’t about perfect photos. It’s about [[showup|showing up]], being honest and [[back|having each other’s backs]]. Real ones only. ❤️';
+const STARTERS = ['…has your back.','…is there for you.','…shows up when you need help.','…doesn’t act two-faced.'];
+
+/* detect new expressions in team rules (any form) */
+const VRX = {
+  rod:/ride[\s-]+or[\s-]+die/i, click:/\bclick(s|ed|ing)?\b/i, fallout:/\b(fall|falls|fell|falling|fallen)\s+out\b/i, squad:/\bsquads?\b/i,
+  drift:/\bdrift(s|ed|ing)?\s+apart\b/i, flaky:/\bflak(y|ey|ier|iness)\b/i, there:/\bthere\s+for\b/i, twofaced:/\btwo[\s-]?faced\b/i,
+  tea:/\bspill(s|ed|t|ing)?\s+(the\s+)?tea\b/i, showup:/\b(show|shows|showed|showing|shown)\s+up\b/i,
+  back:/\b(have|has|had|having|got|get|gets|'ve|’ve)\b[^.!?]{0,30}\bbacks?\b/i, bestie:/\bbestie\s+energy\b/i, nodrama:/\bno\s+drama\b/i,
+  third:/\bthird[\s-]+wheel/i, bond:/\bbond(s|ed|ing)?\s+over\b/i
+};
+const usedV = text => VORDER.filter(k=>VRX[k].test(String(text||'').replace(/’/g,"'")));
+</script>
+<script>
+/* ---------- 3 · state + rendering helpers ---------- */
+const KEY = 'lesson21-squad-v1';
+const FRESH = ()=>({i:0, sd:{}, dec:{}, votes:{}, taps:{}, seen:{}, wall:{}, teams:3, tnames:{}, work:{}, sub:{}, short:false, ptm:'A', wt:'A',
+  room:rand4(), tid:uid(), live:false, noanim:false, core:false, code:true, tmr:{dur:240, left:240, run:false, end:0}});
+let S = FRESH();
+if(ROLE==='teacher'){ try{ const raw=JSON.parse(localStorage.getItem(KEY)||'null'); if(raw && typeof raw==='object') S=Object.assign(FRESH(), raw); }catch(e){} }
+let saveT=null;
+function save(){ if(ROLE!=='teacher') return; clearTimeout(saveT); saveT=setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} },120); }
+const sd = id => (S.sd[id] = S.sd[id] || {});
+const anim = ()=> !(REDUCED_OS || S.noanim);
+function applyAnim(){ document.documentElement.classList.toggle('noanim', !!S.noanim); }
+
+/* [[key|text]] → clickable new expression · [[@key|text]] → revision expression */
+function T(str){
+  return esc(str).replace(/\[\[(@?)(\w+)\|([^\]]+)\]\]/g,(m,rev,k,txt)=>{
+    const known = rev ? REV[k] : VOCAB[k]; if(!known) return txt;
+    return `<button type="button" class="v ${rev?'rev':''}" data-v="${rev?'@':''}${k}" aria-label="${esc(txt)} — explanation">${txt}</button>`;
+  });
+}
+const plain = str => String(str).replace(/\[\[@?\w+\|([^\]]+)\]\]/g,'$1');
+
+function av(k, size=52, o={}){
+  const c=CH[k]; if(!c) return '';
+  const src = o.sad && c.sad ? c.sad : c.photo;
+  return `<span class="av c-${k} ${o.cls||''}" style="--s:${size}px"><span class="fb" aria-hidden="true">${c.name[0]}</span>${src?`<img src="${esc(src)}" alt="${c.name}" onerror="this.remove()">`:''}</span>`;
+}
+const crew = (keys, size, o={}) => `<div class="crew">${keys.map(k=>av(k,size,{sad:o.sad&&k==='mia'})).join('')}</div>`;
+
+/* scene "photos": your own image from LESSON_CONFIG.SCENES, otherwise a drawn scene */
+function realShot(key){ const src=(CFG.SCENES||{})[key]; return src ? `<div class="shot real"><img class="bgimg" src="${esc(src)}" alt="" onerror="this.parentNode.classList.add('broken')"></div>` : ''; }
+function shotFeed(size=86){
+  return realShot('feed') || `<div class="shot park" role="img" aria-label="Photo: Mia, Leo, Sophie and Noah smiling together in the park at sunset">
+    <div class="sun"></div>${[[12,18,26],[78,14,18],[66,40,12],[22,44,14],[88,48,22],[40,10,10]].map(b=>`<i class="bok" style="left:${b[0]}%;top:${b[1]}%;width:${b[2]}px;height:${b[2]}px"></i>`).join('')}
+    <svg class="ground" viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C60 40 120 60 170 52 C230 42 300 70 400 48 L400 160 L0 160Z" fill="#3B2A6B"/><path d="M0 100 C80 80 160 104 240 92 C310 82 360 96 400 90 L400 160 L0 160Z" fill="#2A1F55"/>
+      <g fill="#24194A"><rect x="38" y="20" width="6" height="40"/><circle cx="41" cy="18" r="20"/><rect x="342" y="14" width="6" height="40"/><circle cx="345" cy="12" r="24"/></g></svg>
+    ${crew(['mia','leo','sophie','noah'],size)}
+    <span class="sticker" style="left:6%;top:6%;transform:rotate(-6deg)">📍 Riverside Park</span>
+    <span class="sticker" style="right:6%;top:9%;transform:rotate(5deg)">✨ squad day</span></div>`;
+}
+function shotConcert(size=92){
+  const conf=[[12,30,'#FF8FB8'],[30,18,'#FFC27A'],[52,26,'#4FD1FF'],[70,14,'#B79BFF'],[86,32,'#FF8FB8'],[44,40,'#FFC27A'],[62,44,'#4FD1FF'],[20,50,'#B79BFF']];
+  return realShot('concert') || `<div class="shot concert" role="img" aria-label="Photo: Sophie, Leo and Noah at a concert. Mia is not there.">
+    <i class="beam b1" style="left:-5%"></i><i class="beam b2"></i><i class="beam b3"></i><div class="stage"></div>
+    ${conf.map((c,i)=>`<i class="conf" style="left:${c[0]}%;top:${c[1]}%;background:${c[2]};transform:rotate(${i*37}deg)"></i>`).join('')}
+    <svg class="crowd" viewBox="0 0 400 180" preserveAspectRatio="none" aria-hidden="true"><g fill="#07030F">
+      ${Array.from({length:14},(_,i)=>{ const x=i*30+8, h=40+((i*37)%30); return `<circle cx="${x}" cy="${180-h}" r="15"/><rect x="${x-17}" y="${180-h+8}" width="34" height="${h}" rx="14"/>`; }).join('')}
+      <rect x="60" y="70" width="8" height="40" rx="4" transform="rotate(-14 64 90)"/><rect x="300" y="64" width="8" height="44" rx="4" transform="rotate(12 304 86)"/></g></svg>
+    ${crew(['sophie','leo','noah'],size)}</div>`;
+}
+function shotFinal(size=84){
+  return realShot('final') || `<div class="shot cafe" role="img" aria-label="Photo: Mia, Leo, Sophie and Noah talking honestly at a table">
+    <svg class="lights" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 Q100 70 200 30 T400 20" stroke="#5A3A4A" stroke-width="2" fill="none"/>
+      ${Array.from({length:12},(_,i)=>{ const x=i*34+14; const y= i<6? 10+ (Math.sin(i/2)*20+24): 26+Math.cos(i/2)*10; return `<circle cx="${x}" cy="${y}" r="5" fill="#FFD9A0"/><circle cx="${x}" cy="${y}" r="12" fill="#FFC27A" opacity=".22"/>`; }).join('')}</svg>
+    <div class="table"></div>${crew(['sophie','mia','noah','leo'],size)}<span class="cup" style="left:34%">☕</span><span class="cup" style="left:58%">🥤</span></div>`;
+}
+
+function msgHTML(k, html, o={}){
+  const c=CH[k];
+  return `<div class="msg ${o.me?'me':''} ${o.cls||''}" ${o.attr||''}>${av(k,o.size||46,{sad:o.sad})}<div class="bub"><span class="nm nm-${k}">${c.name}</span>${html}</div></div>`;
+}
+function sysMsg(html, cls=''){ return `<div class="msg sys ${cls}"><div class="bub">${html}</div></div>`; }
+/* chat: show messages 0..p ; the newest one types first */
+function chatHTML(list, d, o={}){
+  const p=d.p||0;
+  return list.slice(0,p+1).map((m,i)=>{
+    const fresh = CTX.entering ? false : i>CTX.prevP;
+    return msgHTML(m[0], T(m[1]), {me:o.me&&m[0]===o.me, sad:o.sad&&m[0]==='mia', cls: (fresh?'new':'')+(CTX.entering||fresh?'':' still'), attr:fresh?'data-new':''});
+  }).join('');
+}
+function typeNew(root){
+  if(!anim()) return;
+  $$('.msg[data-new]',root).forEach(m=>{ const b=$('.bub',m); if(!b) return; b.style.display='none';
+    const t=document.createElement('div'); t.className='typing'; t.innerHTML='<i></i><i></i><i></i>'; m.appendChild(t);
+    setTimeout(()=>{ t.remove(); b.style.display=''; },650); });
+}
+const sceneTag = s => { const sc=SCENES[s.sc-1]; return `<div class="scene-tag">${sc.e} Scene ${sc.n} of 7 · <b>${sc.t}</b></div>`; };
+const readHint = who => `<div class="readhint tonly">🎭 Choose a student to read ${who}.</div>`;
+
+/* votes: phones (S.votes[id][sid]) + hand count taps (S.taps[id][i]) */
+function counts(id,n){ const out=Array(n).fill(0); Object.values(S.votes[id]||{}).forEach(v=>{ if(Number.isInteger(v)&&v>=0&&v<n) out[v]++; }); const t=S.taps[id]||[]; return out.map((c,i)=>c+(t[i]||0)); }
+const nVotes = id => Object.keys(S.votes[id]||{}).length + (S.taps[id]||[]).reduce((a,b)=>a+(b||0),0);
+function liveLine(id){ return LIVE.on ? `<span class="livecount tonly">📱 ${Object.keys(S.votes[id]||{}).length} of ${studentsN()} phones answered</span>` : ''; }
+
+/* ---------- quiz (one correct answer) ---------- */
+function qst(d, id){ d.q=d.q||{}; return d.q[id]=d.q[id]||{wr:[]}; }
+function quizHTML(Q, d, o={}){
+  const st=qst(d,Q.id), done=st.ok||st.rev, n=Q.opts.length;
+  const c=st.res?counts(Q.id,n):null, tot=c?Math.max(1,c.reduce((a,b)=>a+b,0)):1;
+  const optLabel = o.label || (x=>esc(x));
+  return `<div class="q">${o.qhtml||esc(Q.q)}</div>
+   <div class="opts ${o.cols||''}" role="group" aria-label="Answers">${Q.opts.map((x,i)=>{
+     const right=done&&i===Q.a, wrong=st.wr.includes(i)&&!right, dim=done&&!right;
+     return `<button class="opt ${right?'right':''} ${wrong?'wrong':''} ${dim?'dim':''}" data-qa="${Q.id}" data-i="${i}" aria-pressed="${right||wrong}">
+       ${c?`<span class="bar" style="width:${c[i]/tot*100}%"></span>`:''}${o.letters===false?'':`<span class="L">${LET[i]}</span>`}<span>${optLabel(x,i)}</span>
+       ${c?`<span class="pct">${c[i]}</span>`:''}<span class="mk" aria-hidden="true">${right?'✓':wrong?'✗':''}</span><span class="sr">${right?'correct':wrong?'wrong':''}</span></button>`; }).join('')}</div>
+   ${st.ok?`<div class="fb">✓ Correct! ${Q.why}${o.after?o.after:''}</div>`:st.rev?`<div class="fb neutral">Answer: <b>${LET[Q.a]}</b>. ${Q.why}${o.after?o.after:''}</div>`:st.wr.length?`<div class="fb no">✗ Not quite — try again.</div>`:''}
+   <div class="row mt tonly">${liveLine(Q.id)}${LIVE.on?`<button class="btn sm ghost" data-res="${Q.id}">${st.res?'Hide':'📊 Show'} class answers</button>`:''}</div>`;
+}
+function bindQuiz(root, d, list, onOK){
+  $$('[data-qa]',root).forEach(b=>b.onclick=()=>{
+    const Q=list.find(x=>x.id===b.dataset.qa), st=qst(d,Q.id), i=+b.dataset.i; if(st.ok||st.rev) return;
+    if(i===Q.a){ st.ok=true; burst(b); onOK&&onOK(Q); } else if(!st.wr.includes(i)) st.wr.push(i);
+    save(); draw(); });
+  $$('[data-res]',root).forEach(b=>b.onclick=()=>{ const st=qst(d,b.dataset.res); st.res=!st.res; save(); draw(); });
+}
+const quizTask = (Q,d,label) => { const st=qst(d,Q.id), lock=!!(st.ok||st.rev); return {id:Q.id, kind:'choice', q:plain(Q.q), opts:Q.opts.map((x,i)=>label?label(x,i):x), lock, correct: lock?Q.a:null}; };
+
+/* ---------- poll / decision (no correct answer) ---------- */
+function pollBars(id, n, show){ const c=counts(id,n), tot=Math.max(1,c.reduce((a,b)=>a+b,0)); return {c, tot, show}; }
+function decHTML(D, d, o={}){
+  const ch=S.dec[D.id], n=D.opts.length, c=counts(D.id,n), tot=Math.max(1,c.reduce((a,b)=>a+b,0)), show=d.res;
+  return `<div class="dec-opts">${D.opts.map((x,i)=>`<button class="dopt ${ch===i?'chosen':ch!=null?'faded':''}" data-dec="${D.id}" data-i="${i}" aria-pressed="${ch===i}">
+     ${show?`<span class="bar" style="width:${c[i]/tot*100}%"></span>`:''}<span class="L">${x.e||LET[i]}</span><span>${esc(x.t)}</span>${show?`<span class="pct">${c[i]} · ${Math.round(c[i]/tot*100)}%</span>`:''}${ch===i?'<span class="sr">chosen</span>':''}</button>`).join('')}</div>
+   <div class="row mt tonly">${liveLine(D.id)}
+     ${ch==null?`<span class="small">${LIVE.on?'Phones vote → tap the option the class chose to confirm it.':'Teacher-led: ask the class, then tap their choice.'}</span>`:''}
+     <button class="btn sm ghost" data-dres>${show?'Hide':'📊 Show'} votes</button>
+     ${LIVE.on && ch==null?'<button class="btn sm ghost" data-dtop>✓ Confirm top vote</button>':''}
+     ${!LIVE.on && ch==null?'<button class="btn sm ghost" data-dtap>✋ Count hands</button>':''}
+     ${ch!=null?'<button class="btn sm ghost" data-dreset>↺ Reset decision</button>':''}</div>
+   ${d.tap && ch==null?`<div class="row mt tonly">${D.opts.map((x,i)=>`<button class="btn sm" data-tap="${i}">+1 ${x.e||LET[i]}</button>`).join('')}<span class="small">Count raised hands in Zoom</span></div>`:''}`;
+}
+function bindDec(root, D, d){
+  $$('[data-dec]',root).forEach(b=>b.onclick=()=>{ if(S.dec[D.id]===+b.dataset.i) return; S.dec[D.id]=+b.dataset.i; d.res=nVotes(D.id)>0; save(); draw(); });
+  const fresh=$('.react .msg.new',root); if(fresh) setTimeout(()=>fresh.closest('.react').scrollIntoView({behavior:anim()?'smooth':'auto', block:'center'}),80);
+  const r=$('[data-dres]',root); if(r) r.onclick=()=>{ d.res=!d.res; save(); draw(); };
+  const tp=$('[data-dtop]',root); if(tp) tp.onclick=()=>{ const c=counts(D.id,D.opts.length), mx=Math.max(...c); if(!mx) return toast('No votes yet'); S.dec[D.id]=c.indexOf(mx); d.res=true; save(); draw(); };
+  const th=$('[data-dtap]',root); if(th) th.onclick=()=>{ d.tap=!d.tap; save(); draw(); };
+  $$('[data-tap]',root).forEach(b=>b.onclick=()=>{ const t=S.taps[D.id]=S.taps[D.id]||[]; t[+b.dataset.tap]=(t[+b.dataset.tap]||0)+1; d.res=true; save(); draw(); });
+  const rs=$('[data-dreset]',root); if(rs) rs.onclick=()=>{ delete S.dec[D.id]; delete S.votes[D.id]; delete S.taps[D.id]; d.res=false; save(); draw(); toast('Decision reset — the class can vote again'); };
+}
+const decTask = D => ({id:D.id, kind:'choice', q:D.q||D.title, opts:D.opts.map(x=>(x.e?x.e+' ':'')+plain(x.t)), lock:S.dec[D.id]!=null, correct:null, chosen:S.dec[D.id]??null});
+
+/* ---------- speaking helpers ---------- */
+function wallHTML(id){ const w=S.wall[id]||[]; return w.length?`<div class="wall">${w.map(x=>`<div class="w">${esc(x.text)}<small>${esc(x.by)}</small></div>`).join('')}</div>`:''; }
+
+/* small effects */
+function burst(el){ if(!anim()||!el) return; const r=el.getBoundingClientRect(); for(let i=0;i<8;i++){ const s=document.createElement('span'); s.textContent=['✨','💖','⭐'][i%3]; Object.assign(s.style,{position:'fixed',left:(r.left+r.width*Math.random())+'px',top:(r.top+r.height/2)+'px',zIndex:90,pointerEvents:'none',fontSize:'20px',transition:'all .8s ease-out'}); document.body.appendChild(s); requestAnimationFrame(()=>{ s.style.transform=`translate(${(Math.random()-.5)*120}px,${-40-Math.random()*70}px)`; s.style.opacity='0'; }); setTimeout(()=>s.remove(),900); } }
+function hearts(n=26){ if(!anim()) return; const h=document.createElement('div'); h.className='hearts'; for(let i=0;i<n;i++){ const s=document.createElement('span'); s.textContent=['❤️','💖','✨','💛','💜'][i%5]; s.style.left=Math.random()*100+'%'; s.style.animationDelay=(Math.random()*1.2)+'s'; h.appendChild(s); } document.body.appendChild(h); setTimeout(()=>h.remove(),4200); }
+function achieve(title, sub, emoji='🏆'){
+  const o=document.createElement('div'); o.className='ach'; o.setAttribute('role','alert');
+  o.innerHTML=`<div class="box"><div class="medal">${emoji}</div><h2>${esc(title)}</h2><p class="lead" style="margin:10px auto 0">${esc(sub)}</p><p class="small mt">click to continue</p></div>`;
+  o.onclick=()=>o.remove(); document.body.appendChild(o); hearts(18); setTimeout(()=>o.remove(), anim()?2600:1600);
+}
+
+/* ---------- voice note: real mp3 if present, otherwise the browser’s speech voice ---------- */
+const VN = {
+  mode:'tts', audio:null, rate:1, playing:false, idx:0, prog:0, heard:false, t0:0, raf:0, voice:null,
+  sent: VOICE_SCRIPT.match(/[^.?!]+[.?!]+/g).map(s=>s.trim()),
+  init(){
+    if(CFG.VOICE_NOTE){ const a=new Audio(); a.preload='metadata'; a.src=CFG.VOICE_NOTE;
+      a.addEventListener('loadedmetadata',()=>{ this.mode='file'; this.audio=a; this.paint(); });
+      a.addEventListener('timeupdate',()=>{ if(this.mode==='file'){ this.prog=a.duration?a.currentTime/a.duration:0; this.paint(); } });
+      a.addEventListener('ended',()=>{ this.playing=false; this.heard=true; this.prog=1; this.paint(); this.onEnd&&this.onEnd(); });
+      a.addEventListener('error',()=>{ this.mode='tts'; this.paint(); }); }
+    if('speechSynthesis' in window){ const pick=()=>{ const v=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang));
+        const pref=['Samantha','Google UK English Female','Microsoft Aria','Microsoft Jenny','Microsoft Libby','Microsoft Sonia','Karen','Moira','Tessa','Serena','Google US English','Microsoft Zira'];
+        this.voice = pref.map(n=>v.find(x=>x.name.includes(n))).find(Boolean) || v.find(x=>/female/i.test(x.name)) || v[0] || null; };
+      pick(); speechSynthesis.onvoiceschanged=pick; }
+  },
+  can(){ return this.mode==='file' || ('speechSynthesis' in window); },
+  weights(){ const L=this.sent.map(s=>s.length), T=L.reduce((a,b)=>a+b,0); return {L,T}; },
+  dur(){ if(this.mode==='file'&&this.audio&&this.audio.duration) return this.audio.duration/this.rate; const {T}=this.weights(); return T/(11*this.rate) + this.sent.length*0.6/this.rate; },
+  play(){ if(this.mode==='file'){ this.audio.playbackRate=this.rate; if(this.prog>=1) this.audio.currentTime=0; this.audio.play(); this.playing=true; this.paint(); return; }
+    if(!('speechSynthesis' in window)) return; speechSynthesis.cancel(); this.playing=true; if(this.prog>=1){ this.idx=0; this.prog=0; } this.say(this.idx); },
+  say(i){
+    if(!this.playing) return; if(i>=this.sent.length){ this.playing=false; this.heard=true; this.prog=1; this.idx=0; this.paint(); this.onEnd&&this.onEnd(); return; }
+    this.idx=i; const u=new SpeechSynthesisUtterance(this.sent[i]); u.lang='en-GB'; if(this.voice){ u.voice=this.voice; u.lang=this.voice.lang; }
+    u.rate=0.8*this.rate; u.pitch=1.08; const {L,T}=this.weights(), before=L.slice(0,i).reduce((a,b)=>a+b,0);
+    const est=L[i]/(11*this.rate)*1000; this.t0=performance.now();
+    u.onboundary=e=>{ if(typeof e.charIndex==='number'){ this.prog=(before+Math.min(e.charIndex,L[i]))/T; this.paint(); } };
+    cancelAnimationFrame(this.raf); const tick=()=>{ if(!this.playing||this.idx!==i) return; const f=Math.min(1,(performance.now()-this.t0)/est); this.prog=Math.max(this.prog,(before+L[i]*f*.98)/T); this.paint(); this.raf=requestAnimationFrame(tick); }; this.raf=requestAnimationFrame(tick);
+    u.onend=()=>{ if(!this.playing||this.idx!==i) return; this.prog=(before+L[i])/T; setTimeout(()=>this.say(i+1), 600/this.rate); };
+    u.onerror=e=>{ if(e.error!=='interrupted'&&e.error!=='canceled'){ this.playing=false; this.paint(); toast('The browser could not play the voice — read the transcript aloud instead.'); } };
+    speechSynthesis.speak(u); this.paint();
+  },
+  pause(){ this.playing=false; if(this.mode==='file') this.audio.pause(); else { cancelAnimationFrame(this.raf); speechSynthesis.cancel(); } this.paint(); },
+  toggle(){ this.playing?this.pause():this.play(); },
+  replay(){ this.pause(); this.idx=0; this.prog=0; if(this.mode==='file') this.audio.currentTime=0; this.play(); },
+  seek(f){ const was=this.playing; this.pause(); if(this.mode==='file'){ this.audio.currentTime=f*this.audio.duration; this.prog=f; }
+    else { const {L,T}=this.weights(); let acc=0, i=0; while(i<L.length-1 && (acc+L[i])/T<f){ acc+=L[i]; i++; } this.idx=i; this.prog=acc/T; } this.paint(); if(was) this.play(); },
+  setRate(r){ this.rate=r; if(this.mode==='file'&&this.audio) this.audio.playbackRate=r; else if(this.playing){ this.pause(); this.play(); } this.paint(); },
+  stop(){ if(this.playing) this.pause(); },
+  paint(){
+    const w=$('#vwave'); if(!w) return; const bars=$$('i',w), on=Math.round(this.prog*bars.length); bars.forEach((b,i)=>b.classList.toggle('on',i<on));
+    const d=this.dur(); $('#vtime').textContent=`${mmss(this.prog*d)} / ${mmss(d)}`;
+    const p=$('#vplay'); p.textContent=this.playing?'❚❚':'▶'; p.setAttribute('aria-label',this.playing?'Pause':'Play');
+    const tag=$('#vmode'); if(tag) tag.innerHTML = this.mode==='file' ? '🎙️ Voice recording' : ('speechSynthesis' in window ? '🔊 Synthesized voice (browser text-to-speech)' : '⚠️ No speech voice in this browser — read the transcript aloud');
+    $$('[data-rate]').forEach(b=>b.classList.toggle('on', +b.dataset.rate===this.rate));
+    const tr=$('#vtr'); if(tr){ const {L,T}=this.weights(); let acc=0, cur=-1; for(let i=0;i<L.length;i++){ if(this.playing && this.prog*T>=acc-1 && this.prog*T<acc+L[i]) cur=i; acc+=L[i]; } if(this.mode==='tts'&&this.playing) cur=this.idx; $$('.s',tr).forEach((s,i)=>s.classList.toggle('on',i===cur)); }
+    if(this.heard){ const d2=sd('voice'); if(!d2.heard){ d2.heard=true; save(); const b=$('#vtrBtn'); if(b) b.disabled=false; } }
+  }
+};
+const WAVE = Array.from({length:56},(_,i)=> 18 + Math.round(Math.abs(Math.sin(i*1.7)*0.6 + Math.sin(i*0.47)*0.4) * 78));
+function voiceHTML(d, compact){
+  return `<div class="voice">
+    <div class="row" style="gap:12px">${av('mia',compact?48:60,{sad:true})}<div class="grow"><b style="font-size:1.1em">Mia</b> <span class="small">· voice message to Noah</span><div><span class="synth" id="vmode"></span></div></div></div>
+    <div class="vrow mt"><button class="vplay" id="vplay" aria-label="Play">▶</button>
+      <div class="wave" id="vwave" role="slider" aria-label="Voice message progress" tabindex="0">${WAVE.map(h=>`<i style="height:${h}%"></i>`).join('')}</div><div class="vtime" id="vtime">0:00</div></div>
+    <div class="vctl"><button class="btn sm" id="vreplay">↺ Replay</button><span class="small">Speed</span>${[0.8,1,1.2].map(r=>`<button class="btn sm ghost" data-rate="${r}">${r}×</button>`).join('')}
+      ${compact?'':`<span class="grow"></span><button class="btn sm" id="vtrBtn" ${d.heard||d.tr?'':'disabled'}>${d.tr?'Hide':'📄 Show'} transcript</button>`}</div>
+    ${!compact && (d.tr || !VN.can()) ? `<div class="transcript" id="vtr">${VN.sent.map(s=>`<span class="s">${T(markScript(s))}</span>`).join(' ')}</div>`:''}
+  </div>`;
+}
+/* highlight new expressions inside the transcript */
+function markScript(s){ return s.replace(/\bsquad\b/,'[[squad|squad]]').replace('third wheel','[[third|third wheel]]').replace('fall out','[[fallout|fall out]]').replace('show up for me','[[showup|show up for me]]'); }
+function bindVoice(root){
+  VN.onEnd=()=>{ if(cur().id==='voice') draw(); };
+  $('#vplay',root).onclick=()=>VN.toggle(); $('#vreplay',root).onclick=()=>VN.replay();
+  $$('[data-rate]',root).forEach(b=>b.onclick=()=>VN.setRate(+b.dataset.rate));
+  const w=$('#vwave',root); w.onclick=e=>{ const r=w.getBoundingClientRect(); VN.seek(Math.max(0,Math.min(1,(e.clientX-r.left)/r.width))); };
+  w.onkeydown=e=>{ if(e.key==='ArrowRight'){ e.stopPropagation(); VN.seek(Math.min(1,VN.prog+.1)); } if(e.key==='ArrowLeft'){ e.stopPropagation(); VN.seek(Math.max(0,VN.prog-.1)); } };
+  const tb=$('#vtrBtn',root); if(tb) tb.onclick=()=>{ const d=sd('voice'); d.tr=!d.tr; save(); draw(); };
+  VN.paint();
+}
+
+/* ---------- 4 · steps ---------- */
+const STEPS = [];
+const step = o => STEPS.push(o);
+const TEAMS = ()=> ['A','B','C','D'].slice(0, S.teams);
+const TEAM_E = {A:'🛡️', B:'⚡', C:'🌙', D:'🔥'};
+const teamName = L => (S.tnames[L]||'').trim() || 'Team '+L;
+const activeProbs = ()=> S.short ? PROBLEMS.slice(0,2) : PROBLEMS;
+const ruleCount = L => activeProbs().filter(p=>((S.work[L]||{})[p.f]||'').trim()).length;
+const teamText = L => activeProbs().map(p=>(S.work[L]||{})[p.f]||'').join(' ');
+
+/* ── SCENE 1 · THE PERFECT FEED ── */
+step({id:'title', sc:1, title:'Opening screen',
+  render:()=>`<div class="title-wrap">
+    <div><div class="lessonno">LESSON 21</div>
+      <h1 class="mega" aria-label="Real Ones Only"><span>REAL</span><span>ONES</span><span class="o">ONLY</span></h1>
+      <div class="storyname">THE PERFECT SQUAD: BEHIND THE FEED</div>
+      <p class="lead mt">Four friends. One perfect feed. But is their friendship really perfect?</p>
+      <div class="row mt2"><button class="btn pink big" data-next>ENTER THE STORY</button>
+        <span class="demo-badge tonly">${LIVE.on?`📡 Live room ${S.room} · ${studentsN()} joined`:'🖥️ Teacher-led mode · phones are optional'}</span></div></div>
+    <div class="cast" aria-label="The squad">${['mia','leo','sophie','noah'].map(k=>`<div class="cc">${CH[k].photo?`<img src="${esc(CH[k].photo)}" alt="${CH[k].name}" onerror="this.remove()">`:''}<span class="nm-${k}">${CH[k].name}</span></div>`).join('')}</div></div>`,
+  n:{t:'0.5 хв', ua:'Титульний екран. Учні бачать назву уроку і героїв.', do:['Попросіть учня прочитати підзаголовок уголос.','Запитайте: “Who do you think these people are?” — 1–2 відповіді.','Кнопка ENTER THE STORY або → / пробіл.'], say:[['Four friends. One perfect feed. Is their friendship really perfect? Let’s find out.','Четверо друзів. Одна ідеальна стрічка. Чи справді їхня дружба ідеальна? Дізнаймося.']]}
+});
+step({id:'feed', sc:1, title:'@ThePerfectSquad',
+  render:d=>`${sceneTag(cur())}<div class="split">
+    <div><div class="phone"><div class="screen">
+      <div class="ig-top"><b>‹</b><b class="grow" style="text-align:center">ThePerfectSquad</b><b>⋯</b></div>
+      <div class="prof"><div class="ring"><div class="inner"><div class="stack">${['mia','leo','sophie','noah'].map(k=>av(k,30)).join('')}</div></div></div>
+        <div class="stats"><div><b>86</b>posts</div><div><b>1,284</b>followers</div><div><b>4</b>friends</div></div></div>
+      <div style="padding:0 16px 10px;font-size:14px"><b>@ThePerfectSquad</b><br>Mia · Leo · Sophie · Noah 💫 friends for 2 years</div>
+      <div class="ig-top" style="border-top:1px solid #eee"><div class="stack">${['sophie','mia'].map(k=>av(k,28)).join('')}</div><div class="grow"><b>ThePerfectSquad</b><br><span style="font-size:12px;color:#777">Riverside Park</span></div></div>
+      <div class="dbl" id="dbl">${shotFeed(84)}</div>
+      <div class="post-acts"><button class="lk ${d.like?'on':''}" id="like" aria-label="Like">${d.like?'❤️':'🤍'}</button><span>💬</span><span>➤</span><span style="margin-left:auto">🔖</span></div>
+      <div class="post-txt"><b>${d.like?'343':'342'} likes</b><br><b>ThePerfectSquad</b> Best friends forever! ❤️ No secrets, no drama, just good vibes. <span class="tags">#SquadGoals</span><div class="cm">View all 28 comments</div></div>
+    </div></div><div class="fic">Fictional account · numbers are part of the story</div></div>
+    <div><h2 class="h-l">Meet <span style="white-space:nowrap">@ThePerfectSquad</span></h2>
+      <p class="lead mt">Mia, Leo, Sophie and Noah share one account. Happy photos, jokes, trips — every post looks perfect.</p>
+      <p class="lead">But a feed only shows what people <i>choose</i> to show.</p>
+      <div class="glass pad mt2"><b>💬 Look at the post.</b><p class="muted" style="margin-bottom:0">What does the caption promise? Do you believe it?</p></div></div></div>`,
+  after:(r,d)=>{ const go=()=>{ d.like=!d.like; save(); draw(); }; $('#like',r).onclick=go; $('#dbl',r).ondblclick=go; },
+  n:{t:'0.5 хв', ua:'Вигаданий акаунт друзів. Привертаємо увагу до підпису «No secrets, no drama» — пізніше він стане іронічним.', do:['Учень читає підпис уголос.','Запитайте: “What does the caption promise?” (no secrets, no drama, good vibes).','Подвійний клік по фото — лайк ❤️.'], say:[['What does the caption promise? Do you believe it?','Що обіцяє підпис? Ви в це вірите?']]}
+});
+step({id:'poll', sc:1, title:'Warm-up poll',
+  render:d=>{ const n=3, c=counts(POLL.id,n), tot=Math.max(1,c.reduce((a,b)=>a+b,0));
+    return `${sceneTag(cur())}<div class="qcard"><div class="small" style="font-weight:800;color:var(--blush)">WARM-UP POLL · no wrong answers</div>
+    <div class="q mt">${esc(POLL.q)}</div>
+    <div class="opts">${POLL.opts.map((o,i)=>`<button class="opt" data-pv="${i}">${d.res?`<span class="bar" style="width:${c[i]/tot*100}%"></span>`:''}<span class="L">${LET[i]}</span><span>${esc(o)}</span>${d.res?`<span class="pct">${c[i]} · ${Math.round(c[i]/tot*100)}%</span>`:''}</button>`).join('')}</div>
+    <p class="small mt tonly">${LIVE.on?'Phones vote live.':'Teacher-led: ask for a show of hands and tap an option to count each vote.'} ${liveLine(POLL.id)}</p>
+    <div class="row mt"><button class="btn sm ghost tonly" id="pres">${d.res?'Hide':'📊 Show'} results (${nVotes(POLL.id)})</button><button class="btn sm ghost tonly" id="pclr">Clear hand count</button></div>
+    ${d.res?'<div class="glass pad mt"><b>💬 Why do you think so?</b></div>':''}</div>`; },
+  after:(r,d)=>{ $$('[data-pv]',r).forEach(b=>b.onclick=()=>{ const t=S.taps[POLL.id]=S.taps[POLL.id]||[]; t[+b.dataset.pv]=(t[+b.dataset.pv]||0)+1; save(); draw(); toast('+1 vote counted'); });
+    $('#pres',r).onclick=()=>{ d.res=!d.res; save(); draw(); }; $('#pclr',r).onclick=()=>{ delete S.taps[POLL.id]; save(); draw(); }; },
+  reveal:d=>{ d.res=true; },
+  live:()=>({id:POLL.id, kind:'choice', q:POLL.q, opts:POLL.opts, lock:false, correct:null}),
+  n:{t:'1 хв', ua:'Опитування без правильної відповіді. Активізуємо тему: чи показують соцмережі справжню дружбу.', do:['Голосування з телефонів або руками в Zoom (клік по варіанту = +1 голос).','«Show results» — показати розподіл.','Запитайте 1–2 учнів: “Why do you think so?”'], say:[['Why do you think so?','Чому ти так думаєш?']]}
+});
+RECAP.forEach((Q,qi)=>step({id:Q.id, sc:1, opt:qi>0, title:`Quick recap ${qi+1}/3`,
+  render:d=>`${sceneTag(cur())}<div class="qcard"><div class="row"><b style="color:var(--noah)">QUICK RECAP — DIGITAL LIFE</b><span class="oldtag">learned before</span>${qi>0?'<span class="opttag tonly">optional</span>':''}</div>
+    <div class="qnav mt" aria-hidden="true">${RECAP.map((x,i)=>`<i class="${i<qi?'d':i===qi?'c':''}"></i>`).join('')}</div>
+    <p class="muted">Choose the best expression.</p>${quizHTML(Q,d)}</div>`,
+  after:(r,d)=>bindQuiz(r,d,[Q]),
+  ready:d=>{ const st=qst(d,Q.id); return st.ok||st.rev; },
+  reveal:d=>{ qst(d,Q.id).rev=true; },
+  live:()=>quizTask(Q,sd(Q.id)),
+  n:{t:qi?'0.3 хв':'0.5 хв', opt:qi>0, ua:`Повторення лексики з минулих уроків (не нова!). ${qi>0?'Питання можна пропустити: «Skip optional».':''}`, ans:[`${LET[Q.a]} — ${Q.opts[Q.a]}. ${Q.ua}`]}
+}));
+step({id:'story', sc:1, title:'A new story', parts:3,
+  render:d=>{ const p=d.p||0; return `${sceneTag(cur())}<div class="split">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div class="notif"><div class="ic">📸</div><div class="grow"><b>@ThePerfectSquad posted a new story.</b><small>now</small></div></div>
+      ${p>=2?`<div class="${CTX.entering||CTX.prevP>=2?'':'pop-new'}" style="animation:inview .5s both"><div class="where">Wait… Where’s Mia?</div>
+        <div class="row mt2"><button class="btn pink big" data-next>FIND OUT</button></div></div>`:`<p class="lead">${p===0?'A notification pops up…':'Look closely at the photo.'}</p>`}
+    </div>
+    <div>${p>=1?`<div style="max-width:380px;margin:0 auto"><div class="story">${shotConcert(96)}
+        <div class="bars"><i><b></b></i><i></i><i></i></div>
+        <div class="shead">${av('sophie',30)}<span>ThePerfectSquad · 2h</span></div>
+        <div class="cap">Best weekend ever! 💕🎵</div></div></div>`
+      :`<div style="max-width:380px;margin:0 auto"><div class="story" style="display:grid;place-items:center;background:linear-gradient(160deg,#2a1f55,#120a2e)"><span class="small">Tap Next to open the story</span></div></div>`}</div></div>`; },
+  reveal:d=>{ d.p=2; },
+  n:{t:'0.7 хв', ua:'Перехід до конфлікту: нова сторіс — на концерті лише Софі, Лео і Ной. Мії немає.', do:['Next: сповіщення → сторіс → «Wait… Where’s Mia?»','Запитайте: “Who is in the photo? Who is missing?”','FIND OUT → сцена 2.'], say:[['Who is in the photo? Who is missing?','Хто на фото? Кого немає?']]}
+});
+
+/* ── SCENE 2 · MEET THE SQUAD ── */
+step({id:'profiles', sc:2, title:'Profiles', parts:5,
+  render:d=>{ const p=d.p||0; return `${sceneTag(cur())}<div class="row" style="align-items:flex-end"><div class="grow"><h2 class="h-l">Meet the ${T('[[squad|squad]]')}</h2>
+      <p class="lead">Four friends. Two years. One shared account.</p></div><span class="small">${p<4?`${p}/4 revealed — Next reveals the next friend`:'Click a profile to open it'}</span></div>
+    <div class="profiles mt">${PROFILES.map((P,i)=>{ const c=CH[P.k], lock=i>=p, open=d.open===P.k; const V=VOCAB[P.v];
+      return `<div class="pc c-${P.k} ${lock?'locked':''} ${open?'open':''}" data-pf="${P.k}" style="--c:var(--${P.k})" ${lock?'aria-disabled="true"':'role="button" tabindex="0"'} aria-expanded="${open}" aria-label="${lock?'Hidden profile':c.name+' profile'}">
+        <div class="ph">${c.photo?`<img src="${esc(c.photo)}" alt="${c.name}" onerror="this.remove()">`:''}<div class="nmx"><b>${lock?'???':c.name}</b><span>${lock?'':'Age '+c.age}</span></div></div>
+        ${lock?'':`<div class="body"><div class="pers">${esc(c.pers)}</div><div class="quote">“${T(P.quote)}”</div>
+          ${open?`<div class="xpl"><b style="color:#FFE3EE">${esc(V.t)}</b> — ${esc(V.en)}<br><span style="color:var(--amber)">🇺🇦 ${esc(V.ua)}</span>${P.v2?`<br><b style="color:#FFE3EE">${esc(VOCAB[P.v2].t)}</b> — ${esc(VOCAB[P.v2].en)} <span style="color:var(--amber)">🇺🇦 ${esc(VOCAB[P.v2].ua)}</span>`:''}</div>`:'<div class="tap">Tap to open</div>'}</div>`}
+      </div>`; }).join('')}</div>`; },
+  after:(r,d)=>{ $$('[data-pf][role=button]',r).forEach(b=>{ const t=()=>{ d.open=d.open===b.dataset.pf?null:b.dataset.pf; save(); draw(); }; b.onclick=e=>{ if(e.target.closest('.v')) return; t(); }; b.onkeydown=e=>{ if((e.key==='Enter'||e.key===' ')&&e.target===b){ e.preventDefault(); e.stopPropagation(); t(); } }; }); },
+  onPart:d=>{ d.open=PROFILES[(d.p||1)-1]?.k||null; },
+  reveal:d=>{ d.p=4; },
+  n:{t:'2.5 хв', ua:'Знайомство з героями і перші 5 виразів: squad, click with someone, ride or die, bestie energy, bond over something.', do:['Next відкриває профілі по одному (Мія → Лео → Софі → Ной).','Різні учні читають цитати героїв.','Клік по виділеному виразу — пояснення англійською й переклад.','Запитайте: “What does ‘ride or die’ mean? Can you guess?” — дайте вгадати до пояснення.'], read:'кожну цитату — інший учень'}
+});
+step({id:'whosaid', sc:2, title:'Who said it?', parts:3,
+  render:d=>{ const p=d.p||0, W=WHO[p], Q={id:'who'+p, q:W.q, opts:WHO_OPTS, a:WHO_OPTS.indexOf(W.a), why:`<b>${CH[W.a].name}</b> said it.`};
+    const st=qst(d,Q.id), done=st.ok||st.rev;
+    return `${sceneTag(cur())}<div class="qcard"><div class="row"><b style="color:var(--blush)">MINI CHALLENGE — WHO SAID IT?</b></div>
+      <div class="qnav mt" aria-hidden="true">${WHO.map((x,i)=>`<i class="${i<p?'d':i===p?'c':''}"></i>`).join('')}</div>
+      <p class="muted">Read the quote. Who said it?</p>
+      ${quizHTML(Q,d,{cols:'cols4', qhtml:esc(W.q), letters:false, label:k=>`${av(k,40)} ${CH[k].name}`})}
+      ${done?`<div class="fact">${av(W.a,54)}<div><b class="nm-${W.a}">${CH[W.a].name}</b> · ${esc(W.fact)}</div></div>`:''}</div>`; },
+  after:(r,d)=>{ const p=d.p||0, W=WHO[p]; bindQuiz(r,d,[{id:'who'+p, a:WHO_OPTS.indexOf(W.a)}]); },
+  ready:d=>{ const st=qst(d,'who'+(d.p||0)); return st.ok||st.rev; },
+  reveal:d=>{ qst(d,'who'+(d.p||0)).rev=true; },
+  live:()=>{ const d=sd('whosaid'), p=d.p||0, W=WHO[p]; return quizTask({id:'who'+p, q:W.q, opts:WHO_OPTS, a:WHO_OPTS.indexOf(W.a)}, d, k=>CH[k].name); },
+  n:{t:'1.5 хв', ua:'Хто це сказав? Після правильної відповіді — короткий факт про героя.', ans:['1 — Leo (He usually makes everyone laugh.)','2 — Sophie (She plans most of their social media posts.)','3 — Noah (He notices when someone feels upset.)'], do:['Учні називають героя, ви клікаєте. Неправильно → можна ще раз.','Next — наступна цитата.']}
+});
+step({id:'speak2', sc:2, opt:true, title:'Quick speaking',
+  render:d=>`${sceneTag(cur())}<div class="qcard"><div class="row"><b style="color:var(--amber)">🎤 QUICK SPEAKING</b><span class="opttag tonly">optional</span></div>
+    <div class="q mt">${T('Have you ever [[click|clicked with someone]] immediately? What did you [[bond|bond over]]?')}</div>
+    <div class="row mt2"><button class="btn" id="help">💡 Need help?</button><button class="btn ghost" id="samp">📝 Sample answer</button></div>
+    ${d.help?`<div class="helpbox">Sentence starter: <b>“I clicked with someone because we both liked…”</b></div>`:''}
+    ${d.samp?`<div class="helpbox">“Yes! I clicked with my friend because we both love football.”</div>`:''}
+    ${wallHTML('speak2')}</div>`,
+  after:(r,d)=>{ $('#help',r).onclick=()=>{ d.help=!d.help; save(); draw(); }; $('#samp',r).onclick=()=>{ d.samp=!d.samp; save(); draw(); }; },
+  reveal:d=>{ d.help=true; d.samp=true; },
+  live:()=>({id:'speak2', kind:'text', q:'Have you ever clicked with someone immediately? What did you bond over?', ph:'I clicked with … because we both…'}),
+  n:{t:'1 хв', opt:true, ua:'Коротке говоріння. Можна пропустити («Skip optional»).', say:[['Have you ever clicked with someone immediately? What did you bond over?','Тобі колись одразу вдавалося знайти спільну мову з кимось? Що вас зблизило?']], ans:['Sample: Yes! I clicked with my friend because we both love football.']}
+});
+step({id:'turn2', sc:2, atm:3, title:'Mia sees the story', parts:2,
+  render:d=>{ const p=d.p||0; return `${sceneTag(cur())}<div class="split">
+    <div style="max-width:360px;margin:0 auto;width:100%"><div class="story" style="filter:saturate(.75)">${shotConcert(86)}<div class="bars"><i><b style="animation:none"></b></i><i></i><i></i></div>
+      <div class="shead">${av('sophie',30)}<span>ThePerfectSquad · 3h</span></div><div class="cap">Best weekend ever! 💕🎵</div></div></div>
+    <div><p class="lead">${p===0?'The concert story is still there. Someone has just seen it…':'Mia has just seen it.'}</p>
+      <div class="chatwin mt" style="max-width:520px"><div class="chathead">${av('sophie',34)}<div><b>The Perfect Squad 💫</b><small>group chat · 4 members</small></div></div>
+      <div class="chatbody" style="min-height:140px">${p>=1?msgHTML('mia',esc('Wait... you guys went to the concert without me?'),{sad:true, cls:CTX.entering||CTX.prevP>=1?'still':'new', attr:CTX.entering||CTX.prevP>=1?'':'data-new'}):'<span class="small">…</span>'}</div></div></div></div>`; },
+  reveal:d=>{ d.p=1; },
+  n:{t:'0.5 хв', ua:'Атмосфера стає серйознішою. Мія бачить сторіс і пише в груповий чат.', do:['Next — повідомлення Мії.','Запитайте: “How does Mia feel?” (upset, sad, left out).'], say:[['How does Mia feel right now?','Як Мія почувається зараз?']]}
+});
+
+/* ── SCENE 3 · THE MISSING FRIEND ── */
+function reactionHTML(D, ch, extra){
+  if(ch==null) return '';
+  const o=D.opts[ch], fresh=!CTX.entering && (CTX.decPrev||{})[D.id]!==ch;
+  return `<div class="react">${msgHTML(o.who, esc(o.r), {sad:o.who==='mia'&&o.tone!=='ok', cls:fresh?'new':'still', attr:fresh?'data-new':''})}
+    <div class="fb ${o.tone==='ok'?'':o.tone==='no'?'no':'neutral'}">${o.tone==='ok'?'💬':'⚠️'} ${esc(o.fb)}</div>${extra||''}</div>`;
+}
+step({id:'dec1', sc:3, title:'Decision 1 · What should Mia do?',
+  render:d=>{ const ch=S.dec.dec1; return `${sceneTag(cur())}<div class="split wide-l" style="align-items:start">
+    <div><div class="dec-h">YOUR CHOICE MATTERS</div><p class="lead mt">What should Mia say?</p>${decHTML(DEC1,d)}
+      ${reactionHTML(DEC1, ch, ch!=null?sysMsg('Later that evening, Noah decides to message Mia privately.'):'')}</div>
+    <div><div style="max-width:300px;margin:0 auto"><div class="story" style="aspect-ratio:9/12;filter:saturate(.6) brightness(.8)">${shotConcert(66)}</div></div>
+      <div class="chatbody" style="min-height:0;padding:16px 0">${msgHTML('mia',esc('They went without me. I thought we were best friends. What should I say?'),{sad:true})}</div></div></div>`; },
+  after:(r,d)=>bindDec(r,DEC1,d),
+  ready:()=>S.dec.dec1!=null, gateMsg:'The class hasn’t chosen yet — press Next again to continue anyway',
+  reveal:d=>{ d.res=true; },
+  live:()=>decTask(DEC1),
+  n:{t:'1.5 хв', ua:'Перше рішення класу. Немає «правильної» відповіді — є наслідки. Після вибору — реакція героя і короткий висновок.', do:['Учні голосують з телефонів або руками; ви клікаєте вибір класу.','Обговоріть реакцію: “Why did Sophie / Noah / Leo react like this?”','↺ Reset decision — переголосувати.'], ans:['A → Sophie: “That’s not fair!…” · Angry messages can make a misunderstanding worse. (Злі повідомлення погіршують непорозуміння.)','B → Noah: “I’m sorry, Mia…” · Explaining your feelings calmly can help. (Спокійно пояснити почуття — допомагає.)','C → Leo: “Wait, why did Mia leave the chat?…” · Silence may leave other people confused. (Мовчання заплутує інших.)']}
+});
+step({id:'private', sc:3, title:'Private chat · Mia & Noah', parts:4,
+  render:d=>`${sceneTag(cur())}<div class="chatwin"><div class="chathead">${av('noah',40)}<div class="grow"><b>Noah</b><small>private chat</small></div><span class="small">🔒</span></div>
+    <div class="chatbody">${chatHTML(PRIVATE,d,{me:'mia', sad:true})}</div></div>${readHint('Mia and one to read Noah')}`,
+  after:r=>typeNew(r), reveal:d=>{ d.p=3; },
+  n:{t:'1.5 хв', ua:'Приватний чат. Повідомлення з’являються по одному. Нові вирази: third wheel, drift apart.', do:['Два учні читають ролі Мії та Ноя.','Після «third wheel» запитайте: “What does it mean to feel like a third wheel?”','Клік по виразу — пояснення.'], read:'Mia + Noah'}
+});
+step({id:'group', sc:3, title:'Group chat', parts:4,
+  render:d=>`${sceneTag(cur())}<div class="chatwin"><div class="chathead"><div class="stack">${['mia','leo','sophie','noah'].map(k=>av(k,30)).join('')}</div><div class="grow"><b>The Perfect Squad 💫</b><small>group chat · 4 members</small></div></div>
+    <div class="chatbody">${chatHTML(GROUP,d,{me:'mia', sad:true})}</div></div>${readHint('each message (four readers)')}`,
+  after:r=>typeNew(r), reveal:d=>{ d.p=3; },
+  n:{t:'1.5 хв', ua:'Груповий чат. Нові вирази: flaky, fall out, be there for someone, have someone’s back, no drama.', do:['Чотири учні — чотири ролі.','Запитайте: “Is Sophie a villain?” → ні, вона помилилась, але теж почувається атакованою.','Зверніть увагу: Ной вживає два близькі вирази — be there for / have someone’s back.'], read:'Leo, Mia, Noah, Sophie'}
+});
+step({id:'comments', sc:3, title:'Comments section', parts:3,
+  render:d=>{ const p=d.p||0, f=i=>(!CTX.entering&&i>CTX.prevP)?'':'still'; return `${sceneTag(cur())}<div class="split" style="align-items:start">
+    <div><div class="phone"><div class="screen dark"><div class="ig-top"><div class="stack">${['sophie','leo','noah'].map(k=>av(k,26)).join('')}</div><b class="grow">ThePerfectSquad</b><span>⋯</span></div>
+      <div style="padding:0 14px 10px;font-size:15px"><b>ThePerfectSquad</b> Best weekend ever! 💕🎵</div>
+      <div class="comments" style="padding:0 14px 14px">
+        <div class="cmt ${f(0)}"><div class="anon">👤</div><div><b>user_8812</b> <span class="small">· anonymous</span><br>Someone’s been ${T('[[tea|spilling tea]]')} about your squad. 👀</div></div>
+        ${p>=1?`<div class="cmt ${f(1)}">${av('mia',46,{sad:true})}<div><b class="nm-mia">Mia</b><br>${T('I don’t know who to trust. I don’t want [[twofaced|two-faced]] friends. I just want people who [[showup|show up for me]].')}</div></div>`:''}
+      </div></div></div></div>
+    <div>${p>=2?`<div class="glass pad ${f(2)}" style="animation:inview .4s both"><div class="q" style="font-size:clamp(24px,2.3vw,32px)">Does this comment prove that someone in the squad is ${T('[[twofaced|two-faced]]')}?</div>
+      ${d.ans?`<div class="gossip">🔍 <b>No.</b> It’s an anonymous comment — gossip, not proof. We don’t know who wrote it or if it’s true. Mia is hurt, but nobody in the squad has been shown to be two-faced.</div>`:`<button class="btn mt" id="ans">Show the answer</button>`}</div>`
+      :`<p class="lead">${p===0?'Then a comment appears under the post…':'Mia replies.'}</p>`}</div></div>${readHint('the comment and Mia’s reply')}`; },
+  after:(r,d)=>{ const b=$('#ans',r); if(b) b.onclick=()=>{ d.ans=true; save(); draw(); }; },
+  reveal:d=>{ d.p=2; d.ans=true; },
+  n:{t:'1 хв', ua:'Анонімний коментар — це плітка, а НЕ доказ, що хтось із друзів дволикий. Важливо проговорити це з учнями. Нові вирази: spill (the) tea, two-faced, show up for someone.', do:['Учні читають коментар і відповідь Мії.','Питання: “Does this comment prove that someone is two-faced?” → No. It’s gossip, not proof.'], ans:['No — it’s gossip, not proof. (Ні — це плітка, а не доказ.)']}
+});
+step({id:'vsum', sc:3, opt:true, title:'10 new expressions',
+  render:()=>`${sceneTag(cur())}<div class="row"><h2 class="h-m grow">10 new expressions from the chats</h2><span class="opttag tonly">optional</span></div>
+    <div class="vb-list">${['third','drift','flaky','fallout','there','back','nodrama','tea','twofaced','showup'].map(k=>`<div class="vbi"><div class="t">${esc(VOCAB[k].t)}</div><div class="small" style="color:var(--text)">${esc(VOCAB[k].en)}</div><div class="u">🇺🇦 ${esc(VOCAB[k].ua)}</div></div>`).join('')}</div>
+    ${support3HTML()}`,
+  n:{t:'1 хв', opt:true, ua:'Короткий підсумок 10 виразів. Можна пропустити. Корисно показати різницю між be there for / show up for / have someone’s back.', do:['Учні по черзі читають вираз і пояснення.','Запитайте: “Which one means defending a friend?” → have someone’s back.']}
+});
+function support3HTML(){ return `<div class="glass pad mt2"><b>Similar, but not the same 🤝</b><div class="vb-list" style="margin-top:10px">${SUPPORT3.map(x=>`<div class="vbi"><div class="t" style="font-size:20px">${esc(VOCAB[x[0]].t)}</div><div class="small" style="color:var(--text)">${esc(x[1])}</div><div class="u" style="font-size:14px">🇺🇦 ${esc(x[2])}</div></div>`).join('')}</div></div>`; }
+step({id:'comp', sc:3, title:'Quick comprehension',
+  render:d=>`${sceneTag(cur())}<div class="qcard"><b style="color:var(--blush)">QUICK CHECK</b><div class="mt">${quizHTML(COMP,d)}</div></div>`,
+  after:(r,d)=>bindQuiz(r,d,[COMP]),
+  ready:d=>{ const st=qst(d,'comp'); return st.ok||st.rev; },
+  reveal:d=>{ qst(d,'comp').rev=true; },
+  live:()=>quizTask(COMP,sd('comp')),
+  n:{t:'0.5 хв', ua:'Перевірка розуміння.', ans:['B — Her friends went without inviting her. (Вона почувається виключеною, бо її ніхто не запросив.)']}
+});
+step({id:'toVoice', sc:3, atm:4, title:'Noah: listen to Mia',
+  render:()=>`${sceneTag(cur())}<div class="chatwin" style="max-width:640px"><div class="chathead"><div class="stack">${['mia','leo','sophie','noah'].map(k=>av(k,30)).join('')}</div><div class="grow"><b>The Perfect Squad 💫</b><small>group chat</small></div></div>
+    <div class="chatbody" style="min-height:0">${msgHTML('noah', esc('Guys, I think you should listen to Mia’s voice note before making any decisions.'),{cls:'new'})}
+      ${sysMsg('🎤 Mia sent a voice message · 0:40')}</div></div>
+    <div class="center mt2"><button class="btn pink big" data-next>🎧 LISTEN TO MIA</button></div>`,
+  n:{t:'0.3 хв', ua:'Перехід до аудіювання.', say:[['Let’s listen to Mia. Listen carefully: how does she feel and what does she want?','Послухаймо Мію. Уважно: як вона почувається і чого хоче?']]}
+});
+
+/* ── SCENE 4 · THE VOICE NOTE ── */
+step({id:'voice', sc:4, title:'Mia’s voice note',
+  render:d=>`${sceneTag(cur())}<div class="center" style="margin-bottom:20px"><h2 class="h-l">Listen to Mia</h2><p class="lead" style="margin:10px auto 0">Listen and think: how does Mia feel? What does she want?</p></div>${voiceHTML(d)}`,
+  after:r=>bindVoice(r),
+  reveal:d=>{ d.tr=true; },
+  n:{t:'1.5 хв', ua:'Аудіювання. Голосове повідомлення Мії (≈ 40–45 с). Якщо немає mp3-файлу, звучить синтезований голос браузера — це позначено на екрані. Транскрипт відкривається після прослуховування (або кнопкою Reveal).', do:['▶ Play. Можна 0.8× для повільнішого темпу.','Слухаємо 1 раз, потім питання. За потреби — ↺ Replay.','Transcript — після питань або коли треба.'], ans:['Транскрипт: '+VOICE_SCRIPT]}
+});
+step({id:'listenq', sc:4, title:'Listening questions', parts:3,
+  render:d=>{ const p=d.p||0, Q=LISTEN[p]; return `${sceneTag(cur())}<div class="split wide-l" style="align-items:start"><div><b style="color:var(--blush)">LISTENING · question ${p+1} of 3</b>
+    <div class="qnav mt" aria-hidden="true">${LISTEN.map((x,i)=>`<i class="${i<p?'d':i===p?'c':''}"></i>`).join('')}</div>${quizHTML(Q,d)}</div>
+    <div>${voiceHTML(sd('voice'),true)}</div></div>`; },
+  after:(r,d)=>{ bindQuiz(r,d,LISTEN); bindVoice(r); },
+  ready:d=>{ const st=qst(d,LISTEN[d.p||0].id); return st.ok||st.rev; },
+  reveal:d=>{ qst(d,LISTEN[d.p||0].id).rev=true; },
+  live:()=>{ const d=sd('listenq'); return quizTask(LISTEN[d.p||0],d); },
+  n:{t:'1.5 хв', ua:'Три питання на розуміння. Учні можуть відповідати з телефонів до того, як ви покажете відповідь.', ans:LISTEN.map((Q,i)=>`${i+1} — ${LET[Q.a]}: ${Q.opts[Q.a]} (${Q.ua})`)}
+});
+step({id:'dec2', sc:4, title:'Decision 2 · Noah’s reply',
+  render:d=>{ const ch=S.dec.dec2; return `${sceneTag(cur())}<div class="split wide-l" style="align-items:start">
+    <div><div class="dec-h">NOAH NEEDS YOUR HELP</div><p class="lead mt">What should Noah say?</p>${decHTML(DEC2,d)}
+      ${reactionHTML(DEC2, ch, ch!=null?msgHTML('noah', esc(NOAH_AFTER2), {cls:'still'}):'')}</div>
+    <div class="center"><div style="display:inline-block">${av('noah',150)}</div><p class="lead" style="margin:16px auto 0">Noah has listened to the voice note. He wants to reply — but how?</p></div></div>`; },
+  after:(r,d)=>{ bindDec(r,DEC2,d); typeNew(r); },
+  ready:()=>S.dec.dec2!=null, gateMsg:'The class hasn’t chosen yet — press Next again to continue anyway',
+  reveal:d=>{ d.res=true; },
+  live:()=>decTask(DEC2),
+  n:{t:'1 хв', ua:'Друге рішення: відповідь Ноя. Реакція Мії залежить від вибору. Потім Ной пропонує всім чесно поговорити.', ans:['A → Mia: “It might be just a concert to you, but it hurt me.”','B → Mia: “Thanks, Noah. That means a lot. Maybe we can fix this.”','C → Mia: “I understand, but I really needed a friend right now.”'], do:['Запитайте: “Which reply shows Noah has Mia’s back?” → B.']}
+});
+
+/* ── SCENE 5 · REAL TALK ── */
+TALK.forEach((M,mi)=>step({id:M.id, sc:5, opt:mi>0, title:`Real Talk · ${CH[M.k].name}`,
+  render:d=>`${sceneTag(cur())}<div class="row" style="margin-bottom:16px"><h2 class="h-m grow">You are the squad’s friendship advisors 💌</h2>${mi>0?'<span class="opttag tonly">optional</span>':''}</div>
+    <div class="inbox"><div class="thread" aria-label="Messages">${TALK.map((x,i)=>`<button class="th ${i===mi?'cur':''} ${S.core&&i>0?'skip':''}" data-th="${i}">${av(x.k,44,{sad:x.k==='mia'})}<div><b class="nm-${x.k}">${CH[x.k].name}</b><small>${esc(x.said)}</small></div></button>`).join('')}</div>
+    <div class="advice"><div class="row">${av(M.k,64,{sad:M.k==='mia'})}<b class="nm-${M.k}" style="font-size:1.2em">${CH[M.k].name}</b></div>
+      <div class="said mt">“${esc(M.said)}”</div>
+      <div class="ask">🎤 ${esc(M.q)} ${d.ua?`<div class="small" style="color:var(--amber);font-weight:600">🇺🇦 ${esc(M.ua)}</div>`:''}</div>
+      <div class="row mt"><button class="btn sm" data-t="help">💡 Need help?</button><button class="btn sm ghost" data-t="samp">📝 Sample answer</button><button class="btn sm ghost" data-t="follow">➕ Follow-up</button><button class="btn sm ghost" data-t="ua" aria-label="Ukrainian translation">🇺🇦</button></div>
+      ${d.help?`<div class="helpbox">Sentence starter: <b>“${esc(M.starter)}”</b></div>`:''}
+      ${d.samp?`<div class="helpbox">“${esc(M.sample)}”</div>`:''}
+      ${d.follow?`<div class="helpbox">➕ <b style="color:var(--text)">${esc(M.follow)}</b>${d.ua?`<div class="small" style="color:var(--amber)">🇺🇦 ${esc(M.fua)}</div>`:''}</div>`:''}
+      ${wallHTML(M.id)}</div></div>`,
+  after:(r,d)=>{ $$('[data-t]',r).forEach(b=>b.onclick=()=>{ d[b.dataset.t]=!d[b.dataset.t]; save(); draw(); }); $$('[data-th]',r).forEach(b=>b.onclick=()=>goId(TALK[+b.dataset.th].id)); },
+  reveal:d=>{ d.help=true; d.samp=true; },
+  live:()=>({id:M.id, kind:'text', q:M.q, ph:M.starter}),
+  n:{t:mi?'1 хв':'2 хв', opt:mi>0, ua:`Говоріння: учні — «порадники». ${mi>0?'Це повідомлення можна пропустити.':'Головне говоріння сцени — не пропускати.'}`, say:[[M.q,M.ua],[M.follow,M.fua]], ans:['Sample: '+M.sample, 'Sentence starter: '+M.starter], do:['Учень читає повідомлення героя.','2–3 відповіді усно в Zoom; телефони можуть надіслати короткі відповіді — показуються в панелі Live.','Follow-up — за бажанням.']}
+}));
+step({id:'toMission', sc:5, atm:6, title:'The squad needs your help',
+  render:()=>`${sceneTag(cur())}<div class="chatwin" style="max-width:640px">${'<div class="chatbody" style="min-height:0">'+msgHTML('noah', esc('We need to stop pretending everything is perfect. But how can we fix this?'),{cls:'new'})+'</div>'}</div>
+    <div class="center mt2"><div class="mission-h">THE SQUAD NEEDS YOUR HELP.</div><div class="mt2"><button class="btn primary big" data-next>🛡️ START THE TEAM MISSION</button></div></div>`,
+  n:{t:'0.3 хв', ua:'Перехід до командної місії.'}
+});
+
+/* ── SCENE 6 · FIX THE SQUAD ── */
+step({id:'brief', sc:6, title:'Mission brief',
+  render:d=>`${sceneTag(cur())}<div class="split wide-l" style="align-items:start"><div><div class="mission-h">THE REAL SQUAD CODE 🛡️</div>
+      <p class="lead mt">Three problems. Three rules. One chance to save the friendship.</p></div>
+    <div class="glass pad"><ul class="steps4" style="padding:0;margin:0">${MISSION_STEPS.map((s,i)=>`<li>${i===0?'⏱':i===5?'✂️':'✅'} ${esc(S.short?s.replace('three problems','two problems').replace('one friendship rule for each problem','one friendship rule for each problem (2 rules)'):s)}</li>`).join('')}</ul></div></div>
+    <div class="problems">${PROBLEMS.map((P,i)=>`<div class="prob ${S.short&&i===2?'off':''}"><div class="pn">PROBLEM ${i+1}${S.short&&i===2?' · skipped (short mission)':''}</div><div class="pt">${esc(P.t)}</div><div class="pq">${esc(P.q)}</div>${d.ex?`<div class="pe">Example: ${T(markRule(P.e))}</div>`:''}</div>`).join('')}</div>
+    <div class="row mt2"><button class="btn ghost" id="ex">${d.ex?'Hide':'💡 Show'} examples</button><span class="grow"></span>
+      <span class="tonly row" style="gap:8px"><span class="small">Teams</span>${[2,3,4].map(n=>`<button class="btn sm ${S.teams===n?'primary':'ghost'}" data-tn="${n}">${n}</button>`).join('')}
+      <label class="switch"><input type="checkbox" id="short" ${S.short?'checked':''}> Short mission (2 rules)</label></span>
+      <button class="btn primary big" id="startM">▶ START TEAM MISSION</button></div>`,
+  after:(r,d)=>{ $('#ex',r).onclick=()=>{ d.ex=!d.ex; save(); draw(); };
+    $$('[data-tn]',r).forEach(b=>b.onclick=()=>{ S.teams=+b.dataset.tn; save(); draw(); });
+    $('#short',r).onchange=e=>{ S.short=e.target.checked; save(); draw(); };
+    $('#startM',r).onclick=()=>{ TMR.set(240); TMR.start(); next(); }; },
+  reveal:d=>{ d.ex=true; },
+  n:{t:'1 хв', ua:'Пояснення місії. Учні читають інструкції вголос. Потім — Zoom breakout rooms (вручну) на 4 хвилини.', do:['Учні по черзі читають 6 рядків інструкції і три проблеми.','Оберіть кількість команд (2–4). Мало часу → «Short mission (2 rules)».','START TEAM MISSION запускає таймер 4:00 і відкриває робочий простір. Розведіть учнів у breakout rooms у Zoom.','Таймер лише підказує: урок нікуди сам не перемикається.'], say:[['You have four minutes. Write one short rule for each problem and use at least three new expressions.','У вас чотири хвилини. Напишіть одне коротке правило для кожної проблеми й використайте щонайменше три нові вирази.']]}
+});
+const markRule = s => s.replace('third wheel','[[third|third wheel]]').replace('two-faced','[[twofaced|two-faced]]').replace('have your friends’ backs','[[back|have your friends’ backs]]');
+function clockHTML(){ return `<div class="clock" data-clock>${mmss(TMR.left())}</div>`; }
+step({id:'work', sc:6, title:'Team workspace',
+  render:d=>{ const L=TEAMS().includes(S.wt)?S.wt:'A', w=S.work[L]||{}, used=usedV(teamText(L));
+    return `${sceneTag(cur())}<div class="row" style="align-items:flex-end;gap:20px"><div class="grow"><div class="mission-h" style="font-size:clamp(30px,3.6vw,52px)">THE REAL SQUAD CODE 🛡️</div>
+        <p class="muted" style="margin:6px 0 0">Breakout rooms: write one rule for each problem. ${LIVE.on?'Teams type on their phones — answers appear here.':'Teacher-led: type each team’s rules here when they come back.'}</p></div>
+      <div class="center">${clockHTML()}<div class="row tonly" style="justify-content:center;gap:6px;margin-top:6px"><button class="btn sm ghost" id="tgo">${TMR.run()?'❚❚ Pause':'▶ Start'}</button><button class="btn sm ghost" id="tplus">+1 min</button><button class="btn sm ghost" id="treset">↺ 4:00</button></div></div></div>
+    <div class="row mt"><div class="teams-tabs" role="tablist">${TEAMS().map(t=>`<button role="tab" class="${t===L?'on':''}" data-wt="${t}" aria-selected="${t===L}">${TEAM_E[t]} ${esc(teamName(t))} <span class="small">${ruleCount(t)}/${activeProbs().length}</span>${S.sub[t]?' <span class="ok">✓</span>':''}</button>`).join('')}</div><span class="grow"></span>
+      <button class="btn sm ghost" id="vhelp">📚 Vocabulary help</button></div>
+    <div class="glass pad mt"><div class="row"><label class="grow"><span class="small">Team name</span><br><input id="tname" maxlength="40" value="${esc(S.tnames[L]||'')}" placeholder="Team ${L}" style="width:100%;max-width:360px;height:46px;border-radius:12px;border:1px solid var(--line2);background:rgba(0,0,0,.25);padding:0 12px"></label>
+        <div class="used">${used.length?`Expressions used (${used.length}${used.length>=3?' ✓':'/3'}): ${used.map(k=>`<span>${esc(VOCAB[k].t)}</span>`).join('')}`:'<span class="small">No new expressions yet — aim for 3+</span>'}</div></div>
+      <div class="problems">${activeProbs().map((P,i)=>`<div class="prob"><div class="pn">PROBLEM ${i+1}</div><div class="pt">${esc(P.t)}</div><div class="pq">${esc(P.q)}</div>
+        <label class="sr" for="ta-${P.f}">Rule ${i+1}</label><textarea id="ta-${P.f}" data-f="${P.f}" maxlength="200" placeholder="Rule ${i+1}…">${esc(w[P.f]||'')}</textarea></div>`).join('')}</div>
+      <div class="row mt"><span class="small grow">Saved automatically.</span><button class="btn ${S.sub[L]?'':'primary'}" id="tsub">${S.sub[L]?'✓ Submitted — edit and submit again':'📤 Submit '+esc(teamName(L))}</button></div></div>`; },
+  after:(r,d)=>{
+    $$('[data-wt]',r).forEach(b=>b.onclick=()=>{ S.wt=b.dataset.wt; save(); draw(); });
+    const L=TEAMS().includes(S.wt)?S.wt:'A';
+    $('#tname',r).oninput=e=>{ S.tnames[L]=e.target.value.slice(0,40); save(); pubState(); };
+    $('#tname',r).onchange=()=>draw();
+    $$('[data-f]',r).forEach(ta=>{ ta.oninput=()=>{ S.work[L]=Object.assign({},S.work[L],{[ta.dataset.f]:ta.value.slice(0,200)}); save(); pubState(); const u=usedV(teamText(L)); $('.used',r).innerHTML=u.length?`Expressions used (${u.length}${u.length>=3?' ✓':'/3'}): ${u.map(k=>`<span>${esc(VOCAB[k].t)}</span>`).join('')}`:'<span class="small">No new expressions yet — aim for 3+</span>'; }; ta.onblur=()=>draw(); });
+    $('#tsub',r).onclick=()=>{ if(!ruleCount(L)) return toast('Write at least one rule first'); S.sub[L]=true; save(); pubState(); achieve('MISSION COMPLETE!','YOU HELPED THE SQUAD!','🛡️'); draw(); };
+    $('#vhelp',r).onclick=()=>openBank();
+    $('#tgo',r).onclick=()=>{ TMR.run()?TMR.pause():TMR.start(); draw(); }; $('#tplus',r).onclick=()=>{ TMR.add(60); }; $('#treset',r).onclick=()=>{ TMR.set(240); draw(); };
+  },
+  ready:()=>TEAMS().some(t=>ruleCount(t)>0), gateMsg:'No team rules yet — press Next again to go to presentations anyway',
+  live:()=>({id:'team', kind:'team', teams:TEAMS().map(t=>({L:t, e:TEAM_E[t], name:teamName(t)})), probs:activeProbs().map(p=>({f:p.f, t:p.t, q:p.q})), work:S.work, sub:S.sub, names:S.tnames}),
+  n:{t:'4 хв (+ розведення)', ua:'Робота в Zoom breakout rooms. Сайт кімнати не створює — розведіть учнів самі. У Live-режимі команди пишуть правила з телефонів (кожне поле окремо, автозбереження); у Teacher-led ви вписуєте їхні правила, коли команди повернуться.', do:['Таймер 4:00 лише підказка — нічого не перемикається автоматично.','Вкладки команд угорі; лічильник показує, скільки нових виразів використано (мета — 3+).','Submit → коротка анімація MISSION COMPLETE.','Час закінчується → поверніть учнів і натисніть Next (презентації).']}
+});
+function ruleHTML(text){ let h=esc(String(text).replace(/’/g,"'")); usedV(text).forEach(k=>{ h=h.replace(new RegExp(VRX[k].source.replace(/'/g,"(?:'|&#39;)"),'i'), m=>`<mark style="background:rgba(255,143,184,.3);color:inherit;border-radius:4px;padding:0 3px">${m}</mark>`); }); return h; }
+step({id:'present', sc:6, title:'Team presentations',
+  render:d=>{ const L=TEAMS().includes(S.ptm)?S.ptm:'A', w=S.work[L]||{}, used=usedV(teamText(L));
+    return `${sceneTag(cur())}<div class="row"><h2 class="h-m grow">Team presentations · 30–45 seconds each</h2>
+      <div class="teams-tabs tonly">${TEAMS().map(t=>`<button class="${t===L?'on':''}" data-pt="${t}">${TEAM_E[t]} ${esc(teamName(t))}${S.sub[t]?' ✓':''}</button>`).join('')}</div></div>
+    <div class="glass pad mt"><div class="row"><span style="font-size:42px">${TEAM_E[L]}</span><div class="grow"><div class="h-m">${esc(teamName(L))}</div><div class="small">The Real Squad Code</div></div>
+      <div class="used">${used.length?used.map(k=>`<span>${esc(VOCAB[k].t)}</span>`).join(''):''}<b style="margin-left:6px">${used.length>=3?'✓ 3+ new expressions':`${used.length}/3 expressions`}</b></div></div>
+      <div class="rulebig">${activeProbs().map((P,i)=>`<div class="rb"><span class="n">${i+1}</span><div><div class="small" style="font-weight:600">${esc(P.t)}</div>${(w[P.f]||'').trim()?ruleHTML(w[P.f]):'<span class="muted">—</span>'}</div></div>`).join('')}</div></div>
+    <p class="small mt tonly">Choose a team above. Ask: “Which rule is the most important? Why?”</p>`; },
+  after:(r,d)=>{ $$('[data-pt]',r).forEach(b=>b.onclick=()=>{ S.ptm=b.dataset.pt; save(); draw(); }); },
+  n:{t:'2 хв', ua:'Презентації команд по 30–45 с. Оберіть команду вгорі — її правила великим шрифтом (видно у презентаційному режимі). Нові вирази підсвічено.', do:['Один учень від команди читає правила.','Короткий фідбек: використали 3+ вирази? Правила короткі й зрозумілі?','Мало часу — 1–2 команди, решту пропустіть.']}
+});
+step({id:'dec3', sc:6, title:'Decision 3 · What matters most?',
+  render:d=>{ const ch=S.dec.dec3; return `${sceneTag(cur())}<div class="qcard" style="max-width:980px"><div class="dec-h center">WHAT MATTERS MOST IN A REAL FRIENDSHIP?</div><p class="lead center" style="margin:12px auto 0">There is no wrong answer. The class chooses one rule for the squad.</p>
+    ${decHTML(DEC3,d)}
+    ${ch!=null?`<div class="fb center mt2" style="font-size:1.1em">${DEC3.opts[ch].e} Class rule saved: <b>${esc(DEC3.opts[ch].t)}</b> — you’ll see it in the final post.</div>
+      <div class="center mt2"><div class="mission-h" style="font-size:clamp(34px,4vw,56px)">MISSION COMPLETE!</div><p class="lead" style="margin:8px auto 0">YOU HELPED THE SQUAD!</p></div>`:''}</div>`; },
+  after:(r,d)=>{ const was=S.dec.dec3; bindDec(r,DEC3,d); $$('[data-dec]',r).forEach(b=>{ const f=b.onclick; b.onclick=()=>{ f(); if(was==null&&S.dec.dec3!=null) achieve('MISSION COMPLETE!','YOU HELPED THE SQUAD!','🛡️'); }; }); },
+  ready:()=>S.dec.dec3!=null, gateMsg:'The class rule isn’t chosen yet — the final post needs it. Press Next again to continue anyway',
+  reveal:d=>{ d.res=true; },
+  live:()=>Object.assign(decTask(DEC3),{q:'What matters most in a real friendship?'}),
+  n:{t:'1 хв', ua:'Третє рішення: найважливіше правило дружби. Немає правильної відповіді. Результат змінює фінальний пост у сцені 7.', ans:['Honesty → “From now on, we’ll talk honestly instead of pretending everything is fine.”','Support → “From now on, we’ll show up for each other when it really matters.”','Including everyone → “From now on, we’ll make sure nobody feels left out.”']}
+});
+
+/* ── SCENE 7 · REAL ONES ONLY ── */
+step({id:'endchat', sc:7, title:'The honest talk', parts:4,
+  render:d=>`${sceneTag(cur())}<div class="chatwin" style="background:rgba(40,20,40,.85)"><div class="chathead"><div class="stack">${['mia','leo','sophie','noah'].map(k=>av(k,30)).join('')}</div><div class="grow"><b>The Perfect Squad 💫</b><small>group chat · 4 members</small></div></div>
+    <div class="chatbody">${chatHTML(ENDCHAT,d,{me:'mia'})}</div></div>${readHint('Sophie, Leo, Noah and Mia')}`,
+  after:r=>typeNew(r), reveal:d=>{ d.p=3; },
+  n:{t:'1 хв', ua:'Розв’язка. Софі й Лео перепрошують, Ной пропонує бути поруч. Мія вдячна, але їй ще потрібен час — реалістичний, а не «казковий» фінал.', do:['Чотири учні читають ролі.','Запитайте: “Is everything fixed now?” → Not yet. Mia needs time, but they are talking honestly.'], read:'Sophie, Leo, Noah, Mia'}
+});
+step({id:'endpost', sc:7, title:'The new post',
+  render:d=>{ const ch=S.dec.dec3, rules=TEAMS().filter(t=>ruleCount(t)>0);
+    return `${sceneTag(cur())}<div class="split" style="align-items:start"><div class="warmpost"><div class="phone"><div class="screen">
+      <div class="ig-top"><div class="stack">${['mia','sophie'].map(k=>av(k,28)).join('')}</div><div class="grow"><b>ThePerfectSquad</b><br><span style="font-size:12px;color:#777">just now</span></div><b>⋯</b></div>
+      ${shotFinal(80)}
+      <div class="post-acts"><span>❤️</span><span>💬</span><span>➤</span><span style="margin-left:auto">🔖</span></div>
+      <div class="post-txt"><b>ThePerfectSquad</b> ${T(FINAL_CAPTION)}
+        ${ch!=null?`<span class="ending">${DEC3.opts[ch].e} ${esc(DEC3.opts[ch].end)}</span>`:''}</div></div></div>
+      <div class="fic">Fictional account</div></div>
+    <div><h2 class="h-l">No filters this time.</h2><p class="lead mt">The squad posts something new — not a perfect photo, but an honest one.</p>
+      ${ch==null?`<div class="glass pad mt tonly"><b>The class rule (Decision 3) isn’t chosen yet.</b><div class="row mt">${DEC3.opts.map((o,i)=>`<button class="btn sm" data-d3="${i}">${o.e} ${esc(o.t)}</button>`).join('')}</div></div>`:''}
+      ${rules.length?`<div class="codecard mt2"><div class="row"><b class="grow">🛡️ Our class friendship code</b><button class="btn sm ghost tonly" id="code">${S.code?'Hide':'Show'}</button></div>
+        ${S.code?`<ul style="margin:10px 0 0;padding-left:20px">${rules.map(t=>activeProbs().map(P=>(S.work[t]||{})[P.f]).filter(x=>(x||'').trim()).map(x=>`<li>${esc(x)} <span class="small">— ${esc(teamName(t))}</span></li>`).join('')).join('')}</ul>`:''}</div>`:''}</div></div>`; },
+  after:(r,d)=>{ $$('[data-d3]',r).forEach(b=>b.onclick=()=>{ S.dec.dec3=+b.dataset.d3; save(); draw(); }); const c=$('#code',r); if(c) c.onclick=()=>{ S.code=!S.code; save(); draw(); }; },
+  n:{t:'1 хв', ua:'Фінальний пост. Останнє речення залежить від рішення 3. Праворуч — правила команд як «класний кодекс дружби».', do:['Учень читає підпис уголос.','Запитайте: “How is this post different from the first one?”'], say:[['How is this post different from the first one?','Чим цей пост відрізняється від першого?']]}
+});
+step({id:'reflect', sc:7, title:'Final reflection',
+  render:d=>`${sceneTag(cur())}<div class="qcard"><b style="color:var(--amber)">FINAL REFLECTION</b><div class="q mt">Complete the sentence:<br><span style="color:var(--amber)">A real friend is someone who…</span></div>
+    <div class="starters">${STARTERS.map(s=>`<span>${T(s.replace('has your back','[[back|has your back]]').replace('is there for you','[[there|is there for you]]').replace('shows up','[[showup|shows up]]').replace('two-faced','[[twofaced|two-faced]]'))}</span>`).join('')}</div>
+    <p class="small mt">Answer out loud — or send it from your phone.</p>${wallHTML('reflect')}</div>`,
+  live:()=>({id:'reflect', kind:'text', q:'Complete the sentence: A real friend is someone who…', ph:'A real friend is someone who…'}),
+  n:{t:'1 хв', ua:'Рефлексія: кожен учень закінчує речення усно.', say:[['Complete the sentence: A real friend is someone who…','Закінчи речення: Справжній друг — це той, хто…']]}
+});
+step({id:'final', sc:7, title:'Lesson complete',
+  render:()=>`<div class="fin"><div><div class="medal">🏅</div><div class="big">REAL ONES <span style="white-space:nowrap">ONLY <span class="h">❤️</span></span></div>
+    <div class="tag2">Perfect photos don’t make perfect friends.</div>
+    <p class="lead" style="margin:12px auto 0">Real friendship is about honesty, trust and showing up when it matters.</p>
+    <div class="mt2"><div class="dsp" style="font-size:clamp(28px,3vw,44px);color:var(--amber)">MISSION COMPLETE!</div><div class="lessonno mt">LESSON 21 COMPLETED</div></div>
+    <div class="row mt2" style="justify-content:center"><button class="btn" id="fWords">📚 Review the 15 expressions</button><a class="btn primary tonly" href="../../#words?lesson=21">Practise on the platform</a><a class="btn ghost tonly" href="../../">← Back to the course</a></div></div></div>`,
+  after:r=>{ $('#fWords',r).onclick=()=>openBank(); if(CTX.entering) setTimeout(()=>hearts(30),300); },
+  n:{t:'0.5 хв', ua:'Фінальний екран. Домашнє завдання — практика виразів на платформі (кнопка Practise).'}
+});
+</script>
+<script>
+/* ---------- 5 · engine ---------- */
+let CTX = {entering:true, prevP:-1, decPrev:{}};
+let LAST = {id:null, p:-1}, LASTDEC = {}, GATE = null;
+const cur = ()=> STEPS[S.i] || STEPS[0];
+const parts = s => typeof s.parts==='function' ? s.parts() : (s.parts||1);
+const visible = k => !!STEPS[k] && !(S.core && STEPS[k].opt);
+const typing = ()=> !!(document.activeElement && document.activeElement.closest && document.activeElement.closest('input,textarea'));
+if(S.i>=STEPS.length) S.i=0;
+
+function draw(){
+  const s=cur(), d=sd(s.id);
+  if(VN.playing && !['voice','listenq'].includes(s.id)) VN.stop();
+  const entering = LAST.id!==s.id;
+  CTX = {entering, prevP: entering?-1:LAST.p, decPrev:LASTDEC};
+  document.body.dataset.sc = s.atm || s.sc;
+  const v=$('#view'), fid=document.activeElement && document.activeElement.id;
+  v.innerHTML = s.render(d);
+  if(entering){ v.classList.remove('view'); void v.offsetWidth; v.classList.add('view'); window.scrollTo(0,0); }
+  $$('[data-next]',v).forEach(b=>b.onclick=next);
+  $$('.v[data-v]',v).forEach(b=>{ const k=b.dataset.v; if(!k.startsWith('@')) S.seen[k]=1; });
+  s.after && s.after(v,d);
+  if(fid && !entering){ const f=document.getElementById(fid); if(f && v.contains(f)) f.focus({preventScroll:true}); }
+  LAST={id:s.id, p:d.p||0}; LASTDEC=Object.assign({},S.dec);
+  paintChrome(); pubState(); if($('#notes').classList.contains('on')) paintNotes(); TMR.paint(); save();
+}
+function next(){
+  const s=cur(), d=sd(s.id), P=parts(s), p=d.p||0;
+  if(s.ready && !s.ready(d)){ const g=s.id+':'+p; if(GATE!==g){ GATE=g; toast(s.gateMsg||'Not answered yet — press Next again to continue'); return; } }
+  GATE=null;
+  if(p<P-1){ d.p=p+1; s.onPart&&s.onPart(d); save(); draw(); return; }
+  let k=S.i+1; while(k<STEPS.length && !visible(k)) k++;
+  if(k<STEPS.length) go(k); else toast('That’s the end of Lesson 21 ❤️');
+}
+function back(){
+  const d=sd(cur().id); GATE=null;
+  if((d.p||0)>0){ d.p--; save(); draw(); return; }
+  let k=S.i-1; while(k>=0 && !visible(k)) k--; if(k>=0) go(k);
+}
+function go(k){ if(!STEPS[k]) return; S.i=k; GATE=null; save(); draw(); }
+function goId(id){ const k=STEPS.findIndex(x=>x.id===id); if(k<0) return; if(!visible(k)) S.core=false; go(k); }
+function goScene(n){ const k=STEPS.findIndex((x,i)=>x.sc===n && visible(i)); if(k>=0) go(k); }
+function reveal(){ const s=cur(), d=sd(s.id); if(s.reveal) s.reveal(d); else if(parts(s)>1) d.p=parts(s)-1; else return; s.onPart&&s.onPart(d); save(); draw(); }
+function nextNonOpt(from){ let k=from; while(k<STEPS.length && STEPS[k].opt) k++; return k; }
+function skipTarget(){ const s=cur(); if(s.opt) return nextNonOpt(S.i); let k=S.i+1; while(k<STEPS.length && !visible(k)) k++; return STEPS[k]&&STEPS[k].opt ? nextNonOpt(k) : -1; }
+function skipOpt(){ const k=skipTarget(); if(k>=0 && k<STEPS.length){ go(k); toast('Optional activity skipped'); } }
+
+function buildRail(){ $('#rail').innerHTML=SCENES.map(sc=>`<button data-sc="${sc.n}" aria-label="Scene ${sc.n}: ${sc.t}"><i></i><span>${sc.t}</span></button>`).join(''); $$('#rail button').forEach(b=>b.onclick=()=>goScene(+b.dataset.sc)); }
+function paintChrome(){
+  const s=cur(), d=sd(s.id), P=parts(s);
+  $$('#rail button').forEach(b=>{ const n=+b.dataset.sc; b.classList.toggle('cur',n===s.sc); b.classList.toggle('done',n<s.sc); if(n===s.sc) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current'); });
+  const sc=SCENES[s.sc-1];
+  $('#info').innerHTML=`${sc.e} <b>${sc.t}</b> · ${esc(s.title)}${P>1?` (${(d.p||0)+1}/${P})`:''}${s.opt?' · optional':''}`;
+  $('#bBack').disabled = S.i===0 && !(d.p>0);
+  $('#bReveal').disabled = !(s.reveal || P>1);
+  const sk=skipTarget(); $('#bSkip').disabled = !(sk>=0 && sk<STEPS.length);
+  const last = S.i===STEPS.length-1; $('#bNext').innerHTML = last?'Finish ❤️':'Next ▶';
+  $('#wCnt').textContent = VORDER.filter(k=>S.seen[k]).length+'/15';
+  $('#bLive').classList.toggle('on', LIVE.on);
+}
+
+/* ---------- timer (advisory only — never changes the screen by itself) ---------- */
+const TMR = {
+  left(){ const t=S.tmr; return t.run ? Math.max(0,(t.end-Date.now())/1000) : t.left; },
+  run(){ return !!S.tmr.run; },
+  set(sec){ S.tmr={dur:sec, left:sec, run:false, end:0}; save(); this.paint(); pubState(); },
+  start(){ const t=S.tmr; if(t.left<=0) t.left=t.dur; t.end=Date.now()+t.left*1000; t.run=true; save(); this.paint(); pubState(); },
+  pause(){ const t=S.tmr; t.left=this.left(); t.run=false; save(); this.paint(); pubState(); },
+  add(sec){ const t=S.tmr; if(t.run) t.end+=sec*1000; else t.left+=sec; t.dur=Math.max(t.dur,t.left); save(); this.paint(); pubState(); },
+  tick(){ const t=S.tmr; if(t.run && Date.now()>=t.end){ t.run=false; t.left=0; save(); toast('⏰ Time is up — continue when you’re ready.'); pubState(); if(cur().id==='work' && !typing()) draw(); } this.paint(); },
+  paint(){ const l=this.left(); $$('[data-clock]').forEach(e=>{ e.textContent=mmss(l); e.classList.toggle('low',l<=60&&l>0); e.classList.toggle('out',l<=0); }); }
+};
+if(ROLE==='teacher') setInterval(()=>TMR.tick(),500);
+
+/* ---------- 6 · vocabulary popover + bank ---------- */
+function speak(text){ if(!('speechSynthesis' in window)) return toast('No speech voice in this browser'); speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='en-GB'; if(VN.voice){ u.voice=VN.voice; u.lang=VN.voice.lang; } u.rate=.85; speechSynthesis.speak(u); }
+const vItem = key => key.startsWith('@') ? Object.assign({old:true},REV[key.slice(1)]) : VOCAB[key];
+function showPop(key, el){
+  const V=vItem(key); if(!V) return; closePop();
+  if(!key.startsWith('@')) S.seen[key]=1;
+  const p=document.createElement('div'); p.id='pop'; p.setAttribute('role','dialog'); p.setAttribute('aria-label',V.t);
+  p.innerHTML=`<button class="btn sm ghost x" aria-label="Close">✕</button><div>${V.old?'<span class="oldtag">learned before</span>':'<span class="newtag">new · Lesson 21</span>'}</div>
+    <div class="ex mt">${esc(V.t)}</div><p class="mt" style="margin-bottom:4px">${esc(V.en)}</p><div class="ua">🇺🇦 ${esc(V.ua)}</div><div class="eg">${esc(V.ex)}</div>
+    <div class="row mt"><button class="btn sm" data-say>🔊 Listen</button>${V.old?'':'<button class="btn sm ghost" data-bank>📚 Vocabulary Bank</button>'}</div>`;
+  document.body.appendChild(p);
+  const r=el.getBoundingClientRect(), pw=p.offsetWidth, ph=p.offsetHeight;
+  let left=Math.min(Math.max(12, r.left + r.width/2 - pw/2), innerWidth-pw-12), top=r.bottom+10; if(top+ph>innerHeight-12) top=Math.max(12, r.top-ph-10);
+  p.style.left=left+'px'; p.style.top=top+'px';
+  $('.x',p).onclick=closePop; $('[data-say]',p).onclick=()=>speak(V.t.replace(/[()]/g,'')+'. '+V.ex);
+  const bk=$('[data-bank]',p); if(bk) bk.onclick=()=>{ closePop(); openBank(); };
+  $('.x',p).focus({preventScroll:true}); POPFROM=el; save(); if(ROLE==='teacher') paintChrome();
+}
+let POPFROM=null;
+function closePop(){ const p=$('#pop'); if(p){ p.remove(); if(POPFROM&&document.body.contains(POPFROM)) POPFROM.focus({preventScroll:true}); POPFROM=null; } }
+document.addEventListener('click',e=>{ const v=e.target.closest('.v[data-v]'); if(v){ e.preventDefault(); e.stopPropagation(); showPop(v.dataset.v, v); return; } if($('#pop') && !e.target.closest('#pop')) closePop(); }, true);
+
+let BANK={tab:'list', q:'', fi:0, flip:false, order:VORDER.slice()};
+function openBank(){ BANK.flip=false; openModal(bankHTML(),'wide'); bindBank(); }
+function bankRows(){ const q=BANK.q.trim().toLowerCase();
+  const list=VORDER.filter(k=>{ const V=VOCAB[k]; return !q || [V.t,V.en,V.ua,V.ex].join(' ').toLowerCase().includes(q); });
+  return list.length ? list.map(k=>{ const V=VOCAB[k]; return `<div class="vbi ${S.seen[k]?'seen':''}"><div class="row" style="align-items:flex-start;gap:8px"><div class="t grow">${esc(V.t)}</div><button class="btn sm ghost" data-say="${k}" aria-label="Listen to ${esc(V.t)}">🔊</button></div>
+    <div style="font-size:15px;margin-top:4px">${esc(V.en)}</div><div class="u">🇺🇦 ${esc(V.ua)}</div><div class="e">“${esc(V.ex)}”</div>${S.seen[k]?'':'<div class="small" style="margin-top:4px">not met in the story yet</div>'}</div>`; }).join('')
+    : `<p class="muted">No expression matches “${esc(BANK.q)}”. Try English or Ukrainian words, e.g. “friend” or “друг”.</p>`; }
+function bankHTML(){
+  const head=`<div class="row"><h2 class="h-m grow">📚 Vocabulary Bank</h2><button class="btn sm ghost" data-close aria-label="Close">✕</button></div>
+   <div class="row mt"><div class="tabs" role="tablist">${[['list','15 new expressions'],['flash','Flashcards'],['old','Learned before']].map(t=>`<button role="tab" class="${BANK.tab===t[0]?'on':''}" data-tab="${t[0]}" aria-selected="${BANK.tab===t[0]}">${t[1]}</button>`).join('')}</div>
+   <span class="small">${VORDER.filter(k=>S.seen[k]).length}/15 met in the story</span></div>`;
+  if(BANK.tab==='list') return head+`<input class="vsearch mt" id="bq" type="search" placeholder="Search in English or Ukrainian…" value="${esc(BANK.q)}" aria-label="Search expressions"><div class="vb-list" id="brows">${bankRows()}</div>${support3HTML()}`;
+  if(BANK.tab==='flash'){ const k=BANK.order[BANK.fi], V=VOCAB[k];
+    return head+`<div class="flash"><div class="card3 ${BANK.flip?'flip':''}" id="fc" tabindex="0" role="button" aria-label="Flip the card"><div class="face"><div><div class="t">${esc(V.t)}</div><p class="muted mt">Tap to see the meaning</p></div></div>
+      <div class="face back"><div><div style="font-size:20px">${esc(V.en)}</div><div class="ua mt" style="color:var(--amber);font-weight:700">🇺🇦 ${esc(V.ua)}</div><div class="mt" style="font-style:italic;color:#D7DBF7">“${esc(V.ex)}”</div></div></div></div>
+      <div class="row mt" style="justify-content:center"><button class="btn sm" id="fp">◀</button><span class="small">${BANK.fi+1} / 15</span><button class="btn sm" id="fn">▶</button><button class="btn sm ghost" id="fs">🔀 Shuffle</button><button class="btn sm ghost" id="fsay">🔊</button></div></div>`; }
+  return head+`<p class="muted mt">These expressions are <b>revision</b> from Unit 2 — not new in this lesson.</p><div class="vchips mt">${REV_LIST.map(w=>`<span class="oldtag" style="font-size:14px;padding:4px 12px">${esc(w)}</span>`).join('')}</div>`;
+}
+function bindBank(){ const B=$('#modalBox');
+  $('[data-close]',B).onclick=closeModal;
+  $$('[data-tab]',B).forEach(b=>b.onclick=()=>{ BANK.tab=b.dataset.tab; BANK.flip=false; B.innerHTML=bankHTML(); bindBank(); });
+  const q=$('#bq',B); if(q){ q.oninput=()=>{ BANK.q=q.value; $('#brows',B).innerHTML=bankRows(); bindSay(); }; }
+  const bindSay=()=>$$('[data-say]',B).forEach(b=>b.onclick=()=>{ const V=VOCAB[b.dataset.say]; speak(V.t.replace(/[()]/g,'')+'. '+V.ex); }); bindSay();
+  const fc=$('#fc',B); if(fc){ const flip=()=>{ BANK.flip=!BANK.flip; fc.classList.toggle('flip',BANK.flip); }; fc.onclick=flip; fc.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flip(); } };
+    const mv=n=>{ BANK.fi=(BANK.fi+n+15)%15; BANK.flip=false; B.innerHTML=bankHTML(); bindBank(); };
+    $('#fp',B).onclick=()=>mv(-1); $('#fn',B).onclick=()=>mv(1);
+    $('#fs',B).onclick=()=>{ BANK.order=VORDER.slice().sort(()=>Math.random()-.5); BANK.fi=0; mv(0); };
+    $('#fsay',B).onclick=()=>speak(VOCAB[BANK.order[BANK.fi]].t.replace(/[()]/g,'')); }
+}
+function openModal(html){ const b=$('#modalBox'); b.innerHTML=html; $('#modal').classList.remove('hidden'); b.scrollTop=0; MODALFROM=document.activeElement; setTimeout(()=>{ const f=$('button,input',b); f&&f.focus({preventScroll:true}); },30); }
+let MODALFROM=null;
+function closeModal(){ $('#modal').classList.add('hidden'); if(MODALFROM&&MODALFROM.focus) MODALFROM.focus({preventScroll:true}); if(ROLE==='teacher') paintChrome(); }
+$('#modal').addEventListener('click',e=>{ if(e.target.id==='modal') closeModal(); });
+
+/* ---------- 6b · teacher notes panel ---------- */
+function toggleNotes(force){ const on = force ?? !$('#notes').classList.contains('on'); $('#notes').classList.toggle('on',on); $('#notes').setAttribute('aria-hidden',String(!on)); $('#bNotes').classList.toggle('on',on); if(on) paintNotes(); }
+function paintNotes(){
+  const s=cur(), n=s.n||{}, sc=SCENES[s.sc-1];
+  const dl=(k,i)=>{ const o=S.dec[k]; return o==null?'—':(k==='dec3'?DEC3.opts[o].t:LET[o]); };
+  $('#notesBody').innerHTML=`
+   <div class="tsec"><h5>${sc.e} Scene ${sc.n} · ${sc.t} · ≈${sc.min} min</h5><b style="font-size:18px">${esc(s.title)}</b>${n.opt||s.opt?'<span class="opttag">optional — can skip</span>':''}<div class="small">Step time: ${esc(n.t||'—')}</div>
+     ${n.ua?`<p class="ua" style="margin-bottom:0">${esc(n.ua)}</p>`:''}</div>
+   ${n.do?`<div class="tsec"><h5>Що робити</h5><ul>${n.do.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
+   ${n.ans?`<div class="tsec"><h5>Відповіді / Answer key</h5><ul>${n.ans.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
+   ${n.say?`<div class="tsec"><h5>Що сказати</h5>${n.say.map(x=>`<div class="say">${esc(x[0])}<i>${esc(x[1])}</i></div>`).join('')}</div>`:''}
+   ${n.read?`<div class="tsec"><h5>🎭 Хто читає</h5>${esc(n.read)}</div>`:''}
+   <div class="tsec"><h5>⏱ Таймер (лише підказка)</h5><div class="ttimer"><span class="clk" data-clock>${mmss(TMR.left())}</span>
+     <button class="btn sm" id="nT">${TMR.run()?'❚❚':'▶'}</button><button class="btn sm ghost" id="nS">${sc.min} min</button><button class="btn sm ghost" id="n4">4:00</button><button class="btn sm ghost" id="n1">+1</button></div></div>
+   <div class="tsec"><h5>Рішення класу</h5>D1 Mia: <b>${dl('dec1')}</b> · D2 Noah: <b>${dl('dec2')}</b> · D3 rule: <b>${dl('dec3')}</b></div>
+   <div class="tsec"><h5>Перейти до кроку</h5><div class="jump">${STEPS.map((x,i)=>`<button class="${i===S.i?'cur':''}" data-j="${i}" ${visible(i)?'':'style="opacity:.4"'}>${SCENES[x.sc-1].e} ${esc(x.title)}${x.opt?' · opt':''}</button>`).join('')}</div></div>
+   <div class="tsec"><h5>Налаштування</h5>
+     <label class="switch"><input type="checkbox" id="nCore" ${S.core?'checked':''}> Core route — hide optional activities</label>
+     <label class="switch"><input type="checkbox" id="nAnim" ${S.noanim?'checked':''}> Turn off animations</label>
+     <div class="row mt"><button class="btn sm" id="nLive">📡 ${LIVE.on?'Live room '+S.room:'Start a live room'}</button><button class="btn sm ghost" id="nRe">⟲ Restart lesson</button></div>
+     <p class="small mt" style="margin-bottom:0">Keys: → / Space next · ← back · R reveal · V words · T notes · P present</p></div>
+   <div class="tsec"><h5>План уроку (≈35 хв активностей із 60)</h5>${SCENES.map(x=>`${x.e} ${x.t} — ${x.min} хв`).join('<br>')}<p class="small" style="margin-bottom:0">Решта часу — пояснення, читання, breakout rooms, розширені відповіді.</p></div>`;
+  const B=$('#notesBody');
+  $('#nT',B).onclick=()=>{ TMR.run()?TMR.pause():TMR.start(); paintNotes(); }; $('#nS',B).onclick=()=>{ TMR.set(sc.min*60); TMR.start(); paintNotes(); };
+  $('#n4',B).onclick=()=>{ TMR.set(240); paintNotes(); }; $('#n1',B).onclick=()=>TMR.add(60);
+  $$('[data-j]',B).forEach(b=>b.onclick=()=>{ const k=+b.dataset.j; if(!visible(k)) S.core=false; go(k); });
+  $('#nCore',B).onchange=e=>{ S.core=e.target.checked; save(); if(!visible(S.i)) go(nextNonOpt(S.i)); else draw(); };
+  $('#nAnim',B).onchange=e=>{ S.noanim=e.target.checked; applyAnim(); save(); };
+  $('#nLive',B).onclick=openLive; $('#nRe',B).onclick=askRestart;
+}
+function askRestart(){
+  openModal(`<h2 class="h-m">Restart Lesson 21?</h2><p class="mt">All answers, decisions and team rules on this device will be cleared. ${LIVE.on?'The live room stays open.':''}</p>
+   <div class="row mt2"><button class="btn primary" id="rsYes">⟲ Restart</button><button class="btn ghost" id="rsNo">Cancel</button></div>`);
+  $('#rsNo').onclick=closeModal;
+  $('#rsYes').onclick=()=>{ const keep={room:S.room, tid:S.tid, live:S.live, noanim:S.noanim}; VN.stop(); S=Object.assign(FRESH(),keep); WALLQ.length=0; LAST={id:null,p:-1}; save(); closeModal(); go(0); toast('Lesson restarted'); };
+}
+function present(){
+  const on=!document.body.classList.contains('present');
+  document.body.classList.toggle('present',on); $('#bPresent').classList.toggle('on',on);
+  if(on){ toggleNotes(false); if(!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(()=>{}); toast('Presentation mode — teacher-only controls hidden (P to exit)'); }
+  else { if(document.fullscreenElement) document.exitFullscreen?.().catch(()=>{}); toast('Presentation mode off'); }
+}
+
+/* ---------- 7 · live room ----------
+   Учитель — єдине джерело стану. Захист керування:
+   • кожне повідомлення вчителя ПІДПИСАНЕ (ECDSA P-256, WebCrypto); приватний ключ лишається лише в браузері вчителя;
+   • посилання / QR для учнів містить відбиток (fingerprint) публічного ключа; при ручному вході — код кімнати + 6 символів ключа;
+     телефон приймає стан і завдання ЛИШЕ з правильним підписом, тож учень не може «стати вчителем»;
+   • учні надсилають тільки hello / ans / work / submit / react; правильні відповіді доходять на телефони лише після Reveal;
+   • один голос на телефон (id у sessionStorage), без акаунтів — лише нік. */
+const configured = ()=> /^https:\/\/[a-z0-9-]+\.supabase\.co/i.test((CFG.SUPABASE_URL||'').trim()) && !!(CFG.SUPABASE_KEY||'').trim();
+const LIVE = {on:false, peers:[]};
+const WALLQ = [], NAMES = {};
+const AVATARS = ['🦊','🐼','🐯','🐸','🦉','🐙','🦄','🐺','🐧','🚀','🎧','⚡'];
+function studentsN(){ return (LIVE.peers||[]).filter(p=>p&&p.role==='student').length; }
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const unb64 = s => Uint8Array.from(atob(s), c=>c.charCodeAt(0));
+const hexOf = buf => [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+const canSign = ()=> !!(window.crypto && crypto.subtle && window.isSecureContext!==false);
+async function fpOf(pk){ const h=await crypto.subtle.digest('SHA-256', new TextEncoder().encode('P256.'+pk.x+'.'+pk.y)); return hexOf(h).slice(0,20); }
+const TKEY = { ok:false, priv:null, pub:null, fp:'',
+  async init(){
+    if(this.ok) return true; if(!canSign()) return false;
+    try{ let st=null; try{ st=JSON.parse(localStorage.getItem('lesson21-tkey')||'null'); }catch(e){}
+      if(st && st.priv && st.pub){ this.priv=await crypto.subtle.importKey('jwk',st.priv,{name:'ECDSA',namedCurve:'P-256'},false,['sign']); this.pub=st.pub; }
+      else { const kp=await crypto.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['sign','verify']);
+        const priv=await crypto.subtle.exportKey('jwk',kp.privateKey), pub=await crypto.subtle.exportKey('jwk',kp.publicKey);
+        this.priv=kp.privateKey; this.pub={x:pub.x, y:pub.y}; try{ localStorage.setItem('lesson21-tkey',JSON.stringify({priv, pub:this.pub})); }catch(e){} }
+      this.fp=await fpOf(this.pub); this.ok=true; return true; }catch(e){ console.warn('Signing unavailable:', e); return false; }
+  },
+  async sign(str){ return b64(await crypto.subtle.sign({name:'ECDSA',hash:'SHA-256'}, this.priv, new TextEncoder().encode(str))); }
+};
+const shortKey = ()=> TKEY.fp ? TKEY.fp.slice(0,6).toUpperCase() : '';
+const Net = {
+  kind:null, status:'off', ch:null, sb:null, bc:null, me:null, peers:{}, hb:null, prune:null,
+  setStatus(s){ this.status=s; this.onStatus && this.onStatus(s); },
+  async connect(o){
+    this.stop();
+    let sid=null; try{ sid=o.role==='student' && sessionStorage.getItem('l21sid'); }catch(e){}
+    this.me={id:o.id || sid || uid(), name:o.name||'', role:o.role, av:o.av||''};
+    if(o.role==='student') try{ sessionStorage.setItem('l21sid', this.me.id); }catch(e){}
+    this.onEvent=o.onEvent; this.onPeers=o.onPeers||(()=>{}); this.onStatus=o.onStatus||(()=>{});
+    this.setStatus('connecting');
+    if(configured()){
+      try{
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+        this.sb = createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY);
+        this.ch = this.sb.channel('lesson21-'+o.room, {config:{presence:{key:this.me.id}, broadcast:{self:false}}});
+        this.ch.on('broadcast',{event:'msg'},({payload})=>this.onEvent(payload));
+        this.ch.on('presence',{event:'sync'},()=>{ const st=this.ch.presenceState(), list=[]; Object.values(st).forEach(v=>v[0]&&list.push(v[0])); this.onPeers(list); });
+        let first=true;
+        await new Promise((res,rej)=>{ const to=setTimeout(()=>rej(new Error('timeout')),9000);
+          this.ch.subscribe(async st=>{
+            if(st==='SUBSCRIBED'){ try{ await this.ch.track(this.me); }catch(e){} this.setStatus('live'); if(first){ first=false; clearTimeout(to); res(); } }
+            else if(st==='CHANNEL_ERROR'||st==='TIMED_OUT'||st==='CLOSED'){ if(first){ first=false; clearTimeout(to); rej(new Error(st)); } else if(this.ch) this.setStatus('reconnecting'); }
+          }); });
+        this.kind='supabase'; return this.kind;
+      }catch(e){ console.warn('Supabase realtime unavailable:', e.message||e); try{ this.sb&&this.ch&&this.sb.removeChannel(this.ch); }catch(_){} this.sb=null; this.ch=null; }
+    }
+    try{
+      this.bc=new BroadcastChannel('lesson21-'+o.room);
+      this.bc.onmessage=e=>{ const m=e.data; if(!m||!m.from) return; this.peers[m.from.id]=Object.assign({},m.from,{ts:Date.now()}); this.flush(); if(m.t!=='__hb') this.onEvent(m); };
+      this.hb=setInterval(()=>this.send({t:'__hb'}),2500);
+      this.prune=setInterval(()=>{ const now=Date.now(); let ch=false; for(const k in this.peers) if(now-this.peers[k].ts>9000){ delete this.peers[k]; ch=true; } if(ch) this.flush(); },3000);
+      this.send({t:'__hb'}); this.kind='local'; this.setStatus('local'); return this.kind;
+    }catch(e){ this.kind='none'; this.setStatus('off'); return 'none'; }
+  },
+  flush(){ this.onPeers(Object.values(this.peers)); },
+  send(p){ const msg=Object.assign({},p,{from:this.me}); try{ if(this.kind==='supabase'&&this.ch) this.ch.send({type:'broadcast',event:'msg',payload:msg}); else if(this.bc) this.bc.postMessage(msg); }catch(e){} },
+  stop(){ clearInterval(this.hb); clearInterval(this.prune); if(this.ch){ try{ this.sb.removeChannel(this.ch); }catch(e){} } if(this.bc){ try{ this.bc.close(); }catch(e){} } this.kind=null; this.ch=null; this.bc=null; this.peers={}; this.status='off'; }
+};
+async function sendSigned(p){
+  const body=JSON.stringify(Object.assign({ts:Date.now()},p));
+  if(TKEY.ok){ try{ const sig=await TKEY.sign(body); Net.send({t:'sig', body, sig, pk:TKEY.pub}); return; }catch(e){ console.warn(e); } }
+  Net.send({t:'raw', body});
+}
+function curTask(){ const c=cur(); try{ return c.live?c.live():null; }catch(e){ return null; } }
+let pubT=null;
+function pubState(){
+  if(!LIVE.on || ROLE!=='teacher') return;
+  clearTimeout(pubT); pubT=setTimeout(()=>{ const c=cur(), sc=SCENES[c.sc-1];
+    sendSigned({t:'state', sc:sc.n, title:sc.t, e:sc.e, step:c.title, task:curTask(), timer:{left:Math.ceil(TMR.left()), run:TMR.run()}}); paintDock(); },120);
+}
+setInterval(()=>{ if(LIVE.on) pubState(); },6000);
+let redrawT=null;
+function softRedraw(){ clearTimeout(redrawT); redrawT=setTimeout(()=>{ if(!typing() && !$('#pop')) draw(); else paintDock(); },250); }
+function onTeacherMsg(m){
+  const id=m.from&&m.from.id; if(!id || m.from.role!=='student') return;
+  if(m.from.name) NAMES[id]=(AVATARS.includes(m.from.av)?m.from.av+' ':'')+String(m.from.name).slice(0,20);
+  const task=curTask();
+  if(m.t==='hello'){ pubState(); paintDock(); return; }
+  if(m.t==='react'){ floatEmoji(m.e); return; }
+  if(m.t==='ans' && task && m.task===task.id){
+    if(task.kind==='choice'){ const v=+m.v; if(!(Number.isInteger(v) && v>=0 && v<task.opts.length) || task.lock) return; (S.votes[task.id]=S.votes[task.id]||{})[id]=v; save(); softRedraw(); return; }
+    if(task.kind==='text'){ const text=String(m.v||'').replace(/\s+/g,' ').trim().slice(0,140); if(!text) return;
+      const k=WALLQ.findIndex(w=>w.task===task.id && w.sid===id), item={id:uid(), task:task.id, sid:id, text, by:NAMES[id]||'student'};
+      if(k>=0) WALLQ[k]=item; else WALLQ.unshift(item); paintDock(); return; }
+  }
+  if(task && task.kind==='team'){
+    const L=String(m.team||''); if(!TEAMS().includes(L)) return;
+    if(m.t==='work'){ const f=String(m.f||''); if(!activeProbs().some(p=>p.f===f)) return;
+      S.work[L]=Object.assign({},S.work[L],{[f]:String(m.v||'').slice(0,200)}); save(); pubState(); softRedraw(); return; }
+    if(m.t==='submit'){ S.sub[L]=true; save(); pubState(); toast(teamName(L)+' submitted their rules ✓'); softRedraw(); return; }
+  }
+}
+function floatEmoji(e){ if(!/^[\p{Extended_Pictographic}‍️]{1,8}$/u.test(e||'')) return; const s=document.createElement('span'); s.textContent=e; s.style.left=Math.random()*40+'px'; $('#reacts').appendChild(s); setTimeout(()=>s.remove(),3100); }
+function paintDock(){
+  const d=$('#dock'); d.classList.toggle('on',LIVE.on && ROLE==='teacher'); if(!LIVE.on) return;
+  const st=Net.status, stTxt={live:'● live', local:'● this browser only', reconnecting:'● reconnecting…', connecting:'● connecting…', off:'● offline'}[st]||st;
+  $('#dockTitle').textContent='Room '+S.room; $('#dockLed').className='led '+(st==='live'?'on':st==='off'?'bad':'');
+  const studs=LIVE.peers.filter(p=>p&&p.role==='student');
+  $('#dockCount').textContent=`${studs.length} joined · ${stTxt}`;
+  const task=curTask(); let h='';
+  h+= studs.length?`<div class="names">${studs.slice(0,40).map(p=>`<span>${esc((AVATARS.includes(p.av)?p.av+' ':'')+(p.name||'?'))}</span>`).join('')}</div>`:`<div class="small">Nobody yet — share the link, QR or code (📡 Live).</div>`;
+  if(!task) h+=`<div class="small">No phone task here — phones show “look at the main screen”.</div>`;
+  else if(task.kind==='choice'){ const n=counts(task.id,task.opts.length), tot=Object.keys(S.votes[task.id]||{}).length, mx=Math.max(1,...n);
+    h+=`<div class="small">${tot} of ${studs.length} answered · ${esc(task.q.slice(0,70))}</div>`+task.opts.map((o,i)=>`<div class="dbar"><span>${task.lock&&task.correct===i?'✅ ':''}${esc(o)}</span><b>${n[i]}</b><div class="tr"><i style="width:${n[i]/mx*100}%"></i></div></div>`).join(''); }
+  else if(task.kind==='text'){ const list=WALLQ.filter(w=>w.task===task.id); h+= list.length?`<div class="small">${list.length} answers — Show puts one on the screen</div>`+list.map(w=>`<div class="wallit"><p>${esc(w.text)}<small>${esc(w.by)}</small></p><button class="btn sm" data-w="${w.id}">Show</button><button class="btn sm ghost" data-wx="${w.id}" aria-label="Hide">✕</button></div>`).join(''):`<div class="small">Waiting for answers…</div>`; }
+  else if(task.kind==='team'){ h+=TEAMS().map(t=>`<div class="small">${TEAM_E[t]} ${esc(teamName(t))}: ${ruleCount(t)}/${activeProbs().length} rules${S.sub[t]?' · ✅ submitted':''}</div>`).join(''); }
+  $('#dockBody').innerHTML=h;
+  $$('[data-w]',d).forEach(b=>b.onclick=()=>{ const k=WALLQ.findIndex(w=>w.id===b.dataset.w); if(k<0) return; const w=WALLQ.splice(k,1)[0]; (S.wall[w.task]=S.wall[w.task]||[]).push({text:w.text, by:w.by}); save(); draw(); });
+  $$('[data-wx]',d).forEach(b=>b.onclick=()=>{ const k=WALLQ.findIndex(w=>w.id===b.dataset.wx); if(k>=0) WALLQ.splice(k,1); paintDock(); });
+}
+const baseURL = ()=> location.href.split('?')[0].split('#')[0];
+const joinURL = ()=> baseURL()+'?room='+S.room+(TKEY.fp?'&k='+TKEY.fp:'')+'&role=student';
+async function startLive(silent){
+  const signed=await TKEY.init();
+  const kind=await Net.connect({room:S.room, id:S.tid, role:'teacher', name:'teacher', onEvent:onTeacherMsg,
+    onPeers:list=>{ LIVE.peers=list; paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); },
+    onStatus:()=>{ paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); }});
+  LIVE.on = kind!=='none'; S.live=LIVE.on; save(); pubState(); draw();
+  if(!silent) toast(!signed?'Live room open — but this page can’t sign messages (needs https)':kind==='supabase'?'Live room open — share the link, QR or code':kind==='local'?'Supabase is not reachable — the room works in THIS browser only':'The live room could not start');
+  return kind;
+}
+function stopLive(){ sendSigned({t:'end'}); setTimeout(()=>Net.stop(),300); LIVE.on=false; S.live=false; LIVE.peers=[]; save(); paintDock(); draw(); }
+function liveStatus(){
+  if(!LIVE.on) return 'not started — <b>Teacher-led mode</b> (no phones)';
+  const n=studentsN();
+  const s = Net.status==='live' ? '<span style="color:var(--mint)">● live (Supabase Realtime)</span>' : Net.status==='local' ? '<span style="color:var(--amber)">● this browser only — Supabase is not configured or not reachable</span>' : `<span style="color:var(--amber)">● ${esc(Net.status)}</span>`;
+  return `${s} · ${n} joined`;
+}
+async function openLive(){
+  await TKEY.init();
+  openModal(`<div class="row"><h2 class="h-m grow">📡 Live classroom</h2><button class="btn sm ghost" data-close aria-label="Close">✕</button></div>
+   <p class="small mt">Optional. Students join from a phone with a nickname and an emoji — no account, no personal data. They vote, answer, make story decisions, send short answers and write their team’s rules. Correct answers reach phones only after you reveal them. Without a live room the lesson runs in <b>Teacher-led mode</b> on your shared screen.</p>
+   <div class="split mt"><div><div class="small">Room code</div><div class="dsp" style="font-size:76px">${S.room}</div>
+     <div class="small">Teacher key <b style="font-size:22px;color:var(--noah);letter-spacing:.12em">${shortKey()||'—'}</b> (only for students who type the code)</div>
+     <div class="small mt" style="word-break:break-all">${esc(joinURL())}</div>
+     <div class="small mt" id="lvStatus">Status: ${liveStatus()}</div>
+     <p class="small mt" style="color:#BFF7DE">🔐 Your messages are signed with a private key that never leaves this browser. Phones obey only this signature — a student can’t take control by opening the teacher page.</p></div>
+     <img alt="QR code for the student link" width="210" height="210" style="border-radius:18px;background:#fff;justify-self:center" src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=8&data=${encodeURIComponent(joinURL())}" onerror="this.remove()"></div>
+   <div class="row mt2">${LIVE.on?'<button class="btn" id="lvStop">⏹ Stop room</button>':'<button class="btn primary" id="lvStart">▶ Start live room</button>'}
+     <button class="btn sm ghost" id="lvCopy">📋 Copy link</button><button class="btn sm ghost" id="lvNew" ${LIVE.on?'disabled':''}>New code</button></div>
+   ${configured()?'':'<p class="small mt" style="color:var(--amber)">SUPABASE_URL / SUPABASE_KEY are empty at the top of this file → phones on other devices can’t connect.</p>'}
+   ${canSign()?'':'<p class="small mt" style="color:var(--amber)">This page is not on https, so messages can’t be signed. Open it from GitHub Pages for the live room.</p>'}`);
+  $('[data-close]','#modalBox').onclick=closeModal;
+  const st=$('#lvStart'); if(st) st.onclick=async()=>{ st.disabled=true; st.textContent='Connecting…'; await startLive(); openLive(); };
+  const sp=$('#lvStop'); if(sp) sp.onclick=()=>{ stopLive(); openLive(); };
+  $('#lvCopy').onclick=()=>{ (navigator.clipboard?navigator.clipboard.writeText(joinURL()):Promise.reject()).then(()=>toast('Link copied — paste it into the Zoom chat')).catch(()=>toast(joinURL())); };
+  $('#lvNew').onclick=()=>{ S.room=rand4(); save(); openLive(); };
+}
+
+/* ---------- 8 · student app (?room=1234&k=…&role=student  or  ?join) ---------- */
+function studentApp(){
+  document.body.classList.add('student'); document.body.dataset.sc='2';
+  const B=$('#stuBody');
+  let room=(qs.get('room')||'').replace(/\D/g,'').slice(0,6), key=(qs.get('k')||'').replace(/[^0-9a-f]/gi,'').slice(0,20).toLowerCase();
+  let st=null, name='', avatar=AVATARS[0], sent={}, myTeam='', taskKey='', trust=null, lastTs=0, verified=false;
+  try{ name=localStorage.getItem('l21name')||''; avatar=localStorage.getItem('l21av')||avatar; }catch(e){}
+  $('#stuWords').onclick=()=>openBank();
+  const setConn=s=>{ $('#stuLed').className='led '+(s==='live'?'on':s==='off'?'bad':''); $('#stuConn').textContent={live:'connected', local:'this browser only', reconnecting:'reconnecting…', connecting:'connecting…', off:'offline'}[s]||''; };
+  $('#stuFoot').innerHTML=['👍','😂','😮','❤️','✋','🔥'].map(e=>`<button data-e="${e}" aria-label="React ${e}">${e}</button>`).join('');
+  $$('[data-e]',$('#stuFoot')).forEach(b=>b.onclick=()=>{ if(!Net.kind) return; Net.send({t:'react', e:b.dataset.e}); b.animate?.([{transform:'scale(1.4)'},{transform:'scale(1)'}],{duration:250}); });
+  const ask=()=>{
+    B.innerHTML=`<div class="stu-card"><div class="stack">${['mia','leo','sophie','noah'].map(k=>av(k,44)).join('')}</div>
+      <h2 class="dsp mt" style="font-size:30px">Join The Perfect Squad story ❤️</h2>
+      <label for="rc">Room code</label><input id="rc" inputmode="numeric" maxlength="6" value="${esc(room)}" placeholder="1234" autocomplete="off">
+      ${key.length>=6?'':`<label for="tk">Teacher key (6 characters on the screen)</label><input id="tk" maxlength="6" placeholder="e.g. 7F3A9C" autocomplete="off" style="text-transform:uppercase">`}
+      <label for="nm">Your nickname</label><input id="nm" maxlength="20" value="${esc(name)}" placeholder="e.g. Pixel Fox" autocomplete="off">
+      <label>Choose an avatar</label><div class="avpick">${AVATARS.map(a=>`<button type="button" data-av="${a}" class="${a===avatar?'on':''}" aria-label="Avatar ${a}">${a}</button>`).join('')}</div>
+      <p class="small mt">Use a nickname or first name only — no surname, no personal data.</p>
+      <button class="btn primary mt" id="jn" style="width:100%">Join</button></div>`;
+    $$('[data-av]',B).forEach(b=>b.onclick=()=>{ avatar=b.dataset.av; $$('[data-av]',B).forEach(x=>x.classList.toggle('on',x===b)); });
+    $('#jn').onclick=()=>{ const r=$('#rc').value.replace(/\D/g,''), v=$('#nm').value.trim().slice(0,20), tk=$('#tk');
+      if(r.length<4) return $('#rc').focus(); if(tk){ const kv=tk.value.replace(/[^0-9a-f]/gi,'').toLowerCase(); if(kv.length<6) return tk.focus(); key=kv; } if(!v) return $('#nm').focus();
+      room=r; name=v; try{ localStorage.setItem('l21name',name); localStorage.setItem('l21av',avatar); }catch(e){} join(); };
+    $('#nm').onkeydown=e=>{ if(e.key==='Enter') $('#jn').click(); };
+  };
+  async function open(m){
+    if(!m || !m.body) return null;
+    if(m.t==='sig' && canSign() && m.pk && m.sig){
+      try{ const pkStr=m.pk.x+'.'+m.pk.y;
+        if(!trust || trust.pkStr!==pkStr){ const fp=await fpOf(m.pk); if(!key || !fp.startsWith(key)) return null;
+          trust={pkStr, k:await crypto.subtle.importKey('jwk',{kty:'EC',crv:'P-256',x:m.pk.x,y:m.pk.y,ext:true},{name:'ECDSA',namedCurve:'P-256'},false,['verify'])}; }
+        const ok=await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'}, trust.k, unb64(m.sig), new TextEncoder().encode(m.body));
+        if(!ok) return null; verified=true; return JSON.parse(m.body); }catch(e){ return null; }
+    }
+    if(!canSign() && (m.t==='raw'||m.t==='sig')){ try{ return JSON.parse(m.body); }catch(e){ return null; } }
+    return null;
+  }
+  const join=async()=>{
+    $('#stuRoom').textContent='Room '+room+' · '+avatar+' '+name;
+    try{ myTeam=localStorage.getItem('l21team-'+room)||''; }catch(e){}
+    B.innerHTML=`<div class="stu-wait"><div class="bigi">💫</div><p>Connecting to room ${esc(room)}…</p></div>`;
+    const kind=await Net.connect({room, role:'student', name, av:avatar, onStatus:setConn, onEvent:async raw=>{
+      if(!raw.from || raw.from.role!=='teacher') return;
+      const m=await open(raw); if(!m || (m.ts||0)<lastTs) return; lastTs=m.ts||lastTs;
+      if(m.t==='state'){ document.body.dataset.sc=String(m.sc||2);
+        const T2=m.task, k=JSON.stringify([m.sc, m.step, T2 && Object.assign({},T2,{work:undefined, sub:undefined, names:undefined})]); st=m;
+        if(k!==taskKey){ taskKey=k; render(); } else { paintT(); syncTeam(); } }
+      if(m.t==='end') ended();
+    }});
+    if(kind==='none'){ B.innerHTML=`<div class="stu-wait"><div class="bigi">📶</div><p><b>Could not join.</b></p><p class="small">Check your internet connection and try again.</p><button class="btn primary mt" id="rt">Try again</button></div>`; $('#rt').onclick=join; return; }
+    Net.send({t:'hello'}); render();
+    setTimeout(()=>{ if(!st) Net.send({t:'hello'}); },2500);
+    setTimeout(()=>{ if(!st && B.querySelector('.stu-wait')) B.querySelector('.stu-wait p').innerHTML=`Hi ${esc(name)}! Waiting for your teacher…<br><span class="small">Room ${esc(room)} — are the code and teacher key right? <a href="?join" style="color:var(--noah)">Change</a></span>`; },7000);
+  };
+  const ended=()=>{ Net.stop(); setConn('off'); B.innerHTML=`<div class="stu-wait"><div class="bigi">❤️</div><h2 class="dsp" style="font-size:32px">Real ones only!</h2><p class="small">Thanks, ${esc(avatar+' '+name)}! You can close this page.</p></div>`; };
+  const paintT=()=>{ const t=$('#stuT'); if(t&&st&&st.timer) t.textContent=(st.timer.run?'⏱ ':'⏸ ')+mmss(st.timer.left); };
+  setInterval(()=>{ if(st&&st.timer&&st.timer.run&&st.timer.left>0){ st.timer.left--; paintT(); } },1000);
+  const syncTeam=()=>{ if(!st||!st.task||st.task.kind!=='team'||!myTeam) return; const w=(st.task.work||{})[myTeam]||{};
+    $$('[data-tf]',B).forEach(ta=>{ if(document.activeElement!==ta && typeof w[ta.dataset.tf]==='string' && ta.value!==w[ta.dataset.tf]) ta.value=w[ta.dataset.tf]; });
+    const sb=$('#sbm',B); if(sb && (st.task.sub||{})[myTeam]) sb.textContent='✓ Submitted — you can still edit'; };
+  const render=()=>{
+    if(!st){ B.innerHTML=`<div class="stu-wait"><div class="bigi">👀</div><p>Hi ${esc(avatar+' '+name)}! Waiting for your teacher…</p></div>`; return; }
+    const T2=st.task, head=`<div class="stu-prog">${SCENES.map(x=>`<i class="${x.n<st.sc?'d':x.n===st.sc?'c':''}"></i>`).join('')}</div>
+      <div class="small" style="margin-bottom:10px;font-weight:700">${st.e||''} Scene ${st.sc} · ${esc(st.title||'')}</div>${verified?'<div class="verif">✓ verified teacher</div>':''}`;
+    if(!T2){ B.innerHTML=head+`<div class="stu-card stu-wait"><div class="bigi">👀</div><p><b>Look at the main screen.</b></p><p class="small">${esc(st.step||'')}</p><p class="small">Your teacher will send a question soon. Tap 📚 for the 15 new expressions.</p></div>`; return; }
+    if(T2.kind==='choice'){
+      const my=sent[T2.id], dec=T2.chosen!=null;
+      B.innerHTML=head+`<div class="stu-card"><p style="font-size:20px;font-weight:800">${esc(T2.q)}</p><div class="opts">${T2.opts.map((o,i)=>`<button class="opt ${dec&&T2.chosen===i?'right':T2.lock&&T2.correct===i?'right':my===i?(T2.lock&&T2.correct!=null?'wrong':'pick'):''}" data-i="${i}"><span class="L">${LET[i]}</span><span>${esc(o)}</span></button>`).join('')}</div>
+        <p class="small mt">${dec?`The class chose ${LET[T2.chosen]}. Look at the main screen.`:T2.lock?(T2.correct==null?'✓ Voting closed.':my===T2.correct?'🎉 Correct!':'✓ The answer is on the main screen.'):my!==undefined?'✓ Sent! You can change your answer.':'Tap your answer.'}</p></div>`;
+      $$('[data-i]',B).forEach(b=>b.onclick=()=>{ if(T2.lock) return; sent[T2.id]=+b.dataset.i; Net.send({t:'ans', task:T2.id, v:+b.dataset.i}); render(); });
+      return;
+    }
+    if(T2.kind==='text'){
+      B.innerHTML=head+`<div class="stu-card"><p style="font-size:20px;font-weight:800">${esc(T2.q)}</p><textarea id="tx" maxlength="140" placeholder="${esc(T2.ph||'')}"></textarea><button class="btn primary mt" id="sd" style="width:100%">Send</button>
+        <p class="small mt">${sent[T2.id]?'✓ Sent: “'+esc(sent[T2.id])+'”. You can send a new version.':'You can also answer out loud in Zoom. Your teacher may show your answer on the screen.'}</p></div>`;
+      const go2=()=>{ const v=$('#tx').value.trim(); if(!v) return; sent[T2.id]=v; Net.send({t:'ans', task:T2.id, v}); render(); };
+      $('#sd').onclick=go2;
+      return;
+    }
+    if(T2.kind==='team'){
+      const t=(T2.teams||[]).find(x=>x.L===myTeam);
+      if(!t){ B.innerHTML=head+`<div class="stu-card"><p style="font-size:20px;font-weight:800">🛡️ Which team are you in?</p><p class="small">Your teacher tells you your team.</p><div class="opts">${T2.teams.map(x=>`<button class="opt" data-tm="${x.L}"><span class="L">${x.e}</span><span>${esc(x.name)}</span></button>`).join('')}</div></div>`;
+        $$('[data-tm]',B).forEach(b=>b.onclick=()=>{ myTeam=b.dataset.tm; try{ localStorage.setItem('l21team-'+room,myTeam); }catch(e){} render(); }); return; }
+      const w=(T2.work||{})[myTeam]||{}, sub=(T2.sub||{})[myTeam];
+      B.innerHTML=head+`<div class="stu-card"><div class="row"><span style="font-size:30px">${t.e}</span><div class="grow"><b style="font-size:19px">${esc(t.name)}</b><div class="small" id="stuT"></div></div><button class="btn sm ghost" id="chg">change team</button></div>
+        <p class="small mt"><b>THE REAL SQUAD CODE 🛡️</b> Write one short rule for each problem. Use at least three new expressions. Your team sees the same text.</p>
+        ${T2.probs.map((p,i)=>`<label for="tf-${p.f}">Problem ${i+1}: ${esc(p.t)}<br><span class="small">${esc(p.q)}</span></label><textarea id="tf-${p.f}" data-tf="${p.f}" maxlength="200" placeholder="Rule ${i+1}…">${esc(w[p.f]||'')}</textarea>`).join('')}
+        <div class="small mt" id="used"></div>
+        <div class="row mt"><button class="btn sm ghost" id="vh">📚 Words</button><button class="btn primary" id="sbm" style="flex:1">${sub?'✓ Submitted — you can still edit':'📤 Submit our rules'}</button></div>
+        <p class="small mt" id="ok">Saves automatically.</p></div>`;
+      paintT();
+      const showUsed=()=>{ const all=$$('[data-tf]',B).map(x=>x.value).join(' '), u=usedV(all); $('#used',B).textContent=u.length?`New expressions used: ${u.length} (${u.map(k=>VOCAB[k].t).join(', ')})${u.length>=3?' ✓':''}`:'New expressions used: 0 — aim for 3'; }; showUsed();
+      $('#chg').onclick=()=>{ myTeam=''; try{ localStorage.removeItem('l21team-'+room); }catch(e){} render(); };
+      $('#vh').onclick=()=>openBank();
+      const sendAll=()=>$$('[data-tf]',B).forEach(ta=>Net.send({t:'work', team:myTeam, f:ta.dataset.tf, v:ta.value.slice(0,200)}));
+      $('#sbm').onclick=()=>{ sendAll(); setTimeout(()=>Net.send({t:'submit', team:myTeam}),300); $('#sbm').textContent='✓ Submitted — you can still edit'; };
+      $$('[data-tf]',B).forEach(ta=>{ let tm=null; ta.oninput=()=>{ $('#ok').textContent='…'; showUsed(); clearTimeout(tm); tm=setTimeout(()=>{ Net.send({t:'work', team:myTeam, f:ta.dataset.tf, v:ta.value.slice(0,200)}); $('#ok').textContent='✓ Saved — your team and teacher can see it.'; },600); }; });
+      return;
+    }
+  };
+  if(room && name && (key.length>=6 || !canSign())) join(); else ask();
+}
+
+/* ---------- init ---------- */
+document.addEventListener('keydown',e=>{
+  if(ROLE!=='teacher') return;
+  if(e.key==='Escape'){ if($('#pop')) return closePop(); if(!$('#modal').classList.contains('hidden')) return closeModal(); if($('#notes').classList.contains('on')) return toggleNotes(false); }
+  if(typing() || e.ctrlKey || e.metaKey || e.altKey) return;
+  if(!$('#modal').classList.contains('hidden')) return;
+  const tag=document.activeElement && document.activeElement.tagName;
+  if(e.key==='ArrowRight' || e.key==='PageDown' || (e.key===' ' && tag!=='BUTTON')){ e.preventDefault(); next(); }
+  else if(e.key==='ArrowLeft' || e.key==='PageUp'){ e.preventDefault(); back(); }
+  else if(e.key==='r'||e.key==='R') reveal();
+  else if(e.key==='v'||e.key==='V') openBank();
+  else if(e.key==='t'||e.key==='T') toggleNotes();
+  else if(e.key==='p'||e.key==='P') present();
+});
+if(ROLE==='student'){ VN.init(); studentApp(); }
+else {
+  applyAnim(); VN.init(); buildRail();
+  $('#bNext').onclick=next; $('#bBack').onclick=back; $('#bReveal').onclick=reveal; $('#bSkip').onclick=skipOpt; $('#bRestart').onclick=askRestart;
+  $('#bWords').onclick=openBank; $('#bNotes').onclick=()=>toggleNotes(); $('#notesX').onclick=()=>toggleNotes(false);
+  $('#bLive').onclick=openLive; $('#bPresent').onclick=present; $('#dockMin').onclick=()=>$('#dock').classList.toggle('min');
+  document.addEventListener('fullscreenchange',()=>{ if(!document.fullscreenElement && document.body.classList.contains('present')){ document.body.classList.remove('present'); $('#bPresent').classList.remove('on'); } });
+  draw();
+  if(S.live) startLive(true);
+}
+</script>
+</body>
+</html>
