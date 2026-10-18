@@ -125,21 +125,21 @@ window.AK_VOCAB = [
 
 /* ─────────────── UNIT 3 · Relationships, Belonging & Conflict ─────────────── */
 { unit: 3, lesson: 21, title: 'Real Ones Only', practisedIn: [22], revisedIn: [23, 30], words: [
-  { word: 'ride or die', type: 'slang', translation: 'вірний друг до кінця', meaning: 'a friend who supports you no matter what', example: 'She’s my ride or die — she’s always on my side.' },
-  { word: 'click with someone', type: 'idiom', translation: 'одразу знайти спільну мову', meaning: 'to like and understand someone immediately', example: 'We clicked from the first day of camp.' },
-  { word: 'fall out', type: 'phrasal', translation: 'посваритися', meaning: 'to stop being friends after an argument', example: 'They fell out over a stupid comment in the group chat.', related: ['patch things up'] },
-  { word: 'squad', type: 'slang', translation: 'компанія друзів', meaning: 'your group of close friends', example: 'The whole squad is coming to my birthday.' },
-  { word: 'drift apart', type: 'phrasal', translation: 'поступово віддалитися', meaning: 'to slowly become less close over time', example: 'We drifted apart after she moved to another school.' },
-  { word: 'flaky', type: 'word', translation: 'ненадійний (постійно скасовує плани)', meaning: 'often cancelling plans or not doing what you promised', example: 'Don’t be flaky — you promised to come!' },
-  { word: 'be there for someone', type: 'phrase', translation: 'бути поруч; підтримувати', meaning: 'to support someone when they need help', example: 'When my dog died, my friends were really there for me.' },
-  { word: 'two-faced', type: 'word', translation: 'дворушний; нещирий', meaning: 'nice to your face, but mean behind your back', example: 'I can’t trust him — he’s so two-faced.' },
-  { word: 'third wheel', type: 'idiom', translation: 'третій зайвий', meaning: 'the extra person with a couple or two very close friends', example: 'I felt like a third wheel at the cinema with them.' },
-  { word: 'no drama vibe', type: 'slang', translation: 'атмосфера без драм', meaning: 'a calm, peaceful feeling with no arguments', example: 'I love our squad’s no drama vibe.' },
-  { word: 'spill the tea', type: 'slang', translation: 'розкажи плітки / новини', meaning: 'to share gossip or interesting news', example: 'Come on, spill the tea! What happened at the party?' },
-  { word: 'show up for someone', type: 'phrasal', translation: 'підтримати ділом', meaning: 'to support someone, especially by being there at important moments', example: 'She always shows up for me, even at my piano concerts.' },
-  { word: 'bestie energy', type: 'slang', translation: '«енергія найкращих друзів»', meaning: 'the warm, close feeling of being best friends', example: 'Those two have serious bestie energy.' },
-  { word: 'have someone’s back', type: 'idiom', translation: 'прикривати; бути на чиємусь боці', meaning: 'to protect and support someone', example: 'Don’t worry, I’ve got your back.' },
-  { word: 'bond over', type: 'phrasal', translation: 'зблизитися через щось спільне', meaning: 'to become close because you share an interest or experience', example: 'We bonded over our love of horror films.' }
+  { word: 'ride or die', type: 'slang', translation: 'вірний друг, який завжди поруч', meaning: 'a friend who stays loyal and supports you in difficult times', example: 'Mia thought Sophie was her ride or die.' },
+  { word: 'click with someone', type: 'idiom', translation: 'одразу знайти спільну мову', meaning: 'to become friendly with someone very easily', example: 'Leo and Noah clicked when they first met.' },
+  { word: 'fall out', type: 'phrasal', translation: 'посваритися', meaning: 'to have an argument and stop being friendly', example: 'Mia doesn’t want to fall out with her friends.', related: ['patch things up'] },
+  { word: 'squad', type: 'slang', translation: 'компанія друзів', meaning: 'a group of friends', example: 'Our squad loves spending time together.' },
+  { word: 'drift apart', type: 'phrasal', translation: 'поступово віддалятися', meaning: 'to slowly become less close to someone', example: 'They started to drift apart after changing schools.' },
+  { word: 'flaky', type: 'word', translation: 'ненадійний, необов’язковий', meaning: 'someone who often changes plans or doesn’t keep promises', example: 'Leo can be flaky when making weekend plans.' },
+  { word: 'be there for someone', type: 'phrase', translation: 'бути поруч, підтримувати когось', meaning: 'to support someone when they need help', example: 'Good friends are there for each other.' },
+  { word: 'two-faced', type: 'word', translation: 'дволикий, лицемірний', meaning: 'friendly to someone in person but unkind behind their back', example: 'A two-faced friend says nice things to you but insults you later.' },
+  { word: 'third wheel', type: 'idiom', translation: 'третій зайвий', meaning: 'a person who feels unnecessary or left out when spending time with two other people, often a couple', example: 'Mia felt like a third wheel when Sophie and Leo ignored her.' },
+  { word: 'no drama', type: 'slang', translation: 'без зайвих сварок і конфліктів', meaning: 'no unnecessary arguments or conflicts', example: 'We just want a relaxing weekend with no drama.' },
+  { word: 'spill (the) tea', type: 'slang', translation: 'пліткувати, розповідати цікаві подробиці', meaning: 'to share gossip or interesting personal information', example: 'Leo wanted to spill the tea about what happened.' },
+  { word: 'show up for someone', type: 'phrasal', translation: 'підтримати когось у важливий момент', meaning: 'to make an effort to support someone when it matters', example: 'Noah showed up for Mia when she felt upset.' },
+  { word: 'bestie energy', type: 'slang', translation: 'вайб найкращих друзів', meaning: 'a feeling or atmosphere of close friendship', example: 'Their funny videos have real bestie energy.' },
+  { word: 'have someone’s back', type: 'idiom', translation: 'підтримувати, захищати когось', meaning: 'to support, defend, or protect someone', example: 'Real friends have each other’s backs.' },
+  { word: 'bond over something', type: 'phrasal', translation: 'зблизитися завдяки спільному інтересу', meaning: 'to become closer because of a shared interest or experience', example: 'They bonded over music and video games.' }
 ]},
 
 { unit: 3, lesson: 24, title: 'Belonging & Being Left Out', practisedIn: [25], revisedIn: [26, 30], words: [
