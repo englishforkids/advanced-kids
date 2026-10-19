@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="MAX, the show host">
+<defs>
+ <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B3BEF"/><stop offset="1" stop-color="#3A137F"/></linearGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1BF97"/><stop offset="1" stop-color="#DDA078"/></linearGradient>
+ <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3A2A55"/><stop offset=".55" stop-color="#1A1228"/><stop offset="1" stop-color="#0E0A18"/></linearGradient>
+ <radialGradient id="mic" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#B9BED8"/><stop offset="1" stop-color="#5B6080"/></radialGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset="1" stop-color="#E0A21B"/></linearGradient>
+ <pattern id="grill" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 3h6M3 0v6" stroke="#6D7294" stroke-width="1"/></pattern>
+</defs>
+<!-- body -->
+<path d="M30 400 C34 330 70 300 130 286 L200 300 L270 286 C330 300 366 330 370 400Z" fill="url(#suit)"/>
+<path d="M130 286 L200 400 L270 286 L250 280 L200 352 L150 280Z" fill="#0F0A1C"/>
+<path d="M150 280 L200 352 L176 400 L120 290Z" fill="#1C1030"/>
+<path d="M250 280 L200 352 L224 400 L280 290Z" fill="#1C1030"/>
+<path d="M120 290 L176 400 L160 400 L112 296Z" fill="#C9A6FF" opacity=".35"/>
+<path d="M172 300 L200 314 L228 300 L228 330 L200 316 L172 330Z" fill="url(#gold)" stroke="#9C6A08" stroke-width="2"/>
+<circle cx="200" cy="315" r="7" fill="#FFF2C2" stroke="#9C6A08" stroke-width="2"/>
+<rect x="90" y="330" width="16" height="10" rx="3" fill="#FF4FD8" transform="rotate(-18 98 335)"/>
+<!-- neck -->
+<path d="M172 236 L172 290 Q200 306 228 290 L228 236Z" fill="#D2946C"/>
+<!-- ears -->
+<ellipse cx="128" cy="172" rx="14" ry="22" fill="#E2A47C"/><ellipse cx="276" cy="172" rx="14" ry="22" fill="#E2A47C"/>
+<!-- head -->
+<path d="M132 150 C132 92 168 70 204 70 C244 70 274 96 274 152 C274 210 246 254 204 258 C162 254 132 212 132 150Z" fill="url(#skin)"/>
+<path d="M150 214 C164 246 186 258 204 258 C222 258 244 246 258 214 C246 236 226 246 204 246 C182 246 162 236 150 214Z" fill="#C98962" opacity=".45"/>
+<!-- hair (quiff) -->
+<path d="M128 156 C118 92 150 46 210 44 C252 42 292 70 284 132 C280 116 270 104 258 98 C246 112 214 116 186 110 C168 106 152 110 144 128 C138 136 134 146 128 156Z" fill="url(#hair)"/>
+<path d="M150 74 C176 40 238 30 272 66 C246 52 206 52 176 76Z" fill="#8F5BFF" opacity=".55"/>
+<path d="M190 60 C214 50 240 54 256 64" stroke="#C7A8FF" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M146 138 Q166 124 188 133" stroke="#1B1226" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M214 128 Q238 112 258 126" stroke="#1B1226" stroke-width="9" fill="none" stroke-linecap="round"/>
+<ellipse cx="168" cy="160" rx="15" ry="9" fill="#fff"/><circle cx="172" cy="161" r="7" fill="#2A1638"/><circle cx="174" cy="158" r="2.2" fill="#fff"/><path d="M151 155 Q168 146 184 154" stroke="#3A2230" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="234" cy="158" rx="15" ry="10" fill="#fff"/><circle cx="238" cy="159" r="7" fill="#2A1638"/><circle cx="240" cy="156" r="2.2" fill="#fff"/><path d="M218 153 Q234 144 250 152" stroke="#3A2230" stroke-width="5" fill="none" stroke-linecap="round"/>
+<!-- nose -->
+<path d="M200 168 Q194 196 186 202 Q198 210 212 202" stroke="#B9724F" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M172 222 Q204 236 240 214" stroke="#5A1E2C" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M178 224 Q204 244 236 220 Q206 234 178 224Z" fill="#fff"/><path d="M240 214 q6 -2 8 -8" stroke="#5A1E2C" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+<!-- microphone + hand -->
+<g transform="translate(16 24)">
+<g transform="rotate(-24 300 300)">
+ <rect x="286" y="262" width="22" height="86" rx="8" fill="#151020"/>
+ <rect x="282" y="252" width="30" height="16" rx="5" fill="#2B2440"/>
+ <rect x="290" y="300" width="14" height="5" fill="#FF4FD8"/>
+ <circle cx="297" cy="230" r="28" fill="url(#mic)"/>
+ <circle cx="297" cy="230" r="28" fill="url(#grill)" opacity=".55"/>
+</g>
+<path d="M286 320 C300 304 328 306 334 324 C338 338 330 354 312 356 C296 358 282 348 282 336Z" fill="#E2A47C"/>
+<path d="M290 322 C298 316 316 316 324 322" stroke="#C47E58" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M292 334 C300 328 318 328 326 334" stroke="#C47E58" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M270 360 C280 340 300 340 312 356 L322 400 L262 400Z" fill="url(#suit)"/>
+</g>
+</svg>

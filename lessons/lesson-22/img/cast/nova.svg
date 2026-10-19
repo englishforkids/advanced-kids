@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="NOVA, the co-host">
+<defs>
+ <linearGradient id="jk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4F5FF"/><stop offset=".5" stop-color="#C3C7E6"/><stop offset="1" stop-color="#8E8FC4"/></linearGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98C66"/><stop offset="1" stop-color="#B07450"/></linearGradient>
+ <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B1D5E"/><stop offset=".6" stop-color="#1D0F33"/><stop offset="1" stop-color="#130A22"/></linearGradient>
+ <linearGradient id="streak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C08BFF"/><stop offset="1" stop-color="#5BE7FF"/></linearGradient>
+</defs>
+<!-- back hair -->
+<path d="M110 170 C96 80 160 40 206 42 C262 44 312 86 298 176 C306 236 318 290 300 336 C270 350 242 330 236 300 L170 300 C160 334 128 352 98 334 C84 290 100 230 110 170Z" fill="url(#hair)"/>
+<path d="M286 150 C300 210 312 262 300 330" stroke="url(#streak)" stroke-width="10" fill="none" stroke-linecap="round" opacity=".85"/>
+<!-- body / jacket -->
+<path d="M40 400 C46 336 84 304 142 292 L200 310 L258 292 C316 304 354 336 360 400Z" fill="url(#jk)"/>
+<path d="M150 290 L200 330 L250 290 L246 400 L154 400Z" fill="#7C4DFF"/>
+<path d="M150 290 L200 330 L182 400 L136 400 L124 300Z" fill="#E9EAFB"/>
+<path d="M250 290 L200 330 L218 400 L264 400 L276 300Z" fill="#B2B5DD"/>
+<path d="M124 300 L136 400" stroke="#9B6BFF" stroke-width="5"/><path d="M276 300 L264 400" stroke="#9B6BFF" stroke-width="5"/>
+<path d="M92 360 L110 366 M96 374 L112 378" stroke="#9B6BFF" stroke-width="4" stroke-linecap="round"/>
+<path d="M300 352 l6 -14 l6 14 l14 6 l-14 6 l-6 14 l-6 -14 l-14 -6z" fill="#7C4DFF"/>
+<!-- neck -->
+<path d="M178 240 L178 296 Q200 312 222 296 L222 240Z" fill="#A86C49"/>
+<!-- head -->
+<path d="M138 156 C138 100 170 76 202 76 C238 76 266 102 266 156 C266 212 238 252 202 254 C166 252 138 212 138 156Z" fill="url(#skin)"/>
+<!-- earrings -->
+<path d="M140 196 l4 -10 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4z" fill="#E8EAFF"/>
+<path d="M262 196 l4 -10 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4z" fill="#E8EAFF"/>
+<!-- fringe -->
+<path d="M132 168 C126 96 176 62 222 70 C256 76 280 108 272 160 C262 128 244 108 220 100 C206 122 176 132 150 126 C142 138 136 152 132 168Z" fill="url(#hair)"/>
+<path d="M176 82 C204 66 246 74 262 102" stroke="url(#streak)" stroke-width="7" fill="none" stroke-linecap="round" opacity=".9"/>
+<!-- brows -->
+<path d="M156 140 Q172 130 188 138" stroke="#1D0F33" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M216 138 Q232 130 248 140" stroke="#1D0F33" stroke-width="6" fill="none" stroke-linecap="round"/>
+<!-- eyes (happy) -->
+<path d="M156 164 Q172 150 188 164" stroke="#1D0F33" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M216 164 Q232 150 248 164" stroke="#1D0F33" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M154 160 l-8 -5 M250 160 l8 -5" stroke="#1D0F33" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="160" cy="194" rx="15" ry="8" fill="#FF7FAE" opacity=".35"/><ellipse cx="244" cy="194" rx="15" ry="8" fill="#FF7FAE" opacity=".35"/>
+<!-- nose -->
+<path d="M202 170 Q198 188 192 194 Q202 200 212 194" stroke="#8E5536" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+<!-- smile -->
+<path d="M174 212 Q202 246 230 212Z" fill="#6B1E3A"/><path d="M180 214 Q202 226 224 214 Q202 220 180 214Z" fill="#fff"/>
+<path d="M174 212 Q202 246 230 212" stroke="#6B1E3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+<!-- headset -->
+<path d="M134 168 C130 110 164 70 202 70 C240 70 274 110 270 168" stroke="#2B2440" stroke-width="7" fill="none"/>
+<rect x="124" y="156" width="20" height="34" rx="8" fill="#2B2440"/>
+<path d="M138 186 C142 214 158 226 178 226" stroke="#2B2440" stroke-width="5" fill="none" stroke-linecap="round"/>
+<rect x="172" y="220" width="16" height="11" rx="5" fill="#5BE7FF"/>
+</svg>

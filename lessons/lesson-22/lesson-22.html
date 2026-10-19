@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 22 — The Confidence Show · Emphatic DO / DOES / DID</title>
+<meta name="description" content="Advanced Kids · Lesson 22 · Unit 3. The Confidence Show — an interactive TV game-show episode about emphatic do / does / did. Characters: MAX the host, NOVA the co-host and BEEP the scorekeeper.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   НАЛАШТУВАННЯ УРОКУ — єдине місце, яке треба редагувати
+   ───────────────────────────────────────────────────────────────
+   SUPABASE_URL / SUPABASE_KEY — той самий проєкт, що й в уроках 5, 13–21.
+     Публічний (publishable) ключ. Потрібен лише Realtime (broadcast + presence),
+     таблиці НЕ потрібні. Порожні значення → урок працює в Presentation mode.
+   PHOTOS — зображення героїв (квадратні). Щоб замінити, покладіть свій файл
+     у img/cast/ і змініть шлях тут. max_shocked / max_defeated — той самий MAX
+     здивований і переможений (фінал).
+   Тексти уроку — розділ «2 · lesson content» нижче.
+   ═══════════════════════════════════════════════════════════════ */
+window.LESSON_CONFIG = {
+  SUPABASE_URL : 'https://yhekszqxheljbxoucalt.supabase.co',
+  SUPABASE_KEY : 'sb_publishable_knHTxZLX-Ucg0WtnfP0RTw_ytJ2Dyoa',
+  PHOTOS : { max:'img/cast/max.svg', max_shocked:'img/cast/max-shocked.svg', max_defeated:'img/cast/max-defeated.svg',
+             nova:'img/cast/nova.svg', beep:'img/cast/beep.svg' },
+  GRAMMAR_LINK : '../../#grammar?topic=emphatic-do',
+  WORDS_LINK   : '../../#words?lesson=21'
+};
+</script>
+<style>
+:root{
+  --night:#06061A; --navy:#0B0E30; --deep:#140B36; --panel:#151A47; --panel2:#1E2460;
+  --line:rgba(170,160,255,.16); --line2:rgba(170,160,255,.34);
+  --violet:#8B5CFF; --neon:#3D7BFF; --cyan:#3FE6FF; --magenta:#FF3FD0; --gold:#FFC94D; --gold2:#FFE7A3;
+  --ok:#35F0A1; --bad:#FF5C7A;
+  --text:#F1EEFF; --muted:#AEA9D9; --dim:#7570A8;
+  --c-max:#B48BFF; --c-nova:#4FE3FF; --c-beep:#3DF5A0; --c-you:#FF6AD5; --c-emma:#FFC94D;
+  --disp:"Unbounded", "Manrope", system-ui, sans-serif;
+  --body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:18px; --r-lg:28px;
+  --fs:clamp(17px, 1vw + 10px, 22px);
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+html{overflow-x:clip}
+body{margin:0; background:var(--night); color:var(--text); font-family:var(--body); font-size:var(--fs); line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+button,input,textarea,select{font:inherit; color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--cyan); outline-offset:3px; border-radius:10px}
+img{max-width:100%}
+.hidden{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3,.dsp{font-family:var(--disp); font-weight:900; letter-spacing:-.01em; line-height:1.04; margin:0}
+p{margin:.35em 0}
+.small{font-size:.8em; color:var(--muted)}
+.muted{color:var(--muted)}
+.row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.grow{flex:1}
+.mt{margin-top:14px} .mt2{margin-top:26px} .mt3{margin-top:40px}
+.center{text-align:center}
+.col{display:flex;flex-direction:column;gap:12px}
+
+/* ════════ STUDIO BACKDROP ════════ */
+#studio{position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;
+  background:
+    radial-gradient(1100px 600px at 50% -12%, rgba(139,92,255,.42), transparent 62%),
+    radial-gradient(800px 520px at 100% 40%, rgba(61,123,255,.20), transparent 60%),
+    radial-gradient(800px 520px at 0% 60%, rgba(255,63,208,.14), transparent 60%),
+    linear-gradient(180deg,#0B0A2A 0%,#07071C 58%,#05051A 100%);
+  transition:filter .8s}
+#studio .beam{position:absolute; top:-12%; width:34vw; height:120vh; transform-origin:50% 0; opacity:.22; mix-blend-mode:screen;
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(140,110,255,0) 78%); clip-path:polygon(47% 0,53% 0,100% 100%,0 100%);
+  animation:sweep 9s ease-in-out infinite alternate}
+#studio .b1{left:2%; --a:-22deg; background:linear-gradient(180deg, rgba(160,130,255,.95), rgba(139,92,255,0) 78%)}
+#studio .b2{left:33%; --a:-6deg; animation-delay:-3s; background:linear-gradient(180deg, rgba(120,230,255,.9), rgba(63,230,255,0) 78%)}
+#studio .b3{right:2%; --a:20deg; animation-delay:-6s; background:linear-gradient(180deg, rgba(255,120,220,.9), rgba(255,63,208,0) 78%)}
+@keyframes sweep{from{transform:rotate(calc(var(--a) - 9deg))} to{transform:rotate(calc(var(--a) + 9deg))}}
+#studio .floor{position:absolute; left:-30%; right:-30%; bottom:-6%; height:42vh; transform:perspective(600px) rotateX(64deg); transform-origin:50% 100%;
+  background:
+    linear-gradient(rgba(139,92,255,.35) 2px, transparent 2px) 0 0/100% 46px,
+    linear-gradient(90deg, rgba(63,230,255,.25) 2px, transparent 2px) 0 0/70px 100%;
+  -webkit-mask-image:linear-gradient(transparent, #000 40%); mask-image:linear-gradient(transparent, #000 40%); opacity:.55}
+#studio .glow{position:absolute; left:50%; bottom:-22vh; width:120vw; height:46vh; transform:translateX(-50%); border-radius:50%;
+  background:radial-gradient(closest-side, rgba(139,92,255,.5), transparent); filter:blur(10px)}
+#studio .dots{position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.55) 1px, transparent 1.4px); background-size:120px 120px; opacity:.12}
+body.lit #studio{animation:lightsOn 1.1s ease}
+body.lit #studio .beam{opacity:.55}
+@keyframes lightsOn{0%{filter:brightness(.15)}20%{filter:brightness(1.6)}35%{filter:brightness(.4)}55%{filter:brightness(1.8)}100%{filter:brightness(1)}}
+body[data-sc="3"] #studio{background:radial-gradient(900px 600px at 50% -10%, rgba(80,90,160,.35), transparent 60%), linear-gradient(180deg,#08081C,#030310)}
+body[data-sc="3"] #studio .beam{opacity:.08}
+body[data-sc="5"] #studio{background:radial-gradient(1000px 640px at 50% 30%, rgba(255,201,77,.18), transparent 60%), radial-gradient(1100px 600px at 50% -12%, rgba(139,92,255,.5), transparent 62%), linear-gradient(180deg,#120A30,#07071C)}
+body[data-sc="7"] #studio{background:radial-gradient(700px 520px at 50% 18%, rgba(255,230,160,.30), transparent 60%), linear-gradient(180deg,#0A0718,#05040F)}
+body[data-sc="7"] #studio .beam{opacity:.1}
+body.champ #studio{background:radial-gradient(1100px 700px at 50% 10%, rgba(255,201,77,.35), transparent 60%), radial-gradient(1100px 700px at 50% 110%, rgba(255,63,208,.3), transparent 60%), linear-gradient(180deg,#1A0E3A,#0A0620)}
+body.champ #studio .beam{opacity:.5}
+
+/* ════════ TOP BAR ════════ */
+#top{position:sticky; top:0; z-index:30; display:flex; align-items:center; gap:12px; padding:10px clamp(10px,2vw,24px); background:rgba(7,7,28,.74); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line)}
+#top .home{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line2);text-decoration:none;color:var(--text);font-size:20px;flex:none}
+#top .home:hover{background:var(--panel)}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;flex:none}
+.brand img{height:30px;width:auto}
+.brand b{font-family:var(--disp);font-size:15px;white-space:nowrap;letter-spacing:.02em}
+.brand span{font-size:12px;color:var(--muted);white-space:nowrap}
+.onair{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.14em;color:#fff;background:#E5254F;border-radius:6px;padding:2px 8px}
+.onair::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.2}}
+#rail{flex:1; display:flex; gap:4px; justify-content:safe center; min-width:0; overflow:hidden}
+#rail button{display:flex;align-items:center;gap:6px;border:1px solid transparent;background:transparent;padding:6px 10px;border-radius:999px;color:var(--dim);font-size:12px;font-weight:800;white-space:nowrap;letter-spacing:.06em}
+#rail button .k{font-family:var(--disp);font-size:11px}
+#rail button .t{display:none;letter-spacing:0;max-width:170px;overflow:hidden;text-overflow:ellipsis}
+#rail button{flex:none}
+#rail button.done{color:var(--muted)}
+#rail button.done .k::after{content:" ✓";color:var(--ok)}
+#rail button.cur{color:#fff;background:linear-gradient(90deg,rgba(139,92,255,.5),rgba(61,123,255,.4));border-color:rgba(180,160,255,.5)}
+@media (min-width:1180px){ #rail button.cur .t{display:inline} }
+@media (min-width:2400px){ #rail button .t{display:inline} }
+.tb{display:flex;gap:8px;flex:none;align-items:center}
+.ib{height:44px;min-width:44px;padding:0 12px;border-radius:14px;border:1px solid var(--line2);background:rgba(255,255,255,.04);display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:15px;font-weight:800;white-space:nowrap}
+.ib:hover{background:rgba(255,255,255,.09)} .ib.on{background:var(--violet);border-color:var(--violet)}
+.ib .lbl{display:none} @media (min-width:1640px){ .ib .lbl{display:inline} }
+#score{height:44px;display:inline-flex;align-items:center;gap:10px;padding:0 14px 0 6px;border-radius:999px;border:1px solid rgba(255,201,77,.5);background:linear-gradient(90deg,rgba(255,201,77,.16),rgba(255,201,77,.04));font-weight:800;white-space:nowrap}
+#score img{width:34px;height:34px;border-radius:50%;background:#1B1F55}
+#score .tn{font-size:12px;letter-spacing:.08em;color:var(--gold2);max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:1360px){ #score .tn{display:none} }
+#score .pts{font-family:var(--disp);font-size:18px;color:var(--gold);min-width:2ch;text-align:right}
+#score .pts.bump{animation:bump .5s ease}
+@keyframes bump{40%{transform:scale(1.35);color:#fff}}
+#score.off{opacity:.5}
+@media (max-width:760px){ .brand div, #score .tn{display:none} #rail,#bQuick,#bLive,#bPresent{display:none} #top{gap:8px} .tb{gap:6px} .brand img{height:24px} }
+@media (max-width:430px){ #bNav{display:none} #score{padding:0 10px 0 4px} }
+
+/* ════════ STAGE ════════ */
+#stage{min-height:calc(100vh - 65px); padding:clamp(18px,2.6vw,40px) clamp(14px,3vw,48px) 130px; display:flex; justify-content:center}
+.view{width:100%; max-width:1280px}
+.view.enter{animation:inview .5s ease both}
+@keyframes inview{from{opacity:0; transform:translateY(14px) scale(.99)} to{opacity:1; transform:none}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.eyebrow b{color:#fff}
+.eyebrow .rd{font-family:var(--disp);font-size:12px;color:#120A2C;background:linear-gradient(90deg,var(--gold),#FF9E4D);border-radius:8px;padding:3px 10px;letter-spacing:.1em}
+.h-xl{font-size:clamp(40px,7vw,110px)} .h-l{font-size:clamp(30px,4.2vw,60px)} .h-m{font-size:clamp(22px,2.6vw,36px)} .h-s{font-size:clamp(18px,1.7vw,24px)}
+.grad{background:linear-gradient(92deg,#fff 0%,#D8C8FF 35%,var(--cyan) 70%,var(--magenta) 100%); -webkit-background-clip:text; background-clip:text; color:transparent}
+.goldtxt{background:linear-gradient(180deg,#FFF6D2,var(--gold) 55%,#E08E1B); -webkit-background-clip:text; background-clip:text; color:transparent}
+.lead{font-size:1.12em;color:#DCD6FF;max-width:64ch}
+.glass{background:linear-gradient(160deg,rgba(30,30,90,.72),rgba(16,14,52,.72)); border:1px solid var(--line); border-radius:var(--r-lg); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.pad{padding:clamp(18px,2.4vw,34px)}
+.split{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(18px,3vw,40px); align-items:start}
+.split.wl{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}
+.split.wr{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+@media (max-width:960px){ .split,.split.wl,.split.wr{grid-template-columns:1fr} }
+
+/* ════════ BUTTONS ════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 22px;border-radius:16px;border:1px solid var(--line2);background:rgba(255,255,255,.05);font-weight:800;font-size:17px;transition:transform .12s, background .2s, box-shadow .2s;text-decoration:none;color:var(--text)}
+.btn:hover{background:rgba(255,255,255,.1)} .btn:active{transform:scale(.97)}
+.btn.primary{background:linear-gradient(135deg,var(--violet),var(--neon));border-color:transparent;color:#fff;box-shadow:0 10px 30px rgba(110,80,255,.35)}
+.btn.primary:hover{box-shadow:0 12px 38px rgba(110,80,255,.6)}
+.btn.gold{background:linear-gradient(135deg,#FFE08A,var(--gold) 50%,#F09A2A);border-color:transparent;color:#231203;box-shadow:0 10px 30px rgba(255,190,70,.35)}
+.btn.pink{background:linear-gradient(135deg,var(--magenta),#9B4DFF);border-color:transparent;color:#fff}
+.btn.ok{background:rgba(53,240,161,.16);border-color:rgba(53,240,161,.6)}
+.btn.ghost{background:transparent}
+.btn.sm{min-height:40px;padding:0 14px;font-size:15px;border-radius:12px}
+.btn.xs{min-height:34px;padding:0 10px;font-size:14px;border-radius:10px}
+.btn.big{min-height:64px;padding:0 36px;font-size:clamp(17px,1.4vw,22px);border-radius:20px;font-family:var(--disp);letter-spacing:.04em}
+.btn[disabled]{opacity:.38;pointer-events:none}
+.btn.pulse{animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(139,92,255,0), 0 0 40px rgba(139,92,255,.7)}}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line2);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:700;background:rgba(255,255,255,.04)}
+.chip.on{background:var(--violet);border-color:var(--violet);color:#fff}
+.opttag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1E0F3A;background:#C9B8FF;border-radius:6px;padding:2px 7px;vertical-align:middle}
+
+/* ════════ CHARACTERS & DIALOGUE ════════ */
+.av{--c:var(--c-max); position:relative; flex:none; width:var(--s,56px); height:var(--s,56px); border-radius:50%; overflow:hidden; background:radial-gradient(circle at 50% 35%,#3A2A8A,#120C34); box-shadow:0 0 0 3px var(--c), 0 0 24px color-mix(in srgb, var(--c) 45%, transparent); display:grid; place-items:center}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.av .fb{font-family:var(--disp);font-size:calc(var(--s,56px)*.36);color:#fff}
+.k-max{--c:var(--c-max)} .k-nova{--c:var(--c-nova)} .k-beep{--c:var(--c-beep)} .k-you{--c:var(--c-you)} .k-emma{--c:var(--c-emma)}
+.nm{font-family:var(--disp);font-size:13px;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+.nm.k-max{color:var(--c-max)} .nm.k-nova{color:var(--c-nova)} .nm.k-beep{color:var(--c-beep)} .nm.k-you{color:var(--c-you)} .nm.k-emma{color:var(--c-emma)}
+.caps{display:flex;flex-direction:column;gap:14px}
+.cap{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;animation:capin .45s cubic-bezier(.2,.9,.3,1.2) both}
+.cap .bub{position:relative;background:linear-gradient(135deg,rgba(40,34,110,.92),rgba(22,18,66,.92));border:1px solid var(--line2);border-left:5px solid var(--c);border-radius:6px 22px 22px 22px;padding:14px 20px;font-size:clamp(19px,1.6vw,27px);font-weight:700;line-height:1.35;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.cap .bub .nm{display:block;margin-bottom:4px}
+.cap.right{grid-template-columns:1fr auto}
+.cap.right .av{order:2}
+.cap.right .bub{border-left:1px solid var(--line2);border-right:5px solid var(--c);border-radius:22px 6px 22px 22px;text-align:right}
+.cap.beepcap .bub{font-family:var(--disp);font-weight:900;letter-spacing:.04em;color:var(--c-beep);background:linear-gradient(135deg,rgba(10,40,40,.9),rgba(8,20,30,.9));border-color:rgba(61,245,160,.4)}
+@keyframes capin{from{opacity:0;transform:translateY(14px) scale(.97)}}
+.pw{font-family:var(--disp);font-weight:900;letter-spacing:.03em;color:var(--gold);text-shadow:0 0 18px rgba(255,201,77,.55)}
+.hostcard{position:relative;display:grid;place-items:center}
+.hostcard .av{--s:clamp(130px,18vw,250px)!important;box-shadow:0 0 0 5px var(--c), 0 0 70px color-mix(in srgb, var(--c) 55%, transparent)}
+.hostcard .tag{margin-top:-18px;z-index:2;background:#0B0A26;border:2px solid var(--c);border-radius:999px;padding:4px 16px}
+.spot{position:relative}
+.spot::before{content:"";position:absolute;left:50%;top:-40%;width:100%;height:150%;transform:translateX(-50%);background:radial-gradient(50% 60% at 50% 30%,rgba(255,240,200,.28),transparent 70%);pointer-events:none;z-index:-1}
+
+/* ════════ OPTIONS / QUIZ ════════ */
+.opts{display:grid;gap:12px}
+.opts.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:600px){ .opts.c3{grid-template-columns:1fr} }
+.opt>span:nth-child(2){min-width:0;overflow-wrap:anywhere}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:2px solid var(--line2);background:rgba(255,255,255,.04);border-radius:18px;padding:14px 16px;font-size:clamp(17px,1.4vw,23px);font-weight:700;transition:transform .15s, background .2s, border-color .2s}
+.opt:hover{background:rgba(255,255,255,.09);transform:translateX(3px)}
+.opt .L{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-family:var(--disp);font-size:17px;background:rgba(139,92,255,.25);border:1px solid rgba(139,92,255,.6)}
+.opt .mk{margin-left:auto;font-size:15px;font-weight:800;white-space:nowrap}
+.opt.right{border-color:var(--ok);background:rgba(53,240,161,.13);box-shadow:0 0 0 4px rgba(53,240,161,.12)}
+.opt.right .L{background:var(--ok);color:#052A1B;border-color:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:rgba(255,92,122,.12);animation:shake .4s}
+.opt.wrong .L{background:var(--bad);color:#2A0610;border-color:var(--bad)}
+.opt.pick{border-color:var(--cyan);background:rgba(63,230,255,.1)}
+.opt.dim{opacity:.55}
+.opt .bar{position:absolute}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.why{margin-top:12px;border-radius:16px;padding:12px 16px;background:rgba(53,240,161,.1);border:1px solid rgba(53,240,161,.35);font-weight:600;animation:capin .35s both}
+.why.no{background:rgba(255,92,122,.1);border-color:rgba(255,92,122,.4)}
+.qcard{position:relative}
+.qnum{font-family:var(--disp);font-size:13px;letter-spacing:.14em;color:var(--cyan)}
+.qtext{font-size:clamp(22px,2.2vw,34px);font-weight:800;line-height:1.25;margin:6px 0 16px}
+.dots{display:flex;gap:8px}
+.dots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.18)}
+.dots i.c{background:var(--cyan);box-shadow:0 0 0 4px rgba(63,230,255,.2)} .dots i.d{background:var(--ok)}
+.votes{font-size:13px;color:var(--muted);font-weight:700}
+.vbar{height:8px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:6px}
+.vbar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:6px;transition:width .4s}
+
+/* ════════ TITLE SCREEN ════════ */
+.title-scr{min-height:calc(100vh - 230px);display:grid;place-items:center;text-align:center}
+.ep{display:inline-flex;gap:10px;align-items:center;font-family:var(--disp);font-size:14px;letter-spacing:.3em;color:var(--cyan);border:1px solid rgba(63,230,255,.45);border-radius:999px;padding:6px 18px;background:rgba(63,230,255,.06)}
+.logo{position:relative;margin:22px 0 6px}
+.logo .h-xl{line-height:.92;text-shadow:0 0 50px rgba(139,92,255,.45)}
+.logo .the{display:block;font-family:var(--disp);font-size:clamp(16px,1.6vw,24px);letter-spacing:.6em;color:var(--muted);margin-bottom:8px}
+.marquee{display:flex;justify-content:center;gap:14px;margin:6px 0 18px}
+.marquee i{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:bulbs 1.2s infinite}
+.marquee i:nth-child(2n){animation-delay:.6s}
+@keyframes bulbs{50%{opacity:.25;box-shadow:none}}
+.cast{display:flex;justify-content:center;gap:clamp(14px,3vw,46px);flex-wrap:wrap;margin:26px 0 30px}
+.cast .one{display:flex;flex-direction:column;align-items:center;gap:10px;width:clamp(120px,14vw,190px)}
+.cast .one .av{--s:clamp(84px,11vw,156px)!important}
+@media (max-width:520px){ .cast .one{width:100px} .cast{gap:10px} }
+.cast .one b{font-family:var(--disp);font-size:15px;letter-spacing:.1em}
+.cast .one span{font-size:13px;color:var(--muted);line-height:1.3}
+.cast .one:nth-child(1){animation:capin .6s .1s both} .cast .one:nth-child(2){animation:capin .6s .25s both} .cast .one:nth-child(3){animation:capin .6s .4s both}
+
+/* ════════ VOCAB (Round 1) ════════ */
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:560px){ .vgrid{grid-template-columns:1fr} }
+.vc{border:1px solid var(--line2);border-radius:16px;padding:10px 14px;background:rgba(255,255,255,.035)}
+.vc b{display:block;font-size:clamp(17px,1.35vw,21px);color:#fff}
+.vc span{display:block;font-size:15px;color:#CFC8F7;line-height:1.35}
+.vc .ua{color:var(--gold2);font-size:14px;font-weight:700}
+.vc.hit{border-color:var(--cyan);background:rgba(63,230,255,.09)}
+details.more{margin-top:12px;border:1px dashed var(--line2);border-radius:14px;padding:8px 14px;font-size:15px}
+details.more summary{cursor:pointer;font-weight:800;color:var(--muted)}
+.mini-q{border:1px solid var(--line);border-radius:20px;padding:14px;background:rgba(255,255,255,.03)}
+.mini-q .qtext{font-size:clamp(18px,1.5vw,24px);margin:2px 0 10px}
+.mini-q .opt{padding:10px 12px;font-size:clamp(16px,1.2vw,20px)}
+.mini-q .opt .L{width:34px;height:34px;font-size:14px}
+
+/* ════════ ENVELOPE & SCRIPT (Round 2) ════════ */
+.env-wrap{display:grid;place-items:center;padding:20px 0;perspective:1200px}
+.envelope{position:relative;width:min(560px,90vw);aspect-ratio:1.6;border-radius:14px;background:linear-gradient(160deg,#E9DDBF,#CDB98F);box-shadow:0 40px 80px rgba(0,0,0,.55);transform-style:preserve-3d;animation:floaty 4s ease-in-out infinite}
+@keyframes floaty{50%{transform:translateY(-8px) rotate(-.6deg)}}
+.envelope .flap{position:absolute;left:0;right:0;top:0;height:58%;background:linear-gradient(180deg,#DCCB9E,#C2AC7C);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;transition:transform .8s cubic-bezier(.5,0,.3,1);z-index:3;border-radius:14px 14px 0 0}
+.envelope .seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FF6A8C,#B3123E);display:grid;place-items:center;color:#FFE3EA;font-family:var(--disp);font-size:30px;box-shadow:0 6px 16px rgba(0,0,0,.4);transition:opacity .3s}
+.envelope .stamp{position:absolute;left:8%;bottom:12%;z-index:2;font-family:var(--disp);font-size:clamp(14px,2vw,22px);color:#B3123E;border:4px solid #B3123E;border-radius:8px;padding:6px 14px;transform:rotate(-8deg);letter-spacing:.06em;opacity:.85}
+.envelope .paper{position:absolute;left:6%;right:6%;top:8%;height:80%;background:#FBF8F0;border-radius:6px;z-index:1;transition:transform .9s .4s cubic-bezier(.3,.8,.3,1);box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.envelope .paper::before{content:"";position:absolute;left:10%;right:10%;top:18%;height:60%;background:repeating-linear-gradient(180deg,#C9C1AE 0 3px,transparent 3px 16px)}
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .seal{opacity:0}
+.envelope.open .paper{transform:translateY(-62%)}
+.doc{position:relative;background:#FBF8EE;color:#1D1A2E;border-radius:10px;padding:clamp(18px,3vw,42px);box-shadow:0 30px 80px rgba(0,0,0,.55);animation:docin .7s cubic-bezier(.2,.8,.3,1) both;background-image:linear-gradient(90deg,transparent 46px,rgba(229,37,79,.18) 46px,rgba(229,37,79,.18) 48px,transparent 48px)}
+@keyframes docin{from{opacity:0;transform:translateY(40px) rotate(-1deg)}}
+.doc .stampd{position:absolute;right:clamp(10px,3vw,40px);top:clamp(10px,2vw,26px);font-family:var(--disp);color:#C8143F;border:4px solid #C8143F;border-radius:8px;padding:4px 12px;font-size:clamp(11px,1.2vw,15px);transform:rotate(7deg);opacity:.8;letter-spacing:.06em}
+.doc .dt{font-family:var(--disp);font-size:clamp(20px,2.2vw,32px);color:#2A1260;margin:0 0 4px;padding-right:150px}
+.doc .meta{font-size:13px;color:#6B6585;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+.doc .paras{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:4px 34px}
+@media (max-width:900px){ .doc .paras{grid-template-columns:1fr} .doc .dt{padding-right:0} }
+.doc .pp{position:relative;padding:6px 12px 6px 14px;border-radius:10px;font-size:clamp(17px,1.3vw,21px);line-height:1.5;cursor:pointer;transition:background .2s, opacity .3s;border-left:4px solid transparent}
+.doc .pp:hover{background:rgba(139,92,255,.07)}
+.doc .pp .n{position:absolute;left:-32px;top:10px;font-size:12px;font-weight:800;color:#A39CC0}
+.doc.focus .pp{opacity:.35}
+.doc.focus .pp.on{opacity:1;background:rgba(255,201,77,.22);border-left-color:#E6A11A}
+.doc .pp .tr{display:block;margin-top:6px;font-size:15px;color:#6A4A00;font-style:italic}
+.doc .hl{font-family:var(--disp);font-weight:900;color:#7A1FFF;background:linear-gradient(transparent 55%,rgba(255,201,77,.6) 55%);padding:0 3px;border-radius:3px}
+.doc .hl.plain{font-family:inherit;color:inherit;background:none;padding:0}
+.tw{all:unset;cursor:help;border-bottom:2px dotted #8B5CFF;color:inherit;font-weight:700}
+.tw:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+#pop{position:fixed;z-index:70;width:min(360px,calc(100vw - 24px));background:#1B1A55;color:var(--text);border:1px solid var(--line2);border-radius:18px;padding:16px 18px;box-shadow:0 24px 60px rgba(0,0,0,.55);animation:popin .18s ease}
+#pop .w{font-family:var(--disp);font-size:22px;color:var(--gold)}
+#pop .ua{color:var(--gold2);font-weight:700;font-size:15px}
+#pop .x{position:absolute;top:8px;right:8px}
+@keyframes popin{from{opacity:0;transform:translateY(6px) scale(.98)}}
+.emma{display:grid;gap:14px}
+.emma .q{display:flex;gap:14px;align-items:center;background:rgba(255,201,77,.07);border:1px solid rgba(255,201,77,.35);border-radius:18px;padding:12px 18px;font-size:clamp(19px,1.8vw,28px);font-weight:800;animation:capin .5s both}
+.emma .q:nth-child(2){animation-delay:.15s} .emma .q:nth-child(3){animation-delay:.3s}
+
+/* ════════ POWER CARDS (Round 3) ════════ */
+.pcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,2vw,26px);max-width:900px;margin:0 auto}
+.pc{position:relative;aspect-ratio:3/2.2;border-radius:22px;perspective:900px}
+.pc .in{position:absolute;inset:0;transition:transform .8s cubic-bezier(.3,1.4,.4,1);transform-style:preserve-3d}
+.pc .f,.pc .b{position:absolute;inset:0;border-radius:22px;display:grid;place-items:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.pc .f{background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 10px,transparent 10px 20px),linear-gradient(160deg,#20205A,#121238);border:2px dashed rgba(170,160,255,.35)}
+.pc .f svg{width:38%;height:38%;opacity:.7}
+.pc .b{transform:rotateY(180deg);background:radial-gradient(circle at 50% 30%,rgba(255,240,190,.35),transparent 60%),linear-gradient(160deg,#4B1FB0,#1C0E58);border:2px solid var(--gold);box-shadow:0 0 50px rgba(255,201,77,.45), inset 0 0 30px rgba(255,201,77,.2)}
+.pc .b span{font-family:var(--disp);font-size:clamp(30px,5vw,70px);font-weight:900}
+.pc .b small{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:clamp(11px,1vw,14px);color:var(--gold2);font-weight:800;letter-spacing:.06em}
+.pc.on .in{transform:rotateY(180deg)}
+.pc.glow .b{animation:pcglow 1s ease 2}
+@keyframes pcglow{50%{box-shadow:0 0 90px rgba(255,201,77,.9), inset 0 0 40px rgba(255,201,77,.4)}}
+.pcards.mini{max-width:420px;gap:10px} .pcards.mini .pc{aspect-ratio:2/1.1} .pcards.mini .pc .b span{font-size:clamp(20px,2.2vw,30px)} .pcards.mini .pc .b small{display:none}
+.cmp{display:grid;grid-template-columns:1fr auto 1.15fr;gap:14px;align-items:center;border:1px solid var(--line);border-radius:20px;padding:14px 18px;background:rgba(255,255,255,.03);animation:capin .5s both}
+.cmp .nrm{font-size:clamp(17px,1.5vw,24px);color:#CFC8F7}
+.cmp .str{font-size:clamp(19px,1.8vw,30px);font-weight:800}
+.cmp .ar{font-size:24px;color:var(--gold)}
+.cmp small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:800}
+@media (max-width:640px){ .cmp{grid-template-columns:1fr} .cmp .ar{transform:rotate(90deg);justify-self:start} }
+.dq{border:1px solid var(--line);border-radius:20px;padding:16px 18px;background:rgba(255,255,255,.03)}
+.dq .qq{font-size:clamp(19px,1.6vw,26px);font-weight:800}
+.dq .aa{margin-top:10px;font-size:clamp(18px,1.5vw,24px);color:var(--ok);font-weight:800;animation:capin .4s both}
+.gtable{display:grid;gap:12px}
+.grow3{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.2fr) minmax(0,1fr);gap:12px;align-items:center;border-radius:18px;padding:14px 18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.grow3 .tense{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.grow3 .subj{font-size:clamp(17px,1.4vw,22px);font-weight:800}
+.grow3 .form{font-family:var(--disp);font-size:clamp(15px,1.5vw,22px)}
+.grow3 .ex{font-size:clamp(17px,1.4vw,22px);font-style:italic}
+@media (max-width:720px){ .grow3{grid-template-columns:1fr} }
+.rw{display:flex;gap:12px;align-items:center;font-size:clamp(17px,1.5vw,24px);font-weight:700;padding:10px 14px;border-radius:14px}
+.rw.yes{background:rgba(53,240,161,.1);border:1px solid rgba(53,240,161,.4)}
+.rw.no{background:rgba(255,92,122,.08);border:1px solid rgba(255,92,122,.35);text-decoration:line-through;text-decoration-color:rgba(255,92,122,.7);text-decoration-thickness:2px}
+.rw .ic{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;text-decoration:none}
+.rw.yes .ic{background:var(--ok);color:#052A1B} .rw.no .ic{background:var(--bad);color:#2A0610}
+.notes4{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:720px){ .notes4{grid-template-columns:1fr} }
+.notes4 div{border-radius:14px;padding:10px 14px;background:rgba(139,92,255,.1);border:1px solid rgba(139,92,255,.3);font-size:clamp(15px,1.15vw,19px)}
+.uabox{margin-top:10px;border-radius:14px;padding:10px 14px;background:rgba(255,201,77,.08);border:1px dashed rgba(255,201,77,.5);color:var(--gold2);font-size:16px}
+/* Beat MAX chat */
+.duel{display:grid;gap:16px;max-width:900px}
+.duel .gap{display:inline-block;min-width:120px;border-bottom:4px solid var(--c-you);text-align:center;font-family:var(--disp);color:var(--gold);padding:0 6px}
+.duel .gap.fill{animation:bump .5s}
+
+/* ════════ WHEEL (Round 4) ════════ */
+.wheel-zone{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:center}
+@media (max-width:1000px){ .wheel-zone{grid-template-columns:1fr} }
+.wheel-box{position:relative;width:min(560px,88vw,calc(100vh - 370px));min-width:min(300px,88vw);aspect-ratio:1;margin:0 auto}
+.wheel-box .rimglow{position:absolute;inset:-4%;border-radius:50%;background:conic-gradient(from 0deg,var(--violet),var(--cyan),var(--magenta),var(--gold),var(--violet));filter:blur(24px);opacity:.45}
+.wheel-box svg.wheel{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+.wheel-box .pointer{position:absolute;left:50%;top:-3.5%;width:12%;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6)) drop-shadow(0 0 12px rgba(255,201,77,.8))}
+.wheel-box .pointer.tick{animation:tick .12s}
+@keyframes tick{50%{transform:translateX(-50%) rotate(-14deg)}}
+.wheel-box .hub{position:absolute;left:50%;top:50%;width:24%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;z-index:2;border:0;background:radial-gradient(circle at 40% 30%,#FFF3C4,var(--gold) 45%,#C27A10);box-shadow:0 0 0 6px #120A30, 0 0 0 9px rgba(255,201,77,.7), 0 10px 30px rgba(0,0,0,.6);font-family:var(--disp);font-size:clamp(13px,1.6vw,22px);color:#2A1503;font-weight:900;letter-spacing:.05em}
+.wheel-box .hub:disabled{cursor:default}
+.wheel-box .hub:not(:disabled):hover{filter:brightness(1.1)}
+.wheel g.sec.used path.sl{filter:grayscale(.85) brightness(.5)}
+.wheel g.sec.used text, .wheel g.sec.used .ico{opacity:.45}
+.wheel g.sec.win path.sl{filter:brightness(1.25) saturate(1.2)}
+.wheel .bulb{animation:bulbs 1s infinite}
+.wheel .bulb:nth-child(2n){animation-delay:.5s}
+.wctl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.wstat{text-align:center;margin-top:10px;font-size:15px;color:var(--muted);font-weight:700}
+.wstat b{color:#fff}
+.chal{position:relative;border-radius:28px;padding:clamp(18px,2.4vw,30px);background:linear-gradient(160deg,rgba(40,24,110,.9),rgba(14,12,48,.92));border:2px solid var(--sc,var(--violet));box-shadow:0 0 60px color-mix(in srgb, var(--sc,var(--violet)) 35%, transparent), 0 24px 60px rgba(0,0,0,.5);animation:flipin .6s cubic-bezier(.2,1.2,.4,1) both;transform-origin:50% 0}
+@keyframes flipin{from{opacity:0;transform:rotateX(-70deg) translateY(-20px)}}
+.chal .sect{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-size:clamp(14px,1.3vw,18px);letter-spacing:.12em;color:#120A2C;background:var(--sc);border-radius:10px;padding:6px 14px}
+.chal .sect svg{width:22px;height:22px}
+.chal .acc{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:16px 0}
+.chal .acc .av{--s:clamp(60px,7vw,96px)!important}
+.chal .acc q{font-size:clamp(21px,2.1vw,32px);font-weight:800;line-height:1.25;quotes:"“" "”"}
+.chal .mis{font-size:clamp(17px,1.4vw,22px);font-weight:700;color:#E8E2FF;border-left:4px solid var(--sc);padding-left:12px}
+.chal .gram{display:inline-block;margin-top:10px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan)}
+.chal .smp{margin-top:14px;border-radius:16px;padding:12px 16px;background:rgba(53,240,161,.1);border:1px solid rgba(53,240,161,.4);font-size:clamp(18px,1.6vw,25px);font-weight:800;animation:capin .35s both}
+.chal .smp small{display:block;font-size:13px;color:var(--ok);letter-spacing:.1em;text-transform:uppercase}
+.chal .alt{display:block;margin-top:6px;font-size:.8em;color:#CFC8F7;font-weight:700}
+.chal .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chal .tm{font-family:var(--disp);font-size:22px;min-width:76px;text-align:center}
+.chal .tm.low{color:var(--gold)} .chal .tm.out{color:var(--bad)}
+.wait-card{border:2px dashed var(--line2);border-radius:28px;padding:30px;text-align:center;color:var(--muted)}
+.who-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+
+/* ════════ TEAMS / BREAKOUT (Round 5) ════════ */
+.mission{border-radius:26px;padding:clamp(18px,2.6vw,34px);background:linear-gradient(160deg,rgba(255,63,208,.14),rgba(61,123,255,.12));border:1px solid rgba(255,140,230,.35)}
+.mission ol{margin:10px 0 0;padding-left:1.3em;font-size:clamp(18px,1.6vw,25px);font-weight:700;line-height:1.5}
+.mission ol li::marker{color:var(--magenta);font-family:var(--disp)}
+.mission .need{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.mission .need span{font-family:var(--disp);font-size:clamp(15px,1.4vw,20px);border-radius:12px;padding:8px 14px;background:rgba(255,201,77,.14);border:1px solid rgba(255,201,77,.5);color:var(--gold)}
+.exshow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:900px){ .exshow{grid-template-columns:1fr} }
+.flip{position:relative;min-height:210px;perspective:1000px;cursor:pointer;border:0;background:none;padding:0;text-align:left;width:100%}
+.flip .in{position:absolute;inset:0;transition:transform .7s cubic-bezier(.3,1.3,.4,1);transform-style:preserve-3d}
+.flip .f,.flip .b{position:absolute;inset:0;border-radius:22px;padding:16px 18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;gap:8px;justify-content:center}
+.flip .f{background:linear-gradient(160deg,#2B1A6E,#16123F);border:2px solid var(--c-max)}
+.flip .b{transform:rotateY(180deg);background:linear-gradient(160deg,#0E4A3A,#0B2A2A);border:2px solid var(--ok)}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .tg{font-family:var(--disp);font-size:13px;letter-spacing:.14em;color:var(--gold)}
+.flip .ln{font-size:clamp(17px,1.4vw,22px);font-weight:800;line-height:1.3}
+.flip .hint{font-size:13px;color:var(--muted);margin-top:auto}
+.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px}
+.tcard{border-radius:24px;padding:16px;background:linear-gradient(160deg,rgba(30,30,90,.8),rgba(14,12,48,.8));border:1px solid var(--line2)}
+.tcard.ready{border-color:var(--ok);box-shadow:0 0 0 3px rgba(53,240,161,.2)}
+.tcard .hd{display:flex;gap:10px;align-items:center}
+.tcard .hd .em{font-size:28px}
+.tcard input,.tcard textarea,.field{width:100%;border:1px solid var(--line2);background:rgba(5,5,25,.55);border-radius:12px;padding:9px 12px;font-size:16px}
+.tcard textarea{resize:vertical;min-height:44px;line-height:1.35}
+.tcard input:focus,.tcard textarea:focus,.field:focus{outline:2px solid var(--cyan);border-color:transparent}
+.ccs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;margin-top:4px}
+.cc{margin-top:10px;border-radius:16px;padding:10px 12px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.cc .lab{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-size:13px;letter-spacing:.1em;color:var(--gold)}
+.cc .lab .ok{margin-left:auto;font-family:var(--body);font-size:12px;letter-spacing:0;color:var(--muted);font-weight:800}
+.cc .lab .ok.y{color:var(--ok)}
+.cc label{display:block;font-size:13px;font-weight:800;color:var(--muted);margin:6px 0 3px}
+.timerbig{font-family:var(--disp);font-size:clamp(40px,6vw,84px);line-height:1;letter-spacing:.02em}
+.timerbig.low{color:var(--gold)} .timerbig.out{color:var(--bad)}
+.stagecard{border-radius:28px;padding:clamp(16px,2.4vw,30px);background:linear-gradient(160deg,rgba(255,201,77,.12),rgba(139,92,255,.14));border:2px solid rgba(255,201,77,.45)}
+.awards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:820px){ .awards{grid-template-columns:1fr} }
+.award{border-radius:18px;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid var(--line2)}
+.award b{display:block;font-family:var(--disp);font-size:14px;letter-spacing:.06em;color:var(--gold)}
+
+/* ════════ FINALE ════════ */
+.final-q .opt{font-size:clamp(19px,1.8vw,28px)}
+.only-right .opt:not(.right){display:none}
+.drum{font-family:var(--disp);font-size:clamp(30px,4vw,60px);text-align:center;letter-spacing:.3em;animation:blink .5s infinite;color:var(--gold)}
+.trophy{width:clamp(150px,18vw,240px);filter:drop-shadow(0 0 40px rgba(255,201,77,.6));animation:trophy 2.4s ease-in-out infinite}
+@keyframes trophy{50%{transform:translateY(-10px) rotate(-2deg)}}
+.board{display:grid;gap:10px;max-width:640px;margin:0 auto}
+.board .r{display:flex;align-items:center;gap:14px;border-radius:16px;padding:10px 16px;background:rgba(255,255,255,.05);border:1px solid var(--line2);font-weight:800;font-size:clamp(17px,1.4vw,22px)}
+.board .r:first-child{border-color:var(--gold);background:rgba(255,201,77,.12)}
+.board .r .p{margin-left:auto;font-family:var(--disp);color:var(--gold)}
+.ach{display:inline-flex;align-items:center;gap:14px;border-radius:20px;padding:12px 20px;background:linear-gradient(90deg,rgba(53,240,161,.16),rgba(63,230,255,.1));border:1px solid rgba(53,240,161,.5);animation:capin .6s .6s both}
+.ach .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--ok);color:#052A1B;font-size:28px}
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.wall .it{border-radius:18px;padding:12px 16px;background:rgba(255,255,255,.05);border:1px solid var(--line2);font-size:clamp(17px,1.4vw,22px);font-weight:700;animation:capin .4s both}
+.wall .it small{display:block;font-size:13px;color:var(--muted);font-weight:700;margin-top:4px}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:80}
+
+/* ════════ CONTROLS ════════ */
+#ctrl{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;align-items:center;gap:8px;padding:12px clamp(10px,2vw,24px) calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(5,5,22,.94) 38%)}
+#ctrl .info{flex:1;min-width:0;text-align:center;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#ctrl .info b{color:#fff}
+@media (max-width:860px){ #ctrl .lbl2{display:none} #ctrl .info{display:none} #ctrl{justify-content:space-between} }
+body.present #ctrl{opacity:.35;transition:opacity .3s} body.present #ctrl:hover, body.present #ctrl:focus-within{opacity:1}
+body.present .tonly{display:none!important}
+
+/* ════════ BEEP bubble, toast, modal, notes, dock ════════ */
+#beep{position:fixed;left:clamp(10px,2vw,24px);bottom:92px;z-index:60;display:flex;align-items:center;gap:10px;pointer-events:none;opacity:0;transform:translateY(20px) scale(.9);transition:.35s cubic-bezier(.2,1.3,.4,1)}
+#beep.on{opacity:1;transform:none}
+#beep img{width:74px;height:74px}
+#beep span{font-family:var(--disp);font-size:clamp(13px,1.2vw,17px);font-weight:900;letter-spacing:.06em;color:#062A1C;background:var(--c-beep);border-radius:16px 16px 16px 4px;padding:10px 14px;box-shadow:0 10px 30px rgba(61,245,160,.35)}
+#toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);background:#221E63;border:1px solid var(--line2);border-radius:14px;padding:10px 18px;font-weight:700;font-size:15px;z-index:90;opacity:0;pointer-events:none;transition:.25s;max-width:min(92vw,620px);text-align:center}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#modal{position:fixed;inset:0;z-index:85;background:rgba(3,3,15,.7);display:grid;place-items:center;padding:16px;backdrop-filter:blur(6px)}
+#modalBox{width:min(760px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#131449;border:1px solid var(--line2);border-radius:26px;padding:clamp(18px,2.6vw,30px);box-shadow:0 30px 90px rgba(0,0,0,.6)}
+#notes{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);z-index:50;background:#0E0F38;border-left:1px solid var(--line2);transform:translateX(102%);transition:transform .3s;display:flex;flex-direction:column;font-size:15px}
+#notes.on{transform:none}
+#notes header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+#notesBody{overflow:auto;padding:12px 16px 40px}
+.tsec{border-bottom:1px solid var(--line);padding:12px 0}
+.tsec h5{margin:0 0 6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.tsec ul{margin:4px 0;padding-left:1.1em} .tsec li{margin:3px 0}
+.tsec .ua{color:var(--gold2)}
+.tsec .say{border-left:3px solid var(--violet);padding-left:10px;margin:6px 0}
+.tsec .say i{display:block;color:var(--gold2);font-size:14px}
+.jump{display:grid;gap:4px}
+.jump button{all:unset;cursor:pointer;padding:6px 10px;border-radius:8px;font-size:14px}
+.jump button:hover{background:rgba(255,255,255,.06)} .jump button.cur{background:var(--violet);color:#fff}
+.switch{display:flex;gap:10px;align-items:center;margin:6px 0;cursor:pointer}
+.switch input{width:20px;height:20px;accent-color:var(--violet)}
+#dock{position:fixed;left:clamp(10px,2vw,24px);top:80px;z-index:40;width:min(330px,calc(100vw - 20px));max-height:calc(100vh - 200px);overflow:auto;background:rgba(14,15,56,.95);border:1px solid var(--line2);border-radius:20px;padding:12px 14px;font-size:14px;display:none}
+#dock.on{display:block}
+#dock.min #dockBody, #dock.min #dockCount{display:none}
+#dock .names{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+#dock .names span{background:rgba(255,255,255,.07);border-radius:999px;padding:2px 8px;font-size:12px}
+.led{width:10px;height:10px;border-radius:50%;background:var(--gold);flex:none}
+.led.on{background:var(--ok);box-shadow:0 0 8px var(--ok)} .led.bad{background:var(--bad)}
+.dbar{margin:6px 0;font-size:13px}
+.dbar .tr{height:6px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
+.dbar .tr i{display:block;height:100%;background:var(--cyan)}
+.wallit{display:flex;gap:6px;align-items:flex-start;border-top:1px solid var(--line);padding:6px 0}
+.wallit p{flex:1;margin:0} .wallit small{display:block;color:var(--muted)}
+#reacts{position:fixed;right:24px;bottom:100px;z-index:45;pointer-events:none;width:60px;height:300px}
+#reacts span{position:absolute;bottom:0;font-size:32px;animation:floatup 3s ease-out forwards}
+@keyframes floatup{to{transform:translateY(-280px);opacity:0}}
+.tm-list{display:grid;gap:10px}
+.tm-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border:1px solid var(--line2);border-radius:16px;padding:10px 12px;background:rgba(255,255,255,.03)}
+.tm-row.act{border-color:var(--gold);background:rgba(255,201,77,.08)}
+.tm-row .pts{font-family:var(--disp);font-size:22px;color:var(--gold);min-width:3ch;text-align:right}
+.navgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.navgrid button{text-align:left;border:1px solid var(--line2);background:rgba(255,255,255,.03);border-radius:12px;padding:10px 12px;font-size:15px;font-weight:700}
+.navgrid button.cur{background:var(--violet);border-color:var(--violet)}
+.navgrid button small{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.navgrid button.cur small{color:#E8E0FF}
+
+/* ════════ STUDENT APP ════════ */
+#stu{display:none}
+body.student #app, body.student #ctrl, body.student #notes, body.student #dock, body.student #beep{display:none!important}
+body.student #stu{display:block;max-width:560px;margin:0 auto;padding:14px 14px 90px}
+.stu-head{display:flex;gap:10px;align-items:center;padding:6px 0 10px}
+.stu-head b{font-family:var(--disp);font-size:16px}
+.stu-card{background:linear-gradient(160deg,rgba(30,30,90,.85),rgba(14,12,48,.85));border:1px solid var(--line2);border-radius:24px;padding:18px;margin-top:10px}
+.stu-card label{display:block;font-weight:800;font-size:14px;margin:12px 0 4px;color:var(--muted)}
+.stu-card input,.stu-card textarea{width:100%;border:1px solid var(--line2);background:rgba(5,5,25,.6);border-radius:14px;padding:12px 14px;font-size:18px}
+.stu-card textarea{min-height:90px;resize:vertical}
+.stu-wait{text-align:center;padding:30px 10px}
+.stu-wait .bigi{font-size:54px}
+.stu-prog{display:flex;gap:4px;margin:4px 0 10px} .stu-prog i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.12)} .stu-prog i.d{background:var(--ok)} .stu-prog i.c{background:var(--cyan)}
+.avpick{display:flex;flex-wrap:wrap;gap:6px} .avpick button{width:46px;height:46px;border-radius:12px;border:1px solid var(--line2);background:rgba(255,255,255,.04);font-size:24px} .avpick button.on{background:var(--violet);border-color:var(--violet)}
+#stuFoot{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:6px;padding:10px;background:rgba(5,5,22,.92);border-top:1px solid var(--line)}
+#stuFoot button{width:50px;height:46px;border-radius:12px;border:1px solid var(--line2);background:rgba(255,255,255,.04);font-size:22px}
+.verif{display:inline-block;font-size:12px;font-weight:800;color:var(--ok);margin-bottom:6px}
+.stu-wheel{width:min(320px,80vw);aspect-ratio:1;margin:6px auto 0;position:relative}
+
+/* reduced motion */
+body.noanim *, body.noanim *::before, body.noanim *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important} }
+@media print{ #top,#ctrl,#notes,#dock{display:none} }
+</style>
+</head>
+<body data-sc="1">
+<div id="studio" aria-hidden="true"><div class="dots"></div><div class="beam b1"></div><div class="beam b2"></div><div class="beam b3"></div><div class="glow"></div><div class="floor"></div></div>
+<div id="app">
+  <header id="top">
+    <a class="home tonly" href="../../" aria-label="Back to the course">←</a>
+    <div class="brand"><img src="../../assets/watermark.png" alt="" onerror="this.remove()"><div><b>THE CONFIDENCE SHOW</b><br><span>Lesson 22 · Unit 3 · <span class="onair">ON AIR</span></span></div></div>
+    <nav id="rail" aria-label="Rounds"></nav>
+    <div class="tb">
+      <button id="score" title="Scoreboard — click to manage teams and points"></button>
+      <button class="ib" id="bSound" title="Sound effects (off by default)" aria-pressed="false">🔇</button>
+      <button class="ib tonly" id="bQuick" title="Quick Mode — hide optional activities" aria-pressed="false">⚡ <span class="lbl">Quick</span></button>
+      <button class="ib tonly" id="bNav" title="Scene navigator (N)">🗺 <span class="lbl">Scenes</span></button>
+      <button class="ib tonly" id="bNotes" title="Teacher notes (T)">🧑‍🏫 <span class="lbl">Notes</span></button>
+      <button class="ib tonly" id="bLive" title="Live classroom (optional)">📡 <span class="lbl">Live</span></button>
+      <button class="ib" id="bPresent" title="Presentation mode, fullscreen (P)">📺 <span class="lbl">Present</span></button>
+    </div>
+  </header>
+  <main id="stage"><div id="view" class="view" aria-live="polite"></div></main>
+</div>
+
+<footer id="ctrl">
+  <button class="btn" id="bBack" aria-label="Previous (left arrow)">◀ <span class="lbl2">Back</span></button>
+  <button class="btn sm ghost tonly" id="bRestartAct" title="Restart this activity (answers on this screen only)">⟲ <span class="lbl2">Restart activity</span></button>
+  <div class="info" id="info"></div>
+  <button class="btn sm ghost" id="bReveal" title="Reveal answer (R)">👁 <span class="lbl2">Reveal</span></button>
+  <button class="btn sm ghost" id="bHide" title="Hide answer (H)">🙈 <span class="lbl2">Hide</span></button>
+  <button class="btn sm ghost tonly" id="bSkip" title="Skip this activity">⏭ <span class="lbl2">Skip</span></button>
+  <button class="btn primary" id="bNext" aria-label="Next (right arrow or space)">Next ▶</button>
+</footer>
+
+<aside id="notes" aria-hidden="true" aria-label="Teacher notes">
+  <header><b class="grow">🧑‍🏫 Teacher notes</b><button class="btn sm ghost" id="notesX" aria-label="Close notes">✕</button></header>
+  <div id="notesBody"></div>
+</aside>
+
+<div id="dock" class="tonly" aria-label="Live classroom">
+  <div class="row" style="gap:8px"><span class="led" id="dockLed"></span><b id="dockTitle" class="grow">Room</b><button class="btn xs ghost" id="dockMin" aria-label="Minimise">▁</button></div>
+  <div class="small" id="dockCount"></div>
+  <div id="dockBody"></div>
+</div>
+
+<div id="beep" aria-live="polite"><img alt="" src=""><span></span></div>
+<div id="modal" class="hidden" role="dialog" aria-modal="true"><div id="modalBox"></div></div>
+<div id="toast" role="status"></div>
+<div id="reacts" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<div id="stu">
+  <div class="stu-head"><span class="led" id="stuLed"></span><b class="grow">THE CONFIDENCE SHOW</b><span class="small" id="stuConn"></span></div>
+  <div class="small" id="stuRoom"></div>
+  <div id="stuBody"></div>
+  <div id="stuFoot"></div>
+</div>
+
+<script>
+/* ============================================================
+   Lesson 22 · The Confidence Show — Emphatic DO / DOES / DID
+   Vanilla JS, один файл, без збірки (як уроки 5–21).
+   1 · helpers   2 · lesson content   3 · ui helpers   4 · steps
+   5 · engine    6 · teacher tools    7 · live room    8 · student app
+   ============================================================ */
+const CFG = window.LESSON_CONFIG || {};
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LET = ['A','B','C','D'];
+const REDUCED_OS = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const qs = new URLSearchParams(location.search);
+const ROLE = (qs.get('role')==='student' || qs.has('join')) ? 'student' : 'teacher';
+const uid = ()=> Math.random().toString(36).slice(2,10);
+const rand4 = ()=> String(1000+Math.floor(Math.random()*9000));
+const mmss = s => { s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),2800); }
+/* emphasise DO / DOES / DID written in capitals */
+const emph = s => esc(s).replace(/\b(DO|DOES|DID)\b/g,'<span class="pw">$1</span>');
+
+/* ---------- 2 · lesson content ---------- */
+const PH = CFG.PHOTOS || {};
+const CH = {
+  max:  {name:'MAX',  role:'The Doubt Master',    img:()=>PH.max,  ua:'Ведучий-скептик: драматичний, змагальний, ніколи не вірить відповіді одразу.'},
+  nova: {name:'NOVA', role:'The Helpful Co-host', img:()=>PH.nova, ua:'Співведуча: пояснює правила, допомагає відкрити граматику, підбадьорює.'},
+  beep: {name:'BEEP', role:'The Scorekeeper',     img:()=>PH.beep, ua:'Робот-рахівник: бали, таймер, короткі смішні повідомлення.'},
+  you:  {name:'YOU',  role:'Contestant'},
+  emma: {name:'EMMA', role:'Last season’s finalist'}
+};
+const MOODS = {max:'max', shocked:'max_shocked', defeated:'max_defeated'};
+
+const SCENES = [
+  {n:1, k:'OPEN',   t:'Welcome to the Show',     min:3},
+  {n:2, k:'R1',     t:'Friendship Flashback',    min:3},
+  {n:3, k:'R2',     t:'The Secret Script',       min:5},
+  {n:4, k:'R3',     t:'Unlock the Power Words',  min:6},
+  {n:5, k:'R4',     t:'The Confidence Wheel',    min:6},
+  {n:6, k:'R5',     t:'Your Mini Game Show',     min:8},
+  {n:7, k:'FINALE', t:'Beat the Host',           min:3}
+];
+
+/* OPENING */
+const OPEN_LINES = [
+  ['max',"Welcome, contestants! Do you really think you can beat me? Nobody has ever won my show!"],
+  ['nova',"Don't listen to him! This show is all about proving what you know."],
+  ['max',"Well, let's see how confident you really are!"]
+];
+const WARM = {id:'warm', q:'Which statement describes you best?', opts:[
+  "I'm confident when I know the answer.",
+  "I sometimes know the answer but feel nervous.",
+  "I just guess and hope for the best."
+], react:[
+  "Oh, really? Let's test that confidence!",
+  "Interesting! Maybe this show will change that.",
+  "Ha! I like your style. But can you prove anything?"
+]};
+const TALK0 = {id:'talk0', q:'Is it better to sound confident or to be correct?', starters:['I think… is more important because…','Being correct is…, but…','Speaking confidently helps…'],
+  sample:'I think being correct is more important, but speaking confidently can help people understand us.',
+  ua:'Що краще — звучати впевнено чи бути правим?'};
+
+/* ROUND 1 — vocabulary revision (Lesson 21) */
+const VOC6 = [
+  {k:'back',  t:'have someone’s back', ua:'підтримувати когось',                  en:'support someone when they need help.'},
+  {k:'flaky', t:'flaky',               ua:'ненадійний',                           en:'someone who often cancels plans.'},
+  {k:'two',   t:'two-faced',           ua:'дволикий',                             en:'friendly to someone but unkind behind their back.'},
+  {k:'drift', t:'drift apart',         ua:'поступово віддалятися',                en:'slowly become less close.'},
+  {k:'fall',  t:'fall out',            ua:'посваритися',                          en:'have an argument and stop being friendly.'},
+  {k:'tea',   t:'spill the tea',       ua:'розповісти плітки або цікаві подробиці', en:'share gossip or surprising news.'}
+];
+const MORE_WORDS = [
+  ['ride or die','a very loyal friend who is always there','вірний друг'],
+  ['bond over','become closer because of a shared interest','зблизитися завдяки спільному'],
+  ['click with someone','become friends very easily','одразу знайти спільну мову'],
+  ['third wheel','a person who feels left out with two others','третій зайвий'],
+  ['no drama vibe','a calm feeling with no arguments','атмосфера без сварок']
+];
+const VOCQ = [
+  {k:'v1', q:'A person who often cancels plans is…', opts:['flaky','two-faced','supportive'], a:0, hit:'flaky', why:'Flaky describes someone who often cancels plans.'},
+  {k:'v2', q:'When two people slowly become less close, they…', opts:['spill the tea','drift apart','have someone’s back'], a:1, hit:'drift', why:'Drift apart means slowly becoming less close.'},
+  {k:'v3', q:'To support a friend means to…', opts:['fall out','spill the tea','have their back'], a:2, hit:'back', why:'Have someone’s back means support them.'}
+];
+
+/* ROUND 2 — the secret script.  [[w|text]] = word with a tooltip */
+const GLOSS = {
+  hosted:{w:'host (a show)', en:'to present a TV show', ua:'вести (шоу)'},
+  contestants:{w:'contestant', en:'a person who takes part in a game show', ua:'учасник (шоу)'},
+  unusual:{w:'unusual', en:'not normal, a bit strange', ua:'незвичний'},
+  immediately:{w:'immediately', en:'at once, right now', ua:'одразу, негайно'},
+  reached:{w:'reach', en:'to get to a place or level', ua:'дійти до'},
+  studied:{w:'study', en:'to learn something, for example for a test', ua:'вчитися, готуватися'},
+  nervous:{w:'nervous', en:'worried and a little scared', ua:'хвилюватися, нервувати'},
+  puzzle:{w:'puzzle', en:'a game or problem that you solve', ua:'головоломка'},
+  audience:{w:'audience', en:'the people who watch a show', ua:'глядачі'},
+  cheered:{w:'cheer', en:'to shout because you are happy', ua:'вітати вигуками'},
+  admit:{w:'admit', en:'to say that something is true (often when you don’t want to)', ua:'визнати'},
+  reveals:{w:'reveal', en:'to show something that was secret', ua:'розкривати'},
+  evidence:{w:'evidence', en:'facts that show something is true', ua:'докази'}
+};
+const SCRIPT = [
+  {t:'MAX has [[hosted|hosted]] the Confidence Show for five years. He loves challenging [[contestants|contestants]], but he has one [[unusual|unusual]] rule: he never believes an answer [[immediately|immediately]].',
+   ua:'MAX веде «Шоу впевненості» вже п’ять років. Він обожнює кидати виклик учасникам, але має одне незвичне правило: він ніколи не вірить відповіді одразу.'},
+  {t:'Last season, a girl named Emma [[reached|reached]] the final round. She answered every question correctly, but MAX kept saying, “Are you sure? I don’t think you know!”',
+   ua:'Минулого сезону дівчина на ім’я Емма дійшла до фінального раунду. Вона правильно відповіла на кожне запитання, але MAX постійно казав: «Ти впевнена? Не думаю, що ти знаєш!»'},
+  {t:'Emma replied, “I DO know the answers! I [[studied|studied]] for weeks!”',
+   ua:'Емма відповіла: «Я ТАКИ знаю відповіді! Я готувалася кілька тижнів!»'},
+  {t:'MAX laughed. “Well, your brother doesn’t seem very confident.”',
+   ua:'MAX засміявся: «Ну, твій брат не здається дуже впевненим».'},
+  {t:'Emma answered, “He DOES believe in me. He’s just [[nervous|nervous]]!”',
+   ua:'Емма відповіла: «Він СПРАВДІ вірить у мене. Він просто хвилюється!»'},
+  {t:'In the final round, MAX said, “You didn’t solve the last [[puzzle|puzzle]].”',
+   ua:'У фінальному раунді MAX сказав: «Ти не розв’язала останню головоломку».'},
+  {t:'Emma smiled. “I DID solve it. Look at the screen!”',
+   ua:'Емма усміхнулася: «Я ТАКИ її розв’язала. Подивись на екран!»'},
+  {t:'The [[audience|audience]] [[cheered|cheered]]. MAX had to [[admit|admit]] she was right.',
+   ua:'Глядачі радісно закричали. MAX мусив визнати, що вона мала рацію.'},
+  {t:'Since then, MAX has made the show even harder. But the secret script [[reveals|reveals]] something important: confident contestants don’t just repeat their answers. They explain them clearly and show [[evidence|evidence]].',
+   ua:'Відтоді MAX зробив шоу ще складнішим. Але секретний сценарій розкриває щось важливе: впевнені учасники не просто повторюють відповіді. Вони чітко їх пояснюють і показують докази.'}
+];
+const RQ = [
+  {k:'r1', q:'Why does MAX keep questioning contestants?', opts:['He wants to challenge their confidence.','He doesn’t understand English.','He wants to cancel the show.'], a:0,
+   why:'He wants to test how confidently contestants defend their answers.', ex:[0]},
+  {k:'r2', q:'What did Emma do when MAX doubted her?', opts:['She stopped speaking.','She used stronger statements and showed evidence.','She left the show.'], a:1,
+   why:'She used emphatic sentences and showed that her answers were correct.', ex:[2,4,6]},
+  {k:'r3', q:'What is the real secret of the show?', opts:['Always shout loudly.','Never admit a mistake.','Speak clearly and support your answers.'], a:2,
+   why:'Confidence works best when we can explain our answers.', ex:[8]}
+];
+const TALK1 = {id:'talk1', q:'Would you enjoy being a contestant on MAX’s show? Why or why not?', starters:['Yes, because I…','No, because I…','Maybe, if…'],
+  sample:'Yes, because I enjoy challenges and I like proving that I’m right.', ua:'Чи хотів би / хотіла б ти бути учасником шоу MAX? Чому?'};
+const EMMA3 = ['“I DO know the answers!”','“He DOES believe in me.”','“I DID solve it.”'];
+
+/* ROUND 3 — power words */
+const PCARDS = [['DO','I / you / we / they'],['DOES','he / she / it'],['DID','past · everyone']];
+const DISC = [
+  {n:'I know the answer.',       s:'I DO know the answer!'},
+  {n:'He believes in me.',       s:'He DOES believe in me!'},
+  {n:'I solved the puzzle.',     s:'I DID solve the puzzle!'}
+];
+const DQ = [
+  {k:'d1', q:'Which three words make the statements stronger?', a:'Do, does, did.', kind:'text'},
+  {k:'d2', q:'Which word do we use with he, she and it in the present?', a:'Does.', kind:'choice', opts:['do','does','did'], c:1},
+  {k:'d3', q:'Why do we say “did solve”, not “did solved”?', a:'Because the main verb stays in its base form after did.', kind:'text'}
+];
+const RULE = {
+  en:'We use do, does and did in positive sentences to make our words stronger, show emotion, or correct someone.',
+  ua:'Ми використовуємо do, does і did у стверджувальних реченнях, щоб підсилити висловлювання, показати емоції або виправити чиєсь неправильне припущення.',
+  rows:[
+    {tense:'Present Simple', subj:'I / you / we / they', f:'DO + base verb',   ex:'We DO understand!'},
+    {tense:'Present Simple', subj:'He / she / it',       f:'DOES + base verb', ex:'She DOES know!'},
+    {tense:'Past Simple',    subj:'Any subject',          f:'DID + base verb',  ex:'I DID finish!'}
+  ],
+  base:[['She DOES like the show.',true],['She does likes the show.',false],['I DID win yesterday.',true],['I did won yesterday.',false]],
+  notes:[
+    'Emphatic DO / DOES / DID is mainly used in <b>positive</b> Present Simple and Past Simple statements.',
+    'We <b>stress</b> these words when we speak: I <span class="pw">DO</span> know!',
+    'Don’t use emphatic do before <b>be</b> or <b>modal verbs</b>: ✓ I <i>am</i> ready! ✓ I <i>can</i> swim! (not “I do am”, “I do can”).',
+    'A stronger sentence doesn’t make a false statement true — you still need to <b>be right</b> and show evidence.'
+  ]
+};
+const BEAT = [
+  {k:'b1', acc:'You don’t understand the rules!', who:'you', pre:'I', post:'understand them!', opts:['do','does','did'], a:0, why:'I + do in the present.', react:'Hmm… lucky guess!'},
+  {k:'b2', acc:'Emma doesn’t believe in you!', who:'you', pre:'She', post:'believe in me!', opts:['do','does','did'], a:1, why:'She + does in the present.', react:'That’s impossible!'},
+  {k:'b3', acc:'You didn’t finish the puzzle yesterday!', who:'you', pre:'I', post:'finish it!', opts:['do','does','did'], a:2, why:'Yesterday is in the past → did.', react:'Okay, that WAS impressive!'},
+  {k:'b4', acc:'He doesn’t know the answer!', who:'nova', pre:'He DOES', post:'the answer!', opts:['knew','knows','know'], a:2, why:'After does, use the base form: know.', react:'Stop helping them, NOVA!', opt:true}
+];
+const PRESS = [
+  ['max',"Okay, you know the rules. But can you use them under pressure?"],
+  ['nova',"Contestants, it's time for the most exciting part of the show!"],
+  ['beep',"CONFIDENCE WHEEL ACTIVATED!"]
+];
+
+/* ROUND 4 — the Confidence Wheel (8 sectors).  icon = Lucide-style path (ISC licence) */
+const ICON = {
+  school:'<path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M8 21v-5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v5"/><path d="M8 18h8"/>',
+  gaming:'<path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6C2.6 9.4 2 14.5 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.4-1.4A2 2 0 0 1 9.8 16h4.4a2 2 0 0 1 1.4.6L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.5-.6-6.6-.7-7.3A4 4 0 0 0 17.3 5Z"/>',
+  clock:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  talent:'<path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 3-4 3h-2a2 2 0 0 0-1 3.7A1.6 1.6 0 0 1 12 22Z"/><circle cx="13.5" cy="6.5" r="1"/><circle cx="17.5" cy="10.5" r="1"/><circle cx="8.5" cy="7.5" r="1"/><circle cx="6.5" cy="12.5" r="1"/>',
+  friend:'<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/>',
+  food:'<path d="M15 11h.01M11 15h.01M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16"/><path d="M5.7 17.1a17 17 0 0 1 11.4-11.4"/>',
+  weekend:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>',
+  wild:'<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/>',
+  lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>'
+};
+const ico = (k,st='currentColor')=>`<svg viewBox="0 0 24 24" fill="none" stroke="${st}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[k]}</svg>`;
+const SECTORS = [
+  {t:'SCHOOL LIFE',  i:'school',  col:'#8B5CFF', ink:'#fff',    acc:'You never pay attention in class!',            mis:'Defend yourself using DO.',                       sample:'I DO pay attention! I listen and take notes.', g:'Present Simple · I + do'},
+  {t:'GAMING',       i:'gaming',  col:'#22D3EE', ink:'#062330', acc:'Your friends don’t know anything about video games!', mis:'Defend your friends using DO.',            sample:'My friends DO know a lot about games!',        g:'Present Simple · plural subject + do'},
+  {t:'YESTERDAY',    i:'clock',   col:'#3D7BFF', ink:'#fff',    acc:'You didn’t do anything fun yesterday!',        mis:'Correct MAX using DID.',                          sample:'I DID do something fun! I watched a film.',     g:'Past Simple · did + base verb'},
+  {t:'TALENT',       i:'talent',  col:'#FF4FB8', ink:'#fff',    acc:'You don’t have any special talents!',          mis:'Tell MAX about a real talent using DO.',          sample:'I DO have talents! I can draw.',               g:'Present Simple · I + do'},
+  {t:'BEST FRIEND',  i:'friend',  col:'#FF8A3D', ink:'#2A1203', acc:'Your best friend doesn’t support you!',        mis:'Defend your friend using DOES.',                  sample:'My best friend DOES support me!',              g:'Present Simple · he / she + does'},
+  {t:'FOOD',         i:'food',    col:'#FFC94D', ink:'#2A1A03', acc:'You don’t like pizza!',                        mis:'Respond using DO if the statement is wrong.',     sample:'I DO like pizza! It’s delicious.',             g:'Present Simple · I + do', alt:'Don’t like pizza? Then: “Actually, you’re right. But I DO like pasta!”'},
+  {t:'LAST WEEKEND', i:'weekend', col:'#34E89E', ink:'#052A1B', acc:'You didn’t go anywhere last weekend!',         mis:'Correct MAX using DID if the statement is wrong.', sample:'I DID go somewhere! I visited my grandparents.', g:'Past Simple · did + base verb', alt:'Stayed at home? Then: “You’re right, but I DID do something interesting at home!”'},
+  {t:'WILD CARD',    i:'wild',    col:'#D946EF', ink:'#fff',    acc:'You can’t make a strong sentence!',            mis:'Create your own emphatic sentence using DO, DOES or DID.', sample:'I DO know how to make a strong sentence!', g:'Any form · bonus: explain your choice', bonus:'Bonus +5: explain why you chose that auxiliary.'}
+];
+
+/* ROUND 5 — mini game show */
+const MISSION_LINES = [
+  ['max',"Fine! You survived my wheel. But I bet you couldn't create a better challenge!"],
+  ['nova',"Challenge accepted! Contestants, now YOU become the hosts!"],
+  ['beep',"TEAM CREATION MODE ACTIVATED!"]
+];
+const AUX = ['do','does','did'];
+const EXAMPLE = {title:'THE CRAZY CONFIDENCE SHOW', items:[
+  {aux:'do',   h:'You don’t know how to cook!',          c:'I DO know how to cook! I make amazing pancakes!'},
+  {aux:'does', h:'Your cat doesn’t understand you!',     c:'My cat DOES understand me! It comes when I call!'},
+  {aux:'did',  h:'You didn’t wake up early yesterday!',  c:'I DID wake up early! I got up at six!'}
+]};
+const MISSION_TEXT = `CREATE YOUR OWN MINI GAME SHOW! 🎤
+Become the host. Challenge another contestant.
+• Work in teams.
+• Create THREE funny challenges for another team.
+• Each challenge needs TWO lines:
+  1. A silly accusation from the host.
+  2. A confident answer using DO, DOES or DID.
+• Your team must create: one challenge using DO, one using DOES, one using DID.
+• Choose one host and one contestant.
+• Get ready to perform your mini-show! (4 minutes)
+Example — Host: "You don't know how to cook!" Contestant: "I DO know how to cook! I make amazing pancakes!"`;
+const AWARDS = [['funny','Funniest Challenge','😂'],['grammar','Best Grammar','🧠'],['perf','Best Performance','🎭']];
+const TEAM_EMOJI = ['⭐','🔥','🚀','💎','⚡','🎯','🦄','🎸'];
+const TEAM_NAMES = ['TEAM CONFIDENCE','TEAM ROCKET','TEAM GALAXY','TEAM DIAMOND','TEAM THUNDER','TEAM TARGET','TEAM UNICORN','TEAM ROCK'];
+
+/* FINALE */
+const FINALQ = {k:'fq', q:'Choose the correct response.', opts:['“We DID learn something today!”','“We DOES learn something today!”','“We DID learned something today!”'], a:0,
+  why:'We use DID + the base form LEARN to emphasise a past action.'};
+const FINAL_END = [
+  ['max',"Okay, okay! I admit it. You DID beat my challenges!", 'defeated'],
+  ['nova',"And you DO know how to make your English stronger!"],
+  ['beep',"CONFIDENCE LEVEL: MAXIMUM!"]
+];
+const TICKET = {id:'ticket', q:'One thing I DO know about myself is…', ex:['I DO know how to solve difficult problems.','I DO enjoy learning new things.','I DO believe I can improve my English.']};
+const BYE = ['Great job, contestants!','Today you learned how to use DO, DOES and DID to make your statements stronger.','Remember: real confidence means expressing yourself clearly and supporting what you say.','See you in the next episode!'];
+</script>
+
+<script>
+/* ---------- state ---------- */
+const KEY = 'lesson22-state-v1';
+const FRESH = ()=>({ i:0, d:{}, core:false, noanim:false, sound:false, scoring:true,
+  teams:[{id:'t1', name:TEAM_NAMES[0], e:TEAM_EMOJI[0], score:0}], at:'t1', log:[], cc:0,
+  votes:{}, wall:{}, wheel:{used:[], rot:0, sel:null, sample:false, spins:0, who:'', allow:'', spinning:null},
+  work:{}, sub:{}, awards:{}, best:{}, tmr:{dur:240, left:240, run:false, end:0},
+  room:rand4(), tid:uid(), live:false, uaRead:false, uaRule:false });
+let S = FRESH();
+if(ROLE==='teacher'){ try{ const st=JSON.parse(localStorage.getItem(KEY)||'null'); if(st){ S=Object.assign(FRESH(), st); S.wheel=Object.assign(FRESH().wheel, st.wheel||{}, {spinning:null}); if(!S.teams||!S.teams.length) S.teams=FRESH().teams; } }catch(e){} }
+function save(){ if(ROLE!=='teacher') return; try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+const sd = id => (S.d[id] = S.d[id] || {});
+
+/* ---------- 3 · ui helpers ---------- */
+function av(k, s=56, mood){
+  const c=CH[k]||{name:'?'};
+  const src = k==='max' ? (PH[MOODS[mood||'max']] || PH.max) : (c.img ? c.img() : '');
+  const fbTxt = k==='you' ? '🎤' : (c.name||'?')[0];
+  const inner = src ? `<img src="${esc(src)}" alt="" onerror="this.outerHTML='<span class=&quot;fb&quot;>${fbTxt}</span>'">` : `<span class="fb">${fbTxt}</span>`;
+  return `<span class="av k-${k}" style="--s:${s}px" role="img" aria-label="${esc(c.name)}">${inner}</span>`;
+}
+function cap(line, o={}){
+  const [k,t,mood]=line, c=CH[k];
+  const cls=(k==='you'?' right':'')+(k==='beep'?' beepcap':'');
+  return `<div class="cap${cls} k-${k}"${o.delay?` style="animation-delay:${o.delay}s"`:''}>${av(k,o.s||64,mood)}<div class="bub"><span class="nm k-${k}">${c.name}</span>${o.html?t:emph(t)}</div></div>`;
+}
+function head(s){ const sc=SCENES[s.sc-1]; return `<div class="eyebrow"><span class="rd">${sc.k}</span><b>${sc.t}</b>${s.opt?'<span class="opttag">optional</span>':''}</div>`; }
+function hostcard(mood, label){ return `<div class="hostcard spot">${av('max',220,mood)}<div class="tag nm k-max">${label||'MAX · The Doubt Master'}</div></div>`; }
+function pcardsHTML(onN, o={}){
+  return `<div class="pcards ${o.mini?'mini':''}">${PCARDS.map((p,i)=>{ const on=i<onN, nw=o.fresh===i;
+    return `<div class="pc ${on&&!nw?'on':''} ${o.glow===i?'glow':''}" ${nw?'data-unlock':''} aria-label="${on?p[0]+' unlocked':'locked card'}"><div class="in"><div class="f">${ico('lock','#B9A8FF')}</div><div class="b"><span class="goldtxt">${p[0]}</span><small>${p[1]}</small></div></div></div>`; }).join('')}</div>`;
+}
+/* quiz state for one question */
+const QMAP = {}; [...VOCQ, ...RQ, ...BEAT, FINALQ].forEach(q=>QMAP[q.k]=q);
+function qState(d,k){ const q=QMAP[k], a=(d.a||{})[k], rv=!!((d.rv||{})[k]), done=(a===q.a)||rv; return {a, done, show:done && !d.hid}; }
+function counts(tid,n){ const v=S.votes[tid]||{}, c=Array(n).fill(0); Object.values(v).forEach(i=>{ if(i>=0&&i<n) c[i]++; }); return c; }
+function optsHTML(stepId, k, o={}){
+  const q=QMAP[k], d=sd(stepId), st=qState(d,k), tid=stepId+':'+k, n=counts(tid,q.opts.length), tot=n.reduce((a,b)=>a+b,0);
+  return `<div class="opts ${o.cols?'c3':''}">${q.opts.map((t,i)=>{
+    const right=st.show && i===q.a && !o.mute, wrong=!d.hid && st.a===i && i!==q.a;
+    return `<button class="opt ${right?'right':wrong?'wrong':''}" data-q="${k}" data-i="${i}" data-step="${stepId}"><span class="L">${LET[i]}</span><span>${emph(t)}</span>${right?'<span class="mk">✓ Correct</span>':wrong?'<span class="mk">✕ Try again</span>':''}${tot?`<span class="mk votes">👥 ${n[i]}</span>`:''}</button>`; }).join('')}</div>
+    ${st.show && !o.mute && !o.nowhy?`<div class="why">✓ ${emph(q.why)}</div>`:''}`;
+}
+function bindQ(v){ $$('[data-q]',v).forEach(b=>b.onclick=()=>choose(b.dataset.step, b.dataset.q, +b.dataset.i)); }
+const NERVOUS = ['CONFIDENCE LEVEL INCREASING!','MAX IS GETTING NERVOUS!','GRAMMAR POWER: RISING!','CONFIDENCE LEVEL INCREASING!'];
+function choose(stepId, k, i){
+  const q=QMAP[k], d=sd(stepId); d.a=d.a||{}; d.aw=d.aw||{}; d.hid=false;
+  if(d.a[k]===q.a || (d.rv||{})[k]) { d.a[k]=i; save(); draw(); return; }
+  d.a[k]=i;
+  if(i===q.a){ SND.play('ok'); if(!d.aw[k]){ d.aw[k]=1; award(10); S.cc=(S.cc||0)+1; if(S.cc%2===0) beep(NERVOUS[(S.cc/2-1)%NERVOUS.length]); } }
+  else SND.play('no');
+  const s=STEPS.find(x=>x.id===stepId); s && s.onAnswer && s.onAnswer(d,k,i);
+  save(); draw();
+}
+function revealQ(stepId,k){ const d=sd(stepId); (d.rv=d.rv||{})[k]=1; d.hid=false; SND.play('reveal'); save(); draw(); }
+function liveQ(stepId, k){ const q=QMAP[k], st=qState(sd(stepId),k); return {id:stepId+':'+k, kind:'choice', q:q.q, opts:q.opts, lock:st.done, correct:st.done?q.a:undefined}; }
+
+/* tooltip words in the script */
+function scriptHTML(t, plain){
+  return esc(t).replace(/\[\[(\w+)\|([^\]]+)\]\]([.,!?:;”’]*)/g,(m,k,w,pu)=> plain?w+pu:`<span style="white-space:nowrap"><button class="tw" data-g="${k}" aria-label="${w}: meaning">${w}</button>${pu}</span>`)
+               .replace(/\b(DO|DOES|DID)\b/g,'<span class="hl">$1</span>');
+}
+function showGloss(k, el){
+  const g=GLOSS[k]; if(!g) return; closePop();
+  const p=document.createElement('div'); p.id='pop'; p.setAttribute('role','dialog'); p.setAttribute('aria-label',g.w);
+  p.innerHTML=`<button class="btn xs ghost x" aria-label="Close">✕</button><div class="w">${esc(g.w)}</div><p style="margin:6px 0 4px">${esc(g.en)}</p>${ROLE==='teacher'?`<div class="ua tonly">🇺🇦 ${esc(g.ua)}</div>`:''}<div class="row mt" style="gap:8px"><button class="btn xs" data-say>🔊 Listen</button></div>`;
+  document.body.appendChild(p);
+  const r=el.getBoundingClientRect(), pw=p.offsetWidth, ph=p.offsetHeight;
+  let left=Math.min(Math.max(12, r.left+r.width/2-pw/2), innerWidth-pw-12), top=r.bottom+10; if(top+ph>innerHeight-12) top=Math.max(12, r.top-ph-10);
+  p.style.left=left+'px'; p.style.top=top+'px';
+  $('.x',p).onclick=closePop; $('[data-say]',p).onclick=()=>speak(g.w.replace(/\(.*?\)/,'')+'. '+g.en);
+  POPFROM=el; $('.x',p).focus({preventScroll:true});
+}
+let POPFROM=null;
+function closePop(){ const p=$('#pop'); if(p){ p.remove(); if(POPFROM&&document.body.contains(POPFROM)) POPFROM.focus({preventScroll:true}); POPFROM=null; } }
+document.addEventListener('click',e=>{ const t=e.target.closest('.tw[data-g]'); if(t){ e.preventDefault(); e.stopPropagation(); showGloss(t.dataset.g,t); return; } if($('#pop') && !e.target.closest('#pop')) closePop(); }, true);
+function speak(text){ if(!('speechSynthesis' in window)) return toast('No speech voice in this browser'); speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='en-GB'; u.rate=.9; speechSynthesis.speak(u); }
+
+/* speaking card (optional discussions) */
+function speakHTML(T, d){
+  const wall=S.wall[T.id]||[];
+  return `<div class="glass pad"><div class="qnum">SPEAKING · DISCUSS IN PAIRS OR AS A CLASS</div><div class="qtext">${emph(T.q)}</div>
+    <div class="row">${T.starters.map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div>
+    ${d.rv&&!d.hid?`<div class="why mt">💬 <b>Sample:</b> ${emph(T.sample)}</div>`:`<button class="btn sm mt" data-rv>👁 Show sample answer</button>`}
+    ${wall.length?`<div class="wall mt">${wall.map(w=>`<div class="it">${esc(w.text)}<small>${esc(w.by||'')}</small></div>`).join('')}</div>`:''}
+    <div class="row mt tonly"><input class="field grow" data-wallin="${T.id}" placeholder="Type a student’s answer to show it on the screen…" maxlength="160" style="flex:1;min-width:200px"><button class="btn sm" data-walladd="${T.id}">＋ Show</button></div></div>`;
+}
+function bindSpeak(v, T, d){
+  const r=$('[data-rv]',v); if(r) r.onclick=()=>{ d.rv=1; d.hid=false; SND.play('reveal'); save(); draw(); };
+  bindWallAdd(v);
+}
+function bindWallAdd(v){
+  $$('[data-walladd]',v).forEach(b=>{ const id=b.dataset.walladd, inp=$(`[data-wallin="${id}"]`,v);
+    const add=()=>{ const t=inp.value.trim(); if(!t) return; (S.wall[id]=S.wall[id]||[]).push({text:t.slice(0,160), by:'from the class'}); save(); draw(); };
+    b.onclick=add; inp.onkeydown=e=>{ if(e.key==='Enter') add(); }; });
+}
+
+/* team helpers */
+const team = id => S.teams.find(t=>t.id===id);
+const actTeam = ()=> team(S.at) || S.teams[0];
+function award(n, tid){
+  if(!S.scoring) return;
+  const t=team(tid||S.at)||S.teams[0]; t.score+=n; S.log.push({t:t.id, n}); if(S.log.length>60) S.log.shift();
+  SND.play('point'); paintScore(true); pubState(); save();
+}
+function addTeam(){
+  if(S.teams.length>=8) return toast('Up to 8 teams');
+  const used=new Set(S.teams.map(t=>t.id)); let n=1; while(used.has('t'+n)) n++;
+  const k=S.teams.length; S.teams.push({id:'t'+n, name:TEAM_NAMES[k%8], e:TEAM_EMOJI[k%8], score:0}); save();
+}
+function wget(tid){ const w=S.work[tid]=S.work[tid]||{people:''}; AUX.forEach(a=>{ w[a]=w[a]||{h:'',c:''}; }); return w; }
+const auxRx = a => new RegExp('\\b'+a+'\\b','i');
+const PAST_IRR = 'went won saw made took got came ate wrote had was were knew bought ran swam slept woke gave left felt found told said thought brought caught taught drank drove flew forgot sang sat stood spoke wore understood became began broke chose did'.split(' ');
+function auxCheck(text, a){
+  const t=String(text||'').replace(/’/g,"'");
+  if(!t.trim()) return {cls:'', txt:'empty'};
+  if(!auxRx(a).test(t)) return {cls:'', txt:'needs '+a.toUpperCase()};
+  const m=t.match(new RegExp('\\b'+a+'\\s+([a-z]+)','i')), v=m?m[1].toLowerCase():'';
+  if(a==='did' && ((/[a-z]{2,}ed$/.test(v) && !['need','feed','bleed','speed','breed','seed','weed'].includes(v)) || PAST_IRR.includes(v))) return {cls:'', txt:'check: did + base verb'};
+  if(a==='does' && /[a-z]{2,}s$/.test(v) && !/(ss|us|is)$/.test(v)) return {cls:'', txt:'check: does + base verb'};
+  return {cls:'y', txt:'✓ uses '+a.toUpperCase()};
+}
+
+/* trophy */
+const TROPHY = `<svg class="trophy" viewBox="0 0 200 220" aria-hidden="true"><defs><linearGradient id="tg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4C2"/><stop offset=".45" stop-color="#FFC94D"/><stop offset="1" stop-color="#C47A10"/></linearGradient></defs>
+<path d="M58 30h84v40c0 34-18 58-42 58S58 104 58 70Z" fill="url(#tg)"/><path d="M58 42H30c0 30 14 46 34 50M142 42h28c0 30-14 46-34 50" fill="none" stroke="url(#tg)" stroke-width="10" stroke-linecap="round"/>
+<rect x="90" y="126" width="20" height="34" fill="url(#tg)"/><rect x="60" y="158" width="80" height="18" rx="6" fill="url(#tg)"/><rect x="48" y="176" width="104" height="26" rx="8" fill="#3A1C8C"/>
+<text x="100" y="194" text-anchor="middle" font-family="Unbounded,Arial" font-weight="900" font-size="13" fill="#FFE7A3">CHAMPIONS</text>
+<path d="M100 46l7 15 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2Z" fill="#fff" opacity=".9"/></svg>`;
+
+/* ---------- 4 · steps ---------- */
+const STEPS = [
+/* ═════ OPENING ═════ */
+{ id:'title', sc:1, title:'Title screen',
+  render:()=>`<div class="title-scr"><div>
+    <div class="ep">EPISODE 022 · LESSON 22</div>
+    <div class="logo"><span class="the">THE</span><h1 class="h-xl grad">CONFIDENCE<br>SHOW</h1></div>
+    <div class="marquee" aria-hidden="true">${'<i></i>'.repeat(14)}</div>
+    <p class="h-s" style="letter-spacing:.24em;color:var(--gold2);font-family:var(--disp)">DO YOU HAVE WHAT IT TAKES?</p>
+    <div class="cast">${['max','nova','beep'].map(k=>`<div class="one">${av(k,150)}<b class="nm k-${k}">${CH[k].name}</b><span>${CH[k].role}</span></div>`).join('')}</div>
+    <button class="btn big gold pulse" id="enter">🎤 ENTER THE SHOW</button>
+    <p class="small mt">Grammar: emphatic <b>DO · DOES · DID</b> &nbsp;·&nbsp; Words from Lesson 21 &nbsp;·&nbsp; Unit 3</p></div></div>`,
+  after:v=>{ $('#enter',v).onclick=()=>{ lights(); SND.play('whoosh'); setTimeout(next, (S.noanim||REDUCED_OS)?0:850); }; },
+  n:{t:'30 сек', obj:'Hook: the class enters a TV show.',
+     do:['Увімкніть 📺 Present (P) і поділіться екраном у Zoom.','Звук вимкнено за замовчуванням — 🔇 у верхній панелі, якщо хочете ефекти.','Познайомте з героями: MAX — ведучий, який ніколи не вірить; NOVA — співведуча-помічниця; BEEP — робот, що рахує бали.','Натисніть ENTER THE SHOW (або →).'],
+     say:[['Welcome to the studio! Today you are contestants on a TV show.','Ласкаво просимо в студію! Сьогодні ви — учасники телешоу.']]}
+},
+{ id:'open', sc:1, title:'Opening dialogue', parts:3,
+  render:d=>head(STEPS[1])+`<div class="split wr" style="align-items:center">${hostcard('max')}
+    <div class="caps">${OPEN_LINES.slice(0,(d.p||0)+1).map(l=>cap(l)).join('')}
+    ${(d.p||0)>=2?`<p class="small">🎭 Volunteers: read MAX and NOVA aloud — in your best TV voice!</p>`:''}</div></div>`,
+  n:{t:'1 хв', obj:'Set up the story conflict: MAX doubts the contestants.',
+     do:['Next показує репліки по одній. Попросіть двох учнів прочитати за MAX і NOVA.','Запитайте: “Do you think we can beat MAX?”'],
+     ua:'MAX: «Ласкаво просимо, учасники! Ви справді думаєте, що можете мене перемогти? Ніхто ще не вигравав моє шоу!» NOVA: «Не слухайте його! Це шоу — про те, щоб довести, що ви знаєте.» MAX: «Ну що ж, подивимось, наскільки ви впевнені!»',
+     read:'MAX — учень з найгучнішим «телевізійним» голосом; NOVA — будь-хто охочий.'}
+},
+{ id:'warm', sc:1, title:'Warm-up: confidence check',
+  render:d=>{ const tid='warm', n=counts(tid,3), tot=n.reduce((a,b)=>a+b,0), mx=Math.max(1,...n);
+    return head(STEPS[2])+`<div class="split wl"><div class="glass pad"><div class="qnum">WARM-UP · NO WRONG ANSWERS</div><div class="qtext">${esc(WARM.q)}</div>
+      <div class="opts">${WARM.opts.map((t,i)=>`<button class="opt ${d.pick===i?'pick':''}" data-w="${i}" style="position:relative;flex-wrap:wrap"><span class="L">${LET[i]}</span><span class="grow">“${esc(t)}”</span>${tot?`<span class="mk votes">👥 ${n[i]}</span><span style="flex-basis:100%" class="vbar"><i style="width:${n[i]/mx*100}%"></i></span>`:''}</button>`).join('')}</div>
+      <p class="small mt">${tot?`${tot} vote${tot>1?'s':''} from phones. `:''}Click the answer most of the class chose — MAX will react.</p></div>
+      <div class="col" style="align-items:center">${hostcard(d.pick!=null?'max':'max')}
+      ${d.pick!=null?cap(['max',WARM.react[d.pick]]):`<p class="muted center">MAX is waiting for your answer…</p>`}</div></div>`; },
+  after:(v,d)=>$$('[data-w]',v).forEach(b=>b.onclick=()=>{ d.pick=+b.dataset.w; SND.play('reveal'); save(); draw(); }),
+  reveal:d=>{ const n=counts('warm',3), mx=Math.max(...n); d.pick = mx>0 ? n.indexOf(mx) : (d.pick??0); },
+  hide:d=>{ d.pick=null; },
+  live:()=>({id:'warm', kind:'choice', q:WARM.q, opts:WARM.opts, poll:true, chosen:sd('warm').pick}),
+  n:{t:'1 хв', obj:'Activate the topic of confidence; quick personal response.',
+     do:['Учні голосують (руки ✋ у Zoom або телефони в Live).','Клікніть варіант більшості — MAX відреагує. Reveal (R) обирає варіант-лідер голосування.','Тут немає правильної відповіді — бали не нараховуються.'],
+     ua:'A — Я впевнений, коли знаю відповідь. B — Іноді знаю відповідь, але хвилююсь. C — Просто вгадую й сподіваюся на краще.',
+     follow:['Why do people feel nervous when they know the answer?']}
+},
+{ id:'talk0', sc:1, title:'Confident or correct? (speaking)', opt:true,
+  render:d=>head(STEPS[3])+`<div class="split wl" style="align-items:center">${speakHTML(TALK0,d)}<div class="col" style="align-items:center">${av('nova',170)}${cap(['nova','Tell us what you think!'])}</div></div>`,
+  after:(v,d)=>bindSpeak(v,TALK0,d), reveal:d=>{ d.rv=1; }, live:()=>({id:'talk0', kind:'text', q:TALK0.q, ph:TALK0.starters[0]}),
+  n:{t:'1–2 хв (optional)', obj:'Short opinion speaking.', do:['2–3 відповіді вголос, без запису.','Мало часу — ⏭ Skip або ⚡ Quick Mode.'], ua:TALK0.ua, sample:[TALK0.sample]}
+},
+
+/* ═════ ROUND 1 ═════ */
+{ id:'flash', sc:2, title:'Friendship Flashback',
+  render:d=>{ const done=VOCQ.map(q=>qState(d,q.k).done), all=done.every(Boolean), hits=new Set(VOCQ.filter((q,i)=>done[i]).map(q=>q.hit));
+    return head(STEPS[4])+`<div class="split" style="align-items:center">${cap(['max',"You think you remember these words? Prove it!"],{s:54})}${cap(['nova',"Just three quick questions. You can do this!"],{s:54,delay:.15})}</div>
+    <div class="split mt" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)">
+      <div><div class="qnum" style="margin-bottom:8px">WORDS FROM LESSON 21</div><div class="vgrid">${VOC6.map(w=>`<div class="vc ${hits.has(w.k)?'hit':''}"><b>${esc(w.t)}</b><span>${esc(w.en)}</span><span class="ua tonly">🇺🇦 ${esc(w.ua)}</span></div>`).join('')}</div>
+        <details class="more"><summary>More words from Lesson 21 (reference only)</summary><div class="small mt" style="color:#D8D2FF">${MORE_WORDS.map(w=>`<b>${esc(w[0])}</b> — ${esc(w[1])}<span class="tonly" style="color:var(--gold2)"> · ${esc(w[2])}</span>`).join('<br>')}</div></details>
+        <a class="small tonly" href="${esc(CFG.WORDS_LINK||'../../#words?lesson=21')}" target="_blank" rel="noopener" style="color:var(--cyan)">📚 Open Lesson 21 words on the platform ↗</a></div>
+      <div class="col">${VOCQ.map((q,i)=>`<div class="mini-q"><div class="qnum">QUESTION ${i+1}</div><div class="qtext">${esc(q.q)}</div>${optsHTML('flash',q.k,{cols:3})}</div>`).join('')}</div></div>
+    ${all?`<div class="split mt2" style="align-items:center">${cap(['max',"Hmm. Not bad. But the real show starts now!"],{s:54})}${cap(['nova',"Wait... I found something backstage!"],{s:54,delay:.2})}</div><div class="center mt"><button class="btn big primary" data-next>🕵️ GO BACKSTAGE</button></div>`:''}`; },
+  after:v=>bindQ(v),
+  reveal:d=>{ const q=VOCQ.find(q=>!qState(d,q.k).done); if(q){ (d.rv=d.rv||{})[q.k]=1; } d.hid=false; },
+  ready:d=>VOCQ.every(q=>qState(d,q.k).done), gateMsg:'Some questions are not answered yet — press Next again to continue',
+  live:()=>{ const d=sd('flash'), q=VOCQ.find(q=>!qState(d,q.k).done)||VOCQ[2]; return liveQ('flash',q.k); },
+  n:{t:'3 хв', obj:'Quick revision of 6 friendship expressions from Lesson 21.',
+     do:['Учні читають картки вголос (по одній).','Три питання: учень називає відповідь — ви клікаєте. Правильно = +10 активній команді.','Reveal (R) показує відповідь на наступне питання. Hide (H) ховає позначки, щоб перепитати.','Не перетворюйте це на окремий урок лексики — 3 хвилини.'],
+     ans:['1 — A flaky','2 — B drift apart','3 — C have their back'],
+     follow:['Do you know anyone who is never flaky?','What can friends do so they don’t drift apart?']}
+},
+
+/* ═════ ROUND 2 ═════ */
+{ id:'env', sc:3, title:'The secret envelope',
+  render:d=>head(STEPS[5])+`${cap(['nova',"Guys, I found something backstage. It's Max's secret script. Read it carefully!"])}
+    <div class="env-wrap mt"><div class="envelope ${d.open?'open':''}" id="envl"><div class="paper"></div><div class="flap"></div><div class="seal">M</div><div class="stamp">CONFIDENTIAL — HOST'S SCRIPT</div></div></div>
+    <div class="center"><button class="btn big gold ${d.open?'':'pulse'}" id="openEnv">📂 ${d.open?'READ THE FILE':'OPEN SECRET FILE'}</button></div>`,
+  after:(v,d)=>{ $('#openEnv',v).onclick=()=>{ if(d.open) return next(); d.open=1; save(); $('#envl',v).classList.add('open'); SND.play('reveal'); setTimeout(()=>{ if(cur().id==='env') next(); }, (S.noanim||REDUCED_OS)?100:1500); }; },
+  reveal:d=>{ d.open=1; },
+  n:{t:'30 сек', obj:'Story transition to the reading.', do:['Клікніть OPEN SECRET FILE — конверт відкриється й покаже документ.'], ua:'NOVA: «Я знайшла дещо за лаштунками. Це секретний сценарій MAX. Читайте уважно!»'}
+},
+{ id:'read', sc:3, title:'Reading: the secret script',
+  render:d=>head(STEPS[6])+`<div class="row tonly" style="margin-bottom:12px">
+      <button class="btn sm ${S.uaRead?'primary':''}" id="rUa">🇺🇦 Translation ${S.uaRead?'ON':'OFF'}</button>
+      <button class="btn sm ghost" id="rPrev" aria-label="Previous paragraph">◀</button><span class="small">Reading spotlight ${d.f!=null?(d.f+1)+' / '+SCRIPT.length:'— click a paragraph'}</span><button class="btn sm ghost" id="rNext" aria-label="Next paragraph">▶</button>
+      ${d.f!=null?'<button class="btn sm ghost" id="rClr">Show all</button>':''}<span class="small">· dotted words = tap for meaning</span></div>
+    <article class="doc ${d.f!=null?'focus':''}"><div class="stampd">TOP SECRET</div><div class="meta">Confidential · Host’s script · Season 5</div><h2 class="dt">The Secret Behind the Confidence Show</h2>
+      <div class="paras">${SCRIPT.map((p,i)=>`<div class="pp ${d.f===i?'on':''}" data-pp="${i}"><span class="n">${i+1}</span>${scriptHTML(p.t)}${S.uaRead&&ROLE==='teacher'?`<span class="tr tonly">🇺🇦 ${esc(p.ua)}</span>`:''}</div>`).join('')}</div></article>`,
+  after:(v,d)=>{
+    const set=f=>{ d.f=f; save(); draw(); };
+    $$('[data-pp]',v).forEach(el=>el.onclick=e=>{ if(e.target.closest('.tw')) return; const i=+el.dataset.pp; set(d.f===i?null:i); });
+    const ua=$('#rUa',v); if(ua) ua.onclick=()=>{ S.uaRead=!S.uaRead; save(); draw(); };
+    const pv=$('#rPrev',v); if(pv) pv.onclick=()=>set(d.f==null?0:Math.max(0,d.f-1));
+    const nx=$('#rNext',v); if(nx) nx.onclick=()=>set(d.f==null?0:Math.min(SCRIPT.length-1,d.f+1));
+    const cl=$('#rClr',v); if(cl) cl.onclick=()=>set(null);
+  },
+  n:{t:'3 хв', obj:'Read for gist; notice emphatic DO / DOES / DID in context (no rule yet).',
+     do:['Учні читають по абзацу вголос. Клік по абзацу (або ◀ ▶) — «прожектор» на абзац, решта тьмяніє.','Слова з пунктиром — клік показує значення (англ.; переклад бачить лише вчитель).','🇺🇦 Translation — переклад під кожним абзацом (лише в режимі вчителя, у Present прихований).','Виділені DO / DOES / DID НЕ пояснюйте — правило учні відкриють у Раунді 3. Можна лише запитати: “Do you notice any strange words in capitals?”'],
+     ua:'Повний переклад: увімкніть 🇺🇦 Translation на екрані.'}
+},
+{ id:'rq', sc:3, title:'Reading questions', parts:3,
+  render:d=>{ const p=d.p||0, q=RQ[p];
+    return head(STEPS[7])+`<div class="split wl"><div class="glass pad qcard"><div class="row"><div class="qnum grow">QUESTION ${p+1} OF 3</div><div class="dots">${RQ.map((x,i)=>`<i class="${i===p?'c':qState(d,x.k).done?'d':''}"></i>`).join('')}</div></div>
+      <div class="qtext">${esc(q.q)}</div>${optsHTML('rq',q.k)}</div>
+      <div class="doc" style="padding:20px 22px;background-image:none"><div class="meta">Look back at the script</div>${q.ex.map(i=>`<p style="font-size:clamp(16px,1.2vw,19px);margin:10px 0">${scriptHTML(SCRIPT[i].t,true)}</p>`).join('')}</div></div>`; },
+  after:v=>bindQ(v),
+  reveal:d=>{ const q=RQ[d.p||0]; (d.rv=d.rv||{})[q.k]=1; d.hid=false; },
+  ready:d=>qState(d,RQ[d.p||0].k).done,
+  live:()=>liveQ('rq', RQ[sd('rq').p||0].k),
+  n:{t:'2 хв', obj:'Check understanding of the script.',
+     do:['Одне питання на екрані; Next — наступне.','Справа — уривок зі сценарію як підказка: учні шукають доказ у тексті.'],
+     ans:['1 — A He wants to challenge their confidence.','2 — B She used stronger statements and showed evidence.','3 — C Speak clearly and support your answers.'],
+     follow:['What evidence did Emma show? (Look at the screen!)']}
+},
+{ id:'talk1', sc:3, title:'Would you enjoy the show? (speaking)', opt:true,
+  render:d=>head(STEPS[8])+`<div class="split wl" style="align-items:center">${speakHTML(TALK1,d)}<div class="col" style="align-items:center">${av('max',170)}${cap(['max',"Well? Are you brave enough for my show?"])}</div></div>`,
+  after:(v,d)=>bindSpeak(v,TALK1,d), reveal:d=>{ d.rv=1; }, live:()=>({id:'talk1', kind:'text', q:TALK1.q, ph:TALK1.starters[0]}),
+  n:{t:'1–2 хв (optional)', obj:'Personal response to the reading.', do:['2–3 відповіді. Можна пропустити.'], ua:TALK1.ua, sample:[TALK1.sample]}
+},
+{ id:'secret', sc:3, title:'MAX’s secret',
+  render:()=>head(STEPS[9])+`<div class="split" style="align-items:center"><div class="caps">${cap(['nova',"I think I've discovered MAX's secret!"])}${cap(['nova',"Look at Emma's answers. Three words made her sentences stronger."],{delay:.2})}</div>
+    <div class="emma">${EMMA3.map(x=>`<div class="q">${av('emma',52)}<span>${emph(x)}</span></div>`).join('')}</div></div>
+    <div class="mt2">${pcardsHTML(0)}</div><div class="center mt2"><button class="btn big gold pulse" data-next>🔓 UNLOCK THE POWER WORDS</button></div>`,
+  n:{t:'30 сек', obj:'Notice the three emphatic auxiliaries before the rule.', do:['Запитайте: “Which three words are in capitals?” — учні називають DO, DOES, DID.','Кнопка UNLOCK веде до Раунду 3.']}
+},
+
+/* ═════ ROUND 3 ═════ */
+{ id:'disc', sc:4, title:'Discover the power words', parts:3,
+  render:d=>{ const p=d.p||0, fresh = CTX.prevP!==p ? p : -1;
+    return head(STEPS[10])+pcardsHTML(p+1,{fresh})+`<div class="col mt2">${DISC.slice(0,p+1).map((x,i)=>`<div class="cmp" style="animation-delay:${i===p?.2:0}s"><div><small>Normal</small><div class="nrm">“${esc(x.n)}”</div></div><div class="ar">➜</div><div><small>Stronger</small><div class="str">“${emph(x.s)}”</div></div></div>`).join('')}</div>
+    <p class="small mt">${p<2?'Next ▶ unlocks the next power word.':'🔊 Say the stronger sentences aloud — STRESS the power word!'}</p>`; },
+  after:(v,d)=>{ const el=$('[data-unlock]',v); if(el) setTimeout(()=>{ el.classList.add('on','glow'); SND.play('unlock'); },(S.noanim||REDUCED_OS)?0:250); },
+  onPart:d=>{ if((d.p||0)===2) setTimeout(()=>beep('GRAMMAR POWER UNLOCKED!'),900); },
+  n:{t:'2 хв', obj:'Guided discovery: compare normal vs stronger sentences.',
+     do:['Next відкриває пари речень по одній і «розблоковує» картку DO → DOES → DID.','Учні читають обидва варіанти вголос; у сильнішому — НАГОЛОС на DO/DOES/DID.','Запитайте: “What changed? Which sentence sounds stronger?”'],
+     ua:'Normal → Stronger: «Я знаю відповідь» → «Я ТАКИ знаю відповідь!»'}
+},
+{ id:'dq', sc:4, title:'Discovery questions',
+  render:d=>{ const rv=d.rv||{};
+    return head(STEPS[11])+pcardsHTML(3,{mini:true})+`<div class="col mt2">${DQ.map((q,i)=>`<div class="dq"><div class="row"><div class="qnum grow">QUESTION ${i+1}</div>${rv[q.k]&&!d.hid?'':`<button class="btn sm" data-dq="${q.k}">👁 Reveal answer</button>`}</div><div class="qq">${esc(q.q)}</div>${(S.wall['dq:'+q.k]||[]).map(w=>`<div class="small" style="color:#CFE9FF">📱 “${esc(w.text)}” — ${esc(w.by||'')}</div>`).join('')}${rv[q.k]&&!d.hid?`<div class="aa">✓ ${esc(q.a)}</div>`:''}</div>`).join('')}</div>`; },
+  after:(v,d)=>$$('[data-dq]',v).forEach(b=>b.onclick=()=>{ (d.rv=d.rv||{})[b.dataset.dq]=1; d.hid=false; SND.play('reveal'); save(); draw(); }),
+  reveal:d=>{ const q=DQ.find(q=>!(d.rv||{})[q.k]) ; if(q) (d.rv=d.rv||{})[q.k]=1; d.hid=false; },
+  live:()=>{ const d=sd('dq'), q=DQ.find(q=>!(d.rv||{})[q.k]); if(!q) return null;
+    return q.kind==='choice' ? {id:'dq:'+q.k, kind:'choice', q:q.q, opts:q.opts, lock:false} : {id:'dq:'+q.k, kind:'text', q:q.q, ph:'Type your idea…'}; },
+  n:{t:'1–2 хв', obj:'Students formulate the rule themselves.',
+     do:['Учні відповідають усно; кожну відповідь відкривайте окремо (кнопка або R).','У Live: питання 2 — голосування, 1 і 3 — короткі відповіді з телефонів.'],
+     ans:['1 — Do, does, did.','2 — Does.','3 — Because the main verb stays in its base form after did.'],
+     ua:'Після did основне дієслово — у базовій формі (did solve, не did solved).'}
+},
+{ id:'rule', sc:4, title:'Grammar: emphatic DO / DOES / DID', parts:2,
+  render:d=>{ const p=d.p||0;
+    if(p===0) return head(STEPS[12])+`<h2 class="h-l"><span class="goldtxt">EMPHATIC</span> DO / DOES / DID</h2>
+      <p class="lead mt">${esc(RULE.en)}</p>
+      <div class="row"><button class="btn xs ghost" id="uaRule">🇺🇦 ${S.uaRule?'Hide Ukrainian':'Show in Ukrainian'}</button></div>${S.uaRule?`<div class="uabox">${esc(RULE.ua)}</div>`:''}
+      <div class="gtable mt">${RULE.rows.map(r=>`<div class="grow3"><div><div class="tense">${r.tense}</div><div class="subj">${r.subj}</div></div><div class="form"><span class="pw">${r.f.split(' + ')[0]}</span> + base verb</div><div class="ex">“${emph(r.ex)}”</div></div>`).join('')}</div>`;
+    return head(STEPS[12])+`<h2 class="h-m">Important rule</h2><p class="lead">After <span class="pw">DO / DOES / DID</span>, the main verb stays in its <b>base form</b>.</p>
+      <div class="split mt" style="gap:12px"><div class="col">${RULE.base.slice(0,2).map(b=>`<div class="rw ${b[1]?'yes':'no'}"><span class="ic">${b[1]?'✓':'✕'}</span><span>${b[1]?emph(b[0]):esc(b[0])}</span><span class="sr">${b[1]?'correct':'incorrect'}</span></div>`).join('')}</div>
+      <div class="col">${RULE.base.slice(2).map(b=>`<div class="rw ${b[1]?'yes':'no'}"><span class="ic">${b[1]?'✓':'✕'}</span><span>${b[1]?emph(b[0]):esc(b[0])}</span><span class="sr">${b[1]?'correct':'incorrect'}</span></div>`).join('')}</div></div>
+      <div class="notes4 mt2">${RULE.notes.map(x=>`<div>${x}</div>`).join('')}</div>
+      <p class="small mt"><a href="${esc(CFG.GRAMMAR_LINK||'../../#grammar?topic=emphatic-do')}" target="_blank" rel="noopener" style="color:var(--cyan)">📘 Grammar library: Emphatic do / does / did — more practice ↗</a></p>`; },
+  after:v=>{ const b=$('#uaRule',v); if(b) b.onclick=()=>{ S.uaRule=!S.uaRule; save(); draw(); }; },
+  n:{t:'2 хв', obj:'Clear, short rule + form + typical mistakes.',
+     do:['Частина 1: правило й таблиця. Учні читають приклади з наголосом.','Частина 2: базова форма після do/does/did + 4 короткі примітки.','Не заглиблюйтесь у be/modals — лише «не кажемо I do am / I do can».'],
+     ua:RULE.ua,
+     ans:['She does likes ✕ → She DOES like ✓','I did won ✕ → I DID win ✓']}
+},
+{ id:'beat', sc:4, title:'Beat MAX! (practice)', parts:()=>S.core?3:4,
+  render:d=>{ const p=d.p||0, q=BEAT[p], st=qState(d,q.k), solved=st.show, word=q.opts[q.a];
+    const gapW = solved ? `<span class="gap fill pw">${word.toUpperCase()==='KNOW'?'know':word.toUpperCase()}</span>` : `<span class="gap">_____</span>`;
+    const glow = solved ? (q.k==='b4'?1:q.a) : -1;
+    return head(STEPS[13])+`<div class="row" style="align-items:flex-start"><div class="grow"><div class="row"><div class="qnum grow">BEAT MAX · ${p+1} / ${parts(cur())}${q.opt?' · <span class="opttag">optional</span>':''}</div><div class="dots">${BEAT.slice(0,parts(cur())).map((x,i)=>`<i class="${i===p?'c':qState(d,x.k).done?'d':''}"></i>`).join('')}</div></div></div>
+      <div style="width:min(360px,100%)">${pcardsHTML(3,{mini:true, glow})}</div></div>
+      <div class="duel mt">${cap(['max',q.acc, solved?'shocked':'max'],{s:76})}
+        ${cap([q.who, `${emph(q.pre)} ${gapW} ${esc(q.post)}`],{s:76,html:true})}
+        <div style="max-width:720px">${optsHTML('beat',q.k,{cols:3})}</div>
+        ${solved?cap(['max',q.react,'shocked'],{s:56}):''}</div>`; },
+  after:v=>bindQ(v),
+  reveal:d=>{ const q=BEAT[d.p||0]; (d.rv=d.rv||{})[q.k]=1; d.hid=false; },
+  ready:d=>qState(d,BEAT[d.p||0].k).done,
+  live:()=>liveQ('beat', BEAT[sd('beat').p||0].k),
+  n:{t:'2 хв', obj:'Controlled practice: choose do / does / did; base verb.',
+     do:['MAX звинувачує — учні захищаються. Учень читає речення з правильним словом і НАГОЛОСОМ.','Правильно = +10 і картка-підказка світиться.','Питання 4 — optional (у ⚡ Quick Mode приховане).'],
+     ans:['1 — do (I + do)','2 — does (she + does)','3 — did (yesterday → past)','4 — know (does + base form)']}
+},
+{ id:'press', sc:4, title:'Under pressure…', parts:3,
+  render:d=>{ const p=d.p||0;
+    return head(STEPS[14])+`<div class="split wr" style="align-items:center">${hostcard('max')}<div class="caps">${PRESS.slice(0,p+1).map(l=>cap(l)).join('')}
+      ${p>=2?`<div class="center mt"><button class="btn big gold pulse" data-next>🎡 ENTER THE WHEEL</button></div>`:''}</div></div>`; },
+  onPart:d=>{ if((d.p||0)===2) SND.play('reveal'); },
+  n:{t:'20 сек', obj:'Transition to the speaking game.', do:['Next — репліки MAX, NOVA, BEEP.']}
+},
+
+/* ═════ ROUND 4 — WHEEL ═════ */
+{ id:'wheel', sc:5, title:'The Confidence Wheel',
+  render:d=>head(STEPS[15])+wheelZone(),
+  after:v=>bindWheel(v),
+  reveal:()=>{ if(S.wheel.sel!=null){ S.wheel.sample=true; sd('wheel').hid=false; } },
+  hide:()=>{ S.wheel.sample=false; },
+  restartAct:()=>{ resetWheel(true); },
+  live:()=>wheelTask(),
+  n:{t:'6 хв', obj:'Freer speaking: respond to MAX’s accusations with emphatic do/does/did.',
+     do:['Натисніть SPIN (або центр колеса). Колесо крутиться ~4 с; ⏩ Skip animation — одразу результат.','Оберіть, хто відповідає (команда / ім’я). Учень читає звинувачення MAX і відповідає з DO/DOES/DID + 1 деталь.','Оцінюйте вручну: ✓ +10 за правильну структуру, ⭐ +5 за пояснення.','SHOW SAMPLE — приклад; HIDE — сховати. SKIP CHALLENGE — пропустити.','Сектори не повторюються, доки не випадуть усі 8; ⟲ Reset wheel — почати знову.','Рекомендовано 4–5 обертів (Quick Mode — 3), 30–45 с на відповідь.','FOOD і LAST WEEKEND: якщо це неправда про учня — він погоджується і додає правдиве речення (не змушуйте казати неправду).'],
+     ans:SECTORS.map(s=>s.t+': '+s.sample.replace(/\b(DO|DOES|DID)\b/g,m=>m))}
+},
+
+/* ═════ ROUND 5 ═════ */
+{ id:'mission', sc:6, title:'Mission briefing', parts:5,
+  render:d=>{ const p=d.p||0;
+    if(p<3) return head(STEPS[16])+`<div class="split wr" style="align-items:center">${hostcard('shocked')}<div class="caps">${MISSION_LINES.slice(0,p+1).map(l=>cap(l)).join('')}</div></div>`;
+    if(p===3) return head(STEPS[16])+`<div class="mission"><h2 class="h-l">CREATE YOUR OWN<br><span class="goldtxt">MINI GAME SHOW!</span></h2><p class="lead">Become the host. Challenge another contestant.</p>
+      <ol><li>Work in teams.</li><li>Create <b>THREE</b> funny challenges for another team.</li>
+      <li>Each challenge needs <b>TWO</b> lines:<br><span style="color:#FFD7F4">1. A silly accusation from the host.</span><br><span style="color:#FFD7F4">2. A confident answer using DO, DOES or DID.</span></li>
+      <li>Your team must create:<div class="need"><span>One challenge using DO</span><span>One challenge using DOES</span><span>One challenge using DID</span></div></li>
+      <li>Choose one host and one contestant.</li><li>Get ready to perform your mini-show!</li></ol>
+      <div class="row mt"><span class="chip">⏱ Preparation: 4 minutes</span><span class="chip">🎤 Show: about 30 seconds per team</span><button class="btn sm tonly" id="copyM">📋 Copy for Zoom chat</button></div></div>`;
+    return head(STEPS[16])+`<div class="row"><div class="grow"><div class="qnum">EXAMPLE PROJECT</div><h2 class="h-m">${EXAMPLE.title}</h2></div><span class="small">Click a card to see the confident answer</span></div>
+      <div class="exshow mt">${EXAMPLE.items.map((x,i)=>`<button class="flip ${(d.fl||{})[i]?'on':''}" data-fl="${i}"><div class="in"><div class="f"><span class="tg">CHALLENGE ${i+1} · ${x.aux.toUpperCase()}</span><span class="nm k-max">HOST</span><span class="ln">“${esc(x.h)}”</span><span class="hint">tap to flip ↻</span></div><div class="b"><span class="tg">CONTESTANT</span><span class="ln">“${emph(x.c)}”</span></div></div></button>`).join('')}</div>
+      <div class="row mt"><button class="btn sm tonly" id="copyM">📋 Copy instructions for Zoom chat</button><span class="small">Tip: in breakout rooms students can’t see your screen — paste the instructions into the chat.</span></div>`; },
+  after:(v,d)=>{ const c=$('#copyM',v); if(c) c.onclick=()=>copyText(MISSION_TEXT,'Instructions copied — paste them into the Zoom chat');
+    $$('[data-fl]',v).forEach(b=>b.onclick=()=>{ d.fl=d.fl||{}; d.fl[b.dataset.fl]=!d.fl[b.dataset.fl]; b.classList.toggle('on',d.fl[b.dataset.fl]); save(); }); },
+  onPart:d=>{ if((d.p||0)===2) SND.play('reveal'); },
+  reveal:d=>{ if((d.p||0)<4) d.p=4; else { d.fl={0:true,1:true,2:true}; } },
+  hide:d=>{ d.fl={}; },
+  n:{t:'1 хв', obj:'Explain the team task clearly before breakout rooms.',
+     do:['Next: репліки → інструкція → приклад (картки перевертаються кліком).','📋 Copy for Zoom chat — скопіюйте інструкцію й надішліть у чат перед відкриттям кімнат.','Далі — екран Breakout: таймер 4:00 і картки команд.'],
+     ua:'Створіть 3 смішні «звинувачення» для іншої команди: ведучий звинувачує, учасник упевнено відповідає з DO / DOES / DID. Одне з DO, одне з DOES, одне з DID. Оберіть ведучого й учасника.'}
+},
+{ id:'work', sc:6, title:'Breakout rooms: team cards',
+  render:()=>head(STEPS[17])+`<div class="row" style="align-items:center;gap:18px"><div><div class="qnum">PREPARATION TIME</div><div class="timerbig" data-clock>${mmss(TMR.left())}</div></div>
+      <div class="row"><button class="btn sm primary" id="tGo">${TMR.run()?'❚❚ Pause':'▶ Start 4:00'}</button><button class="btn sm ghost" id="tAdd">+1 min</button><button class="btn sm ghost tonly" id="tRst">⟲ Reset</button></div>
+      <div class="grow"></div><button class="btn sm tonly" id="wAddT" ${S.teams.length>=8?'disabled':''}>＋ Add team</button><button class="btn sm ghost tonly" id="copyM2">📋 Copy instructions</button></div>
+    <p class="small">Each team writes ONE challenge with DO, ONE with DOES and ONE with DID. ${LIVE.on?'Teams can type on their phones (📡 Live) — the cards update here.':'In Presentation mode teams write in Zoom chat or on paper — you can type their lines here afterwards.'}</p>
+    <div class="teams mt">${S.teams.map(t=>teamCard(t)).join('')}</div>`,
+  after:v=>bindWork(v),
+  live:()=>({id:'work', kind:'team', teams:S.teams.map(t=>({L:t.id, name:t.name, e:t.e})), work:S.work, sub:S.sub}),
+  n:{t:'4 хв + 1 хв на пояснення', obj:'Collaborative production of emphatic sentences.',
+     do:['▶ Start 4:00 — таймер лише підказує, нічого не перемикає сам.','Відкрийте Zoom breakout rooms (2–4 учні в команді). Інструкцію скопіюйте в чат.','Без Live: команди пишуть у чаті/на папері; після повернення можете вписати їхні рядки в картки.','З Live: учні обирають команду на телефоні й пишуть разом — зміни приходять сюди (останнє редагування поля перемагає).','Позначка біля картки: ✓ uses DO / needs DOES / check: did + base verb — це лише підказка, не автоматична оцінка.'],
+     ans:['Приклад: Host — “You don’t know how to cook!” Contestant — “I DO know how to cook!”']}
+},
+{ id:'stage', sc:6, title:'Back on stage: team presentations',
+  render:d=>{ if(!team(d.t)) d.t=S.teams[0].id; const t=team(d.t), w=wget(t.id), best=S.best[t.id]||'do', list=S.core?[best]:AUX;
+    return head(STEPS[18])+`<div class="center"><div class="qnum">BACK ON STAGE!</div><h2 class="h-l">TEAM <span class="goldtxt">PRESENTATIONS</span></h2></div>
+    <div class="row mt" style="justify-content:center">${S.teams.map(x=>`<button class="chip ${x.id===t.id?'on':''}" data-tt="${x.id}">${x.e} ${esc(x.name)}${S.sub[x.id]?' ✓':''}</button>`).join('')}</div>
+    <div class="stagecard mt"><div class="row"><span style="font-size:34px">${t.e}</span><div class="grow"><b class="h-s dsp">${esc(t.name)}</b>${w.people?`<div class="small">${esc(w.people)}</div>`:''}</div>
+      <span class="small">${S.core?'⚡ Quick: best challenge only':'Click a card to reveal the answer'}</span></div>
+      <div class="exshow mt" ${S.core?'style="grid-template-columns:minmax(0,520px);justify-content:center"':''}>${list.map(a=>{ const c=w[a], on=(d.fl||{})[t.id+a];
+        return `<div style="position:relative"><button class="flip ${on?'on':''}" data-sf="${a}"><div class="in"><div class="f"><span class="tg">${a.toUpperCase()}</span><span class="nm k-max">HOST</span><span class="ln">${c.h?'“'+esc(c.h)+'”':'<span class="muted">— read from your notes —</span>'}</span><span class="hint">tap to reveal the answer ↻</span></div><div class="b"><span class="tg">CONTESTANT</span><span class="ln">${c.c?'“'+esc(c.c).replace(/\b(do|does|did)\b/gi,m=>'<span class="pw">'+m.toUpperCase()+'</span>')+'”':'<span class="muted">— answer aloud —</span>'}</span></div></div></button>
+        ${S.core?'':`<button class="btn xs ghost tonly" data-best="${a}" style="position:absolute;right:8px;top:8px;z-index:3" title="Mark as the team’s best challenge (used in Quick Mode)">${best===a?'★':'☆'}</button>`}</div>`; }).join('')}</div>
+      <div class="row mt"><button class="btn sm ok" data-sp="10">✓ +10 for ${esc(t.name)}</button><button class="btn sm" data-sp="5">⭐ +5</button><span class="grow"></span>
+        ${S.teams.length>1?`<button class="btn sm ghost" id="nextTeam">Next team ▶</button>`:''}</div></div>
+    <div class="awards mt2">${AWARDS.map(a=>`<div class="award"><b>${a[2]} ${a[1]}</b><div class="row mt" style="gap:6px">${S.teams.map(x=>`<button class="chip ${S.awards[a[0]]===x.id?'on':''}" data-aw="${a[0]}" data-at="${x.id}">${x.e} ${esc(x.name)}</button>`).join('')}</div></div>`).join('')}</div>`; },
+  after:(v,d)=>{
+    $$('[data-tt]',v).forEach(b=>b.onclick=()=>{ d.t=b.dataset.tt; save(); draw(); });
+    $$('[data-sf]',v).forEach(b=>b.onclick=()=>{ d.fl=d.fl||{}; const k=d.t+b.dataset.sf; d.fl[k]=!d.fl[k]; b.classList.toggle('on',d.fl[k]); if(d.fl[k]) SND.play('reveal'); save(); pubState(); });
+    $$('[data-best]',v).forEach(b=>b.onclick=()=>{ S.best[d.t]=b.dataset.best; save(); draw(); });
+    $$('[data-sp]',v).forEach(b=>b.onclick=()=>{ award(+b.dataset.sp, d.t); toast(`+${b.dataset.sp} → ${team(d.t).name}`); });
+    $$('[data-aw]',v).forEach(b=>b.onclick=()=>{ const k=b.dataset.aw; S.awards[k]=S.awards[k]===b.dataset.at?null:b.dataset.at; if(S.awards[k]) SND.play('ok'); save(); draw(); });
+    const nt=$('#nextTeam',v); if(nt) nt.onclick=()=>{ const i=S.teams.findIndex(x=>x.id===d.t); d.t=S.teams[(i+1)%S.teams.length].id; save(); draw(); };
+  },
+  reveal:d=>{ d.fl=d.fl||{}; AUX.forEach(a=>d.fl[d.t+a]=true); },
+  hide:d=>{ d.fl={}; },
+  live:()=>{ const d=sd('stage'); const t=team(d.t)||S.teams[0]; return {id:'stage:'+t.id, kind:'show', team:t.name, e:t.e}; },
+  n:{t:'3 хв', obj:'Teams perform; feedback on form and meaning.',
+     do:['Оберіть команду (чіпи вгорі). Ведучий команди читає звинувачення, учасник — відповідь. Потім клік — відповідь з’являється на екрані.','Багато команд → ⚡ Quick Mode: лише одна «найкраща» картка (☆ позначте зірочкою).','Бали: ✓ +10 / ⭐ +5. Нагороди класу — клікніть команду під кожною нагородою.'],
+     ans:['Чекліст: ✓ правильне DO/DOES/DID · ✓ базова форма дієслова · ✓ зрозуміле речення · ✓ відповідь пов’язана зі звинуваченням · ✓ усі в команді брали участь.','Не вимагайте ідеальної вимови чи «акторської» гри.']}
+},
+
+/* ═════ FINALE ═════ */
+{ id:'final', sc:7, title:'Final challenge',
+  render:d=>{ const st=qState(d,'fq'), drum=!!d.drum, done=st.done&&!drum;
+    return head(STEPS[19])+`<div class="center"><h2 class="h-l"><span class="goldtxt">FINAL</span> CHALLENGE</h2></div>
+    <div class="split wr mt" style="align-items:center"><div class="col" style="align-items:center">${hostcard(done?'defeated':'max', done?'MAX · defeated?!':'MAX · under the spotlight')}</div>
+    <div class="col">${done?'':cap(['max',"You didn't learn anything today!"])+cap(['nova',"Contestants, this is your final chance! Prove him wrong!"],{delay:.15})}
+      <div class="glass pad final-q"><div class="qnum">${esc(FINALQ.q).toUpperCase()}</div><div class="mt ${done?'only-right':''}">${optsHTML('final','fq',{mute:drum})}</div>
+      ${drum?'<div class="drum mt">• • •</div>':''}</div>
+      ${!done && !drum && st.a!=null && st.a!==FINALQ.a ? cap(['max',"Ha! Are you REALLY sure?"],{s:52}) : ''}
+      ${done?FINAL_END.map((l,i)=>cap(l,{delay:.3+i*.35})).join('')+`<div class="center mt"><button class="btn big gold pulse" data-next>🏆 CELEBRATE</button></div>`:''}</div></div>`; },
+  after:v=>bindQ(v),
+  onAnswer:(d,k,i)=>{ if(i===FINALQ.a && !d.done) startDrum(d); },
+  reveal:d=>{ if(!qState(d,'fq').done){ (d.rv=d.rv||{}).fq=1; startDrum(d); } },
+  ready:d=>qState(d,'fq').done,
+  live:()=>{ const d=sd('final'), st=qState(d,'fq'); return {id:'final:fq', kind:'choice', q:FINALQ.q, opts:FINALQ.opts, lock:st.done&&!d.drum, correct:(st.done&&!d.drum)?FINALQ.a:undefined}; },
+  n:{t:'1 хв', obj:'Final check of form: DID + base verb.',
+     do:['Учні голосують (руки або телефони). Клікніть відповідь класу або R.','Правильна відповідь → коротка «барабанна» пауза → MAX визнає поразку.'],
+     ans:['A — We DID learn something today! (did + base form learn)','B ✕ — we + does','C ✕ — did learned']}
+},
+{ id:'win', sc:7, title:'Confidence Champions!', atm:'champ',
+  render:()=>{ const sorted=S.teams.slice().sort((a,b)=>b.score-a.score);
+    return `<div class="center"><div class="ep">EPISODE 022 · GRAND FINALE</div>
+    <div class="mt">${TROPHY}</div>
+    <h1 class="h-xl"><span class="goldtxt">CONFIDENCE</span><br>CHAMPIONS!</h1>
+    <p class="h-s mt" style="max-width:900px;margin-left:auto;margin-right:auto;line-height:1.4">${emph('You DID it! You DO know the rules! And your English DOES sound stronger!')}</p>
+    ${S.scoring?`<div class="board mt2">${sorted.map(t=>`<div class="r"><span style="font-size:26px">${t.e}</span>${esc(t.name)}<span class="p">${t.score}</span></div>`).join('')}</div>`:''}
+    <div class="mt2"><span class="ach"><span class="ic">🏅</span><span style="text-align:left"><span class="small" style="letter-spacing:.14em;font-weight:800">ACHIEVEMENT UNLOCKED</span><br><b class="dsp" style="font-size:clamp(16px,1.5vw,22px)">Power Words Master · DO · DOES · DID</b></span></span></div>
+    <div class="split mt2" style="max-width:1000px;margin-left:auto;margin-right:auto;text-align:left;align-items:center">${cap(['max',"I DID underestimate you!", 'defeated'])}${cap(['beep',"MISSION COMPLETE!"],{delay:.2})}</div>
+    <button class="btn sm ghost mt" id="moreConf">🎉 More confetti</button></div>`; },
+  after:v=>{ if(CTX.entering){ confetti(); SND.play('win'); } $('#moreConf',v).onclick=()=>{ confetti(); SND.play('win'); }; },
+  n:{t:'30 сек', obj:'Celebrate success.', do:['Конфеті, трофей, підсумкові бали. Не затягуйте — далі exit ticket.'], ua:'Ви ЗМОГЛИ! Ви СПРАВДІ знаєте правила! І ваша англійська ТАКИ звучить сильніше!'}
+},
+{ id:'ticket', sc:7, title:'Exit ticket',
+  render:()=>{ const wall=S.wall.ticket||[];
+    return head(STEPS[21])+`<div class="split wl"><div class="glass pad"><div class="qnum">EXIT TICKET · COMPLETE THE SENTENCE</div><div class="qtext" style="font-size:clamp(26px,3vw,46px)">${emph('One thing I DO know about myself is…')}</div>
+      <div class="col">${TICKET.ex.map(x=>`<div class="chip" style="font-size:clamp(15px,1.2vw,19px);border-radius:14px;padding:8px 14px">“${emph(x)}”</div>`).join('')}</div>
+      <div class="row mt tonly"><input class="field grow" data-wallin="ticket" placeholder="Type a student’s sentence to show it…" maxlength="160" style="flex:1;min-width:200px"><button class="btn sm" data-walladd="ticket">＋ Show</button></div></div>
+      <div class="col">${cap(['nova',"You DO know more than you think!"])}${wall.length?`<div class="wall">${wall.map(w=>`<div class="it">${emph(w.text.replace(/\b(do|does|did)\b/gi,m=>m.toUpperCase()))}<small>${esc(w.by||'')}</small></div>`).join('')}</div>`:`<p class="muted">Students answer aloud${LIVE.on?' or send from their phones — you choose which to show':''}.</p>`}</div></div>`; },
+  after:v=>bindWallAdd(v),
+  live:()=>({id:'ticket', kind:'text', q:'Complete: “One thing I DO know about myself is…”', ph:'One thing I DO know about myself is…'}),
+  n:{t:'1 хв', obj:'Personal emphatic sentence; check of learning.', do:['Кожен учень каже одне речення (або надсилає з телефона).','У Live: відповіді приходять у панель ліворуч → Show показує на екрані.','Додаткові відповіді — optional.'], ua:'Одне, що я ТОЧНО знаю про себе, — це…'}
+},
+{ id:'bye', sc:7, title:'See you next episode',
+  render:()=>`<div class="title-scr"><div><div class="cast">${['max','nova','beep'].map((k,i)=>`<div class="one">${av(k,130,k==='max'?'defeated':undefined)}<b class="nm k-${k}">${CH[k].name}</b></div>`).join('')}</div>
+    <h2 class="h-l goldtxt">${esc(BYE[0])}</h2>
+    <p class="lead mt" style="margin:14px auto 0">${emph(BYE[1].replace(/\b(do|does|did)\b/gi,m=>m.toUpperCase()))}</p>
+    <p class="lead" style="margin:10px auto 0">${esc(BYE[2])}</p>
+    <p class="h-m mt2 grad">${esc(BYE[3])}</p>
+    <div class="row mt2" style="justify-content:center"><a class="btn tonly" href="../../">← Back to the course</a><a class="btn" href="${esc(CFG.GRAMMAR_LINK||'../../#grammar?topic=emphatic-do')}" target="_blank" rel="noopener">📘 Practise: emphatic do</a></div></div></div>`,
+  n:{t:'20 сек', obj:'Close the lesson.', do:['Підсумок одним реченням: “Today we used DO, DOES and DID to make our sentences stronger.”','У Live: 📡 → Stop room, щоб телефони побачили фінальний екран.']}
+}
+];
+</script>
+
+<script>
+/* ---------- 5 · engine ---------- */
+let CTX = {entering:true, prevP:-1};
+let LAST = {id:null, p:-1}, GATE = null;
+const cur = ()=> STEPS[S.i] || STEPS[0];
+const parts = s => typeof s.parts==='function' ? s.parts() : (s.parts||1);
+const visible = k => !!STEPS[k] && !(S.core && STEPS[k].opt);
+const typing = ()=> !!(document.activeElement && document.activeElement.closest && document.activeElement.closest('input,textarea,select'));
+if(S.i>=STEPS.length) S.i=0;
+
+function draw(){
+  if(ROLE!=='teacher') return;
+  const s=cur(), d=sd(s.id);
+  if((d.p||0)>parts(s)-1) d.p=parts(s)-1;
+  const entering = LAST.id!==s.id;
+  CTX = {entering, prevP: entering?-1:LAST.p};
+  document.body.dataset.sc = s.sc;
+  document.body.classList.toggle('champ', s.atm==='champ');
+  closePop();
+  const v=$('#view'), fid=document.activeElement && document.activeElement.id;
+  v.innerHTML = s.render(d);
+  if(entering){ v.classList.remove('enter'); void v.offsetWidth; v.classList.add('enter'); window.scrollTo(0,0); }
+  $$('[data-next]',v).forEach(b=>b.onclick=next);
+  s.after && s.after(v,d);
+  if(fid && !entering){ const f=document.getElementById(fid); if(f && v.contains(f)) f.focus({preventScroll:true}); }
+  LAST={id:s.id, p:d.p||0};
+  paintChrome(); pubState(); if($('#notes').classList.contains('on')) paintNotes(); TMR.paint(); save();
+}
+function next(){
+  const s=cur(), d=sd(s.id), P=parts(s), p=d.p||0;
+  if(s.ready && !s.ready(d)){ const g=s.id+':'+p; if(GATE!==g){ GATE=g; toast(s.gateMsg||'Not answered yet — press Next again to continue'); return; } }
+  GATE=null;
+  if(p<P-1){ d.p=p+1; s.onPart&&s.onPart(d); save(); draw(); return; }
+  let k=S.i+1; while(k<STEPS.length && !visible(k)) k++;
+  if(k<STEPS.length) go(k); else toast('That’s the end of the episode! 🎤');
+}
+function back(){
+  const d=sd(cur().id); GATE=null;
+  if((d.p||0)>0){ d.p--; save(); draw(); return; }
+  let k=S.i-1; while(k>=0 && !visible(k)) k--; if(k>=0) go(k);
+}
+function go(k){ if(!STEPS[k]) return; if(WSPIN && STEPS[k].id!=='wheel') finishSpin(true); S.i=k; GATE=null; save(); draw(); }
+function goScene(n){ const k=STEPS.findIndex((x,i)=>x.sc===n && visible(i)); if(k>=0) go(k); }
+function reveal(){ const s=cur(), d=sd(s.id); if(s.reveal){ s.reveal(d); d.hid=false; } else if(parts(s)>1){ d.p=parts(s)-1; s.onPart&&s.onPart(d); } else return; SND.play('reveal'); save(); draw(); }
+function hideAns(){ const s=cur(), d=sd(s.id); if(s.hide) s.hide(d); else d.hid=true; save(); draw(); toast('Answers hidden on this screen'); }
+function restartAct(){ const s=cur(); if(s.restartAct) s.restartAct(sd(s.id)); else { S.d[s.id]={}; Object.keys(S.votes).forEach(k=>{ if(k===s.id||k.startsWith(s.id+':')) delete S.votes[k]; }); }
+  save(); draw(); toast('Activity restarted — scores are kept'); }
+function skipAct(){ let k=S.i+1; while(k<STEPS.length && !visible(k)) k++; if(k<STEPS.length){ go(k); toast('Activity skipped'); } }
+
+function buildRail(){ $('#rail').innerHTML=SCENES.map(sc=>`<button data-sc="${sc.n}" aria-label="${sc.k}: ${sc.t}"><span class="k">${sc.k}</span><span class="t">${sc.t}</span></button>`).join(''); $$('#rail button').forEach(b=>b.onclick=()=>goScene(+b.dataset.sc)); }
+function paintChrome(){
+  const s=cur(), d=sd(s.id), P=parts(s);
+  $$('#rail button').forEach(b=>{ const n=+b.dataset.sc; b.classList.toggle('cur',n===s.sc); b.classList.toggle('done',n<s.sc); if(n===s.sc) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current'); });
+  const sc=SCENES[s.sc-1];
+  $('#info').innerHTML=`<b>${sc.k}</b> · ${esc(s.title)}${P>1?` (${(d.p||0)+1}/${P})`:''}${s.opt?' · optional':''}`;
+  $('#bBack').disabled = S.i===0 && !(d.p>0);
+  $('#bReveal').disabled = !(s.reveal || P>1);
+  $('#bHide').disabled = !(s.reveal || s.hide);
+  $('#bNext').innerHTML = S.i===STEPS.length-1 ? 'Finish 🎤' : 'Next ▶';
+  $('#bLive').classList.toggle('on', LIVE.on);
+  $('#bQuick').classList.toggle('on', S.core); $('#bQuick').setAttribute('aria-pressed',String(S.core));
+  $('#bSound').textContent = S.sound?'🔊':'🔇'; $('#bSound').setAttribute('aria-pressed',String(S.sound));
+  paintScore();
+}
+function paintScore(bump){
+  const t=actTeam(), b=$('#score'); if(!b) return;
+  b.classList.toggle('off', !S.scoring);
+  b.innerHTML=`<img src="${esc(PH.beep||'')}" alt="" onerror="this.remove()"><span class="tn">${t.e} ${esc(t.name)}</span><span class="pts ${bump?'bump':''}">${S.scoring?t.score:'—'}</span>${S.teams.length>1?`<span class="small">+${S.teams.length-1}</span>`:''}`;
+  b.setAttribute('aria-label',`Scoreboard: ${t.name} ${t.score} points. Click to manage teams.`);
+}
+
+/* ---------- timer (advisory only — never changes the screen by itself) ---------- */
+const TMR = {
+  left(){ const t=S.tmr; return t.run ? Math.max(0,(t.end-Date.now())/1000) : t.left; },
+  run(){ return !!S.tmr.run; },
+  set(sec){ S.tmr={dur:sec, left:sec, run:false, end:0}; save(); this.paint(); pubState(); },
+  start(){ const t=S.tmr; if(t.left<=0) t.left=t.dur; t.end=Date.now()+t.left*1000; t.run=true; save(); this.paint(); pubState(); },
+  pause(){ const t=S.tmr; t.left=this.left(); t.run=false; save(); this.paint(); pubState(); },
+  toggle(){ this.run()?this.pause():this.start(); },
+  add(sec){ const t=S.tmr; if(t.run) t.end+=sec*1000; else t.left+=sec; t.dur=Math.max(t.dur,t.left); save(); this.paint(); pubState(); },
+  tick(){ const t=S.tmr; if(t.run && Date.now()>=t.end){ t.run=false; t.left=0; save(); SND.play('buzz'); toast('⏰ Time is up — continue when you’re ready.'); pubState(); if(!typing()) draw(); } this.paint(); },
+  paint(){ const l=this.left(); $$('[data-clock]').forEach(e=>{ e.textContent=mmss(l); e.classList.toggle('low',l<=60&&l>0); e.classList.toggle('out',l<=0); }); }
+};
+
+/* ---------- sound (Web Audio, muted by default) ---------- */
+const SND = {
+  ctx:null,
+  ac(){ if(!this.ctx){ const C=window.AudioContext||window.webkitAudioContext; if(!C) return null; this.ctx=new C(); } if(this.ctx.state==='suspended') this.ctx.resume(); return this.ctx; },
+  tone(f, dur=.15, type='sine', vol=.12, delay=0, f2){ const a=this.ac(); if(!a) return; const t=a.currentTime+delay, o=a.createOscillator(), g=a.createGain();
+    o.type=type; o.frequency.setValueAtTime(f,t); if(f2) o.frequency.exponentialRampToValueAtTime(f2,t+dur);
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol,t+.01); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t+dur+.05); },
+  noise(dur=.3, vol=.08, delay=0, hp=800){ const a=this.ac(); if(!a) return; const t=a.currentTime+delay, n=a.sampleRate*dur, b=a.createBuffer(1,n,a.sampleRate), ch=b.getChannelData(0);
+    for(let i=0;i<n;i++) ch[i]=(Math.random()*2-1)*(1-i/n); const s=a.createBufferSource(), f=a.createBiquadFilter(), g=a.createGain(); s.buffer=b; f.type='highpass'; f.frequency.value=hp; g.gain.value=vol; s.connect(f).connect(g).connect(a.destination); s.start(t); },
+  play(k){ if(!S.sound || ROLE!=='teacher') return; try{
+    if(k==='ok'){ this.tone(660,.12,'triangle',.14); this.tone(990,.2,'triangle',.14,.1); }
+    else if(k==='no'){ this.tone(220,.22,'sawtooth',.06,0,160); }
+    else if(k==='tick'){ this.tone(1800,.03,'square',.04); }
+    else if(k==='reveal'){ [523,659,784].forEach((f,i)=>this.tone(f,.35,'triangle',.08,i*.04)); }
+    else if(k==='point'){ this.tone(1320,.08,'square',.05); this.tone(1760,.16,'square',.05,.07); }
+    else if(k==='unlock'){ this.tone(400,.25,'sine',.1,0,1200); this.tone(1200,.2,'triangle',.08,.2); }
+    else if(k==='whoosh'){ this.noise(.6,.09,0,500); }
+    else if(k==='buzz'){ this.tone(150,.5,'square',.05); }
+    else if(k==='drum'){ for(let i=0;i<12;i++) this.noise(.06,.06+i*.004,i*.1,200); }
+    else if(k==='win'){ [523,659,784,1047,1319].forEach((f,i)=>this.tone(f,.4,'triangle',.1,i*.11)); this.noise(1.2,.05,.4,2000); }
+  }catch(e){} }
+};
+
+/* ---------- show effects ---------- */
+function lights(){ document.body.classList.remove('lit'); void document.body.offsetWidth; document.body.classList.add('lit'); setTimeout(()=>document.body.classList.remove('lit'),1300); }
+let BEEPT=null;
+function beep(msg){ const b=$('#beep'); if(!b) return; $('img',b).src=PH.beep||''; $('span',b).textContent=msg; b.classList.add('on'); clearTimeout(BEEPT); BEEPT=setTimeout(()=>b.classList.remove('on'),2800); }
+function confetti(){
+  if(S.noanim || REDUCED_OS) return;
+  const c=$('#confetti'), x=c.getContext('2d'); c.width=innerWidth; c.height=innerHeight;
+  const cols=['#FFC94D','#3FE6FF','#FF3FD0','#8B5CFF','#35F0A1','#fff'];
+  const P=Array.from({length:180},()=>({x:innerWidth/2+(Math.random()-.5)*200, y:innerHeight*.35, vx:(Math.random()-.5)*18, vy:-Math.random()*16-4, r:Math.random()*6+4, c:cols[Math.floor(Math.random()*cols.length)], a:Math.random()*6, va:(Math.random()-.5)*.3}));
+  const t0=performance.now();
+  (function fr(t){ const el=t-t0; x.clearRect(0,0,c.width,c.height);
+    P.forEach(p=>{ p.vy+=.45; p.vx*=.99; p.x+=p.vx; p.y+=p.vy; p.a+=p.va; x.save(); x.translate(p.x,p.y); x.rotate(p.a); x.fillStyle=p.c; x.globalAlpha=Math.max(0,1-el/2600); x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2); x.restore(); });
+    if(el<2600) requestAnimationFrame(fr); else x.clearRect(0,0,c.width,c.height); })(t0);
+}
+function startDrum(d){
+  d.drum=1; SND.play('drum'); save(); draw();
+  setTimeout(()=>{ d.drum=0; d.done=1; SND.play('win'); save(); if(cur().id==='final') draw(); else pubState(); confettiSmall(); }, (S.noanim||REDUCED_OS)?200:1500);
+}
+function confettiSmall(){ if(cur().id==='final') confetti(); }
+function copyText(t,msg){ (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast(msg)).catch(()=>{ openModal(`<h2 class="h-m">Copy this text</h2><textarea class="field mt" style="min-height:240px" readonly>${esc(t)}</textarea><div class="row mt"><button class="btn" data-close>Close</button></div>`); $('[data-close]','#modalBox').onclick=closeModal; }); }
+
+/* ---------- wheel ---------- */
+let WSPIN=null;
+function wheelSVG(rot){
+  const R=200, W=S.wheel; let g='';
+  SECTORS.forEach((s,i)=>{ const a0=(i*45-90)*Math.PI/180, a1=((i+1)*45-90)*Math.PI/180, mid=i*45+22.5;
+    const x0=(R*Math.cos(a0)).toFixed(2), y0=(R*Math.sin(a0)).toFixed(2), x1=(R*Math.cos(a1)).toFixed(2), y1=(R*Math.sin(a1)).toFixed(2);
+    const words=s.t.split(' ');
+    g+=`<g class="sec ${W.used.includes(i)&&W.sel!==i&&!(WSPIN&&WSPIN.sel===i)?'used':''} ${W.sel===i&&!WSPIN?'win':''}">
+      <path class="sl" d="M0 0L${x0} ${y0}A${R} ${R} 0 0 1 ${x1} ${y1}Z" fill="${s.col}" stroke="#0B0A26" stroke-width="3"/>
+      <g transform="rotate(${mid})">
+        <svg class="ico" x="-13" y="${-R+12}" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="${s.ink}" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">${ICON[s.i]}</svg>
+        <text transform="translate(0 ${-R*0.56}) rotate(${mid>180?90:-90})" text-anchor="middle" fill="${s.ink}" font-family="Manrope, Arial, sans-serif" font-weight="800" font-size="${words.length>1?13:15}" letter-spacing=".6">${words.length>1?`<tspan x="0" dy="-3">${words[0]}</tspan><tspan x="0" dy="15">${words[1]}</tspan>`:`<tspan x="0" dy="5">${s.t}</tspan>`}</text>
+      </g></g>`; });
+  let bulbs=''; for(let i=0;i<24;i++){ const a=(i*15)*Math.PI/180; bulbs+=`<circle class="bulb" cx="${(208*Math.cos(a)).toFixed(1)}" cy="${(208*Math.sin(a)).toFixed(1)}" r="3.6" fill="#FFE7A3"/>`; }
+  return `<svg class="wheel" viewBox="-216 -216 432 432" role="img" aria-label="The Confidence Wheel with 8 challenges">
+    <circle r="214" fill="#120A30"/><circle r="208" fill="none" stroke="#FFC94D" stroke-width="5"/>
+    <g id="wrot" transform="rotate(${rot})">${g}</g><g>${bulbs}</g></svg>`;
+}
+const POINTER = `<svg class="pointer" viewBox="0 0 60 70" aria-hidden="true"><path d="M30 68 L4 12 A28 28 0 0 1 56 12 Z" fill="#FFC94D" stroke="#7A4A05" stroke-width="3"/><circle cx="30" cy="20" r="8" fill="#FFF3C4"/></svg>`;
+function wheelZone(){
+  const W=S.wheel, left=8-W.used.length, sug=S.core?'3':'4–5';
+  return `<div class="wheel-zone"><div>
+    <div class="wheel-box"><div class="rimglow"></div>${wheelSVG(W.rot)}${POINTER}<button class="hub" id="wHub" ${WSPIN||!left?'disabled':''} aria-label="Spin the wheel">${WSPIN?'…':'SPIN'}</button></div>
+    <div class="wctl"><button class="btn big gold" id="wSpin" ${WSPIN||!left?'disabled':''}>🎡 SPIN THE WHEEL</button>
+      ${WSPIN?'<button class="btn sm" id="wSkipAnim">⏩ Skip animation</button>':''}
+      <button class="btn sm ghost tonly" id="wReset">⟲ Reset wheel</button>
+      ${LIVE.on?`<button class="btn sm ghost tonly" id="wAllow">${W.allow?'🙅 Cancel student spin':'🎯 Let a student spin'}</button>`:''}</div>
+    <div class="wstat">Spins: <b>${W.spins}</b> · Challenges left: <b>${left}/8</b> · Suggested: ${sug} spins${W.allow?` · <span style="color:var(--cyan)">🎯 ${esc(NAMES[W.allow]||'a student')} can spin from their phone</span>`:''}</div></div>
+    <div id="chalBox">${chalHTML()}</div></div>`;
+}
+function chalHTML(){
+  const W=S.wheel;
+  if(WSPIN) return `<div class="wait-card"><div class="h-m">🎡 Spinning…</div><p class="mt">MAX is choosing his next accusation!</p><button class="btn sm mt" id="wSkipAnim2">⏩ Skip animation</button></div>`;
+  if(W.sel==null) return `<div class="wait-card">${av('max',110)}<p class="h-s mt" style="color:var(--text)">${W.used.length>=8?'All 8 challenges are done! 🎉':'Spin the wheel to get MAX’s next accusation!'}</p>
+    <p class="mt">${W.used.length>=8?'Reset the wheel to play again.':'Defend yourself with <span class="pw">DO</span>, <span class="pw">DOES</span> or <span class="pw">DID</span> — and add one detail.'}</p></div>`;
+  const s=SECTORS[W.sel], hid=sd('wheel').hid;
+  return `<div class="chal" style="--sc:${s.col}"><span class="sect">${ico(s.i,s.ink)} ${s.t}</span>
+    <div class="acc">${av('max',90)}<div><span class="nm k-max">MAX</span><br><q>${esc(s.acc)}</q></div></div>
+    <div class="mis">🎯 ${emph(s.mis)}</div><span class="gram">${esc(s.g)}</span>
+    ${s.alt?`<div class="small mt">💡 Not true for you? Don’t say something false — ${emph(s.alt.replace(/^.*?Then: /,'agree, then add something true: '))}</div>`:''}
+    ${s.bonus?`<div class="small mt">⭐ ${esc(s.bonus)}</div>`:''}
+    ${(S.wall['wheel:'+W.spins]||[]).map(w=>`<div class="why" style="background:rgba(63,230,255,.08);border-color:rgba(63,230,255,.4)">📱 “${emph(w.text)}” <span class="small">— ${esc(w.by||'')}</span></div>`).join('')}
+    ${W.sample&&!hid?`<div class="smp"><small>Sample answer</small>${emph(s.sample)}${s.alt?`<span class="alt">${emph(s.alt)}</span>`:''}</div>`:''}
+    <div class="who-row"><span class="small">Answering:</span>${S.teams.length>1?S.teams.map(t=>`<button class="chip ${t.id===S.at?'on':''}" data-wt="${t.id}">${t.e} ${esc(t.name)}</button>`).join(''):''}
+      <input class="field" id="wWho" style="max-width:220px;padding:6px 10px;font-size:15px" placeholder="Student name (optional)" value="${esc(W.who||'')}" maxlength="24" aria-label="Who is answering"></div>
+    <div class="acts">
+      <button class="btn sm" id="wSample">${W.sample&&!hid?'🙈 HIDE ANSWER':'👁 SHOW SAMPLE ANSWER'}</button>
+      <button class="btn sm ok" id="wAward">✓ AWARD +10</button><button class="btn sm" id="wBonus">⭐ BONUS +5</button>
+      <button class="btn sm ghost" id="wTm" title="Response timer (optional)">⏱ <span class="tm" data-clock>${mmss(TMR.left())}</span> ${TMR.run()?'❚❚':'▶'}</button>
+      <button class="btn sm gold" id="wAgain" ${W.used.length>=8?'disabled':''}>🎡 SPIN AGAIN</button>
+      <button class="btn sm ghost" id="wSkipC">⏭ SKIP CHALLENGE</button></div></div>`;
+}
+function bindWheel(v){
+  const on=(id,f)=>{ const e=$('#'+id,v); if(e) e.onclick=f; };
+  on('wSpin',spin); on('wHub',spin); on('wAgain',spin); on('wSkipAnim',()=>finishSpin()); on('wSkipAnim2',()=>finishSpin());
+  on('wReset',()=>{ if(S.wheel.used.length && !confirm('Reset the wheel? All 8 challenges become available again. Scores are kept.')) return; resetWheel(); });
+  on('wSample',()=>{ const d=sd('wheel'); if(S.wheel.sample&&!d.hid){ S.wheel.sample=false; } else { S.wheel.sample=true; d.hid=false; SND.play('reveal'); } save(); draw(); });
+  on('wAward',()=>{ award(10); toast(`+10 → ${actTeam().name}${S.wheel.who?' ('+S.wheel.who+')':''}`); beep(S.wheel.spins===3?'MAX IS GETTING NERVOUS!':'CONFIDENCE LEVEL INCREASING!'); });
+  on('wBonus',()=>{ award(5); toast(`⭐ +5 bonus → ${actTeam().name}`); });
+  on('wTm',()=>{ if(TMR.left()<=0) TMR.set(45); TMR.toggle(); draw(); });
+  on('wSkipC',()=>{ S.wheel.sel=null; S.wheel.sample=false; save(); draw(); toast('Challenge skipped'); });
+  on('wAllow',()=>{ if(S.wheel.allow){ S.wheel.allow=''; save(); draw(); return; } pickStudent(id=>{ S.wheel.allow=id; S.wheel.who=NAMES[id]||''; save(); draw(); toast('That student can now spin from their phone'); }); });
+  $$('[data-wt]',v).forEach(b=>b.onclick=()=>{ S.at=b.dataset.wt; save(); draw(); });
+  const w=$('#wWho',v); if(w) w.oninput=()=>{ S.wheel.who=w.value; save(); };
+  if(WSPIN) requestAnimationFrame(animWheel);
+}
+function pickSector(){ const free=[...Array(8).keys()].filter(i=>!S.wheel.used.includes(i)); return free.length ? free[Math.floor(Math.random()*free.length)] : -1; }
+function spin(){
+  if(WSPIN) return; const sel=pickSector(); if(sel<0) return toast('All 8 challenges used — reset the wheel');
+  const W=S.wheel, from=((W.rot%360)+360)%360, mid=sel*45+22.5, jitter=Math.random()*28-14;
+  const target=(((-(mid+jitter))%360)+360)%360;
+  let to=from+360*5+((target-from+360)%360);
+  const dur=(S.noanim||REDUCED_OS)?500:4300;
+  W.rot=from; W.sel=null; W.sample=false; W.used.push(sel); W.spins++; W.allow='';
+  W.spinning={id:uid(), from, to, dur};
+  sd('wheel').hid=false;
+  WSPIN={from, to, start:performance.now(), dur, sel, lastSec:Math.floor(from/45)};
+  SND.play('whoosh'); save(); draw(); pubState();
+}
+function animWheel(){
+  if(!WSPIN) return; cancelAnimationFrame(WSPIN.raf);
+  const t=Math.min(1,(performance.now()-WSPIN.start)/WSPIN.dur), e=1-Math.pow(1-t,4), rot=WSPIN.from+(WSPIN.to-WSPIN.from)*e;
+  const g=$('#wrot'); if(g) g.setAttribute('transform',`rotate(${rot.toFixed(2)})`);
+  const sec=Math.floor(rot/45); if(sec!==WSPIN.lastSec){ WSPIN.lastSec=sec; SND.play('tick'); const p=$('.wheel-box .pointer'); if(p){ p.classList.remove('tick'); void p.getBoundingClientRect(); p.classList.add('tick'); } }
+  if(t<1) WSPIN.raf=requestAnimationFrame(animWheel); else finishSpin();
+}
+function finishSpin(silent){
+  if(!WSPIN) return; cancelAnimationFrame(WSPIN.raf);
+  const W=S.wheel; W.rot=((WSPIN.to%360)+360)%360; W.sel=WSPIN.sel; W.spinning=null; WSPIN=null;
+  if(!silent){ SND.play('reveal'); TMR.set(45); if(W.spins===4) beep('MAX IS GETTING NERVOUS!'); }
+  save(); if(!silent && cur().id==='wheel') draw(); pubState();
+}
+function resetWheel(quiet){ if(WSPIN) finishSpin(true); S.wheel=Object.assign(FRESH().wheel,{rot:S.wheel.rot}); sd('wheel').hid=false; save(); draw(); if(!quiet) toast('Wheel reset — all 8 challenges are back'); }
+function wheelTask(){
+  const W=S.wheel, s=W.sel!=null?SECTORS[W.sel]:null, hid=sd('wheel').hid;
+  return {id:'wheel:'+W.spins, kind:'wheel', rot:W.rot, spin:W.spinning, used:W.used.length, allow:W.allow||'',
+    card: s && !WSPIN ? {t:s.t, col:s.col, ink:s.ink, acc:s.acc, mis:s.mis, g:s.g, alt:s.alt||'', sample:(W.sample&&!hid)?s.sample:null} : null};
+}
+
+/* ---------- breakout team cards ---------- */
+function teamCard(t){
+  const w=wget(t.id), sub=S.sub[t.id];
+  return `<div class="tcard ${sub?'ready':''}" data-team="${t.id}"><div class="hd"><span class="em">${t.e}</span><input data-tn="${t.id}" value="${esc(t.name)}" maxlength="24" aria-label="Team name" style="font-weight:800">
+      ${S.teams.length>1?`<button class="btn xs ghost tonly" data-rmt="${t.id}" aria-label="Remove team" title="Remove team">✕</button>`:''}</div>
+    <label class="small" style="display:block;margin-top:8px">Names (optional)<input data-tf="${t.id}|people" value="${esc(w.people||'')}" maxlength="80" placeholder="e.g. Anya, Max, Ivan"></label>
+    <div class="ccs">${AUX.map(a=>{ const c=w[a], ck=auxCheck(c.c,a); return `<div class="cc"><div class="lab">CHALLENGE · ${a.toUpperCase()}<span class="ok ${ck.cls}" data-ck="${t.id}|${a}">${ck.txt}</span></div>
+      <label for="f-${t.id}-${a}-h">🎙️ Host’s silly accusation</label><textarea id="f-${t.id}-${a}-h" data-tf="${t.id}|${a}|h" maxlength="140" rows="1" placeholder="${esc(EXAMPLE.items[AUX.indexOf(a)].h)}">${esc(c.h)}</textarea>
+      <label for="f-${t.id}-${a}-c">💪 Confident answer with ${a.toUpperCase()}</label><textarea id="f-${t.id}-${a}-c" data-tf="${t.id}|${a}|c" maxlength="140" rows="1" placeholder="${esc(EXAMPLE.items[AUX.indexOf(a)].c)}">${esc(c.c)}</textarea></div>`; }).join('')}</div>
+    <div class="row mt"><button class="btn sm ${sub?'ok':'primary'}" data-sub="${t.id}">${sub?'✓ Ready — submitted':'📤 Submit / Ready'}</button><span class="small">${sub?'Team is ready to perform.':'Not ready yet.'}</span>
+      <span class="grow"></span><button class="btn sm ghost" data-onstage="${t.id}">🎤 Open on stage</button></div></div>`;
+}
+function bindWork(v){
+  const on=(id,f)=>{ const e=$('#'+id,v); if(e) e.onclick=f; };
+  on('tGo',()=>{ if(!TMR.run() && (TMR.left()<=0 || S.tmr.dur<240)) TMR.set(240); TMR.toggle(); draw(); });
+  on('tAdd',()=>TMR.add(60)); on('tRst',()=>{ TMR.set(240); draw(); });
+  on('wAddT',()=>{ addTeam(); draw(); }); on('copyM2',()=>copyText(MISSION_TEXT,'Instructions copied — paste them into the Zoom chat'));
+  $$('[data-tn]',v).forEach(inp=>inp.oninput=()=>{ const t=team(inp.dataset.tn); if(t){ t.name=inp.value.slice(0,24)||'TEAM'; save(); paintScore(); pubSoon(); } });
+  $$('[data-tf]',v).forEach(inp=>inp.oninput=()=>{ setField(inp.dataset.tf, inp.value); const [tid,a]=inp.dataset.tf.split('|'); if(a&&a!=='people') paintCheck(tid,a); pubSoon(); });
+  $$('[data-sub]',v).forEach(b=>b.onclick=()=>{ const id=b.dataset.sub; S.sub[id]=!S.sub[id]; if(S.sub[id]){ SND.play('ok'); beep('MISSION COMPLETE!'); } save(); draw(); });
+  $$('[data-rmt]',v).forEach(b=>b.onclick=()=>{ const id=b.dataset.rmt, t=team(id); if(!confirm(`Remove ${t.name}? Its cards and points will be deleted.`)) return; S.teams=S.teams.filter(x=>x.id!==id); delete S.work[id]; delete S.sub[id]; if(S.at===id) S.at=S.teams[0].id; save(); draw(); });
+  $$('[data-onstage]',v).forEach(b=>b.onclick=()=>{ sd('stage').t=b.dataset.onstage; const k=STEPS.findIndex(x=>x.id==='stage'); go(k); });
+}
+function setField(path, val){ const [tid,a,f]=path.split('|'); if(!team(tid)) return; const w=wget(tid); if(a==='people') w.people=String(val).slice(0,80); else if(AUX.includes(a)&&(f==='h'||f==='c')) w[a][f]=String(val).slice(0,140); save(); }
+function paintCheck(tid,a){ const el=$(`[data-ck="${tid}|${a}"]`); if(!el) return; const ck=auxCheck(wget(tid)[a].c,a); el.textContent=ck.txt; el.className='ok '+ck.cls; }
+let pubT2=null; function pubSoon(){ clearTimeout(pubT2); pubT2=setTimeout(pubState,400); }
+function syncWorkFields(){ if(cur().id!=='work') return;
+  $$('[data-tf]').forEach(inp=>{ if(document.activeElement===inp) return; const [tid,a,f]=inp.dataset.tf.split('|'), w=wget(tid), val=a==='people'?w.people:(w[a]||{})[f]; if(typeof val==='string' && inp.value!==val){ inp.value=val; if(a!=='people') paintCheck(tid,a); } });
+  $$('[data-sub]').forEach(b=>{ const id=b.dataset.sub, sub=!!S.sub[id]; b.textContent=sub?'✓ Ready — submitted':'📤 Submit / Ready'; b.className='btn sm '+(sub?'ok':'primary'); b.closest('.tcard').classList.toggle('ready',sub); });
+}
+
+/* ---------- 6 · teacher tools: modal, notes, scenes, teams ---------- */
+let MODALFROM=null;
+function openModal(html){ const b=$('#modalBox'); b.innerHTML=html; $('#modal').classList.remove('hidden'); b.scrollTop=0; MODALFROM=document.activeElement; setTimeout(()=>{ const f=$('button,input',b); f&&f.focus({preventScroll:true}); },30); }
+function closeModal(){ $('#modal').classList.add('hidden'); if(MODALFROM&&MODALFROM.focus) MODALFROM.focus({preventScroll:true}); if(ROLE==='teacher') paintChrome(); }
+$('#modal').addEventListener('click',e=>{ if(e.target.id==='modal') closeModal(); });
+
+function openTeams(){
+  const html=()=>`<div class="row"><h2 class="h-m grow">🏅 Scoreboard</h2><button class="btn sm ghost" data-close aria-label="Close">✕</button></div>
+   <p class="small mt">Points go to the <b>active team</b> (gold). One team (“TEAM CONFIDENCE”) = the whole class. Add teams for the breakout rooms.</p>
+   <div class="tm-list mt">${S.teams.map(t=>`<div class="tm-row ${t.id===S.at?'act':''}"><button class="btn sm ${t.id===S.at?'gold':'ghost'}" data-act="${t.id}" title="Make active">${t.e}</button>
+     <input class="field" data-rn="${t.id}" value="${esc(t.name)}" maxlength="24" aria-label="Team name">
+     <div class="row" style="gap:4px;flex-wrap:nowrap"><button class="btn xs ghost" data-pt="${t.id}" data-v="-5">−5</button><span class="pts">${t.score}</span><button class="btn xs ghost" data-pt="${t.id}" data-v="5">+5</button><button class="btn xs" data-pt="${t.id}" data-v="10">+10</button></div></div>`).join('')}</div>
+   <div class="row mt"><button class="btn sm" id="tmAdd" ${S.teams.length>=8?'disabled':''}>＋ Add team</button><button class="btn sm ghost" id="tmUndo" ${S.log.length?'':'disabled'}>↶ Undo last points</button><button class="btn sm ghost" id="tmZero">Reset scores</button></div>
+   <label class="switch mt"><input type="checkbox" id="tmScore" ${S.scoring?'checked':''}> Scoring ON (points for correct answers)</label>`;
+  const bind=()=>{ const B=$('#modalBox');
+    $('[data-close]',B).onclick=closeModal;
+    $$('[data-act]',B).forEach(b=>b.onclick=()=>{ S.at=b.dataset.act; save(); paintScore(); re(); });
+    $$('[data-rn]',B).forEach(i=>i.onchange=()=>{ const t=team(i.dataset.rn); t.name=i.value.trim().slice(0,24)||t.name; save(); paintScore(); draw(); });
+    $$('[data-pt]',B).forEach(b=>b.onclick=()=>{ const t=team(b.dataset.pt), n=+b.dataset.v; t.score+=n; S.log.push({t:t.id,n}); save(); paintScore(true); pubState(); re(); });
+    $('#tmAdd',B).onclick=()=>{ addTeam(); draw(); re(); };
+    $('#tmUndo',B).onclick=()=>{ const l=S.log.pop(); if(l){ const t=team(l.t); if(t) t.score-=l.n; } save(); paintScore(); re(); };
+    $('#tmZero',B).onclick=()=>{ if(!confirm('Set all scores to 0?')) return; S.teams.forEach(t=>t.score=0); S.log=[]; save(); paintScore(); re(); };
+    $('#tmScore',B).onchange=e=>{ S.scoring=e.target.checked; save(); paintScore(); };
+  };
+  const re=()=>{ $('#modalBox').innerHTML=html(); bind(); };
+  openModal(html()); bind();
+}
+function openNav(){
+  openModal(`<div class="row"><h2 class="h-m grow">🗺 Scene navigator</h2><button class="btn sm ghost" data-close aria-label="Close">✕</button></div>
+   <p class="small mt">Jump anywhere — answers, wheel and scores are kept.</p>
+   ${SCENES.map(sc=>`<div class="mt"><div class="eyebrow" style="margin-bottom:6px"><span class="rd">${sc.k}</span><b>${sc.t}</b> · ≈${sc.min} min</div><div class="navgrid">${STEPS.map((x,i)=>x.sc!==sc.n?'':`<button class="${i===S.i?'cur':''}" data-j="${i}">${esc(x.title)}<small>${x.opt?'optional':''}${x.opt&&S.core?' · hidden in Quick Mode':''}</small></button>`).join('')}</div></div>`).join('')}
+   <div class="row mt2"><button class="btn sm ghost" id="nvRe">⟲ Restart whole lesson</button></div>`);
+  const B=$('#modalBox'); $('[data-close]',B).onclick=closeModal;
+  $$('[data-j]',B).forEach(b=>b.onclick=()=>{ const k=+b.dataset.j; if(!visible(k)) S.core=false; closeModal(); go(k); });
+  $('#nvRe',B).onclick=askRestart;
+}
+function toggleNotes(force){ const on = force ?? !$('#notes').classList.contains('on'); $('#notes').classList.toggle('on',on); $('#notes').setAttribute('aria-hidden',String(!on)); $('#bNotes').classList.toggle('on',on); if(on) paintNotes(); }
+function paintNotes(){
+  const s=cur(), n=s.n||{}, sc=SCENES[s.sc-1], li=a=>a&&a.length?`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'';
+  $('#notesBody').innerHTML=`
+   <div class="tsec"><h5>${sc.k} · ${sc.t} · ≈${sc.min} min</h5><b style="font-size:18px">${esc(s.title)}</b> ${s.opt?'<span class="opttag">optional</span>':''}<div class="small">Time: ${esc(n.t||'—')}</div>${n.obj?`<p style="margin:6px 0 0"><b>Objective:</b> ${esc(n.obj)}</p>`:''}</div>
+   ${n.do?`<div class="tsec"><h5>Що робити</h5>${li(n.do)}</div>`:''}
+   ${n.ans?`<div class="tsec"><h5>Відповіді / Answer key</h5>${li(n.ans)}</div>`:''}
+   ${n.ua?`<div class="tsec"><h5>🇺🇦 Переклад</h5><p class="ua" style="margin:0">${esc(n.ua)}</p></div>`:''}
+   ${n.say?`<div class="tsec"><h5>Що сказати</h5>${n.say.map(x=>`<div class="say">${esc(x[0])}<i>${esc(x[1])}</i></div>`).join('')}</div>`:''}
+   ${n.read?`<div class="tsec"><h5>🎭 Хто читає</h5>${esc(n.read)}</div>`:''}
+   ${n.follow?`<div class="tsec"><h5>Follow-up</h5>${li(n.follow)}</div>`:''}
+   ${n.sample?`<div class="tsec"><h5>Sample answers</h5>${li(n.sample)}</div>`:''}
+   <div class="tsec"><h5>Швидкі дії</h5><div class="row" style="gap:6px"><button class="btn xs" id="nSkip">⏭ Skip this activity</button><button class="btn xs ghost" id="nRA">⟲ Restart activity</button><button class="btn xs ghost" id="nTeams">🏅 Teams & points</button></div></div>
+   <div class="tsec"><h5>⏱ Таймер (лише підказка)</h5><div class="row" style="gap:6px"><span class="dsp" style="font-size:24px" data-clock>${mmss(TMR.left())}</span>
+     <button class="btn xs" id="nT">${TMR.run()?'❚❚':'▶'}</button><button class="btn xs ghost" id="n45">0:45</button><button class="btn xs ghost" id="n4">4:00</button><button class="btn xs ghost" id="n1">+1</button></div></div>
+   <div class="tsec"><h5>Перейти до кроку</h5><div class="jump">${STEPS.map((x,i)=>`<button class="${i===S.i?'cur':''}" data-j="${i}" ${visible(i)?'':'style="opacity:.4"'}>${SCENES[x.sc-1].k} · ${esc(x.title)}${x.opt?' · opt':''}</button>`).join('')}</div></div>
+   <div class="tsec"><h5>Налаштування</h5>
+     <label class="switch"><input type="checkbox" id="nCore" ${S.core?'checked':''}> ⚡ Quick Mode — hide optional activities</label>
+     <label class="switch"><input type="checkbox" id="nAnim" ${S.noanim?'checked':''}> Turn off animations</label>
+     <label class="switch"><input type="checkbox" id="nSnd" ${S.sound?'checked':''}> Sound effects</label>
+     <div class="row mt"><button class="btn xs" id="nLive">📡 ${LIVE.on?'Live room '+S.room:'Start a live room'}</button><button class="btn xs ghost" id="nRe">⟲ Restart lesson</button></div>
+     <p class="small mt" style="margin-bottom:0">Keys: → / Space next · ← back · R reveal · H hide · N scenes · T notes · P present</p></div>
+   <div class="tsec"><h5>План (≈34 хв активностей із 60)</h5>${SCENES.map(x=>`${x.k} ${x.t} — ${x.min} хв`).join('<br>')}<p class="small" style="margin-bottom:0">Решта часу — пояснення, читання вголос, breakout rooms, технічні паузи.</p></div>`;
+  const B=$('#notesBody');
+  $('#nSkip',B).onclick=skipAct; $('#nRA',B).onclick=restartAct; $('#nTeams',B).onclick=openTeams;
+  $('#nT',B).onclick=()=>{ TMR.toggle(); paintNotes(); }; $('#n45',B).onclick=()=>{ TMR.set(45); paintNotes(); }; $('#n4',B).onclick=()=>{ TMR.set(240); paintNotes(); }; $('#n1',B).onclick=()=>TMR.add(60);
+  $$('[data-j]',B).forEach(b=>b.onclick=()=>{ const k=+b.dataset.j; if(!visible(k)) S.core=false; go(k); });
+  $('#nCore',B).onchange=e=>setQuick(e.target.checked);
+  $('#nAnim',B).onchange=e=>{ S.noanim=e.target.checked; applyAnim(); save(); };
+  $('#nSnd',B).onchange=e=>{ S.sound=e.target.checked; save(); paintChrome(); };
+  $('#nLive',B).onclick=openLive; $('#nRe',B).onclick=askRestart;
+}
+function setQuick(on){ S.core=on; save(); toast(on?'⚡ Quick Mode ON — optional activities hidden':'Quick Mode OFF'); if(!visible(S.i)){ let k=S.i; while(k<STEPS.length && !visible(k)) k++; go(Math.min(k,STEPS.length-1)); } else draw(); }
+function applyAnim(){ document.body.classList.toggle('noanim', !!S.noanim); }
+function askRestart(){
+  openModal(`<h2 class="h-m">Restart Lesson 22?</h2><p class="mt">All answers, wheel results, team cards and scores on this device will be cleared. ${LIVE.on?'The live room stays open.':''}</p>
+   <div class="row mt2"><button class="btn primary" id="rsYes">⟲ Restart</button><button class="btn ghost" id="rsNo">Cancel</button></div>`);
+  $('#rsNo').onclick=closeModal;
+  $('#rsYes').onclick=()=>{ const keep={room:S.room, tid:S.tid, live:S.live, noanim:S.noanim, sound:S.sound}; if(WSPIN) finishSpin(true); S=Object.assign(FRESH(),keep); WALLQ.length=0; LAST={id:null,p:-1}; save(); closeModal(); go(0); toast('Lesson restarted'); };
+}
+function present(){
+  const on=!document.body.classList.contains('present');
+  document.body.classList.toggle('present',on); $('#bPresent').classList.toggle('on',on);
+  if(on){ toggleNotes(false); if(!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(()=>{}); toast('Presentation mode — teacher-only tools hidden (P to exit)'); }
+  else { if(document.fullscreenElement) document.exitFullscreen?.().catch(()=>{}); toast('Presentation mode off'); }
+}
+</script>
+
+<script>
+/* ---------- 7 · live room ----------
+   Учитель — єдине джерело стану. Захист керування (як в уроках 13–21):
+   • кожне повідомлення вчителя ПІДПИСАНЕ (ECDSA P-256, WebCrypto); приватний ключ лишається лише в браузері вчителя;
+   • посилання / QR для учнів містить відбиток (fingerprint) публічного ключа; при ручному вході — код кімнати + 6 символів ключа;
+     телефон приймає стан і завдання ЛИШЕ з правильним підписом, тож учень не може «стати вчителем»;
+   • учні надсилають тільки hello / ans / work / submit / spin / react; учитель перевіряє кожне (поточне завдання, межі, довжину);
+     бали, Reveal, сцену й колесо змінює тільки вчитель; spin приймається лише від учня, якому вчитель дозволив;
+   • правильні відповіді й sample answers доходять на телефони лише після Reveal; один голос на телефон, лише нік. */
+const configured = ()=> /^https:\/\/[a-z0-9-]+\.supabase\.co/i.test((CFG.SUPABASE_URL||'').trim()) && !!(CFG.SUPABASE_KEY||'').trim();
+const LIVE = {on:false, peers:[]};
+const WALLQ = [], NAMES = {};
+const AVATARS = ['🦊','🐼','🐯','🐸','🦉','🐙','🦄','🐺','🐧','🚀','🎧','⚡'];
+function studentsN(){ return (LIVE.peers||[]).filter(p=>p&&p.role==='student').length; }
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const unb64 = s => Uint8Array.from(atob(s), c=>c.charCodeAt(0));
+const hexOf = buf => [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+const canSign = ()=> !!(window.crypto && crypto.subtle && window.isSecureContext!==false);
+async function fpOf(pk){ const h=await crypto.subtle.digest('SHA-256', new TextEncoder().encode('P256.'+pk.x+'.'+pk.y)); return hexOf(h).slice(0,20); }
+const TKEY = { ok:false, priv:null, pub:null, fp:'',
+  async init(){
+    if(this.ok) return true; if(!canSign()) return false;
+    try{ let st=null; try{ st=JSON.parse(localStorage.getItem('lesson22-tkey')||'null'); }catch(e){}
+      if(st && st.priv && st.pub){ this.priv=await crypto.subtle.importKey('jwk',st.priv,{name:'ECDSA',namedCurve:'P-256'},false,['sign']); this.pub=st.pub; }
+      else { const kp=await crypto.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['sign','verify']);
+        const priv=await crypto.subtle.exportKey('jwk',kp.privateKey), pub=await crypto.subtle.exportKey('jwk',kp.publicKey);
+        this.priv=kp.privateKey; this.pub={x:pub.x, y:pub.y}; try{ localStorage.setItem('lesson22-tkey',JSON.stringify({priv, pub:this.pub})); }catch(e){} }
+      this.fp=await fpOf(this.pub); this.ok=true; return true; }catch(e){ console.warn('Signing unavailable:', e); return false; }
+  },
+  async sign(str){ return b64(await crypto.subtle.sign({name:'ECDSA',hash:'SHA-256'}, this.priv, new TextEncoder().encode(str))); }
+};
+const shortKey = ()=> TKEY.fp ? TKEY.fp.slice(0,6).toUpperCase() : '';
+const Net = {
+  kind:null, status:'off', ch:null, sb:null, bc:null, me:null, peers:{}, hb:null, prune:null,
+  setStatus(s){ this.status=s; this.onStatus && this.onStatus(s); },
+  async connect(o){
+    this.stop();
+    let sid=null; try{ sid=o.role==='student' && sessionStorage.getItem('l22sid'); }catch(e){}
+    this.me={id:o.id || sid || uid(), name:o.name||'', role:o.role, av:o.av||''};
+    if(o.role==='student') try{ sessionStorage.setItem('l22sid', this.me.id); }catch(e){}
+    this.onEvent=o.onEvent; this.onPeers=o.onPeers||(()=>{}); this.onStatus=o.onStatus||(()=>{});
+    this.setStatus('connecting');
+    if(configured()){
+      try{
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm');
+        this.sb = createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY);
+        this.ch = this.sb.channel('lesson22-'+o.room, {config:{presence:{key:this.me.id}, broadcast:{self:false}}});
+        this.ch.on('broadcast',{event:'msg'},({payload})=>this.onEvent(payload));
+        this.ch.on('presence',{event:'sync'},()=>{ const st=this.ch.presenceState(), list=[]; Object.values(st).forEach(v=>v[0]&&list.push(v[0])); this.onPeers(list); });
+        let first=true;
+        await new Promise((res,rej)=>{ const to=setTimeout(()=>rej(new Error('timeout')),9000);
+          this.ch.subscribe(async st=>{
+            if(st==='SUBSCRIBED'){ try{ await this.ch.track(this.me); }catch(e){} this.setStatus('live'); if(first){ first=false; clearTimeout(to); res(); } }
+            else if(st==='CHANNEL_ERROR'||st==='TIMED_OUT'||st==='CLOSED'){ if(first){ first=false; clearTimeout(to); rej(new Error(st)); } else if(this.ch) this.setStatus('reconnecting'); }
+          }); });
+        this.kind='supabase'; return this.kind;
+      }catch(e){ console.warn('Supabase realtime unavailable:', e.message||e); try{ this.sb&&this.ch&&this.sb.removeChannel(this.ch); }catch(_){} this.sb=null; this.ch=null; }
+    }
+    try{
+      this.bc=new BroadcastChannel('lesson22-'+o.room);
+      this.bc.onmessage=e=>{ const m=e.data; if(!m||!m.from) return; this.peers[m.from.id]=Object.assign({},m.from,{ts:Date.now()}); this.flush(); if(m.t!=='__hb') this.onEvent(m); };
+      this.hb=setInterval(()=>this.send({t:'__hb'}),2500);
+      this.prune=setInterval(()=>{ const now=Date.now(); let ch=false; for(const k in this.peers) if(now-this.peers[k].ts>9000){ delete this.peers[k]; ch=true; } if(ch) this.flush(); },3000);
+      this.send({t:'__hb'}); this.kind='local'; this.setStatus('local'); return this.kind;
+    }catch(e){ this.kind='none'; this.setStatus('off'); return 'none'; }
+  },
+  flush(){ this.onPeers(Object.values(this.peers)); },
+  send(p){ const msg=Object.assign({},p,{from:this.me}); try{ if(this.kind==='supabase'&&this.ch) this.ch.send({type:'broadcast',event:'msg',payload:msg}); else if(this.bc) this.bc.postMessage(msg); }catch(e){} },
+  stop(){ clearInterval(this.hb); clearInterval(this.prune); if(this.ch){ try{ this.sb.removeChannel(this.ch); }catch(e){} } if(this.bc){ try{ this.bc.close(); }catch(e){} } this.kind=null; this.ch=null; this.bc=null; this.peers={}; this.status='off'; }
+};
+async function sendSigned(p){
+  const body=JSON.stringify(Object.assign({ts:Date.now()},p));
+  if(TKEY.ok){ try{ const sig=await TKEY.sign(body); Net.send({t:'sig', body, sig, pk:TKEY.pub}); return; }catch(e){ console.warn(e); } }
+  Net.send({t:'raw', body});
+}
+function curTask(){ const c=cur(); try{ return c.live?c.live():null; }catch(e){ return null; } }
+let pubT=null;
+function pubState(){
+  if(!LIVE.on || ROLE!=='teacher') return;
+  clearTimeout(pubT); pubT=setTimeout(()=>{ const c=cur(), sc=SCENES[c.sc-1];
+    sendSigned({t:'state', sc:sc.n, k:sc.k, title:sc.t, step:c.title, task:curTask(), timer:{left:Math.ceil(TMR.left()), run:TMR.run()},
+      scores:S.scoring?S.teams.map(t=>({name:t.name, e:t.e, score:t.score})):null}); paintDock(); },120);
+}
+setInterval(()=>{ if(LIVE.on) pubState(); },6000);
+let redrawT=null;
+function softRedraw(){ clearTimeout(redrawT); redrawT=setTimeout(()=>{ if(cur().id==='work'){ syncWorkFields(); paintDock(); return; } if(!typing() && !$('#pop') && !WSPIN) draw(); else paintDock(); },250); }
+function onTeacherMsg(m){
+  const id=m.from&&m.from.id; if(!id || m.from.role!=='student') return;
+  if(m.from.name) NAMES[id]=(AVATARS.includes(m.from.av)?m.from.av+' ':'')+String(m.from.name).slice(0,20);
+  const task=curTask();
+  if(m.t==='hello'){ pubState(); paintDock(); return; }
+  if(m.t==='react'){ floatEmoji(m.e); return; }
+  if(m.t==='spin'){ if(task && task.kind==='wheel' && S.wheel.allow && S.wheel.allow===id && !WSPIN){ spin(); toast((NAMES[id]||'A student')+' spun the wheel! 🎡'); } return; }
+  if(m.t==='ans' && task && m.task===task.id){
+    if(task.kind==='choice'){ const v=+m.v; if(!(Number.isInteger(v) && v>=0 && v<task.opts.length) || task.lock) return; (S.votes[task.id]=S.votes[task.id]||{})[id]=v; save(); softRedraw(); return; }
+    if(task.kind==='text' || task.kind==='wheel'){ const text=String(m.v||'').replace(/\s+/g,' ').trim().slice(0,160); if(!text) return;
+      const k=WALLQ.findIndex(w=>w.task===task.id && w.sid===id), item={id:uid(), task:task.id, sid:id, text, by:NAMES[id]||'student'};
+      if(k>=0) WALLQ[k]=item; else WALLQ.unshift(item); paintDock(); return; }
+  }
+  if(task && task.kind==='team'){
+    const L=String(m.team||''); if(!team(L)) return;
+    if(m.t==='work'){ const f=String(m.f||''); if(!/^(people|(do|does|did)\|[hc])$/.test(f)) return;
+      setField(L+'|'+f, String(m.v||'')); syncWorkFields(); pubSoon(); paintDock(); return; }
+    if(m.t==='submit'){ S.sub[L]=true; save(); pubState(); toast(team(L).name+' is ready ✓'); beep('MISSION COMPLETE!'); syncWorkFields(); return; }
+  }
+}
+function floatEmoji(e){ if(!/^[\p{Extended_Pictographic}‍️]{1,8}$/u.test(e||'')) return; const s=document.createElement('span'); s.textContent=e; s.style.left=Math.random()*40+'px'; $('#reacts').appendChild(s); setTimeout(()=>s.remove(),3100); }
+function paintDock(){
+  const d=$('#dock'); d.classList.toggle('on',LIVE.on && ROLE==='teacher'); if(!LIVE.on) return;
+  const st=Net.status, stTxt={live:'● live', local:'● this browser only', reconnecting:'● reconnecting…', connecting:'● connecting…', off:'● offline'}[st]||st;
+  $('#dockTitle').textContent='Room '+S.room; $('#dockLed').className='led '+(st==='live'?'on':st==='off'?'bad':'');
+  const studs=LIVE.peers.filter(p=>p&&p.role==='student');
+  $('#dockCount').textContent=`${studs.length} joined · ${stTxt}`;
+  const task=curTask(); let h='';
+  h+= studs.length?`<div class="names">${studs.slice(0,40).map(p=>`<span>${esc((AVATARS.includes(p.av)?p.av+' ':'')+(p.name||'?'))}</span>`).join('')}</div>`:`<div class="small">Nobody yet — share the link, QR or code (📡 Live).</div>`;
+  if(!task) h+=`<div class="small">No phone task here — phones show “look at the main screen”.</div>`;
+  else if(task.kind==='choice'){ const n=counts(task.id,task.opts.length), tot=Object.keys(S.votes[task.id]||{}).length, mx=Math.max(1,...n);
+    h+=`<div class="small">${tot} of ${studs.length} answered · ${esc(task.q.slice(0,70))}</div>`+task.opts.map((o,i)=>`<div class="dbar"><span>${task.lock&&task.correct===i?'✅ ':''}${esc(o)}</span> <b>${n[i]}</b><div class="tr"><i style="width:${n[i]/mx*100}%"></i></div></div>`).join(''); }
+  else if(task.kind==='text' || task.kind==='wheel'){ const list=WALLQ.filter(w=>w.task===task.id); h+= task.kind==='wheel'?'<div class="small">Phones can type their answer to MAX.</div>':'';
+    h+= list.length?`<div class="small">${list.length} answers — Show puts one on the screen</div>`+list.map(w=>`<div class="wallit"><p>${esc(w.text)}<small>${esc(w.by)}</small></p><button class="btn xs" data-w="${w.id}">Show</button><button class="btn xs ghost" data-wx="${w.id}" aria-label="Hide">✕</button></div>`).join(''):`<div class="small">Waiting for answers…</div>`; }
+  else if(task.kind==='team'){ h+=S.teams.map(t=>{ const w=wget(t.id), n=AUX.filter(a=>w[a].h&&w[a].c).length; return `<div class="small">${t.e} ${esc(t.name)}: ${n}/3 challenges${S.sub[t.id]?' · ✅ ready':''}</div>`; }).join(''); }
+  else if(task.kind==='show'){ h+=`<div class="small">Phones show: “${esc(task.team)} is on stage”.</div>`; }
+  $('#dockBody').innerHTML=h;
+  $$('[data-w]',d).forEach(b=>b.onclick=()=>{ const k=WALLQ.findIndex(w=>w.id===b.dataset.w); if(k<0) return; const w=WALLQ.splice(k,1)[0]; (S.wall[w.task]=S.wall[w.task]||[]).push({text:w.text, by:w.by}); save(); draw(); });
+  $$('[data-wx]',d).forEach(b=>b.onclick=()=>{ const k=WALLQ.findIndex(w=>w.id===b.dataset.wx); if(k>=0) WALLQ.splice(k,1); paintDock(); });
+}
+function pickStudent(cb){
+  const studs=LIVE.peers.filter(p=>p&&p.role==='student');
+  openModal(`<div class="row"><h2 class="h-m grow">🎯 Who spins?</h2><button class="btn sm ghost" data-close aria-label="Close">✕</button></div>
+    <p class="small mt">The chosen student gets a SPIN button on their phone. The result is still chosen fairly by this page.</p>
+    <div class="row mt">${studs.length?studs.map(p=>`<button class="chip" data-ps="${esc(p.id)}">${esc((AVATARS.includes(p.av)?p.av+' ':'')+(p.name||'?'))}</button>`).join(''):'<span class="muted">Nobody has joined yet.</span>'}</div>`);
+  const B=$('#modalBox'); $('[data-close]',B).onclick=closeModal;
+  $$('[data-ps]',B).forEach(b=>b.onclick=()=>{ const p=studs.find(x=>x.id===b.dataset.ps); if(p) NAMES[p.id]=(AVATARS.includes(p.av)?p.av+' ':'')+(p.name||''); closeModal(); cb(b.dataset.ps); });
+}
+const baseURL = ()=> location.href.split('?')[0].split('#')[0];
+const joinURL = ()=> baseURL()+'?room='+S.room+(TKEY.fp?'&k='+TKEY.fp:'')+'&role=student';
+async function startLive(silent){
+  const signed=await TKEY.init();
+  const kind=await Net.connect({room:S.room, id:S.tid, role:'teacher', name:'teacher', onEvent:onTeacherMsg,
+    onPeers:list=>{ LIVE.peers=list; paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); },
+    onStatus:()=>{ paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); }});
+  LIVE.on = kind!=='none'; S.live=LIVE.on; save(); pubState(); draw();
+  if(!silent) toast(!signed?'Live room open — but this page can’t sign messages (needs https)':kind==='supabase'?'Live room open — share the link, QR or code':kind==='local'?'Supabase is not reachable — the room works in THIS browser only':'The live room could not start');
+  return kind;
+}
+function stopLive(){ sendSigned({t:'end'}); setTimeout(()=>Net.stop(),300); LIVE.on=false; S.live=false; LIVE.peers=[]; S.wheel.allow=''; save(); paintDock(); draw(); }
+function liveStatus(){
+  if(!LIVE.on) return 'not started — <b>Presentation mode</b> (no phones needed)';
+  const n=studentsN();
+  const s = Net.status==='live' ? '<span style="color:var(--ok)">● live (Supabase Realtime)</span>' : Net.status==='local' ? '<span style="color:var(--gold)">● this browser only — Supabase is not configured or not reachable</span>' : `<span style="color:var(--gold)">● ${esc(Net.status)}</span>`;
+  return `${s} · ${n} joined`;
+}
+async function openLive(){
+  await TKEY.init();
+  openModal(`<div class="row"><h2 class="h-m grow">📡 Live classroom</h2><button class="btn sm ghost" data-close aria-label="Close">✕</button></div>
+   <p class="small mt">Optional. Students join from a phone with a nickname and an emoji — no account, no email, no personal data. They vote, answer, see the wheel spin, type answers to MAX and write their team’s challenge cards together. Correct answers and sample answers reach phones only after you reveal them. Without a live room the lesson runs in <b>Presentation mode</b> on your shared screen.</p>
+   <div class="split mt" style="align-items:center"><div><div class="small">Room code</div><div class="dsp" style="font-size:72px">${S.room}</div>
+     <div class="small">Teacher key <b style="font-size:22px;color:var(--cyan);letter-spacing:.12em">${shortKey()||'—'}</b> (only for students who type the code)</div>
+     <div class="small mt" style="word-break:break-all">${esc(joinURL())}</div>
+     <div class="small mt" id="lvStatus">Status: ${liveStatus()}</div>
+     <p class="small mt" style="color:#BFF7DE">🔐 Your messages are signed with a private key that never leaves this browser. Phones obey only this signature — a student can’t take control by opening the teacher page.</p></div>
+     <img alt="QR code for the student link" width="210" height="210" style="border-radius:18px;background:#fff;justify-self:center" src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&margin=8&data=${encodeURIComponent(joinURL())}" onerror="this.remove()"></div>
+   <div class="row mt2">${LIVE.on?'<button class="btn" id="lvStop">⏹ Stop room</button>':'<button class="btn primary" id="lvStart">▶ Start live room</button>'}
+     <button class="btn sm ghost" id="lvCopy">📋 Copy link</button><button class="btn sm ghost" id="lvNew" ${LIVE.on?'disabled':''}>New code</button></div>
+   ${configured()?'':'<p class="small mt" style="color:var(--gold)">SUPABASE_URL / SUPABASE_KEY are empty at the top of this file → phones on other devices can’t connect.</p>'}
+   ${canSign()?'':'<p class="small mt" style="color:var(--gold)">This page is not on https, so messages can’t be signed. Open it from GitHub Pages for the live room.</p>'}`);
+  $('[data-close]','#modalBox').onclick=closeModal;
+  const st=$('#lvStart'); if(st) st.onclick=async()=>{ st.disabled=true; st.textContent='Connecting…'; await startLive(); openLive(); };
+  const sp=$('#lvStop'); if(sp) sp.onclick=()=>{ stopLive(); openLive(); };
+  $('#lvCopy').onclick=()=>copyText(joinURL(),'Link copied — paste it into the Zoom chat');
+  $('#lvNew').onclick=()=>{ S.room=rand4(); save(); openLive(); };
+}
+
+/* ---------- 8 · student app (?room=1234&k=…&role=student  or  ?join) ---------- */
+function studentApp(){
+  document.body.classList.add('student'); document.body.dataset.sc='1';
+  const B=$('#stuBody');
+  let room=(qs.get('room')||'').replace(/\D/g,'').slice(0,6), key=(qs.get('k')||'').replace(/[^0-9a-f]/gi,'').slice(0,20).toLowerCase();
+  let st=null, name='', avatar=AVATARS[0], sent={}, myTeam='', taskKey='', trust=null, lastTs=0, verified=false, spinSeen='', wrot=0, spinRaf=null;
+  try{ name=localStorage.getItem('l22name')||''; avatar=localStorage.getItem('l22av')||avatar; }catch(e){}
+  const setConn=s=>{ $('#stuLed').className='led '+(s==='live'?'on':s==='off'?'bad':''); $('#stuConn').textContent={live:'connected', local:'this browser only', reconnecting:'reconnecting…', connecting:'connecting…', off:'offline'}[s]||''; };
+  $('#stuFoot').innerHTML=['👍','😂','😮','👏','✋','🔥'].map(e=>`<button data-e="${e}" aria-label="React ${e}">${e}</button>`).join('');
+  $$('[data-e]',$('#stuFoot')).forEach(b=>b.onclick=()=>{ if(!Net.kind) return; Net.send({t:'react', e:b.dataset.e}); b.animate?.([{transform:'scale(1.4)'},{transform:'scale(1)'}],{duration:250}); });
+  const ask=()=>{
+    B.innerHTML=`<div class="stu-card"><div class="row" style="gap:8px">${['max','nova','beep'].map(k=>av(k,52)).join('')}</div>
+      <h2 class="dsp mt" style="font-size:26px">Join THE CONFIDENCE SHOW 🎤</h2>
+      <label for="rc">Room code</label><input id="rc" inputmode="numeric" maxlength="6" value="${esc(room)}" placeholder="1234" autocomplete="off">
+      ${key.length>=6?'':`<label for="tk">Teacher key (6 characters on the screen)</label><input id="tk" maxlength="6" placeholder="e.g. 7F3A9C" autocomplete="off" style="text-transform:uppercase">`}
+      <label for="nm">Your nickname</label><input id="nm" maxlength="20" value="${esc(name)}" placeholder="e.g. Pixel Fox" autocomplete="off">
+      <label>Choose an avatar</label><div class="avpick">${AVATARS.map(a=>`<button type="button" data-av="${a}" class="${a===avatar?'on':''}" aria-label="Avatar ${a}">${a}</button>`).join('')}</div>
+      <p class="small mt">Use a nickname or first name only — no surname, no personal data.</p>
+      <button class="btn primary mt" id="jn" style="width:100%">Join the show</button></div>`;
+    $$('[data-av]',B).forEach(b=>b.onclick=()=>{ avatar=b.dataset.av; $$('[data-av]',B).forEach(x=>x.classList.toggle('on',x===b)); });
+    $('#jn').onclick=()=>{ const r=$('#rc').value.replace(/\D/g,''), v=$('#nm').value.trim().slice(0,20), tk=$('#tk');
+      if(r.length<4) return $('#rc').focus(); if(tk){ const kv=tk.value.replace(/[^0-9a-f]/gi,'').toLowerCase(); if(kv.length<6) return tk.focus(); key=kv; } if(!v) return $('#nm').focus();
+      room=r; name=v; try{ localStorage.setItem('l22name',name); localStorage.setItem('l22av',avatar); }catch(e){} join(); };
+    $('#nm').onkeydown=e=>{ if(e.key==='Enter') $('#jn').click(); };
+  };
+  async function open(m){
+    if(!m || !m.body) return null;
+    if(m.t==='sig' && canSign() && m.pk && m.sig){
+      try{ const pkStr=m.pk.x+'.'+m.pk.y;
+        if(!trust || trust.pkStr!==pkStr){ const fp=await fpOf(m.pk); if(!key || !fp.startsWith(key)) return null;
+          trust={pkStr, k:await crypto.subtle.importKey('jwk',{kty:'EC',crv:'P-256',x:m.pk.x,y:m.pk.y,ext:true},{name:'ECDSA',namedCurve:'P-256'},false,['verify'])}; }
+        const ok=await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'}, trust.k, unb64(m.sig), new TextEncoder().encode(m.body));
+        if(!ok) return null; verified=true; return JSON.parse(m.body); }catch(e){ return null; }
+    }
+    if(!canSign() && (m.t==='raw'||m.t==='sig')){ try{ return JSON.parse(m.body); }catch(e){ return null; } }
+    return null;
+  }
+  const join=async()=>{
+    $('#stuRoom').textContent='Room '+room+' · '+avatar+' '+name;
+    try{ myTeam=localStorage.getItem('l22team-'+room)||''; }catch(e){}
+    B.innerHTML=`<div class="stu-wait"><div class="bigi">🎤</div><p>Connecting to room ${esc(room)}…</p></div>`;
+    const kind=await Net.connect({room, role:'student', name, av:avatar, onStatus:setConn, onEvent:async raw=>{
+      if(!raw.from || raw.from.role!=='teacher') return;
+      const m=await open(raw); if(!m || (m.ts||0)<lastTs) return; lastTs=m.ts||lastTs;
+      if(m.t==='state'){ document.body.dataset.sc=String(m.sc||1);
+        const T2=m.task, k=JSON.stringify([m.sc, m.step, T2 && Object.assign({},T2,{work:undefined, sub:undefined, spin:undefined, rot:undefined})]); st=m;
+        if(k!==taskKey){ taskKey=k; render(); } else { paintT(); syncTeam(); wheelSync(); } }
+      if(m.t==='end') ended();
+    }});
+    if(kind==='none'){ B.innerHTML=`<div class="stu-wait"><div class="bigi">📶</div><p><b>Could not join.</b></p><p class="small">Check your internet connection and try again.</p><button class="btn primary mt" id="rt">Try again</button></div>`; $('#rt').onclick=join; return; }
+    Net.send({t:'hello'}); render();
+    setTimeout(()=>{ if(!st) Net.send({t:'hello'}); },2500);
+    setTimeout(()=>{ if(!st && B.querySelector('.stu-wait')) B.querySelector('.stu-wait p').innerHTML=`Hi ${esc(name)}! Waiting for the host to start the next round…<br><span class="small">Room ${esc(room)} — are the code and teacher key right? <a href="?join" style="color:var(--cyan)">Change</a></span>`; },7000);
+  };
+  const ended=()=>{ Net.stop(); setConn('off'); B.innerHTML=`<div class="stu-wait">${av('beep',110)}<h2 class="dsp mt" style="font-size:28px">MISSION COMPLETE!</h2><p class="small">Thanks, ${esc(avatar+' '+name)}! You DID it. You can close this page.</p></div>`; };
+  const paintT=()=>{ const t=$('#stuT'); if(t&&st&&st.timer) t.textContent=(st.timer.run?'⏱ ':'⏸ ')+mmss(st.timer.left); };
+  setInterval(()=>{ if(st&&st.timer&&st.timer.run&&st.timer.left>0){ st.timer.left--; paintT(); } },1000);
+  const syncTeam=()=>{ if(!st||!st.task||st.task.kind!=='team'||!myTeam) return; const w=(st.task.work||{})[myTeam]||{};
+    $$('[data-tf]',B).forEach(ta=>{ if(document.activeElement===ta) return; const [a,f]=ta.dataset.tf.split('|'), v=a==='people'?w.people:(w[a]||{})[f]; if(typeof v==='string' && ta.value!==v) ta.value=v; });
+    const sb=$('#sbm',B); if(sb && (st.task.sub||{})[myTeam]) sb.textContent='✓ Ready — you can still edit'; };
+  /* wheel on the phone: replay the teacher’s spin */
+  const wheelSync=()=>{ const T2=st&&st.task; if(!T2||T2.kind!=='wheel') return; const g=$('#wrot',B); if(!g) return;
+    if(T2.spin && T2.spin.id!==spinSeen){ spinSeen=T2.spin.id; const sp=T2.spin, t0=performance.now(), dur=(REDUCED_OS?300:sp.dur);
+      cancelAnimationFrame(spinRaf); (function f(){ const t=Math.min(1,(performance.now()-t0)/dur), e=1-Math.pow(1-t,4); wrot=sp.from+(sp.to-sp.from)*e; const gg=$('#wrot',B); if(gg) gg.setAttribute('transform',`rotate(${wrot})`); if(t<1) spinRaf=requestAnimationFrame(f); })(); }
+    else if(!T2.spin){ cancelAnimationFrame(spinRaf); wrot=T2.rot; g.setAttribute('transform',`rotate(${wrot})`); } };
+  const head2=()=>`<div class="stu-prog">${SCENES.map(x=>`<i class="${x.n<st.sc?'d':x.n===st.sc?'c':''}"></i>`).join('')}</div>
+      <div class="small" style="margin-bottom:6px;font-weight:800">${esc(st.k||'')} · ${esc(st.title||'')}</div>${verified?'<div class="verif">✓ verified host</div>':''}
+      ${st.scores&&st.scores.length?`<div class="small">${st.scores.map(s=>`${s.e} ${esc(s.name)} <b style="color:var(--gold)">${s.score}</b>`).join(' · ')}</div>`:''}`;
+  const render=()=>{
+    if(!st){ B.innerHTML=`<div class="stu-wait">${av('nova',90)}<p class="mt">Hi ${esc(avatar+' '+name)}! Waiting for the host to start the next round…</p></div>`; return; }
+    const T2=st.task, hd=head2();
+    if(!T2){ B.innerHTML=hd+`<div class="stu-card stu-wait">${av('max',80)}<p class="mt"><b>Look at the main screen.</b></p><p class="small">${esc(st.step||'')}</p><p class="small">Waiting for the host to start the next round…</p></div>`; return; }
+    if(T2.kind==='choice'){
+      const my=sent[T2.id], dec=T2.chosen!=null;
+      B.innerHTML=hd+`<div class="stu-card"><p style="font-size:20px;font-weight:800">${emph(T2.q)}</p><div class="opts">${T2.opts.map((o,i)=>`<button class="opt ${dec&&T2.chosen===i?'right':T2.lock&&T2.correct===i?'right':my===i?(T2.lock&&T2.correct!=null?'wrong':'pick'):''}" data-i="${i}"><span class="L">${LET[i]}</span><span>${emph(o)}</span></button>`).join('')}</div>
+        <p class="small mt">${dec?`The class chose ${LET[T2.chosen]}. Look at the main screen.`:T2.lock?(T2.correct==null?'✓ Voting closed.':my===T2.correct?'🎉 Correct!':'✓ The answer is on the main screen.'):my!==undefined?'✓ Sent! You can change your answer.':'Tap your answer.'}</p></div>`;
+      $$('[data-i]',B).forEach(b=>b.onclick=()=>{ if(T2.lock) return; sent[T2.id]=+b.dataset.i; Net.send({t:'ans', task:T2.id, v:+b.dataset.i}); render(); });
+      return;
+    }
+    if(T2.kind==='text'){
+      B.innerHTML=hd+`<div class="stu-card"><p style="font-size:20px;font-weight:800">${emph(T2.q)}</p><textarea id="tx" maxlength="160" placeholder="${esc(T2.ph||'')}"></textarea><button class="btn primary mt" id="sd" style="width:100%">Send</button>
+        <p class="small mt">${sent[T2.id]?'✓ Sent: “'+esc(sent[T2.id])+'”. You can send a new version.':'You can also answer out loud in Zoom. The host may show your answer on the screen.'}</p></div>`;
+      $('#sd').onclick=()=>{ const v=$('#tx').value.trim(); if(!v) return; sent[T2.id]=v; Net.send({t:'ans', task:T2.id, v}); render(); };
+      return;
+    }
+    if(T2.kind==='wheel'){
+      const c=T2.card, mine=T2.allow && Net.me && T2.allow===Net.me.id;
+      B.innerHTML=hd+`<div class="stu-card"><div class="stu-wheel">${wheelSVG(T2.rot)}${POINTER.replace('class="pointer"','class="pointer" style="position:absolute;left:50%;top:-4%;width:12%;transform:translateX(-50%)"')}</div>
+        ${mine&&!T2.spin?`<button class="btn big gold mt" id="sspin" style="width:100%">🎡 SPIN THE WHEEL</button>`:''}
+        ${c?`<div class="chal mt" style="--sc:${c.col}"><span class="sect">${esc(c.t)}</span><p style="font-size:19px;font-weight:800;margin-top:10px">MAX: “${esc(c.acc)}”</p><div class="mis">🎯 ${emph(c.mis)}</div>
+          ${c.alt?`<p class="small mt">💡 Not true for you? Agree — then say something true with DO / DID.</p>`:''}
+          ${c.sample?`<div class="smp"><small>Sample answer</small>${emph(c.sample)}</div>`:''}
+          <label for="tx" class="small" style="display:block;margin-top:10px">Your answer (optional)</label><textarea id="tx" maxlength="160" placeholder="I DO… / My friend DOES… / I DID…"></textarea>
+          <button class="btn primary mt" id="sd" style="width:100%">Send to the host</button><p class="small mt">${sent[T2.id]?'✓ Sent: “'+esc(sent[T2.id])+'”':'Or answer out loud in Zoom!'}</p></div>`
+        :`<p class="small mt center">${T2.spin?'🎡 Spinning…':'Waiting for the next spin…'}</p>`}</div>`;
+      const ss=$('#sspin',B); if(ss) ss.onclick=()=>{ Net.send({t:'spin'}); ss.disabled=true; ss.textContent='🎡 …'; };
+      const sdb=$('#sd',B); if(sdb) sdb.onclick=()=>{ const v=$('#tx').value.trim(); if(!v) return; sent[T2.id]=v; Net.send({t:'ans', task:T2.id, v}); render(); };
+      wheelSync();
+      return;
+    }
+    if(T2.kind==='show'){ B.innerHTML=hd+`<div class="stu-card stu-wait"><div class="bigi">${esc(T2.e||'🎤')}</div><p><b>${esc(T2.team)}</b> is on stage!</p><p class="small">Watch the main screen and listen. 👏</p></div>`; return; }
+    if(T2.kind==='team'){
+      const t=(T2.teams||[]).find(x=>x.L===myTeam);
+      if(!t){ B.innerHTML=hd+`<div class="stu-card"><p style="font-size:20px;font-weight:800">🎬 Which team are you in?</p><p class="small">Your teacher tells you your team.</p><div class="opts">${T2.teams.map(x=>`<button class="opt" data-tm="${x.L}"><span class="L">${x.e}</span><span>${esc(x.name)}</span></button>`).join('')}</div></div>`;
+        $$('[data-tm]',B).forEach(b=>b.onclick=()=>{ myTeam=b.dataset.tm; try{ localStorage.setItem('l22team-'+room,myTeam); }catch(e){} render(); }); return; }
+      const w=(T2.work||{})[myTeam]||{}, sub=(T2.sub||{})[myTeam];
+      B.innerHTML=hd+`<div class="stu-card"><div class="row"><span style="font-size:30px">${t.e}</span><div class="grow"><b style="font-size:19px">${esc(t.name)}</b><div class="small" id="stuT"></div></div><button class="btn xs ghost" id="chg">change team</button></div>
+        <p class="small mt"><b>CREATE YOUR OWN MINI GAME SHOW!</b> One challenge with DO, one with DOES, one with DID. Your team sees the same cards.</p>
+        <label for="pp">Names (optional)</label><input id="pp" data-tf="people" maxlength="80" value="${esc(w.people||'')}">
+        ${AUX.map((a,i)=>`<div class="cc"><div class="lab">CHALLENGE · ${a.toUpperCase()}</div><label for="h-${a}">🎙️ Host’s silly accusation</label><textarea id="h-${a}" data-tf="${a}|h" maxlength="140" placeholder="${esc(EXAMPLE.items[i].h)}">${esc((w[a]||{}).h||'')}</textarea>
+          <label for="c-${a}">💪 Confident answer with ${a.toUpperCase()}</label><textarea id="c-${a}" data-tf="${a}|c" maxlength="140" placeholder="${esc(EXAMPLE.items[i].c)}">${esc((w[a]||{}).c||'')}</textarea></div>`).join('')}
+        <button class="btn primary mt" id="sbm" style="width:100%">${sub?'✓ Ready — you can still edit':'📤 We’re ready!'}</button>
+        <p class="small mt" id="ok">Saves automatically.</p></div>`;
+      paintT();
+      $('#chg').onclick=()=>{ myTeam=''; try{ localStorage.removeItem('l22team-'+room); }catch(e){} render(); };
+      const sendAll=()=>$$('[data-tf]',B).forEach(ta=>Net.send({t:'work', team:myTeam, f:ta.dataset.tf, v:ta.value.slice(0,140)}));
+      $('#sbm').onclick=()=>{ sendAll(); setTimeout(()=>Net.send({t:'submit', team:myTeam}),300); $('#sbm').textContent='✓ Ready — you can still edit'; };
+      $$('[data-tf]',B).forEach(ta=>{ let tm=null; ta.oninput=()=>{ $('#ok').textContent='…'; clearTimeout(tm); tm=setTimeout(()=>{ Net.send({t:'work', team:myTeam, f:ta.dataset.tf, v:ta.value.slice(0,140)}); $('#ok').textContent='✓ Saved — your team and the host can see it.'; },600); }; });
+      return;
+    }
+  };
+  if(room && name && (key.length>=6 || !canSign())) join(); else ask();
+}
+
+/* ---------- init ---------- */
+document.addEventListener('keydown',e=>{
+  if(ROLE!=='teacher') return;
+  if(e.key==='Escape'){ if($('#pop')) return closePop(); if(!$('#modal').classList.contains('hidden')) return closeModal(); if($('#notes').classList.contains('on')) return toggleNotes(false); }
+  if(typing() || e.ctrlKey || e.metaKey || e.altKey) return;
+  if(!$('#modal').classList.contains('hidden')) return;
+  const tag=document.activeElement && document.activeElement.tagName;
+  if(e.key==='ArrowRight' || e.key==='PageDown' || (e.key===' ' && tag!=='BUTTON' && tag!=='A')){ e.preventDefault(); next(); }
+  else if(e.key==='ArrowLeft' || e.key==='PageUp'){ e.preventDefault(); back(); }
+  else if(e.key==='r'||e.key==='R') reveal();
+  else if(e.key==='h'||e.key==='H') hideAns();
+  else if(e.key==='t'||e.key==='T') toggleNotes();
+  else if(e.key==='n'||e.key==='N') openNav();
+  else if(e.key==='p'||e.key==='P') present();
+});
+if(ROLE==='student'){ studentApp(); }
+else {
+  applyAnim(); buildRail();
+  $('#bNext').onclick=next; $('#bBack').onclick=back; $('#bReveal').onclick=reveal; $('#bHide').onclick=hideAns; $('#bSkip').onclick=skipAct; $('#bRestartAct').onclick=restartAct;
+  $('#bNotes').onclick=()=>toggleNotes(); $('#notesX').onclick=()=>toggleNotes(false); $('#bNav').onclick=openNav;
+  $('#bLive').onclick=openLive; $('#bPresent').onclick=present; $('#dockMin').onclick=()=>$('#dock').classList.toggle('min');
+  $('#bQuick').onclick=()=>setQuick(!S.core); $('#score').onclick=openTeams;
+  $('#bSound').onclick=()=>{ S.sound=!S.sound; save(); paintChrome(); if(S.sound){ SND.play('ok'); toast('🔊 Sound effects ON'); } else toast('🔇 Sound effects OFF'); };
+  setInterval(()=>TMR.tick(),500);
+  document.addEventListener('fullscreenchange',()=>{ if(!document.fullscreenElement && document.body.classList.contains('present')){ document.body.classList.remove('present'); $('#bPresent').classList.remove('on'); } });
+  draw();
+  if(S.live) startLive(true);
+}
+</script>
+</body>
+</html>

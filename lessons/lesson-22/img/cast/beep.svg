@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="BEEP, the scorekeeper robot">
+<defs>
+ <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#B9C2E8"/></linearGradient>
+ <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101a44"/><stop offset="1" stop-color="#05091f"/></linearGradient>
+ <radialGradient id="jet" cx=".5" cy=".2" r=".8"><stop offset="0" stop-color="#7DF9FF"/><stop offset=".5" stop-color="#3D7BFF" stop-opacity=".6"/><stop offset="1" stop-color="#3D7BFF" stop-opacity="0"/></radialGradient>
+ <radialGradient id="bulb" cx=".4" cy=".4" r=".6"><stop offset="0" stop-color="#FFE3FA"/><stop offset="1" stop-color="#FF3FD0"/></radialGradient>
+</defs>
+<style>
+ .float{animation:fl 3s ease-in-out infinite; transform-origin:200px 200px}
+ .eye{animation:bl 4.2s infinite; transform-origin:center; transform-box:fill-box}
+ .ant{animation:gl 1.6s ease-in-out infinite}
+ @keyframes fl{50%{transform:translateY(-8px)}}
+ @keyframes bl{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+ @keyframes gl{50%{opacity:.55}}
+ @media (prefers-reduced-motion:reduce){.float,.eye,.ant{animation:none}}
+</style>
+<ellipse cx="200" cy="372" rx="70" ry="12" fill="#000" opacity=".25"/>
+<path d="M164 318 Q200 400 236 318Z" fill="url(#jet)"/>
+<g class="float">
+ <line x1="200" y1="62" x2="200" y2="100" stroke="#8D96C4" stroke-width="7" stroke-linecap="round"/>
+ <circle class="ant" cx="200" cy="54" r="15" fill="url(#bulb)"/>
+ <!-- arms -->
+ <path d="M96 238 Q66 226 62 192" stroke="#B9C2E8" stroke-width="16" fill="none" stroke-linecap="round"/>
+ <circle cx="60" cy="184" r="14" fill="#FFFFFF" stroke="#8D96C4" stroke-width="4"/>
+ <path d="M304 238 Q334 250 342 284" stroke="#B9C2E8" stroke-width="16" fill="none" stroke-linecap="round"/>
+ <circle cx="344" cy="290" r="14" fill="#FFFFFF" stroke="#8D96C4" stroke-width="4"/>
+ <!-- body -->
+ <rect x="128" y="236" width="144" height="96" rx="40" fill="url(#shell)" stroke="#8D96C4" stroke-width="4"/>
+ <rect x="158" y="256" width="84" height="44" rx="12" fill="url(#scr)"/>
+ <text x="200" y="288" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="24" fill="#FFD166">+10</text>
+ <!-- head -->
+ <rect x="86" y="96" width="228" height="156" rx="66" fill="url(#shell)" stroke="#8D96C4" stroke-width="5"/>
+ <rect x="112" y="120" width="176" height="108" rx="46" fill="url(#scr)"/>
+ <rect class="eye" x="150" y="148" width="30" height="40" rx="14" fill="#5BE7FF"/>
+ <rect class="eye" x="220" y="148" width="30" height="40" rx="14" fill="#5BE7FF"/>
+ <circle cx="160" cy="158" r="5" fill="#fff" opacity=".85"/><circle cx="230" cy="158" r="5" fill="#fff" opacity=".85"/>
+ <path d="M178 204 Q200 218 222 204" stroke="#5BE7FF" stroke-width="6" fill="none" stroke-linecap="round"/>
+ <ellipse cx="136" cy="200" rx="10" ry="6" fill="#FF6FD8" opacity=".55"/><ellipse cx="264" cy="200" rx="10" ry="6" fill="#FF6FD8" opacity=".55"/>
+ <rect x="74" y="148" width="16" height="48" rx="8" fill="#7C4DFF"/><rect x="310" y="148" width="16" height="48" rx="8" fill="#7C4DFF"/>
+</g>
+</svg>
