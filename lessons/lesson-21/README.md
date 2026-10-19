@@ -7,7 +7,7 @@ Unit 3 · 15 нових виразів про дружбу · без нової 
 ```
 lessons/lesson-21/
 ├── lesson-21.html        увесь урок (один файл, vanilla JS, без збірки)
-├── img/cast/             mia · mia-sad · leo · sophie · noah  (Мія й Лео — ті самі, що в уроках 15–20; Ной — з уроку 14)
+├── img/cast/             mia · mia-sad · leo · sophie · noah  (Мія й Лео — ті самі, що в уроках 15–20; Ной — з уроку 14; Софі — ваше фото)
 ├── img/cover.webp        обкладинка картки на платформі
 └── audio/                сюди можна покласти mia-voice-note.mp3 (необов'язково)
 ```
