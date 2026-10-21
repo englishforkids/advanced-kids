@@ -7,7 +7,7 @@ Unit 3 · граматика **emphatic DO / DOES / DID** · коротке по
 ```
 lessons/lesson-22/
 ├── lesson-22.html        увесь урок (один файл, vanilla JS, без збірки)
-├── img/cast/             max · max-shocked · max-defeated · nova · beep  (SVG, намальовані для уроку)
+├── img/cast/             max · max-shocked · max-defeated · nova · beep  (.webp 800×800, квадратні кропи ваших зображень)
 └── img/cover.webp        обкладинка картки на платформі
 ```
 
