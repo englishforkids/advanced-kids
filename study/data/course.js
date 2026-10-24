@@ -27,7 +27,7 @@ window.AK_COURSE = {
       { n: 7,  kind: 'vocab',         title: 'Inner Critic / Self-Talk' },
       { n: 8,  kind: 'grammar',       title: 'The Message That Was Never Sent' },
       { n: 9,  kind: 'revision',      title: 'The Unsent Message', reviews: [7, 8] },
-      { n: 10, kind: 'unit-revision', title: 'Unit 1 Revision', reviews: [1, 9] }
+      { n: 10, kind: 'unit-revision', title: 'The Identity Files', reviews: [1, 9] }
     ]},
     { n: 2, title: 'Digital Life & Social Media Pressure', lessons: [
       { n: 11, kind: 'vocab',         title: 'Filters and FOMO' },
