@@ -250,6 +250,15 @@ const LESSONS = [
   */
 ];
 
+/* Юніти й міні-арки на головній будуються САМІ з study/data/course.js:
+   кожні 3 уроки (vocab → grammar → revision) — міні-арка, unit-revision —
+   фінал юніту. Назва міні-арки = назва її першого (лексичного) уроку
+   з course.js. Щоб дати арці власну назву — допишіть її сюди:
+   'юніт.арка' : 'Назва'. Порожній об'єкт — теж нормально.            */
+const ARC_TITLES = {
+  // '3.1': 'The Friendship Test',
+};
+
 </script>
 
 <style>
@@ -368,6 +377,55 @@ footer .wm:hover{opacity:.85}
 .done:hover{color:var(--text); border-color:var(--line2)}
 .done.is{color:#0B1224; background:var(--mint); border-color:var(--mint)}
 
+.tag.hot{color:var(--amber); border-color:rgba(255,201,74,.42); background:rgba(255,201,74,.08)}
+.tag.now{color:var(--mint); border-color:rgba(95,227,179,.42); background:rgba(95,227,179,.08)}
+.curbtn{font-size:12.5px; font-weight:700; color:var(--muted); opacity:.75; padding:7px 4px; transition:.18s}
+.curbtn:hover{opacity:1; color:var(--text)}
+.curbtn.is{color:var(--mint); opacity:1}
+
+/* ---------- catalog: tools, units, mini-arcs ---------- */
+.ltools{display:flex; gap:10px 14px; flex-wrap:wrap; align-items:center; margin:-6px 0 22px}
+.ltools .search{flex:1 1 260px; max-width:380px}
+.ltools .search input{padding:10px 14px 10px 42px; border-radius:13px; font-size:16px}
+.ltools .search > .ic{left:14px}
+.ltools .chips{margin:0}
+.units [hidden]{display:none!important}
+.unit{scroll-margin-top:72px}
+.lx{display:flex; gap:4px; margin-left:auto}
+.lx button{font-size:13px; font-weight:800; color:var(--muted); padding:8px 10px; border-radius:10px; transition:.18s}
+.lx button:hover{color:var(--text); background:rgba(255,255,255,.06)}
+.units{display:flex; flex-direction:column; gap:14px}
+.uhead{
+  width:100%; display:flex; align-items:center; gap:14px; text-align:left;
+  padding:15px 20px; border-radius:var(--r); border:1px solid var(--line);
+  background:rgba(167,139,250,.05); transition:.18s;
+}
+.uhead:hover{border-color:var(--line2); background:rgba(167,139,250,.09)}
+.utxt{flex:1; min-width:0; display:flex; align-items:center; gap:4px 16px; flex-wrap:wrap}
+.uno{font-family:"Space Mono",monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--lilac)}
+.utitle{font-weight:800; font-size:19px; line-height:1.2; flex:1 1 220px}
+.umeta{font-family:"Space Mono",monospace; font-size:12.5px; color:var(--muted)}
+.umeta b{color:var(--mint); font-weight:700}
+.uchev{width:20px; height:20px; flex:none; fill:none; stroke:var(--muted); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; transition:transform .2s}
+.uhead[aria-expanded="true"] .uchev{transform:rotate(90deg)}
+.ubody{padding:18px 0 8px}
+.ubody[hidden]{display:none}
+.arc + .arc{margin-top:26px}
+.arc-h{display:flex; align-items:center; gap:4px 12px; flex-wrap:wrap; margin:0 4px 12px}
+.arc-h .lab{font-family:"Space Mono",monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--lilac)}
+.arc-h b{font-size:15px; font-weight:800}
+.arc-h i{flex:1 1 40px; height:1px; background:var(--line)}
+.arc-h .cnt{font-family:"Space Mono",monospace; font-size:11.5px; color:var(--muted)}
+#toTop{
+  position:fixed; right:18px; bottom:calc(18px + env(safe-area-inset-bottom)); z-index:30;
+  width:46px; height:46px; border-radius:14px; display:grid; place-items:center;
+  background:rgba(21,30,69,.9); border:1px solid var(--line2); backdrop-filter:blur(8px);
+  opacity:0; visibility:hidden; transform:translateY(8px); transition:.2s;
+}
+#toTop.on{opacity:1; visibility:visible; transform:none}
+#toTop:hover{background:var(--panel2)}
+#toTop svg{width:20px; height:20px; fill:none; stroke:var(--text); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round}
+
 /* ---------- ghost / empty ---------- */
 .ghost{
   border:1px dashed var(--line2); border-radius:var(--r-lg); padding:24px;
@@ -397,6 +455,10 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
   .ep .cov{min-height:150px}
   .ep .cov::after{background:linear-gradient(180deg,transparent 35%,var(--panel) 99%)}
   .mins{margin-left:0; width:100%}
+  .ltools .search{max-width:none; flex-basis:100%}
+  .uhead{padding:14px 16px}
+  .utitle{font-size:17px}
+  #toTop{right:12px; width:42px; height:42px}
 }
 @media (max-width:420px){
   #top{padding:10px 14px} .mark b{font-size:16px; white-space:nowrap}
@@ -439,11 +501,20 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
       <h2 class="dsp">Lessons</h2>
       <p id="lessonCount"></p>
     </div>
-    <div class="lessons" id="lessonList"></div>
-    <div class="ghost" style="margin-top:16px">
-      <h3>Наступний епізод</h3>
-      <p>Щоб додати урок: покладіть його папку в <code>lessons/</code> (наприклад <code>lessons/lesson-21/</code> з файлом <code>lesson-21.html</code> та своїми <code>img/</code>) і допишіть один блок у список <code>LESSONS</code> на початку цього файлу.</p>
+    <!-- Новий урок: папка lessons/lesson-NN/ + один блок у LESSONS на початку файлу (див. UPLOAD.md) -->
+    <div class="ltools">
+      <label class="search">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input type="search" id="lessonSearch" placeholder="Search lessons..." autocomplete="off" aria-label="Search lessons">
+      </label>
+      <div class="chips" id="unitChips" role="group" aria-label="Units"></div>
+      <div class="lx">
+        <button type="button" id="expAll">Expand all</button>
+        <button type="button" id="colAll">Collapse all</button>
+      </div>
     </div>
+    <div class="units" id="lessonList"></div>
+    <div class="ghost" id="noLessons" hidden><h3>No lessons found</h3><p>Спробуйте номер уроку, назву або тему.</p></div>
   </section>
 
   <!-- ══════════ VOCABULARY (study/vocabulary.js) ══════════ -->
@@ -469,6 +540,10 @@ footer .in{display:flex; gap:14px; flex-wrap:wrap; align-items:center; max-width
     <span style="margin-left:auto" id="doneLine"></span>
   </div>
 </footer>
+
+<button id="toTop" type="button" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+</button>
 
 <!-- Vocabulary & Grammar: спочатку дані, потім модулі -->
 <script src="study/data/course.js"></script>
@@ -520,14 +595,124 @@ window.addEventListener('hashchange', () => follow(true));
 /* ---------- lessons ---------- */
 const at   = (L, p) => (L.dir ? L.dir.replace(/\/?$/,'/') : '') + p;   // шлях у папці уроку
 const url  = L => at(L, L.home || 'index.html');
-const sorted = [...LESSONS].sort((a,b) => b.n - a.n);
+/* доступний урок = блок у LESSONS з номером і шляхом до файлу */
+const avail  = LESSONS.filter(L => L && Number.isInteger(+L.n) && +L.n > 0 && (L.home || L.dir));
+const sorted = [...avail].sort((a,b) => b.n - a.n);
+const byN    = new Map(avail.map(L => [+L.n, L]));
+const latest = sorted[0];                       // найбільший номер, а не останній змінений файл
+const pad    = n => String(n).padStart(2,'0');
+const range  = (a,b) => a === b ? 'Lesson ' + a : 'Lessons ' + a + '–' + b;
 
 const logo = $('.wm');
 if(logo){
   if(typeof BRAND_LOGO === 'string' && BRAND_LOGO){ logo.src = BRAND_LOGO; logo.hidden = false; }
   else logo.remove();
 }
-let doneSet = new Set(store.get('done', []));
+let doneSet  = new Set(store.get('done', []));
+let currentN = store.get('current', null);      // «Current» — лише в цьому браузері
+
+/* ---------- юніти → міні-арки (структура з study/data/course.js) ---------- */
+function courseUnits(){
+  const C = window.AK_COURSE;
+  if(C && Array.isArray(C.units) && C.units.length) return C.units;
+  /* запасний варіант, якщо course.js не завантажився: юніти по 10 уроків */
+  const out = [], max = latest ? latest.n : 0;
+  for(let k = 1; k <= Math.ceil(max/10); k++)
+    out.push({ n:k, title:'', lessons: Array.from({length:10}, (_,i) => ({
+      n:(k-1)*10+i+1, title:'', kind: i === 9 ? 'unit-revision' : (i+1) % 3 ? 'vocab' : 'revision' })) });
+  return out;
+}
+const CATALOG = (() => {
+  const units = [], placed = new Set();
+  const finish = (u, groups) => {
+    groups.forEach(g => {
+      g.items = g.nums.map(n => byN.get(n)).filter(Boolean);
+      g.items.forEach(L => placed.add(L));
+      g.from = Math.min(...g.nums); g.to = Math.max(...g.nums);
+    });
+    const items = groups.flatMap(g => g.items);
+    if(items.length) units.push({ ...u, groups: groups.filter(g => g.items.length), items });
+  };
+  courseUnits().forEach(u => {
+    const ls = [...(u.lessons || [])].sort((a,b) => a.n - b.n);
+    if(!ls.length) return;
+    const groups = []; let arc = null, no = 0;
+    ls.forEach(l => {
+      if(l.kind === 'unit-revision' || l.kind === 'course-review'){
+        groups.push({ lab: l.kind === 'course-review' ? 'Course finale' : 'Unit finale', nums:[l.n], title: l.title || '' });
+        arc = null; return;
+      }
+      if(!arc){
+        no++;
+        arc = { no, lab: 'Mini-Arc ' + pad(no), nums: [], meta: [] };
+        groups.push(arc);
+      }
+      arc.nums.push(l.n); arc.meta.push(l);
+      if(l.kind === 'revision') arc = null;
+    });
+    groups.forEach(g => {
+      if(!g.no) return;
+      const v = g.meta.find(l => l.kind === 'vocab') || g.meta[0];
+      g.title = ARC_TITLES[u.n + '.' + g.no] || (v && v.title) || '';
+    });
+    finish({ key: 'u' + u.n, n: u.n, title: u.title || '', from: ls[0].n, to: ls[ls.length-1].n }, groups);
+  });
+  /* уроки, яких ще немає в course.js (52+) — не ховаємо, показуємо окремим блоком */
+  const rest = avail.filter(L => !placed.has(L)).map(L => +L.n).sort((a,b) => a - b);
+  if(rest.length) finish({ key: 'more', n: 0, title: 'More lessons', from: rest[0], to: rest[rest.length-1] },
+                         [{ lab: '', title: '', nums: rest }]);
+  return units.sort((a,b) => Math.min(...a.items.map(L => L.n)) - Math.min(...b.items.map(L => L.n)));   // Unit 01 зверху
+})();
+
+/* ---------- пошук: номер, назва, тема, слова й граматика уроку ---------- */
+const hayCache = new Map();
+function hay(L){
+  const n = +L.n;
+  if(hayCache.has(n)) return hayCache.get(n);
+  const bits = ['lesson ' + n, 'l' + n, L.title, L.grammar, L.blurb, ...(L.tags || [])];
+  const c = STUDY && STUDY.lesson ? STUDY.lesson(n) : null;
+  if(c) bits.push(c.title);
+  (window.AK_VOCAB || []).filter(b => +b.lesson === n).forEach(b => {
+    bits.push(b.title); (b.words || []).forEach(w => bits.push(w.word, w.translation));
+  });
+  const g = STUDY && STUDY.sections.grammar;
+  if(g && g.topicsForLesson) g.topicsForLesson(n).forEach(t => bits.push(t.title, t.short));
+  const s = bits.filter(Boolean).join(' · ').toLowerCase();
+  hayCache.set(n, s);
+  return s;
+}
+const normQ = q => q.trim().toLowerCase().replace(/^(lesson|урок)\s*/, '');
+const hit = (L, q) => !q || (/^\d+$/.test(q) ? +L.n === +q : hay(L).includes(q));
+
+/* ---------- стан каталогу ---------- */
+const ui = { open: new Set(), filter: 'all', q: '', snap: null };
+const latestUnit = latest && CATALOG.find(u => u.items.includes(latest));
+if(latestUnit) ui.open.add(latestUnit.key);     // відкритий лише юніт з найновішим уроком
+
+const card = L => `
+    <article class="ep" data-n="${L.n}">
+      <div class="cov">
+        <div class="num"><s>Lesson</s>${esc(pad(L.n))}</div>
+        ${L.cover ? `<img src="${esc(at(L,L.cover))}" alt="" onerror="this.remove()">` : ''}
+      </div>
+      <div class="body">
+        <h3>${esc(L.title)}</h3>
+        <div class="focus">${esc(L.grammar || '')}</div>
+        ${L.blurb ? `<p class="blurb">${esc(L.blurb)}</p>` : ''}
+        ${(L === latest || currentN === L.n || (L.tags||[]).length) ? `<div class="tags">${
+          (L === latest ? '<span class="tag hot">Latest</span>' : '') +
+          (currentN === L.n ? '<span class="tag now">Current</span>' : '') +
+          (L.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
+        <div class="foot">
+          <a class="btn primary" href="${esc(url(L))}">Open lesson</a>
+          ${L.guide ? `<a class="btn sm ghost" href="${esc(at(L,L.guide))}" target="_blank" rel="noopener">Teacher guide</a>` : ''}
+          ${STUDY ? STUDY.lessonLinks(L.n).map(x => `<a class="btn sm ghost" href="${esc(x.href)}">${esc(x.label)}${x.count ? ` · ${x.count}` : ''}</a>`).join('') : ''}
+          <button class="done${doneSet.has(L.n)?' is':''}" data-done="${L.n}">${doneSet.has(L.n)?'✓ Done':'Mark as done'}</button>
+          <button class="curbtn${currentN === L.n ? ' is' : ''}" data-cur="${L.n}" title="Урок, який зараз проходить група. Зберігається лише в цьому браузері.">${currentN === L.n ? '● Current' : 'Set current'}</button>
+          <span class="mins">${esc(L.minutes||'')}</span>
+        </div>
+      </div>
+    </article>`;
 
 function renderLessons(){
   const n = sorted.length, m10 = n % 10, m100 = n % 100;
@@ -536,26 +721,31 @@ function renderLessons(){
   $('#lessonCount').textContent = n ? n + word + ' · ' + doneSet.size + ' пройдено' : '';
   $('#doneLine').textContent = doneSet.size ? doneSet.size + ' lessons marked as done' : '';
 
-  $('#lessonList').innerHTML = sorted.map(L => `
-    <article class="ep">
-      <div class="cov">
-        <div class="num"><s>Lesson</s>${esc(String(L.n).padStart(2,'0'))}</div>
-        ${L.cover ? `<img src="${esc(at(L,L.cover))}" alt="" onerror="this.remove()">` : ''}
-      </div>
-      <div class="body">
-        <h3>${esc(L.title)}</h3>
-        <div class="focus">${esc(L.grammar || '')}</div>
-        ${L.blurb ? `<p class="blurb">${esc(L.blurb)}</p>` : ''}
-        ${(L.tags||[]).length ? `<div class="tags">${L.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>` : ''}
-        <div class="foot">
-          <a class="btn primary" href="${esc(url(L))}">Open lesson</a>
-          ${L.guide ? `<a class="btn sm ghost" href="${esc(at(L,L.guide))}" target="_blank" rel="noopener">Teacher guide</a>` : ''}
-          ${STUDY ? STUDY.lessonLinks(L.n).map(x => `<a class="btn sm ghost" href="${esc(x.href)}">${esc(x.label)}${x.count ? ` · ${x.count}` : ''}</a>`).join('') : ''}
-          <button class="done${doneSet.has(L.n)?' is':''}" data-done="${L.n}">${doneSet.has(L.n)?'✓ Done':'Mark as done'}</button>
-          <span class="mins">${esc(L.minutes||'')}</span>
+  $('#lessonList').innerHTML = CATALOG.map(u => {
+    const done = u.items.filter(L => doneSet.has(L.n)).length;
+    return `
+  <section class="unit" id="unit-${u.key}" data-unit="${u.key}">
+    <button type="button" class="uhead" data-utog="${u.key}" aria-controls="ub-${u.key}" aria-expanded="false">
+      <span class="utxt">
+        <span class="uno">${u.n ? 'Unit ' + pad(u.n) : 'Extra'}</span>
+        <span class="utitle">${esc(u.title || 'Unit ' + u.n)}</span>
+        <span class="umeta">${range(u.from, u.to)} · ${u.items.length} available · ${done ? `<b>${done}/${u.items.length} done</b>` : `0/${u.items.length} done`}</span>
+      </span>
+      <svg class="uchev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+    </button>
+    <div class="ubody" id="ub-${u.key}">${u.groups.map(g => `
+      <div class="arc">
+        <div class="arc-h">
+          <span class="lab">${esc(g.lab ? g.lab + ' · ' + range(g.from, g.to) : range(g.from, g.to))}</span>
+          ${g.title ? `<b>${esc(g.title)}</b>` : ''}
+          <i></i>
+          <span class="cnt">${g.items.length}/${g.nums.length} available</span>
         </div>
-      </div>
-    </article>`).join('');
+        <div class="lessons">${g.items.map(card).join('')}</div>
+      </div>`).join('')}
+    </div>
+  </section>`;
+  }).join('');
 
   $$('[data-done]').forEach(b => b.onclick = () => {
     const n = +b.dataset.done;
@@ -563,10 +753,78 @@ function renderLessons(){
     store.set('done', [...doneSet]);
     renderLessons();
   });
+  $$('[data-cur]').forEach(b => b.onclick = () => {
+    const n = +b.dataset.cur;
+    currentN = currentN === n ? null : n;
+    store.set('current', currentN);
+    renderLessons();
+  });
+  $$('[data-utog]').forEach(b => b.onclick = () => {
+    const k = b.dataset.utog;
+    ui.open.has(k) ? ui.open.delete(k) : ui.open.add(k);
+    applyCatalog();
+  });
+  applyCatalog();
 }
+
+/* показати/сховати юніти, арки й картки за станом (без перебудови карток) */
+function applyCatalog(){
+  const q = normQ(ui.q);
+  let any = false;
+  $$('#lessonList .unit').forEach(sec => {
+    const key = sec.dataset.unit;
+    let unitHit = false;
+    $$('.arc', sec).forEach(a => {
+      let arcHit = false;
+      $$('.ep', a).forEach(c => {
+        const ok = hit(byN.get(+c.dataset.n), q);
+        c.hidden = !ok; if(ok) arcHit = true;
+      });
+      a.hidden = !arcHit; if(arcHit) unitHit = true;
+    });
+    const show = q ? unitHit : (ui.filter === 'all' || ui.filter === key);
+    sec.hidden = !show; if(show) any = true;
+    const open = ui.open.has(key);
+    $('.uhead', sec).setAttribute('aria-expanded', String(open));
+    $('.ubody', sec).hidden = !open;
+  });
+  $('#noLessons').hidden = any || !CATALOG.length;
+  const on = q ? 'all' : ui.filter;
+  $$('#unitChips [data-uf]').forEach(c => c.classList.toggle('on', c.dataset.uf === on));
+}
+
+/* навігація по юнітах: All Units | Unit 1 | Unit 2 | … (фільтр) */
+$('#unitChips').innerHTML = CATALOG.length < 2 ? '' :
+  `<button type="button" class="chip sm" data-uf="all">All Units</button>` +
+  [...CATALOG].sort((a,b) => (a.n || 999) - (b.n || 999)).map(u =>
+    `<button type="button" class="chip sm" data-uf="${u.key}">${u.n ? 'Unit ' + u.n : 'More'} <em>${u.items.length}</em></button>`).join('');
+const clearSearch = () => {
+  if(!ui.q) return;
+  $('#lessonSearch').value = ''; ui.q = '';
+  if(ui.snap){ ui.open = ui.snap.open; ui.filter = ui.snap.filter; ui.snap = null; }
+};
+$$('#unitChips [data-uf]').forEach(c => c.onclick = () => {
+  clearSearch();
+  ui.filter = c.dataset.uf;
+  if(ui.filter !== 'all') ui.open.add(ui.filter);
+  applyCatalog();
+});
+$('#expAll').onclick = () => { CATALOG.forEach(u => ui.open.add(u.key)); applyCatalog(); };
+$('#colAll').onclick = () => { ui.open.clear(); applyCatalog(); };
+$('#lessonSearch').addEventListener('input', e => {
+  const raw = e.target.value;
+  if(!raw.trim()){ ui.q = 'x'; clearSearch(); applyCatalog(); return; }
+  if(!ui.q) ui.snap = { open: new Set(ui.open), filter: ui.filter };   // запам'ятати, що було відкрито
+  ui.q = raw;
+  const q = normQ(raw);
+  ui.open = new Set(CATALOG.filter(u => u.items.some(L => hit(L, q))).map(u => u.key));
+  applyCatalog();
+});
+$('#lessonSearch').addEventListener('keydown', e => { if(e.key === 'Escape'){ e.target.value = ''; e.target.dispatchEvent(new Event('input')); } });
+
 renderLessons();
 
-const latest = sorted[0];
+/* головна кнопка — завжди урок з найбільшим номером */
 if(latest){
   const go = $('#heroGo');
   go.href = url(latest);
@@ -574,6 +832,12 @@ if(latest){
 } else {
   $('#heroGo').remove();
 }
+
+/* ---------- back to top ---------- */
+const toTop = $('#toTop');
+const onScroll = () => toTop.classList.toggle('on', scrollY > 700);
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+toTop.onclick = () => window.scrollTo({top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
 
 /* ---------- boot ---------- */
 if(STUDY){
