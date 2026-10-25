@@ -9,6 +9,8 @@ lessons/lesson-23/
 ├── lesson-23.html              увесь урок (один файл, vanilla JS, без збірки)
 ├── audio/alex-voice-note.mp3   голосове Алекса (34 с, синтезований голос)
 ├── img/cast/                   alex · mia · mia-sad · leo · sophie · noah (ті самі фото, що в уроках 8 і 21)
+├── img/bg/                     фото-фони неба: afternoon · dusk · night · glow (гірлянда світиться анімацією)
+├── img/scenes/                 групові фото: friends-standing (фінал A, кінець), friends-sitting (зустріч на даху, Ной з друзями, фінал B)
 └── img/cover.webp              обкладинка картки на платформі
 ```
 
@@ -18,6 +20,8 @@ lessons/lesson-23/
 |---|---|
 | `STUDENTS` | імена учнів за замовчуванням (на сторінці їх теж можна змінити) |
 | `PHOTOS` | фото героїв. Свій файл → `img/cast/` і новий шлях тут |
+| `BACKGROUNDS` | фото-фони для частин історії. Нове фото → `img/bg/` і шлях тут. Порожньо → небо малюється кодом |
+| `SCENE_PHOTOS` | групові фото друзів (`standing`, `sitting`) |
 | `VOICE_NOTE` / `VOICE_MARKS` | mp3 голосового і секунди початку речень (підсвітка тексту). Можна замінити своїм записом — тоді оновіть `VOICE_MARKS` |
 | `ALIAS_URL` | гра Alias |
 | `KAHOOT_URL` | ваш Kahoot (або впишіть посилання прямо в Game Zone → Kahoot) |
