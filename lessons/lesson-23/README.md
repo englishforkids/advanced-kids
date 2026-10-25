@@ -10,7 +10,7 @@ lessons/lesson-23/
 ├── audio/alex-voice-note.mp3   голосове Алекса (34 с, синтезований голос)
 ├── img/cast/                   alex · mia · mia-sad · leo · sophie · noah (ті самі фото, що в уроках 8 і 21)
 ├── img/bg/                     фото-фони неба: afternoon · dusk · night · glow (гірлянда світиться анімацією)
-├── img/scenes/                 групові фото: friends-standing (фінал A, кінець), friends-sitting (зустріч на даху, Ной з друзями, фінал B)
+├── img/scenes/                 фото друзів: intro (знайомство) · arrival (7:15 PM) · noah-apart (секрет Ноя, вибір C) · together (Ноя прийняли, кінець) · friends-standing (фінал A) · friends-sitting (фінал B) · night (фінал C)
 └── img/cover.webp              обкладинка картки на платформі
 ```
 
