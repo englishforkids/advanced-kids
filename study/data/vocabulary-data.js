@@ -142,19 +142,19 @@ window.AK_VOCAB = [
   { word: 'bond over something', type: 'phrasal', translation: 'зблизитися завдяки спільному інтересу', meaning: 'to become closer because of a shared interest or experience', example: 'They bonded over music and video games.' }
 ]},
 
-{ unit: 3, lesson: 24, title: 'Belonging & Being Left Out', practisedIn: [25], revisedIn: [26, 30], words: [
+{ unit: 3, lesson: 24, title: 'The New Kid', practisedIn: [25], revisedIn: [26, 30], words: [
   { word: 'fit in', repeat: true },
-  { word: 'left out', type: 'phrase', translation: 'відсторонений; «за бортом»', meaning: 'not included in a group or activity', example: 'I felt left out when they made plans without me.' },
-  { word: 'exclude', type: 'word', translation: 'виключати; не приймати', meaning: 'to not let someone join or take part', example: 'It’s not okay to exclude people from the group chat.' },
-  { word: 'stick together', type: 'phrasal', translation: 'триматися разом', meaning: 'to stay close and support each other', example: 'Whatever happens, we stick together.' },
-  { word: 'social circle', type: 'phrase', translation: 'коло спілкування', meaning: 'the group of people you spend time with', example: 'My social circle got bigger when I joined the drama club.' },
-  { word: 'find your people', type: 'idiom', translation: 'знайти «своїх»', meaning: 'to find people who understand and accept you', example: 'At art camp, I finally found my people.' },
-  { word: 'blend in', type: 'phrasal', translation: 'злитися з натовпом', meaning: 'to look or act like everyone else so you’re not noticed', example: 'On my first day, I just tried to blend in.', related: ['fit in', 'stand out'] },
-  { word: 'ditched', type: 'slang', translation: 'кинутий; покинутий', meaning: 'left alone by someone, often unexpectedly', example: 'My friends ditched me at the mall.' },
-  { word: 'get ghosted', type: 'slang', translation: 'коли тебе раптом ігнорують', meaning: 'when someone suddenly stops replying to you with no explanation', example: 'I got ghosted after I sent that long message.' },
-  { word: 'vibe with', type: 'slang', translation: 'бути на одній хвилі з', meaning: 'to feel a good connection with someone or something', example: 'I really vibe with the new kid.' },
-  { word: 'tag along', type: 'phrasal', translation: 'піти за компанію', meaning: 'to go somewhere with someone, often without a real invitation', example: 'Can I tag along to the skate park?' },
-  { word: 'leave someone on read', type: 'slang', translation: 'прочитати й не відповісти', meaning: 'to read someone’s message and not reply', example: 'She left me on read for two days.' }
+  { word: 'stick together', type: 'phrasal', translation: 'триматися разом', meaning: 'to stay together and support each other', example: 'Our friends always stick together when things get difficult.' },
+  { word: 'social circle', type: 'phrase', translation: 'коло спілкування', meaning: 'the people you usually spend time with', example: 'My social circle is small, but we’re really close.' },
+  { word: 'have your people', type: 'idiom', translation: 'мати своїх людей', meaning: 'to have friends who understand and accept you', example: 'You don’t need hundreds of friends when you have your people.' },
+  { word: 'excluded', type: 'word', translation: 'виключений, не залучений', meaning: 'not invited or not allowed to join something', example: 'I felt excluded when everyone got an invitation except me.', related: ['left out'] },
+  { word: 'left out', type: 'phrase', translation: 'залишений осторонь', meaning: 'not included in something; feeling forgotten', example: 'Everyone made plans without me, so I felt left out.', related: ['excluded'] },
+  { word: 'get ditched', type: 'slang', translation: 'бути покинутим', meaning: 'to be left behind by someone', example: 'I got ditched at the mall and had to go home alone.' },
+  { word: 'vibe with someone', type: 'slang', translation: 'бути на одній хвилі', meaning: 'to feel comfortable with someone and get along naturally', example: 'We both love the same music, so we really vibe with each other.' },
+  { word: 'tag along', type: 'phrasal', translation: 'піти разом, приєднатися', meaning: 'to go somewhere with other people', example: 'We’re going for pizza. Do you want to tag along?' },
+  { word: 'blend in', type: 'phrasal', translation: 'зливатися з натовпом', meaning: 'to look or act like everyone else', example: 'I wore a plain hoodie to blend in on my first day.', note: 'fit in = feel accepted; blend in = look or act like others', related: ['fit in', 'stand out'] },
+  { word: 'get ghosted', type: 'slang', translation: 'бути проігнорованим у спілкуванні', meaning: 'when someone suddenly stops communicating with you', example: 'We chatted every day, but then I got ghosted.', related: ['leave someone on read'] },
+  { word: 'leave someone on read', type: 'slang', translation: 'прочитати повідомлення й не відповісти', meaning: 'to read someone’s message but not reply', example: 'She left me on read after I asked about the party.', related: ['get ghosted'] }
 ]},
 
 { unit: 3, lesson: 27, title: 'Conflict & Repair', practisedIn: [28], revisedIn: [29, 30], words: [

@@ -45,7 +45,7 @@ window.AK_COURSE = {
       { n: 21, kind: 'vocab',         title: 'Real Ones Only' },
       { n: 22, kind: 'grammar',       title: 'Emphatic do / does / did' },
       { n: 23, kind: 'revision',      title: 'Revision', reviews: [21, 22] },
-      { n: 24, kind: 'vocab',         title: 'Belonging & Being Left Out' },
+      { n: 24, kind: 'vocab',         title: 'The New Kid' },
       { n: 25, kind: 'grammar',       title: 'Relative Clauses with Prepositions' },
       { n: 26, kind: 'revision',      title: 'Revision', reviews: [24, 25] },
       { n: 27, kind: 'vocab',         title: 'Conflict & Repair' },
