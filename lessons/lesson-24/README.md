@@ -9,6 +9,7 @@ lessons/lesson-24/
 ├── lesson-24.html        увесь урок (один файл, vanilla JS, без збірки)
 ├── img/cast/             ethan · mia · jay · sophie · kai (Ітан і Кай вирізані з нових фото сцен)
 ├── img/scenes/           17 фото-кадрів уроку (8:3, Instagram-пост — 4:3)
+├── img/bg/               фони сторінки: lockers (сцени 1–4) · skatepark-sunset (Part 2, сцена 5) · city-night (Part 3, Game Zone) · school-sunset (сцена 6)
 └── img/cover.webp        обкладинка картки на платформі
 ```
 

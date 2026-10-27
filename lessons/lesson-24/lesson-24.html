@@ -53,7 +53,7 @@ window.LESSON_CONFIG = {
   },
   /* TITLE_BG — фото-фон титульного екрана (затемнюється автоматично). Порожньо → звичайний фон. */
   TITLE_BG     : 'img/scenes/next-move.webp',
-  BACKGROUNDS  : {}
+  BACKGROUNDS  : { morning:'img/bg/lockers.webp', day:'img/bg/lockers.webp', afternoon:'img/bg/skatepark-sunset.webp', night:'img/bg/city-night.webp', golden:'img/bg/school-sunset.webp' }
 };
 </script>
 <style>
@@ -248,7 +248,18 @@ body[data-sky="golden"] #sky .sun{top:74%; opacity:.95} body[data-sky="afternoon
 body[data-sky="title"] #sky .title{opacity:1}
 body[data-sky="title"] #sky svg.bgart, body[data-sky="title"] #sky .beam{display:none}
 #sky .l .pbg{position:absolute;inset:0;background-size:cover;background-position:center bottom}
-body.photobg #sky svg.bgart, body.photobg #sky .beam{display:none}
+body.photobg #sky svg.bgart, body.photobg #sky .beam, body.photobg #sky .sun, body.photobg #sky .stars{display:none}
+/* photo page backgrounds: slow drift + darkening so text stays readable over them */
+#sky .l .pbg{inset:-2%;animation:bgdrift 40s ease-in-out infinite alternate}
+@keyframes bgdrift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.05) translate(-1%,-.6%)}}
+#sky .l:has(.pbg)::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,24,var(--dt,.55)) 0%,rgba(6,10,24,var(--dm,.45)) 45%,rgba(6,10,24,var(--db,.78)) 100%)}
+#sky .l.morning, #sky .l.day{--dt:.5;--dm:.42;--db:.7}
+#sky .l.afternoon{--dt:.6;--dm:.5;--db:.8}
+#sky .l.golden{--dt:.55;--dm:.42;--db:.8}
+#sky .l.night{--dt:.35;--dm:.4;--db:.75}
+#sky .l.night .pbg{background-position:center 70%}
+#sky .l.golden .pbg, #sky .l.afternoon .pbg{background-position:center 62%}
+body.photobg #sky .veil{background:none}
 .scene .who{position:absolute;bottom:var(--gy,7%);left:var(--x);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6cqw;animation:pop .6s cubic-bezier(.2,1.2,.4,1) both}
 .scene .who .av{box-shadow:0 0 0 .45cqw var(--c), 0 1.4cqw 3cqw rgba(0,0,0,.45)}
 .scene .who b{font-family:var(--disp);font-weight:800;font-size:max(11px,1.35cqw);color:#fff;background:rgba(6,10,24,.62);border:1px solid var(--c);border-radius:999px;padding:.1cqw 1cqw;white-space:nowrap}
