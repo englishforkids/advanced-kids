@@ -20,6 +20,7 @@ advanced-kids/
     ├── lesson-08/lesson-08.html   The Message That Was Never Sent
     ├── lesson-09/lesson-09.html   The Unsent Message
     ├── lesson-10/lesson-10.html   The Identity Files
+    ├── lesson-11/lesson-11.html   The Perfect Post
     ├── lesson-13/lesson-13.html   The Post That Disappeared
     ├── lesson-14/lesson-14.html   Likes Don't Equal Love
     ├── lesson-15/lesson-15.html   If Only I Had Known…
