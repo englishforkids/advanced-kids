@@ -78,7 +78,7 @@ window.AK_VOCAB = [
 ]},
 
 /* ─────────────── UNIT 2 · Digital Life & Social Media Pressure ─────────────── */
-{ unit: 2, lesson: 11, title: 'Filters and FOMO', practisedIn: [12], revisedIn: [13, 20], words: [
+{ unit: 2, lesson: 11, title: 'The Perfect Post', practisedIn: [12], revisedIn: [13, 20], words: [
   { word: 'FOMO', type: 'slang', translation: 'страх щось пропустити', meaning: 'fear of missing out — worry that others are having fun without you', example: 'I got FOMO when I saw the party photos.' },
   { word: 'doomscrolling', type: 'slang', translation: 'безкінечне гортання поганих новин', meaning: 'scrolling for a long time, usually through bad or negative content', example: 'I was doomscrolling until 2 a.m. and felt terrible the next day.' },
   { word: 'overshare', type: 'word', translation: 'розповідати забагато особистого', meaning: 'to share too much private information, especially online', example: 'He overshares in his stories — we know what he eats every hour.' },

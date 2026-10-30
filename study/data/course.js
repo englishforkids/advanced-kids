@@ -30,7 +30,7 @@ window.AK_COURSE = {
       { n: 10, kind: 'unit-revision', title: 'The Identity Files', reviews: [1, 9] }
     ]},
     { n: 2, title: 'Digital Life & Social Media Pressure', lessons: [
-      { n: 11, kind: 'vocab',         title: 'Filters and FOMO' },
+      { n: 11, kind: 'vocab',         title: 'The Perfect Post' },
       { n: 12, kind: 'grammar',       title: 'Causative Structures' },
       { n: 13, kind: 'revision',      title: 'The Post That Disappeared', reviews: [11, 12] },
       { n: 14, kind: 'vocab',         title: 'Likes Don’t Equal Love' },
