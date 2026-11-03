@@ -33,7 +33,8 @@ advanced-kids/
     ├── lesson-22/lesson-22.html   The Confidence Show
     ├── lesson-23/lesson-23.html   The Last Hangout
     ├── lesson-24/lesson-24.html   The New Kid
-    └── lesson-25/lesson-25.html   The Invitation Problem
+    ├── lesson-25/lesson-25.html   The Invitation Problem
+    └── lesson-26/lesson-26.html   Backstage Pass — Save the Show
 ```
 
 Головне правило: **файл уроку ніколи не називається `index.html`**. Так його
@@ -46,9 +47,9 @@ advanced-kids/
 
 ## Як додати наступний урок
 
-1. Папка `lessons/lesson-26/`, усередині `lesson-26.html` та `img/`.
+1. Папка `lessons/lesson-27/`, усередині `lesson-27.html` та `img/`.
 2. На GitHub зайдіть **у папку `lessons`** → **Add file → Upload files** →
-   перетягніть папку `lesson-26` цілком → **Commit changes**.
+   перетягніть папку `lesson-27` цілком → **Commit changes**.
 3. Відкрийте кореневий `index.html` → олівець ✏️ → знайдіть `const LESSONS = [`
    і допишіть блок після останнього уроку. Шаблон лежить там же в коментарі.
    Кома перед `{` обов'язкова.
