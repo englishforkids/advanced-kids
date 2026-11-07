@@ -41,10 +41,17 @@ window.LESSON_CONFIG = {
   /* ФОТО СЦЕН — кадр 8:3 (2048×768). Ключ відсутній → сцена малюється кодом (SVG) з героями-кружечками.
      Промпти для реалістичних кадрів — img/PROMPTS.md. Приклад:  studio : 'img/scenes/studio.webp',  */
   SCENE_PHOTOS : {
+    studio  : 'img/scenes/studio.webp',    // Story unlocked · обкладинка
+    filming : 'img/scenes/filming.webp',   // Clue 01 · The Video
+    editing : 'img/scenes/editing.webp',   // Clue 02 · The Helpers · фінал B
+    takes   : 'img/scenes/takes.webp',     // Clue 03 · твіст · місія · фінал A
+    night   : 'img/scenes/night.webp',     // приватне повідомлення · Speaking
+    golden  : 'img/scenes/golden.webp'     // фінал C
   },
-  TITLE_BG     : 'img/bg/desk.webp',
+  TITLE_BG     : 'img/bg/title.webp',
   /* фон усієї сторінки (уже розмитий) для кожного настрою сцени */
-  BACKGROUNDS  : { studio:'img/bg/room.webp', feed:'img/bg/desk.webp', team:'img/bg/room.webp' }
+  BACKGROUNDS  : { feed:'img/bg/studio.webp', studio:'img/bg/filming.webp', edit:'img/bg/editing.webp', discover:'img/bg/takes.webp',
+                   truth:'img/bg/night.webp', team:'img/bg/filming.webp', golden:'img/bg/golden.webp' }
 };
 </script>
 <style>
@@ -1534,6 +1541,18 @@ body.noanim #sky .orb{animation:none}
 
 .howl.two{columns:2;column-gap:28px} .howl.two li{break-inside:avoid}
 
+/* ── real photos ── */
+.scene.photo .ovr.t{top:auto;bottom:3%;width:84%}
+.scene.photo .ovr.r{width:36%;top:auto;bottom:4%;right:1.5%}
+.scene.photo.ph-filming .vf .af{left:24%;top:22%}
+.scene.photo .fx .tw{--s:2.2cqw}
+.scene.photo .fx .pl.soft{animation-duration:5.5s}
+.scene.photo .grade2{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,5,20,0) 60%,rgba(6,5,20,.35))}
+.endvis .scene.photo, .mscene .scene.photo{box-shadow:0 20px 60px rgba(0,0,0,.5)}
+@media (prefers-reduced-motion:reduce){ .scene.photo .kbw,.scene.photo .fx *{animation:none!important} }
+body.noanim .scene.photo .kbw, body.noanim .scene.photo .fx *{animation:none!important}
+.endvis.natural .ba{max-width:72%;margin-inline:auto} .endvis.natural .ba.mt{margin-top:8px} .endvis.natural .bf span{padding:3px;font-size:12px} .endvis.natural .bf small{padding:2px}
+
 </style>
 </head>
 <body data-sc="1" data-sky="title">
@@ -1977,8 +1996,29 @@ const PHOTO_FX = {
   studio:{dust:5, warm:1, sx:'18%'}, filming:{dust:5, warm:1, sx:'18%'}, editing:{dust:4},
   takes:{dust:5, warm:1, sx:'18%'}, night:{dust:3}, golden:{dust:7, warm:1, sx:'50%'}
 };
+/* light that lives on the real photos: fairy-light twinkle, lamps, ring light, screens, REC (x / y = % of the 2048×768 frame) */
+const RING='rgba(255,248,236,.55)', SCRN='rgba(140,110,255,.40)', BLUE='rgba(110,160,255,.34)', REC='rgba(255,70,90,.95)', MOON='rgba(215,222,255,.55)', NEON='rgba(200,120,255,.60)';
+const PHOTO_FX_IMG = {
+  studio:{kbo:'50% 45%', dust:4, warm:1, sx:'20%',
+    twinkle:[[29.4,9.6],[32.6,7.6],[36.4,4.9],[40,1.6]], lamps:[[18.5,51,'9cqw']],
+    pulse:[[6.5,26,RING,'17cqw'],[31.4,20,NEON,'10cqw'],[85.4,3.5,MOON,'6cqw'],[97.3,20.3,REC,'1.8cqw','blink']]},
+  filming:{kbo:'55% 40%', dust:4, warm:1, sx:'14%',
+    twinkle:[[5.9,1.5],[14.2,6.4],[22.9,10],[31.2,12.4],[39.2,14],[46,14],[51.6,13],[57.4,10.7],[62.6,7.9],[66.4,3.8]],
+    pulse:[[13.8,48.6,RING,'19cqw'],[57.3,59,SCRN,'13cqw'],[92.3,51.8,REC,'1.8cqw','blink']]},
+  editing:{kbo:'35% 35%', dust:3, haze:1,
+    twinkle:[[37.9,11.2],[46.3,15.2],[53,17.9],[59.6,19.5],[65.7,19.5],[73.1,19],[80.9,17.4],[88.3,14.5]],
+    lamps:[[86.1,51,'12cqw'],[8.8,88,'9cqw']], pulse:[[19.3,15.2,MOON,'7cqw'],[67.3,44,BLUE,'22cqw']]},
+  takes:{kbo:'50% 40%', dust:5, warm:1, sx:'58%',
+    lamps:[[40.3,35,'10cqw']], pulse:[[9.3,27.3,RING,'19cqw'],[49.9,10.7,NEON,'11cqw'],[67.3,37,BLUE,'15cqw'],[96.3,43,'rgba(255,120,170,.45)','5cqw']]},
+  night:{kbo:'30% 40%', dust:3, haze:1,
+    lamps:[[50.5,31,'12cqw'],[97.5,58.7,'10cqw']], pulse:[[87.9,7.6,MOON,'7cqw'],[75.8,48.7,SCRN,'13cqw']]},
+  golden:{kbo:'50% 40%', dust:7, warm:1, sx:'55%',
+    twinkle:[[21,9.3],[23.9,10.9],[26.8,11.3],[29.8,10.7],[69.5,8.3],[71.8,10.7],[74.8,12.7],[78,13.7],[81.3,13.3],[84.5,12.9],[87.5,11.3],[90.5,9.1],[93,6.7],[95.3,4.7]],
+    lamps:[[15.9,41.3,'9cqw']], pulse:[[5.8,34,RING,'17cqw']]}
+};
 function fxHTML(F){ let h=''; const r=mulberry(F.dust||3);
   if(F.haze) h+=`<i class="haze"></i>`;
+  if(F.sun) h+=`<i class="glow sun" style="left:${F.sun[0]}%;top:${F.sun[1]}%"></i>`;
   if(F.warm) h+=`<i class="warm" style="--sx:${F.sx||'50%'}"></i>`;
   (F.lamps||[]).forEach(([x,y,w],i)=>h+=`<i class="glow" style="left:${x}%;top:${y}%;--w:${w||'14cqw'};--d:${(i*.9).toFixed(1)}s"></i>`);
   (F.pulse||[]).forEach(([x,y,c,w,k],i)=>h+=`<i class="pl ${k||'soft'}" style="left:${x}%;top:${y}%;--c:${c};--w:${w};--d:-${(i*.7).toFixed(1)}s"></i>`);
@@ -1991,7 +2031,8 @@ function scene(kind, o={}){
   const imgTag=(src,cls='art',pos)=>`<img class="${cls}" src="${esc(src)}" alt="" ${pos?`style="object-position:${pos}"`:''} onerror="this.remove()">`;
   const pid=o.id||kind, F=PHOTO_FX[pid]||{};
   if(SCENE_PH[pid]){ const P=typeof SCENE_PH[pid]==='string'?{src:SCENE_PH[pid]}:SCENE_PH[pid];
-    return `<div class="scene photo${o.sq?' sq':''}" style="${o.sh?'--sh:'+o.sh+';':''}${o.style||''}"><div class="kbw">${imgTag(P.src)}${fxHTML({dust:F.dust})}</div>${o.whoOnPhoto?peopleHTML(o,o.size||12,o.gy||'7%'):''}${o.cap?`<span class="cap">${esc(o.cap)}</span>`:''}${o.over||''}</div>`; }
+    const FI=PHOTO_FX_IMG[pid]||{dust:F.dust};
+    return `<div class="scene photo ph-${esc(pid)}${o.sq?' sq':''}" style="${o.sh?'--sh:'+o.sh+';':''}${FI.kbo?'--kbo:'+FI.kbo+';':''}${o.style||''}"><div class="kbw">${imgTag(P.src)}${fxHTML(FI)}</div>${o.whoOnPhoto?peopleHTML(o,o.size||12,o.gy||'7%'):''}${o.cap?`<span class="cap">${esc(o.cap)}</span>`:''}${o.over||''}</div>`; }
   const bg=(ART[kind]||ART.studio)(o)+(SCENE_IMG[kind]?imgTag(SCENE_IMG[kind],'art',o.pos||'50% 70%'):'');
   const gy=o.gy || '7%', size=o.size||12, ppl=peopleHTML(o, size, gy);
   const bub = o.bubble ? (()=>{ const w=(o.who||[]).find(x=>x[0]===o.bubble[0]); if(!w) return ''; const sz=((w[2]||{}).sz||1)*size; return `<div class="bubble${o.think?' think':''}" style="left:${w[1]}%;bottom:calc(${(w[2]||{}).gy||gy} + ${f1(sz+4.2)}cqw)">${esc(o.bubble[1])}</div>`; })() : '';
@@ -2577,7 +2618,7 @@ blockStep('recall',{ pre:()=>`<div class="ctxline"><span class="avs">${av('maya'
 { id:'unlock', sc:2, title:'Story unlocked', sky:'studio',
   render(){ return scn(this)+`<div class="unlock center"><div class="lockic" aria-hidden="true">🔓</div><h1 class="h-xl ul">STORY <span class="grad">UNLOCKED</span></h1>
       <p class="lead" style="margin:14px auto 0;text-align:center">${esc(UNLOCK.s)}</p>
-      <div class="mt">${scene('studio',{sh:'21vh', who:[['maya',62,{sz:1.05}],['leo',78,{sz:.95}],['ava',30,{sz:.95}]], size:10, names:false, over:viewfinder({tc:'00:00:00'})})}</div>
+      <div class="mt">${scene('studio',{sh:'29vh', who:[['maya',62,{sz:1.05}],['leo',78,{sz:.95}],['ava',30,{sz:.95}]], size:10, names:false, over:viewfinder({tc:'00:00:00'})})}</div>
       <div class="mt"><button class="btn big gold" id="goBts">🎬 ${esc(UNLOCK.b)}</button></div></div>`; },
   after(v){ const b=$('#goBts',v); if(b) b.onclick=()=>{ lightsDown(); setTimeout(next, S.noanim||REDUCED_OS?0:650); }; },
   enter(){ setTimeout(()=>{ if(cur().id==='unlock') sparkle(); },300); },
