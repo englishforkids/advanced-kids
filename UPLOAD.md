@@ -35,7 +35,8 @@ advanced-kids/
     ├── lesson-23/lesson-23.html   The Last Hangout
     ├── lesson-24/lesson-24.html   The New Kid
     ├── lesson-25/lesson-25.html   The Invitation Problem
-    └── lesson-26/lesson-26.html   Backstage Pass — Save the Show
+    ├── lesson-26/lesson-26.html   Backstage Pass — Save the Show
+    └── lesson-27/lesson-27.html   The Group Project Disaster
 ```
 
 Головне правило: **файл уроку ніколи не називається `index.html`**. Так його
