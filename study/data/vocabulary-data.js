@@ -157,18 +157,17 @@ window.AK_VOCAB = [
   { word: 'leave someone on read', type: 'slang', translation: 'прочитати повідомлення й не відповісти', meaning: 'to read someone’s message but not reply', example: 'She left me on read after I asked about the party.', related: ['get ghosted'] }
 ]},
 
-{ unit: 3, lesson: 27, title: 'Conflict & Repair', practisedIn: [28], revisedIn: [29, 30], words: [
+{ unit: 3, lesson: 27, title: 'The Group Project Disaster', practisedIn: [28], revisedIn: [29, 30], words: [
+  { word: 'cross the line', type: 'idiom', translation: 'перейти межу', meaning: 'to do something that is not OK', example: 'Leo crossed the line when he took all the credit.' },
+  { word: 'set boundaries', type: 'phrase', translation: 'встановити особисті межі', meaning: 'to say what you will and won’t accept', example: 'Maya needs to set boundaries.' },
+  { word: 'give someone space', type: 'phrase', translation: 'дати комусь простір', meaning: 'to let someone have time alone', example: 'Leo needs some space to calm down.' },
+  { word: 'hold a grudge', type: 'idiom', translation: 'тримати образу', meaning: 'to stay angry about something for a long time', example: 'Maya doesn’t want to hold a grudge.' },
+  { word: 'walk away from drama', type: 'phrase', translation: 'не вплутуватися у сварку', meaning: 'to leave an unnecessary argument', example: 'Sofia wants to walk away from drama.', related: ['no drama'] },
   { word: 'talk it out', repeat: true },
-  { word: 'hear someone out', type: 'phrasal', translation: 'вислухати до кінця', meaning: 'to listen to everything someone wants to say', example: 'Just hear me out before you get angry.' },
-  { word: 'blow up at someone', type: 'phrasal', translation: 'накричати; вибухнути', meaning: 'to suddenly shout at someone angrily', example: 'I blew up at my brother for using my headphones.' },
-  { word: 'talk behind someone’s back', type: 'idiom', translation: 'говорити за спиною', meaning: 'to say bad things about someone when they’re not there', example: 'Real friends don’t talk behind your back.' },
-  { word: 'patch things up', type: 'idiom', translation: 'помиритися', meaning: 'to become friends again after an argument', example: 'We finally patched things up after a week.', related: ['fall out'] },
-  { word: 'hold a grudge', type: 'idiom', translation: 'тримати образу', meaning: 'to stay angry with someone for a long time', example: 'She still holds a grudge about the birthday thing.' },
-  { word: 'set boundaries', type: 'phrase', translation: 'встановлювати межі', meaning: 'to tell people clearly what is okay and not okay for you', example: 'It’s healthy to set boundaries, even with friends.' },
-  { word: 'give someone space', type: 'phrase', translation: 'дати комусь простір', meaning: 'to leave someone alone for a while', example: 'He’s upset — let’s give him some space.' },
-  { word: 'own up to something', type: 'phrasal', translation: 'визнати провину', meaning: 'to admit that you did something wrong', example: 'He owned up to breaking the window.' },
-  { word: 'cross the line', type: 'idiom', translation: 'перейти межу', meaning: 'to do or say something that is not acceptable', example: 'Joking is fine, but that comment crossed the line.' },
-  { word: 'make it up to someone', type: 'phrasal', translation: 'загладити провину', meaning: 'to do something nice for someone because you hurt or disappointed them', example: 'Sorry I forgot your birthday — I’ll make it up to you.' }
+  { word: 'own up to something', type: 'phrasal', translation: 'визнати свою помилку', meaning: 'to admit you did something wrong', example: 'Leo should own up to his mistake.' },
+  { word: 'hear someone out', type: 'phrasal', translation: 'вислухати когось', meaning: 'to listen until someone finishes speaking', example: 'Ethan wants to hear Leo out.' },
+  { word: 'make it up to someone', type: 'phrasal', translation: 'загладити провину', meaning: 'to do something to fix the harm you caused', example: 'Leo wants to make it up to his friends.' },
+  { word: 'patch things up', type: 'idiom', translation: 'помиритися', meaning: 'to become friends again after an argument', example: 'Maybe they can patch things up.', related: ['fall out'] }
 ]},
 
 /* ─────────────── UNIT 4 · Obsessions, Gaming & Flow State ─────────────── */
