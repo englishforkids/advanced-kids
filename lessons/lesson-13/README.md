@@ -1,61 +1,101 @@
-# Lesson 13 — Revision (11–12)
+# Lesson 13 · Revision (11–12) — The Post That Disappeared
 
-**🔍📱 The Deleted Post Mystery** · Advanced Kids 2.0 · ages 11–17
-Core lesson 25–30 min + optional Game Zone.
-
-Student-led, story-driven, practice-first: one task per screen, the story opens
-in short episodes, answers / hints / teacher notes stay hidden until you open them.
-
-Teacher guide: rebuild needed for this new structure (the old 7-scene guide no longer matches).
-
-## Core lesson — six stages
-
-| # | Stage | Time | Main task |
-|---|-------|------|-----------|
-| 1 | Case Opening | 2–3 min | Prediction: why did Alex delete the post? → **Lock Predictions** |
-| 2 | Evidence Feed | 4–5 min | One clue card per student → choose the expression → explain |
-| 3 | Witness Statements | 5–6 min | Open 4 statements → one question per student + **Show Evidence** |
-| 4 | Grammar Reconstruction | 5–6 min | Order the timeline → one causative sentence per student |
-| 5 | Final Decision | 3 min | Vote Post A / Post B → speak with a frame → reopen predictions |
-| 6 | Breakout Mission | 6–8 min | Rebuild the post: roles, timer, checklist (all oral) |
-|   | Case Closed | 2 min | CASE CLOSED stamp + Quick Exit Check |
-
-**Game Zone** (optional, outside the tracker): Alias · Quick Kahoot (8 Q) · Extra Challenge.
-
-## Smart task distribution
-
-Pick 1–6 detectives at the start or in Teacher controls. The lesson assigns exactly
-one required card per student in stages 2, 3 and 4, shows `Not started / Active / Done`
-on every chip, keeps finished work when the number changes and only re-shuffles the
-unfinished cards (**Reassign Unfinished Tasks**). Progress is kept in localStorage.
-
-## Modes and panels
-
-* **Focus / Workspace** — one activity full-screen for Zoom, or the full workspace.
-* **Evidence Board** — People · Actions · Motives · Vocabulary · Grammar evidence, fills up as the case progresses.
-* **Teacher controls** — student count, reassign, show/hide answers and hints, mark done,
-  reset task, timer, teacher notes, next stage, reset lesson (with confirmation).
-* **Live room** — students join by link (`?room=1234&role=student`) and only see the task
-  you open: prediction, current clue, witness question, grammar sentence, final vote, exit check.
-  Works from the GitHub Pages address (not from a local file).
-
-## Structure
+Детективна історія на повторення лексики та граматики уроків 11–12.
+Сім сцен справи + необов'язкові Optional Challenge і Game Zone.
 
 ```
 lesson-13/
-├── index.html
-├── img/
-│   ├── 01-case-board.webp        Stage 1 cinematic
-│   ├── 04a-party-real.webp       Post B (honest)
-│   ├── 04b-party-over-edited.webp Post A (over-edited)
-│   ├── 05-team-mission.webp      Stage 6
-│   ├── 06-case-closed.webp       Case closed
-│   ├── cover.webp                platform card
-│   └── avatars/                  Alex · Robin · Dana · Jamie
-└── README.md
+├── index.html        ← весь урок в одному файлі
+└── img/              ← усі зображення (webp) + avatars/
 ```
 
-Vocabulary (12): FOMO · doomscrolling · overshare · ghost follow · drop a post ·
-post and regret · edited · highlight reel · show up real · snap and scroll · over-edit · post-worthy
+Відкривається з платформи: `lessons/lesson-13/`.
+Нічого встановлювати не треба — ані збірки, ані залежностей.
 
-Grammar: have/get + object + V3 · have + person + V · get + person + to + V · make + person + V
+---
+
+## Сцени
+
+| # | Сцена | Хв | Що робимо |
+|---|-------|----|-----------|
+| 0 | Digital Alert | 2 | історія справи, прогнози |
+| 1 | Decode the Feed | 4 | 12 виразів ↔ значення |
+| 2 | Read the Evidence | 6 | текст справи + 5 питань |
+| 3 | Grammar Lab | 6 | causative structures, 5 питань |
+| — | Optional Challenge | 4 | знайти 5 помилок у тексті |
+| 4 | Interview the Detectives | 6 | 5 карток для говоріння |
+| 5 | Breakout Mission | 6 | командна місія + таймер |
+| 6 | Final Reveal | 4 | розгадка, honest post, голосування |
+| — | 🎮 Game Zone | 10+ | Alias · Quick Kahoot · Extra Challenge |
+
+Optional Challenge і Game Zone не входять у прогрес справи (`0/7 clues`).
+
+---
+
+## 🕵 Детективи на уроці
+
+Кнопка **🕵** у верхній панелі. Впишіть імена учнів, які сьогодні на уроці —
+по одному, Enter додає наступного. Є швидка кнопка «5 учнів» з типовими іменами,
+які потім можна перейменувати просто в списку.
+
+Щойно з'являються імена, у п'яти сценах над завданням виникає смужка «хто що робить»:
+
+| Сцена | Смужка | Що розподіляється |
+|-------|--------|-------------------|
+| Decode the Feed | Хто декодує | 12 (або 6 у Quick) слів |
+| Read the Evidence | Хто відповідає | 5 питань |
+| Grammar Lab | Хто відповідає | 5 питань |
+| Interview the Detectives | Хто говорить | 5 карток |
+| Optional Challenge | Хто шукає помилку | 5 помилок у тексті |
+
+- Клік по імені у смужці **підсвічує саме його завдання** на екрані — зручно проєктувати.
+- Біля кожного імені видно прогрес: `0/3` → `✓`.
+- **🔁** у смужці або **«Перерозподілити невиконане»** в панелі переносять лише ті
+  позиції, які ще ніхто не виконав. Виконане залишається за тим, хто його зробив.
+- Видалили учня (запізнився, пішов) — його невиконані завдання автоматично
+  переходять до інших. Додали — отримує свою частку з наступного перерозподілу.
+- Імена зберігаються в браузері разом із прогресом уроку.
+- У режимі **Student** список видно, але редагувати його не можна.
+
+---
+
+## 🎮 Game Zone
+
+Кнопка **🎮** у верхній панелі або **«🎮 Open Game Zone»** на сцені Final Reveal.
+Не впливає на прогрес справи — відкривайте, якщо лишився час.
+
+**Alias** — випадкове слово з 12, таймер 30 с, підказка (значення англійською + українською),
+«Сховати» для того, хто описує. Хід переходить по списку детективів: 🎤 Мія → 🎤 Лео → …
+Внизу таблиця всіх 12 виразів із прикладами з життя й перекладом.
+
+**Quick Kahoot** — 8 питань на лексику й causative. Показати/сховати відповідь.
+Над питанням — ім'я учня, чия це черга.
+
+**Extra Challenge** — 5 ситуацій, які треба перебудувати через causative
+(*have / get something done*). Кожна закріплена за своїм учнем, відповідь відкривається кліком.
+
+---
+
+## Режими й керування
+
+- **Teacher / Student** — у режимі Student ховаються відповіді, підказки й керування списком.
+- **⛶** — презентаційний режим (ховає службові кнопки, збільшує текст).
+- **📡 Connect** — кімната для учнів: QR і посилання, учні підключаються зі своїх телефонів
+  і відповідають лише тоді, коли ви відкриваєте завдання.
+- **✨** — вимкнути анімації · **УКР** — український переклад · **AA** — розмір тексту.
+- **🗝️ Vocabulary** — сейф із 12 виразами · **📋 Teacher notes** — підказки до сцен.
+- **↺** — скинути урок (прогрес і список детективів).
+
+---
+
+## Якщо щось не так
+
+| Проблема | Що зробити |
+|----------|------------|
+| Видно стару версію | Ctrl+Shift+R (жорстке оновлення) |
+| Немає картинок | не завантажили папку `img/` разом із `avatars/` |
+| Live room пише `local only` | сторінку відкрито з диска — потрібна адреса GitHub Pages |
+| Лишився прогрес із тесту | ↺ Reset lesson |
+| Смужки з іменами не видно | список детективів порожній — відкрийте 🕵 і впишіть імена |
+
+> `img/watermark.png` — ваш логотип із платформи. Якщо файлу немає, смужка просто не показується.
