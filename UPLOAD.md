@@ -38,7 +38,8 @@ advanced-kids/
     ├── lesson-26/lesson-26.html   Backstage Pass — Save the Show
     ├── lesson-27/lesson-27.html   The Group Project Disaster
     ├── lesson-28/lesson-28.html   Real Talk — The Friendship Podcast
-    └── lesson-29/lesson-29.html   The Message at Midnight
+    ├── lesson-29/lesson-29.html   The Message at Midnight
+    └── lesson-30/lesson-30.html   What If...? The Friendship Multiverse
 ```
 
 Головне правило: **файл уроку ніколи не називається `index.html`**. Так його
@@ -51,9 +52,9 @@ advanced-kids/
 
 ## Як додати наступний урок
 
-1. Папка `lessons/lesson-30/`, усередині `lesson-30.html` та `img/`.
+1. Папка `lessons/lesson-31/`, усередині `lesson-31.html` та `img/`.
 2. На GitHub зайдіть **у папку `lessons`** → **Add file → Upload files** →
-   перетягніть папку `lesson-30` цілком → **Commit changes**.
+   перетягніть папку `lesson-31` цілком → **Commit changes**.
 3. Відкрийте кореневий `index.html` → олівець ✏️ → знайдіть `const LESSONS = [`
    і допишіть блок після останнього уроку. Шаблон лежить там же в коментарі.
    Кома перед `{` обов'язкова.
