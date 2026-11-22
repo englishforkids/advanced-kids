@@ -14,6 +14,7 @@ advanced-kids/
 │       ├── vocabulary-data.js       слова
 │       └── grammar-data.js          граматичні теми
 └── lessons/
+    ├── lesson-01/lesson-01.html   Wearing a Mask? — The First Impression  (+ audio/ — 4 голосові)
     ├── lesson-05/lesson-05.html   The Night Everything Went Wrong
     ├── lesson-06/lesson-06.html   The Unlabelled Room
     ├── lesson-07/lesson-07.html   Voices in My Head
