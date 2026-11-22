@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 31 — My Hobby Went Viral!</title>
+<meta name="description" content="Advanced Kids 2.0 · Lesson 31 · Unit 4 · My Weird Obsession. My Hobby Went Viral! — Leo builds tiny cardboard cities in secret. One video, 248,000 views and a comment storm later, students learn 10 expressions about hobbies, read Leo’s story, decide what he should do next and pitch their own viral-video idea.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   НАЛАШТУВАННЯ УРОКУ — єдине місце, яке зазвичай треба редагувати
+   ───────────────────────────────────────────────────────────────
+   SUPABASE_URL / SUPABASE_KEY — той самий проєкт, що й в інших уроках.
+     Публічний (publishable) ключ. Потрібен лише Realtime (broadcast + presence),
+     таблиці НЕ потрібні. Порожні значення → урок працює лише в Teacher Mode (показ екрана).
+     Service-role ключ сюди НІКОЛИ не вписуйте.
+   PHOTOS — фото героїв (квадратні). Свій файл → img/cast/ і новий шлях тут.
+   SCENES — фони 16:9 (img/scenes/). Порожньо або файл не знайдено → намальований фон.
+   SHOTS  — вертикальні кадри з відео учнів (img/shots/) для бічних панелей.
+   VIDEO  — відео Лео й Майї (9:16). Якщо файлу немає, урок покаже обкладинку й підказку.
+   ALIAS_URL — онлайн-гра Alias для Game Zone.
+   STUDENTS — імена учнів за замовчуванням (змінюються в Teacher Setup).
+   Тексти уроку — розділ «2 · lesson content» нижче.
+   ═══════════════════════════════════════════════════════════════ */
+window.LESSON_CONFIG = {
+  SUPABASE_URL : 'https://yhekszqxheljbxoucalt.supabase.co',
+  SUPABASE_KEY : 'sb_publishable_knHTxZLX-Ucg0WtnfP0RTw_ytJ2Dyoa',
+  PHOTOS : { leo:'img/cast/leo.webp', mia:'img/cast/mia.webp' },
+  SCENES : {
+    title   : 'img/scenes/title.webp',     // старт · Episode 1 opening
+    bedroom : 'img/scenes/bedroom.webp',   // Meet Leo
+    discover: 'img/scenes/discover.webp',  // Майя бачить місто
+    morning : 'img/scenes/morning.webp',   // The next morning…
+    storm   : 'img/scenes/storm.webp',     // Comment storm
+    reading : 'img/scenes/reading.webp',   // Famous Overnight
+    decision: 'img/scenes/decision.webp',  // What should Leo do?
+    yours   : 'img/scenes/yours.webp',     // Episode 4
+    mission : 'img/scenes/mission.webp',   // Final mission
+    ending  : 'img/scenes/ending.webp',    // Story ending
+    game    : 'img/scenes/game.webp'       // Game Zone
+  },
+  SHOTS : {
+    'leo-city'   : 'img/shots/leo-city.webp',
+    'leo-mia'    : 'img/shots/leo-mia.webp',
+    'street'     : 'img/shots/street.webp',
+    'overhead'   : 'img/shots/overhead.webp',
+    'leo-gesture': 'img/shots/leo-gesture.webp',
+    'leo-look'   : 'img/shots/leo-look.webp'
+  },
+  VIDEO : {
+    src    : 'media/leo-mia-viral-video.mp4',   // відео, яке зняли учні
+    poster : 'media/video-poster.webp',
+    captions: [                                  // субтитри (секунди)
+      { from:0,   to:3.2,  t:'[Close-up: Leo’s tiny cardboard city]' },
+      { from:3.3, to:5.7,  t:'LEO: Yeah, I made all of this!' },
+      { from:6.3, to:8.7,  t:'MIA: Dude, this is insane!' },
+      { from:8.8, to:10.1, t:'[Overhead: the whole city lights up]' }
+    ]
+  },
+  ALIAS_URL   : 'https://odissey1505.github.io/alias-game/',
+  STUDENTS    : ['Student 1','Student 2','Student 3','Student 4','Student 5'],
+  WORDS_LINK  : '../../#words?lesson=31',
+  COURSE_LINK : '../../'
+};
+</script>
+<style>
+:root{
+  --bg:#090D1D; --bg2:#0F1530; --s1:rgba(18,24,52,.72); --s2:rgba(29,38,78,.78); --s3:#27325F;
+  --line:rgba(167,139,250,.22); --line2:rgba(167,139,250,.45);
+  --tx:#F4F6FF; --tx2:#AEB7DC; --vio:#8B5CF6; --vio2:#B9A2FF; --blue:#4D8BFF; --cy:#5CC8FF; --coral:#FF8A78; --ok:#3EE0A5; --amb:#FFC85C;
+  --fd:'Bricolage Grotesque',system-ui,sans-serif; --fb:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r:22px; --hh:3.2rem; --fh:3.6rem; --rail:15.5rem; --dash:min(26rem,34vw);
+}
+*{box-sizing:border-box}
+html{font-size:clamp(14px, calc(.58vw + .62vh + 2px), 23px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--fb);line-height:1.42;overflow:hidden;height:100dvh;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--cy);outline-offset:3px;border-radius:10px}
+.hidden{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+h1,h2,h3,.dsp{font-family:var(--fd);letter-spacing:-.015em;margin:0;font-weight:800}
+p{margin:0}
+.small{font-size:.8rem;color:var(--tx2)}
+.mt{margin-top:.6rem}.mt2{margin-top:1.1rem}.mt3{margin-top:1.6rem}
+.row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:.6rem}
+.grow{flex:1}
+.kbd{font-family:ui-monospace,monospace;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 .3rem;color:var(--tx2)}
+a{color:var(--cy)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;border:1px solid var(--line);background:var(--s2);border-radius:14px;padding:.58rem 1rem;font-weight:700;font-size:.92rem;line-height:1.15;transition:background .15s,border-color .15s,transform .1s;text-decoration:none;color:var(--tx);min-height:2.5rem}
+.btn:hover{border-color:var(--line2);background:#2C3870}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.pri{background:linear-gradient(135deg,#8B5CF6,#5B6CFF);border-color:transparent;box-shadow:0 8px 26px -10px rgba(139,92,246,.8)}
+.btn.pri:hover{filter:brightness(1.08)}
+.btn.coral{background:linear-gradient(135deg,#FF8A78,#F7568A);border-color:transparent}
+.btn.ghost{background:rgba(255,255,255,.04)}
+.btn.on{border-color:var(--vio2);background:rgba(139,92,246,.28)}
+.btn.sm{padding:.4rem .75rem;font-size:.8rem;border-radius:11px;min-height:2.1rem}
+.btn.xs{padding:.25rem .55rem;font-size:.72rem;border-radius:9px;min-height:1.7rem}
+.btn.big{padding:.9rem 1.6rem;font-size:1.1rem;border-radius:18px}
+.ib{display:inline-flex;align-items:center;gap:.35rem;background:transparent;border:1px solid transparent;border-radius:11px;padding:.35rem .55rem;font-weight:700;font-size:.8rem;color:var(--tx2);min-height:2.2rem}
+.ib:hover{background:rgba(255,255,255,.06);color:var(--tx)}
+.ib.on{color:var(--tx);background:rgba(139,92,246,.22);border-color:var(--line)}
+
+/* ---------- app shell ---------- */
+#app{position:fixed;inset:0;display:grid;grid-template-rows:var(--hh) 1fr var(--fh);grid-template-columns:var(--rail) 1fr 0;transition:grid-template-columns .25s}
+body.dash-on #app{grid-template-columns:var(--rail) 1fr var(--dash)}
+body.focus #app, body.screen #app{grid-template-columns:0 1fr 0}
+body.focus.dash-on #app{grid-template-columns:0 1fr 0}
+#top{grid-column:1/-1;display:flex;align-items:center;gap:.6rem;padding:0 .8rem;background:rgba(9,13,29,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:20;min-width:0}
+.logo{display:flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:800;font-size:.95rem;white-space:nowrap}
+.logo .n{display:inline-grid;place-items:center;width:2.1rem;height:2.1rem;border-radius:11px;background:linear-gradient(135deg,var(--vio),var(--blue));font-size:.85rem}
+#eps{display:flex;gap:.25rem;flex:1;min-width:0;overflow:hidden;justify-content:center}
+.ep{display:flex;flex-direction:column;align-items:stretch;gap:.22rem;border:0;background:transparent;padding:.2rem .35rem;border-radius:10px;min-width:0;flex:0 1 7.5rem;color:var(--tx2);font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.ep:hover{background:rgba(255,255,255,.05);color:var(--tx)}
+.ep .lb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.ep .bar{height:5px;border-radius:5px;background:rgba(255,255,255,.1);overflow:hidden}
+.ep .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--vio),var(--cy));border-radius:5px;transition:width .3s}
+.ep.cur{color:var(--tx)}
+.ep.cur .bar{box-shadow:0 0 0 1px var(--vio2)}
+.ep.gz{flex:0 0 auto}
+.tools{display:flex;align-items:center;gap:.1rem}
+#clock{font-variant-numeric:tabular-nums;font-weight:800;font-size:.8rem;border:1px solid var(--line);background:transparent;border-radius:10px;padding:.3rem .55rem;color:var(--tx2)}
+#clock.run{color:var(--ok);border-color:rgba(62,224,165,.4)}
+#clock.over{color:var(--coral)}
+
+#rail{grid-row:2/4;grid-column:1;overflow:auto;border-right:1px solid var(--line);background:rgba(9,13,29,.7);backdrop-filter:blur(10px);padding:.8rem .6rem 1rem;z-index:10;min-width:0}
+body.focus #rail, body.screen #rail{display:none}
+#rail h4{font-size:.68rem;letter-spacing:.12em;color:var(--tx2);margin:.9rem .4rem .35rem;text-transform:uppercase}
+#rail .rs{display:flex;align-items:center;gap:.45rem;width:100%;text-align:left;border:0;background:transparent;border-radius:10px;padding:.36rem .5rem;font-size:.78rem;color:var(--tx2);font-weight:600}
+#rail .rs:hover{background:rgba(255,255,255,.05);color:var(--tx)}
+#rail .rs.cur{background:rgba(139,92,246,.22);color:var(--tx);font-weight:800}
+#rail .rs .d{width:.55rem;height:.55rem;border-radius:50%;background:rgba(255,255,255,.18);flex:none}
+#rail .rs.done .d{background:var(--ok)}
+#rail .rs.cur .d{background:var(--vio2);box-shadow:0 0 0 3px rgba(185,162,255,.25)}
+#rail .ovw{border:1px solid var(--line);border-radius:14px;padding:.6rem .7rem;background:rgba(255,255,255,.03);font-size:.75rem;color:var(--tx2)}
+#rail .ovw b{color:var(--tx)}
+.pbar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:.4rem}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--vio),var(--cy))}
+
+#stage{grid-row:2;grid-column:2;position:relative;overflow:hidden;min-width:0}
+body.focus #stage, body.screen #stage{grid-row:1/4}
+body.screen #top, body.screen #ctrl{display:none}
+body.focus #top{position:fixed;top:0;left:0;right:0;opacity:0;transition:opacity .2s}
+body.focus #top:hover, body.focus #top:focus-within{opacity:1}
+#bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(1200px 700px at 80% 10%,rgba(91,108,255,.22),transparent 60%),radial-gradient(900px 600px at 10% 100%,rgba(139,92,246,.2),transparent 60%),var(--bg)}
+#bg .ly{position:absolute;inset:-2%;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease}
+#bg .ly.on{opacity:1}
+body:not(.noanim) #bg .ly.on{animation:kb 40s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.06) translate(-1%,-1%)}}
+#bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,13,29,.78) 0%,rgba(9,13,29,.45) 55%,rgba(9,13,29,.25) 100%),linear-gradient(0deg,rgba(9,13,29,.7),transparent 40%)}
+#bg.dim::after{background:rgba(9,13,29,.78)}
+#view{position:absolute;inset:0;z-index:2;padding:1.1rem 1.4rem;display:flex;flex-direction:column;min-height:0}
+body.focus #view, body.screen #view{padding:1.4rem 2rem 1.6rem}
+.scr{flex:1;min-height:0;display:flex;flex-direction:column}
+
+#ctrl{grid-row:3;grid-column:2;display:flex;align-items:center;gap:.5rem;padding:0 .9rem;border-top:1px solid var(--line);background:rgba(9,13,29,.82);backdrop-filter:blur(12px);z-index:15;min-width:0}
+#ctrl .info{flex:1;min-width:0;font-size:.8rem;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+#ctrl .info b{color:var(--tx)}
+body.focus #ctrl{position:fixed;right:1rem;bottom:1rem;left:auto;border:1px solid var(--line);border-radius:18px;padding:.4rem;opacity:.35;transition:opacity .2s;height:auto}
+body.focus #ctrl:hover, body.focus #ctrl:focus-within{opacity:1}
+body.focus #ctrl .info, body.focus #ctrl .tch{display:none}
+#retBtn{font-size:.75rem}
+
+#dash{grid-row:2/4;grid-column:3;overflow:hidden;border-left:1px solid var(--line);background:rgba(11,15,34,.96);display:flex;flex-direction:column;min-width:0;z-index:12}
+body:not(.dash-on) #dash, body.focus #dash, body.screen #dash{visibility:hidden}
+#dash header{display:flex;align-items:center;gap:.5rem;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+#dash .tabs{display:flex;gap:.2rem;padding:.5rem .6rem;border-bottom:1px solid var(--line);flex-wrap:wrap}
+#dashBody{flex:1;overflow:auto;padding:.8rem .9rem 1.4rem;font-size:.84rem}
+.dsec{border:1px solid var(--line);border-radius:14px;padding:.7rem .8rem;margin-bottom:.7rem;background:rgba(255,255,255,.025)}
+.dsec h5{margin:0 0 .4rem;font-size:.66rem;letter-spacing:.14em;color:var(--vio2);text-transform:uppercase}
+.dsec ul{margin:.2rem 0;padding-left:1.1rem}
+.dsec li{margin:.15rem 0}
+.ua{color:#C9D6FF;font-size:.92em}
+.key{background:rgba(62,224,165,.09);border:1px solid rgba(62,224,165,.3);border-radius:10px;padding:.45rem .6rem;margin-top:.35rem}
+.stud{display:flex;align-items:center;gap:.4rem;margin:.25rem 0}
+.stud input{flex:1;min-width:0;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:.3rem .5rem}
+.stud .cnt{font-variant-numeric:tabular-nums;color:var(--tx2);font-size:.75rem;min-width:2.6rem;text-align:right}
+.stepper{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stepper button{border:0;background:rgba(255,255,255,.05);width:2.2rem;height:2.2rem;font-weight:800;font-size:1.1rem}
+.stepper b{min-width:2.4rem;text-align:center;font-size:1.05rem}
+select.jump{width:100%;background:#151C3E;border:1px solid var(--line);border-radius:10px;padding:.45rem}
+textarea.notes{width:100%;min-height:6rem;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:.5rem;resize:vertical}
+
+/* ---------- content blocks ---------- */
+.glass{background:var(--s1);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.card{padding:1.1rem 1.3rem}
+.kick{display:inline-flex;align-items:center;gap:.45rem;font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--vio2)}
+.kick .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(255,138,120,.2)}
+.h-xl{font-size:clamp(2.2rem,5.2vw,4.4rem);line-height:.98}
+.h-l{font-size:2.05rem;line-height:1.05}
+.h-m{font-size:1.45rem;line-height:1.12}
+.lead{font-size:1.15rem;color:#D9DEFA}
+.story{font-size:1.48rem;line-height:1.45;font-weight:600}
+.instr{display:inline-flex;align-items:center;gap:.5rem;background:rgba(92,200,255,.1);border:1px solid rgba(92,200,255,.35);border-radius:14px;padding:.45rem .8rem;font-weight:700;font-size:.95rem}
+.top{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.7rem}
+.duo{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:1.2rem;align-items:stretch}
+.duo.even{grid-template-columns:1fr 1fr}
+.duo.wide{grid-template-columns:minmax(0,1.7fr) minmax(0,.55fr)}
+.solo{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;max-width:62rem;width:100%;margin:0 auto}
+.fill{flex:1;min-height:0;display:flex;flex-direction:column}
+.scroll{overflow:auto;min-height:0}
+.shot{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--line2);background:#141a38 center/cover;min-height:0;box-shadow:0 30px 60px -25px rgba(0,0,0,.7)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shot .cap{position:absolute;left:.7rem;right:.7rem;bottom:.7rem;background:rgba(9,13,29,.72);backdrop-filter:blur(8px);border-radius:14px;padding:.45rem .7rem;font-size:.8rem;font-weight:700}
+.noimg{background:radial-gradient(circle at 70% 20%,rgba(255,200,92,.25),transparent 50%),linear-gradient(160deg,#2B2152,#141A38 60%,#3A2A1E)!important}
+.noimg::before{content:'';position:absolute;inset:auto 0 0 0;height:55%;background:var(--city) bottom/contain repeat-x;opacity:.9}
+
+/* avatars & character messages */
+.av{position:relative;display:inline-grid;place-items:center;border-radius:50%;overflow:hidden;flex:none;background:var(--s3);box-shadow:0 0 0 3px var(--ring,#334)}
+.av img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.av .ini{font-weight:800;font-family:var(--fd)}
+.msgs{display:flex;flex-direction:column;gap:.75rem}
+.msg{display:flex;gap:.7rem;align-items:flex-end;max-width:92%}
+.msg.r{align-self:flex-end;flex-direction:row-reverse}
+.msg .nm{font-size:.74rem;font-weight:800;margin:0 .3rem .2rem;display:flex;gap:.4rem;align-items:center}
+.msg.r .nm{justify-content:flex-end}
+.bub{background:rgba(255,255,255,.08);border:1px solid var(--line);padding:.7rem 1rem;border-radius:20px 20px 20px 6px;font-size:1.22rem;font-weight:600;line-height:1.35}
+.msg.r .bub{border-radius:20px 20px 6px 20px;background:linear-gradient(135deg,rgba(139,92,246,.42),rgba(77,139,255,.32));border-color:rgba(185,162,255,.4)}
+.msg.think .bub{font-style:italic;background:rgba(255,255,255,.04);border-style:dashed}
+.new{animation:up .45s ease both}
+body.noanim .new{animation:none}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.more{font-size:.8rem;color:var(--tx2);text-align:center;padding:.3rem;border:1px dashed var(--line);border-radius:12px}
+.hl{font-weight:800;color:#fff;background:linear-gradient(transparent 58%,rgba(139,92,246,.55) 58%);padding:0 .1em;border-bottom:2px solid var(--vio2);border-radius:2px}
+.hl.b{background:linear-gradient(transparent 58%,rgba(92,200,255,.45) 58%);border-color:var(--cy)}
+.phone{border-radius:28px;border:1px solid var(--line2);background:rgba(10,14,32,.82);backdrop-filter:blur(16px);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.phone .ph-h{display:flex;align-items:center;gap:.6rem;padding:.7rem 1rem;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+.phone .ph-b{flex:1;min-height:0;overflow:auto;padding:1rem}
+
+/* turns */
+.turn{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(92,200,255,.45);background:rgba(92,200,255,.12);border-radius:999px;padding:.25rem .75rem .25rem .3rem;font-weight:800;font-size:.85rem;color:#E3F4FF}
+.turn .ini{display:grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--cy);color:#06223a;font-size:.75rem}
+.turn.done{border-color:rgba(62,224,165,.5);background:rgba(62,224,165,.12)}
+.turn.done .ini{background:var(--ok)}
+.turn.sm{font-size:.72rem;padding:.15rem .55rem .15rem .2rem}
+.turn.sm .ini{width:1.25rem;height:1.25rem;font-size:.62rem}
+button.turn:hover{filter:brightness(1.15)}
+.tbar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.dots{display:flex;gap:.3rem;align-items:center}
+.dots i{width:.7rem;height:.7rem;border-radius:50%;background:rgba(255,255,255,.16);display:block}
+.dots i.d{background:var(--ok)}
+.dots i.c{background:var(--cy);box-shadow:0 0 0 3px rgba(92,200,255,.25)}
+.dots i.o{background:transparent;border:2px dashed rgba(255,255,255,.3)}
+.optl{font-size:.68rem;font-weight:800;letter-spacing:.08em;border:1px dashed var(--line2);border-radius:999px;padding:.1rem .5rem;color:var(--vio2)}
+
+/* question / answer */
+.qcard{padding:1.4rem 1.6rem}
+.qtext{font-size:1.85rem;line-height:1.2;font-family:var(--fd);font-weight:700}
+.ans{margin-top:1rem;border:1px solid rgba(62,224,165,.45);background:rgba(62,224,165,.1);border-radius:16px;padding:.8rem 1rem;font-size:1.1rem;font-weight:600}
+.ans b{color:var(--ok)}
+.hint{margin-top:.8rem;border:1px solid rgba(255,200,92,.4);background:rgba(255,200,92,.09);border-radius:14px;padding:.6rem .9rem;font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:999px;padding:.3rem .75rem;font-weight:700;font-size:.88rem}
+.chip.hit{border-color:var(--ok);background:rgba(62,224,165,.18);color:#fff;box-shadow:0 0 0 3px rgba(62,224,165,.2)}
+.chip.dim{opacity:.4}
+
+/* vocab cards */
+.vsrc{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.vsrc .tag{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--tx2)}
+.vrow{display:grid;grid-template-columns:minmax(0,1fr);gap:.4rem;border:1px solid var(--line);border-radius:18px;padding:.75rem .95rem;background:rgba(255,255,255,.035)}
+.vrow .ex{font-family:var(--fd);font-size:1.4rem;font-weight:800}
+.vrow .acts{display:flex;gap:.35rem;flex-wrap:wrap}
+.vrow .out{font-size:1.05rem;font-weight:600}
+.vrow .out .lb{font-size:.68rem;letter-spacing:.12em;font-weight:800;color:var(--tx2);margin-right:.4rem}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.guess{border:1px dashed rgba(255,200,92,.55);background:rgba(255,200,92,.08);border-radius:16px;padding:.6rem .9rem;font-weight:700}
+
+/* feed */
+.feed{display:flex;flex-direction:column;gap:.4rem}
+.cm{display:flex;gap:.7rem;align-items:flex-start;border:1px solid var(--line);border-radius:16px;padding:.45rem .8rem;background:rgba(255,255,255,.045)}
+.cm .ua2{width:2.3rem;height:2.3rem;border-radius:50%;display:grid;place-items:center;font-weight:800;flex:none;color:#0B1020}
+.cm .u{font-size:.75rem;font-weight:800;color:var(--tx2)}
+.cm .t{font-size:1.1rem;font-weight:600;line-height:1.3}
+.cm .lk{font-size:.72rem;color:var(--tx2);margin-top:.15rem}
+.cm .lab{margin-left:auto;align-self:center;font-size:.72rem;font-weight:800;border-radius:999px;padding:.15rem .55rem;white-space:nowrap}
+.lab.pos{background:rgba(62,224,165,.16);color:#B8F5DD;border:1px solid rgba(62,224,165,.4)}
+.lab.neg{background:rgba(255,138,120,.14);color:#FFD2CA;border:1px solid rgba(255,138,120,.45)}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.stat{border-radius:22px;padding:1rem 1.2rem;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+.stat .v{font-family:var(--fd);font-size:2.7rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.stat .l{font-size:.85rem;color:var(--tx2);font-weight:700;margin-top:.3rem;letter-spacing:.06em;text-transform:uppercase}
+.bigtitle{font-family:var(--fd);font-weight:800;font-size:clamp(2.6rem,7vw,5.4rem);letter-spacing:.02em;text-align:center;text-shadow:0 10px 40px rgba(0,0,0,.6)}
+
+/* video */
+.vid{position:relative;aspect-ratio:9/16;height:100%;max-height:100%;border-radius:26px;overflow:hidden;background:#0B0F22;border:1px solid var(--line2);box-shadow:0 30px 70px -25px rgba(0,0,0,.8);margin:0 auto}
+.vid video,.vid .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid .vc{position:absolute;left:.6rem;right:.6rem;bottom:.6rem;display:flex;gap:.35rem;align-items:center;background:rgba(9,13,29,.72);backdrop-filter:blur(8px);border-radius:14px;padding:.35rem}
+.vid .vc .btn{min-height:2rem}
+.vid .prog{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.15)}
+.vid .prog i{display:block;height:100%;width:0;background:var(--coral)}
+.vid .cc{position:absolute;left:8%;right:8%;bottom:4.2rem;text-align:center;font-weight:800;font-size:1rem;pointer-events:none}
+.vid .cc span{background:rgba(0,0,0,.72);border-radius:8px;padding:.2rem .5rem;box-decoration-break:clone;-webkit-box-decoration-break:clone;line-height:1.6}
+.vid .miss{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem;background:linear-gradient(0deg,rgba(9,13,29,.92),rgba(9,13,29,.2) 60%)}
+.vid .big{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);width:4.6rem;height:4.6rem;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#111;font-size:1.7rem;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.vwrap{display:flex;justify-content:center;min-height:0;height:100%}
+
+/* votes */
+.vote{display:flex;flex-direction:column;gap:.6rem}
+.vopt{position:relative;display:flex;align-items:center;gap:.8rem;border:1px solid var(--line);border-radius:18px;padding:.75rem 1rem;background:rgba(255,255,255,.045);text-align:left;overflow:hidden;width:100%}
+.vopt .L{display:grid;place-items:center;width:2.3rem;height:2.3rem;border-radius:12px;background:rgba(139,92,246,.3);font-family:var(--fd);font-weight:800;font-size:1.15rem;flex:none}
+.vopt .tx{font-size:1.18rem;font-weight:700;position:relative;z-index:1}
+.vopt .fillbar{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,rgba(139,92,246,.3),rgba(92,200,255,.18));transition:width .5s}
+.vopt .n{margin-left:auto;font-family:var(--fd);font-weight:800;font-size:1.3rem;position:relative;z-index:1}
+.vopt.win{border-color:var(--ok);box-shadow:0 0 0 2px rgba(62,224,165,.35)}
+.vopt .tally{display:flex;gap:.25rem;position:relative;z-index:1;margin-left:.4rem}
+.vopt.sel{border-color:var(--vio2);box-shadow:0 0 0 2px rgba(185,162,255,.35)}
+
+/* speaking cards */
+.deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr));gap:.8rem}
+.dcard{aspect-ratio:3/4;border-radius:20px;border:1px solid var(--line2);background:linear-gradient(150deg,#3B2A86,#1A2250 60%,#3A2032);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;font-family:var(--fd);font-weight:800;font-size:2rem;transition:transform .15s}
+.dcard:hover{transform:translateY(-4px) rotate(-1deg)}
+.dcard small{font-family:var(--fb);font-size:.72rem;letter-spacing:.14em;color:var(--tx2)}
+.dcard.used{opacity:.3;pointer-events:none}
+.scard{border-radius:26px;padding:1.4rem 1.6rem;background:linear-gradient(150deg,rgba(139,92,246,.35),rgba(30,38,90,.8) 55%,rgba(255,138,120,.18));border:1px solid var(--line2)}
+.follow{margin-top:1rem;border-top:1px dashed var(--line2);padding-top:.8rem;font-size:1.2rem;font-weight:700}
+.peer{display:flex;gap:.4rem;flex-wrap:wrap}
+.peer .chip{font-size:.85rem}
+
+/* mission & breakout */
+.els{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.el{border:1px solid var(--line);border-radius:20px;padding:.9rem 1rem;background:rgba(255,255,255,.045)}
+.el .no{font-family:var(--fd);font-size:.8rem;font-weight:800;color:var(--coral);letter-spacing:.14em}
+.el .h{font-family:var(--fd);font-size:1.4rem;font-weight:800;margin:.1rem 0}
+.el .q{font-size:1.05rem;color:#DDE2FF;font-weight:600}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.8rem}
+.grp{border:1px solid var(--line2);border-radius:20px;padding:.8rem .9rem;background:rgba(255,255,255,.05)}
+.grp .gh{font-family:var(--fd);font-weight:800;font-size:1.15rem;margin-bottom:.45rem}
+.mem{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);border-radius:999px;padding:.25rem .7rem;margin:.15rem;font-weight:700;background:rgba(255,255,255,.06)}
+button.mem:hover{border-color:var(--vio2)}
+.timer{font-family:var(--fd);font-weight:800;font-size:3.4rem;font-variant-numeric:tabular-nums;line-height:1}
+.timer.low{color:var(--amb)}
+.timer.out{color:var(--coral)}
+.prompts{display:flex;flex-direction:column;gap:.6rem}
+.prompts div{font-size:1.35rem;font-weight:700;border-left:4px solid var(--vio);padding:.35rem .8rem;background:rgba(255,255,255,.04);border-radius:0 14px 14px 0}
+
+/* responses wall */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:.6rem}
+.rsp{border:1px solid var(--line);border-radius:16px;padding:.6rem .8rem;background:rgba(255,255,255,.06);font-weight:600}
+.rsp .who{font-size:.72rem;color:var(--tx2);font-weight:800}
+
+/* ending */
+.sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.sparkles i{position:absolute;bottom:-10px;width:8px;height:8px;border-radius:50%;background:var(--c);opacity:.0;animation:rise var(--d) ease-in var(--dl) infinite}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:.9}100%{opacity:0;transform:translateY(-95vh) scale(1.1)}}
+body.noanim .sparkles{display:none}
+
+/* game zone */
+.gtabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.vt{width:100%;border-collapse:separate;border-spacing:0;font-size:.95rem}
+.vt th{position:sticky;top:0;background:#1A2150;text-align:left;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tx2);padding:.5rem .7rem}
+.vt td{padding:.48rem .7rem;border-top:1px solid var(--line);vertical-align:top;line-height:1.25}
+.vt td:first-child{font-family:var(--fd);font-weight:800;font-size:1.08rem;white-space:nowrap}
+.vt tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+.vt.compact{font-size:.82rem}
+.vt.compact td{padding:.28rem .55rem}
+.vt.compact td:first-child{font-size:.95rem}
+.vtbox{flex:1;min-height:0;overflow:auto;border:1px solid var(--line);border-radius:18px;background:rgba(10,14,32,.75)}
+.vtbox.fs{position:fixed;inset:0;z-index:80;border-radius:0;padding:1rem 1.4rem;background:#0A0E20}
+.vtbox.fs .vt{font-size:1.15rem}
+.vtbox.fs .vt td:first-child{font-size:1.3rem}
+.kq{border:1px solid var(--line);border-radius:16px;padding:.7rem .9rem;background:rgba(255,255,255,.04);margin-bottom:.6rem}
+.kq .o{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-top:.4rem}
+.kq .o div{border:1px solid var(--line);border-radius:10px;padding:.3rem .55rem;font-size:.9rem}
+.kq .o div.ok{border-color:var(--ok);background:rgba(62,224,165,.14)}
+.secret{border:1px dashed var(--amb);border-radius:16px;padding:.6rem .8rem;background:rgba(255,200,92,.08)}
+
+/* overlays */
+#modal{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(4,6,16,.72);backdrop-filter:blur(6px);padding:1rem}
+#modalBox{width:min(46rem,100%);max-height:92vh;overflow:auto;background:#121937;border:1px solid var(--line2);border-radius:24px;padding:1.3rem 1.4rem}
+#toast{position:fixed;left:50%;bottom:5rem;transform:translate(-50%,20px);opacity:0;background:#1E2756;border:1px solid var(--line2);border-radius:14px;padding:.6rem 1rem;font-weight:700;z-index:95;transition:.25s;pointer-events:none;max-width:90vw}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#reacts{position:fixed;right:1.5rem;bottom:5rem;z-index:60;pointer-events:none;width:3rem;height:60vh}
+#reacts span{position:absolute;bottom:0;font-size:2rem;animation:flt 3s ease-out forwards}
+@keyframes flt{from{transform:translateY(0);opacity:1}to{transform:translateY(-50vh);opacity:0}}
+
+/* welcome / lobby */
+#lobby{position:fixed;inset:0;z-index:70;overflow:auto;background:#090D1D}
+#lobby .lbg{position:fixed;inset:0;background-size:cover;background-position:center;opacity:.55}
+#lobby .lbg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,13,29,.35),rgba(9,13,29,.92) 70%)}
+#lobby .lin{position:relative;min-height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem clamp(1rem,4vw,3.5rem) 2.2rem;gap:1.2rem;max-width:80rem;margin:0 auto}
+.cast{display:flex;gap:1rem;flex-wrap:wrap}
+.castc{display:flex;gap:.8rem;align-items:center;border:1px solid var(--line);border-radius:20px;padding:.6rem .9rem .6rem .6rem;background:rgba(13,18,40,.7);backdrop-filter:blur(10px);max-width:24rem}
+.castc .bio{font-size:.82rem;color:var(--tx2)}
+.setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+
+/* live dock */
+#dock{position:fixed;left:calc(var(--rail) + .8rem);bottom:calc(var(--fh) + .8rem);width:19rem;max-height:46vh;overflow:auto;z-index:40;background:rgba(14,19,44,.96);border:1px solid var(--line2);border-radius:18px;padding:.7rem .8rem;font-size:.8rem;display:none}
+#dock.on{display:block}
+#dock.min #dockBody{display:none}
+body.focus #dock, body.screen #dock{display:none}
+.led{width:.6rem;height:.6rem;border-radius:50%;background:var(--amb);display:inline-block}
+.led.on{background:var(--ok)}
+.led.bad{background:var(--coral)}
+.dbar{margin:.25rem 0}
+.dbar .tr{height:6px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden}
+.dbar .tr i{display:block;height:100%;background:var(--vio2)}
+
+/* student phone app */
+#stu{display:none}
+body.student #app, body.student #lobby{display:none!important}
+body.student{overflow:auto;height:auto;min-height:100dvh;background:radial-gradient(600px 400px at 80% 0,rgba(91,108,255,.3),transparent 60%),var(--bg)}
+body.student #stu{display:block;max-width:34rem;margin:0 auto;padding:1rem 1rem 6rem}
+.stu-head{display:flex;align-items:center;gap:.5rem;padding:.4rem 0 .8rem}
+.stu-card{border:1px solid var(--line);border-radius:22px;padding:1.1rem;background:rgba(18,24,52,.85);margin-top:.8rem}
+.stu-card label{display:block;font-size:.8rem;font-weight:800;color:var(--tx2);margin:.8rem 0 .3rem}
+.stu-card input,.stu-card textarea{width:100%;font-size:1.1rem;background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:12px;padding:.7rem .8rem}
+.stu-card .btn{min-height:3rem;font-size:1.05rem}
+.stu-big{font-family:var(--fd);font-size:1.5rem;font-weight:800;line-height:1.2}
+.avpick{display:flex;flex-wrap:wrap;gap:.35rem}
+.avpick button{font-size:1.5rem;width:2.8rem;height:2.8rem;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05)}
+.avpick button.on{border-color:var(--vio2);background:rgba(139,92,246,.3)}
+#stuFoot{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:.4rem;padding:.6rem;background:rgba(9,13,29,.92);border-top:1px solid var(--line)}
+#stuFoot button{font-size:1.5rem;width:3rem;height:3rem;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.05)}
+.myturn{border-color:var(--cy)!important;box-shadow:0 0 0 3px rgba(92,200,255,.25)}
+.verif{font-size:.72rem;color:var(--ok);font-weight:800}
+
+/* role visibility: .ctl = in-content controls (hidden on the audience screen), .tonly = teacher-only (hidden in Focus + audience) */
+body.screen .ctl, body.screen .tonly, body.focus .tonly{display:none!important}
+#bg.hero::after{background:radial-gradient(ellipse at center,rgba(9,13,29,.5) 0%,rgba(9,13,29,.85) 75%)}
+
+/* responsiveness */
+@media (max-width:1100px){ :root{--rail:0px} #rail{display:none} #dock{left:.8rem} }
+@media (max-width:820px){
+  body:not(.student){overflow:auto}
+  .duo,.duo.even,.duo.wide{grid-template-columns:1fr}
+  .duo>.side{display:none}
+  .els,.stats{grid-template-columns:1fr}
+  .vgrid{grid-template-columns:1fr}
+  #eps .ep:not(.cur){display:none}
+  .lbl{display:none}
+}
+@media (max-height:640px){ .story{font-size:1.25rem} .qtext{font-size:1.5rem} .h-l{font-size:1.7rem} }
+@media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
+body.noanim *{transition:none!important}
+</style>
+</head>
+<body>
+<a class="sr" href="#view">Skip to lesson content</a>
+<div id="app">
+  <header id="top">
+    <div class="logo"><span class="n">31</span><span class="lbl">My Hobby Went Viral! 📱</span></div>
+    <nav id="eps" aria-label="Episodes"></nav>
+    <div class="tools">
+      <button id="clock" class="tch" title="Lesson time — click to start / pause">0:00</button>
+      <button class="ib tch" id="bClass" title="Students (C)">👥 <span id="clsCnt">5</span></button>
+      <button class="ib tch" id="bGame" title="Game Zone (G)">🎮<span class="lbl"> Game Zone</span></button>
+      <button class="ib tch" id="bLive" title="Live classroom (optional)">📡<span class="lbl"> Live</span></button>
+      <button class="ib tch" id="bScreen" title="Open a clean audience window to share in Zoom">🖥<span class="lbl"> Audience</span></button>
+      <button class="ib tch" id="bDash" title="Teacher dashboard (T)">🧑‍🏫<span class="lbl"> Teacher</span></button>
+      <button class="ib" id="bFocus" title="Focus Mode (F)">📺<span class="lbl"> Focus</span></button>
+      <button class="ib" id="bFull" title="Fullscreen">⛶</button>
+      <button class="ib tch" id="bHome" title="Lesson lobby / setup">🏠</button>
+    </div>
+  </header>
+  <aside id="rail" aria-label="Lesson overview"></aside>
+  <main id="stage"><div id="bg" aria-hidden="true"><div class="ly"></div><div class="ly"></div></div><div id="view" tabindex="-1"></div></main>
+  <footer id="ctrl">
+    <button class="btn" id="bBack" aria-label="Back (left arrow)">◀ <span class="lbl">Back</span></button>
+    <button class="btn sm ghost tch hidden" id="retBtn" title="Return to where you were">↪ Return to current scene</button>
+    <div class="info" id="info"></div>
+    <button class="btn sm ghost tch" id="bHint" title="Hint (I)">💡 <span class="lbl">Hint</span></button>
+    <button class="btn sm ghost tch" id="bReveal" title="Reveal (R)">👁 <span class="lbl">Reveal</span></button>
+    <button class="btn sm ghost tch" id="bHide" title="Hide (H)">🙈 <span class="lbl">Hide</span></button>
+    <button class="btn pri" id="bNext" aria-label="Next (right arrow)">Next ▶</button>
+  </footer>
+  <aside id="dash" aria-label="Teacher dashboard">
+    <header><b class="grow dsp">🧑‍🏫 Teacher</b><span class="small">only you see this</span><button class="btn xs ghost" id="dashX" aria-label="Close">✕</button></header>
+    <div class="tabs" id="dashTabs"></div>
+    <div id="dashBody"></div>
+  </aside>
+</div>
+<div id="lobby" class="hidden"></div>
+<div id="modal" class="hidden" role="dialog" aria-modal="true"><div id="modalBox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="reacts" aria-hidden="true"></div>
+<div id="dock" aria-label="Live classroom">
+  <div class="row"><span class="led" id="dockLed"></span><b id="dockTitle" class="grow">Room</b><button class="btn xs ghost" id="dockMin" aria-label="Minimise">▁</button></div>
+  <div class="small" id="dockCount"></div>
+  <div id="dockBody"></div>
+</div>
+<div id="stu">
+  <div class="stu-head"><span class="led" id="stuLed"></span><b class="grow dsp">My Hobby Went Viral! · L31</b><span class="small" id="stuConn"></span></div>
+  <div class="small" id="stuRoom"></div>
+  <div id="stuBody"></div>
+  <div id="stuFoot"></div>
+</div>
+<script>
+/* ============================================================
+   Lesson 31 · My Hobby Went Viral! 📱 · Unit 4 · My Weird Obsession
+   Advanced Kids 2.0 — student-led, story-driven, practice-first.
+   Vanilla JS, один файл, без збірки.
+   1 · helpers   2 · lesson content   3 · state & class   4 · smart turns   5 · timers
+   6 · ui helpers   7 · steps   8 · engine   9 · lobby   10 · teacher dashboard
+   11 · audience window   12 · live room   13 · student app   14 · boot
+   ============================================================ */
+const CFG = window.LESSON_CONFIG || {};
+const R0 = r => typeof r==='string' ? (document.querySelector(r)||document) : (r||document);
+const $  = (s,r=document)=>R0(r).querySelector(s);
+const $$ = (s,r=document)=>[...R0(r).querySelectorAll(s)];
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const qs = new URLSearchParams(location.search);
+const ROLE = (qs.get('role')==='student' || qs.has('join')) ? 'student' : (qs.get('view')==='screen' ? 'screen' : 'teacher');
+const TEACH = ROLE==='teacher';
+const uid = ()=> Math.random().toString(36).slice(2,10);
+const rand4 = ()=> String(1000+Math.floor(Math.random()*9000));
+const mmss = s => { s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+const nameKey = s => String(s||'').trim().toLowerCase();
+const clamp = (v,a,b)=>Math.max(a,Math.min(b,v));
+const typing = ()=>{ const a=document.activeElement; return !!a && (a.tagName==='INPUT'||a.tagName==='TEXTAREA'||a.tagName==='SELECT'||a.isContentEditable); };
+const REDUCED_OS = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const LET = ['A','B','C','D'];
+function toast(m){ const t=$('#toast'); if(!t) return; t.textContent=m; t.classList.add('on'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),2600); }
+function imgFail(img){ const p=img.parentElement; if(p) p.classList.add('noimg'); img.remove(); }
+
+/* ---------- 2 · lesson content (edit wording here) ---------- */
+const PH = CFG.PHOTOS || {}, SCN = CFG.SCENES || {}, SHOT = CFG.SHOTS || {}, VCFG = CFG.VIDEO || {};
+const CH = {
+  leo: {name:'Leo', age:15, c:'#5CC8FF', bio:'15 · curly hair, favourite hoodie. Creative and a bit shy. Builds tiny cardboard cities — in secret.'},
+  mia: {name:'Mia', age:15, c:'#B9A2FF', bio:'15 · Leo’s friend. Outgoing, supportive, expressive. The first person to see the city.'},
+  nar: {name:'Narrator', c:'#AEB7DC'}
+};
+const CAST = ['leo','mia'];
+
+/* 10 expressions — the same set as the course dictionary (study/data/vocabulary-data.js) */
+const VOCAB = [
+  {id:'shut',   w:'can’t shut up about it',      short:'can’t shut up about it', pat:['can’t shut up about it','can’t shut up about'], en:'You talk about something all the time because you love it.', ua:'Не можу перестати про це говорити.', ex:'I can’t shut up about my tiny cities!',
+   ccq:[['Do you talk about it a little or all the time?','All the time.'],['Do you love it or hate it?','Love it.']]},
+  {id:'geek',   w:'total geek for [X]',          short:'total geek for',        pat:['total geek for'], en:'Someone who really loves and knows a lot about a topic.', ua:'Великий фанат чогось; людина, яка дуже захоплюється темою.', ex:'I’m a total geek for miniature buildings.',
+   ccq:[['Does a total geek know a little or a lot?','A lot.'],['Is “geek” negative here?','No — it’s friendly and positive.']]},
+  {id:'deep',   w:'deep in it',                  short:'deep in it',            pat:['deep in it'], en:'Very involved in something and spending a lot of time on it.', ua:'Сильно занурений у щось.', ex:'Once I start building, I’m deep in it.',
+   ccq:[['Is Leo thinking about other things while he builds?','No.'],['Does he spend a little or a lot of time on it?','A lot.']]},
+  {id:'lowkey', w:'lowkey obsessed',             short:'lowkey obsessed',       pat:['lowkey obsessed'], en:'You really love something, but you don’t talk about it much.', ua:'Потайки або трохи схиблений на чомусь.', ex:'I’m lowkey obsessed with making tiny shops.',
+   ccq:[['Do you like it a little or a lot?','A lot.'],['Do you tell everyone about it?','Not necessarily.']]},
+  {id:'jam',    w:'that’s my jam',               short:'that’s my jam',         pat:['that’s my jam'], en:'That’s something I really enjoy.', ua:'Це моє; це те, що мені дуже подобається.', ex:'Making little cities? That’s my jam!',
+   ccq:[['Do you enjoy it?','Yes, a lot.'],['Is “jam” food here?','No!']]},
+  {id:'mad',    w:'mad skills in [X]',           short:'mad skills in',         pat:['mad skills in','mad skills'], en:'Really amazing skills in something.', ua:'Дуже круті навички в чомусь.', ex:'You’ve got mad skills in model building!',
+   ccq:[['Does “mad” mean angry here?','No — it means really amazing.'],['Is Leo good or bad at it?','Very good.']]},
+  {id:'phase',  w:'not just a phase',            short:'not just a phase',      pat:['not just a phase'], en:'Something you have liked for a long time, not just for a short period.', ua:'Це не тимчасове захоплення.', ex:'It’s not just a phase. I’ve loved it for years.',
+   ccq:[['Did Leo start last week?','No — years ago.'],['Will he stop soon?','No.']]},
+  {id:'heads',  w:'turn heads',                  short:'turn heads',            pat:['turning heads','turn heads','turns heads'], en:'Make people notice you because something is special or impressive.', ua:'Привертати увагу; змушувати людей озиратися.', ex:'Your video is really turning heads!',
+   ccq:[['Do people notice it?','Yes.'],['Is it ordinary?','No — it’s special or impressive.']]},
+  {id:'goto',   w:'the go-to person for [X]',    short:'the go-to person for',  pat:['the go-to person for'], en:'The person people ask for help because they know a lot about something.', ua:'Людина, до якої всі звертаються за допомогою чи порадою.', ex:'You’re the go-to person for miniature cities now!',
+   ccq:[['Do people ask Leo for help?','Yes.'],['Why?','Because he knows a lot about it.']]},
+  {id:'one',    w:'one-of-a-kind',               short:'one-of-a-kind',         pat:['one-of-a-kind'], en:'Very special and different from everything else.', ua:'Унікальний; єдиний у своєму роді.', ex:'Your creations are one-of-a-kind!',
+   ccq:[['Are there many cities like Leo’s?','No — only one.'],['Is it special?','Yes, very.']]}
+];
+const VB = Object.fromEntries(VOCAB.map(v=>[v.id,v]));
+
+/* Episode 1 */
+const MEET_TEXT = 'Meet Leo. He’s 15, and he has a hobby that most of his classmates don’t know about. He spends hours building tiny cities. But why does he keep it a secret?';
+const WARM = [
+  {q:'What do you think about Leo’s hobby?', hint:'I think Leo’s hobby is … because …'},
+  {q:'Do you have a hobby that other people might find unusual?', hint:'Yes, I … / Not really, but my friend …'},
+  {q:'Why do some teenagers hide their hobbies?', hint:'Maybe they’re afraid that …'},
+  {q:'Why do you think Leo keeps his tiny cities a secret?', hint:'Maybe he thinks his classmates will …'},
+  {q:'What would you say to Leo if you saw his tiny city?', hint:'I’d say: “Wow, …!”'},
+  {q:'Do you know anyone with an unusual hobby?', hint:'My cousin / friend …'},
+  {q:'Would you prefer an unusual hobby or a popular one? Why?', hint:'I’d prefer … because …'},
+  {q:'Is it easy to tell friends about your hobbies? Why or why not?', hint:'It’s easy / hard because …'}
+];
+const WARM_OPT = ['Would you try this hobby?','Is it important to have a hobby?','Can an unusual hobby be useful?'];
+
+/* Episode 2 */
+const CHAT = [
+  {who:'mia', t:'Leo, this miniature city is incredible! Did you really make all of this?'},
+  {who:'leo', t:'Yep! I’m a total geek for miniature buildings.', r:1},
+  {who:'mia', t:'You should post a video!'},
+  {who:'leo', t:'I don’t know. I’m lowkey obsessed with this stuff, but people might think it’s weird.', r:1},
+  {who:'mia', t:'Come on! You’ve got mad skills in model building!'}
+];
+const CHAT_Q = 'Do you think Leo should share his hobby online? Why?';
+const VIRAL_OPTS = ['Yes, definitely! 🔥','Maybe 🤔','No way 🙅'];
+const MORNING = [
+  {who:'leo', t:'Wait… WHAT?! I only posted this yesterday!', r:1},
+  {who:'mia', t:'Dude, your hobby just went viral!'}
+];
+const STATS = [{v:248000, l:'views', i:'👁'},{v:31000, l:'likes', i:'❤'},{v:1200, l:'comments', i:'💬'}];
+
+/* Vocabulary discovery — five story messages, two expressions each */
+const VCARDS = [
+  {src:'Leo → Mia · 7:02 am', icon:'💬', shot:'leo-city', words:['shut','geek'], lines:[
+    {who:'leo', r:1, t:'Sorry, I know I can’t shut up about it 😅 But I’m a total geek for miniature buildings — and now 200,000 people have seen my city!'}]},
+  {src:'Leo’s thoughts', icon:'💭', shot:'street', words:['deep','lowkey'], lines:[
+    {who:'leo', k:'think', t:'Last night I didn’t notice the time. Once I start building, I’m deep in it. I’m lowkey obsessed — but until yesterday, nobody at school knew.'}]},
+  {src:'Mia → Leo · 7:15 am', icon:'💬', shot:'leo-mia', words:['mad','jam'], lines:[
+    {who:'mia', t:'Tiny LED streetlights?! You’ve got mad skills in model building!'},
+    {who:'leo', r:1, t:'Making little cities? That’s my jam! 😄'}]},
+  {src:'A DM from @tinytown_tom', icon:'📩', shot:'overhead', words:['phase','heads'], lines:[
+    {who:'fan', t:'Is this a new hobby? 🤔'},
+    {who:'leo', r:1, t:'It’s not just a phase. I’ve loved it for years.'},
+    {who:'mia', t:'Leo!! Your video is really turning heads!'}]},
+  {src:'Mia → Leo · 8:30 am', icon:'💬', shot:'leo-gesture', words:['goto','one'], lines:[
+    {who:'mia', t:'Everyone in the comments wants a tutorial! You’re the go-to person for miniature cities now. Seriously, your creations are one-of-a-kind! 🏙️'}]}
+];
+CH.fan = {name:'@tinytown_tom', c:'#FFC85C'};
+
+const FIT = [
+  {s:'Leo talks about his miniature city every day.', a:'shut', m:'Leo can’t shut up about his tiny city.'},
+  {s:'Mia says Leo is extremely talented at building models.', a:'mad', m:'Leo has mad skills in model building.'},
+  {s:'Leo has loved this hobby for five years.', a:'phase', m:'For Leo, it’s not just a phase.'},
+  {s:'Everyone notices Leo’s amazing video.', a:'heads', m:'Leo’s video is turning heads.'},
+  {s:'People ask Leo for advice about miniature cities.', a:'goto', m:'Leo is the go-to person for miniature cities.'},
+  {s:'Leo starts building at 7 pm — and suddenly it’s midnight.', a:'deep', m:'Once Leo starts, he’s deep in it.'},
+  {s:'Leo really loves miniature models, but he doesn’t tell many people.', a:'lowkey', m:'Leo is lowkey obsessed with miniature models.'},
+  {s:'Nobody else has a tiny city exactly like Leo’s.', a:'one', m:'Leo’s city is one-of-a-kind.'},
+  {s:'Leo loves model buildings and knows everything about them.', a:'geek', m:'Leo is a total geek for model buildings.'},
+  {s:'Leo says: “Building tiny shops? I love doing that!”', a:'jam', m:'“Building tiny shops? That’s my jam!”'}
+];
+
+/* Episode 3 */
+const COMMENTS = [
+  {u:'@pixel.parker',     c:'#5CC8FF', t:'This is actually incredible!', pos:1, lk:'4.2K'},
+  {u:'@cardboard.queen',  c:'#B9A2FF', t:'These buildings are one-of-a-kind!', pos:1, lk:'3.8K'},
+  {u:'@noah_builds',      c:'#3EE0A5', t:'You’ve got mad skills!', pos:1, lk:'2.9K'},
+  {u:'@xx_scrolling_xx',  c:'#8D93B5', t:'Aren’t you too old to play with cardboard?', pos:0, lk:'41'},
+  {u:'@diy.dani',         c:'#FFC85C', t:'Please make a tutorial!', pos:1, lk:'5.1K'},
+  {u:'@user_88172',       c:'#8D93B5', t:'This is such a weird obsession.', pos:0, lk:'23'},
+  {u:'@just.bored.22',    c:'#8D93B5', t:'Who spends this much time doing that?', pos:0, lk:'17'}
+];
+const STORM_Q = 'How do you think Leo feels now? Which comments are supportive, and which are unkind?';
+const READING = {
+  title:'FAMOUS OVERNIGHT', by:'by Leo',
+  parts:[
+    'Yesterday, I posted a video of my tiny city. I thought maybe twenty people would watch it. But this morning, it had over 200,000 views!',
+    'Most people loved it. Some said my buildings were one-of-a-kind. Others said I had mad skills in model building. One person even asked me to make a tutorial!',
+    'But then I saw some mean comments. ‘Aren’t you too old to play with cardboard?’ ‘This is such a weird obsession.’ Now I’m not sure what to do. I love making tiny cities. It’s not just a phase. But do I really want everyone at school to know?'
+  ]
+};
+const RQ = [
+  {q:'Why is Leo surprised?', a:'Because his video received over 200,000 views — he expected about twenty.', hint:'Look at part 1.'},
+  {q:'What do people like about his hobby?', a:'His detailed, one-of-a-kind creations and his model-building skills.', hint:'Look at part 2.'},
+  {q:'Why is he thinking about stopping?', a:'Some people are making negative comments, and he is worried about other people’s opinions — especially at school.', hint:'Look at part 3.'},
+  {q:'How many people did Leo think would watch his video?', a:'Maybe twenty.', hint:'Look at part 1.'},
+  {q:'What did one person ask Leo to make?', a:'A tutorial.', hint:'Look at the end of part 2.'},
+  {q:'Does Leo want to stop building? How do you know?', a:'No. He loves making tiny cities — “It’s not just a phase.”', hint:'Look at part 3.'}
+];
+const DEC_OPTS = [
+  'Stop posting and keep his hobby private.',
+  'Keep creating, but only share when he feels comfortable.',
+  'Post another video and respond to the negative comments.'
+];
+const DEC_END = [
+  {title:'My City, My Space', lines:[
+    {who:'nar', t:'Leo stops posting for now. He keeps building — just for himself.'},
+    {who:'leo', r:1, t:'I think I’ll keep my cities private for a while.'},
+    {who:'mia', t:'That’s totally okay. You don’t have to share everything online. Your city is still amazing — with or without views.'},
+    {who:'leo', k:'think', t:'Building at night is still the best part of my day.'}]},
+  {title:'On My Own Terms', lines:[
+    {who:'nar', t:'Leo keeps building. He decides to share only when he feels ready.'},
+    {who:'leo', r:1, t:'I’ll post my next street when I’m happy with it. Not before.'},
+    {who:'mia', t:'Good plan. You can’t please everyone — and you don’t have to.'},
+    {who:'leo', k:'think', t:'I build because I love it, not for likes.'}]},
+  {title:'Why I Build', lines:[
+    {who:'nar', t:'A week later, Leo posts a new video: “Why I build tiny cities.”'},
+    {who:'leo', r:1, t:'For me, it’s not just a phase. It’s my thing — and I’m proud of it.'},
+    {who:'mia', t:'And you didn’t argue with the mean comments. Smart move!'},
+    {who:'leo', r:1, t:'I answered the people who were really interested. Two of them want a tutorial!'}]}
+];
+const RECONNECT = 'Whatever Leo decided, one thing didn’t change: he kept building. And then he had a question for YOU…';
+
+/* Episode 4 */
+const CARDS = [
+  {q:'What’s something you’re lowkey obsessed with?', f:'How did you get into it?', hint:'I’m lowkey obsessed with … I got into it when …', ex:'I’m lowkey obsessed with photography. I started taking pictures two years ago, and now I take photos almost every weekend.'},
+  {q:'What’s something you can’t shut up about?', f:'Who do you usually talk to about it?', hint:'I can’t shut up about … I usually talk to …', ex:'I can’t shut up about football. I usually talk to my brother about it — he’s a big fan too.'},
+  {q:'What are you a total geek for?', f:'What makes it so interesting?', hint:'I’m a total geek for … It’s interesting because …', ex:'I’m a total geek for space. I love learning how huge the universe is.'},
+  {q:'Do you have any one-of-a-kind skills or interests?', f:'Would you show them online?', hint:'I can … / I’m really into … I would / wouldn’t post it because …', ex:'I can draw cartoon portraits really fast. Maybe I’d post them online one day!'},
+  {q:'What hobby would you like to become the go-to person for?', f:'How could you become really good at it?', hint:'I’d like to be the go-to person for … I could …', ex:'I’d like to be the go-to person for video editing. I could practise every day and watch tutorials.'},
+  {q:'What’s your jam at the weekend?', f:'Who do you usually do it with?', hint:'… ? That’s my jam! I do it with …', ex:'Playing basketball with friends? That’s my jam on Saturdays.'},
+  {q:'When were you last deep in a hobby and forgot about the time?', f:'What were you doing?', hint:'Last week I was deep in … and I forgot …', ex:'Last week I was deep in a puzzle game and forgot about dinner!'},
+  {q:'Is there something you love that is not just a phase?', f:'How long have you liked it?', hint:'… is not just a phase for me. I’ve loved it since …', ex:'Drawing is not just a phase for me. I’ve loved it since I was six.'}
+];
+const PEER = ['Really? Why?','Same here!','How long have you been doing that?','Can you show us an example?'];
+
+/* Final mission */
+const MISSION_MSG = 'Leo’s video inspired other students to share their hobbies! Now we want to show that every hobby can be interesting. Can you help us?';
+const ELEMENTS = [
+  {h:'THE HOBBY', q:'What is your video about?', p:'Our hobby is…'},
+  {h:'THE HOOK',  q:'What happens in the first five seconds?', p:'The first five seconds show…'},
+  {h:'THE PITCH', q:'Why should people watch it?', p:'People will watch because…'}
+];
+const HOBBIES = ['Solving Rubik’s Cubes','Building LEGO cities','Collecting sneakers','Drawing comics','Cooking unusual snacks','Photography','Football tricks','Gaming','Creating miniature models'];
+const MISSION_EX = 'Our video is about a girl who’s lowkey obsessed with solving Rubik’s Cubes. In the first five seconds, she solves one with her eyes closed! She’s got mad skills in speedcubing. We think her video will turn heads because it’s really impressive!';
+const PRES_OPTS = ['Absolutely! 🙌','Maybe! 🤔','Not my jam! 😅'];
+const TEAM_NAMES = ['Team Neon','Team Pixel','Team Comet','Team Echo','Team Nova'];
+
+/* Ending */
+const FINAL = [
+  'I used to think my hobby was weird.',
+  'But now I know something. You don’t have to be like everyone else to do something amazing.',
+  'Thanks for helping me!'
+];
+const REFLECT = 'Can an unusual hobby become someone’s greatest strength? Why?';
+
+/* Game Zone */
+const KAHOOT = [
+  {q:'What does “can’t shut up about it” mean?', o:['You talk about it all the time because you love it','You are not allowed to talk about it','You hate talking about it','You only talk about it online'], a:0, e:'You love something so much that you talk about it all the time.'},
+  {q:'Leo says: “I’m a total ___ for miniature buildings.”', o:['jam','geek','phase','kind'], a:1, e:'“A total geek for [X]” = someone who loves and knows a lot about a topic.'},
+  {q:'“Once I start building, I’m ___.” (I spend hours on it)', o:['turning heads','one-of-a-kind','deep in it','not just a phase'], a:2, e:'“Deep in it” = very involved and spending a lot of time on it.'},
+  {q:'If you’re “lowkey obsessed” with something, you…', o:['secretly hate it','really love it but don’t talk about it much','talk about it loudly all day','are bored of it'], a:1, e:'Lowkey = quietly. You love it, but you don’t say it much.'},
+  {q:'“Making little cities? ___!” (I really enjoy it)', o:['That’s my phase','That turns heads','That’s my jam','That’s my geek'], a:2, e:'“That’s my jam” = that’s something I really enjoy.'},
+  {q:'Mia thinks Leo is extremely talented. She says…', o:['“You’re lowkey obsessed with model building!”','“You can’t shut up about model building!”','“You’re deep in model building!”','“You’ve got mad skills in model building!”'], a:3, e:'“Mad skills in [X]” = really amazing skills in something.'},
+  {q:'Leo has loved building for five years. For him, it’s…', o:['not just a phase','his jam','turning heads','the go-to person'], a:0, e:'“Not just a phase” = something you’ve liked for a long time.'},
+  {q:'Everyone notices Leo’s amazing video. It’s…', o:['deep in it','turning heads','lowkey obsessed','not just a phase'], a:1, e:'“Turn heads” = make people notice because it’s special or impressive.'},
+  {q:'People ask Leo for advice about tiny cities. He is…', o:['deep in tiny cities','a total jam for tiny cities','the go-to person for tiny cities','mad skills in tiny cities'], a:2, e:'“The go-to person for [X]” = the person people ask for help.'},
+  {q:'What does “one-of-a-kind” mean?', o:['Very popular online','One of many','A very kind person','Very special and different from everything else'], a:3, e:'“One-of-a-kind” = unique, there’s nothing else like it.'}
+];
+const GUESS = ['Skateboarding','Baking cupcakes','Collecting sneakers','Solving Rubik’s Cubes','Birdwatching','Drawing comics','Playing chess','Building with LEGO','Photography','Gardening','Juggling','Magic tricks','Origami','Coding games','Playing the drums','Beatboxing','Collecting stamps','Rock climbing','Knitting','Stargazing','Dancing','Making slime','Cosplay','Fishing'];
+
+/* episodes & suggested pacing (minutes) */
+const EPISODES = [
+  {id:'e1', short:'Episode 1', name:'The Secret Hobby', min:3},
+  {id:'e2', short:'Episode 2', name:'The Viral Video', min:7},
+  {id:'e3', short:'Episode 3', name:'The Comment Storm', min:6},
+  {id:'e4', short:'Episode 4', name:'Your Obsession', min:6},
+  {id:'fm', short:'Mission', name:'Make It Go Viral!', min:7},
+  {id:'end', short:'Ending', name:'Story Ending', min:0},
+  {id:'gz', short:'🎮 Game Zone', name:'Game Zone', min:0, extra:true}
+];
+const CORE_MIN = 29;
+
+/* ---------- 3 · state & class ---------- */
+const KEY = 'lesson31-state-v1';
+const MAXS = 10;
+const mkStudents = names => names.map(n=>({id:'s'+uid(), name:n, here:true}));
+const FRESH = (keep)=>({ v:1, started:false, i:0, max:0, k:{}, focus:false, dash:false, dtab:'notes',
+  students: keep || mkStudents(CFG.STUDENTS||['Student 1','Student 2','Student 3','Student 4','Student 5']),
+  part:{}, tb:{}, rot:0, rv:{}, votes:{}, vshow:{}, dec:null, picks:{}, statsDone:false,
+  bo:{mode:'teams', groups:null, sig:'', pres:0},
+  tm:{lesson:{acc:0,at:0}, ep:{acc:0,at:0,n:0}, bo:{dur:180,left:180,at:0}, gz:{dur:60,left:60,at:0}},
+  gz:{tab:'alias', ua:true, ex:true, compact:false, kAns:false, gi:0, gorder:[], gshow:false},
+  notes:'', room:rand4(), tid:'t'+uid(), lv:{}, resp:{}, wall:{}, hideR:{}, live:false, noanim:false, cc:true });
+let S = FRESH();
+if(TEACH){ try{ const raw=JSON.parse(localStorage.getItem(KEY)||'null'); if(raw && raw.v===1) S=Object.assign(FRESH(), raw); }catch(e){} }
+let SAVE_HOOK = null;
+function save(){ if(!TEACH) return; try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} SAVE_HOOK && SAVE_HOOK(); }
+const stu = id => S.students.find(s=>s.id===id);
+const sname = id => (stu(id)||{}).name || '—';
+const avail = ()=> S.students.filter(s=>s.here);
+const NS = ()=> Math.max(1, avail().length);
+const initial = n => (String(n||'?').trim()[0]||'?').toUpperCase();
+function setCount(n){
+  n=clamp(n,1,MAXS);
+  while(S.students.length<n) S.students.push({id:'s'+uid(), name:'Student '+(S.students.length+1), here:true});
+  if(S.students.length>n) S.students=S.students.slice(0,n);
+  afterClass();
+}
+function afterClass(){ save(); const c=$('#clsCnt'); if(c) c.textContent=avail().length; }
+
+/* ---------- 4 · smart turns ----------
+   Блок (block) — практичне завдання з N × R ходами (N — присутні учні, R — ходів на учня).
+   • Ходи розподіляються рівномірно: спершу той, у кого найменше ходів у цьому блоці, потім — загалом, потім по колу.
+   • Виконані ходи (✓) ніколи не стираються. Якщо змінилася кількість учнів — перерозподіляються лише невиконані.
+   • Учень, якого немає (відсутній), автоматично замінюється на іншого. */
+const tbGet = id => (S.tb[id] = S.tb[id] || {i:0, a:[], opt:0});
+function pickFor(id, j, exclude=[]){
+  const A=avail(); if(!A.length) return null;
+  const T=tbGet(id), cntB={};
+  T.a.forEach((x,k)=>{ if(x && k!==j) cntB[x.sid]=(cntB[x.sid]||0)+1; });
+  const prev = j>0 && T.a[j-1] ? T.a[j-1].sid : null, n=S.students.length;
+  let pool=A.filter(s=>!exclude.includes(s.id)); if(!pool.length) pool=A;
+  let best=null, bv=1e12;
+  pool.forEach(s=>{ const idx=S.students.indexOf(s), rot=(idx-(S.rot||0)+n)%n;
+    const v=(cntB[s.id]||0)*1e6 + (s.id===prev && pool.length>1 ? 5e5 : 0) + (S.part[s.id]||0)*100 + rot;
+    if(v<bv){ bv=v; best=s; } });
+  S.rot=(S.students.indexOf(best)+1)%n; return best.id;
+}
+/* total — скільки ходів у блоці зараз; повертає блок із призначеними учнями */
+function tbEnsure(id, total){
+  const T=tbGet(id); if(!TEACH) return T;
+  for(let j=0;j<total;j++){ const a=T.a[j];
+    if(!a || (!a.done && !avail().some(s=>s.id===a.sid))) T.a[j]={sid:pickFor(id,j), done:false}; }
+  return T;
+}
+const doneCount = id => (tbGet(id).a||[]).filter(x=>x&&x.done).length;
+function tbDone(id, j){ const T=tbGet(id), a=T.a[j]; if(a && !a.done && a.sid){ a.done=true; S.part[a.sid]=(S.part[a.sid]||0)+1; } }
+function tbToggle(id, j){ const T=tbGet(id), a=T.a[j]; if(!a) return; if(a.done){ a.done=false; S.part[a.sid]=Math.max(0,(S.part[a.sid]||0)-1); } else tbDone(id,j); }
+function tbPass(id, j){ const T=tbGet(id), a=T.a[j]; if(!a || a.done) return; const sid=pickFor(id,j,[a.sid]); if(sid && sid!==a.sid) a.sid=sid; else toast('Nobody else is available'); }
+function tbCycle(id, j){ const T=tbGet(id), a=T.a[j], A=avail(); if(!a||!A.length) return; const i=A.findIndex(s=>s.id===a.sid); a.sid=A[(i+1)%A.length].id; }
+/* required turns: N × R, but never fewer than turns already done, never more than available items */
+const reqN = (R, items, min=1) => Math.min(items, Math.max(min, NS()*R));
+function resetTurns(){ S.part={}; S.tb={}; S.rot=0; S.picks={}; }
+
+/* ---------- 5 · timers ---------- */
+const now = ()=>Date.now();
+const el = t => t.at ? t.acc + (now()-t.at)/1000 : t.acc;
+const cd = t => t.at ? Math.max(0, t.left-(now()-t.at)/1000) : t.left;
+const TM = {
+  lesson(){ return el(S.tm.lesson); }, ep(){ return el(S.tm.ep); }, run(){ return !!S.tm.lesson.at; },
+  toggle(){ const L=S.tm.lesson, E=S.tm.ep; if(L.at){ L.acc=el(L); L.at=0; E.acc=el(E); E.at=0; } else { L.at=now(); E.at=now(); } save(); paintTimers(); },
+  start(){ if(!S.tm.lesson.at) TM.toggle(); },
+  reset(){ S.tm.lesson={acc:0,at:0}; S.tm.ep={acc:0,at:0,n:epOf(S.i)}; save(); paintTimers(); },
+  newEp(n){ if(S.tm.ep.n===n) return; S.tm.ep={acc:0, at:S.tm.lesson.at?now():0, n}; },
+  /* countdowns: 'bo' (breakout), 'gz' (Guess the Obsession) — never move the lesson on automatically */
+  left(k){ return cd(S.tm[k]); }, on(k){ return !!S.tm[k].at && cd(S.tm[k])>0; },
+  go(k){ const b=S.tm[k]; if(!b.at){ if(b.left<=0) b.left=b.dur; b.at=now(); } save(); paintTimers(); pub(); },
+  pause(k){ const b=S.tm[k]; if(b.at){ b.left=cd(b); b.at=0; } save(); paintTimers(); pub(); },
+  flip(k){ TM.on(k)?TM.pause(k):TM.go(k); },
+  rst(k,d){ const b=S.tm[k]; if(d) b.dur=d; b.left=b.dur; b.at=0; save(); paintTimers(); pub(); },
+  add(k,s){ const b=S.tm[k], l=cd(b); b.left=Math.max(0,l+s); if(b.at) b.at=now(); save(); paintTimers(); pub(); }
+};
+const rang = {};
+function paintTimers(){
+  const c=$('#clock'); if(c){ const t=TM.lesson(); c.textContent=(TM.run()?'⏱ ':'⏸ ')+mmss(t)+' / '+CORE_MIN; c.classList.toggle('run',TM.run()); c.classList.toggle('over',t>CORE_MIN*60); }
+  ['bo','gz'].forEach(k=>{ const l=TM.left(k), run=TM.on(k);
+    $$(`[data-tmr="${k}"]`).forEach(e=>{ e.textContent=mmss(l); e.classList.toggle('low',l<=30&&l>0); e.classList.toggle('out',l<=0); });
+    $$(`[data-tmb="${k}"]`).forEach(e=>{ e.textContent=run?'⏸ Pause':'▶ Start'; });
+    if(S.tm[k].at && l<=0 && !rang[k]){ rang[k]=1; if(TEACH) toast('⏰ Time is up!'); } if(l>0) rang[k]=0; });
+  $$('[data-tmr="lesson"]').forEach(e=>e.textContent=mmss(TM.lesson()));
+  $$('[data-tmr="ep"]').forEach(e=>e.textContent=mmss(TM.ep()));
+}
+
+/* ---------- 6 · ui helpers ---------- */
+function av(k, size=48){
+  const c=CH[k]||{name:'?'}, src=PH[k];
+  return `<span class="av" style="width:${size}px;height:${size}px;--ring:${c.c||'#334'}">${src?`<img src="${esc(src)}" alt="${esc(c.name)}" onerror="this.remove()">`:''}<span class="ini" style="font-size:${size*.42}px">${esc(initial(c.name))}</span></span>`;
+}
+/* highlight the target expressions inside a text */
+function hl(text, ids, alt){
+  let h=esc(text);
+  (ids||[]).forEach(id=>{ const v=VB[id]; if(!v) return; for(const p of v.pat){ const e=esc(p), re=new RegExp(e.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      if(re.test(h)){ h=h.replace(re, m=>`<span class="hl ${alt&&alt[id]?'b':''}">${m}</span>`); break; } } });
+  return h;
+}
+const ALLV = VOCAB.map(v=>v.id);
+function msgHTML(l, opts={}){
+  const C=CH[l.who]||{}, nw=opts.nw?' new':'';
+  if(l.who==='nar') return `<div class="more${nw}" style="font-size:1.05rem;color:#DDE2FF;border-style:solid;background:rgba(255,255,255,.04)">${opts.chip||''} ${esc(l.t)}</div>`;
+  const txt = opts.hl ? hl(l.t, opts.hl, opts.alt) : esc(l.t);
+  return `<div class="msg ${l.r?'r':''} ${l.k==='think'?'think':''}${nw}">${av(l.who,46)}<div><div class="nm" style="color:${C.c}">${esc(C.name)}${l.k==='think'?' <span class="small">· thinking</span>':''}${opts.chip||''}</div><div class="bub">${txt}</div></div></div>`;
+}
+function shotHTML(key, cap){ const src=SHOT[key];
+  return `<div class="shot side">${src?`<img src="${esc(src)}" alt="${esc(cap||'Scene from Leo and Mia’s video')}" onerror="imgFail(this)">`:''}${cap?`<div class="cap">${cap}</div>`:''}</div>`; }
+function epHead(s, extra=''){ const E=EPISODES[s.ep];
+  return `<div class="top"><span class="kick"><span class="dot"></span>${esc(E.short)} · ${esc(E.name)}${s.k?` · <span style="color:var(--tx2)">${esc(s.k)}</span>`:''}</span><span class="grow"></span>${extra}</div>`; }
+/* turn chip — click to give the turn to another student */
+function chip(id, j, label='🎙', sm){
+  const T=tbGet(id), a=T.a[j]; if(!a) return '';
+  const n=sname(a.sid), tag=TEACH?'button':'span';
+  return `<${tag} class="turn ${a.done?'done':''} ${sm?'sm':''}" ${TEACH?`data-cyc="${esc(id)}|${j}" title="Click to give this turn to another student"`:''}><span class="ini">${esc(initial(n))}</span>${label} ${esc(n)}${a.done?' ✓':''}</${tag}>`;
+}
+function dots(id, total, req){
+  const T=tbGet(id);
+  return `<div class="dots" aria-label="Turn ${T.i+1} of ${total}">${Array.from({length:total},(_,j)=>{ const a=T.a[j]; return `<i class="${a&&a.done?'d':''} ${j===T.i?'c':''} ${j>=req?'o':''}" title="${a?esc(sname(a.sid)):''}"></i>`; }).join('')}</div>`;
+}
+/* turn bar: dots · chip · ✓ done · ↷ pass · + extra */
+function tbar(id, total, req, max, label='🎙'){
+  const T=tbGet(id);
+  return `<div class="tbar">${dots(id,total,req)}${chip(id,T.i,label)}${T.i>=req?'<span class="optl">OPTIONAL</span>':''}
+    <span class="grow"></span>
+    <button class="btn xs ghost ctl" data-tb="done|${esc(id)}" title="Mark completed (D)">${T.a[T.i]&&T.a[T.i].done?'↺ Undo':'✓ Done'}</button>
+    <button class="btn xs ghost ctl tonly" data-tb="pass|${esc(id)}" title="Ask another student">↷ Pass</button>
+    ${total<max?`<button class="btn xs ghost ctl tonly" data-tb="more|${esc(id)}" title="Add an optional turn">＋ Extra turn</button>`:''}
+    ${T.i<total-1?`<button class="btn xs ctl" data-tb="next|${esc(id)}">Next student ▶</button>`:''}</div>`;
+}
+/* block helper for steps: total = required + optional extra turns */
+function blk(id, req, max){ const T=tbGet(id); req=Math.min(req,max); const total=Math.min(max, Math.max(req+(T.opt||0), doneCount(id), T.i+1)); tbEnsure(id,total); if(T.i>=total) T.i=total-1; return {T, total, req, max}; }
+function blkAdv(id, b){ const T=tbGet(id); tbDone(id,T.i); if(T.i<b.total-1){ T.i++; return true; } return false; }
+function blkRet(id){ const T=tbGet(id); if(T.i>0){ T.i--; return true; } return false; }
+
+/* votes: hands counted by the teacher + phone votes */
+function vcount(id,n){ const c=Array.from({length:n},(_,i)=>(S.votes[id]||[])[i]||0); Object.values(S.lv[id]||{}).forEach(v=>{ if(v>=0&&v<n) c[v]++; }); return c; }
+function voteHTML(id, opts, {letters=true, sel=null}={}){
+  const c=vcount(id,opts.length), tot=c.reduce((a,b)=>a+b,0), mx=Math.max(1,...c), shown=!!S.vshow[id];
+  return `<div class="vote">${opts.map((o,i)=>`<div class="row" style="flex-wrap:nowrap;gap:.4rem"><button class="vopt ${shown&&c[i]===mx&&tot?'win':''} ${sel===i?'sel':''}" data-vote="${esc(id)}|${i}" ${TEACH?'':'disabled'} title="${TEACH?'Click to count one raised hand':''}">
+      ${shown?`<span class="fillbar" style="width:${tot?c[i]/tot*100:0}%"></span>`:''}
+      ${letters?`<span class="L">${LET[i]}</span>`:''}<span class="tx">${esc(o)}</span>${shown?`<span class="n">${c[i]}</span>`:''}</button>
+      <button class="btn xs ghost tonly ctl" data-unvote="${esc(id)}|${i}" aria-label="Remove one vote">−</button></div>`).join('')}
+    <div class="row small"><span>${shown?`${tot} vote${tot===1?'':'s'}`:'Results hidden'}</span><span class="tonly">· click an option to count a raised hand · 📱 phone votes add automatically (${Object.keys(S.lv[id]||{}).length})</span><span class="grow"></span>
+      <button class="btn xs ghost ctl tonly" data-vshow="${esc(id)}">${shown?'🙈 Hide results':'📊 Show results'}</button></div></div>`;
+}
+function bindCommon(v){
+  $$('[data-cyc]',v).forEach(b=>b.onclick=e=>{ e.stopPropagation(); const [id,j]=b.dataset.cyc.split('|'); tbCycle(id,+j); commit(); });
+  $$('[data-tb]',v).forEach(b=>b.onclick=()=>{ const [a,id]=b.dataset.tb.split('|'), T=tbGet(id);
+    if(a==='done') tbToggle(id,T.i); if(a==='pass') tbPass(id,T.i); if(a==='more'){ T.opt=(T.opt||0)+1; }
+    if(a==='next'){ tbDone(id,T.i); T.i++; } commit(); });
+  $$('[data-vote]',v).forEach(b=>b.onclick=()=>{ if(!TEACH) return; const [id,i]=b.dataset.vote.split('|'); const a=S.votes[id]=S.votes[id]||[]; a[+i]=(a[+i]||0)+1; commit(); });
+  $$('[data-unvote]',v).forEach(b=>b.onclick=()=>{ const [id,i]=b.dataset.unvote.split('|'); const a=S.votes[id]=S.votes[id]||[]; a[+i]=Math.max(0,(a[+i]||0)-1); commit(); });
+  $$('[data-vshow]',v).forEach(b=>b.onclick=()=>{ const id=b.dataset.vshow; S.vshow[id]=!S.vshow[id]; commit(); });
+  $$('[data-rv]',v).forEach(b=>b.onclick=()=>{ const k=b.dataset.rv; S.rv[k]=!S.rv[k]; commit(); });
+  $$('[data-go]',v).forEach(b=>b.onclick=()=>goId(b.dataset.go));
+  $$('[data-wall]',v).forEach(b=>b.onclick=()=>{ const id=b.dataset.wall; S.wall[id]=!S.wall[id]; commit(); });
+  $$('[data-hider]',v).forEach(b=>b.onclick=()=>{ S.hideR[b.dataset.hider]=1; commit(); });
+}
+/* live responses wall (phones) — only shown on screen when the teacher switches it on */
+function wallHTML(id){
+  const R=Object.entries(S.resp[id]||{}).filter(([pid])=>!S.hideR[id+':'+pid]);
+  const btn = `<button class="btn xs ghost ctl tonly" data-wall="${esc(id)}">${S.wall[id]?'🙈 Hide answers':'📱 Show phone answers ('+R.length+')'}</button>`;
+  if(!LIVE.on && !R.length) return '';
+  return `<div class="mt">${S.wall[id]?`<div class="wall">${R.map(([pid,r])=>`<div class="rsp new"><div class="who">${esc(r.n)} <button class="btn xs ghost tonly ctl" data-hider="${esc(id+':'+pid)}" aria-label="Hide this answer">✕</button></div>${esc(r.t)}</div>`).join('')||'<div class="small">No answers yet.</div>'}</div>`:''}<div class="row mt">${btn}</div></div>`;
+}
+
+/* ---------- video (one persistent player, so re-drawing never interrupts playback) ---------- */
+const VID = { wrap:null, v:null, missing:false, screenAt:0,
+  build(){
+    if(this.wrap) return this.wrap;
+    const w=document.createElement('div'); w.className='vid'; w.id='vidbox';
+    w.innerHTML=`${VCFG.poster?`<img class="poster" src="${esc(VCFG.poster)}" alt="Leo’s miniature city — video cover" onerror="this.remove()">`:''}
+      <video playsinline preload="metadata" ${VCFG.poster?`poster="${esc(VCFG.poster)}"`:''} aria-label="Leo and Mia’s 10-second video"><source src="${esc(VCFG.src||'')}" type="video/mp4"></video>
+      <div class="cc" aria-live="polite"></div>
+      <button class="big ctl" aria-label="Play video">▶</button>
+      <div class="vc ctl"><button class="btn sm" data-v="play">▶ Play</button><button class="btn sm ghost" data-v="replay" title="Replay">↺</button><button class="btn sm ghost" data-v="mute" title="Sound on / off">🔊</button><button class="btn sm ghost" data-v="cc" title="Captions on / off">CC</button><span class="small grow" style="text-align:right" data-v="time">0:00 / 0:10</span></div>
+      <div class="prog"><i></i></div><div class="miss hidden"></div>`;
+    const v=$('video',w); this.wrap=w; this.v=v;
+    const src=$('source',w);
+    const fail=()=>{ this.missing=true; this.paint(); };
+    src.addEventListener('error',fail); v.addEventListener('error',fail);
+    if(!VCFG.src) this.missing=true;
+    setTimeout(()=>{ if(v.networkState===3) fail(); },2500);
+    v.addEventListener('loadedmetadata',()=>{ this.missing=false; this.paint(); });
+    ['play','pause','ended','timeupdate','volumechange'].forEach(e=>v.addEventListener(e,()=>this.paint()));
+    $$('[data-v]',w).forEach(b=>{ if(b.tagName==='BUTTON') b.onclick=()=>this.cmd(b.dataset.v); });
+    $('.big',w).onclick=()=>this.cmd('play');
+    this.paint(); return w;
+  },
+  cmd(a, fromTeacher){
+    const v=this.v; if(!v) return;
+    if(a==='cc'){ if(TEACH){ S.cc=!S.cc; save(); } this.paint(); return; }
+    if(a==='mute'){ v.muted=!v.muted; this.paint(); return; }
+    if(this.missing){ if(TEACH) toast('The video file is missing'); return; }
+    /* audience window = picture only (always muted); the sound comes from the teacher’s page —
+       in Zoom use “Share sound”. So there is never an echo and no autoplay block. */
+    if(ROLE==='screen') v.muted=true;
+    if(TEACH) postScreen({t:'vid', a});
+    if(a==='play'){ if(v.paused){ if(v.ended) v.currentTime=0; v.play().catch(()=>{}); } else v.pause(); }
+    if(a==='replay'){ v.currentTime=0; v.play().catch(()=>{}); }
+    if(a==='pause') v.pause();
+  },
+  paint(){
+    const w=this.wrap, v=this.v; if(!w) return;
+    const miss=$('.miss',w); miss.classList.toggle('hidden',!this.missing);
+    if(this.missing) miss.innerHTML = TEACH
+      ? `<div class="dsp" style="font-size:1.2rem">🎬 Video file not found</div><p class="small mt">Add the students’ video as <b>lessons/lesson-31/${esc(VCFG.src||'media/leo-mia-viral-video.mp4')}</b> (or change <b>VIDEO.src</b> at the top of this file). The lesson works without it — describe the video and move on.</p>`
+      : `<div class="dsp" style="font-size:1.2rem">🎬 Leo’s video</div><p class="small mt">The video isn’t available right now — imagine it: the tiny city, Leo, Mia… and the lights!</p>`;
+    $('.big',w).classList.toggle('hidden', !v.paused || this.missing);
+    $('.vc',w).classList.toggle('hidden', this.missing);
+    const p=$('[data-v="play"]',w); if(p) p.textContent=v.paused?'▶ Play':'⏸ Pause';
+    const m=$('[data-v="mute"]',w); if(m) m.textContent=v.muted?'🔇':'🔊';
+    const c=$('[data-v="cc"]',w); if(c) c.classList.toggle('on',!!S.cc);
+    const d=v.duration||10, t=v.currentTime||0;
+    $('.prog i',w).style.width=(t/d*100)+'%';
+    const tm=$('[data-v="time"]',w); if(tm) tm.textContent=mmss(t)+' / '+mmss(d);
+    const cap=(VCFG.captions||[]).find(x=>t>=x.from&&t<x.to);
+    $('.cc',w).innerHTML = S.cc && cap && (t>0) ? `<span>${esc(cap.t)}</span>` : '';
+    const po=$('.poster',w); if(po) po.style.display = (t>0||!v.paused) ? 'none' : '';
+  }
+};
+
+/* ---------- 7 · steps ----------
+   Кожен крок: render() → HTML, after(view) → події, adv()/ret() — внутрішні кроки (повідомлення, ходи учнів),
+   reveal / hide / hint — кнопки вчителя, live() — що бачать телефони, note — нотатки вчителя (лише в панелі 🧑‍🏫). */
+const kGet = (id, d=1)=> S.k[id]==null ? d : S.k[id];
+const kSet = (id, v)=> { S.k[id]=v; };
+const LAST = {};
+function fresh(key, val){ const f = LAST[key]!==undefined && val>LAST[key]; LAST[key]=val; return f; }
+const fmtN = n => Math.round(n).toLocaleString('en-US');
+const tch = s => TEACH ? s : '';
+
+const STEPS = [
+
+/* ═════ EPISODE 1 — THE SECRET HOBBY ═════ */
+{ id:'open', ep:0, title:'Opening', scene:'title', hero:true,
+  render(){ return `<div class="solo" style="text-align:center;align-items:center">
+      <span class="kick"><span class="dot"></span>Lesson 31 · Episode 1 · The Secret Hobby</span>
+      <h1 class="h-xl mt2">MY HOBBY<br>WENT VIRAL! 📱</h1>
+      <p class="lead mt2" style="font-size:1.45rem">One unusual hobby. One video. Thousands of strangers.</p>
+      <div class="row mt3" style="justify-content:center">${CAST.map(k=>`<span class="row" style="gap:.45rem">${av(k,54)}<b>${CH[k].name}</b></span>`).join('<span class="small">&nbsp;&nbsp;·&nbsp;&nbsp;</span>')}</div>
+      <button class="btn pri big mt3 ctl" data-start>▶ START STORY</button></div>`; },
+  after(v){ const b=$('[data-start]',v); if(b) b.onclick=()=>{ TM.start(); next(); }; },
+  live(){ return {kind:'look', t:'My Hobby Went Viral! 📱 — the story is about to start. Look at the main screen.'}; },
+  note:{time:'0:30', aim:'Hook: a title screen like a movie. Nobody explains anything — students just look.',
+    how:['Share the screen, press ▶ START STORY (this also starts the lesson clock).','Ask one quick “What do you see?” if you like — no long talk.'],
+    ua:'Відкриваємо, як фільм. Кнопка START STORY запускає таймер уроку.'}
+},
+{ id:'meet', ep:0, title:'Meet Leo', k:'Scene 1.2', scene:'bedroom',
+  parts:['Meet Leo.','He’s 15, and he has a hobby that most of his classmates don’t know about.','He spends hours building tiny cities.','But why does he keep it a secret?'],
+  render(){ const n=kGet('meet'), P=this.parts, b=blk('meet',1,1), nw=fresh('meet',n);
+    return `${epHead(this)}<div class="duo"><div class="glass card fill" style="justify-content:center">
+      <div class="row">${av('leo',64)}<div><div class="dsp" style="font-size:1.6rem">Leo</div><div class="small">15 · builds tiny cities</div></div><span class="grow"></span>${chip('meet',0,'🎙 reads:')}</div>
+      <div class="instr mt2">📖 Read Leo’s story. Then share your opinion.</div>
+      <p class="story mt2">${P.slice(0,n).map((p,i)=>`<span class="${nw&&i===n-1?'new':''}" style="display:inline">${esc(p)} </span>`).join('')}${n<P.length?'<span class="small ctl">&nbsp;▶ Next line</span>':''}</p>
+      ${n<P.length?`<div class="row mt"><button class="btn xs ghost ctl" data-allmeet>Show all</button></div>`:''}</div>
+      ${shotHTML('leo-city','Leo and his tiny city')}</div>`; },
+  after(v){ const b=$('[data-allmeet]',v); if(b) b.onclick=()=>{ kSet('meet',4); commit(); }; },
+  adv(){ const n=kGet('meet'); if(n<4){ kSet('meet',n+1); return true; } tbDone('meet',0); return false; },
+  ret(){ const n=kGet('meet'); if(n>1){ kSet('meet',n-1); return true; } return false; },
+  reveal(){ kSet('meet',4); return true; },
+  live(){ const a=tbGet('meet').a[0]; return {kind:'turn', who:a?sname(a.sid):'', prompt:'Read Leo’s story aloud.', block:'Meet Leo'}; },
+  note:{time:'0:45', aim:'A student reads the story (Next reveals it line by line). Curiosity: why is it a secret?',
+    how:['The highlighted student reads each new line aloud.','Do not explain — the questions come on the next screen.'],
+    ua:'Учень читає історію (Next відкриває по рядку). Не пояснюємо — далі питання.'}
+},
+{ id:'warm', ep:0, title:'Warm-up questions', k:'Warm-up', scene:'bedroom', dim:true,
+  render(){ const b=blk('warm', reqN(1,WARM.length), WARM.length), j=b.T.i, q=WARM[j];
+    return `${epHead(this)}<div class="duo wide"><div class="glass qcard fill" style="justify-content:center">
+      ${tbar('warm',b.total,b.req,b.max)}
+      <div class="kick mt2" style="color:var(--cy)">Question ${j+1}</div>
+      <div class="qtext mt">${esc(q.q)}</div>
+      ${S.rv['wh'+j]?`<div class="hint new">💡 ${esc(q.hint)}</div>`:''}
+      <div class="row mt2"><button class="btn xs ghost ctl" data-rv="wh${j}">💡 Sentence starter</button><button class="btn xs ghost ctl" data-rv="wopt">➕ Bonus questions</button></div>
+      ${S.rv.wopt?`<div class="mt chips new">${WARM_OPT.map(o=>`<span class="chip">❔ ${esc(o)}</span>`).join('')}</div>`:''}
+      </div>${shotHTML('leo-look','What do you think about Leo’s hobby?')}</div>`; },
+  adv(){ return blkAdv('warm', blk('warm', reqN(1,WARM.length), WARM.length)); },
+  ret(){ return blkRet('warm'); },
+  hint(){ const j=tbGet('warm').i; S.rv['wh'+j]=!S.rv['wh'+j]; return true; },
+  reveal(){ S.rv.wopt=!S.rv.wopt; return true; },
+  live(){ const T=tbGet('warm'), a=T.a[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:WARM[T.i].q, block:'Warm-up'}; },
+  note:{time:'1:15', aim:'One question per student (N × 1). Questions 4–8 are equivalent variants, so nobody repeats an identical question.',
+    how:['The chosen student reads the question aloud AND answers it.','Next ▶ = next student. Click a name to give the turn to someone else.','💡 gives a sentence starter. ➕ Bonus questions = optional extra turns (＋ Extra turn).'],
+    key:['Open answers. Accept anything meaningful: “It’s cool / creative / unusual…”'],
+    ua:'Кожен учень — одне питання (варіанти рівноцінні). Учень сам читає питання й відповідає.'}
+},
+{ id:'predict', ep:0, title:'Prediction', k:'Prediction reveal', scene:'title', hero:true,
+  render(){ const b=blk('pred',1,3);
+    return `<div class="solo" style="text-align:center;align-items:center">
+      <span class="kick"><span class="dot"></span>Episode 1 · Prediction</span>
+      <h2 class="h-l mt2 new" style="max-width:40rem">Something unexpected is about to happen to Leo’s hobby…</h2>
+      <p class="lead mt2">What do you think will happen? 🤔</p>
+      <div class="mt2" style="min-width:min(36rem,100%)">${tbar('pred',b.total,b.req,b.max,'🔮')}</div></div>`; },
+  adv(){ return blkAdv('pred', blk('pred',1,3)); }, ret(){ return blkRet('pred'); },
+  live(){ const T=tbGet('pred'), a=T.a[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:'What do you think will happen to Leo’s hobby?', block:'Prediction'}; },
+  note:{time:'0:30', aim:'One quick prediction, then straight into Episode 2.', how:['One student predicts (＋ Extra turn for one or two more if time).'],
+    key:['Any prediction. (He posts a video and it goes viral.)'], ua:'Один-два прогнози — і одразу в Episode 2.'}
+},
+
+/* ═════ EPISODE 2 — THE VIRAL VIDEO ═════ */
+{ id:'chat', ep:1, title:'Mia discovers the hobby', k:'Scene 2.1', scene:'discover',
+  render(){ const n=kGet('chat'), L=CHAT.length, nw=fresh('chat',n), rd=blk('rd:chat',2,2), q=n>L;
+    const rchip = who => chip('rd:chat', who==='mia'?0:1, '🎙', true);
+    const b = q ? blk('chatq', Math.min(NS(),2), Math.min(NS(),4)) : null;
+    return `${epHead(this)}<div class="duo even">
+      <div class="phone"><div class="ph-h">${av('mia',34)}${av('leo',34)}<div><b>Mia & Leo</b><div class="small">Leo’s bedroom · Saturday evening</div></div><span class="grow"></span><span class="small ctl">${Math.min(n,L)}/${L}</span></div>
+        <div class="ph-b"><div class="msgs">${CHAT.slice(0,Math.min(n,L)).map((l,i)=>msgHTML(l,{nw:nw&&i===n-1, hl:['geek','lowkey','mad'], chip:rchip(l.who)})).join('')}
+        ${n<L?'<div class="more ctl">▶ Next message (→ / Space)</div>':''}</div></div></div>
+      ${q?`<div class="glass qcard fill new" style="justify-content:center">${tbar('chatq',b.total,b.req,b.max)}<div class="kick mt2" style="color:var(--cy)">Quick discussion</div><div class="qtext mt">${esc(CHAT_Q)}</div>
+        <p class="small mt2">Yes, because … / No, because … / Maybe, if …</p></div>`:shotHTML('leo-mia','Mia sees the city for the first time')}</div>`; },
+  adv(){ const n=kGet('chat'); if(n<=CHAT.length){ kSet('chat',n+1); if(n===CHAT.length){ tbDone('rd:chat',0); tbDone('rd:chat',1); } return true; }
+    return blkAdv('chatq', blk('chatq', Math.min(NS(),2), Math.min(NS(),4))); },
+  ret(){ const n=kGet('chat'); if(n>CHAT.length && blkRet('chatq')) return true; if(n>1){ kSet('chat',n-1); return true; } return false; },
+  reveal(){ kSet('chat',CHAT.length+1); return true; },
+  live(){ const n=kGet('chat'); if(n<=CHAT.length) return {kind:'look', t:'Read the chat aloud — Mia and Leo have their readers.'};
+    const T=tbGet('chatq'), a=T.a[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:CHAT_Q, block:'Discussion'}; },
+  note:{time:'1:30', aim:'Two readers (Mia / Leo) read the chat. Three highlighted expressions appear here first — don’t explain them yet.',
+    how:['Next ▶ shows the next message. The reader chips show who reads Mia and who reads Leo.','After the last message: 2 short opinions (N ≥ 2).'],
+    key:['Open answers: “Yes, because his city is amazing / No, because people can be mean online…”'],
+    ua:'Двоє учнів читають за ролями. Виділені вирази поки не пояснюємо — це зробимо в Vocabulary.'}
+},
+{ id:'video', ep:1, title:'The actual video', k:'Scene 2.2', scene:'discover', dim:true,
+  render(){ const n=kGet('video'); const b = n>1 ? blk('vidq', Math.min(NS(),2), Math.min(NS(),5)) : null;
+    return `${epHead(this, `<span class="chip">🎬 Made by Leo & Mia · 10 seconds</span>`)}<div class="duo even" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)">
+      <div class="vwrap" id="vslot"></div>
+      <div class="glass qcard fill" style="justify-content:center">
+      ${n===1?`<div class="kick" style="color:var(--cy)">Before you watch</div><div class="qtext mt">Do you think this video could go viral?</div><div class="mt2">${voteHTML('viral',VIRAL_OPTS,{letters:false})}</div>`
+        :`${tbar('vidq',b.total,b.req,b.max)}<div class="kick mt2" style="color:var(--cy)">After you watch</div><div class="qtext mt">Would you watch this video? Why?</div><p class="small mt2">I’d watch it because … / I wouldn’t, because … / The best moment is …</p>
+          <div class="row mt2"><button class="btn xs ghost ctl" data-rv="vfirst">↩ Back to the first question</button></div>${S.rv.vfirst?`<div class="mt">${voteHTML('viral',VIRAL_OPTS,{letters:false})}</div>`:''}`}
+      </div></div>`; },
+  after(v){ const s=$('#vslot',v); if(s){ s.appendChild(VID.build()); VID.paint(); } },
+  adv(){ const n=kGet('video'); if(n===1){ kSet('video',2); return true; } return blkAdv('vidq', blk('vidq', Math.min(NS(),2), Math.min(NS(),5))); },
+  ret(){ const n=kGet('video'); if(n===2 && blkRet('vidq')) return true; if(n===2){ kSet('video',1); return true; } return false; },
+  reveal(){ S.vshow.viral=!S.vshow.viral; return true; },
+  live(){ const n=kGet('video'); if(n===1) return {kind:'vote', id:'viral', q:'Do you think this video could go viral?', opts:VIRAL_OPTS};
+    const T=tbGet('vidq'), a=T.a[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:'Would you watch this video? Why?', block:'After the video'}; },
+  note:{time:'1:30', aim:'Predict → watch the students’ 10-second video → react.',
+    how:['Hands up (or phones) for the first question — click an option to count a hand; 👁 Reveal / 📊 shows results.','Press ▶ Play. Sound comes from THIS page — in Zoom tick “Share sound”. The 🖥 Audience window shows the picture muted.','Next ▶ → “Would you watch this video? Why?” (2 students).'],
+    key:['Video: close-up of the cardboard city → Leo: “Yeah, I made all of this!” → Mia: “Dude, this is insane!” → overhead view. Caption: “POV: Your weird hobby is actually AMAZING 🤯🔥”'],
+    ua:'Прогноз → відео (10 с) → реакція. Звук іде з цієї сторінки: у Zoom увімкніть «Share sound».'}
+},
+{ id:'morning', ep:1, title:'The next morning', k:'Scene 2.3', scene:'morning',
+  render(){ const n=kGet('morning');
+    if(n===1) return `<div class="solo" style="align-items:center"><div class="bigtitle new">THE NEXT<br>MORNING…</div><p class="lead mt2 new" style="text-align:center">☀️ 7:00 am · Leo checks his phone</p></div>`;
+    const anim = n===2 && fresh('morningStats',n) && !S.statsDone && !S.noanim && !REDUCED_OS; blk('rd:morning',2,2);
+    return `${epHead(this)}<div class="duo"><div class="col fill" style="justify-content:center">
+      <div class="glass card"><div class="row"><span class="av" style="width:40px;height:40px;--ring:var(--coral)">${PH.leo?`<img src="${esc(PH.leo)}" alt="" onerror="this.remove()">`:''}<span class="ini">L</span></span><div><b>@leo.builds</b><div class="small">📈 Video insights · posted yesterday</div></div><span class="grow"></span>
+        ${anim?`<button class="btn xs ghost ctl" data-skip>⏭ Skip animation</button>`:''}</div>
+        <div class="stats mt">${STATS.map(s=>`<div class="stat"><div class="v" ${anim?`data-to="${s.v}"`:''}>${anim?'0':fmtN(s.v)}</div><div class="l">${s.i} ${s.l}</div></div>`).join('')}</div>
+        <p class="small mt">Fictional story numbers.</p></div>
+      <div class="msgs mt">${MORNING.slice(0,Math.max(0,n-2)).map((l,i)=>msgHTML(l,{nw:i===n-3, chip:chip('rd:morning', l.who==='leo'?0:1,'🎙',true)})).join('')}</div></div>
+      ${shotHTML('overhead','248,000 people saw this city')}</div>`; },
+  after(v){
+    const els=$$('[data-to]',v); if(!els.length) return;
+    const t0=performance.now(), D=1800, fin=()=>{ els.forEach(e=>e.textContent=fmtN(+e.dataset.to)); S.statsDone=true; save(); const b=$('[data-skip]',v); if(b) b.remove(); };
+    const sk=$('[data-skip]',v); if(sk) sk.onclick=()=>{ cancelAnimationFrame(this._raf); fin(); };
+    const tick=t=>{ const p=Math.min(1,(t-t0)/D), e=1-Math.pow(1-p,3); els.forEach(x=>x.textContent=fmtN(+x.dataset.to*e)); if(p<1) this._raf=requestAnimationFrame(tick); else fin(); };
+    this._raf=requestAnimationFrame(tick);
+  },
+  adv(){ const n=kGet('morning'); if(n<4){ kSet('morning',n+1); return true; } tbDone('rd:morning',0); tbDone('rd:morning',1); return false; },
+  ret(){ const n=kGet('morning'); if(n>1){ kSet('morning',n-1); return true; } return false; },
+  reveal(){ kSet('morning',4); S.statsDone=true; return true; },
+  live(){ return {kind:'look', t:'The next morning… Look at the numbers on the main screen! 📈'}; },
+  note:{time:'0:45', aim:'The “wow” moment. Numbers count up (⏭ skips the animation).',
+    how:['Next ▶: title → statistics → Leo → Mia. Two students can read Leo and Mia.','Quick reaction question if you like: “How would YOU feel?”'],
+    ua:'Момент «вау»: цифри анімуються (можна пропустити). Далі репліки Лео й Майї.'}
+},
+{ id:'vocab', ep:1, title:'Vocabulary discovery', k:'10 expressions', scene:'morning', dim:true,
+  render(){ const b=blk('vocab',5,5), j=b.T.i, C=VCARDS[j]; tbEnsure('vex',5);
+    const alt={}; C.words.forEach((w,i)=>alt[w]=i===1);
+    return `${epHead(this, `<span class="chip">📱 Leo’s phone · message ${j+1} of 5</span>`)}<div class="duo wide">
+      <div class="glass card fill scroll">
+        <div class="tbar">${dots('vocab',5,5)}${chip('vocab',j,'🎙 reads:')}<span class="grow"></span><span class="chip" style="font-size:.78rem">${C.icon} ${esc(C.src)}</span></div>
+        <div class="msgs mt">${C.lines.map(l=>msgHTML(l,{hl:C.words, alt})).join('')}</div>
+        ${S.rv['g'+j]?`<div class="guess mt new">🤔 Guess! What do you think ${C.words.map(w=>`“${esc(VB[w].short)}”`).join(' and ')} mean${C.words.length>1?'':'s'} here? Use the message to help you.</div>`:''}
+        <div class="vgrid mt">${C.words.map((w,i)=>{ const V=VB[w];
+          return `<div class="vrow"><div class="row" style="justify-content:space-between"><span class="ex"><span class="hl ${i?'b':''}">${esc(V.w)}</span></span></div>
+            <div class="acts ctl"><button class="btn xs ghost ${S.rv['g'+j]?'on':''}" data-rv="g${j}">🤔 Guess Meaning</button><button class="btn xs ${S.rv['m:'+w]?'on':''}" data-rv="m:${w}">👁 Reveal Meaning</button><button class="btn xs ghost ${S.rv['ua:'+w]?'on':''}" data-rv="ua:${w}">🇺🇦 UA</button><button class="btn xs ghost ${S.rv['x:'+w]?'on':''}" data-rv="x:${w}">✏️ Example</button></div>
+            ${S.rv['m:'+w]?`<div class="out new"><span class="lb">MEANING</span>${esc(V.en)}</div>`:''}
+            ${S.rv['ua:'+w]?`<div class="out new ua"><span class="lb">UA</span>${esc(V.ua)}</div>`:''}
+            ${S.rv['x:'+w]?`<div class="out new"><span class="lb">EXAMPLE</span><i>${hl(V.ex,[w])}</i></div>`:''}</div>`; }).join('')}</div>
+        <div class="row mt"><span class="small">💬 Your own example:</span>${chip('vex',j,'',true)}<button class="btn xs ghost ctl" data-tbj="vex|${j}">${tbGet('vex').a[j]&&tbGet('vex').a[j].done?'↺':'✓'}</button><span class="grow"></span>
+          ${j<4?`<button class="btn sm pri ctl" data-nextmsg>Next Message ▶</button>`:''}</div>
+      </div>${shotHTML(C.shot)}</div>`; },
+  after(v){ const n=$('[data-nextmsg]',v); if(n) n.onclick=()=>next();
+    $$('[data-tbj]',v).forEach(b=>b.onclick=()=>{ const [id,j]=b.dataset.tbj.split('|'); tbToggle(id,+j); commit(); }); },
+  adv(){ return blkAdv('vocab', blk('vocab',5,5)); }, ret(){ return blkRet('vocab'); },
+  reveal(){ const C=VCARDS[tbGet('vocab').i]; for(const w of C.words){ if(!S.rv['m:'+w]){ S.rv['m:'+w]=1; return true; } } for(const w of C.words){ if(!S.rv['x:'+w]){ S.rv['x:'+w]=1; return true; } } return false; },
+  hide(){ const C=VCARDS[tbGet('vocab').i]; C.words.forEach(w=>{ S.rv['m:'+w]=0; S.rv['ua:'+w]=0; S.rv['x:'+w]=0; }); return true; },
+  hint(){ const j=tbGet('vocab').i; S.rv['g'+j]=!S.rv['g'+j]; return true; },
+  live(){ const T=tbGet('vocab'), a=T.a[T.i], C=VCARDS[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:'Read the message aloud. Guess: '+C.words.map(w=>VB[w].short).join(' / '), block:'Vocabulary'}; },
+  note:{time:'3:30', aim:'Discovery, not a lecture: 5 story messages × 2 expressions. One student reads, guesses, then you reveal. Another student gives a personal example.',
+    how:['🎙 reader reads the message → 🤔 Guess Meaning → 👁 Reveal Meaning (R reveals the next meaning) → 🇺🇦 only if needed → ✏️ Example.','💬 Your own example — a different student makes a quick sentence about themselves (✓ marks it done).','5 students: each reads once and gives one example (2 expressions each). 3–4 students: cards are shared out automatically.','Never show all ten meanings at once — the full table is in the Game Zone.'],
+    ccq: VOCAB.map(v=>[v.w, v.ccq.map(c=>c[0]+' → '+c[1]).join('   ')]),
+    ua:'5 повідомлень × 2 вирази. Читає один учень, вгадує → відкриваємо значення; інший учень дає власний приклад. CCQ — нижче.'}
+},
+{ id:'fit', ep:1, title:'Which phrase fits?', k:'Practice', scene:'morning', dim:true,
+  render(){ const b=blk('fit', reqN(1,FIT.length), FIT.length), j=b.T.i, F=FIT[j], shown=!!S.rv['fit'+j];
+    return `${epHead(this)}<div class="solo" style="max-width:66rem"><div class="glass qcard">
+      ${tbar('fit',b.total,b.req,b.max)}
+      <h2 class="h-m mt2" style="color:var(--vio2)">WHICH PHRASE FITS?</h2>
+      <div class="qtext mt">${esc(F.s)}</div>
+      <div class="chips mt2">${VOCAB.map(v=>`<span class="chip ${shown?(v.id===F.a?'hit':'dim'):''}">${esc(v.short)}</span>`).join('')}</div>
+      ${S.rv['fh'+j]&&!shown?`<div class="hint new">💡 Meaning: ${esc(VB[F.a].en)}</div>`:''}
+      ${shown?`<div class="ans new">✅ <b>${esc(VB[F.a].short)}</b> — “${hl(F.m,[F.a])}”</div>`:''}
+      <div class="row mt2 ctl"><button class="btn xs ghost" data-rv="fh${j}">💡 Hint</button><button class="btn xs ${shown?'on':''}" data-rv="fit${j}">👁 ${shown?'Hide':'Reveal'} answer</button></div>
+      </div></div>`; },
+  adv(){ return blkAdv('fit', blk('fit', reqN(1,FIT.length), FIT.length)); }, ret(){ return blkRet('fit'); },
+  reveal(){ const j=tbGet('fit').i; if(S.rv['fit'+j]) return false; S.rv['fit'+j]=1; return true; },
+  hide(){ const j=tbGet('fit').i; S.rv['fit'+j]=0; return true; },
+  hint(){ const j=tbGet('fit').i; S.rv['fh'+j]=!S.rv['fh'+j]; return true; },
+  live(){ const T=tbGet('fit'), a=T.a[T.i], F=FIT[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:'Which phrase fits? '+F.s, block:'Which phrase fits?', ans:S.rv['fit'+T.i]?VB[F.a].short:null}; },
+  note:{time:'1:30', aim:'ONE consolidation activity. N situations (5 for 5 students); items 6–10 are equivalent variants for bigger groups.',
+    how:['The student reads the situation and says the matching expression — ideally a full sentence.','👁 Reveal (R) shows the answer + a model sentence.'],
+    key: FIT.map((f,i)=>`${i+1}. ${f.s} → ${VB[f.a].short}`),
+    ua:'Одна вправа на закріплення: учень читає ситуацію й називає вираз (краще цілим реченням).'}
+},
+
+/* ═════ EPISODE 3 — THE COMMENT STORM ═════ */
+{ id:'storm', ep:2, title:'Comments appear', k:'Scene 3.1', scene:'storm',
+  render(){ const n=kGet('storm'), L=COMMENTS.length, nw=fresh('storm',n), q=n>L, lab=!!S.rv.slab; blk('cmt',L,L);
+    const b = q ? blk('stq', Math.min(NS(),2), Math.min(NS(),5)) : null;
+    return `${epHead(this, `<span class="chip">💬 1,200 comments</span>`)}<div class="duo even">
+      <div class="phone"><div class="ph-h">${av('leo',34)}<div><b>@leo.builds</b><div class="small">“POV: Your weird hobby is actually AMAZING 🤯🔥”</div></div><span class="grow"></span><span class="small ctl">${Math.min(n,L)}/${L}</span></div>
+        <div class="ph-b"><div class="feed">${COMMENTS.slice(0,Math.min(n,L)).map((c,i)=>`<div class="cm ${nw&&i===n-1?'new':''}"><span class="ua2" style="background:${c.c}">${esc(c.u[1].toUpperCase())}</span><div><div class="u">${esc(c.u)} ${chip('cmt',i,'🎙',true)}</div><div class="t">${esc(c.t)}</div><div class="lk">♡ ${esc(c.lk)} · Reply</div></div>${lab?`<span class="lab ${c.pos?'pos':'neg'}">${c.pos?'💙 supportive':'⚠ unkind'}</span>`:''}</div>`).join('')}
+        ${n<L?'<div class="more ctl">▶ Next comment</div>':''}</div></div></div>
+      ${q?`<div class="glass qcard fill new" style="justify-content:center">${tbar('stq',b.total,b.req,b.max)}<div class="kick mt2" style="color:var(--cy)">Think & share</div><div class="qtext mt">${esc(STORM_Q)}</div>
+        <div class="row mt2"><button class="btn xs ghost ctl ${lab?'on':''}" data-rv="slab">🏷 ${lab?'Hide labels':'Label the comments'}</button></div>
+        <p class="small mt">Please don’t write mean comments — not even as a joke. 💙</p></div>`:shotHTML('street','Leo reads the comments…')}</div>`; },
+  adv(){ const n=kGet('storm'); if(n<=COMMENTS.length){ if(n>=1) tbDone('cmt',n-1); kSet('storm',n+1); return true; }
+    return blkAdv('stq', blk('stq', Math.min(NS(),2), Math.min(NS(),5))); },
+  ret(){ const n=kGet('storm'); if(n>COMMENTS.length && blkRet('stq')) return true; if(n>1){ kSet('storm',n-1); return true; } return false; },
+  reveal(){ if(kGet('storm')<=COMMENTS.length){ kSet('storm',COMMENTS.length+1); return true; } S.rv.slab=!S.rv.slab; return true; },
+  live(){ const n=kGet('storm'); if(n<=COMMENTS.length){ const a=tbGet('cmt').a[n-1]; return {kind:'turn', who:a?sname(a.sid):'', prompt:'Read the comment aloud.', block:'Comments'}; }
+    const T=tbGet('stq'), a=T.a[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:STORM_Q, block:'Comments'}; },
+  note:{time:'1:30', aim:'Comments appear one by one; different students read them (quick turns). Then: feelings + supportive vs unkind.',
+    how:['Next ▶ = next comment. 👁 Reveal shows all at once, then labels them.','Ask the class: “Which comments are supportive? Which are unkind?” — 🏷 shows labels (icon + word, not only colour).','Do NOT ask students to write insulting comments.'],
+    key:['Supportive: incredible / one-of-a-kind / mad skills / tutorial. Unkind: too old / weird obsession / who spends this much time.','Feelings: happy, proud, surprised — then hurt, worried, embarrassed, confused.'],
+    ua:'Коментарі по одному, читають різні учні. Потім: як почувається Лео? Які коментарі підтримують, які — ні.'}
+},
+{ id:'reading', ep:2, title:'Reading: Famous Overnight', k:'Scene 3.2', scene:'reading', dim:true,
+  render(){ const n=kGet('reading'), nw=fresh('reading',n); blk('read',3,3);
+    return `${epHead(this)}<div class="duo"><div class="glass card fill scroll">
+      <div class="row">${av('leo',52)}<div><div class="dsp" style="font-size:1.7rem;letter-spacing:.04em">${READING.title}</div><div class="small">${READING.by} · posted on his blog</div></div></div>
+      <div class="col mt2" style="gap:.9rem">${READING.parts.map((p,i)=> i<n
+        ? `<div class="${nw&&i===n-1?'new':''}"><div class="row" style="gap:.4rem;margin-bottom:.2rem"><span class="kick" style="font-size:.62rem">Part ${i+1}</span>${chip('read',i,'🎙',true)}</div><p class="story" style="font-size:1.32rem">${hl(p,['one','mad','phase'])}</p></div>`
+        : `<div class="more">🔒 Part ${i+1}</div>`).join('')}</div>
+      </div>${shotHTML('leo-look','Leo: “Now I’m not sure what to do.”')}</div>`; },
+  adv(){ const n=kGet('reading'); tbDone('read',n-1); if(n<3){ kSet('reading',n+1); return true; } return false; },
+  ret(){ const n=kGet('reading'); if(n>1){ kSet('reading',n-1); return true; } return false; },
+  reveal(){ kSet('reading',3); return true; },
+  live(){ const n=kGet('reading'), a=tbGet('read').a[n-1]; return {kind:'turn', who:a?sname(a.sid):'', prompt:`Read part ${n} of Leo’s story aloud.`, block:'Reading'}; },
+  note:{time:'1:30', aim:'Three short parts, three readers. The rest of the class listens for: Why surprised? What do people like? Why stop?',
+    how:['Next ▶ reveals the next part; the chip shows who reads it.','Before reading you can say: “Listen: why is Leo not sure what to do?”'],
+    ua:'Три частини — три читачі. Питання — на наступному екрані.'}
+},
+{ id:'rq', ep:2, title:'Reading questions', k:'Comprehension', scene:'reading', dim:true,
+  render(){ const b=blk('rq', clamp(NS()-3,3,6), RQ.length), j=b.T.i, Q=RQ[j], shown=!!S.rv['rq'+j];
+    return `${epHead(this)}<div class="duo"><div class="glass qcard fill" style="justify-content:center">
+      ${tbar('rq',b.total,b.req,b.max)}
+      <div class="kick mt2" style="color:var(--cy)">Question ${j+1}</div><div class="qtext mt">${esc(Q.q)}</div>
+      ${S.rv['rqh'+j]&&!shown?`<div class="hint new">💡 ${esc(Q.hint)}</div>`:''}
+      ${shown?`<div class="ans new">✅ ${esc(Q.a)}</div>`:''}
+      <div class="row mt2 ctl"><button class="btn xs ghost" data-rv="rqh${j}">💡 Hint</button><button class="btn xs ${shown?'on':''}" data-rv="rq${j}">👁 ${shown?'Hide':'Reveal'} answer</button></div></div>
+      <div class="glass card scroll side" style="font-size:.92rem"><div class="kick">${READING.title} · ${READING.by}</div>${READING.parts.map((p,i)=>`<p class="mt" style="${S.rv['rqh'+j]&&Q.hint.includes(String(i+1))?'outline:2px solid var(--amb);border-radius:10px;padding:.3rem .45rem':''}"><b class="small">Part ${i+1}.</b> ${esc(p)}</p>`).join('')}</div></div>`; },
+  adv(){ return blkAdv('rq', blk('rq', clamp(NS()-3,3,6), RQ.length)); }, ret(){ return blkRet('rq'); },
+  reveal(){ const j=tbGet('rq').i; if(S.rv['rq'+j]) return false; S.rv['rq'+j]=1; return true; },
+  hide(){ const j=tbGet('rq').i; S.rv['rq'+j]=0; return true; },
+  hint(){ const j=tbGet('rq').i; S.rv['rqh'+j]=!S.rv['rqh'+j]; return true; },
+  live(){ const T=tbGet('rq'), a=T.a[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:RQ[T.i].q, block:'Reading questions', ans:S.rv['rq'+T.i]?RQ[T.i].a:null}; },
+  note:{time:'1:30', aim:'3 required questions (one per student who didn’t read). Questions 4–6 appear automatically for bigger groups.',
+    how:['Answers are hidden until 👁 Reveal (R). 💡 Hint points to the part and highlights it in the text on the right.'],
+    key: RQ.map((q,i)=>`${i+1}. ${q.q} → ${q.a}`),
+    ua:'Відповіді приховані до Reveal. Підказка показує, в якій частині тексту шукати.'}
+},
+{ id:'decide', ep:2, title:'Story decision', k:'Scene 3.3', scene:'decision',
+  render(){ const b=blk('why', Math.min(NS(),3), NS());
+    return `${epHead(this)}<div class="duo even"><div class="glass qcard fill" style="justify-content:center">
+      <h2 class="h-l">WHAT SHOULD LEO DO NEXT?</h2><p class="small mt">Vote with your hand (or phone). There is no wrong answer — every option respects Leo.</p>
+      <div class="mt2">${voteHTML('dec',DEC_OPTS,{sel:S.dec})}</div>
+      <div class="row mt tonly ctl"><span class="small">Class decision:</span>${DEC_OPTS.map((o,i)=>`<button class="btn xs ${S.dec===i?'on':''}" data-dec="${i}">Go with ${LET[i]}</button>`).join('')}</div></div>
+      <div class="glass qcard fill" style="justify-content:center">${tbar('why',b.total,b.req,b.max)}<div class="kick mt2" style="color:var(--cy)">Before we see what happens…</div><div class="qtext mt">Why did you choose this option?</div><p class="small mt2">I chose ___ because … / I think Leo should … because …</p></div></div>`; },
+  after(v){ $$('[data-dec]',v).forEach(b=>b.onclick=()=>{ S.dec=+b.dataset.dec; commit(); }); },
+  adv(){ const b=blk('why', Math.min(NS(),3), NS()); if(blkAdv('why',b)) return true;
+    if(S.dec==null){ const c=vcount('dec',3), mx=Math.max(...c); if(mx>0 && c.filter(x=>x===mx).length===1){ S.dec=c.indexOf(mx); toast('Class decision: '+LET[S.dec]); } else { toast('Choose the class decision: “Go with A / B / C”'); S.vshow.dec=true; return true; } }
+    return false; },
+  ret(){ return blkRet('why'); },
+  reveal(){ S.vshow.dec=!S.vshow.dec; return true; },
+  live(){ return {kind:'vote', id:'dec', q:'What should Leo do next?', opts:DEC_OPTS.map((o,i)=>LET[i]+'. '+o)}; },
+  note:{time:'1:30', aim:'A real decision. Students vote, then explain WHY before the outcome is shown.',
+    how:['Count hands by clicking the options (phones add automatically). 📊 / 👁 Reveal shows results.','2–3 students explain their choice (turn bar on the right).','Next ▶ continues with the winning option. If there’s a tie, click “Go with A / B / C”.','None of the options is a failure — A is a healthy boundary, not “giving up”.'],
+    ua:'Голосування → 2–3 учні пояснюють чому → Next веде до наслідку. Варіант A — не поразка, а здорова межа.'}
+},
+{ id:'outcome', ep:2, title:'What happened next', k:'Consequence', scene:'bedroom',
+  render(){
+    if(S.dec==null) return `${epHead(this)}<div class="solo"><div class="glass qcard"><div class="qtext">The class hasn’t decided yet.</div><button class="btn pri mt2 ctl" data-go="decide">◀ Back to the decision</button></div></div>`;
+    const D=DEC_END[S.dec], lines=[...D.lines,{who:'nar',t:RECONNECT}], n=Math.min(kGet('out'+S.dec), lines.length), nw=fresh('out'+S.dec,n); blk('rd:out',3,3);
+    const rc = w => chip('rd:out', w==='nar'?0:w==='leo'?1:2, '🎙', true);
+    return `${epHead(this, `<button class="btn xs ghost tonly ctl" data-go="decide">↺ Change decision</button>`)}<div class="duo"><div class="glass card fill scroll autoscroll">
+      <div class="row"><span class="chip" style="border-color:var(--vio2)">Option ${LET[S.dec]}</span><h2 class="h-m">${esc(D.title)}</h2></div>
+      <div class="msgs mt2">${lines.slice(0,n).map((l,i)=>msgHTML(l,{nw:nw&&i===n-1, hl:['phase'], chip:rc(l.who)})).join('')}${n<lines.length?'<div class="more ctl">▶ Next</div>':''}</div></div>
+      ${shotHTML('leo-city', S.dec===0?'A private city is still a great city.':S.dec===1?'Sharing — when he’s ready.':'Proud of his thing.')}</div>`; },
+  adv(){ if(S.dec==null) return false; const id='out'+S.dec, n=kGet(id), L=DEC_END[S.dec].lines.length+1; if(n<L){ kSet(id,n+1); return true; } [0,1,2].forEach(j=>tbDone('rd:out',j)); return false; },
+  ret(){ if(S.dec==null) return false; const id='out'+S.dec, n=kGet(id); if(n>1){ kSet(id,n-1); return true; } return false; },
+  reveal(){ if(S.dec==null) return false; kSet('out'+S.dec, DEC_END[S.dec].lines.length+1); return true; },
+  live(){ return {kind:'look', t:S.dec==null?'Waiting for the class decision…':'What happened next? Read the story — readers are on the main screen.'}; },
+  note:{time:'0:45', aim:'Short, respectful consequence of the class choice. All three branches end with the same reconnecting line → Episode 4.',
+    how:['Readers: Narrator / Leo / Mia. Next ▶ = next line.','Optional: “Do you agree with Leo’s choice?” — one answer, then move on.'],
+    key:['A: Leo keeps building privately; Mia respects it. B: he shares only when ready. C: new video “Why I build”, he ignores the mean comments and answers real questions.'],
+    ua:'Наслідок вибору класу. Усі гілки сходяться в одну фразу й ведуть до Episode 4.'}
+},
+
+/* ═════ EPISODE 4 — YOUR OBSESSION ═════ */
+{ id:'yours', ep:3, title:'Speaking cards', k:'Your Obsession', scene:'yours', dim:true,
+  render(){ const b=blk('cards', reqN(1,CARDS.length), CARDS.length), j=b.T.i; tbEnsure('fu', b.total);
+    const fu=tbGet('fu').a[j], me=b.T.a[j]; if(TEACH && fu && me && fu.sid===me.sid && avail().length>1 && !fu.done) tbCycle('fu',j);
+    const pick=S.picks[j], deckN=clamp(Math.max(5,NS()),5,CARDS.length), used=new Set(Object.entries(S.picks).filter(([k])=>+k!==j).map(([,v])=>v));
+    const head=`<div class="row" style="flex-wrap:nowrap">${msgHTML({who:'leo',t:'Enough about me! What are YOU really into?'})}<span class="grow"></span><div class="instr" style="white-space:nowrap">🃏 Choose a card · Answer · Ask a follow-up</div></div>`;
+    let body;
+    if(pick==null) body=`<div class="glass card mt fill"><div class="row">${chip('cards',j,'🃏 chooses:')}<span class="small">${esc(sname(me&&me.sid))}, pick a number!</span><span class="grow"></span><button class="btn sm ctl" data-rand>🎲 Random card</button></div>
+        <div class="deck mt2">${Array.from({length:deckN},(_,c)=>`<button class="dcard ${used.has(c)?'used':''}" data-pick="${c}" ${TEACH?'':'disabled'}><small>CARD</small>${c+1}<small>${used.has(c)?'taken':'✦'}</small></button>`).join('')}</div>
+        <p class="small mt">You can talk about an imaginary hobby too. Nothing is posted anywhere. 🙂</p></div>`;
+    else { const C=CARDS[pick];
+      body=`<div class="duo wide mt" style="flex:1"><div class="scard fill new" style="justify-content:center;display:flex;flex-direction:column">
+        ${tbar('cards',b.total,b.req,b.max,'🗣')}
+        <div class="kick mt2">Card ${pick+1}</div><div class="qtext mt" style="font-size:2rem">${hl(C.q,ALLV)}</div>
+        <div class="follow">❓ Follow-up: “${esc(C.f)}” <span class="small">asked by</span> ${chip('fu',j,'',true)}</div>
+        ${S.rv['ch'+j]?`<div class="hint new">💡 ${esc(C.hint)}</div>`:''}
+        ${S.rv['cx'+j]?`<div class="ans new">🗣 Example: “${hl(C.ex,ALLV)}”</div>`:''}
+        <div class="row mt2 ctl"><button class="btn xs ghost" data-rv="ch${j}">💡 Hint</button><button class="btn xs ghost" data-rv="cx${j}">🗣 Example answer</button><button class="btn xs ghost tonly" data-unpick>↺ Another card</button></div></div>
+        <div class="glass card side col" style="justify-content:center"><div class="kick">React!</div><div class="peer">${PEER.map(p=>`<span class="chip">💬 ${esc(p)}</span>`).join('')}</div><p class="small">Imaginary hobbies are OK. No personal details needed.</p></div></div>`; }
+    return `${epHead(this)}<div class="fill">${head}${body}</div>`; },
+  after(v){
+    $$('[data-pick]',v).forEach(b=>b.onclick=()=>{ S.picks[tbGet('cards').i]=+b.dataset.pick; commit(); });
+    const r=$('[data-rand]',v); if(r) r.onclick=()=>{ const j=tbGet('cards').i, deckN=clamp(Math.max(5,NS()),5,CARDS.length), used=new Set(Object.values(S.picks)); const free=[...Array(deckN).keys()].filter(c=>!used.has(c)); const pool=free.length?free:[...Array(deckN).keys()]; S.picks[j]=pool[Math.floor(Math.random()*pool.length)]; commit(); };
+    const u=$('[data-unpick]',v); if(u) u.onclick=()=>{ delete S.picks[tbGet('cards').i]; commit(); };
+  },
+  adv(){ const T=tbGet('cards'); if(S.picks[T.i]==null){ toast('Choose a card first (or 🎲 Random)'); return true; } tbDone('fu',T.i); return blkAdv('cards', blk('cards', reqN(1,CARDS.length), CARDS.length)); },
+  ret(){ return blkRet('cards'); },
+  reveal(){ const j=tbGet('cards').i; S.rv['cx'+j]=!S.rv['cx'+j]; return true; },
+  hint(){ const j=tbGet('cards').i; S.rv['ch'+j]=!S.rv['ch'+j]; return true; },
+  live(){ const T=tbGet('cards'), a=T.a[T.i], p=S.picks[T.i]; return {kind:'turn', who:a?sname(a.sid):'', prompt:p==null?'Choose a card number!':CARDS[p].q, block:'Your Obsession', fu:p==null?'':CARDS[p].f}; },
+  note:{time:'6:00', aim:'Meaningful personal speaking. One card per student (round-robin), one follow-up from another student.',
+    how:['The student chooses a number (click it) or 🎲 Random. Taken cards fade out.','They answer; the follow-up student asks the follow-up question; others react (“Same here!”).','💡 Hint = sentence starter. 🗣 Example (R) only if someone is stuck.','Imaginary hobbies are fine. Never push for private details.'],
+    key:['Model: “I’m lowkey obsessed with photography. I started taking pictures two years ago, and now I take photos almost every weekend.”'],
+    ua:'Кожен учень — одна картка (обирає номер), інший учень ставить follow-up. Можна вигадані хобі.'}
+},
+
+/* ═════ FINAL MISSION — MAKE IT GO VIRAL! ═════ */
+{ id:'brief', ep:4, title:'Mission briefing', k:'Briefing', scene:'mission', dim:true,
+  render(){ blk('brief',3,3);
+    return `${epHead(this)}<div class="fill" style="justify-content:center;max-width:72rem;margin:0 auto;width:100%">
+      ${msgHTML({who:'mia', t:MISSION_MSG})}
+      <div class="glass card mt2"><div class="row"><h2 class="h-l">MAKE IT GO VIRAL! 🎥</h2><span class="grow"></span><span class="chip">⏱ 3 min prep · 1 min to present</span></div>
+        <p class="lead mt">Create an idea for a short video about an unusual hobby.</p>
+        <div class="els mt2">${ELEMENTS.map((e,i)=>`<div class="el"><div class="row" style="justify-content:space-between"><span class="no">${i+1}</span>${chip('brief',i,'🎙',true)}</div><div class="h">${e.h}</div><div class="q">${esc(e.q)}</div></div>`).join('')}</div>
+        <div class="chips mt2"><span class="chip hit">✅ Use at least TWO expressions from today</span><span class="chip">🚫 No recording</span><span class="chip">🚫 No script</span><span class="chip">🗣 Just talk & present</span></div>
+        <div class="row mt2" style="align-items:flex-start"><span class="small" style="padding-top:.3rem">Ideas:</span><div class="chips grow">${HOBBIES.map(h=>`<span class="chip" style="font-size:.8rem">${esc(h)}</span>`).join('')}<span class="chip" style="font-size:.8rem">✨ your own idea</span></div></div>
+        ${S.rv.fmEx?`<div class="ans new">🎬 ${hl(MISSION_EX,ALLV)}</div>`:''}
+        <div class="row mt ctl"><button class="btn sm ${S.rv.fmEx?'on':''}" data-rv="fmEx">${S.rv.fmEx?'🙈 Hide example':'👁 SHOW EXAMPLE'}</button></div></div></div>`; },
+  adv(){ [0,1,2].forEach(j=>tbDone('brief',j)); return false; },
+  reveal(){ S.rv.fmEx=!S.rv.fmEx; return true; },
+  live(){ return {kind:'look', t:'Mission: an idea for a short video about an unusual hobby — the hobby, the hook (first 5 seconds), the pitch. Use 2+ expressions!'}; },
+  note:{time:'1:00', aim:'Students read the three elements aloud (chips). The mission must be clear without teacher explanation.',
+    how:['Three students read element 1, 2, 3. Then ICQs (below). SHOW EXAMPLE only if needed.'],
+    icq:[['Do you need to record a real video?','No.'],['How many vocabulary expressions should you use?','At least two.'],['Do you need to write a script?','No.'],['Will you present your idea?','Yes.']],
+    ua:'Учні читають три елементи. Потім ICQ. Приклад — лише якщо треба.'}
+},
+{ id:'breakout', ep:4, title:'Breakout mission', k:'Team preparation', scene:'mission', dim:true,
+  render(){ const G=groups(), solo=S.bo.mode==='solo';
+    return `${epHead(this, `<span class="chip tonly">Zoom: create the rooms manually — this page doesn’t open Zoom rooms</span>`)}
+      <div class="duo even" style="grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)">
+      <div class="glass card fill scroll">
+        <div class="row"><h2 class="h-m grow">MAKE IT GO VIRAL! 🎥</h2><span class="kick">Breakout</span></div>
+        <div class="col mt" style="gap:.45rem">${ELEMENTS.map((e,i)=>`<div class="row" style="flex-wrap:nowrap;align-items:flex-start"><span class="chip" style="flex:none">${i+1}</span><div><b>${e.h}</b> — ${esc(e.q)}</div></div>`).join('')}</div>
+        <div class="kick mt2">Use at least TWO:</div><div class="chips mt">${VOCAB.map(v=>`<span class="chip" style="font-size:.8rem">${esc(v.short)}</span>`).join('')}</div>
+        <div class="instr mt2">⏰ When the timer ends, come back to the main room and present your idea.</div>
+        <p class="small mt">No recording. No script. Just talk.</p></div>
+      <div class="glass card fill scroll">
+        <div class="row"><span class="timer" data-tmr="bo">${mmss(TM.left('bo'))}</span><span class="grow"></span>
+          <div class="row ctl" style="gap:.3rem"><button class="btn sm pri" data-tmb="bo" data-bo="flip">▶ Start</button><button class="btn sm ghost" data-bo="add">+1 min</button><button class="btn sm ghost" data-bo="rst">↺</button></div></div>
+        <div class="row mt ctl tonly" style="gap:.3rem">${['solo','pairs','teams'].map(m=>`<button class="btn xs ${S.bo.mode===m?'on':''}" data-mode="${m}">${m==='solo'?'👤 Solo':m==='pairs'?'👥 Pairs':'👨‍👩‍👧 Teams'}</button>`).join('')}<span class="grow"></span><button class="btn xs ghost" data-regroup>↻ Reset groups</button></div>
+        <div class="groups mt">${G.map((g,gi)=>`<div class="grp"><div class="gh">${esc(gname(gi,g))}</div>${g.map(sid=>`<${TEACH?'button':'span'} class="mem" ${TEACH?`data-mv="${sid}" title="Click to move to the next group"`:''}>${esc(initial(sname(sid)))} · ${esc(sname(sid))}</${TEACH?'button':'span'}>`).join('')}</div>`).join('')}</div>
+        <p class="small mt tonly">${solo?'Solo: everyone prepares their own idea (stay in the main room, cameras on, mics off).':'Click a name to move it to another group. In Zoom: Breakout Rooms → Assign manually → use these groups.'}</p>
+        ${wallHTML('idea')}</div></div>`; },
+  after(v){
+    $$('[data-bo]',v).forEach(b=>b.onclick=()=>{ const a=b.dataset.bo; if(a==='flip') TM.flip('bo'); if(a==='add') TM.add('bo',60); if(a==='rst') TM.rst('bo',180); });
+    $$('[data-mode]',v).forEach(b=>b.onclick=()=>{ S.bo.mode=b.dataset.mode; S.bo.groups=null; commit(); });
+    const r=$('[data-regroup]',v); if(r) r.onclick=()=>{ S.bo.groups=null; commit(); };
+    $$('[data-mv]',v).forEach(b=>b.onclick=()=>{ const sid=b.dataset.mv, G=groups(); const gi=G.findIndex(g=>g.includes(sid)); if(gi<0) return; G[gi]=G[gi].filter(x=>x!==sid); const to=(gi+1)%Math.max(1,G.length); (G[to]=G[to]||[]).push(sid); S.bo.groups=G.filter(g=>g.length); commit(); });
+  },
+  live(){ const G=groups(); return {kind:'group', groups:G.map((g,gi)=>({name:gname(gi,g), m:g.map(sname)})), resp:'idea', q:'Your idea in one line (hobby + hook)'}; },
+  note:{time:'3:30', aim:'3 minutes of team talk (1 min briefing done). For 5 students: two groups, 2 + 3.',
+    how:['Choose Solo / Pairs / Teams. Click names to move them. Recreate the same groups in Zoom (Breakout Rooms → Assign manually).','▶ Start the 3:00 timer. The timer never moves the lesson on by itself.','Optional: phones can send the idea in one line (📱 Show phone answers).'],
+    icq:[['Do you need to record a real video?','No.'],['How many expressions?','At least two.'],['What happens in the first five seconds?','The hook.']],
+    ua:'Групи: 5 учнів → 2 + 3. Створіть такі ж кімнати в Zoom вручну. Таймер 3:00 сам нічого не перемикає.'}
+},
+{ id:'present', ep:4, title:'Presentations', k:'Presentation mode', scene:'mission', dim:true,
+  render(){ const G=groups(), gi=clamp(S.bo.pres||0,0,G.length-1), g=G[gi]||[];
+    return `${epHead(this, `<div class="row tonly ctl" style="gap:.25rem">${G.map((x,i)=>`<button class="btn xs ${i===gi?'on':''}" data-pres="${i}">${esc(gname(i,x))}</button>`).join('')}</div>`)}
+      <div class="duo even"><div class="glass card fill" style="justify-content:center">
+        <div class="kick">Now presenting · ${gi+1} of ${G.length}</div><h2 class="h-l mt">${esc(gname(gi,g))}</h2>
+        <div class="row mt">${g.map(sid=>`<span class="mem">🎤 ${esc(sname(sid))}</span>`).join('')}</div>
+        <div class="prompts mt2">${ELEMENTS.map(e=>`<div>${esc(e.p)}</div>`).join('')}</div>
+        <p class="small mt2">Listen for today’s expressions — how many can you hear? 👂</p></div>
+      <div class="glass qcard fill" style="justify-content:center"><div class="kick" style="color:var(--cy)">Class reaction</div><div class="qtext mt">Would you watch this video?</div><div class="mt2">${voteHTML('pr'+gi,PRES_OPTS,{letters:false})}</div></div></div>`; },
+  after(v){ $$('[data-pres]',v).forEach(b=>b.onclick=()=>{ S.bo.pres=+b.dataset.pres; commit(); }); },
+  adv(){ const G=groups(); if((S.bo.pres||0)<G.length-1){ S.bo.pres=(S.bo.pres||0)+1; return true; } return false; },
+  ret(){ if((S.bo.pres||0)>0){ S.bo.pres--; return true; } return false; },
+  reveal(){ const gi=S.bo.pres||0; S.vshow['pr'+gi]=!S.vshow['pr'+gi]; return true; },
+  live(){ const G=groups(), gi=S.bo.pres||0; return {kind:'vote', id:'pr'+gi, q:'Would you watch '+gname(gi,G[gi]||[])+'’s video?', opts:PRES_OPTS}; },
+  note:{time:'2:30', aim:'One team at a time, ~1 minute each. Friendly reactions only — no rankings.',
+    how:['The team uses the three prompts. The class reacts: Absolutely! / Maybe! / Not my jam! (results stay hidden unless you show them).','Next ▶ = next team.'],
+    key:['Sample: “Our video is about a girl who’s lowkey obsessed with solving Rubik’s Cubes…”'],
+    ua:'Команди по черзі, ~1 хв. Реакції класу — без рейтингів.'}
+},
+
+/* ═════ STORY ENDING ═════ */
+{ id:'final', ep:5, title:'Leo’s message', k:'Ending', scene:'ending',
+  render(){ const n=kGet('final'), nw=fresh('final',n); blk('fin',1,1);
+    return `${epHead(this)}<div class="duo"><div class="glass card fill" style="justify-content:center">
+      <div class="row">${av('leo',84)}<div><div class="dsp" style="font-size:1.8rem">Leo</div><div class="small">a few weeks later · still building</div></div><span class="grow"></span>${chip('fin',0,'🎙 reads:')}</div>
+      <div class="mt2">${FINAL.slice(0,n).map((t,i)=>`<p class="story ${nw&&i===n-1?'new':''}" style="font-size:1.6rem;margin-top:.6rem">“${hl(t,ALLV)}”</p>`).join('')}${n<FINAL.length?'<div class="more ctl mt">▶ Next</div>':''}</div></div>
+      ${shotHTML('leo-city','Leo’s city keeps growing')}</div>`; },
+  adv(){ const n=kGet('final'); if(n<FINAL.length){ kSet('final',n+1); return true; } tbDone('fin',0); return false; },
+  ret(){ const n=kGet('final'); if(n>1){ kSet('final',n-1); return true; } return false; },
+  reveal(){ kSet('final',FINAL.length); return true; },
+  live(){ return {kind:'look', t:'Leo has a message for you… 💙'}; },
+  note:{time:'0:30', aim:'Warm, short ending. One student reads Leo’s message.', ua:'Короткий теплий фінал: учень читає повідомлення Лео.'}
+},
+{ id:'reflect', ep:5, title:'Final reflection', k:'Reflection', scene:'ending', dim:true,
+  render(){ const b=blk('refl', Math.min(NS(),2), NS());
+    return `${epHead(this)}<div class="solo" style="max-width:62rem"><div class="glass qcard">
+      ${tbar('refl',b.total,b.req,b.max,'💭')}<div class="kick mt2" style="color:var(--cy)">Final reflection · short answers</div>
+      <div class="qtext mt" style="font-size:2.2rem">${esc(REFLECT)}</div>
+      <p class="small mt2">Yes, because … / For example, … / I think it depends on …</p>${wallHTML('refl')}</div></div>`; },
+  adv(){ return blkAdv('refl', blk('refl', Math.min(NS(),2), NS())); }, ret(){ return blkRet('refl'); },
+  live(){ return {kind:'resp', id:'refl', q:REFLECT}; },
+  note:{time:'0:45', aim:'Optional short answers (2 students by default; ＋ Extra turn for more). Phones can answer too.',
+    key:['Open: “Yes — it makes you creative / patient / it can become a job / it helps you find friends who like the same thing.”'],
+    ua:'Короткі відповіді за бажанням. Телефони теж можуть відповісти — показуйте на екрані кнопкою 📱.'}
+},
+{ id:'closing', ep:5, title:'Closing screen', k:'The end', scene:'title', hero:true,
+  render(){ const sp = (S.noanim||REDUCED_OS) ? '' : `<div class="sparkles">${Array.from({length:26},(_,i)=>`<i style="left:${(i*37)%100}%;--c:${['#B9A2FF','#5CC8FF','#FF8A78','#FFC85C'][i%4]};--d:${6+(i%5)}s;--dl:${(i%9)*.6}s"></i>`).join('')}</div>`;
+    return `${sp}<div class="solo" style="text-align:center;align-items:center;position:relative;z-index:2">
+      <span class="kick"><span class="dot"></span>Lesson 31 · The end</span>
+      <h1 class="h-xl mt2 new" style="max-width:56rem">YOUR PASSION MAKES YOU ONE-OF-A-KIND. ✨</h1>
+      <div class="chips mt3" style="justify-content:center;max-width:52rem">${VOCAB.map(v=>`<span class="chip">${esc(v.short)}</span>`).join('')}</div>
+      <div class="row mt3 ctl" style="justify-content:center"><button class="btn pri big" data-go="gz">🎮 Game Zone</button>${CFG.COURSE_LINK?`<a class="btn big ghost" href="${esc(CFG.COURSE_LINK)}">🏠 Course</a>`:''}</div></div>`; },
+  live(){ return {kind:'msg', e:'✨', t:'Your passion makes you one-of-a-kind. See you next time!'}; },
+  note:{time:'—', aim:'Celebrate. Game Zone is separate (10–15 min) if there is time.', ua:'Святкуємо. Game Zone — окремо, якщо є час.'}
+},
+
+/* ═════ GAME ZONE ═════ */
+{ id:'gz', ep:6, title:'Game Zone', k:'Alias · Kahoot · Guess', scene:'game', dim:true,
+  render(){ return gzRender(); }, after(v){ gzAfter(v); },
+  reveal(){ if(S.gz.tab==='kahoot'){ S.gz.kAns=!S.gz.kAns; return true; } if(S.gz.tab==='guess'){ S.gz.gshow=!S.gz.gshow; return true; } S.gz.ua=!S.gz.ua; return true; },
+  live(){ return S.gz.tab==='guess' ? {kind:'msg', e:'🕵️', t:'Guess the Obsession! Listen and guess the hobby.'} : {kind:'msg', e:'🎮', t:'Game Zone — Alias! Explain the expression without saying it.'}; },
+  note:{time:'10–15 min', aim:'Separate from the core lesson. Alias (online), the full vocabulary table, a ready Kahoot question bank, Guess the Obsession.',
+    how:['Alias: ▶ PLAY ALIAS opens in a new tab. The table shows all ten expressions (UA / examples on-off, compact, fullscreen).','Kahoot: “📋 Copy for Kahoot” copies the 10 questions in the column order of Kahoot’s spreadsheet import (Question · 4 answers · time · correct). This page doesn’t create a Kahoot.','Guess the Obsession: the secret hobby is teacher-only — send it to the student in a private Zoom chat (📋 Copy). Use the 🖥 Audience window so the class can’t see it.'],
+    ua:'Окремо від уроку. Alias, таблиця слів, банк питань для Kahoot (копіюється для імпорту), «Guess the Obsession» — секретне хобі бачить лише вчитель.'}
+}
+];
+const SIDX = Object.fromEntries(STEPS.map((s,i)=>[s.id,i]));
+const epOf = i => STEPS[i] ? STEPS[i].ep : 0;
+const CORE_STEPS = STEPS.filter(s=>!EPISODES[s.ep].extra).length;
+
+/* groups for the final mission */
+function defaultGroups(mode){
+  const ids=avail().map(s=>s.id), n=ids.length;
+  if(mode==='solo') return ids.map(i=>[i]);
+  if(mode==='pairs'){ const g=[]; for(let i=0;i<n;i+=2) g.push(ids.slice(i,i+2)); if(g.length>1 && g[g.length-1].length===1) g[g.length-2].push(g.pop()[0]); return g; }
+  const k = n<=3 ? 1 : n<=8 ? 2 : 3, g=Array.from({length:k},()=>[]);
+  const sizes=Array.from({length:k},(_,i)=>Math.floor(n/k)+(i>=k-(n%k)?1:0));   /* smaller groups first: 5 → 2 + 3 */
+  let p=0; sizes.forEach((sz,i)=>{ g[i]=ids.slice(p,p+sz); p+=sz; }); return g;
+}
+function groups(){
+  const sig=avail().map(s=>s.id).sort().join(',');
+  if(!S.bo.groups || S.bo.sig!==sig || !S.bo.groups.length){ S.bo.groups=defaultGroups(S.bo.mode); S.bo.sig=sig; }
+  return S.bo.groups;
+}
+const gname = (gi,g)=> S.bo.mode==='solo' ? (g&&g[0]?sname(g[0]):'Student') : (TEAM_NAMES[gi]||('Team '+(gi+1)));
+
+/* ---------- Game Zone ---------- */
+let GZPAGE = 0, GZPAGED = false, GZAUTO = false;   /* too tall for the screen → first compact, then pages */
+function vtable(rows){
+  const g=S.gz;
+  return `<table class="vt ${g.compact||GZAUTO?'compact':''}"><thead><tr><th>Word / Expression</th><th>Simple English</th>${g.ua?'<th>Ukrainian</th>':''}${g.ex?'<th>Example</th>':''}</tr></thead>
+    <tbody>${rows.map(v=>`<tr><td>${esc(v.w)}</td><td>${esc(v.en)}</td>${g.ua?`<td class="ua">${esc(v.ua)}</td>`:''}${g.ex?`<td><i>${hl(v.ex,[v.id])}</i></td>`:''}</tr>`).join('')}</tbody></table>`;
+}
+function gzRender(){
+  const g=S.gz, tab=g.tab;
+  const tabs=`<div class="gtabs">${[['alias','🎯 Alias & Words'],['kahoot','🟣 Kahoot bank'],['guess','🕵️ Guess the Obsession']].map(([k,l])=>`<button class="btn sm ${tab===k?'on':''} ${k==='kahoot'?'tonly':''}" data-gzt="${k}">${l}</button>`).join('')}</div>`;
+  let body='';
+  if(tab==='alias'){
+    const rows = GZPAGED ? VOCAB.slice(GZPAGE*5, GZPAGE*5+5) : VOCAB;
+    body=`<div class="row mt"><a class="btn pri" href="${esc(CFG.ALIAS_URL||'#')}" target="_blank" rel="noopener">▶ PLAY ALIAS</a><span class="small">opens in a new tab</span><span class="grow"></span>
+      <div class="row ctl" style="gap:.3rem"><button class="btn xs ${g.ua?'on':''}" data-gzo="ua">🇺🇦 ${g.ua?'Hide':'Show'} UA</button><button class="btn xs ${g.ex?'on':''}" data-gzo="ex">✏️ ${g.ex?'Hide':'Show'} Examples</button><button class="btn xs ${g.compact?'on':''}" data-gzo="compact">▤ Compact</button><button class="btn xs" data-gzfs>⛶ Fullscreen table</button></div></div>
+      <div class="vtbox mt" id="vtbox">${vtable(rows)}${GZPAGED?`<div class="row" style="padding:.5rem .7rem"><span class="small grow">Page ${GZPAGE+1} of 2 — the screen is too small for all ten rows</span><button class="btn xs" data-gzp="-1" ${GZPAGE?'':'disabled'}>◀</button><button class="btn xs" data-gzp="1" ${GZPAGE?'disabled':''}>▶</button></div>`:''}</div>`;
+  }
+  if(tab==='kahoot'){
+    body=`<div class="row mt"><b>10 questions</b><span class="small">Meaning · choose the expression · situations</span><span class="grow"></span>
+      <button class="btn xs ${g.kAns?'on':''}" data-gzo="kAns">${g.kAns?'🙈 Hide answers':'👁 Show answers'}</button><button class="btn xs" data-kcopy>📋 Copy for Kahoot</button></div>
+      <p class="small mt">Paste into Kahoot’s spreadsheet template (Create → Import from spreadsheet). This page does not create or publish a Kahoot.</p>
+      <div class="scroll mt" style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:.6rem;align-content:start">${KAHOOT.map((k,i)=>`<div class="kq"><b>${i+1}. ${esc(k.q)}</b><div class="o">${k.o.map((o,j)=>`<div class="${g.kAns&&j===k.a?'ok':''}">${['▲','◆','●','■'][j]} ${esc(o)}${g.kAns&&j===k.a?' ✓':''}</div>`).join('')}</div>${g.kAns?`<div class="small mt">${esc(k.e)}</div>`:''}</div>`).join('')}</div>`;
+  }
+  if(tab==='guess'){
+    const order=g.gorder.length?g.gorder:GUESS.map((_,i)=>i), hob=GUESS[order[(g.gi+(g.ho||0))%order.length]], A=avail(), who=A.length?A[g.gi%A.length].name:'—';
+    body=`<div class="duo even mt" style="flex:1"><div class="glass card fill" style="justify-content:center">
+        <div class="tbar"><span class="turn"><span class="ini">${esc(initial(who))}</span>🗣 describes: ${esc(who)}</span><span class="small">player ${g.gi+1}</span></div>
+        <h2 class="h-l mt2">Guess the Obsession 🕵️</h2>
+        <p class="lead mt">Describe a hobby <b>without saying its name</b>. Everyone else guesses!</p>
+        <p class="small mt">Try: “People who are deep in it…” · “If you’ve got mad skills in it, you can…” · “It’s my jam because…”</p>
+        <div class="mt2">${g.gshow?`<div class="ans new" style="font-size:1.5rem">🎉 It was: <b>${esc(hob)}</b></div>`:`<div class="chip" style="font-size:1.1rem">🤫 Secret hobby: • • • • • •</div>`}</div>
+        <div class="secret mt tonly">Teacher only: <b style="font-size:1.15rem">${esc(hob)}</b> <button class="btn xs" data-gcopy>📋 Copy</button> <button class="btn xs ghost" data-gnew>🔀 Another hobby</button><div class="small">Send it to the student in a private Zoom chat.</div></div></div>
+      <div class="glass card fill" style="justify-content:center;align-items:center;text-align:center"><span class="timer" data-tmr="gz" style="font-size:5rem">${mmss(TM.left('gz'))}</span>
+        <div class="row mt ctl" style="justify-content:center"><button class="btn pri" data-tmb="gz" data-gzt2="flip">▶ Start</button><button class="btn ghost" data-gzt2="rst">↺ Reset</button></div>
+        <div class="row mt2 ctl" style="justify-content:center"><button class="btn sm ${g.gshow?'on':''}" data-gzo="gshow">👁 ${g.gshow?'Hide':'Reveal'} answer</button><button class="btn sm pri" data-gnext>Next player ▶</button></div></div></div>`;
+  }
+  return `<div class="top"><span class="kick"><span class="dot"></span>🎮 Game Zone · after the lesson</span><span class="grow"></span>${tabs}</div><div class="glass card fill">${body}</div>`;
+}
+function gzAfter(v){
+  const g=S.gz;
+  $$('[data-gzt]',v).forEach(b=>b.onclick=()=>{ g.tab=b.dataset.gzt; GZPAGED=false; GZAUTO=false; GZPAGE=0; commit(); });
+  $$('[data-gzo]',v).forEach(b=>b.onclick=()=>{ const k=b.dataset.gzo; g[k]=!g[k]; GZPAGED=false; GZAUTO=false; commit(); });
+  $$('[data-gzp]',v).forEach(b=>b.onclick=()=>{ GZPAGE=clamp(GZPAGE+(+b.dataset.gzp),0,1); draw(); });
+  const fs=$('[data-gzfs]',v); if(fs) fs.onclick=()=>openTableFS();
+  const kc=$('[data-kcopy]',v); if(kc) kc.onclick=()=>{ const rows=KAHOOT.map(k=>[k.q,...k.o,20,k.a+1].join('\t')).join('\n'); copyText('Question\tAnswer 1\tAnswer 2\tAnswer 3\tAnswer 4\tTime limit (sec)\tCorrect answer(s)\n'+rows,'Copied — paste into the Kahoot spreadsheet template'); };
+  const hob=()=>{ const o=g.gorder.length?g.gorder:GUESS.map((_,i)=>i); return GUESS[o[(g.gi+(g.ho||0))%o.length]]; };
+  const gc=$('[data-gcopy]',v); if(gc) gc.onclick=()=>copyText(hob(),'Copied: '+hob());
+  const gn=$('[data-gnew]',v); if(gn) gn.onclick=()=>{ if(!g.gorder.length) g.gorder=shuffle(GUESS.map((_,i)=>i)); g.ho=(g.ho||0)+1; g.gshow=false; commit(); };
+  const nx=$('[data-gnext]',v); if(nx) nx.onclick=()=>{ if(!g.gorder.length) g.gorder=shuffle(GUESS.map((_,i)=>i)); g.gi++; g.gshow=false; TM.rst('gz',60); commit(); };
+  $$('[data-gzt2]',v).forEach(b=>b.onclick=()=>{ if(b.dataset.gzt2==='flip') TM.flip('gz'); else TM.rst('gz',60); });
+  /* table too tall for this screen? → controlled pagination instead of tiny text */
+  const box=$('#vtbox',v);
+  if(box && g.tab==='alias' && !GZPAGED && box.scrollHeight>box.clientHeight+4){ if(!g.compact && !GZAUTO){ GZAUTO=true; draw(); } else { GZPAGED=true; GZPAGE=0; draw(); } }
+}
+function openTableFS(){
+  const d=document.createElement('div'); d.className='vtbox fs'; d.setAttribute('role','dialog'); d.setAttribute('aria-label','Vocabulary table');
+  const paint=()=>{ d.innerHTML=`<div class="row" style="margin-bottom:.6rem"><b class="dsp grow" style="font-size:1.4rem">Lesson 31 · 10 expressions</b><button class="btn sm ${S.gz.ua?'on':''}" data-f="ua">🇺🇦 UA</button><button class="btn sm ${S.gz.ex?'on':''}" data-f="ex">✏️ Examples</button><button class="btn sm" data-f="x">✕ Close (Esc)</button></div>${vtable(VOCAB)}`;
+    $$('[data-f]',d).forEach(b=>b.onclick=()=>{ const f=b.dataset.f; if(f==='x'){ close(); return; } S.gz[f]=!S.gz[f]; save(); paint(); draw(); }); };
+  const close=()=>{ d.remove(); document.removeEventListener('keydown',esc1,true); if(document.fullscreenElement) document.exitFullscreen?.(); };
+  const esc1=e=>{ if(e.key==='Escape'){ e.stopPropagation(); close(); } };
+  document.addEventListener('keydown',esc1,true); document.body.appendChild(d); paint(); d.requestFullscreen?.().catch(()=>{});
+}
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function copyText(t,msg){ const ok=()=>toast(msg||'Copied');
+  if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok,()=>fallback()); else fallback();
+  function fallback(){ const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); ok(); }catch(e){ toast('Copy failed'); } ta.remove(); } }
+
+/* ---------- 8 · engine ---------- */
+const cur = ()=> STEPS[clamp(S.i,0,STEPS.length-1)];
+let LOBBY = false;
+function commit(){ save(); draw(); pub(); }
+function go(i){
+  const prev=S.i; S.i=clamp(i,0,STEPS.length-1);
+  if(!EPISODES[epOf(S.i)].extra) S.max=Math.max(S.max,S.i);
+  TM.newEp(epOf(S.i)); save(); draw(); pub();
+  if(prev!==S.i) $('#view')?.scrollTo?.(0,0);
+}
+const goId = id => { if(SIDX[id]!=null){ LOBBY=false; S.started=true; go(SIDX[id]); } };
+function next(){ if(!TEACH) return; const s=cur(); if(s.adv && s.adv()){ commit(); return; } if(S.i<STEPS.length-1) go(S.i+1); else toast('This is the last screen'); }
+function back(){ if(!TEACH) return; const s=cur(); if(s.ret && s.ret()){ commit(); return; } if(S.i>0) go(S.i-1); }
+function act(k){ if(!TEACH) return; const s=cur(); if(s[k] && s[k]()) commit(); else if(k==='reveal') toast('Nothing to reveal here'); }
+
+/* drawn fallback for missing pictures — a tiny cardboard city */
+const CITY = (()=>{ let h=''; const W=[38,30,46,26,52,34,40,28,48,36]; let x=0;
+  W.forEach((w,i)=>{ const ht=50+((i*37)%60); h+=`<rect x='${x}' y='${160-ht}' width='${w}' height='${ht}' fill='%23B08A5E' stroke='%2374593A'/><polygon points='${x},${160-ht} ${x+w/2},${140-ht} ${x+w},${160-ht}' fill='%239C7550'/>`;
+    for(let r=0;r<Math.floor(ht/22);r++) for(let c=0;c<Math.floor(w/14);c++) h+=`<rect x='${x+5+c*13}' y='${168-ht+r*20}' width='6' height='8' fill='%23FFD27A' opacity='${(r+c+i)%3?0.95:0.35}'/>`;
+    x+=w+4; });
+  return `url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${x} 170'><rect y='160' width='${x}' height='10' fill='%23413224'/>${h}</svg>")`; })();
+document.documentElement.style.setProperty('--city', CITY);
+
+const BG = {key:null, on:0};
+function setBg(key, dim, hero){
+  const bg=$('#bg'); if(!bg) return;
+  bg.classList.toggle('dim',!!dim); bg.classList.toggle('hero',!!hero);
+  if(BG.key===key) return; BG.key=key;
+  const L=$$('.ly',bg), nxt=L[1-BG.on], src=SCN[key];
+  const show=()=>{ L[BG.on].classList.remove('on'); nxt.classList.add('on'); BG.on=1-BG.on; };
+  if(!src){ nxt.style.backgroundImage=`${CITY}, linear-gradient(160deg,#2B2152,#141A38 60%,#3A2A1E)`; nxt.style.backgroundSize='70% auto, cover'; nxt.style.backgroundRepeat='repeat-x, no-repeat'; nxt.style.backgroundPosition='bottom, center'; show(); return; }
+  const im=new Image(); im.onload=()=>{ if(BG.key!==key) return; nxt.style.backgroundImage=`url("${src}")`; nxt.style.backgroundSize='cover'; nxt.style.backgroundRepeat='no-repeat'; nxt.style.backgroundPosition='center'; show(); };
+  im.onerror=()=>{ if(BG.key!==key) return; nxt.style.backgroundImage=`${CITY}, linear-gradient(160deg,#2B2152,#141A38 60%,#3A2A1E)`; nxt.style.backgroundSize='70% auto, cover'; nxt.style.backgroundRepeat='repeat-x, no-repeat'; nxt.style.backgroundPosition='bottom, center'; show(); };
+  im.src=src;
+}
+
+function epProgress(e){ const ids=STEPS.map((s,i)=>[s,i]).filter(([s])=>s.ep===e); if(!ids.length) return 0; const done=ids.filter(([,i])=>i<=S.max || i<=S.i).length; return done/ids.length; }
+function draw(){
+  const b=document.body, s=cur();
+  b.classList.toggle('focus', !!S.focus && ROLE!=='screen');
+  b.classList.toggle('screen', ROLE==='screen');
+  b.classList.toggle('dash-on', !!S.dash && TEACH);
+  b.classList.toggle('noanim', !!S.noanim);
+  b.classList.toggle('teacher', TEACH);
+  /* header — episodes */
+  $('#eps').innerHTML = EPISODES.map((e,i)=>`<button class="ep ${epOf(S.i)===i?'cur':''} ${e.extra?'gz':''}" data-ep="${i}" ${TEACH?'':'tabindex="-1"'} title="${esc(e.short+' — '+e.name)}${e.min?' · '+e.min+' min':''}"><span class="lb">${esc(e.extra?e.short:e.short.replace('Episode ','Ep '))}</span>${e.extra?'':`<span class="bar"><i style="width:${epProgress(i)*100}%"></i></span>`}</button>`).join('');
+  $$('#eps [data-ep]').forEach(x=>x.onclick=()=>{ if(!TEACH) return; const e=+x.dataset.ep; const idx=STEPS.findIndex(st=>st.ep===e); const lastSeen=STEPS.map((st,i)=>i).filter(i=>STEPS[i].ep===e && i<=S.max).pop(); go(lastSeen!=null?lastSeen:idx); });
+  $('#bFocus').classList.toggle('on',!!S.focus); $('#bDash').classList.toggle('on',!!S.dash);
+  $('#clsCnt').textContent=avail().length;
+  /* rail */
+  if(TEACH) drawRail();
+  /* footer */
+  const E=EPISODES[s.ep], inEp=STEPS.filter(x=>x.ep===s.ep), pos=inEp.indexOf(s)+1;
+  $('#info').innerHTML=`${esc(E.short)} · <b>${esc(s.title)}</b> <span>· ${pos}/${inEp.length}</span>`;
+  $('#bBack').disabled = S.i===0 && !(s.ret && kGet(s.id)>1);
+  $('#bNext').innerHTML = S.i===STEPS.length-1 ? 'Done ✓' : (s.id==='closing' ? '🎮 Game Zone ▶' : 'Next ▶');
+  $('#bHint').disabled=!s.hint; $('#bReveal').disabled=!s.reveal; $('#bHide').disabled=!s.hide;
+  $('#retBtn').classList.toggle('hidden', !(TEACH && S.i<S.max));
+  /* stage */
+  setBg(s.scene, s.dim, s.hero);
+  const v=$('#view');
+  v.innerHTML=`<div class="scr">${s.render()}</div>`;
+  bindCommon(v); s.after && s.after(v);
+  $$('.ph-b, .autoscroll',v).forEach(x=>{ x.scrollTop=x.scrollHeight; });
+  if(TEACH && S.dash) drawDash();
+  paintTimers(); paintDock();
+}
+function drawRail(){
+  const r=$('#rail'), pct=Math.round(Math.min(1,(S.max+1)/CORE_STEPS)*100);
+  let h=`<div class="ovw"><b>Lesson 31 · My Hobby Went Viral!</b><div>Core ${CORE_MIN} min + Game Zone</div><div class="pbar"><i style="width:${pct}%"></i></div>
+    <div class="row mt" style="justify-content:space-between"><span>⏱ <b data-tmr="lesson">0:00</b></span><span>this episode <b data-tmr="ep">0:00</b>${EPISODES[epOf(S.i)].min?' / '+EPISODES[epOf(S.i)].min+'′':''}</span></div></div>`;
+  if(S.i<S.max) h+=`<button class="btn sm pri mt" style="width:100%" data-ret>↪ Return to current scene</button>`;
+  EPISODES.forEach((e,ei)=>{ h+=`<h4>${esc(e.short)} · ${esc(e.name)}${e.min?` <span style="font-weight:600">· ${e.min}′</span>`:''}</h4>`;
+    STEPS.forEach((s,i)=>{ if(s.ep!==ei) return; h+=`<button class="rs ${i===S.i?'cur':''} ${i<S.max?'done':''}" data-jump="${i}"><span class="d"></span>${esc(s.title)}</button>`; }); });
+  h+=`<h4>Tools</h4><button class="rs" data-lobby>🏠 Lobby & setup</button><button class="rs" data-restart>↺ Restart lesson…</button>`;
+  r.innerHTML=h;
+  $$('[data-jump]',r).forEach(b=>b.onclick=()=>go(+b.dataset.jump));
+  const rt=$('[data-ret]',r); if(rt) rt.onclick=()=>go(S.max);
+  $('[data-lobby]',r).onclick=()=>showLobby();
+  $('[data-restart]',r).onclick=()=>confirmRestart();
+}
+function confirmRestart(){
+  openModal(`<h2 class="h-m">Restart the lesson?</h2><p class="mt">All answers, votes, turns, decisions and timers will be cleared. Student names stay.</p>
+    <div class="row mt2"><button class="btn coral" id="rsYes">↺ Yes, restart</button><button class="btn ghost" data-close>Cancel</button></div>`);
+  $('#rsYes').onclick=()=>{ const keep=S.students.map(s=>Object.assign({},s)), room=S.room, tid=S.tid, foc=S.focus, live=S.live; S=FRESH(keep); S.room=room; S.tid=tid; S.focus=foc; S.live=live; Object.keys(LAST).forEach(k=>delete LAST[k]); closeModal(); save(); showLobby(); draw(); pub(); toast('Lesson restarted'); };
+}
+
+/* modal */
+function openModal(html){ $('#modalBox').innerHTML=html; $('#modal').classList.remove('hidden'); $$('[data-close]','#modalBox').forEach(b=>b.onclick=closeModal); setTimeout(()=>$('#modalBox button, #modalBox input')?.focus(),30); }
+function closeModal(){ $('#modal').classList.add('hidden'); }
+$('#modal').addEventListener('click',e=>{ if(e.target.id==='modal') closeModal(); });
+
+/* ---------- 9 · lobby / setup ---------- */
+function showLobby(){ LOBBY=true; renderLobby(); }
+function hideLobby(){ LOBBY=false; $('#lobby').classList.add('hidden'); draw(); }
+function renderLobby(){
+  const L=$('#lobby'); L.classList.remove('hidden');
+  const saved=S.started;
+  const sections=[['Lesson Lobby / Setup','you are here',null],...EPISODES.map((e,i)=>[ (e.extra?'':e.short+' — ')+e.name, e.min?e.min+' min':(e.extra?'10–15 min':'1 min'), STEPS.findIndex(s=>s.ep===i)])];
+  L.innerHTML=`<div class="lbg" style="${SCN.title?`background-image:url('${esc(SCN.title)}')`:`background-image:${CITY};background-size:60% auto;background-repeat:repeat-x;background-position:bottom`}"></div>
+  <div class="lin">
+    <span class="kick"><span class="dot"></span>Advanced Kids 2.0 · Lesson 31 · Unit 4 · My Weird Obsession</span>
+    <h1 class="h-xl">MY HOBBY WENT VIRAL! 📱</h1>
+    <p class="lead" style="font-size:1.3rem">One unusual hobby. One video. Thousands of strangers.</p>
+    <div class="cast">${CAST.map(k=>`<div class="castc">${av(k,64)}<div><b class="dsp" style="font-size:1.2rem">${CH[k].name}</b><div class="bio">${esc(CH[k].bio)}</div></div></div>`).join('')}</div>
+    <div class="setup">
+      <div class="glass card"><h3 class="h-m">▶ ${saved?'Continue':'Start'}</h3>
+        <div class="col mt">
+          <button class="btn pri big" id="lgo">${saved?'↻ Continue the lesson':'▶ START LESSON'}</button>
+          ${saved?'<button class="btn ghost" id="lrs">↺ Restart from the beginning…</button>':''}
+          <div class="row"><span class="small">View:</span><button class="btn sm ${!S.focus?'on':''}" data-vm="ws">🖥 Workspace</button><button class="btn sm ${S.focus?'on':''}" data-vm="focus">📺 Focus</button></div>
+          <div class="row"><button class="btn sm ghost" id="llive">📡 Live room (optional)</button><a class="btn sm ghost" href="?join" target="_blank" rel="noopener">📱 Join as a student</a>${CFG.COURSE_LINK?`<a class="btn sm ghost" href="${esc(CFG.COURSE_LINK)}">🏠 Course</a>`:''}</div>
+          <p class="small">Core lesson ${CORE_MIN} min · Game Zone 10–15 min · progress is saved in this browser.</p></div></div>
+      <div class="glass card"><div class="row"><h3 class="h-m grow">👥 Students</h3><div class="stepper"><button data-cnt="-1" aria-label="Fewer students">−</button><b>${S.students.length}</b><button data-cnt="1" aria-label="More students">+</button></div></div>
+        <div class="mt" style="max-height:15rem;overflow:auto">${S.students.map((s,i)=>`<div class="stud"><span class="small" style="width:1.4rem">${i+1}.</span><input value="${esc(s.name)}" data-nm="${s.id}" maxlength="24" aria-label="Student ${i+1} name"><button class="btn xs ${s.here?'on':''}" data-here="${s.id}" title="Present / absent">${s.here?'✓ here':'✗ away'}</button></div>`).join('')}</div>
+        <p class="small mt">Turns are shared fairly (N × R). You can change this during the lesson (👥).</p></div>
+      <div class="glass card"><h3 class="h-m">🗺 Lesson map</h3><div class="col mt" style="gap:.25rem">${sections.map(([t,m,i],k)=>`<button class="rs" style="all:unset;cursor:${i==null?'default':'pointer'};display:flex;gap:.5rem;padding:.3rem .4rem;border-radius:8px" ${i!=null?`data-sec="${i}"`:''}><b style="width:1.3rem;color:var(--vio2)">${k+1}</b><span class="grow">${esc(t)}</span><span class="small">${esc(m)}</span></button>`).join('')}</div></div>
+    </div></div>`;
+  $('#lgo').onclick=()=>{ S.started=true; save(); hideLobby(); pub(); };
+  const rs=$('#lrs'); if(rs) rs.onclick=()=>confirmRestart();
+  $$('[data-vm]',L).forEach(b=>b.onclick=()=>{ S.focus=b.dataset.vm==='focus'; save(); renderLobby(); });
+  $('#llive').onclick=()=>openLive();
+  $$('[data-cnt]',L).forEach(b=>b.onclick=()=>{ setCount(S.students.length+(+b.dataset.cnt)); renderLobby(); });
+  $$('[data-nm]',L).forEach(i=>i.onchange=()=>{ const s=stu(i.dataset.nm); if(s){ s.name=i.value.trim()||s.name; save(); } });
+  $$('[data-here]',L).forEach(b=>b.onclick=()=>{ const s=stu(b.dataset.here); if(s){ s.here=!s.here; afterClass(); renderLobby(); } });
+  $$('[data-sec]',L).forEach(b=>b.onclick=()=>{ S.started=true; save(); LOBBY=false; $('#lobby').classList.add('hidden'); go(+b.dataset.sec); });
+}
+
+/* ---------- 10 · teacher dashboard (never on the shared screen) ---------- */
+const DTABS=[['notes','📝 Notes'],['class','👥 Class'],['time','⏱ Time'],['lesson','⚙️ Lesson']];
+function drawDash(){
+  $('#dashTabs').innerHTML=DTABS.map(([k,l])=>`<button class="btn xs ${S.dtab===k?'on':''}" data-dt="${k}">${l}</button>`).join('');
+  $$('[data-dt]','#dashTabs').forEach(b=>b.onclick=()=>{ S.dtab=b.dataset.dt; save(); drawDash(); });
+  const B=$('#dashBody'), s=cur(), N=s.note||{}; let h='';
+  if(S.dtab==='notes'){
+    h+=`<div class="dsec"><h5>${esc(EPISODES[s.ep].short)} · ${esc(s.title)}${N.time?' · ⏱ '+esc(N.time):''}</h5><div>${esc(N.aim||'')}</div>
+      ${N.how?`<ul>${N.how.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}${N.ua?`<div class="ua mt">🇺🇦 ${esc(N.ua)}</div>`:''}</div>`;
+    if(N.key) h+=`<div class="dsec"><h5>Answer key / expected answers</h5><div class="key">${N.key.map(x=>`<div>${esc(x)}</div>`).join('')}</div></div>`;
+    if(N.ccq) h+=`<div class="dsec"><h5>CCQs — concept checks</h5>${N.ccq.map(([a,b])=>`<div style="margin:.3rem 0"><b>${esc(a)}</b><br><span class="small">${esc(b)}</span></div>`).join('')}</div>`;
+    if(N.icq) h+=`<div class="dsec"><h5>ICQs — instruction checks</h5>${N.icq.map(([a,b])=>`<div>❓ ${esc(a)} <b style="color:var(--ok)">→ ${esc(b)}</b></div>`).join('')}</div>`;
+    if(s.id==='gz') h+=`<div class="dsec"><h5>Guess the Obsession — hobby list</h5><div class="small">${GUESS.map(esc).join(' · ')}</div></div>`;
+    h+=`<div class="dsec"><h5>Keys</h5><div class="small">→ / Space next · ← back · R reveal · H hide · I hint · D done · F focus · T teacher panel · G Game Zone · Esc close</div></div>`;
+    h+=`<div class="dsec"><h5>My notes</h5><textarea class="notes" id="dNotes" placeholder="Saved in this browser">${esc(S.notes)}</textarea></div>`;
+  }
+  if(S.dtab==='class'){
+    h+=`<div class="dsec"><h5>Active students</h5><div class="row"><div class="stepper"><button data-cnt="-1" aria-label="Fewer">−</button><b>${S.students.length}</b><button data-cnt="1" aria-label="More">+</button></div><span class="small">present: ${avail().length}</span></div>
+      <div class="mt">${S.students.map((s,i)=>`<div class="stud"><input value="${esc(s.name)}" data-nm="${s.id}" maxlength="24" aria-label="Name ${i+1}"><button class="btn xs ${s.here?'on':''}" data-here="${s.id}">${s.here?'✓':'✗'}</button><span class="cnt" title="turns done">${S.part[s.id]||0} 🎙</span></div>`).join('')}</div>
+      <p class="small mt">Required turns = N × R. Done turns are kept; changing the class only re-assigns turns that aren’t done yet. Absent students get no new turns.</p>
+      <button class="btn xs ghost mt" data-rturns>↺ Reset all turn assignments…</button></div>`;
+  }
+  if(S.dtab==='time'){
+    const ep=epOf(S.i);
+    h+=`<div class="dsec"><h5>Lesson clock</h5><div class="row"><span class="timer" style="font-size:2.2rem" data-tmr="lesson">${mmss(TM.lesson())}</span><span class="small">/ ${CORE_MIN} min</span></div>
+      <div class="row mt"><button class="btn sm" data-tl="flip">${TM.run()?'⏸ Pause':'▶ Start'}</button><button class="btn sm ghost" data-tl="rst">↺ Reset</button></div></div>
+      <div class="dsec"><h5>Suggested pacing (guidance only)</h5>${EPISODES.filter(e=>e.min).map((e,i)=>`<div class="row" style="justify-content:space-between;${i===ep?'color:var(--cy);font-weight:800':''}"><span>${esc(e.short)} · ${esc(e.name)}</span><span>${i===ep?`<span data-tmr="ep">${mmss(TM.ep())}</span> / `:''}${e.min} min</span></div>`).join('')}<div class="small mt">Total ${CORE_MIN} min. Nothing ever skips a student’s turn automatically.</div></div>
+      <div class="dsec"><h5>Breakout timer</h5><div class="row"><span class="timer" style="font-size:2rem" data-tmr="bo">${mmss(TM.left('bo'))}</span><span class="grow"></span><button class="btn xs" data-tmb="bo" data-tb2="flip">▶ Start</button><button class="btn xs ghost" data-tb2="add">+1′</button><button class="btn xs ghost" data-tb2="rst">↺</button></div>
+      <div class="row mt">${[2,3,4,5].map(m=>`<button class="btn xs ghost" data-tbd="${m}">${m}:00</button>`).join('')}</div></div>`;
+  }
+  if(S.dtab==='lesson'){
+    h+=`<div class="dsec"><h5>Go to</h5><select class="jump" id="dJump">${EPISODES.map((e,ei)=>`<optgroup label="${esc(e.short+' · '+e.name)}">${STEPS.map((x,i)=>x.ep===ei?`<option value="${i}" ${i===S.i?'selected':''}>${esc(x.title)}</option>`:'').join('')}</optgroup>`).join('')}</select>
+      ${S.i<S.max?'<button class="btn sm pri mt" data-ret>↪ Return to current scene</button>':''}</div>
+      <div class="dsec"><h5>Screen</h5><div class="row"><button class="btn xs" data-l="focus">📺 Focus Mode</button><button class="btn xs" data-l="screen">🖥 Audience window</button><button class="btn xs" data-l="full">⛶ Fullscreen</button></div>
+      <div class="row mt"><button class="btn xs ${S.noanim?'on':''}" data-l="anim">${S.noanim?'✨ Animations off':'✨ Animations on'}</button><button class="btn xs ${S.cc?'on':''}" data-l="cc">CC video captions</button></div>
+      <p class="small mt">Zoom tip: share the 🖥 Audience window — it never shows notes, answers or teacher buttons. Keep this window for control.</p></div>
+      <div class="dsec"><h5>Lesson</h5><div class="row"><button class="btn xs" data-l="lobby">🏠 Lobby & setup</button><button class="btn xs" data-l="live">📡 Live room</button><button class="btn xs coral" data-l="restart">↺ Restart…</button></div></div>`;
+  }
+  B.innerHTML=h;
+  const n=$('#dNotes',B); if(n) n.oninput=()=>{ S.notes=n.value; save(); };
+  $$('[data-cnt]',B).forEach(b=>b.onclick=()=>{ setCount(S.students.length+(+b.dataset.cnt)); draw(); pub(); });
+  $$('[data-nm]',B).forEach(i=>i.onchange=()=>{ const s=stu(i.dataset.nm); if(s){ s.name=i.value.trim()||s.name; commit(); } });
+  $$('[data-here]',B).forEach(b=>b.onclick=()=>{ const s=stu(b.dataset.here); if(s){ s.here=!s.here; afterClass(); draw(); pub(); } });
+  const rt=$('[data-rturns]',B); if(rt) rt.onclick=()=>{ if(confirm('Reset all turn assignments and counts?')){ resetTurns(); commit(); } };
+  $$('[data-tl]',B).forEach(b=>b.onclick=()=>{ b.dataset.tl==='flip'?TM.toggle():TM.reset(); drawDash(); });
+  $$('[data-tb2]',B).forEach(b=>b.onclick=()=>{ const a=b.dataset.tb2; if(a==='flip') TM.flip('bo'); if(a==='add') TM.add('bo',60); if(a==='rst') TM.rst('bo'); });
+  $$('[data-tbd]',B).forEach(b=>b.onclick=()=>TM.rst('bo',+b.dataset.tbd*60));
+  const j=$('#dJump',B); if(j) j.onchange=()=>go(+j.value);
+  const r=$('[data-ret]',B); if(r) r.onclick=()=>go(S.max);
+  $$('[data-l]',B).forEach(b=>b.onclick=()=>{ const a=b.dataset.l;
+    if(a==='focus') toggleFocus(); if(a==='screen') openScreen(); if(a==='full') toggleFull();
+    if(a==='anim'){ S.noanim=!S.noanim; commit(); } if(a==='cc'){ S.cc=!S.cc; commit(); VID.paint(); }
+    if(a==='lobby') showLobby(); if(a==='live') openLive(); if(a==='restart') confirmRestart(); });
+  paintTimers();
+}
+function toggleFocus(){ S.focus=!S.focus; if(S.focus) S.dash=false; save(); draw(); toast(S.focus?'Focus Mode — move the mouse to the top for tools · F to exit':'Workspace'); }
+function toggleDash(){ if(S.focus) S.focus=false; S.dash=!S.dash; save(); draw(); }
+function toggleFull(){ if(document.fullscreenElement) document.exitFullscreen?.(); else document.documentElement.requestFullscreen?.().catch(()=>toast('Fullscreen is not available here')); }
+
+/* ---------- 11 · audience window (clean screen for Zoom, same browser) ---------- */
+let SCR=null;
+function scrChan(){ if(SCR) return SCR; try{ SCR=new BroadcastChannel('lesson31-screen'); }catch(e){ SCR=null; } return SCR; }
+function postScreen(m){ const c=scrChan(); if(c) try{ c.postMessage(m); }catch(e){} }
+let scrT=null;
+function pushScreen(){ clearTimeout(scrT); scrT=setTimeout(()=>postScreen({t:'state', S:JSON.parse(JSON.stringify(S)), lv:LIVE.on}),60); }
+function openScreen(){ const w=window.open(location.href.split('?')[0].split('#')[0]+'?view=screen','l31screen','popup,width=1280,height=760'); if(!w) toast('Allow pop-ups to open the audience window'); else toast('Share THIS new window in Zoom (with “Share sound” for the video)'); pushScreen(); }
+function screenApp(){
+  document.body.classList.add('screen');
+  const c=scrChan(); if(!c){ $('#view').innerHTML='<div class="solo"><p class="lead">This browser can’t sync windows. Use 📺 Focus Mode on the teacher page instead.</p></div>'; return; }
+  $('#view').innerHTML=`<div class="solo" style="text-align:center"><div class="h-l">My Hobby Went Viral! 📱</div><p class="lead mt">Audience window — waiting for the teacher’s page…</p><p class="small mt">Share this window in Zoom. Press F for full screen.</p></div>`;
+  let last='';
+  c.onmessage=e=>{ const m=e.data; if(!m) return;
+    if(m.t==='state'){ const j=JSON.stringify(m.S); LIVE.on=!!m.lv; if(j!==last){ last=j; S=m.S; draw(); } else paintTimers(); }
+    if(m.t==='vid'){ VID.build(); VID.cmd(m.a); } };
+  const hello=()=>c.postMessage({t:'hello'}); hello(); setInterval(hello,4000);
+  document.addEventListener('keydown',e=>{ if(e.key==='f'||e.key==='F') toggleFull(); });
+  setInterval(paintTimers,500);
+}
+
+/* ---------- keyboard ---------- */
+document.addEventListener('keydown',e=>{
+  if(!TEACH || typing() || e.ctrlKey || e.metaKey || e.altKey) return;
+  if(!$('#modal').classList.contains('hidden')){ if(e.key==='Escape') closeModal(); return; }
+  if(LOBBY) return;
+  const k=e.key;
+  if(k==='ArrowRight'||k===' '||k==='PageDown'){ e.preventDefault(); next(); }
+  else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); back(); }
+  else if(k==='r'||k==='R') act('reveal');
+  else if(k==='h'||k==='H') act('hide');
+  else if(k==='i'||k==='I') act('hint');
+  else if(k==='d'||k==='D'){ const s=cur(); const blocks={warm:'warm',fit:'fit',rq:'rq',yours:'cards',vocab:'vocab',decide:'why',reflect:'refl',chat:'chatq',video:'vidq',storm:'stq',predict:'pred'}; const id=blocks[s.id]; if(id){ tbToggle(id,tbGet(id).i); commit(); } }
+  else if(k==='f'||k==='F') toggleFocus();
+  else if(k==='t'||k==='T') toggleDash();
+  else if(k==='c'||k==='C'){ S.dtab='class'; S.dash=true; S.focus=false; save(); draw(); }
+  else if(k==='g'||k==='G') goId('gz');
+  else if(k==='Escape'){ if(S.dash){ S.dash=false; save(); draw(); } }
+});
+
+/* ---------- 12 · live room (optional) ----------
+   Учитель — єдине джерело стану. Захист (як у попередніх уроках):
+   • кожне повідомлення вчителя ПІДПИСАНЕ (ECDSA P-256, WebCrypto); приватний ключ лишається лише в браузері вчителя;
+   • посилання / QR містить відбиток публічного ключа; при ручному вході — код кімнати + 6 символів ключа;
+     телефон приймає стан ЛИШЕ з правильним підписом: учень не може перемикати сцени, бачити відповіді до Reveal тощо;
+   • учні надсилають тільки hello / vote / resp / react; учитель перевіряє кожне (поточне завдання, межі, довжину);
+   • лише нікнейм, жодних акаунтів і особистих даних; лише Realtime broadcast + presence (без таблиць);
+   • без Supabase — чесний режим LOCAL DEMO (лише вкладки цього браузера) або звичайний показ екрана. */
+const configured = ()=> /^https:\/\/[a-z0-9-]+\.supabase\.co/i.test((CFG.SUPABASE_URL||'').trim()) && !!(CFG.SUPABASE_KEY||'').trim();
+const LIVE = {on:false, peers:[]};
+const AVATARS = ['🦊','🐼','🐯','🐸','🦉','🐙','🦄','🐺','🐧','🚀','🎧','📷'];
+const studs = ()=> (LIVE.peers||[]).filter(p=>p&&p.role==='student');
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const unb64 = s => Uint8Array.from(atob(s), c=>c.charCodeAt(0));
+const hexOf = buf => [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+const canSign = ()=> !!(window.crypto && crypto.subtle && window.isSecureContext!==false);
+async function fpOf(pk){ const h=await crypto.subtle.digest('SHA-256', new TextEncoder().encode('P256.'+pk.x+'.'+pk.y)); return hexOf(h).slice(0,20); }
+const TKEY = { ok:false, priv:null, pub:null, fp:'',
+  async init(){
+    if(this.ok) return true; if(!canSign()) return false;
+    try{ let st=null; try{ st=JSON.parse(localStorage.getItem('lesson31-tkey')||'null'); }catch(e){}
+      if(st && st.priv && st.pub){ this.priv=await crypto.subtle.importKey('jwk',st.priv,{name:'ECDSA',namedCurve:'P-256'},false,['sign']); this.pub=st.pub; }
+      else { const kp=await crypto.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['sign','verify']);
+        const priv=await crypto.subtle.exportKey('jwk',kp.privateKey), pub=await crypto.subtle.exportKey('jwk',kp.publicKey);
+        this.priv=kp.privateKey; this.pub={x:pub.x, y:pub.y}; try{ localStorage.setItem('lesson31-tkey',JSON.stringify({priv, pub:this.pub})); }catch(e){} }
+      this.fp=await fpOf(this.pub); this.ok=true; return true; }catch(e){ console.warn('Signing unavailable:', e); return false; }
+  },
+  async sign(str){ return b64(await crypto.subtle.sign({name:'ECDSA',hash:'SHA-256'}, this.priv, new TextEncoder().encode(str))); }
+};
+const shortKey = ()=> TKEY.fp ? TKEY.fp.slice(0,6).toUpperCase() : '';
+const Net = {
+  kind:null, status:'off', ch:null, sb:null, bc:null, me:null, peers:{}, hb:null, prune:null,
+  setStatus(s){ this.status=s; this.onStatus && this.onStatus(s); },
+  async connect(o){
+    this.stop();
+    let sid=null; try{ sid=o.role==='student' && sessionStorage.getItem('l31sid'); }catch(e){}
+    this.me={id:o.id || sid || uid(), name:o.name||'', role:o.role, av:o.av||''};
+    if(o.role==='student') try{ sessionStorage.setItem('l31sid', this.me.id); }catch(e){}
+    this.onEvent=o.onEvent; this.onPeers=o.onPeers||(()=>{}); this.onStatus=o.onStatus||(()=>{});
+    this.setStatus('connecting');
+    if(configured()){
+      try{
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm');
+        this.sb = createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY, {auth:{persistSession:false}});
+        this.ch = this.sb.channel('lesson31-'+o.room, {config:{presence:{key:this.me.id}, broadcast:{self:false}}});
+        this.ch.on('broadcast',{event:'msg'},({payload})=>this.onEvent(payload));
+        this.ch.on('presence',{event:'sync'},()=>{ const st=this.ch.presenceState(), list=[]; Object.values(st).forEach(v=>v[0]&&list.push(v[0])); this.onPeers(list); });
+        let first=true;
+        await new Promise((res,rej)=>{ const to=setTimeout(()=>rej(new Error('timeout')),9000);
+          this.ch.subscribe(async st=>{
+            if(st==='SUBSCRIBED'){ try{ await this.ch.track(this.me); }catch(e){} this.setStatus('live'); if(first){ first=false; clearTimeout(to); res(); } }
+            else if(st==='CHANNEL_ERROR'||st==='TIMED_OUT'||st==='CLOSED'){ if(first){ first=false; clearTimeout(to); rej(new Error(st)); } else if(this.ch) this.setStatus('reconnecting'); }
+          }); });
+        this.kind='supabase'; return this.kind;
+      }catch(e){ console.warn('Supabase realtime unavailable:', e.message||e); try{ this.sb&&this.ch&&this.sb.removeChannel(this.ch); }catch(_){} this.sb=null; this.ch=null; }
+    }
+    try{
+      this.bc=new BroadcastChannel('lesson31-'+o.room);
+      this.bc.onmessage=e=>{ const m=e.data; if(!m||!m.from) return; this.peers[m.from.id]=Object.assign({},m.from,{ts:Date.now()}); this.flush(); if(m.t!=='__hb') this.onEvent(m); };
+      this.hb=setInterval(()=>this.send({t:'__hb'}),2500);
+      this.prune=setInterval(()=>{ const n=Date.now(); let ch=false; for(const k in this.peers) if(n-this.peers[k].ts>9000){ delete this.peers[k]; ch=true; } if(ch) this.flush(); },3000);
+      this.send({t:'__hb'}); this.kind='local'; this.setStatus('local'); return this.kind;
+    }catch(e){ this.kind='none'; this.setStatus('off'); return 'none'; }
+  },
+  flush(){ this.onPeers(Object.values(this.peers)); },
+  send(p){ const msg=Object.assign({},p,{from:this.me}); try{ if(this.kind==='supabase'&&this.ch) this.ch.send({type:'broadcast',event:'msg',payload:msg}); else if(this.bc) this.bc.postMessage(msg); }catch(e){} },
+  stop(){ clearInterval(this.hb); clearInterval(this.prune); if(this.ch){ try{ this.sb.removeChannel(this.ch); }catch(e){} } if(this.bc){ try{ this.bc.close(); }catch(e){} } this.kind=null; this.ch=null; this.bc=null; this.peers={}; this.status='off'; }
+};
+async function sendSigned(p){
+  const body=JSON.stringify(Object.assign({ts:Date.now()},p));
+  if(TKEY.ok){ try{ const sig=await TKEY.sign(body); Net.send({t:'sig', body, sig, pk:TKEY.pub}); return; }catch(e){ console.warn(e); } }
+  Net.send({t:'raw', body});
+}
+function curTask(){ if(LOBBY || !S.started) return {kind:'msg', e:'📱', t:'The lesson is about to start…'}; try{ const s=cur(); return s.live?s.live():null; }catch(e){ return null; } }
+let pubT=null;
+function pub(){
+  if(TEACH) pushScreen();
+  if(!LIVE.on || !TEACH) return;
+  clearTimeout(pubT); pubT=setTimeout(()=>{ const s=cur(), E=EPISODES[s.ep];
+    sendSigned({t:'state', ep:s.ep, epn:E.short+' · '+E.name, step:s.title, task:curTask(), timer:{left:Math.ceil(TM.left('bo')), run:TM.on('bo')}}); paintDock(); },120);
+}
+setInterval(()=>{ if(LIVE.on && TEACH) pub(); },6000);
+let redrawT=null;
+function softRedraw(){ clearTimeout(redrawT); redrawT=setTimeout(()=>{ if(!typing()) draw(); else paintDock(); },250); }
+function onTeacherMsg(m){
+  const id=m.from&&m.from.id; if(!id || m.from.role!=='student') return;
+  const task=curTask();
+  if(m.t==='hello'){ pub(); paintDock(); return; }
+  if(m.t==='react'){ floatEmoji(m.e); return; }
+  if(m.t==='vote' && task && task.kind==='vote' && m.id===task.id){ const v=+m.v; if(!(Number.isInteger(v) && v>=0 && v<task.opts.length)) return; (S.lv[task.id]=S.lv[task.id]||{})[id]=v; save(); softRedraw(); return; }
+  if(m.t==='resp' && task){ const rid = task.kind==='resp' ? task.id : task.kind==='group' ? task.resp : null; if(!rid || m.id!==rid) return;
+    const t=String(m.v||'').replace(/\s+/g,' ').trim().slice(0,120); if(!t) return;
+    (S.resp[rid]=S.resp[rid]||{})[id]={n:(AVATARS.includes(m.from.av)?m.from.av+' ':'')+String(m.from.name||'?').slice(0,24), t}; save(); softRedraw(); return; }
+}
+function floatEmoji(e){ if(!/^[\p{Extended_Pictographic}‍️]{1,8}$/u.test(e||'')) return; const s=document.createElement('span'); s.textContent=e; s.style.left=Math.random()*40+'px'; $('#reacts').appendChild(s); setTimeout(()=>s.remove(),3100); }
+function paintDock(){
+  const d=$('#dock'); if(!d) return; d.classList.toggle('on',LIVE.on && TEACH); if(!LIVE.on || !TEACH) return;
+  const st=Net.status, stTxt={live:'● live (Supabase)', local:'● LOCAL DEMO — this browser only', reconnecting:'● reconnecting…', connecting:'● connecting…', off:'● offline'}[st]||st;
+  $('#dockTitle').textContent='Room '+S.room; $('#dockLed').className='led '+(st==='live'?'on':st==='off'?'bad':'');
+  const L=studs(); $('#dockCount').textContent=`${L.length} connected · ${stTxt}`;
+  const task=curTask(); let h='';
+  h+= L.length?`<div class="chips mt">${L.slice(0,40).map(p=>`<span class="chip" style="font-size:.72rem;padding:.1rem .5rem">${esc((AVATARS.includes(p.av)?p.av+' ':'')+(p.name||'?'))}</span>`).join('')}</div>`:`<div class="small mt">Nobody yet — share the link, QR or code (📡 Live).</div>`;
+  if(!task) h+=`<div class="small mt">Phones show “look at the main screen”.</div>`;
+  else if(task.kind==='vote'){ const n=vcount(task.id,task.opts.length), mx=Math.max(1,...n); h+=`<div class="small mt">${Object.keys(S.lv[task.id]||{}).length} phone votes (+ hands you counted)</div>`+task.opts.map((o,i)=>`<div class="dbar"><span>${esc(o)}</span> <b>${n[i]}</b><div class="tr"><i style="width:${n[i]/mx*100}%"></i></div></div>`).join(''); }
+  else if(task.kind==='resp' || task.kind==='group'){ const rid=task.kind==='resp'?task.id:task.resp, R=Object.values(S.resp[rid]||{}); h+=`<div class="small mt"><b>${R.length}</b> answers</div>`+R.slice(-6).map(r=>`<div class="small">• <b>${esc(r.n)}</b>: ${esc(r.t)}</div>`).join(''); }
+  else if(task.kind==='turn'){ h+=`<div class="small mt">Phones show: <b>${esc(task.who)}</b>’s turn.</div>`; }
+  else h+=`<div class="small mt">Phones show: “${esc(task.t||'')}”</div>`;
+  $('#dockBody').innerHTML=h;
+}
+const baseURL = ()=> location.href.split('?')[0].split('#')[0];
+const joinURL = ()=> baseURL()+'?room='+S.room+(TKEY.fp?'&k='+TKEY.fp:'')+'&role=student';
+async function startLive(silent){
+  const signed=await TKEY.init();
+  const kind=await Net.connect({room:S.room, id:S.tid, role:'teacher', name:'teacher', onEvent:onTeacherMsg,
+    onPeers:list=>{ LIVE.peers=list; paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); },
+    onStatus:()=>{ paintDock(); const ls=$('#lvStatus'); if(ls) ls.innerHTML='Status: '+liveStatus(); }});
+  LIVE.on = kind!=='none'; S.live=LIVE.on; save(); pub(); if(!LOBBY) draw();
+  if(!silent) toast(!signed?'Live room open — but this page can’t sign messages (needs https)':kind==='supabase'?'Live room open — share the link, QR or code':kind==='local'?'Supabase not reachable — LOCAL DEMO: only tabs in THIS browser can join':'The live room could not start');
+  return kind;
+}
+function stopLive(){ sendSigned({t:'end'}); setTimeout(()=>Net.stop(),300); LIVE.on=false; S.live=false; LIVE.peers=[]; save(); paintDock(); if(!LOBBY) draw(); }
+function liveStatus(){
+  if(!LIVE.on) return 'not started — the lesson works fully without phones';
+  const s = Net.status==='live' ? '<span style="color:var(--ok)">● live (Supabase Realtime)</span>' : Net.status==='local' ? '<span style="color:var(--amb)">● LOCAL DEMO — not real students: only tabs in THIS browser can join (Supabase not configured or not reachable)</span>' : `<span style="color:var(--amb)">● ${esc(Net.status)}</span>`;
+  return `${s} · ${studs().length} joined`;
+}
+async function openLive(){
+  await TKEY.init();
+  openModal(`<div class="row"><h2 class="h-m grow">📡 Live classroom</h2><button class="btn sm ghost" data-close aria-label="Close">✕</button></div>
+   <p class="small mt">Optional. Students join on their own phone with a nickname — no accounts. Phones show the current task, let students vote, send short answers and react. Answers reach phones only after you reveal them. Without a live room the whole lesson runs on your shared screen.</p>
+   <div class="row mt2" style="align-items:center;gap:1.4rem"><div class="grow"><div class="small">Room code</div><div class="dsp" style="font-size:4rem;line-height:1">${S.room}</div>
+     <div class="small mt">Teacher key <b style="font-size:1.3rem;color:var(--cy);letter-spacing:.12em">${shortKey()||'—'}</b> (only for students who type the code)</div>
+     <div class="small mt" style="word-break:break-all">${esc(joinURL())}</div>
+     <div class="small mt" id="lvStatus">Status: ${liveStatus()}</div>
+     <p class="small mt" style="color:#BFF7DE">🔐 Your messages are signed with a key that never leaves this browser. Phones obey only this signature.</p></div>
+     <img alt="QR code for the student link" width="190" height="190" style="border-radius:18px;background:#fff" src="https://api.qrserver.com/v1/create-qr-code/?size=380x380&margin=8&data=${encodeURIComponent(joinURL())}" onerror="this.remove()"></div>
+   <div class="row mt2">${LIVE.on?'<button class="btn" id="lvStop">⏹ Stop room</button>':'<button class="btn pri" id="lvStart">▶ Start live room</button>'}
+     <button class="btn sm ghost" id="lvCopy">📋 Copy link</button><button class="btn sm ghost" id="lvNew" ${LIVE.on?'disabled':''}>New code</button></div>
+   ${configured()?'':'<p class="small mt" style="color:var(--amb)">SUPABASE_URL / SUPABASE_KEY are empty at the top of this file → only a LOCAL DEMO is possible (tabs in this browser).</p>'}
+   ${canSign()?'':'<p class="small mt" style="color:var(--amb)">This page is not on https, so messages can’t be signed. Open it from GitHub Pages for the live room.</p>'}`);
+  const st=$('#lvStart'); if(st) st.onclick=async()=>{ st.disabled=true; st.textContent='Connecting…'; await startLive(); openLive(); };
+  const sp=$('#lvStop'); if(sp) sp.onclick=()=>{ stopLive(); openLive(); };
+  $('#lvCopy').onclick=()=>copyText(joinURL(),'Link copied — paste it into the Zoom chat');
+  $('#lvNew').onclick=()=>{ S.room=rand4(); save(); openLive(); };
+}
+
+/* ---------- 13 · student app (?room=1234&k=…&role=student  or  ?join) ---------- */
+function studentApp(){
+  document.body.classList.add('student');
+  const B=$('#stuBody');
+  let room=(qs.get('room')||'').replace(/\D/g,'').slice(0,6), key=(qs.get('k')||'').replace(/[^0-9a-f]/gi,'').slice(0,20).toLowerCase();
+  let st=null, name='', avatar=AVATARS[0], taskKey='', trust=null, lastTs=0, verified=false, sent={};
+  try{ name=localStorage.getItem('l31name')||''; avatar=localStorage.getItem('l31av')||avatar; }catch(e){}
+  const setConn=s=>{ $('#stuLed').className='led '+(s==='live'?'on':s==='off'?'bad':''); $('#stuConn').textContent={live:'connected', local:'LOCAL DEMO', reconnecting:'reconnecting…', connecting:'connecting…', off:'offline'}[s]||''; };
+  $('#stuFoot').innerHTML=['👍','😂','😮','👏','🔥','💙'].map(e=>`<button data-e="${e}" aria-label="React ${e}">${e}</button>`).join('');
+  $$('[data-e]',$('#stuFoot')).forEach(b=>b.onclick=()=>{ if(!Net.kind) return; Net.send({t:'react', e:b.dataset.e}); b.animate?.([{transform:'scale(1.4)'},{transform:'scale(1)'}],{duration:250}); });
+  const ask=()=>{
+    B.innerHTML=`<div class="stu-card"><div class="row" style="gap:6px">${CAST.map(k=>av(k,46)).join('')}</div>
+      <h2 class="dsp mt" style="font-size:1.6rem">Join “My Hobby Went Viral!” 📱</h2>
+      <label for="rc">Room code</label><input id="rc" inputmode="numeric" maxlength="6" value="${esc(room)}" placeholder="1234" autocomplete="off">
+      ${key.length>=6?'':`<label for="tk">Teacher key (6 characters on the teacher’s screen)</label><input id="tk" maxlength="6" placeholder="e.g. 7F3A9C" autocomplete="off" style="text-transform:uppercase">`}
+      <label for="nm">Nickname — your first name is best</label><input id="nm" maxlength="24" value="${esc(name)}" placeholder="e.g. Anna" autocomplete="off">
+      <label>Choose an avatar</label><div class="avpick">${AVATARS.map(a=>`<button type="button" data-av="${a}" class="${a===avatar?'on':''}" aria-label="Avatar ${a}">${a}</button>`).join('')}</div>
+      <p class="small mt">No account. No surname. No personal data.</p>
+      <button class="btn pri mt" id="jn" style="width:100%">Join</button></div>`;
+    $$('[data-av]',B).forEach(b=>b.onclick=()=>{ avatar=b.dataset.av; $$('[data-av]',B).forEach(x=>x.classList.toggle('on',x===b)); });
+    $('#jn').onclick=()=>{ const r=$('#rc').value.replace(/\D/g,''), v=$('#nm').value.trim().slice(0,24), tk=$('#tk');
+      if(r.length<4) return $('#rc').focus(); if(tk){ const kv=tk.value.replace(/[^0-9a-f]/gi,'').toLowerCase(); if(kv.length<6) return tk.focus(); key=kv; } if(!v) return $('#nm').focus();
+      room=r; name=v; try{ localStorage.setItem('l31name',name); localStorage.setItem('l31av',avatar); }catch(e){} join(); };
+    $('#nm').onkeydown=e=>{ if(e.key==='Enter') $('#jn').click(); };
+  };
+  async function open(m){
+    if(!m || !m.body) return null;
+    if(m.t==='sig' && canSign() && m.pk && m.sig){
+      try{ const pkStr=m.pk.x+'.'+m.pk.y;
+        if(!trust || trust.pkStr!==pkStr){ const fp=await fpOf(m.pk); if(!key || !fp.startsWith(key)) return null;
+          trust={pkStr, k:await crypto.subtle.importKey('jwk',{kty:'EC',crv:'P-256',x:m.pk.x,y:m.pk.y,ext:true},{name:'ECDSA',namedCurve:'P-256'},false,['verify'])}; }
+        const ok=await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'}, trust.k, unb64(m.sig), new TextEncoder().encode(m.body));
+        if(!ok) return null; verified=true; return JSON.parse(m.body); }catch(e){ return null; }
+    }
+    if(!canSign() && (m.t==='raw'||m.t==='sig')){ try{ return JSON.parse(m.body); }catch(e){ return null; } }
+    return null;
+  }
+  const join=async()=>{
+    $('#stuRoom').textContent='Room '+room+' · '+avatar+' '+name;
+    B.innerHTML=`<div class="stu-card" style="text-align:center"><div style="font-size:3rem">📱</div><p>Connecting to room ${esc(room)}…</p></div>`;
+    const kind=await Net.connect({room, role:'student', name, av:avatar, onStatus:setConn, onEvent:async raw=>{
+      if(!raw.from || raw.from.role!=='teacher') return;
+      const m=await open(raw); if(!m || (m.ts||0)<lastTs) return; lastTs=m.ts||lastTs;
+      if(m.t==='state'){ const k=JSON.stringify([m.ep,m.step,m.task]); st=m; if(k!==taskKey){ taskKey=k; render(); } else paintT(); }
+      if(m.t==='end') ended();
+    }});
+    if(kind==='none'){ B.innerHTML=`<div class="stu-card" style="text-align:center"><div style="font-size:3rem">📶</div><p><b>Could not join.</b></p><p class="small">Check your internet connection and try again.</p><button class="btn pri mt" id="rt">Try again</button></div>`; $('#rt').onclick=join; return; }
+    if(kind==='local') toast('LOCAL DEMO — this only works inside one browser');
+    Net.send({t:'hello'}); render();
+    setTimeout(()=>{ if(!st) Net.send({t:'hello'}); },2500);
+    setTimeout(()=>{ if(!st){ const w=$('.stu-wait',B); if(w) w.innerHTML=`<p>Hi ${esc(name)}! Waiting for the teacher…</p><p class="small mt">Room ${esc(room)} — are the code and teacher key right? <a href="?join">Change</a></p>`; } },7000);
+  };
+  const ended=()=>{ Net.stop(); setConn('off'); B.innerHTML=`<div class="stu-card" style="text-align:center"><div style="font-size:3rem">✨</div><h2 class="dsp mt" style="font-size:1.6rem">YOUR PASSION MAKES YOU ONE-OF-A-KIND.</h2><p class="small mt">Thanks, ${esc(avatar+' '+name)}! You can close this page.</p></div>`; };
+  const paintT=()=>{ const t=$('#stuT'); if(t&&st&&st.timer) t.textContent=(st.timer.run?'⏱ ':'⏸ ')+mmss(st.timer.left); };
+  setInterval(()=>{ if(st&&st.timer&&st.timer.run&&st.timer.left>0){ st.timer.left--; paintT(); } },1000);
+  const me=n=>nameKey(n)===nameKey(name);
+  const head=()=>`<div class="small" style="font-weight:800">${esc(st.epn||'')} · ${esc(st.step||'')}</div>${verified?'<div class="verif">✓ verified teacher</div>':''}`;
+  const render=()=>{
+    if(!st){ B.innerHTML=`<div class="stu-card stu-wait" style="text-align:center">${av('leo',80)}<p class="mt">Hi ${esc(avatar+' '+name)}! Waiting for the teacher…</p></div>`; return; }
+    const T=st.task, hd=head();
+    if(!T){ B.innerHTML=hd+`<div class="stu-card" style="text-align:center"><div style="font-size:3rem">👀</div><p class="stu-big">Look at the main screen.</p><p class="small mt">Read, listen and be ready to speak!</p></div>`; return; }
+    if(T.kind==='look'||T.kind==='msg'){ B.innerHTML=hd+`<div class="stu-card" style="text-align:center"><div style="font-size:3rem">${esc(T.e||'👀')}</div><p class="stu-big mt">${esc(T.t)}</p></div>`; return; }
+    if(T.kind==='turn'){ const mine=me(T.who);
+      B.innerHTML=hd+`<div class="stu-card ${mine?'myturn':''}"><p class="small">${esc(T.block||'')}</p>
+        <p class="stu-big" style="margin:.4rem 0">${mine?'🎙 It’s YOUR turn, '+esc(name)+'!':'🎙 '+esc(T.who||'…')+' is speaking'}</p>
+        <p style="font-size:1.2rem;font-weight:700">${esc(T.prompt||'')}</p>${T.fu?`<p class="mt">❓ Follow-up: ${esc(T.fu)}</p>`:''}
+        ${T.ans?`<div class="ans mt">✅ ${esc(T.ans)}</div>`:''}</div>`; return; }
+    if(T.kind==='vote'){ const my=sent['v:'+T.id];
+      B.innerHTML=hd+`<div class="stu-card"><p class="stu-big">${esc(T.q)}</p><div class="col mt">${T.opts.map((o,i)=>`<button class="btn ${my===i?'pri':''}" data-v="${i}" style="justify-content:flex-start;text-align:left;min-height:3.2rem">${esc(o)}</button>`).join('')}</div>
+        <p class="small mt">${my!=null?'✓ Vote sent — you can change it.':'Tap to vote.'}</p></div>`;
+      $$('[data-v]',B).forEach(b=>b.onclick=()=>{ const v=+b.dataset.v; sent['v:'+T.id]=v; Net.send({t:'vote', id:T.id, v}); render(); }); return; }
+    if(T.kind==='resp'||T.kind==='group'){ const rid=T.kind==='resp'?T.id:T.resp, my=sent['r:'+rid];
+      let grp=''; if(T.kind==='group'){ const g=(T.groups||[]).find(x=>x.m.some(me)); grp=`<p class="small">${g?'Your team':'Teams'} <span id="stuT"></span></p>${g?`<p class="stu-big">${esc(g.name)}</p><p>${g.m.map(esc).join(' · ')}</p>`:(T.groups||[]).map(x=>`<p><b>${esc(x.name)}</b>: ${x.m.map(esc).join(', ')}</p>`).join('')}
+        <p class="mt"><b>1</b> The hobby · <b>2</b> The hook (first 5 seconds) · <b>3</b> The pitch — use 2+ expressions!</p>`; }
+      B.innerHTML=hd+`<div class="stu-card">${grp}<label for="ra">${esc(T.q)}</label><textarea id="ra" maxlength="120" rows="3" placeholder="Max 120 characters">${esc(my||'')}</textarea>
+        <button class="btn pri mt" id="rs" style="width:100%">${my?'Update answer':'Send'}</button>${my?'<p class="small mt">✓ Sent to the teacher.</p>':''}</div>`;
+      $('#rs').onclick=()=>{ const v=$('#ra').value.trim().slice(0,120); if(!v) return; sent['r:'+rid]=v; Net.send({t:'resp', id:rid, v}); render(); }; paintT(); return; }
+    B.innerHTML=hd+`<div class="stu-card"><p>Look at the main screen.</p></div>`;
+  };
+  if(room && (key.length>=6) && name) join(); else ask();
+}
+
+/* ---------- 14 · boot ---------- */
+(function boot(){
+  if(ROLE==='student'){ studentApp(); return; }
+  $('#bBack').onclick=back; $('#bNext').onclick=next;
+  $('#bReveal').onclick=()=>act('reveal'); $('#bHide').onclick=()=>act('hide'); $('#bHint').onclick=()=>act('hint');
+  $('#retBtn').onclick=()=>go(S.max);
+  $('#bFocus').onclick=toggleFocus; $('#bFull').onclick=toggleFull;
+  $('#bDash').onclick=toggleDash; $('#dashX').onclick=()=>{ S.dash=false; save(); draw(); };
+  $('#bClass').onclick=()=>{ S.dtab='class'; S.dash=true; S.focus=false; save(); draw(); };
+  $('#bGame').onclick=()=>goId('gz'); $('#bLive').onclick=openLive; $('#bScreen').onclick=openScreen; $('#bHome').onclick=showLobby;
+  $('#clock').onclick=()=>TM.toggle();
+  $('#dockMin').onclick=()=>$('#dock').classList.toggle('min');
+  if(ROLE==='screen'){ screenApp(); return; }
+  const c=scrChan(); if(c) c.onmessage=e=>{ if(e.data&&e.data.t==='hello'){ VID.screenAt=now(); pushScreen(); } };
+  setInterval(paintTimers,500);
+  draw();
+  if(!S.started) showLobby();
+  if(S.live) startLive(true);
+  window.addEventListener('beforeunload',()=>save());
+})();
+</script>
+</body>
+</html>
