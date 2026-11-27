@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lesson 15 — If Only I Had Known… · Mixed Conditionals</title>
+<title>Lesson 15 — If Only I Had Known… · Mixed Conditionals · Advanced Kids 2.0</title>
 <meta name="description" content="Advanced Kids · Lesson 15. Mia finds an old post and the timeline breaks. Students fix it with Mixed Conditionals.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏳</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -595,6 +595,218 @@ body.student #app{display:none}
   #dock{left:12px; right:12px; width:auto}
   #wmbar{display:none}
 }
+/* ============ ADVANCED KIDS 2.0 · added styles ============ */
+a.btn{color:var(--text)} a.btn.primary{color:#07102A}
+.team.spare{opacity:.8} .team.spare .th b{font-size:22px}
+.scount{display:flex; align-items:center; gap:4px; padding:4px; border-radius:14px; background:var(--glass); border:1px solid var(--edge)}
+.scount .lb{font-size:12px; color:var(--muted); font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:0 6px}
+.scount button{height:38px; min-width:38px; border-radius:10px; font-weight:800; font-size:20px; background:rgba(255,255,255,.06)}
+.scount button:hover{background:rgba(255,255,255,.14)}
+.scount #sN{min-width:46px; font-family:var(--mono); color:var(--now); font-size:20px; background:rgba(62,232,255,.1)}
+.seg{display:inline-flex; gap:4px; padding:4px; border-radius:14px; background:var(--glass); border:1px solid var(--edge); flex-wrap:wrap}
+.seg button{padding:8px 13px; border-radius:10px; font-weight:800; font-size:14.5px; color:var(--muted); min-height:38px}
+.seg button.on{background:rgba(255,255,255,.13); color:var(--text); box-shadow:inset 0 0 0 1px var(--edge2)}
+.seg.modes button{min-height:38px}
+#tchip{display:inline-flex}
+#tchip.on{border-color:var(--now); color:var(--now)}
+#tchip.end{border-color:var(--bad); color:var(--bad)}
+#tpop{position:fixed; top:74px; right:20px; z-index:65; width:330px; padding:16px; border-radius:20px; background:#0F1440; border:1px solid var(--edge2); box-shadow:var(--shadow); display:none}
+#tpop.on{display:block}
+.tpbig{font-family:var(--mono); font-size:56px; font-weight:700; text-align:center; margin:6px 0}
+.tpbig.end{color:var(--bad)}
+.tpre{display:grid; grid-template-columns:repeat(5,1fr); gap:6px}
+.tpre button{padding:10px 0; border-radius:10px; background:var(--glass); border:1px solid var(--edge); font-weight:800; font-size:14px}
+.tpre button.on{border-color:var(--now); color:var(--now)}
+.btn.icon{min-width:46px; padding:8px 10px}
+#ftimer{position:fixed; left:20px; bottom:92px; z-index:31; display:none; align-items:center; gap:10px; padding:10px 12px 10px 16px; border-radius:18px; background:rgba(11,15,46,.94); border:1px solid var(--now); box-shadow:0 0 30px -8px rgba(62,232,255,.6)}
+#ftimer.on{display:flex}
+#ftimer.end{border-color:var(--bad); box-shadow:0 0 30px -8px rgba(255,107,129,.7)}
+#ftimer b{font-family:var(--mono); font-size:34px; min-width:96px}
+#ftimer.end b{color:var(--bad)}
+#ftimer .ftbar{width:90px; height:6px; border-radius:6px; background:rgba(255,255,255,.1); overflow:hidden}
+#ftimer .ftbar i{display:block; height:100%; background:linear-gradient(90deg,var(--past),var(--now)); transition:width .3s}
+#ftimer button{width:38px; height:38px; border-radius:10px; background:var(--glass); font-size:16px}
+/* bottom bar */
+#nav{flex-wrap:nowrap}
+#navMid{flex:1; min-width:0; display:grid; gap:4px; justify-items:center}
+#secStrip{display:flex; gap:4px; flex-wrap:nowrap; overflow:hidden}
+.sec{font-size:12.5px; font-weight:800; padding:3px 9px; border-radius:99px; color:var(--faint); border:1px solid transparent; white-space:nowrap}
+.sec em{font-style:normal}
+.sec.done{color:var(--ok)}
+.sec.cur{color:var(--text); border-color:var(--edge2); background:rgba(255,255,255,.08)}
+#navInfo{flex:none; font-size:13px}
+#fctl{display:flex; gap:6px}
+.fb{height:46px; min-width:46px; padding:0 12px; border-radius:13px; background:var(--glass); border:1px solid var(--edge); font-weight:800; font-size:14.5px; display:inline-flex; align-items:center; gap:6px}
+.fb:hover:not([disabled]){background:var(--glass2); border-color:var(--edge2)}
+.fb[disabled]{opacity:.32; cursor:not-allowed}
+.fb.q{font-family:var(--mono); font-size:13px; letter-spacing:.06em}
+.fb.q.on{border-color:var(--now); color:var(--now)}
+#fCCQ.on{border-color:var(--now)} #fICQ.on{border-color:var(--past); color:var(--past)}
+/* workspace */
+#ws{position:fixed; top:0; right:0; bottom:0; width:min(440px,96vw); z-index:40; background:#0B0F2E; border-left:1px solid var(--edge2);
+  transform:translateX(105%); transition:transform .3s cubic-bezier(.2,.8,.2,1); display:flex; flex-direction:column; box-shadow:-30px 0 80px -30px #000}
+body.wsOn #ws{transform:none}
+#ws .thd{display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--edge)}
+#ws .thd b{font-family:var(--mono); letter-spacing:.16em; font-size:14px}
+#wsTabs{display:flex; gap:4px; padding:8px; border-bottom:1px solid var(--edge); overflow-x:auto; scrollbar-width:none}
+#wsTabs button{flex:none; display:flex; flex-direction:column; align-items:center; gap:2px; padding:7px 9px; border-radius:11px; font-size:18px; color:var(--muted)}
+#wsTabs button span{font-size:11.5px; font-weight:800}
+#wsTabs button.on{background:rgba(255,255,255,.1); color:var(--text)}
+#wsBody{overflow:auto; padding:14px; display:grid; gap:12px; font-size:15.5px; align-content:start}
+#wsBody p{margin:6px 0}
+.qa{display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px dashed var(--edge)}
+.qa b{color:var(--ok); text-align:right}
+.bigcount{display:flex; align-items:center; gap:14px}
+.bigcount b{font-family:var(--mono); font-size:44px; color:var(--now); min-width:60px; text-align:center}
+.names{display:grid; grid-template-columns:1fr 1fr; gap:6px}
+.names label{display:flex; align-items:center; gap:6px}
+.names span{font-family:var(--mono); color:var(--muted); width:22px; font-size:13px}
+.names input{width:100%; padding:8px 10px; border-radius:10px; background:rgba(255,255,255,.06); border:1px solid var(--edge2); font-size:15px}
+.wsrow{display:grid; gap:6px; padding:8px 0; border-bottom:1px dashed var(--edge)}
+.wsrow>span{font-weight:800}
+.wsrow .seg button{padding:6px 10px; font-size:13px; min-height:32px}
+.bal{display:grid; grid-template-columns:1fr 1fr; gap:6px}
+.bal div{display:flex; justify-content:space-between; padding:6px 10px; border-radius:10px; background:var(--glass)}
+.bal b{color:var(--now); font-family:var(--mono)}
+.wcard{padding:10px 12px; border-radius:12px; background:var(--glass); border:1px solid var(--edge)}
+.wcard b{color:var(--now)} .wcard i{color:var(--muted); font-size:14px}
+.gm.p{border-color:rgba(255,181,71,.5)} .gm.n{border-color:rgba(62,232,255,.5)}
+.gm .formula{font-size:15px}
+.prow{display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--edge)}
+.prow.done b{color:var(--ok)} .prow.cur{color:var(--now); font-weight:800}
+body.wsOn .tools .lb, body.wsOn .scount .lb, body.wsOn .brand span{display:none}
+body.wsOn #top{gap:10px} body.wsOn .meter{min-width:110px}
+body.wsOn #fctl .lb{display:none} body.wsOn #secStrip .sec:not(.cur) em{display:none}
+@media (min-width:1280px){ body.wsOn #app{margin-right:440px} #app{transition:margin-right .3s} body.wsOn #ftimer{left:20px} }
+/* CCQ / ICQ panel */
+#qpanel{position:fixed; left:20px; bottom:92px; z-index:33; width:min(520px,calc(100vw - 40px)); padding:16px; border-radius:20px; background:rgba(15,20,64,.97); border:1px solid var(--edge2); box-shadow:var(--shadow); display:none; gap:8px}
+#qpanel.on{display:grid}
+.qrow{display:flex; justify-content:space-between; gap:14px; text-align:left; padding:12px 14px; border-radius:12px; background:var(--glass); border:1px solid var(--edge); font-size:18px; font-weight:700}
+.qrow b{color:var(--faint); font-size:15px; white-space:nowrap}
+.qrow.open b{color:var(--ok); white-space:normal; text-align:right}
+/* turn bar */
+.turnbar{display:grid; grid-template-columns:auto 1fr auto; grid-template-areas:"who meta btns" "who dots btns"; gap:6px 18px; align-items:center; padding:14px 18px; border-radius:22px;
+  background:linear-gradient(100deg,rgba(62,232,255,.10),rgba(139,92,246,.10)); border:1px solid rgba(62,232,255,.35); margin-bottom:6px}
+.turnbar.all{border-color:rgba(67,229,160,.45); background:rgba(67,229,160,.08)}
+.tw{grid-area:who; display:flex; align-items:center; gap:12px}
+.tav{flex:none; width:54px; height:54px; border-radius:16px; display:grid; place-items:center; font-weight:800; font-size:19px; color:#07102A; background:linear-gradient(135deg,var(--now),var(--lilac))}
+.turnbar.all .tav{background:var(--ok)}
+.tw small{display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; color:var(--muted)}
+.tw b{font-size:clamp(22px,2.3vw,30px); line-height:1.1}
+.tmeta{grid-area:meta; font-size:14px; color:var(--muted)} .tmeta b{color:var(--text)}
+.tdots{grid-area:dots; display:flex; gap:5px; flex-wrap:wrap}
+.td{width:30px; height:30px; border-radius:9px; background:rgba(255,255,255,.07); border:1px solid var(--edge); font-family:var(--mono); font-size:12.5px; font-weight:700; color:var(--muted)}
+.td.ok{background:rgba(67,229,160,.18); border-color:rgba(67,229,160,.5); color:var(--ok)}
+.td.cur{border-color:var(--now); color:var(--text); box-shadow:0 0 12px -2px var(--now)}
+.tbtns{grid-area:btns; display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+.rdone{text-align:center; margin-top:14px} .rdone .big{font-size:56px}
+.miniturn{display:inline-flex; gap:8px; align-items:center; padding:8px 14px; border-radius:12px; background:rgba(62,232,255,.08); border:1px solid rgba(62,232,255,.35); margin-bottom:12px; font-size:18px}
+/* pickers */
+.picker{display:grid; gap:10px; margin-top:14px}
+.picked{display:flex; gap:12px; align-items:center; padding:10px 14px; border-radius:16px; background:rgba(62,232,255,.08); border:1px solid rgba(62,232,255,.35)}
+.picked .tav{width:44px; height:44px; font-size:16px; border-radius:13px}
+.picked small{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--muted)}
+.picked b{font-size:21px}
+.fu{margin-top:4px; color:var(--amber); font-weight:800; font-size:19px}
+/* vocabulary tasks */
+.vtask{display:grid; gap:12px; align-content:start}
+.vt{display:inline-flex; align-self:start; justify-self:start; gap:8px; padding:7px 14px; border-radius:99px; background:rgba(255,181,71,.12); border:1px solid rgba(255,181,71,.45); color:var(--past); font-weight:800; font-size:15px}
+.vq{font-size:clamp(20px,2vw,26px); font-weight:800; margin:0}
+.wordcard{border-radius:26px; padding:44px 30px; text-align:center; background:linear-gradient(145deg,#1A2160,#0E1338); border:1px solid var(--edge2); box-shadow:var(--shadow)}
+.wordcard small{font-family:var(--mono); letter-spacing:.2em; color:var(--muted)}
+.wordcard b{display:block; font-size:clamp(34px,4vw,56px); margin:12px 0; color:var(--now); line-height:1.1}
+.wordcard span{color:var(--past); font-weight:800}
+.hintbox{padding:12px 16px; border-radius:14px; background:rgba(255,200,87,.1); border:1px solid rgba(255,200,87,.45); font-size:19px; font-weight:700}
+.gap2{display:inline-block; min-width:120px; border-bottom:3px solid var(--lilac); color:var(--lilac)}
+.xp.okw{border-color:var(--ok); background:rgba(67,229,160,.14)}
+.postimg.tall img{max-height:62vh; width:auto; max-width:100%; margin:0 auto}
+.postimg .ans{margin-top:12px}
+.ans{padding:14px 18px; border-radius:14px; background:rgba(67,229,160,.1); border:1px solid rgba(67,229,160,.4); font-size:21px; font-weight:700}
+.ans b{color:var(--ok)}
+.peer{margin-top:12px; padding:12px 16px; border-radius:14px; background:rgba(139,92,246,.12); border:1px solid rgba(139,92,246,.45); font-size:18px}
+.why{margin-top:16px; padding:14px 18px; border-radius:14px; background:rgba(255,181,71,.08); border:1px solid rgba(255,181,71,.45); font-size:19px; display:grid; gap:8px; justify-items:start}
+.stepwho{flex:none; padding:5px 11px; border-radius:99px; background:rgba(62,232,255,.12); color:var(--now); font-weight:800; font-size:15px}
+.uabox{padding:10px 14px; border-radius:12px; background:rgba(255,214,0,.06); border:1px dashed rgba(255,214,0,.4); color:#FFE89A; font-size:17px; margin-top:8px}
+.ms.opt{border-style:dashed; opacity:.92} .ms.opt .no{background:rgba(255,200,87,.18); color:var(--amber)}
+.members{font-size:15px; color:var(--lilac); font-weight:700}
+/* story slots */
+.slots{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px}
+.slot{position:relative; padding:14px; border-radius:18px; background:var(--glass); border:1.5px solid var(--edge); min-height:118px; display:flex; flex-direction:column; gap:4px}
+.slot .no{font-family:var(--mono); color:var(--muted); font-size:13px}
+.slot small{color:var(--past); font-weight:800}
+.slot b{font-size:18px; line-height:1.3}
+.slot em{font-style:normal; font-size:12.5px; color:var(--muted); margin-top:auto}
+.slot.ok{border-color:rgba(67,229,160,.5); background:rgba(67,229,160,.06)}
+.slot.cur{border-color:var(--now); box-shadow:0 0 24px -8px var(--now)}
+/* grammar focus */
+.focus1{text-align:center; padding-top:2vh}
+.tlph{display:grid; place-items:center; gap:8px; min-height:170px; text-align:center; border-style:dashed}
+.tlq{font-size:48px; opacity:.6}
+.repair{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:22px; align-items:start}
+.rfacts{display:grid; gap:10px; margin-top:12px}
+.rfact{display:flex; gap:12px; align-items:center; font-size:clamp(20px,2.1vw,27px); font-weight:800}
+.rfact i{flex:none; font-style:normal; font-family:var(--mono); font-size:12.5px; letter-spacing:.1em; padding:5px 10px; border-radius:9px}
+.rfact i.p{background:rgba(255,181,71,.18); color:var(--past)} .rfact i.n{background:rgba(62,232,255,.15); color:var(--now)}
+.focus.spin{animation:pop .2s}
+/* present */
+.verdict{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.vbtn{padding:12px 16px; border-radius:14px; font-weight:800; font-size:18px; border:1.5px solid var(--edge2); background:var(--glass)}
+.vbtn b{font-family:var(--mono); margin-left:6px}
+.vbtn.ok{border-color:rgba(67,229,160,.5)} .vbtn.rep{border-color:rgba(255,200,87,.5)}
+/* game zone */
+.kgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.kopt{display:flex; align-items:center; gap:14px; padding:20px; border-radius:16px; font-size:clamp(18px,1.8vw,23px); font-weight:800; color:#fff; text-align:left; transition:.2s; min-height:78px}
+.kopt span{font-size:26px} .kopt b{margin-left:auto; font-family:var(--mono)}
+.kopt.k0{background:#C9264A} .kopt.k1{background:#1B63D4} .kopt.k2{background:#C89A0A} .kopt.k3{background:#25913A}
+.kopt.dim{opacity:.25} .kopt.right{box-shadow:0 0 0 4px #fff, 0 0 30px rgba(255,255,255,.4)}
+.alias{max-width:760px; margin:0 auto}
+.acard{text-align:center; padding:50px 24px; border-radius:30px; background:linear-gradient(145deg,#2A1B6E,#0E1338); border:1px solid var(--edge2); box-shadow:var(--shadow)}
+.acard small{font-family:var(--mono); letter-spacing:.18em; color:var(--muted)}
+.acard b{display:block; font-size:clamp(40px,5.4vw,70px); color:var(--now); margin:12px 0; line-height:1.05}
+.acard span{color:var(--lilac); font-size:20px}
+.ascore{display:flex; gap:12px; justify-content:center; margin-top:16px}
+.ateam{padding:12px 22px; border-radius:16px; background:var(--glass); border:1.5px solid var(--edge); font-weight:800; font-size:18px}
+.ateam b{font-family:var(--mono); margin-left:10px; color:var(--now)} .ateam.on{border-color:var(--now)}
+.bankt{overflow:auto} .bankt table{width:100%; border-collapse:collapse; font-size:17px}
+.bankt th{text-align:left; font-family:var(--mono); font-size:12.5px; letter-spacing:.12em; color:var(--muted); padding:8px 10px; border-bottom:1px solid var(--edge2)}
+.bankt td{padding:10px; border-bottom:1px dashed var(--edge); vertical-align:top}
+.bankt td b{color:var(--now)} .bankt .uacol{color:#FFE89A}
+#modalBox.wide{width:min(1100px,100%)}
+.mapsec{margin-top:14px} .mapsec>b{display:block; margin-bottom:6px}
+.mapi.off{opacity:.38}
+/* cinematic restore */
+#rfx{position:fixed; inset:0; z-index:58; display:none; place-items:center; background:radial-gradient(circle at 50% 50%,rgba(20,26,74,.96),rgba(4,6,20,.98)); transition:opacity .7s}
+#rfx.on{display:grid} #rfx.out{opacity:0}
+.rfx-in{width:min(760px,90vw); text-align:center}
+.rfx-t{font-family:var(--mono); letter-spacing:.3em; color:var(--muted); font-size:16px; margin-bottom:24px}
+.rfx-in svg{width:100%; overflow:visible}
+.rfx-in .rl{stroke:url(#rfxg); stroke-width:6; stroke-linecap:round; stroke-dasharray:600; stroke-dashoffset:600; animation:rline 2s cubic-bezier(.4,0,.2,1) forwards}
+.rfx-in .rn{fill:#0B0F2E; stroke:#3EE8FF; stroke-width:4; opacity:0; animation:rnode .45s forwards}
+.rfx-l{display:flex; justify-content:space-between; font-family:var(--mono); letter-spacing:.2em; font-size:14px; color:var(--muted); margin-top:6px}
+.rfx-n{font-family:"Anton",Impact,sans-serif; font-size:clamp(90px,14vw,190px); line-height:1; margin-top:16px; background:linear-gradient(90deg,var(--past),var(--now)); -webkit-background-clip:text; background-clip:text; color:transparent}
+@keyframes rline{to{stroke-dashoffset:0}}
+@keyframes rnode{from{opacity:0; transform:scale(.4); transform-origin:center} to{opacity:1; fill:#3EE8FF}}
+@media (max-width:1100px){ #secStrip .sec:not(.cur) em{display:none} #fctl .lb{display:none} }
+@media (max-width:860px){ .repair,.slots{grid-template-columns:1fr 1fr} .repair{grid-template-columns:1fr} .turnbar{grid-template-columns:1fr; grid-template-areas:"who" "meta" "dots" "btns"} .tbtns{justify-content:flex-start} .kgrid{grid-template-columns:1fr} .scount .lb{display:none} }
+@media (max-width:560px){
+  #nav{flex-wrap:wrap; gap:8px} #navMid{order:-1; flex-basis:100%} #fctl{flex:1; justify-content:center} .fb{padding:0 10px}
+  #secStrip .sec:not(.cur){display:none}
+  .seg.modes .lb{display:none} .slots{grid-template-columns:1fr}
+  #ftimer{bottom:150px; left:12px} #qpanel{left:12px; bottom:150px; width:calc(100vw - 24px)} #tpop{right:12px; width:calc(100vw - 24px)}
+  .names{grid-template-columns:1fr}
+}
+
+.wrap{container-type:inline-size}
+@container (max-width:1060px){ .turnbar{grid-template-columns:auto 1fr; grid-template-areas:"who meta" "who dots" "btns btns"} .tbtns{justify-content:flex-start} }
+@container (max-width:620px){ .turnbar{grid-template-columns:1fr; grid-template-areas:"who" "meta" "dots" "btns"} }
+.tools,.seg.modes{flex-wrap:nowrap}
+.meter-l span{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+@media (max-width:1560px){ #btnMap .lb, #btnLive .lb, .scount .lb{display:none} #top{gap:12px} }
+#wsTabs button{flex:1 1 0; padding:7px 2px; min-width:0}
+@media (max-width:560px){
+  #btnBack{order:1; min-width:46px; padding:10px 12px} #fctl{order:2; flex:1 1 0; min-width:0; gap:4px; flex-wrap:nowrap; justify-content:center} #btnNext{order:3; padding:10px 14px}
+  .fb{min-width:34px; height:40px; padding:0 6px; font-size:13px} #btnBack .lb{display:none} #fReset{display:none} #fctl{overflow:hidden}
+}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important}}
 </style>
 </head>
@@ -613,31 +825,45 @@ body.student #app{display:none}
       <div class="meter-l"><span>TIMELINE RESTORED</span><b id="pctTxt">0%</b></div>
       <div class="mbar" id="mbar" role="progressbar" aria-valuemin="0" aria-valuemax="100"><i id="mfill"></i></div>
     </div>
+    <div class="scount" title="Students today (1–12)"><span class="lb">Students</span><button id="sMinus" aria-label="One student less">−</button><button id="sN" title="Students today — open the class list">5</button><button id="sPlus" aria-label="One student more">+</button></div>
     <div class="tools">
-      <button class="tb" id="tchip" title="Breakout timer">⏱ <span id="tchipT">5:00</span></button>
-      <button class="tb hm" id="btnMap" title="Mission map (M)">🗺️ <span class="lb">Map</span></button>
-      <button class="tb hm" id="btnLen" title="Full / Core route">⏱ <span class="lb" id="lenLbl">Full</span></button>
+      <button class="tb" id="tchip" title="Timer: 30 s · 1 · 2 · 3 · 5 min">⏱ <span id="tchipT">Timer</span></button>
+      <button class="tb hm" id="btnMap" title="Lesson map (M)">🗺️ <span class="lb">Map</span></button>
+      <button class="tb hm" id="btnLen" title="Core / Extended route">🛣️ <span class="lb" id="lenLbl">Core</span></button>
       <button class="tb" id="btnLive" title="Live Student Mode">📡 <span class="lb">Live</span></button>
-      <button class="tb" id="btnTeacher" title="Teacher Mode (T)">🧑‍🏫 <span class="lb">Teacher</span></button>
+      <div class="seg modes" role="group" aria-label="Interface mode"><button id="btnFocus" title="Focus Mode — one screen, one focus">🎯 <span class="lb">Focus</span></button><button id="btnWS" title="Hybrid Workspace (W)">🧰 <span class="lb">Workspace</span></button></div>
       <button class="tb hm" id="btnSound" title="Sounds on / off">🔊</button>
       <button class="tb hm" id="btnFull" title="Full screen (F)">⛶</button>
     </div>
   </header>
+  <div id="tpop" role="dialog" aria-label="Timer"></div>
 
   <main id="stage"><div class="wrap" id="scene"></div></main>
 
   <footer id="nav">
-    <button class="btn sm" id="btnBack">← Back</button>
-    <div id="navInfo" aria-live="polite"></div>
-    <button class="btn sm primary" id="btnNext">Continue →</button>
+    <button class="btn sm" id="btnBack">← <span class="lb">Back</span></button>
+    <div id="navMid"><div id="secStrip"></div><div id="navInfo" aria-live="polite"></div></div>
+    <div id="fctl" role="toolbar" aria-label="Task controls">
+      <button class="fb" id="fHint" title="Hint (H)">💡 <span class="lb">Hint</span></button>
+      <button class="fb" id="fReveal" title="Reveal next step (R)">👁 <span class="lb">Reveal</span></button>
+      <button class="fb" id="fAnswer" title="Show the answer (A)">✅ <span class="lb">Answer</span></button>
+      <button class="fb" id="fSkip" title="Skip (S)">⏭ <span class="lb">Skip</span></button>
+      <button class="fb" id="fReset" title="Reset this screen">↺</button>
+      <button class="fb q hidden" id="fCCQ" title="Concept check questions">CCQ</button>
+      <button class="fb q hidden" id="fICQ" title="Instruction check questions">ICQ</button>
+    </div>
+    <button class="btn sm primary" id="btnNext">Next →</button>
   </footer>
   <div id="wmbar"><img src="../../assets/watermark.png" alt="" onerror="this.parentNode.remove()"></div>
 </div>
 
-<aside id="teacher" aria-label="Teacher panel" aria-hidden="true">
-  <div class="thd"><span>🧑‍🏫</span><b>TEACHER MODE</b><span class="grow"></span><button class="btn sm ghost" id="tClose" aria-label="Close teacher panel">✕</button></div>
-  <div id="tBody"></div>
+<aside id="ws" aria-label="Hybrid workspace (teacher only)" aria-hidden="true">
+  <div class="thd"><span>🧰</span><b>WORKSPACE</b><span class="small grow">teacher only</span><button class="btn sm ghost" id="wsClose" aria-label="Close workspace">✕</button></div>
+  <div id="wsTabs"></div><div id="wsBody"></div>
 </aside>
+<div id="qpanel" aria-live="polite"></div>
+<div id="ftimer" role="timer"><span>⏱</span><b id="ftT">5:00</b><div class="ftbar"><i id="ftBar"></i></div><button id="ftPlay" aria-label="Start or pause">▶</button><button id="ftReset" aria-label="Reset timer">↺</button><button id="ftHide" aria-label="Hide timer">✕</button></div>
+<div id="rfx" aria-hidden="true"></div>
 
 <div id="dock" aria-live="polite">
   <div class="dh"><span class="led" id="dockLed"></span><b id="dockTitle">Room</b><span class="small grow" id="dockCount">0 joined</span><button class="btn sm ghost" id="dockMin" aria-label="Collapse">▾</button></div>
@@ -676,17 +902,21 @@ function fmt(s){ return esc(s).replace(/\{(p|n)\|([^}]*)\}/g,'<span class="$1">$
 const plain = s => String(s).replace(/\{(?:p|n)\|([^}]*)\}/g,'$1').replace(/\*\*/g,'');
 
 /* ---------- 1 · state (autosaved to localStorage) ---------- */
-const KEY = 'lesson15-mixed-v1';
+const KEY = 'lesson15-mixed-v2';
 const FRESH = ()=>({
-  i:0, seen:{}, short:false, sound:true, pct:0, shownPct:0,
+  i:0, seen:{}, short:true, sound:true, pct:0, shownPct:0,
   sd:{},                        // per-scene sub-state
-  teams:3,                      // 3 by default, up to 5
-  work:{},                      // team letter -> {s1,s2,advice,title,by}
-  finals:[],                    // accepted final-challenge answers {id,text,by}
+  n:5, names:Array(12).fill(''), order:null,       // students today (1–12)
+  modes:{vocab:'solo', listen:'solo', grammar:'solo', speak:'solo', breakout:'teams'},
+  rounds:{vocab:1, listen:1, grammar:1, speak:1},
+  turns:{},                     // smart distribution: key -> {done:{item:{by}}, skip:{}, cur}
+  ws:false, wsTab:'notes', tHide:false,
+  work:{},                      // group number -> {s1,s2,advice,title,by}
+  finals:[],                    // accepted final-challenge answers {text,by}
   room:String(1000+Math.floor(Math.random()*9000))
 });
 let S = FRESH();
-try{ const raw=localStorage.getItem(KEY); if(raw) S = Object.assign(FRESH(), JSON.parse(raw)); }catch(e){}
+try{ const raw=localStorage.getItem(KEY); if(raw){ const f=FRESH(), o=JSON.parse(raw); S=Object.assign(f,o); S.modes=Object.assign(f.modes,o.modes); S.rounds=Object.assign(FRESH().rounds,o.rounds); } }catch(e){}
 let saveT=null;
 function save(){ clearTimeout(saveT); saveT=setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} },120); }
 const sd = id => (S.sd[id] = S.sd[id] || {});
@@ -895,7 +1125,158 @@ const LESSON = {
   today:['reviewed 10 useful expressions','listened to Mia and Leo','learned Mixed Conditionals','connected the past and the present','shared your own ideas','fixed broken timelines with your team'],
   skills:[['📚','Vocabulary'],['🎧','Listening'],['🧩','Grammar'],['🗣️','Speaking'],['🤝','Teamwork']]
 };
-const TEAMS = ()=> LESSON.teams.slice(0, S.teams);
+/* breakout groups come from the student count + PAIRS / TEAMS mode; characters repeat after 5 */
+function TEAMS(){ const U=units(S.modes.breakout), C=LESSON.teams; return U.map((u,k)=>{ const b=C[k%C.length], rep=Math.floor(k/C.length); return Object.assign({},b,{L:String(k+1), members:u, name:b.name+(rep?' ('+(rep+1)+')':''), extra:k>=3}); }); }
+</script>
+<script>
+/* ============================================================
+   ADVANCED KIDS 2.0 · extra lesson content (edit texts here)
+   VOC   – vocabulary task bank (N × rounds, one item per student)
+   BANK  – Vocabulary Bank / Alias word bank (EN meaning + UA)
+   LQ    – listening questions (first 5 = the original questions)
+   STORY – Build the Story events
+   RP    – Repair the Timeline situations
+   SPK   – speaking bank (first 4 = the original questions)
+   KAHOOT – Game Zone question bank
+   ============================================================ */
+const BANK = [
+  {w:'take it down', m:'to delete a post, photo or video online', ua:'видалити (допис, фото, відео)', ex:'Mia didn’t like the video, so she took it down.'},
+  {w:'blow it out of proportion', m:'to make a small problem seem much bigger', ua:'перебільшувати, роздувати з мухи слона', ex:'It was one comment. Don’t blow it out of proportion.'},
+  {w:'be into something', m:'to really like something', ua:'захоплюватися чимось', ex:'I’m really into photography.'},
+  {w:'check out', m:'to look at something because it seems interesting', ua:'подивитися, заціни́ти', ex:'Check out this new game!'},
+  {w:'live up to the hype', m:'to be as good as people say', ua:'виправдати очікування (ажіотаж)', ex:'The film didn’t live up to the hype.'},
+  {w:'get over it', m:'to stop feeling sad or upset about something', ua:'пережити, оговтатися', ex:'It took Mia weeks to get over it.'},
+  {w:'go for it', m:'to decide to try something', ua:'наважитися, «дій!»', ex:'You want to sing? Go for it!'},
+  {w:'be all about something', m:'to be mainly about one thing', ua:'бути повністю про щось', ex:'His channel is all about football.'},
+  {w:'look up to', m:'to admire and respect someone', ua:'рівнятися на когось, захоплюватися кимось', ex:'I look up to my older sister.'},
+  {w:'back off', m:'to stop pushing someone; give them space', ua:'відчепитися, дати спокій', ex:'Back off! I need some space.'}
+];
+const VTYPE = {choose:['🎯','Choose the expression','Which expression fits?'], explain:['💬','Explain it simply','What does it mean? Say it in simple English.'],
+  complete:['✍️','Complete the sentence','Say the missing expression.'], react:['💭','React to the post','Reply to the post with one expression.'], own:['🌱','Give your own example','Make your own sentence with this expression.']};
+const VOC = [
+  /* round 1 for 5 students = the five Mia’s Feed posts */
+  ...LESSON.feed.map(p=>({type:'choose', img:p.img, alt:p.u+': '+p.t, a:p.a, model:p.model, hint:'Think: '+({ 'check out':'look at something new', 'live up to the hype':'not as good as people said', 'back off':'give me space', 'blow it out of proportion':'it’s not that serious', 'look up to':'admire someone' }[p.a])})),
+  {type:'complete', a:'take it down', t:'Mia’s old video was embarrassing, so she decided to ______.', model:'…so she decided to **take it down**.', hint:'= delete it'},
+  {type:'explain', a:'be into', w:'be into something', model:'It means you **really like** something. “I’m into photography.”', hint:'Think of a hobby you love.'},
+  {type:'react', a:'get over it', post:{u:'ben.drives', e:'🚗', t:'Failed my driving test today 😭 never trying again.'}, model:'“Don’t worry, you’ll **get over it**. Try again!”', hint:'get over it / go for it'},
+  {type:'own', a:'go for it', w:'go for it', model:'“My friend wanted to join the band, so I said: **Go for it!**”', hint:'Someone wants to try something new…'},
+  {type:'choose', a:'be all about', t:'My cousin’s channel is only about likes, followers and views.', model:'His channel **is all about** likes.', hint:'only about one thing'},
+  {type:'explain', a:'look up to', w:'look up to', model:'It means you **admire and respect** someone.', hint:'a person you want to be like'},
+  {type:'react', a:'check out', post:{u:'leo.makes.videos', e:'leo', t:'Everyone says the new burger place is amazing. Should I try it? 🍔'}, model:'“Yes, **check it out**! But it might not **live up to the hype**.”', hint:'check out / live up to the hype'},
+  {type:'complete', a:'back off', t:'Stop following me and asking questions! ______!', model:'**Back off!**', hint:'= give me space'},
+  {type:'explain', a:'blow it out of proportion', w:'blow it out of proportion', model:'It means you make a **small problem seem huge**.', hint:'one small comment → “my life is over!”'},
+  {type:'own', a:'check out', w:'check out', model:'“You should **check out** this new music app.”', hint:'a game, film, place or app'},
+  {type:'choose', a:'live up to the hype', t:'I watched the series everyone was talking about. Honestly? Boring.', model:'It didn’t **live up to the hype**.', hint:'not as good as people said'},
+  {type:'react', a:'blow it out of proportion', post:{u:'mia.moves', e:'mia', t:'Someone wrote a mean comment on my photo 😔'}, model:'“It’s one comment — don’t **blow it out of proportion**. You’ll **get over it**.”', hint:'blow it out of proportion / get over it / take it down'},
+  {type:'complete', a:'look up to', t:'I ______ my older brother — he’s kind and really good at football.', model:'I **look up to** my older brother.', hint:'= admire'},
+  {type:'explain', a:'take it down', w:'take it down', model:'It means you **delete** a post or photo.', hint:'What did Mia do with her video?'},
+  {type:'own', a:'be into', w:'be into something', model:'“I’m **into** K-pop and drawing.”', hint:'your hobby'},
+  {type:'choose', a:'get over it', t:'He failed the audition last month, but now he feels OK again.', model:'He **got over it**.', hint:'stop feeling sad'},
+  {type:'explain', a:'back off', w:'back off', model:'It means **stop pushing** someone and give them space.', hint:'“Give me space!”'},
+  {type:'react', a:'go for it', post:{u:'art.by.sam', e:'🎨', t:'Thinking about entering the school talent show… 😬'}, model:'“**Go for it!** You’re amazing.”', hint:'encourage her!'},
+  {type:'own', a:'be all about', w:'be all about something', model:'“My weekend **is all about** football.”', hint:'something that is mainly about one thing'}
+];
+/* listening: the first three original multiple-choice questions stay, open questions are added */
+const LQ = [
+  Object.assign({}, LESSON.listenQ[0]),
+  Object.assign({}, LESSON.listenQ[1], {q:'What happened after she posted it?'}),
+  {q:'How did Mia react?', a:'She blew it out of proportion — she thought everyone at school was laughing at her.', quote:'“I completely blew it out of proportion.”'},
+  {q:'Did she delete the video?', a:'Yes. Eventually she took it down.', quote:'“Did you take it down?” — “Eventually, yes.”'},
+  Object.assign({}, LESSON.listenQ[2], {q:'How is Mia different now?'}),
+  {q:'What was the video about?', a:'Mia trying a new dance challenge.', quote:'“It was a video of me trying a new dance challenge.”'},
+  {q:'Did people like the video at first?', a:'Yes, at first people seemed to love it.', quote:'“At first, people seemed to love it.”'},
+  {q:'How long did Mia worry about it?', a:'For weeks.', quote:'“I spent weeks worrying about it.”'},
+  {q:'What does Leo remember?', a:'He remembers the dance trend.', quote:'“I think I remember that trend.”'},
+  {q:'Is Mia a very confident person?', a:'Not really. If she were more confident, she wouldn’t have worried so much.', quote:'“If I were more confident…”'},
+  {q:'What good thing came from it?', a:'She is more careful online now.', quote:'“Maybe something good came from it after all.”'},
+  {q:'Who shared the video?', a:'Someone on another account — we don’t know who.', quote:'“Someone shared it on another account.”'}
+];
+LQ.forEach((q,i)=>{ if(q.o && !q.a && q.a!==0) q.a=0; });
+const PREDICT = {q:'What do you think went wrong?', ideas:['People laughed at the dance.','Someone shared it.','It got mean comments.','Her parents saw it.'],
+  follow:['Why do you think so?','Has this happened to someone you know?','Who agrees?']};
+const STORY = ['Mia tried a new dance challenge.','Her friends told her to go for it.','She posted the video.','At first, people loved it.','Someone shared it and made fun of her.','She blew it out of proportion and worried for weeks.','Eventually, she took it down.','Now she is careful online.'];
+const LINKERS = ['First,','Then','After that,','At first,','But then','So','In the end,','Now'];
+/* Repair the timeline: p = past fact, n = now / general fact */
+const RP = [
+  {d:'pn', p:'I didn’t charge my phone last night.', n:'My battery is dead now.', m:'If I {p|had charged my phone last night}, my battery {n|wouldn’t be dead now}.', tl:[['🔌','didn’t charge'],['🪫','dead battery now']]},
+  {d:'np', n:'Leo is very curious.', p:'He checked the strange account yesterday.', m:'If Leo {n|weren’t so curious}, he {p|wouldn’t have checked the account}.', tl:[['🔍','checked the account'],['🧐','very curious']]},
+  {d:'pn', p:'Max didn’t do his homework yesterday.', n:'He’s in trouble with the teacher now.', m:'If Max {p|had done his homework}, he {n|wouldn’t be in trouble now}.', tl:[['📓','no homework'],['😬','in trouble now']]},
+  {d:'np', n:'Sophie is very shy.', p:'She didn’t speak at the class meeting last week.', m:'If Sophie {n|weren’t so shy}, she {p|would have spoken at the meeting}.', tl:[['🤐','didn’t speak'],['🙈','very shy']]},
+  {d:'pn', p:'Mia posted the dance video two years ago.', n:'She is careful online now.', m:'If Mia {p|hadn’t posted the video}, she {n|wouldn’t be so careful online now}.', tl:[['📹','posted the video'],['🛡️','careful now']]},
+  {d:'np', n:'Dan doesn’t like vegetables.', p:'He didn’t eat the salad at lunch.', m:'If Dan {n|liked vegetables}, he {p|would have eaten the salad}.', tl:[['🥗','didn’t eat salad'],['🙅','doesn’t like veg']]},
+  {d:'pn', p:'Anna missed the bus this morning.', n:'She is late for school now.', m:'If Anna {p|hadn’t missed the bus}, she {n|wouldn’t be late now}.', tl:[['🚌','missed the bus'],['⏰','late now']]},
+  {d:'np', n:'Leo isn’t good at maths.', p:'He failed yesterday’s test.', m:'If Leo {n|were good at maths}, he {p|wouldn’t have failed the test}.', tl:[['📉','failed the test'],['➗','not good at maths']]},
+  {d:'pn', p:'I ate three burgers at lunch.', n:'I feel sick now.', m:'If I {p|hadn’t eaten three burgers}, I {n|wouldn’t feel sick now}.', tl:[['🍔','three burgers'],['🤢','sick now']]},
+  {d:'np', n:'Kate is afraid of dogs.', p:'She didn’t visit her friend’s house on Saturday.', m:'If Kate {n|weren’t afraid of dogs}, she {p|would have visited her friend}.', tl:[['🏠','didn’t visit'],['🐕','afraid of dogs']]},
+  {d:'pn', p:'Alex didn’t save his game.', n:'He has to start the level again now.', m:'If Alex {p|had saved his game}, he {n|wouldn’t have to start again now}.', tl:[['💾','didn’t save'],['🔁','start again now']]},
+  {d:'np', n:'Mia doesn’t trust strangers online.', p:'She didn’t accept the friend request.', m:'If Mia {n|trusted strangers online}, she {p|would have accepted the request}.', tl:[['🚫','didn’t accept'],['🔒','doesn’t trust strangers']]},
+  {d:'pn', p:'Leo didn’t practise the guitar.', n:'He isn’t ready for the concert now.', m:'If Leo {p|had practised the guitar}, he {n|would be ready for the concert now}.', tl:[['🎸','didn’t practise'],['😰','not ready now']]},
+  {d:'np', n:'Sophie is very busy.', p:'She didn’t come to the party last night.', m:'If Sophie {n|weren’t so busy}, she {p|would have come to the party}.', tl:[['🎉','missed the party'],['📅','very busy']]},
+  {d:'pn', p:'I forgot my keys this morning.', n:'I’m locked out now.', m:'If I {p|hadn’t forgotten my keys}, I {n|wouldn’t be locked out now}.', tl:[['🔑','forgot keys'],['🚪','locked out now']]},
+  {d:'np', n:'Max is very competitive.', p:'He shouted at his teammate yesterday.', m:'If Max {n|weren’t so competitive}, he {p|wouldn’t have shouted at his teammate}.', tl:[['📢','shouted'],['🏆','very competitive']]},
+  {d:'pn', p:'Dan broke his leg last month.', n:'He isn’t in the football team now.', m:'If Dan {p|hadn’t broken his leg}, he {n|would be in the team now}.', tl:[['🦴','broke his leg'],['⚽','not in the team']]},
+  {d:'np', n:'Anna doesn’t like scary films.', p:'She left the cinema early on Friday.', m:'If Anna {n|liked scary films}, she {p|wouldn’t have left the cinema early}.', tl:[['🍿','left early'],['👻','hates scary films']]},
+  {d:'pn', p:'Leo moved to a new city last year.', n:'He doesn’t see his old friends now.', m:'If Leo {p|hadn’t moved}, he {n|would see his old friends now}.', tl:[['📦','moved city'],['👋','no old friends now']]},
+  {d:'np', n:'Mia is very organised.', p:'She didn’t forget her project yesterday.', m:'If Mia {n|weren’t so organised}, she {p|would have forgotten her project}.', tl:[['📁','didn’t forget'],['🗂️','very organised']]},
+  {d:'pn', p:'I didn’t study for the test.', n:'I don’t know the answers now.', m:'If I {p|had studied}, I {n|would know the answers now}.', tl:[['📚','didn’t study'],['❓','don’t know now']]},
+  {d:'np', n:'Alex loves gaming.', p:'He played until 3 AM last night.', m:'If Alex {n|didn’t love gaming so much}, he {p|wouldn’t have played until 3 AM}.', tl:[['🌙','played till 3 AM'],['🎮','loves gaming']]},
+  {d:'pn', p:'Kate learned Spanish as a child.', n:'She understands the song now.', m:'If Kate {p|hadn’t learned Spanish}, she {n|wouldn’t understand the song now}.', tl:[['🇪🇸','learned Spanish'],['🎵','understands now']]},
+  {d:'np', n:'Sophie isn’t a confident swimmer.', p:'She didn’t jump into the deep pool on holiday.', m:'If Sophie {n|were a confident swimmer}, she {p|would have jumped into the pool}.', tl:[['🏊','didn’t jump'],['😟','not confident']]}
+];
+/* speaking bank: the four original questions first, then extra questions for bigger groups / round 2 */
+const SPK = LESSON.speak.map(q=>Object.assign({},q)).concat([
+  {dir:'pn', en:'If you had been born in another country, how would your life be different now?', help:'Start: If I had been born in ___, I would ___ now.', ex:'If I had been born in Japan, I would speak Japanese now.', ua:'Якби ти народився/народилася в іншій країні, яким було б твоє життя зараз?'},
+  {dir:'np', en:'If you were braver, what would you have done last summer?', help:'Start: If I were braver, I would have ___ last summer.', ex:'If I were braver, I would have tried surfing.', ua:'Якби ти був/була сміливішим(-ою), що б ти зробив/зробила минулого літа?'},
+  {dir:'pn', en:'If you had learned a new skill last year, what would you be good at now?', help:'Start: If I had learned ___, I would be good at ___ now.', ex:'If I had learned to cook last year, I would be good at it now.', ua:'Якби ти минулого року навчився/навчилася чогось нового, у чому ти був/була б добрим(-ою) зараз?'},
+  {dir:'np', en:'If you liked mornings, what would you have done differently today?', help:'Start: If I liked mornings, I would have ___ today.', ex:'If I liked mornings, I would have got up earlier today.', ua:'Якби ти любив/любила ранки, що б ти зробив/зробила інакше сьогодні?'},
+  {dir:'pn', en:'If you hadn’t joined this English group, what would be different now?', help:'Start: If I hadn’t joined this group, I wouldn’t ___ now.', ex:'If I hadn’t joined this group, I wouldn’t know these people.', ua:'Якби ти не прийшов/прийшла в цю групу, що було б інакше зараз?'},
+  {dir:'np', en:'If you were more organised, what would you have done differently last week?', help:'Start: If I were more organised, I wouldn’t have ___.', ex:'If I were more organised, I wouldn’t have forgotten my PE kit.', ua:'Якби ти був/була організованішим(-ою), що б ти зробив/зробила інакше минулого тижня?'},
+  {dir:'pn', en:'If you had chosen a different hobby as a child, what would you do in your free time now?', help:'Start: If I had chosen ___, I would ___ now.', ex:'If I had chosen dancing, I would dance every weekend now.', ua:'Якби в дитинстві ти обрав/обрала інше хобі, що б ти робив/робила у вільний час зараз?'},
+  {dir:'np', en:'If you were older, what would you have done differently this year?', help:'Start: If I were older, I would have ___ this year.', ex:'If I were older, I would have travelled alone.', ua:'Якби ти був/була старшим(-ою), що б ти зробив/зробила інакше цього року?'},
+  {dir:'pn', en:'If you had gone to bed earlier last night, how would you feel now?', help:'Start: If I had gone to bed earlier, I would feel ___ now.', ex:'If I had gone to bed earlier, I would feel less tired now.', ua:'Якби ти вчора ліг/лягла спати раніше, як би ти почувався/почувалася зараз?'},
+  {dir:'np', en:'If you didn’t have a phone, what would you have done yesterday evening?', help:'Start: If I didn’t have a phone, I would have ___.', ex:'If I didn’t have a phone, I would have read a book.', ua:'Якби в тебе не було телефона, що б ти робив/робила вчора ввечері?'},
+  {dir:'pn', en:'If you had never played video games, how would your life be different now?', help:'Start: If I had never played games, I would ___ now.', ex:'If I had never played games, I would have more free time now.', ua:'Якби ти ніколи не грав/не грала у відеоігри, яким було б твоє життя зараз?'},
+  {dir:'np', en:'If you were more patient, how would you have reacted to a problem this month?', help:'Start: If I were more patient, I wouldn’t have ___.', ex:'If I were more patient, I wouldn’t have argued with my brother.', ua:'Якби ти був/була терплячішим(-ою), як би ти відреагував/відреагувала на проблему цього місяця?'},
+  {dir:'pn', en:'If you had met your favourite celebrity last year, how would you feel now?', help:'Start: If I had met ___, I would feel ___ now.', ex:'If I had met my favourite singer, I would still be excited now.', ua:'Якби ти минулого року зустрів/зустріла улюблену знаменитість, як би ти почувався/почувалася зараз?'},
+  {dir:'np', en:'If you were less shy, what would you have said to someone new this year?', help:'Start: If I were less shy, I would have ___.', ex:'If I were less shy, I would have talked to the new student.', ua:'Якби ти був/була менш сором’язливим(-ою), що б ти сказав/сказала комусь новому цього року?'},
+  {dir:'pn', en:'If you had saved all your pocket money last year, what would you buy now?', help:'Start: If I had saved my money, I would buy ___ now.', ex:'If I had saved my money, I would buy a new bike now.', ua:'Якби ти минулого року відкладав/відкладала всі кишенькові гроші, що б ти купив/купила зараз?'},
+  {dir:'np', en:'If you were a famous YouTuber, what video would you have posted yesterday?', help:'Start: If I were a famous YouTuber, I would have posted ___.', ex:'If I were a famous YouTuber, I would have posted a gaming video.', ua:'Якби ти був/була відомим(-ою) ютубером, яке відео ти б виклав/виклала вчора?'},
+  {dir:'pn', en:'If your family had moved to another city, what would be different now?', help:'Start: If we had moved to ___, I would ___ now.', ex:'If we had moved to Lviv, I would go to a different school now.', ua:'Якби твоя сім’я переїхала в інше місто, що було б інакше зараз?'},
+  {dir:'np', en:'If you were really good at singing, what would you have done at the last school concert?', help:'Start: If I were good at singing, I would have ___.', ex:'If I were good at singing, I would have sung a solo.', ua:'Якби ти дуже добре співав/співала, що б ти зробив/зробила на останньому шкільному концерті?'},
+  {dir:'pn', en:'If you hadn’t seen a funny video yesterday, would you be in a different mood now?', help:'Start: If I hadn’t seen ___, I would / wouldn’t be ___ now.', ex:'If I hadn’t seen that video, I wouldn’t be in such a good mood now.', ua:'Якби ти вчора не побачив/не побачила смішне відео, чи був би в тебе інший настрій зараз?'},
+  {dir:'np', en:'If you loved sport, what would you have done last weekend?', help:'Start: If I loved sport, I would have ___ last weekend.', ex:'If I loved sport, I would have played football all weekend.', ua:'Якби ти любив/любила спорт, що б ти робив/робила минулих вихідних?'}
+]);
+SPK[0].ua='Якби ти почав/почала одне зі своїх хобі раніше, яким би було твоє життя зараз?';
+SPK[1].ua='Якби ти був/була впевненішим(-ою), що б ти зробив/зробила інакше минулого року?';
+SPK[2].ua='Якби ти не зустрів/не зустріла одного з найкращих друзів, що було б інакше зараз?';
+SPK[3].ua='Якби ти менше цікавився/цікавилася технологіями, що б ти зробив/зробила інакше цього тижня?';
+const PEER = ['Why?','What happened?','Would you change it now?','How would that help you?'];
+const WARM_FOLLOW = ['Why?','What would change?','Would you really change it?'];
+
+/* breakout: updated mission (title stays as an optional creative step) */
+LESSON.mission2 = [
+  {k:'p', en:'Create one Past → Present sentence.', help:'A past action → how things are NOW.', ua:'Складіть одне речення «минуле → теперішнє».', f:[['p','If + had + V3'],['n','would + verb']]},
+  {k:'n', en:'Create one Present → Past sentence.', help:'Personality / situation → what happened.', ua:'Складіть одне речення «теперішнє → минуле».', f:[['n','If + Past Simple'],['p','would have + V3']]},
+  {k:'',  en:'Decide what your character should learn.', help:'One short piece of advice or a conclusion.', ua:'Вирішіть, чого має навчитися ваш персонаж (порада/висновок).'},
+  {k:'o', en:'OPTIONAL: Give the story a funny title.', help:'Only if you have time!', ua:'Необов’язково: придумайте смішну назву історії.'}
+];
+LESSON.missionUA = 'У вас 5 хвилин. Говоріть усно — писати не обов’язково. Потім одна людина презентує вашу історію (45–60 секунд).';
+LESSON.presentQ2 = ['WHO?','WHAT HAPPENED?','MIXED CONDITIONAL #1','MIXED CONDITIONAL #2','YOUR VERDICT'];
+LESSON.today = ['reviewed useful expressions','listened to Mia and Leo','discovered Mixed Conditionals','connected past and present','spoke about your own life','repaired timelines in teams'];
+
+const KAHOOT = [
+  {k:'Grammar', q:'If I had studied, I ___ the answer now.', o:['would know','would have known','will know','knew'], a:0},
+  {k:'Grammar', q:'If Leo weren’t so curious, he ___ the strange account yesterday.', o:['wouldn’t check','wouldn’t have checked','won’t check','didn’t check'], a:1},
+  {k:'Grammar', q:'If Mia hadn’t posted the video, she ___ so careful online now.', o:['wouldn’t be','wouldn’t have been','isn’t','won’t be'], a:0},
+  {k:'Grammar', q:'Which sentence goes NOW → PAST?', o:['If I were braver, I would have sung at the concert.','If I had slept, I wouldn’t be tired.','If I study, I will pass.','If I had known, I would have come.'], a:0},
+  {k:'Vocabulary', q:'“Stop telling me what to do. Give me space!” =', o:['Back off!','Check it out!','Go for it!','Look up to me!'], a:0},
+  {k:'Vocabulary', q:'The film was OK, but it didn’t ___ the hype.', o:['live up to','get over','take down','back off'], a:0},
+  {k:'Vocabulary', q:'To admire and respect someone = to ___ someone.', o:['look up to','check out','take down','be into'], a:0},
+  {k:'Meaning', q:'“If I hadn’t missed the bus, I wouldn’t be late now.” Did I miss the bus?', o:['Yes','No','Maybe','Tomorrow'], a:0},
+  {k:'Meaning', q:'“If Sophie weren’t so shy, she would have entered.” Is Sophie shy?', o:['Yes, she is','No, she isn’t','Only in the past','We don’t know'], a:0},
+  {k:'Fun', q:'What was in Mia’s old video?', o:['A dance challenge','A cooking show','Her cat','A gaming stream'], a:0}
+];
+const ALIAS_URL = 'https://odissey1505.github.io/alias-game/';
 </script>
 <script>
 /* ---------- 5 · components ---------- */
@@ -951,7 +1332,7 @@ function quiz(key, qs, o={}){
       const cls = solved ? (i===Q.a?'right':'locked') : wrong.includes(i)?'wrong locked':'';
       const sh = isFlash(key,i)?' shake':'';
       return `<button class="opt ${cls}${sh}${solved&&i===Q.a&&isFlash(key+'ok')?' pop':''}" data-qo="${i}"><span class="L">${LET[i]}</span><span>${fmt(t)}</span>${live&&tot?`<span class="vc">${c[i]} 👤</span><span class="vbar" style="width:${Math.round(c[i]/tot*100)}%"></span>`:''}</button>`;}).join('')}</div>
-    ${solved&&Q.ex?`<div class="expl">✓ ${fmt(Q.ex)}</div>`:''}
+    ${solved&&Q.ex?(o.why&&!(st.why||{})[qi]?`<div class="why pop"><b>🗣 EXPLAIN WHY${o.who?' · '+esc(o.who(qi)):''}</b><div>“Past → Present or Present → Past?” — one short sentence.</div><button class="btn sm" data-qwhy>Show explanation</button></div>`:`<div class="expl">✓ ${fmt(Q.ex)}</div>`):''}
     <div class="row mt">
       ${!solved?`<button class="btn sm ghost" data-qrev>👁 Reveal answer</button>`:''}
       ${wrong.length&&!solved?`<button class="btn sm ghost" data-qtry>↺ Try again</button>`:''}
@@ -971,6 +1352,7 @@ function bindQuiz(el, key, qs, onAll){
   const tr=$('[data-qtry]',box); if(tr) tr.onclick=()=>{ st.wrong[qi]=[]; save(); draw(); };
   const nx=$('[data-qnext]',box); if(nx) nx.onclick=()=>{ st.qi=qi+1; save(); draw(); };
   const pv=$('[data-qprev]',box); if(pv) pv.onclick=()=>{ st.qi=qi-1; save(); draw(); };
+  const wy=$('[data-qwhy]',box); if(wy) wy.onclick=()=>{ (st.why=st.why||{})[qi]=1; SFX.pop(); save(); draw(); };
   return solve;
 }
 const quizTask = (key, qs)=>{ const st=sd(key), qi=st.qi||0, Q=qs[qi]; return {id:key+'-'+qi, kind:'choice', q:plain(Q.q), opts:Q.o.map(plain), lock:!!(st.ok||{})[qi]}; };
@@ -1011,32 +1393,179 @@ const PLAYER = {
     const cl=$('.line.cur'); if(cl) cl.scrollIntoView({block:'nearest',behavior:'smooth'});
   }
 };
+</script>
+<script>
+/* ============================================================
+   5b · ADVANCED KIDS 2.0 ENGINE
+   students · groups (solo / pairs / teams) · smart turn distribution
+   (N × rounds, finished turns are never redistributed) · pickers ·
+   reusable timer · CCQ / ICQ
+   ============================================================ */
+const SECTIONS=[['story','Story','📱'],['vocab','Vocabulary','📚'],['listen','Listening','🎧'],['grammar','Grammar','🧩'],['speak','Speaking','🗣️'],['breakout','Breakout','🤝'],['final','Final','🏁']];
+const PRACTICE={vocab:'Vocabulary', listen:'Listening', grammar:'Grammar', speak:'Speaking', breakout:'Breakout'};
+const NAME = i => (((S.names||[])[i])||'').trim() || 'Student '+(i+1);
+function order(){ let o=(S.order||[]).filter(i=>i<S.n); for(let i=0;i<S.n;i++) if(!o.includes(i)) o.push(i); S.order=o; return o; }
+/* groups: solo = 1 student · pairs = 2(+1) · teams = about 3 */
+function units(mode){
+  const o=order(), n=o.length;
+  if(mode==='solo'||n<=1) return o.map(i=>[i]);
+  const g = mode==='pairs' ? Math.max(1,Math.floor(n/2)) : (n<=3?1:Math.max(2,Math.round(n/3)));
+  const out=Array.from({length:g},()=>[]); o.forEach((s,k)=>out[k%g].push(s)); return out;
+}
+const ulabel = u => u.map(NAME).join(' & ');
+const initials = u => u.map(i=>NAME(i).replace(/^Student /,'S')[0]+((NAME(i).match(/\d+$/)||[''])[0])).join('');
+/* the distribution: items 0..N×R-1, finished turns keep their owner,
+   unfinished turns go to the unit with the fewest turns (rotating) */
+function plan(key, sec, bankLen, roundsOverride){
+  const mode=S.modes[sec]||'solo', U=units(mode), N=U.length, labels=U.map(ulabel);
+  const R=roundsOverride || S.rounds[sec] || 1, total=Math.min(bankLen, N*R);
+  const T=S.turns[key]=S.turns[key]||{done:{}, skip:{}, cur:null};
+  const cnt=labels.map(()=>0);
+  Object.values(T.done).forEach(d=>{ const k=labels.indexOf(d.by); if(k>=0) cnt[k]++; });
+  const doneIdx=Object.keys(T.done).map(Number);
+  const maxI=Math.max(total, ...doneIdx.map(x=>x+1), 0);
+  const items=[]; let rr=0;
+  for(let i=0;i<maxI;i++){
+    if(T.done[i]){ items.push({i, by:T.done[i].by, done:true}); continue; }
+    if(i>=total) continue;
+    const cands=U.map((_,k)=>k).sort((a,b)=>cnt[a]-cnt[b] || ((a-rr+N)%N)-((b-rr+N)%N));
+    const k=cands[(T.skip[i]||0)%N]; cnt[k]++; rr=(k+1)%N;
+    items.push({i, unit:k, by:labels[k], u:U[k], done:false});
+  }
+  const left=items.filter(x=>!x.done).length;
+  let curI=T.cur; if(curI==null || !items.some(x=>x.i===curI)) curI=(items.find(x=>!x.done)||{}).i;
+  const it=items.find(x=>x.i===curI)||null;
+  const pos=it?items.indexOf(it):0;
+  return {key, sec, mode, U, N, R, total, items, T, it, left, bankLen, maxR:Math.max(1,Math.floor(bankLen/N)), round:it?Math.floor(pos/N)+1:R, pos};
+}
+function turnDone(P){ const it=P.it; if(!it) return; if(!it.done) P.T.done[it.i]={by:it.by}; const nx=P.items.find(x=>!x.done && x.i>it.i) || P.items.find(x=>!x.done && x.i!==it.i); P.T.cur=nx?nx.i:null; SFX.ok(); save(); }
+function turnSkip(P){ const it=P.it; if(!it||it.done) return; P.T.skip[it.i]=(P.T.skip[it.i]||0)+1; SFX.pop(); save(); toast('Turn passed to the next student'); }
+function shuffleOrder(){ const o=order().slice(); for(let i=o.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [o[i],o[j]]=[o[j],o[i]]; } S.order=o; save(); toast('🔀 New order: '+o.map(NAME).join(' → ')); }
+const turnName = it => !it ? '' : (it.done ? '✓ '+it.by : (it.u&&it.u.length>1 ? it.by : it.by+'’s turn'));
 
-/* ---------- breakout timer (keeps running between scenes) ---------- */
+/* the turn bar shown in every student-led task */
+function turnBar(P, o={}){
+  const it=P.it, all=P.left===0;
+  const who = all ? '✓ Everyone has had a turn' : (it&&it.done ? it.by+' · done' : (it?turnName(it):''));
+  const unit = P.mode==='solo'?'students':(P.mode==='pairs'?'pairs':'teams');
+  return `<div class="turnbar ${all?'all':''}">
+    <div class="tw"><span class="tav">${all?'✓':(it&&it.u?esc(initials(it.u)):'?')}</span><div><small>${all?'ROUND COMPLETE':(it&&it.u&&it.u.length>1?'YOUR TURN':'TURN')}</small><b>${esc(who)}</b></div></div>
+    <div class="tmeta"><b>${S.n} student${S.n>1?'s':''}${P.mode!=='solo'?' · '+P.N+' '+unit:''}</b> — Round ${Math.min(P.round,P.R)} of ${P.R} · ${P.items.filter(x=>x.done).length}/${P.total} turns</div>
+    <div class="tdots">${P.items.map(x=>`<button class="td ${x.done?'ok':''} ${it&&x.i===it.i?'cur':''}" data-ti="${x.i}" title="${esc(x.by)}">${x.done?'✓':P.items.indexOf(x)+1}</button>`).join('')}</div>
+    <div class="tbtns">
+      ${!all&&it&&!it.done?`<button class="btn sm primary" data-tnext>✓ Next student</button><button class="btn sm ghost" data-tskip title="Give this turn to another student">⏭ Skip student</button>`:''}
+      ${it&&it.done&&!all?`<button class="btn sm" data-tgo>→ Next open turn</button>`:''}
+      <button class="btn sm ghost icon" data-tshuf title="Shuffle the order">🔀</button>
+      ${o.round2!==false && P.R<2 && P.bankLen>=P.N*2 ?`<button class="btn sm ghost" data-tr2 title="Optional extra practice">＋ Round 2 <span class="badge skip">opt</span></button>`:''}
+      ${P.R>1?`<button class="btn sm ghost" data-tr1 title="Back to one round">− Round 2</button>`:''}
+    </div></div>`;
+}
+function bindTurn(el, P){
+  const box=$('.turnbar',el); if(!box) return;
+  $$('[data-ti]',box).forEach(b=>b.onclick=()=>{ P.T.cur=+b.dataset.ti; save(); draw(); });
+  const n=$('[data-tnext]',box); if(n) n.onclick=()=>{ turnDone(P); draw(); };
+  const s=$('[data-tskip]',box); if(s) s.onclick=()=>{ turnSkip(P); draw(); };
+  const g=$('[data-tgo]',box); if(g) g.onclick=()=>{ P.T.cur=null; save(); draw(); };
+  $('[data-tshuf]',box).onclick=()=>{ shuffleOrder(); draw(); };
+  const r2=$('[data-tr2]',box); if(r2) r2.onclick=()=>{ S.rounds[P.sec]=2; save(); toast('Round 2 added — '+P.N*2+' turns'); draw(); };
+  const r1=$('[data-tr1]',box); if(r1) r1.onclick=()=>{ S.rounds[P.sec]=1; save(); draw(); };
+  CUR.next=()=>{ if(P.it&&!P.it.done){ turnDone(P); draw(); return true; } return false; };
+  CUR.skip=()=>{ if(P.it&&!P.it.done){ turnSkip(P); draw(); } };
+}
+/* SOLO / PAIRS / TEAMS */
+function modeSwitch(sec, only){
+  const m=S.modes[sec], list=only||['solo','pairs','teams'];
+  return `<div class="seg" role="group" aria-label="${PRACTICE[sec]} mode">${list.map(x=>`<button class="${m===x?'on':''}" data-mode="${sec}:${x}">${{solo:'👤 Solo',pairs:'👥 Pairs',teams:'🫂 Teams'}[x]}</button>`).join('')}</div>`;
+}
+function bindModes(el){ $$('[data-mode]',el).forEach(b=>b.onclick=()=>{ const [s,m]=b.dataset.mode.split(':'); S.modes[s]=m; save(); SFX.pop(); toast(PRACTICE[s]+': '+m.toUpperCase()+' — unfinished turns redistributed'); draw(); pubState(); }); }
+function roundDone(P, nextLabel){
+  return `<div class="card rdone pop"><div class="big">✅</div><h3 class="dsp" style="font-size:clamp(30px,3.4vw,46px)">Round ${P.R} complete</h3>
+    <p class="lead" style="margin:8px auto 0">${P.total} turns · every ${P.mode==='solo'?'student':P.mode==='pairs'?'pair':'team'} had ${P.total/P.N===1?'one turn':Math.round(P.total/P.N)+' turns'}.</p>
+    <div class="row center mt2">${P.R<2&&P.bankLen>=P.N*2?`<button class="btn" data-tr2b>＋ Round 2 <span class="badge skip">optional</span></button>`:''}<button class="btn primary glow" data-cont>${nextLabel||'Continue →'}</button></div></div>`;
+}
+function bindRoundDone(el,P){ const a=$('[data-tr2b]',el); if(a) a.onclick=()=>{ S.rounds[P.sec]=2; save(); draw(); }; const c=$('[data-cont]',el); if(c) c.onclick=next; }
+
+/* RANDOM STUDENT · ASK SOMEONE ELSE · FOLLOW-UP */
+function randStudent(ex){ const o=order(); const pool=o.filter(i=>!ex||!ex.includes(i)); const a=pool.length?pool:o; return a[Math.floor(Math.random()*a.length)]; }
+function picker(st, follow, o={}){
+  const p=st.pick;
+  return `<div class="picker">
+    ${p!=null?`<div class="picked pop"><span class="tav">${esc(initials([p]))}</span><div><small>${st.ask!=null?'ASK SOMEONE ELSE':'YOUR TURN'}</small><b>${esc(NAME(p))}${st.ask!=null?` <span class="muted">→ ask</span> ${esc(NAME(st.ask))}`:''}</b>${st.fu!=null&&follow?`<div class="fu">“${esc(follow[st.fu%follow.length])}”</div>`:''}</div></div>`:''}
+    <div class="row" style="gap:8px">
+      <button class="btn sm" data-pk>🎲 Random student</button>
+      ${o.ask!==false&&p!=null?`<button class="btn sm ghost" data-ask>↪ Ask someone else</button>`:''}
+      ${follow&&p!=null?`<button class="btn sm ghost" data-fu>❓ Follow-up</button>`:''}
+    </div></div>`;
+}
+function bindPicker(el, st){
+  const spin=async()=>{ if(st.spinning) return; st.spinning=1; st.ask=null; st.fu=null; const o=order(); const fin=randStudent(st.pick!=null&&S.n>1?[st.pick]:null);
+    for(let k=0;k<(REDUCED?1:8);k++){ st.pick=o[(o.indexOf(fin)+k+1)%o.length]; draw(); SFX.tone(520+k*50,.04,'sine',.04); await wait(60+k*12); }
+    st.pick=fin; st.spinning=0; save(); SFX.pop(); draw(); };
+  const a=$('[data-pk]',el); if(a) a.onclick=spin;
+  const b=$('[data-ask]',el); if(b) b.onclick=()=>{ st.ask=randStudent([st.pick]); st.fu=null; save(); SFX.pop(); draw(); };
+  const c=$('[data-fu]',el); if(c) c.onclick=()=>{ st.fu=st.fu==null?0:st.fu+1; save(); SFX.pop(); draw(); };
+  CUR.random=spin;
+}
+
+/* ---------- reusable timer: 30 s · 1 · 2 · 3 · 5 min (never moves the lesson on) ---------- */
 const TIMER = {
   total:300, left:300, run:false, end:0, fired:false,
-  start(){ if(this.left<=0) this.left=this.total; this.end=Date.now()+this.left*1000; this.run=true; this.fired=false; SFX.pop(); this.paint(); pubState(); },
+  set(sec){ this.run=false; this.total=sec; this.left=sec; this.fired=false; this.paint(); pubState(); },
+  start(){ if(this.left<=0) this.left=this.total; this.end=Date.now()+this.left*1000; this.run=true; this.fired=false; S.tHide=false; SFX.pop(); this.paint(); pubState(); },
   pause(){ this.tick(); this.run=false; this.paint(); pubState(); },
+  toggle(){ this.run?this.pause():this.start(); },
   add(s){ this.left=Math.max(0,this.left+s); this.total=Math.max(this.total,this.left); if(this.run) this.end=Date.now()+this.left*1000; this.fired=false; this.paint(); pubState(); },
-  reset(){ this.run=false; this.total=300; this.left=300; this.fired=false; this.paint(); pubState(); },
+  reset(){ this.run=false; this.left=this.total; this.fired=false; this.paint(); pubState(); },
   tick(){ if(!this.run) return; this.left=Math.max(0,(this.end-Date.now())/1000);
-    if(this.left<=0 && !this.fired){ this.fired=true; this.run=false; SFX.chime(); toast('⏰ Time’s up — bring the teams back!'); pubState(); } },
+    if(this.left<=0 && !this.fired){ this.fired=true; this.run=false; SFX.chime(); toast('⏰ Time’s up!'); pubState(); } },
   txt(){ const s=Math.ceil(this.left); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); },
+  active(){ return this.run || this.left<this.total; },
   paint(){
-    const chip=$('#tchip'); chip.classList.toggle('on', this.run || (this.left<this.total && this.left>0)); $('#tchipT').textContent=this.txt();
-    const r=$('#ring'); if(!r) return;
-    const C=2*Math.PI*54; $('.fg',r).style.strokeDashoffset = C*(1-this.left/this.total);
-    $('b',r).textContent=this.txt(); r.classList.toggle('end', this.left<=0);
-    const b=$('#tStart'); if(b) b.innerHTML=this.run?'❚❚ Pause':(this.left<this.total&&this.left>0?'▶ Resume':'▶ Start 5:00');
+    const on=this.active();
+    $('#tchipT').textContent = on ? this.txt() : 'Timer';
+    $('#tchip').classList.toggle('on', this.run); $('#tchip').classList.toggle('end', this.left<=0);
+    const sc = typeof cur==='function' && SCENES[S.i] ? cur().id : '';
+    const f=$('#ftimer'); f.classList.toggle('on', on && !S.tHide && sc!=='teams'); f.classList.toggle('end', this.left<=0);
+    $('#ftT').textContent=this.txt(); $('#ftBar').style.width=Math.max(0,this.left/this.total*100)+'%'; $('#ftPlay').textContent=this.run?'❚❚':'▶';
+    const r=$('#ring'); if(r){ const C=2*Math.PI*54; $('.fg',r).style.strokeDashoffset = C*(1-this.left/this.total); $('b',r).textContent=this.txt(); r.classList.toggle('end', this.left<=0);
+      const b=$('#tStart'); if(b) b.innerHTML=this.run?'❚❚ Pause':(this.left<this.total&&this.left>0?'▶ Resume':'▶ Start '+this.txt()); }
+    if($('#tpop').classList.contains('on')) paintTpop();
   }
 };
 setInterval(()=>{ if(TIMER.run){ TIMER.tick(); TIMER.paint(); } },250);
-$('#tchip').onclick=()=>{ const k=SCENES.findIndex(s=>s.id==='teams'); if(k>=0) go(k); };
+const PRESETS=[[30,'30 s'],[60,'1 min'],[120,'2 min'],[180,'3 min'],[300,'5 min']];
+function paintTpop(){
+  $('#tpop').innerHTML=`<div class="row" style="justify-content:space-between"><b class="mono" style="letter-spacing:.14em;font-size:13px;color:var(--muted)">TIMER</b><button class="btn sm ghost icon" data-tp="close" aria-label="Close">✕</button></div>
+    <div class="tpbig ${TIMER.left<=0?'end':''}">${TIMER.txt()}</div>
+    <div class="tpre">${PRESETS.map(([s,l])=>`<button class="${TIMER.total===s?'on':''}" data-tset="${s}">${l}</button>`).join('')}</div>
+    <div class="row mt" style="gap:8px"><button class="btn sm primary" data-tp="go">${TIMER.run?'❚❚ Pause':'▶ Start'}</button><button class="btn sm ghost" data-tp="rs">↺ Reset</button><button class="btn sm ghost" data-tp="hide">${S.tHide?'👁 Show':'🙈 Hide'}</button></div>
+    <div class="small mt">The timer never moves the lesson on by itself.</div>`;
+  $$('[data-tset]',$('#tpop')).forEach(b=>b.onclick=()=>TIMER.set(+b.dataset.tset));
+  $$('[data-tp]',$('#tpop')).forEach(b=>b.onclick=()=>{ const a=b.dataset.tp;
+    if(a==='close') $('#tpop').classList.remove('on'); if(a==='go') TIMER.toggle(); if(a==='rs') TIMER.reset();
+    if(a==='hide'){ S.tHide=!S.tHide; save(); TIMER.paint(); } paintTpop(); });
+}
+$('#tchip').onclick=e=>{ e.stopPropagation(); $('#tpop').classList.toggle('on'); paintTpop(); };
+document.addEventListener('click',e=>{ if(!e.target.closest('#tpop,#tchip')) $('#tpop').classList.remove('on'); });
+$('#tpop').addEventListener('click',e=>e.stopPropagation());
+$('#ftPlay').onclick=()=>TIMER.toggle(); $('#ftHide').onclick=()=>{ S.tHide=true; save(); TIMER.paint(); };
+$('#ftReset').onclick=()=>TIMER.reset();
 
-/* ---------- 6 · scenes ---------- */
+/* ---------- CCQ / ICQ panel (hidden until the teacher opens it) ---------- */
+const QP={kind:null, open:{}};
+function openQ(kind){ const c=cur(); if(!c[kind]) return toast('No '+kind.toUpperCase()+' on this screen'); QP.kind = QP.kind===kind?null:kind; QP.open={}; paintQ(); }
+function paintQ(){
+  const p=$('#qpanel'), c=cur(), L=QP.kind&&c[QP.kind]; p.classList.toggle('on',!!L); if(!L) return;
+  p.innerHTML=`<div class="row" style="justify-content:space-between"><b class="mono" style="letter-spacing:.16em;color:${QP.kind==='ccq'?'var(--now)':'var(--past)'}">${QP.kind==='ccq'?'CCQ · CHECK THE MEANING':'ICQ · CHECK THE TASK'}</b><button class="btn sm ghost icon" id="qpx" aria-label="Close">✕</button></div>
+    ${L.map((x,i)=>`<button class="qrow ${QP.open[i]?'open':''}" data-q="${i}"><span>${esc(x[0])}</span><b>${QP.open[i]?esc(x[1]):'tap to show'}</b></button>`).join('')}`;
+  $$('[data-q]',p).forEach(b=>b.onclick=()=>{ QP.open[b.dataset.q]=!QP.open[b.dataset.q]; paintQ(); });
+  $('#qpx').onclick=()=>{ QP.kind=null; paintQ(); };
+}
+</script>
+<script>
 const SCENES = [
 /* ── 1 · HOOK ── */
-{ id:'hook', m:1, name:'The message', time:2, pct:0,
+{ id:'hook', sec:'story', m:1, name:'The message', time:1.5, pct:0,
   render(el){
     const st=sd('hook'); st.ph=st.ph||0; st.n=st.n||0;
     if(st.ph===0){
@@ -1046,11 +1575,13 @@ const SCENES = [
           <h1 class="dsp h1 mt">If only<br>I had known…</h1>
           <div class="cast">${castCard('mia')}${castCard('leo')}
             <div class="who-card you" style="animation-delay:.2s"><div class="ph">⏳<div class="nm">You</div></div><div class="rl"><b>The timeline team</b>You fix Mia’s broken timeline.</div></div></div>
-          <div class="side-cast"><span class="lbl">IN THE BREAKOUT ROOMS</span>${TEAMS().map(t=>`<span class="c">${av({e:t.e,bg:t.bg},30,'round')}${esc(t.name)}</span>`).join('')}</div></div>
+          <div class="side-cast"><span class="lbl">IN THE BREAKOUT ROOMS</span>${LESSON.teams.slice(0,3).map(t=>`<span class="c">${av({e:t.e,bg:t.bg},30,'round')}${esc(t.name)}</span>`).join('')}</div>
+          <div class="row mt"><button class="btn sm ghost" id="setup">👥 Students today: ${S.n} · add names</button><span class="small">Core ≈ ${Math.round(totalTime(true))} min · then Game Zone</span></div></div>
         <div class="lock">
           <div class="clock">23:47</div><div class="date">Friday night · Leo’s phone</div>
           <div class="notif" id="nf">${av('mia',52,'round')}<div><b>Mia</b><span>Mia sent you a message.</span></div><time>now</time></div>
           <div class="mt2"><button class="btn xl primary glow" id="open">💬 OPEN MESSAGE</button></div></div></div>`;
+      $('#setup',el).onclick=()=>openWS('students');
       $('#open',el).onclick=()=>{ st.ph=1; st.n=1; save(); SFX.msg(); draw(true); };
       if(!st.pinged){ st.pinged=1; setTimeout(()=>SFX.msg(),450); }
       CUR.reveal=()=>$('#open',el).click();
@@ -1083,15 +1614,16 @@ const SCENES = [
     tip:'Речення «if I hadn’t posted it, my life would be different now» повернеться на граматиці — поки що просто зачепіть увагу.' } },
 
 /* ── 2 · WARM-UP ── */
-{ id:'warm', m:2, name:'Warm-up', time:2, pct:15,
+{ id:'warm', sec:'story', m:2, name:'Warm-up', time:1.5, pct:15,
   live:()=>({id:'warm-poll', kind:'choice', q:LESSON.warm.q2.en, opts:LESSON.warm.q2.opts.map(o=>o[0]+' '+o[1])}),
   render(el){
     const st=sd('warm'), W=LESSON.warm; st.poll=st.poll||[0,0,0];
     const lc=counts('warm-poll',3), c=st.poll.map((v,i)=>v+lc[i]), tot=c.reduce((a,b)=>a+b,0), mx=Math.max(1,...c);
-    el.innerHTML=`<div class="sh"><div><span class="kick p">Mission 2 · Warm-up</span><h2 class="dsp h2">Small things. Big changes?</h2></div></div>
+    el.innerHTML=`<div class="sh"><div><span class="kick p">Warm-up</span><h2 class="dsp h2">Small things. Big changes?</h2></div></div>
     <div class="two">
       <div class="card qcard"><div class="num">QUESTION 01</div><div class="q">${esc(W.q1.en)}</div><div class="help">${esc(W.q1.help)}</div>
-        <div class="mt">${st.ex?`<div class="chips">${W.q1.ex.map(x=>`<span class="chip pop">${esc(x)}</span>`).join('')}</div>`:`<button class="btn sm" id="ex">💡 Show examples</button>`}</div></div>
+        ${picker(st, WARM_FOLLOW)}
+        <div class="mt">${st.ex?`<div class="chips">${W.q1.ex.map(x=>`<span class="chip pop">${esc(x)}</span>`).join('')}</div>`:`<button class="btn sm ghost" id="ex">💡 Show examples</button>`}</div></div>
       <div class="card qcard"><div class="num">QUESTION 02 · VOTE</div><div class="q">${esc(W.q2.en)}</div><div class="help">${esc(W.q2.help)}</div>
         <div class="poll">${W.q2.opts.map((o,i)=>`<button class="pollb" data-v="${i}"><span class="fill" style="height:${tot?Math.round(c[i]/mx*100):0}%"></span><span class="e">${o[0]}</span>${o[1]}<span class="n">${c[i]}</span></button>`).join('')}</div>
         <div class="row mt"><span class="small grow">Click to count hands${LIVE.on?' · phones add votes live':''}</span>${tot?`<button class="btn sm ghost" id="pr">↺</button>`:''}</div></div>
@@ -1099,55 +1631,66 @@ const SCENES = [
     ${st.bridge?`<div class="bridge pop"><div class="flow"><span class="a">one small decision</span>→<span class="b">a different life</span></div>
       <div style="font-size:21px;font-weight:700;flex:1;min-width:260px">Today’s idea: a choice in the <b style="color:var(--past)">PAST</b> can change your life <b style="color:var(--now)">NOW</b>.</div></div>`
       :`<div class="row mt center"><button class="btn ghost" id="br">🔗 Connect the idea</button></div>`}`;
+    bindPicker(el, st);
     const ex=$('#ex',el); if(ex) ex.onclick=()=>{ st.ex=1; save(); SFX.pop(); draw(); };
     $$('.pollb',el).forEach(b=>b.onclick=()=>{ st.poll[+b.dataset.v]++; st.bridge=1; save(); SFX.pop(); draw(); });
     const pr=$('#pr',el); if(pr) pr.onclick=()=>{ st.poll=[0,0,0]; delete LV['warm-poll']; save(); draw(); };
     const br=$('#br',el); if(br) br.onclick=()=>{ st.bridge=1; save(); SFX.pop(); draw(); };
-    CUR.example=()=>{ st.ex=1; save(); draw(); }; CUR.reveal=()=>{ st.bridge=1; save(); draw(); };
+    CUR.example=CUR.answer=()=>{ st.ex=1; save(); draw(); }; CUR.reveal=()=>{ st.bridge=1; save(); draw(); };
   },
-  teach:{ goal:'Швидкий старт, 2–3 відповіді на Q1.',
-    notes:['Q1: 2–3 учні відповідають. Якщо мовчать — Show examples.','Q2: учні піднімають руки (або голосують телефонами) — клацайте кнопку, щоб рахувати.','Після голосування з’явиться зв’язка «small decision → different life». Прочитайте її.'],
-    say:['So a decision in the past can change your life now. Let’s find out what happened to Mia.'] } },
+  teach:{ goal:'Швидкий старт (≈2 хв): 2–3 учні відповідають на Q1, усі голосують у Q2.',
+    notes:['🎲 Random student — хто відповідає. ↪ Ask someone else — учень ставить це саме питання іншому учневі.','❓ Follow-up — коротке додаткове питання (Why? / What would change? / Would you really change it?).','Q2: учні піднімають руки (або голосують телефонами) — клацайте кнопку, щоб рахувати.','Після голосування — зв’язка «small decision → different life». Прочитайте її.'],
+    say:['So a decision in the past can change your life now. Let’s find out what happened to Mia.'],
+    mistake:'«If I could change… I would change» — 2-й тип; на розминці не виправляйте, головне — говорити.',
+    timing:'2 хв. Не більше 3 відповідей на Q1.' } },
 
-/* ── 3a · MIA'S FEED (match) ── */
-{ id:'feedA', m:3, name:'Mia’s Feed · match', time:2, pct:25,
-  live:()=>{ const st=sd('feedA'), P=LESSON.feed[st.pi||0]; return {id:'feedA-'+(st.pi||0), kind:'choice', q:P.t, opts:LESSON.words, lock:!!(st.ok||{})[st.pi||0]}; },
+/* ── 3a · MIA'S FEED (smart distribution: one item per student per round) ── */
+{ id:'feedA', sec:'vocab', m:3, name:'Mia’s Feed', time:()=>tt('vocab',.45,2), pct:35,
+  icq:[['Do you say all ten expressions?','No — one task each.'],['Do you need to write anything?','No — just say it.'],['Who answers?','The student on the turn card.']],
+  live:()=>{ const P=plan('feedA','vocab',VOC.length), V=P.it&&VOC[P.it.i]; if(!V||!['choose','complete'].includes(V.type)) return {id:'feedA-r', kind:'react', q:'Listen to your classmate and react!'}; return {id:'feedA-'+P.it.i, kind:'choice', q:V.t||V.alt, opts:LESSON.words, lock:!!(sd('feedA').rev||{})[P.it.i]}; },
   render(el){
-    const st=sd('feedA'); st.pi=st.pi||0; st.ok=st.ok||{}; st.bad=st.bad||{};
-    const F=LESSON.feed, P=F[st.pi], ok=!!st.ok[st.pi], bad=st.bad[st.pi]||[];
-    const usedW=F.filter((p,i)=>st.ok[i]&&i!==st.pi).map(p=>p.a), all=F.every((_,i)=>st.ok[i]);
-    const task='feedA-'+st.pi, c=counts(task,LESSON.words.length);
-    el.innerHTML=`<div class="sh"><div><span class="kick p">Mission 3 · Vocabulary review</span><h2 class="dsp h2">Mia’s Feed</h2><p class="lead">Mia scrolls her feed. Which expression fits each post?</p></div>
-      <div class="dots">${F.map((_,i)=>`<i class="${st.ok[i]?'ok':''} ${i===st.pi?'cur':''}"></i>`).join('')}</div></div>
-    <div class="feed">
-      <div class="postimg ${isFlash('feedAok')?'pop':''}"><img src="${P.img}" alt="${esc(P.u)}: ${esc(P.t)}" width="1200" height="675">
-        ${ok?`<div class="ans">✓ ${fmt(P.model)}</div>`:''}</div>
-      <div><div class="small" style="margin-bottom:10px">Tap the expression the class says:</div>
-        <div class="bank">${LESSON.words.map((w,i)=>`<button class="xp ${usedW.includes(w)||(ok&&w!==P.a)?'used':''} ${bad.includes(w)?'bad':''} ${isFlash('feedA',w)?'shake':''}" data-w="${esc(w)}">${esc(w)}${LIVE.on&&c[i]?`<span class="vc">${c[i]}</span>`:''}</button>`).join('')}</div>
-        <div class="row mt">${!ok?`<button class="btn sm ghost" id="rv">👁 Reveal answer</button>`:''}<span class="grow"></span>
-          ${st.pi>0?`<button class="btn sm ghost" id="pv">←</button>`:''}
-          ${ok&&st.pi<F.length-1?`<button class="btn sm primary" id="nx">Next post →</button>`:''}
-          ${all?`<span class="badge" style="color:var(--ok)">✓ Feed fixed</span>`:''}</div></div>
-    </div>`;
-    const solve=()=>{ st.ok[st.pi]=true; SFX.ok(); flash('feedAok'); save(); draw(); };
-    $$('.xp',el).forEach(b=>b.onclick=()=>{ if(ok) return; const w=b.dataset.w; if(w===P.a) solve(); else { (st.bad[st.pi]=st.bad[st.pi]||[]).push(w); SFX.bad(); flash('feedA',w); save(); draw(); } });
-    const rv=$('#rv',el); if(rv) rv.onclick=solve;
-    const nx=$('#nx',el); if(nx) nx.onclick=()=>{ st.pi++; save(); draw(); };
-    const pv=$('#pv',el); if(pv) pv.onclick=()=>{ st.pi--; save(); draw(); };
-    CUR.reveal=()=>{ if(!ok) solve(); else if(st.pi<F.length-1){ st.pi++; save(); draw(); } };
+    const st=sd('feedA'); st.rev=st.rev||{}; st.bad=st.bad||{}; st.hint=st.hint||{};
+    const P=plan('feedA','vocab',VOC.length);
+    const head=`<div class="sh"><div><span class="kick p">Vocabulary review · words from Lesson 14</span><h2 class="dsp h2">Mia’s Feed</h2></div>${modeSwitch('vocab')}</div>`;
+    if(!P.it){ el.innerHTML=head+turnBar(P)+roundDone(P); bindTurn(el,P); bindModes(el); bindRoundDone(el,P); return; }
+    const i=P.it.i, V=VOC[i], ok=!!st.rev[i]||P.it.done, bad=st.bad[i]||[], TY=VTYPE[V.type];
+    const task='feedA-'+i, cc=counts(task,LESSON.words.length), bankOn=['choose','complete'].includes(V.type);
+    const pAv = e => (e==='mia'||e==='leo') ? av(e,46,'round') : av({e, bg:'linear-gradient(135deg,#3A3FB8,#1A1F55)'},46,'round');
+    let left;
+    if(V.img) left=`<div class="postimg ${isFlash('vok')?'pop':''}"><img src="${V.img}" alt="${esc(V.alt)}" width="1200" height="675"></div>`;
+    else if(V.post) left=`<div class="post ${isFlash('vok')?'pop':''}"><div class="pt">${pAv(V.post.e)}<div><b>${esc(V.post.u)}</b><span>just now</span></div></div><div class="body">${esc(V.post.t)}</div><div class="pf"><span>♡ 24</span><span>💬 reply</span><span>↗ share</span></div></div>`;
+    else if(V.w) left=`<div class="wordcard ${isFlash('vok')?'pop':''}"><small>EXPRESSION</small><b>${esc(V.w)}</b><span>${TY[0]} ${TY[1]}</span></div>`;
+    else left=`<div class="post ${isFlash('vok')?'pop':''}"><div class="pt">${av('mia',46,'round')}<div><b>mia’s feed</b><span>situation</span></div></div><div class="body">${esc(V.t).replace('______','<span class="gap2">______</span>')}</div></div>`;
+    el.innerHTML=head+turnBar(P)+`<div class="feed mt">
+      <div>${left}</div>
+      <div class="vtask"><span class="vt">${TY[0]} ${TY[1]}</span><p class="vq">${esc(TY[2])}</p>
+        ${bankOn?`<div class="bank">${LESSON.words.map((w,k)=>`<button class="xp ${ok&&w!==V.a?'used':''} ${ok&&w===V.a?'okw':''} ${bad.includes(w)?'bad':''} ${isFlash('vbad',w)?'shake':''}" data-w="${esc(w)}">${esc(w)}${LIVE.on&&cc[k]?`<span class="vc">${cc[k]}</span>`:''}</button>`).join('')}</div>`:''}
+        ${st.hint[i]&&!ok?`<div class="hintbox pop">💡 ${esc(V.hint)}</div>`:''}
+        ${ok?`<div class="ans pop">✓ ${fmt(V.model)}</div>`:''}
+        <div class="row mt">${!ok?`<button class="btn sm ghost" data-vh>💡 Hint</button><button class="btn sm ghost" data-va>👁 Answer</button>`:''}</div></div></div>`;
+    bindTurn(el,P); bindModes(el);
+    const solve=()=>{ st.rev[i]=1; SFX.ok(); flash('vok'); save(); draw(); };
+    $$('.xp',el).forEach(b=>b.onclick=()=>{ if(ok) return; const w=b.dataset.w; if(w===V.a) solve(); else { (st.bad[i]=st.bad[i]||[]).push(w); SFX.bad(); flash('vbad',w); save(); draw(); } });
+    const h=$('[data-vh]',el); if(h) h.onclick=()=>{ st.hint[i]=1; save(); SFX.pop(); draw(); };
+    const a=$('[data-va]',el); if(a) a.onclick=solve;
+    CUR.hint=()=>{ st.hint[i]=1; save(); draw(); }; CUR.answer=CUR.reveal=()=>{ if(!ok) solve(); };
   },
-  teach:{ goal:'Повторення лексики уроку 14 — швидко, без пояснень.',
-    notes:['Учні називають вираз — ви клацаєте. Неправильний трясеться і стає червоним.','Після правильної відповіді прочитайте модельне речення в пості.','На екрані всі 10 виразів — 5 інших знадобляться в частині B.'],
-    answers:()=>LESSON.feed.map((p,i)=>`${i+1}. ${p.a} — ${plain(p.model)}`) } },
+  teach:{ goal:'Повторення 10 виразів уроку 14: кожен учень отримує ОДНЕ завдання за раунд (N × 1). Раунд 2 — за бажанням.',
+    notes:['Учень на картці «Turn» читає пост/завдання вголос і відповідає. Інші реагують: Do you agree?','5 типів: Choose the expression · Explain it simply · Complete the sentence · React to the post · Give your own example.','Для Choose / Complete учень називає вираз — клацайте його в банку (неправильний трясеться).','✓ Next student — зарахувати хід і перейти далі. ⏭ Skip student — віддати хід іншому (баланс зберігається).','Кількість учнів можна змінити в будь-який момент: виконані ходи лишаються, перерозподіляються лише невиконані.'],
+    answers:()=>VOC.map((v,i)=>`${i+1}. [${VTYPE[v.type][1]}] ${v.a} — ${plain(v.model)}`),
+    mistake:'«be into» без -ing/іменника: ✗ I’m into to draw → ✓ I’m into drawing.',
+    pron:'blow it out of proportion — /prəˈpɔːʃn/; hype — /haɪp/.',
+    timing:'≈25 с на учня. 5 учнів ≈ 2 хв.', skip:'Раунд 2 і частину «Mia’s notes» пропускайте, якщо мало часу.' } },
 
 /* ── 3b · MIA'S NOTES (gap fill, optional) ── */
-{ id:'feedB', m:3, name:'Mia’s Feed · notes', time:2, pct:35, opt:true,
+{ id:'feedB', sec:'vocab', m:3, name:'Mia’s notes', time:2, pct:35, opt:true,
   live:()=>{ const st=sd('feedB'), N=LESSON.notes[st.cur||0]; return {id:'feedB-'+(st.cur||0), kind:'choice', q:`${N.pre} ______ ${N.post}`, opts:BANKB}; },
   render(el){
     const st=sd('feedB'); st.cur=st.cur||0; st.done=st.done||{};
     const N=LESSON.notes, all=N.every((_,i)=>st.done[i]);
-    const c=counts('feedB-'+st.cur, BANKB.length);
-    el.innerHTML=`<div class="sh"><div><span class="kick p">Mission 3 · Part B</span><span class="badge skip" style="margin-left:10px">Optional</span><h2 class="dsp h2">Complete Mia’s thoughts</h2><p class="lead">Mia writes about the old post in her private notes.</p></div></div>
+    const c=counts('feedB-'+st.cur, BANKB.length), U=units(S.modes.vocab), who=ulabel(U[st.cur%U.length]);
+    el.innerHTML=`<div class="sh"><div><span class="kick p">Vocabulary · Part B</span><span class="badge skip" style="margin-left:10px">Optional</span><h2 class="dsp h2">Complete Mia’s thoughts</h2><p class="lead">Mia writes about the old post in her private notes.</p></div></div>
+    ${!all?`<div class="miniturn">🎯 Gap ${st.cur+1}: <b>${esc(who)}</b><span class="small"> — say the expression</span></div>`:''}
     <div class="feed">
       <div class="notes"><div style="position:absolute;right:22px;top:16px">${av('mia',46,'round')}</div>${N.map((x,i)=>`<div class="nl"><span class="n">0${i+1}</span><span>${esc(x.pre)} <span class="gap ${st.done[i]?'done':''} ${i===st.cur&&!st.done[i]?'cur':''} ${isFlash('feedB',i)?'shake':''}" data-g="${i}">${st.done[i]?esc(x.a):'&nbsp;'}</span>${x.post==='.'?'.':' '+esc(x.post)}</span></div>`).join('')}</div>
       <div><div class="small" style="margin-bottom:10px">Choose a gap, then tap an expression:</div>
@@ -1160,55 +1703,109 @@ const SCENES = [
     $$('.xp',el).forEach(b=>b.onclick=()=>{ if(st.done[st.cur]) return; if(b.dataset.w===N[st.cur].a) fill(st.cur); else { SFX.bad(); flash('feedB',st.cur); draw(); } });
     const rn=$('#rn',el); if(rn) rn.onclick=()=>fill(st.cur);
     const ra=$('#ra',el); if(ra) ra.onclick=()=>{ N.forEach((_,i)=>st.done[i]=true); SFX.ok(); save(); draw(); };
-    CUR.reveal=()=>{ if(!all) fill(st.cur); };
+    CUR.reveal=CUR.answer=()=>{ if(!all) fill(st.cur); };
   },
-  teach:{ goal:'Ще 5 виразів у контексті історії Мії. Можна пропустити.',
-    notes:['Клацніть пропуск (або беріть по порядку), учні називають вираз.','«Reveal next» відкриває відповіді поступово.','Якщо мало часу — пропустіть: кнопка Skip optional або Core route.'],
-    answers:()=>LESSON.notes.map((x,i)=>`${i+1}. ${x.pre} ${x.a.toUpperCase()} ${x.post}`) } },
+  teach:{ goal:'Ще 5 виразів у контексті історії Мії. Можна пропустити (Extended).',
+    notes:['Над нотатками видно, чия черга для поточного пропуску.','Учень називає вираз → клацніть його. «Reveal next» відкриває відповідь.'],
+    answers:()=>LESSON.notes.map((x,i)=>`${i+1}. ${x.pre} ${x.a.toUpperCase()} ${x.post}`),
+    skip:'Пропускайте в маршруті Core.' } },
 
-/* ── 4a · LISTENING ── */
-{ id:'listen', m:4, name:'What happened to Mia?', time:4, pct:45,
-  live:()=>sd('listen').ph==='quiz' ? quizTask('lq', LESSON.listenQ) : null,
+/* ── 4a · LISTENING: predict → listen → questions (one per student) ── */
+{ id:'listen', sec:'listen', m:4, name:'What happened to Mia?', time:()=>1.5+tt('listen',.35,1.5), pct:45,
+  icq:[['Do you need to understand every word?','No.'],['What do you listen for?','What happened to Mia.'],['How many questions does each student answer?','One.']],
+  live:()=>{ const st=sd('listen'); if(st.ph!=='qs') return null; const P=plan('listen','listen',LQ.length), Q=P.it&&LQ[P.it.i]; if(!Q||!Q.o) return {id:'lq-r',kind:'react',q:'Listen to your classmate’s answer and react!'}; return {id:'lq-'+P.it.i, kind:'choice', q:Q.q, opts:Q.o, lock:!!(st.r||{})[P.it.i]}; },
   render(el){
-    const st=sd('listen');
-    if(st.ph==='quiz'){
-      const all=LESSON.listenQ.every((_,i)=>(sd('lq').ok||{})[i]);
-      el.innerHTML=`<div class="sh"><div><span class="kick p">Mission 4 · After listening</span><h2 class="dsp h2">What happened to Mia?</h2></div>
-        <div class="row"><button class="btn sm ghost" id="back">🎧 Listen again</button></div></div>
-        ${quiz('lq', LESSON.listenQ, {doneBtn:`<button class="btn sm primary glow" id="toClue">🔎 Find the clue →</button>`})}`;
-      const solve=bindQuiz(el,'lq',LESSON.listenQ);
+    const st=sd('listen'); st.ph=st.ph||'predict';
+    if(st.ph==='predict'){
+      el.innerHTML=`<div class="sh"><div><span class="kick p">Listening · before you listen</span><h2 class="dsp h2">Predict</h2></div></div>
+      <div class="feed"><div class="postimg tall"><img src="img/old-post.webp" alt="Mia’s old post: #DanceChallenge" width="686" height="784"></div>
+        <div class="card"><div class="qtext">${esc(PREDICT.q)}</div><div class="help">Look at Mia’s old post. Make a guess — any idea is OK.</div>
+          ${picker(st, PREDICT.follow)}
+          ${st.ideas?`<div class="chips mt">${PREDICT.ideas.map(x=>`<span class="chip pop">${esc(x)}</span>`).join('')}</div>`:''}
+          <div class="row mt2">${!st.ideas?`<button class="btn sm ghost" id="ideas">💡 Ideas</button>`:''}<span class="grow"></span><button class="btn primary glow" id="toL">🎧 Listen →</button></div></div></div>`;
+      bindPicker(el, st);
+      const id=$('#ideas',el); if(id) id.onclick=()=>{ st.ideas=1; save(); SFX.pop(); draw(); };
+      $('#toL',el).onclick=()=>{ st.ph='listen'; save(); draw(true); };
+      CUR.hint=CUR.answer=()=>{ st.ideas=1; save(); draw(); };
+      return;
+    }
+    if(st.ph==='qs'){
+      st.r=st.r||{}; st.w=st.w||{}; st.h=st.h||{};
+      const P=plan('listen','listen',LQ.length);
+      const head=`<div class="sh"><div><span class="kick p">Listening · after you listen</span><h2 class="dsp h2">What happened to Mia?</h2></div><div class="row">${modeSwitch('listen')}<button class="btn sm ghost" id="back">🎧 Listen again</button></div></div>`;
+      if(!P.it){ el.innerHTML=head+turnBar(P)+roundDone(P, S.short?'🔎 Find the clue →':'🧩 Build the story →'); bindTurn(el,P); bindModes(el); bindRoundDone(el,P); $('#back',el).onclick=()=>{ st.ph='listen'; save(); draw(); }; return; }
+      const i=P.it.i, Q=LQ[i], ok=!!st.r[i]||P.it.done, wr=st.w[i]||[], task='lq-'+i;
+      const c=Q.o?counts(task,Q.o.length):[], tot=c.reduce((a,b)=>a+b,0);
+      el.innerHTML=head+turnBar(P)+`<div class="card mt">
+        <div class="qhead"><span class="kick">${Q.o?'Choose A, B or C':'Answer in one sentence'}</span>${!Q.o?'<span class="badge">🗣 open question</span>':''}</div>
+        <div class="qtext">${withFace(esc(Q.q),Q.q,52)}</div>
+        ${Q.o?`<div class="opts">${Q.o.map((t,k)=>{ const cls=ok?(k===Q.a?'right':'locked'):wr.includes(k)?'wrong locked':''; return `<button class="opt ${cls} ${isFlash('lqw',k)?'shake':''}" data-o="${k}"><span class="L">${LET[k]}</span><span>${esc(t)}</span>${LIVE.on&&tot?`<span class="vc">${c[k]} 👤</span><span class="vbar" style="width:${Math.round(c[k]/tot*100)}%"></span>`:''}</button>`; }).join('')}</div>`:''}
+        ${st.h[i]&&!ok?`<div class="hintbox pop">💡 Listen again for: ${esc((Q.quote||Q.ex||'').split(' ').slice(0,4).join(' '))}…</div>`:''}
+        ${ok?`<div class="expl pop">✓ ${Q.o?esc(Q.o[Q.a])+' — ':''}${esc(Q.o?Q.ex:Q.a)}${!Q.o&&Q.quote?`<div class="small" style="margin-top:6px">${esc(Q.quote)}</div>`:''}</div>
+          <div class="peer pop"><b>👥 Ask another student:</b> “Do you agree?”</div>`:''}
+        <div class="row mt">${!ok?`<button class="btn sm ghost" data-lh>💡 Hint</button><button class="btn sm ghost" data-la>👁 Answer</button>`:''}</div></div>`;
+      bindTurn(el,P); bindModes(el);
       $('#back',el).onclick=()=>{ st.ph='listen'; save(); draw(); };
-      const tc=$('#toClue',el); if(tc) tc.onclick=next;
-      CUR.reveal=()=>{ const q=sd('lq'); if(!q.ok[q.qi||0]) solve(); else if((q.qi||0)<LESSON.listenQ.length-1){ q.qi++; save(); draw(); } };
+      const solve=()=>{ st.r[i]=1; SFX.ok(); save(); draw(); };
+      $$('[data-o]',el).forEach(b=>b.onclick=()=>{ if(ok) return; const k=+b.dataset.o; if(k===Q.a) solve(); else { (st.w[i]=st.w[i]||[]).push(k); SFX.bad(); flash('lqw',k); save(); draw(); } });
+      const h=$('[data-lh]',el); if(h) h.onclick=()=>{ st.h[i]=1; save(); draw(); };
+      const a=$('[data-la]',el); if(a) a.onclick=solve;
+      CUR.hint=()=>{ st.h[i]=1; save(); draw(); }; CUR.answer=CUR.reveal=()=>{ if(!ok) solve(); };
       return;
     }
     el.innerHTML=`<div class="listen">
-      <div class="card player"><span class="kick p">Mission 4 · Story</span>
+      <div class="card player"><span class="kick p">Listening · Mia & Leo</span>
         <h2 class="dsp h2 mt">What happened to Mia?</h2>
         <p class="lead" style="margin:8px auto 0">Listen and discover: <b style="color:var(--text)">What happened to Mia?</b></p>
         <div class="duo"><div class="who" id="dz-mia">${av('mia',62)}Mia</div><div class="who" id="dz-leo">${av('leo',62)}Leo</div></div>
         <button class="pbtn" id="pbtn" aria-label="Play audio">▶</button>
         <div class="wave" id="wave">${Array.from({length:22},(_,i)=>`<i style="animation-delay:${(i*47%500)/1000}s"></i>`).join('')}</div>
         <div class="small mt" id="pstat">Ready</div>
-        <div class="row center mt"><button class="btn sm ghost" id="rs">⏮ Restart</button><button class="btn sm ghost ${PLAYER.rate<.9?'on':''}" id="sl">🐢 ${PLAYER.rate<.9?'Slow ✓':'Slow'}</button></div>
+        <div class="row center mt"><button class="btn sm ghost" id="pv">← Predict</button><button class="btn sm ghost" id="rs">⏮ Restart</button><button class="btn sm ghost ${PLAYER.rate<.9?'on':''}" id="sl">🐢 ${PLAYER.rate<.9?'Slow ✓':'Slow'}</button></div>
         <div class="row center mt"><button class="btn primary" id="toQ">Questions →</button></div></div>
       <div class="card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><span class="kick">Script</span><button class="btn sm ghost" id="sc">${st.script?'🙈 Hide script':'📄 Show script'}</button></div>
         <div class="script ${st.script?'':'blurred'}">${LESSON.audio.map(([w,t])=>`<div class="line">${av(w,38,'round')}<div><span class="who" style="color:${CHARS[w].c}">${w}</span><p>${esc(t)}</p></div></div>`).join('')}</div></div>
     </div>`;
     $('#pbtn',el).onclick=()=>PLAYER.toggle();
     $('#rs',el).onclick=()=>PLAYER.restart();
+    $('#pv',el).onclick=()=>{ PLAYER.pause(); st.ph='predict'; save(); draw(); };
     $('#sl',el).onclick=()=>{ PLAYER.rate = PLAYER.rate<.9 ? .95 : .78; draw(); if(PLAYER.playing){ PLAYER.pause(); PLAYER.play(); } };
     $('#sc',el).onclick=()=>{ st.script=!st.script; save(); draw(); };
-    $('#toQ',el).onclick=()=>{ PLAYER.pause(); st.ph='quiz'; save(); draw(); };
+    $('#toQ',el).onclick=()=>{ PLAYER.pause(); st.ph='qs'; save(); draw(true); };
     PLAYER.paint();
-    CUR.reveal=()=>{ st.script=true; save(); draw(); };
+    CUR.reveal=CUR.answer=()=>{ st.script=true; save(); draw(); };
   },
-  teach:{ goal:'Слухаємо історію: що сталося з постом Мії.',
-    notes:['Перед прослуховуванням прочитайте питання: What happened to Mia?','1-й раз — без скрипту. Потім Questions →.','Якщо важко — «Listen again», можна увімкнути Show script і Slow.','Справжній запис: вкажіть AUDIO_FILE на початку файлу. Без нього — голоси браузера (Мія — жіночий, Лео — чоловічий).'],
-    answers:()=>LESSON.listenQ.map((q,i)=>`${i+1}. ${LET[q.a]} — ${q.o[q.a]}`) } },
+  teach:{ goal:'Predict → Listen → одне питання на учня (N × 1). Перші питання — ті самі, що були (A/B/C), далі — відкриті.',
+    notes:['Predict: 🎲 Random student — 2–3 здогадки. 💡 Ideas — якщо мовчать.','Слухаємо 1 раз без скрипту. Важко — Slow / Show script.','Questions: учень на картці Turn відповідає на своє питання. A/B/C — клацайте варіант; відкрите — «👁 Answer» показує відповідь і цитату.','Після відповіді — «Ask another student: Do you agree?».','Без AUDIO_FILE діалог читають голоси браузера (Мія — жіночий, Лео — чоловічий).'],
+    answers:()=>LQ.map((q,i)=>`${i+1}. ${q.q} — ${q.o?LET[q.a]+') '+q.o[q.a]:q.a}`),
+    mistake:'«She take it down» → ✓ She took it down (минулий час у переказі).',
+    timing:'Predict 30 с · audio ≈1,5 хв · питання ≈20 с на учня.' } },
+
+/* ── 4b · BUILD THE STORY (optional chain retelling) ── */
+{ id:'story', sec:'listen', m:4, name:'Build the story', time:2, pct:48, opt:true,
+  icq:[['Do you tell the whole story?','No — only the next part.'],['Who starts?','The first student on the turn card.']],
+  render(el){
+    const st=sd('story'); st.show=st.show||{};
+    const U=units(S.modes.listen), P=plan('story','listen',STORY.length, Math.ceil(STORY.length/Math.max(1,U.length)));
+    const cur_=P.it;
+    el.innerHTML=`<div class="sh"><div><span class="badge skip">Optional</span><h2 class="dsp h2 mt">Build the story</h2><p class="lead">Tell Mia’s story together. One student — one part.</p></div>${modeSwitch('listen')}</div>
+      ${turnBar(P,{round2:false})}
+      <div class="slots mt">${STORY.map((s,k)=>{ const x=P.items.find(y=>y.i===k)||{}; const open=x.done||st.show[k]; const now=cur_&&cur_.i===k&&!x.done;
+        return `<div class="slot ${x.done?'ok':''} ${now?'cur':''}"><span class="no">${k+1}</span><small>${esc(LINKERS[k])}</small><b>${open?esc(s):(now?'🎤 '+esc(x.by||''):'?')}</b>${x.by?`<em>${esc(x.by)}</em>`:''}</div>`; }).join('')}</div>
+      ${cur_&&!cur_.done?`<div class="row mt center"><span class="help">Start with “${esc(LINKERS[cur_.i])}”</span><button class="btn sm ghost" id="sh">👁 Show this part</button></div>`:''}
+      ${P.left===0?`<div class="row mt center"><button class="btn primary glow" id="cont">🔎 Find the clue →</button></div>`:''}`;
+    bindTurn(el,P); bindModes(el);
+    const sh=$('#sh',el); if(sh) sh.onclick=()=>{ st.show[cur_.i]=1; save(); SFX.pop(); draw(); };
+    const c=$('#cont',el); if(c) c.onclick=next;
+    CUR.reveal=CUR.answer=()=>{ if(cur_) { st.show[cur_.i]=1; save(); draw(); } };
+    CUR.hint=()=>toast('Start with: '+(cur_?LINKERS[cur_.i]:'First,'));
+  },
+  teach:{ goal:'Ланцюжковий переказ: кожен учень додає наступну подію (8 частин).',
+    notes:['Учень на картці Turn розповідає свою частину, починаючи зі слова-зв’язки (First, / Then / After that…).','«Show this part» — показати подію, якщо учень забув.','✓ Next student — наступний продовжує історію.'],
+    answers:()=>STORY.map((s,i)=>`${i+1}. ${LINKERS[i]} ${s}`), skip:'Optional: пропускайте в маршруті Core.' } },
 
 /* ── 4b · FIRST CLUE ── */
-{ id:'clue', m:4, name:'The first clue', time:1, pct:50,
+{ id:'clue', sec:'listen', m:4, name:'The first clue', time:.5, pct:50,
   render(el){
     const st=sd('clue');
     el.innerHTML=`<div class="clue"><div class="found">🔎 YOU FOUND THE FIRST CLUE</div>
@@ -1224,7 +1821,8 @@ const SCENES = [
     say:['Is this sentence about the past or about now?','Hmm… both? Let’s investigate.'] } },
 
 /* ── 5 · DISCOVERY ── */
-{ id:'disc', m:5, name:'Grammar discovery', time:3, pct:55,
+{ id:'disc', sec:'grammar', m:5, name:'Grammar discovery', time:2, pct:55,
+  ccq:[['Did Mia post the video?','Yes.'],['Is she careful now?','Yes.'],['Is the cause in the past or the present?','The past.'],['Is Mia confident?','Not really.'],['When did she worry?','In the past.']],
   live:()=>{ const st=sd('disc'), part=st.part||'A', D=part==='A'?LESSON.discA:LESSON.discB, k=st[part]||0; if(k>=D.steps.length) return null; const s=D.steps[k]; return {id:'disc-'+part+k, kind:'choice', q:s.q, opts:s.o}; },
   render(el){
     const st=sd('disc'); st.part=st.part||'A'; st.A=st.A||0; st.B=st.B||0;
@@ -1233,12 +1831,13 @@ const SCENES = [
     const on = part==='A' ? {past:k>=3, now:k>=4, arrow:k>=4} : {now:k>=1, past:k>=2, arrow:k>=2};
     const sent = fmt(D.s).replace('class="p"',`class="p ${lit.p?'on':''}"`).replace('class="n"',`class="n ${lit.n?'on':''}"`);
     const c = done?[]:counts('disc-'+part+k, D.steps[k].o.length);
-    el.innerHTML=`<div class="sh"><div><span class="kick p">Mission 5 · Detective work</span><h2 class="dsp h2">Discover the pattern</h2></div>
+    const U=units(S.modes.grammar), step=(part==='A'?0:4)+k, who=ulabel(U[step%U.length]);
+    el.innerHTML=`<div class="sh"><div><span class="kick p">Grammar · detective work</span><h2 class="dsp h2">Discover the pattern</h2></div>
       <div class="tabs"><button class="tab ${part==='A'?'on':''}" data-p="A">Sentence A ${st.A>=4?'✓':''}</button><button class="tab ${part==='B'?'on':''}" data-p="B">Sentence B ${st.B>=2?'✓':''}</button></div></div>
     <div class="card face">${av('mia',72,'round')}<div class="sent">${sent}</div></div>
     <div class="steps mt">${D.steps.slice(0,Math.min(k+1,D.steps.length)).map((s,i)=> i<k
       ? `<div class="step"><div class="q">${esc(s.q)}</div><div class="a">✓ ${esc(s.say)}</div></div>`
-      : `<div class="step ${isFlash('disc')?'shake':''}"><div class="q">${esc(s.q)}</div><div class="as">${s.o.map((o,j)=>`<button class="btn" data-a="${j}">${esc(o)}${LIVE.on&&c[j]?` <span class="mono" style="color:var(--now)">${c[j]}</span>`:''}</button>`).join('')}</div></div>`).join('')}</div>
+      : `<div class="step ${isFlash('disc')?'shake':''}"><span class="stepwho">🎯 ${esc(who)}</span><div class="q">${esc(s.q)}</div><div class="as">${s.o.map((o,j)=>`<button class="btn" data-a="${j}">${esc(o)}${LIVE.on&&c[j]?` <span class="mono" style="color:var(--now)">${c[j]}</span>`:''}</button>`).join('')}</div></div>`).join('')}</div>
     ${tlHTML(D.tl,on,isFlash('discTL'))}
     ${done?`<div class="row mt center">${part==='A'?`<span class="badge p" style="font-size:16px">Past cause → present result</span><button class="btn primary" id="toB">Sentence B →</button>`
       :`<span class="badge n" style="font-size:16px">Now / general situation → past result</span><button class="btn primary glow" id="toRule">So what’s the rule? →</button>`}</div>`:''}`;
@@ -1248,198 +1847,255 @@ const SCENES = [
     $$('[data-p]',el).forEach(b=>b.onclick=()=>{ st.part=b.dataset.p; save(); draw(); });
     const tb=$('#toB',el); if(tb) tb.onclick=()=>{ st.part='B'; save(); draw(); };
     const tr=$('#toRule',el); if(tr) tr.onclick=next;
-    CUR.reveal=()=>{ if(!done) answer(); else if(part==='A'){ st.part='B'; save(); draw(); } };
+    CUR.reveal=CUR.answer=()=>{ if(!done) answer(); else if(part==='A'){ st.part='B'; save(); draw(); } };
+    CUR.hint=()=>toast(part==='A'?'Look at the colours: orange = past, blue = now.':'Is she confident in general? When did she worry?');
   },
-  teach:{ goal:'Учні самі знаходять: причина і результат — у різних часах.',
-    notes:['Одне питання за раз. Учні відповідають — ви клацаєте (або Reveal).','Колір: помаранчевий = минуле, бірюзовий = зараз. Таймлайн з’являється сам.','Головне в A: hadn’t posted → вона ВСЕ Ж опублікувала. Речення уявляє протилежне.','Після A натисніть Sentence B.'],
-    say:['Did she post it? Yes! So “hadn’t posted” is imaginary.','Is she confident? Not really. So “were more confident” is imaginary too.'] } },
+  teach:{ goal:'Учні самі знаходять: причина і результат — у різних часах. Правило ще не показуємо.',
+    notes:['Одне питання за раз; біля питання видно, хто відповідає (🎯).','Колір: помаранчевий = минуле, бірюзовий = зараз. Таймлайн з’являється сам.','Головне в A: hadn’t posted → вона ВСЕ Ж опублікувала. Речення уявляє протилежне.','CCQ у нижній панелі — якщо треба перевірити розуміння ще раз.'],
+    say:['Did she post it? Yes! So “hadn’t posted” is imaginary.','Is she confident? Not really. So “were more confident” is imaginary too.'],
+    mistake:'Учні плутають «hadn’t posted» із запереченням реального факту. Питайте: Did she post it in real life?',
+    timing:'2–3 хв.' } },
 
-/* ── 6a · EXPLANATION ── */
-{ id:'explain', m:6, name:'Mixed Conditionals', time:3, pct:60,
+/* ── 6a · ONE SCREEN — ONE FOCUS: the idea ── */
+{ id:'idea', sec:'grammar', m:6, name:'Two times', time:.5, pct:57,
+  ccq:[['Does a mixed conditional connect one time or two times?','Two times.'],['Is the if-part true in real life?','No — it imagines the opposite.']],
   render(el){
-    const st=sd('explain'); st.tab=st.tab||0; st.more=st.more||{};
-    const tabs=`<div class="tabs"><button class="tab ${st.tab===0?'on':''}" data-t="0">💡 The idea</button><button class="tab ${st.tab===1?'on':''}" data-t="1">Past → Now</button><button class="tab ${st.tab===2?'on':''}" data-t="2">Now → Past</button></div>`;
-    let body='';
-    if(st.tab===0){
-      body=`<div class="card"><h2 class="dsp" style="font-size:clamp(40px,5vw,72px)">Two times.<br><span style="color:var(--now)">One sentence.</span></h2>
-        <p class="lead mt" style="color:var(--text)">We use <b>Mixed Conditionals</b> when <b>TWO DIFFERENT TIMES</b> are connected.</p>
-        <div class="big-idea"><div class="pill2 a"><small>USUALLY</small><span style="color:var(--past)">PAST</span> + <span style="color:var(--now)">PRESENT</span></div><div class="or dsp" style="font-size:30px;color:var(--muted)">or</div><div class="pill2 b"><small>OR</small><span style="color:var(--now)">PRESENT / GENERAL</span> + <span style="color:var(--past)">PAST</span></div></div>
-        <div class="real"><div>🪞 The sentence imagines the <b>opposite</b> of real life:</div>
-          <div>“If Mia <b>hadn’t posted</b>…” → in real life she <b>did</b> post.</div>
-          <div>“If Mia <b>were</b> more confident…” → in real life she <b>isn’t</b> very confident.</div>
-          <div class="help">So: the if-part is NOT true in real life.</div></div></div>`;
-    } else {
-      const T=LESSON.types[st.tab-1], n=st.more[st.tab]||0;
-      const tl = T.key==='pn' ? LESSON.discA.tl : LESSON.discB.tl;
-      body=`<div class="gx"><div class="card lit">${dirBadge(T.key)}
-          <h2 class="dsp h2 mt">${T.key==='pn'?'<span style="color:var(--past)">Past</span> → <span style="color:var(--now)">Now</span>':'<span style="color:var(--now)">Now</span> → <span style="color:var(--past)">Past</span>'}</h2>
-          <p class="lead mt" style="color:var(--text)">${esc(T.meaning)}</p>
-          ${formula(T.formula)}
-          <div class="mt">${withFace(`<div class="sent" style="font-size:clamp(22px,2.3vw,30px)">${fmt(T.ex)}</div>`,T.ex,56)}</div>
-          <div class="real"><div class="small mono" style="letter-spacing:.14em">IN REAL LIFE</div>${T.real.map(r=>`<div>${esc(r)}</div>`).join('')}</div></div>
-        <div><div class="card tight">${tlHTML(tl)}</div>
-          <div class="exl mt lit">${T.more.slice(0,n).map(x=>`<div class="exi pop">${withFace(fmt(x),x,40)}</div>`).join('')}</div>
-          ${n<T.more.length?`<div class="row mt"><button class="btn sm" id="more">＋ Show example ${n+1}/${T.more.length}</button></div>`:''}</div></div>`;
-    }
-    el.innerHTML=`<div class="sh"><div><span class="kick">Mission 6 · Grammar</span><h2 class="dsp h2">Mixed Conditionals</h2></div>${tabs}</div>${body}`;
-    $$('[data-t]',el).forEach(b=>b.onclick=()=>{ st.tab=+b.dataset.t; save(); draw(); });
-    const mo=$('#more',el); if(mo) mo.onclick=()=>{ st.more[st.tab]=(st.more[st.tab]||0)+1; SFX.pop(); save(); draw(); };
-    CUR.example=()=>{ if(st.tab===0){ st.tab=1; } else if((st.more[st.tab]||0)<3) st.more[st.tab]=(st.more[st.tab]||0)+1; else if(st.tab===1) st.tab=2; save(); draw(); };
+    const st=sd('idea');
+    el.innerHTML=`<div class="focus1"><span class="kick">Grammar · 1 of 3</span>
+      <h2 class="dsp" style="font-size:clamp(48px,6.4vw,104px);margin-top:10px">Mixed Conditionals<br>= <span style="color:var(--past)">two</span> <span style="color:var(--now)">times</span></h2>
+      <p class="lead" style="margin:14px auto 0">in <b style="color:var(--text)">one</b> conditional sentence.</p>
+      <div class="big-idea" style="max-width:900px;margin:30px auto 0"><div class="pill2 a"><small>USUALLY</small><span style="color:var(--past)">PAST</span> + <span style="color:var(--now)">NOW</span></div><div class="or dsp" style="font-size:30px;color:var(--muted)">or</div><div class="pill2 b"><small>OR</small><span style="color:var(--now)">NOW / GENERAL</span> + <span style="color:var(--past)">PAST</span></div></div>
+      ${st.r?`<div class="real pop" style="max-width:820px;margin:24px auto 0;text-align:left"><div>🪞 The sentence imagines the <b>opposite</b> of real life:</div><div>“If Mia <b>hadn’t posted</b>…” → in real life she <b>did</b> post.</div><div class="help">So: the if-part is NOT true in real life.</div></div>`
+        :`<div class="mt2"><button class="btn" id="rv">🪞 Reveal: what is real?</button></div>`}</div>`;
+    const rv=$('#rv',el); if(rv) rv.onclick=()=>{ st.r=1; save(); SFX.pop(); draw(); };
+    CUR.reveal=CUR.answer=()=>{ st.r=1; save(); draw(); };
   },
-  teach:{ goal:'Коротко і візуально: два типи змішаних умовних.',
-    notes:['Вкладка «The idea» — 1 хв. Наголос: два різні часи + уявляємо протилежне.','Past → Now: If + had + V3, would + V. Now → Past: If + Past Simple, would have + V3.','«Show example» відкриває приклади по одному. Для кожного питайте: What really happened?','Термінів «second / third conditional» учням можна не називати.'],
-    say:['Look for TWO times.','What is true in real life?'] } },
+  teach:{ goal:'Один екран — одна думка: змішане умовне = два різні часи.', notes:['Попросіть учня прочитати заголовок уголос.','Reveal — «уявляємо протилежне до реальності».','CCQ (нижня панель) — 2 короткі питання.'], timing:'30 с.' } },
 
-/* ── 6b · SUPER SIMPLE RULE ── */
-{ id:'rule', m:6, name:'Super simple rule', time:1, pct:62,
+{ id:'pn', sec:'grammar', m:6, name:'Past → Now', time:.75, pct:58,
+  ccq:[['Did I go to bed early?','No.'],['Am I tired now?','Yes.'],['Which part is about the past?','had gone to bed earlier'],['Which form shows the result now?','would + verb']],
+  render(el){ typeScreen(el, 0); },
+  teach:{ goal:'Тип 1: минула причина → результат зараз. If + had + V3, would + verb.',
+    notes:['Учень читає приклад. Інший учень відповідає на «In real life».','Check timeline — показує, де минуле, а де «зараз».','Show example — ще приклади (Mia, moved house, coding) по одному.'],
+    mistake:'✗ If I would have gone… — в if-частині немає would.', skip:'Якщо учні вже зрозуміли форму — не відкривайте другий/третій приклад.', timing:'1 хв.' } },
+
+{ id:'np', sec:'grammar', m:6, name:'Now → Past', time:.75, pct:60,
+  ccq:[['Am I organised?','No.'],['Did I forget my homework?','Yes.'],['When did I forget it?','In the past.'],['Which form shows the past result?','would have + V3']],
+  render(el){ typeScreen(el, 1); },
+  teach:{ goal:'Тип 2: теперішня/загальна ситуація → результат у минулому. If + Past Simple, would have + V3.',
+    notes:['«were» — для всіх осіб: If I were / If he were.','Check timeline і Show example — так само, як на попередньому екрані.'],
+    mistake:'✗ If I am more organised, I wouldn’t have… → ✓ If I were…', pron:'wouldn’t have — /ˈwʊdntəv/ («wouldn’ta»).', timing:'1 хв.' } },
+
+/* ── 6c · SUPER SIMPLE RULE ── */
+{ id:'rule', sec:'grammar', m:6, name:'Super simple rule', time:.5, pct:62,
+  ccq:[['Past cause — which form?','had + V3'],['Result now — which form?','would + verb'],['Situation now — which form?','Past Simple (were)'],['Result in the past — which form?','would have + V3']],
   render(el){
     el.innerHTML=`<div class="rule"><div class="row center"><span class="kick">Super simple rule</span></div>
       <h2 class="dsp mt">Look for <span style="color:var(--past)">two</span> <span style="color:var(--now)">times</span>.</h2>
       <div class="help">One sentence → two different times.</div>
       <div class="rrow" style="animation:bubIn .5s .1s both"><div class="dir"><span class="p">Past</span><i>→</i><span class="n">Now</span></div>
-        <div class="lit"><div class="sent">If I {p}, I {n}.</div>${formula([['p','If + had + V3'],['n','would + verb']])}</div></div>
+        <div class="lit"><div class="sent">If I <span class="p">had studied</span>, I <span class="n">would know it now</span>.</div>${formula([['p','If + had + V3'],['n','would + verb']])}</div></div>
       <div class="rrow" style="animation:bubIn .5s .35s both"><div class="dir"><div><span class="n">Now</span><small>NOW / GENERAL</small></div><i>→</i><span class="p">Past</span></div>
-        <div class="lit"><div class="sent">If I {n2}, I {p2}.</div>${formula([['n','If + Past Simple'],['p','would have + V3']])}</div></div></div>`
-      .replace('{p}','<span class="p">had studied</span>').replace('{n}','<span class="n">would know it now</span>')
-      .replace('{n2}','<span class="n">were better at maths</span>').replace('{p2}','<span class="p">would have solved it</span>');
+        <div class="lit"><div class="sent">If I <span class="n">were better at maths</span>, I <span class="p">would have solved it</span>.</div>${formula([['n','If + Past Simple'],['p','would have + V3']])}</div></div></div>`;
   },
-  teach:{ goal:'Головна картка уроку. Можна зробити скріншот.',
-    notes:['Прочитайте обидва рядки. Запитайте: Which one starts in the past?','Попросіть 1–2 учнів придумати своє речення за будь-яким рядком.','Скажіть учням: сфотографуйте або заскриньте цей екран.'] } },
+  teach:{ goal:'Головна картка уроку. Учні можуть зробити скріншот.',
+    notes:['Учень читає рядок 1, інший — рядок 2. Запитайте: Which one starts in the past?','CCQ — 4 питання про форми.'] } },
 
-/* ── 6c · FIX THE TIMELINE (optional) ── */
-{ id:'fix', m:6, name:'Fix the timeline', time:2, pct:65, opt:true,
+/* ── 6d · FIX THE TIMELINE (optional) + EXPLAIN WHY ── */
+{ id:'fix', sec:'grammar', m:6, name:'Fix the timeline', time:2, pct:64, opt:true,
+  ccq:[['The result is “now” — which form?','would + verb'],['The result is “yesterday” — which form?','would have + V3']],
   live:()=>quizTask('fq', LESSON.fix),
   render(el){
-    el.innerHTML=`<div class="sh"><div><span class="badge skip">Optional — skip if short on time</span><h2 class="dsp h2 mt">Fix the timeline</h2><p class="lead">Choose the ending that connects the right times.</p></div></div>
-      ${quiz('fq', LESSON.fix, {kc:'p'})}`;
-    const solve=bindQuiz(el,'fq',LESSON.fix,()=>award(65));
-    CUR.reveal=()=>{ const q=sd('fq'); if(!q.ok[q.qi||0]) solve(); else if((q.qi||0)<LESSON.fix.length-1){ q.qi++; save(); draw(); } };
+    const U=units(S.modes.grammar);
+    el.innerHTML=`<div class="sh"><div><span class="badge skip">Optional — skip if short on time</span><h2 class="dsp h2 mt">Fix the timeline</h2><p class="lead">Choose the ending. Then explain why.</p></div>${modeSwitch('grammar')}</div>
+      ${quiz('fq', LESSON.fix, {kc:'p', why:true, who:qi=>ulabel(U[qi%U.length])})}`;
+    bindModes(el);
+    const solve=bindQuiz(el,'fq',LESSON.fix,()=>award(64));
+    CUR.reveal=CUR.answer=()=>{ const q=sd('fq'), qi=q.qi||0; if(!q.ok[qi]) solve(); else if(!(q.why||{})[qi]){ (q.why=q.why||{})[qi]=1; save(); draw(); } else if(qi<LESSON.fix.length-1){ q.qi++; save(); draw(); } };
   },
-  teach:{ goal:'Швидка перевірка розуміння, 3 питання.',
-    notes:['Учні голосують A чи B (руками, чатом або телефонами).','Після відповіді прочитайте пояснення: яке минуле, яке «зараз».','Після 3-го питання — TIMELINE RESTORED 65%.'],
-    answers:()=>LESSON.fix.map((q,i)=>`${i+1}. ${LET[q.a]} — ${q.ex}`) } },
+  teach:{ goal:'Швидка перевірка + EXPLAIN WHY: учень одним реченням каже, який це напрямок.',
+    notes:['Учні голосують A чи B. Після правильної відповіді — «Explain why» для учня, чиє ім’я на картці.','Очікувана відповідь: «Past → Present» / «Present → Past» + одне слово-підказка (now / yesterday).'],
+    answers:()=>LESSON.fix.map((q,i)=>`${i+1}. ${LET[q.a]} — ${q.ex}`), skip:'Optional: пропускайте в маршруті Core.' } },
 
-/* ── 7 · SPEAKING ── */
-{ id:'speak', m:7, name:'What if…?', time:3, pct:75,
+/* ── 6e · REPAIR THE TIMELINE (main student-led practice, N × 1, round 2 optional) ── */
+{ id:'repair', sec:'grammar', m:6, name:'Repair the timeline', time:()=>tt('grammar',.45,2), pct:65,
+  icq:[['Do you need to write?','No — say it.'],['How many sentences do you make?','One.'],['What do you need?','A mixed conditional.']],
+  ccq:[['Is the past fact true?','Yes — so the if-part says the opposite.'],['“Now” result — which form?','would + verb'],['Past result — which form?','would have + V3']],
+  live:()=>({id:'repair-r', kind:'react', q:'Listen: is the timeline repaired? React!'}),
+  render(el){
+    const st=sd('repair'); st.h=st.h||{}; st.t=st.t||{}; st.m=st.m||{};
+    const P=plan('repair','grammar',RP.length);
+    const head=`<div class="sh"><div><span class="kick p">Grammar practice · student-led</span><h2 class="dsp h2">Repair the timeline</h2></div>${modeSwitch('grammar')}</div>`;
+    if(!P.it){ el.innerHTML=head+turnBar(P)+roundDone(P); bindTurn(el,P); bindModes(el); bindRoundDone(el,P); return; }
+    const i=P.it.i, R=RP[i], tlv={dir:R.d, past:R.tl[0], now:R.tl[1]}, done=P.it.done;
+    const facts = R.d==='pn' ? [['p','PAST',R.p],['n','NOW',R.n]] : [['n','NOW / GENERAL',R.n],['p','PAST',R.p]];
+    el.innerHTML=head+turnBar(P)+`<div class="repair mt">
+      <div class="card rcard ${isFlash('rp')?'pop':''}"><span class="kick">Repair #${P.items.indexOf(P.it)+1}</span>
+        <div class="rfacts">${facts.map(f=>`<div class="rfact"><i class="${f[0]}">${f[1]}</i><span>${esc(f[2])}</span></div>`).join('')}</div>
+        <p class="vq" style="margin-top:14px">Make ONE mixed conditional. Start with <b>“If…”</b></p>
+        ${(st.h[i]||done)&&!st.m[i]?`<div class="hintbox pop">💡 ${R.d==='pn'?'Past → Now':'Now → Past'} · ${R.d==='pn'?'If + had + V3, … would + verb':'If + Past Simple (were), … would have + V3'}</div>`:''}
+        ${st.m[i]||done?`<div class="ans lit pop">✓ ${fmt(R.m)}</div>`:''}
+        <div class="row mt">${!st.h[i]&&!st.m[i]?`<button class="btn sm ghost" data-rh>💡 Hint</button>`:''}${!st.t[i]?`<button class="btn sm ghost" data-rt>🧭 Check timeline</button>`:''}${!st.m[i]?`<button class="btn sm" data-rm>👁 Reveal model</button>`:''}</div></div>
+      <div>${st.t[i]||st.m[i]?`<div class="card tight pop">${tlHTML(tlv)}</div>`:`<div class="card tight tlph"><div class="tlq">⏳</div><div class="small">Which time is the cause? Which time is the result?</div></div>`}
+        ${st.m[i]?`<div class="peer pop"><b>👥 Peer check:</b> “Is the timeline fixed? Past → Now or Now → Past?”</div>`:''}</div></div>`;
+    bindTurn(el,P); bindModes(el);
+    const h=$('[data-rh]',el); if(h) h.onclick=()=>{ st.h[i]=1; save(); SFX.pop(); draw(); };
+    const t=$('[data-rt]',el); if(t) t.onclick=()=>{ st.t[i]=1; save(); SFX.pop(); draw(); };
+    const m=$('[data-rm]',el); if(m) m.onclick=()=>{ st.m[i]=1; st.t[i]=1; save(); SFX.ok(); draw(); };
+    CUR.hint=()=>{ st.h[i]=1; save(); draw(); }; CUR.reveal=()=>{ st.t[i]=1; save(); draw(); }; CUR.answer=()=>{ st.m[i]=1; st.t[i]=1; save(); draw(); };
+  },
+  teach:{ goal:'Головна практика граматики: кожен учень «лагодить» одну ситуацію (N × 1). Раунд 2 — за бажанням.',
+    notes:['Учень читає дві ситуації вголос і складає ОДНЕ змішане умовне усно.','💡 Hint — напрямок і формула; 🧭 Check timeline — що причина, що результат; 👁 Reveal model — зразок.','Після моделі — Peer check: інший учень каже, чи «полагоджено».','Інші правильні варіанти теж приймайте (напр. «If I had charged it, it would work now»).'],
+    answers:()=>RP.map((r,i)=>`${i+1}. ${plain(r.m)}`),
+    mistake:'Найчастіше: ✗ …wouldn’t have been dead now → ✓ wouldn’t be dead now (результат ЗАРАЗ).',
+    timing:'≈30 с на учня.', skip:'Раунд 2 — лише в Extended.' } },
+
+/* ── 7 · SPEAKING: one main question per student (N × 1), bank of 24 ── */
+{ id:'speak', sec:'speak', m:7, name:'What if…?', time:()=>tt('speak',.45,2), pct:80,
+  icq:[['How many questions do you answer?','One.'],['Do you need a mixed conditional?','Yes.'],['What do you do after your answer?','Ask someone a follow-up.']],
   live:()=>({id:'speak', kind:'react', q:'React to your classmates’ answers!'}),
   render(el){
-    const st=sd('speak'); st.used=st.used||{}; st.ex=st.ex||{};
-    const Q=LESSON.speak, f=st.focus;
-    const rnd=`<button class="btn primary" id="rnd">🎲 RANDOM QUESTION</button>`;
-    if(f===undefined||f===null){
-      el.innerHTML=`<div class="sh"><div><span class="kick">Mission 7 · Speaking</span><h2 class="dsp h2">What if…?</h2><p class="lead">Answer 2–3 questions. Use a mixed conditional!</p></div>${rnd}</div>
-      <div class="sgrid">${Q.map((q,i)=>`<button class="scard ${st.used[i]?'used':''} ${st.hl===i?'pick':''}" data-i="${i}"><div class="row"><span class="n">0${i+1}</span>${dirBadge(q.dir)}</div><div class="q">${esc(q.en)}</div><div class="help starter">${esc(q.help)}</div></button>`).join('')}</div>`;
-      $$('.scard',el).forEach(b=>b.onclick=()=>{ st.focus=+b.dataset.i; save(); SFX.pop(); draw(true); });
+    const st=sd('speak'); st.ex=st.ex||{}; st.swap=st.swap||{}; st.ua=st.ua||{}; st.peer=st.peer||{};
+    const P=plan('speak','speak',SPK.length);
+    const qOf = i => st.swap[i]!=null ? st.swap[i] : i;
+    const head=`<div class="sh"><div><span class="kick">Speaking</span><h2 class="dsp h2">What if…?</h2></div><div class="row">${modeSwitch('speak')}<button class="btn sm ghost" id="all">${st.grid?'🎯 Focus':'▦ All questions'}</button><button class="btn sm primary" id="rnd">🎲 RANDOM QUESTION</button></div></div>`;
+    if(st.grid){
+      el.innerHTML=head+turnBar(P)+`<div class="sgrid mt">${P.items.map(x=>{ const q=SPK[qOf(x.i)]; return `<button class="scard ${x.done?'used':''} ${P.it&&x.i===P.it.i?'pick':''}" data-si="${x.i}"><div class="row"><span class="n">${esc(x.by)}</span>${dirBadge(q.dir)}</div><div class="q">${esc(q.en)}</div></button>`; }).join('')}</div>`;
+    } else if(!P.it){
+      el.innerHTML=head+turnBar(P)+roundDone(P);
     } else {
-      const q=Q[f];
-      el.innerHTML=`<div class="sh"><div><span class="kick">Mission 7 · Question 0${f+1}</span></div><div class="row"><button class="btn sm ghost" id="all">▦ All questions</button>${rnd}</div></div>
-      <div class="focus card">${dirBadge(q.dir)}<div class="q mt">${esc(q.en)}</div><div class="help starter">${esc(q.help)}</div>
-        ${st.ex[f]?`<div class="sample pop lit"><small>EXAMPLE</small>${esc(q.ex)}</div>`:''}
-        <div class="row mt2">${!st.ex[f]?`<button class="btn" id="ex">💡 Show example</button>`:''}<button class="btn ${st.used[f]?'':'ghost'}" id="us">${st.used[f]?'✓ Answered':'Mark as answered'}</button></div></div>`;
-      $('#all',el).onclick=()=>{ st.focus=null; save(); draw(true); };
-      const ex=$('#ex',el); if(ex) ex.onclick=()=>{ st.ex[f]=1; save(); SFX.pop(); draw(); };
-      $('#us',el).onclick=()=>{ st.used[f]=!st.used[f]; save(); draw(); };
-      CUR.example=()=>{ st.ex[f]=1; save(); draw(); };
+      const i=P.it.i, qi=qOf(i), q=SPK[qi];
+      el.innerHTML=head+turnBar(P)+`<div class="focus card mt ${st.hl?'spin':''}">${dirBadge(q.dir)}<div class="q mt">${esc(q.en)}</div><div class="help starter">${esc(q.help)}</div>
+        ${st.ua[i]&&q.ua?`<div class="uabox pop">🇺🇦 ${esc(q.ua)}</div>`:''}
+        ${st.ex[i]?`<div class="sample pop lit"><small>EXAMPLE</small>${esc(q.ex)}</div>`:''}
+        ${st.peer[i]?`<div class="peer pop"><b>👥 PEER QUESTION</b> — choose another student and ask ONE follow-up:<div class="chips mt">${PEER.map(p=>`<span class="chip">${esc(p)}</span>`).join('')}</div></div>`:''}
+        <div class="row mt2">${!st.ex[i]?`<button class="btn sm ghost" data-sx>💡 Show example</button>`:''}${q.ua&&!st.ua[i]?`<button class="btn sm ghost" data-su title="Ukrainian help">🇺🇦</button>`:''}${!st.peer[i]?`<button class="btn sm" data-sp>👥 Peer question</button>`:''}</div></div>`;
+      const x=$('[data-sx]',el); if(x) x.onclick=()=>{ st.ex[i]=1; save(); SFX.pop(); draw(); };
+      const u=$('[data-su]',el); if(u) u.onclick=()=>{ st.ua[i]=1; save(); draw(); };
+      const p=$('[data-sp]',el); if(p) p.onclick=()=>{ st.peer[i]=1; save(); SFX.pop(); draw(); };
+      CUR.answer=CUR.example=()=>{ st.ex[i]=1; save(); draw(); }; CUR.reveal=()=>{ st.peer[i]=1; save(); draw(); }; CUR.hint=()=>{ st.ua[i]=1; save(); draw(); };
     }
+    bindTurn(el,P); bindModes(el); if(!P.it) bindRoundDone(el,P);
+    $$('[data-si]',el).forEach(b=>b.onclick=()=>{ P.T.cur=+b.dataset.si; st.grid=0; save(); draw(true); });
+    $('#all',el).onclick=()=>{ st.grid=st.grid?0:1; save(); draw(true); };
     $('#rnd',el).onclick=async()=>{
-      if(st.spin) return; st.spin=1; st.focus=null;
-      const pool=Q.map((_,i)=>i).filter(i=>!st.used[i]); const pick=(pool.length?pool:Q.map((_,i)=>i))[Math.floor(Math.random()*(pool.length||Q.length))];
-      for(let k=0;k<11;k++){ st.hl = k<10 ? (k+pick+1)%Q.length : pick; draw(); SFX.tone(500+k*60,.05,'sine',.05); await wait(REDUCED?20:70+k*14); }
-      await wait(350); st.spin=0; st.hl=null; st.focus=pick; save(); draw(true);
-    };
+      if(!P.it||P.it.done||st.spinning) return toast(P.it?'This turn is finished — go to an open turn':'Round complete');
+      const used=new Set(P.items.map(x=>qOf(x.i))); const pool=SPK.map((_,k)=>k).filter(k=>!used.has(k));
+      if(!pool.length) return toast('No more new questions in the bank');
+      st.spinning=1; st.grid=0;
+      for(let k=0;k<(REDUCED?1:9);k++){ st.swap[P.it.i]=pool[Math.floor(Math.random()*pool.length)]; st.hl=1; draw(); SFX.tone(500+k*60,.05,'sine',.05); await wait(70+k*16); }
+      st.hl=0; st.spinning=0; st.ex[P.it.i]=0; save(); SFX.pop(); draw(); };
+    CUR.random=()=>$('#rnd',el).click();
   },
-  teach:{ goal:'Кожен учень говорить хоча б 1 раз. 2–3 питання, не всі 4.',
-    notes:['RANDOM QUESTION — швидкий вибір. Або клацніть картку.','Приклад відкривайте лише якщо учень мовчить.','Виправляйте лише форму: would + V (зараз) / would have + V3 (минуле).','Live: учні можуть реагувати емодзі на відповіді одне одного.'] } },
+  teach:{ goal:'Кожен учень відповідає на ОДНЕ головне питання (N × 1). Після відповіді — Peer question від іншого учня.',
+    notes:['Перші 4 питання — оригінальні; для більших груп і раунду 2 є ще 20 у банку.','🎲 RANDOM QUESTION — замінює питання поточного учня на нове з банку.','💡 Show example — лише якщо учень мовчить. 🇺🇦 — українська підказка (прихована за замовчуванням).','👥 Peer question — учень обирає однокласника і ставить одне додаткове питання (Why? / What happened? …). Вчитель не ставить усі follow-up сам.'],
+    answers:()=>SPK.map((q,i)=>`${i+1}. ${q.ex}`),
+    mistake:'Учні змішують форми: ✗ If I had started earlier, I would have been better now → ✓ I would be better now.',
+    timing:'≈35 с на учня.', skip:'Раунд 2 — лише якщо є час.' } },
 
 /* ── 8a · BREAKOUT MISSION ── */
-{ id:'brief', m:8, name:'Breakout mission', time:1, pct:78,
+{ id:'brief', sec:'breakout', m:8, name:'Breakout mission', time:1, pct:82,
+  icq:[['How many Mixed Conditionals do you need?','Two.'],['Do you need to write a long story?','No.'],['Will you present your answer?','Yes — 45–60 seconds.'],['How long do you have?','5 minutes.'],['Is the title necessary?','No — only if you have time.']],
   render(el){
-    const st=sd('brief'), E=LESSON.example;
-    el.innerHTML=`<div class="sh"><div><span class="kick p">Mission 8 · Breakout rooms</span><h1 class="dsp h1">Fix a broken timeline</h1>
-      <p class="lead">Your team gets a character. Their timeline is broken — fix it!</p><p class="help" style="font-size:19px;max-width:820px">${esc(LESSON.missionHelp)}</p></div></div>
-    <div class="msteps">${LESSON.mission.map((m,i)=>`<div class="ms ${m.k}"><div class="no">${i+1}</div><b>${esc(m.en)}</b><div class="help">${esc(m.help)}</div>${m.f?formula(m.f):''}</div>`).join('')}</div>
-    ${st.ex?`<div class="card mt pop lit"><div class="row"><span class="kick">Example · ${E.who}</span><span class="small grow">Team 3: make different sentences!</span></div>
+    const st=sd('brief'), E=LESSON.example, T=TEAMS();
+    el.innerHTML=`<div class="sh"><div><span class="kick p">Breakout rooms</span><h1 class="dsp h1">Fix a broken timeline</h1>
+      <p class="lead">Your ${S.modes.breakout==='pairs'?'pair':'team'} gets a character. Their timeline is broken — fix it!</p><p class="help" style="font-size:19px;max-width:820px">You have 5 minutes. Say it together — writing is optional. Then one person presents (45–60 seconds).</p>
+      ${st.ua?`<p class="uabox pop">🇺🇦 ${esc(LESSON.missionUA)}</p>`:''}</div>
+      <div style="display:grid;gap:10px;justify-items:end">${modeSwitch('breakout',['pairs','teams'])}<span class="small">${S.n} students → <b style="color:var(--text)">${T.length} ${S.modes.breakout==='pairs'?'pair':'team'}${T.length>1?'s':''}</b></span></div></div>
+    <div class="msteps">${LESSON.mission2.map((m,i)=>`<div class="ms ${m.k==='o'?'opt':m.k}"><div class="no">${m.k==='o'?'★':i+1}</div><b>${esc(m.en)}</b><div class="help">${esc(m.help)}</div>${st.ua?`<div class="uabox">${esc(m.ua)}</div>`:''}${m.f?formula(m.f):''}</div>`).join('')}</div>
+    ${st.ex?`<div class="card mt pop lit"><div class="row"><span class="kick">Example · ${E.who}</span><span class="small grow">Max is also a character — make different sentences!</span></div>
         <div class="exl mt"><div class="exi">${fmt(E.s1)}</div><div class="exi">${fmt(E.s2)}</div>
-        <div class="exi"><span class="small mono">ADVICE&nbsp;</span> ${esc(E.advice)}</div><div class="exi"><span class="small mono">TITLE&nbsp;</span> “${esc(E.title)}”</div></div></div>`
-      :`<div class="row mt2 center"><button class="btn" id="ex">💡 Show example</button></div>`}`;
+        <div class="exi"><span class="small mono">LESSON&nbsp;</span> ${esc(E.advice)}</div><div class="exi"><span class="small mono">TITLE (optional)&nbsp;</span> “${esc(E.title)}”</div></div></div>`
+      :`<div class="row mt2 center"><button class="btn" id="ex">💡 Show example</button>${!st.ua?`<button class="btn ghost" id="ua">🇺🇦 Ukrainian help</button>`:''}</div>`}`;
+    bindModes(el);
     const ex=$('#ex',el); if(ex) ex.onclick=()=>{ st.ex=1; save(); SFX.pop(); draw(); };
-    CUR.example=()=>{ st.ex=1; save(); draw(); };
+    const ua=$('#ua',el); if(ua) ua.onclick=()=>{ st.ua=1; save(); draw(); };
+    CUR.example=CUR.answer=()=>{ st.ex=1; save(); draw(); }; CUR.hint=()=>{ st.ua=1; save(); draw(); };
   },
-  teach:{ goal:'Пояснити місію за 1–2 хвилини.',
-    notes:['Прочитайте 4 кроки. Українські інструкції — для слабших учнів.','Покажіть приклад з Max. Команда 3 теж отримує Max — вона має придумати ІНШІ речення.','Далі — екран команд і таймер.'] } },
+  teach:{ goal:'Пояснити місію за 1 хвилину і перевірити ICQ.',
+    notes:['Режим PAIRS або TEAMS — кількість груп рахується автоматично від кількості учнів.','Обов’язково: 1 речення Past → Present, 1 речення Present → Past, висновок/порада. Назва — необов’язкова.','ICQ (нижня панель) — 5 коротких питань перед відкриттям кімнат.','🇺🇦 Ukrainian help — інструкції українською (приховано за замовчуванням).'] } },
 
 /* ── 8b · TEAMS + TIMER ── */
-{ id:'teams', m:8, name:'Teams & timer', time:5, pct:85,
+{ id:'teams', sec:'breakout', m:8, name:'Teams & timer', time:5, pct:88,
+  icq:[['How many sentences?','Two mixed conditionals + one lesson.'],['How long?','5 minutes.']],
   live:()=>({id:'team', kind:'team', teams:TEAMS().map(t=>({L:t.L, name:t.name, e:t.e, facts:t.facts}))}),
   render(el){
     const st=sd('teams'); st.hint=st.hint||{};
-    const C=2*Math.PI*54;
-    el.innerHTML=`<div class="sh"><div><span class="kick p">Mission 8 · Your teams</span><h2 class="dsp h2">Choose your character</h2>
-      <p class="lead">Each team fixes one timeline. You have 5 minutes.</p></div>
+    const C=2*Math.PI*54, T=TEAMS();
+    if(TIMER.total!==300 && !TIMER.active()) TIMER.set(300);
+    el.innerHTML=`<div class="sh"><div><span class="kick p">Breakout · your ${S.modes.breakout==='pairs'?'pairs':'teams'}</span><h2 class="dsp h2">Choose your character</h2>
+      <p class="lead">Each ${S.modes.breakout==='pairs'?'pair':'team'} fixes one timeline. 5 minutes.</p>${modeSwitch('breakout',['pairs','teams'])}</div>
       <div class="card tight timer"><div class="ring" id="ring"><svg viewBox="0 0 128 128"><circle class="bg" cx="64" cy="64" r="54"/><circle class="fg" cx="64" cy="64" r="54" stroke-dasharray="${C}" stroke-dashoffset="0"/></svg><b>5:00</b></div>
         <div style="display:grid;gap:8px"><button class="btn sm primary" id="tStart">▶ Start 5:00</button><div class="row" style="gap:8px"><button class="btn sm ghost" id="tAdd">+1 min</button><button class="btn sm ghost" id="tRes">↺</button></div></div></div></div>
-    <div class="teams">${TEAMS().map(t=>`<div class="team ${t.extra?'extra':''}">
-      <div class="th">${av({e:t.e,bg:t.bg},58)}<div><span>TEAM ${t.L}${t.extra?' · extra':''}</span><b>${esc(t.name)}</b></div></div>
+    <div class="teams">${T.map(t=>`<div class="team ${t.extra?'extra':''}">
+      <div class="th">${av({e:t.e,bg:t.bg},58)}<div><span>${S.modes.breakout==='pairs'?'PAIR':'TEAM'} ${t.L}</span><b>${esc(t.name)}</b></div></div>
+      <div class="members">👥 ${esc(t.members.map(NAME).join(', '))}</div>
       ${t.facts.map(f=>`<div class="fact"><i class="${f[0]}">${f[0]==='p'?'PAST':'NOW'}</i><span>${esc(f[1])}</span></div>`).join('')}
       ${st.hint[t.L]?`<div class="hint pop">💡 ${esc(t.hint)}</div>`:`<button class="btn sm ghost" data-h="${t.L}">💡 Show clue</button>`}
-      ${S.work[t.L]?`<div class="small" style="color:var(--ok)">✓ Work received from ${esc(S.work[t.L].by||'the team')}</div>`:''}</div>`).join('')}</div>
+      ${S.work[t.L]?`<div class="small" style="color:var(--ok)">✓ Work received from ${esc(S.work[t.L].by||'the team')}</div>`:''}</div>`).join('')}
+      ${T.length<3?LESSON.teams.slice(T.length,3).map(t=>`<div class="team extra spare"><div class="th">${av({e:t.e,bg:t.bg},48)}<div><span>FAST FINISHERS · BONUS</span><b>${esc(t.name)}</b></div></div>${t.facts.map(f=>`<div class="fact"><i class="${f[0]}">${f[0]==='p'?'PAST':'NOW'}</i><span>${esc(f[1])}</span></div>`).join('')}</div>`).join(''):''}</div>
     <div class="row mt">
-      <button class="btn sm" id="cp">📋 Copy tasks for Zoom chat</button>
-      ${S.teams<5?`<button class="btn sm ghost" id="addT">＋ Add team ${S.teams+1}</button>`:''}
-      ${S.teams>3?`<button class="btn sm ghost" id="rmT">－ Remove team ${S.teams}</button>`:''}
+      <button class="btn sm" id="cp">📋 Copy tasks for Zoom chat</button><button class="btn sm ghost" id="shf">🔀 Shuffle groups</button>
       <span class="small grow" style="text-align:right">In breakout rooms students can’t see your screen — paste the tasks into the chat.</span></div>`;
+    bindModes(el);
     $$('[data-h]',el).forEach(b=>b.onclick=()=>{ st.hint[b.dataset.h]=1; save(); SFX.pop(); draw(); });
-    $('#tStart',el).onclick=()=>TIMER.run?TIMER.pause():TIMER.start();
+    $('#tStart',el).onclick=()=>TIMER.toggle();
     $('#tAdd',el).onclick=()=>TIMER.add(60);
-    $('#tRes',el).onclick=()=>TIMER.reset();
+    $('#tRes',el).onclick=()=>TIMER.set(300);
     $('#cp',el).onclick=copyTasks;
-    const ad=$('#addT',el); if(ad) ad.onclick=()=>{ S.teams++; save(); draw(); pubState(); };
-    const rm=$('#rmT',el); if(rm) rm.onclick=()=>{ S.teams--; save(); draw(); pubState(); };
+    $('#shf',el).onclick=()=>{ shuffleOrder(); draw(); pubState(); };
     TIMER.paint();
-    CUR.reveal=()=>{ revealHints(st); };
+    CUR.hint=CUR.reveal=()=>{ revealHints(st); };
   },
   teach:{ goal:'Групова робота 5 хв — найважливіша частина уроку.',
-    notes:['Розподіліть учнів на 3 команди (або додайте 4–5).','📋 Copy tasks → вставте в Zoom chat або Broadcast message ПЕРЕД відкриттям кімнат.','Запустіть таймер. Він продовжує йти, навіть якщо ви перейдете на інший екран (⏱ у шапці).','Live Mode: кожна команда бачить свого персонажа на телефоні і може надіслати роботу — вона з’явиться на екрані презентацій.'],
-    answers:()=>TEAMS().flatMap(t=>[`TEAM ${t.L} · ${t.name}:`, ...t.model.map(m=>'   '+m)]) } },
+    notes:['Групи формуються автоматично з кількості учнів (Pairs / Teams). 🔀 — перемішати склад.','Персонажі: Alex, Sophie, Max (далі Kate, Dan; для 6+ груп — повторюються).','📋 Copy tasks → вставте в Zoom chat або Broadcast message ПЕРЕД відкриттям кімнат.','Таймер іде далі, навіть якщо перейти на інший екран (⏱ у шапці). Він сам нічого не перемикає.','Live Mode: кожна група бачить свого персонажа на телефоні і може надіслати роботу.'],
+    answers:()=>TEAMS().flatMap(t=>[`${t.L} · ${t.name}:`, ...t.model.map(m=>'   '+m)]) } },
 
-/* ── 8c · PRESENT ── */
-{ id:'present', m:8, name:'Present your timeline', time:3, pct:92,
+/* ── 8c · PRESENT YOUR TIMELINE ── */
+{ id:'present', sec:'breakout', m:8, name:'Present your timeline', time:()=>Math.max(2,TEAMS().length*1.1), pct:95,
+  live:()=>{ const st=sd('present'); if(!st.cur) return {id:'pres-r',kind:'react',q:'React to the presentations!'}; return {id:'verdict-'+st.cur, kind:'choice', q:'Team '+st.cur+': is the timeline fixed?', opts:['👍 Timeline fixed','🤔 Needs repair']}; },
   render(el){
-    const st=sd('present'); st.done=st.done||{};
-    const T=TEAMS(), cur=T.find(t=>t.L===st.cur);
-    const head=`<div class="sh"><div><span class="kick p">Mission 8 · Presentations</span><h2 class="dsp h2">Present your timeline</h2><p class="lead">45–60 seconds per team.</p></div></div>
-      <div class="qs5">${LESSON.presentQ.map((q,i)=>`<span>${i+1}. ${esc(q)}</span>`).join('')}</div>`;
-    const workHTML=(t)=>{ const w=S.work[t.L]; if(!w) return ''; return `<div class="work"><span class="small mono">FROM ${esc((w.by||'team').toUpperCase())}</span>${['s1','s2','advice','title'].filter(k=>w[k]).map(k=>`<div><b>${{s1:'Past → Now',s2:'Now → Past',advice:'Advice',title:'Title'}[k]}:</b> ${esc(w[k])}</div>`).join('')}</div>`; };
-    if(!cur){
-      el.innerHTML=head+`<div class="teams mt">${T.map(t=>`<button class="team ${st.done[t.L]?'presented':''}" data-t="${t.L}">
-        <div class="th">${av({e:t.e,bg:t.bg},58)}<div><span>TEAM ${t.L}</span><b>${esc(t.name)}</b></div></div>
-        ${t.facts.map(f=>`<div class="fact"><i class="${f[0]}">${f[0]==='p'?'PAST':'NOW'}</i><span>${esc(f[1])}</span></div>`).join('')}
+    const st=sd('present'); st.done=st.done||{}; st.v=st.v||{}; st.fb=st.fb||{};
+    const T=TEAMS(), tm=T.find(t=>t.L===st.cur);
+    const head=`<div class="sh"><div><span class="kick p">Breakout · presentations</span><h2 class="dsp h2">Present your timeline</h2><p class="lead">45–60 seconds per ${S.modes.breakout==='pairs'?'pair':'team'}.</p></div></div>
+      <div class="qs5">${LESSON.presentQ2.map((q,i)=>`<span>${i+1}. ${esc(q)}</span>`).join('')}</div>`;
+    const workHTML=(t)=>{ const w=S.work[t.L]; if(!w) return ''; return `<div class="work"><span class="small mono">FROM ${esc((w.by||'team').toUpperCase())}</span>${['s1','s2','advice','title'].filter(k=>w[k]).map(k=>`<div><b>${{s1:'Past → Now',s2:'Now → Past',advice:'Verdict',title:'Title'}[k]}:</b> ${esc(w[k])}</div>`).join('')}</div>`; };
+    const votes=L=>{ const v=st.v[L]||[0,0], lc=counts('verdict-'+L,2); return [v[0]+lc[0], v[1]+lc[1]]; };
+    if(!tm){
+      el.innerHTML=head+`<div class="teams mt">${T.map(t=>{ const v=votes(t.L); return `<button class="team ${st.done[t.L]?'presented':''}" data-t="${t.L}">
+        <div class="th">${av({e:t.e,bg:t.bg},58)}<div><span>${S.modes.breakout==='pairs'?'PAIR':'TEAM'} ${t.L}</span><b>${esc(t.name)}</b></div></div>
+        <div class="members">👥 ${esc(t.members.map(NAME).join(', '))}</div>
         ${workHTML(t)}
-        <span class="badge" style="align-self:flex-start;${st.done[t.L]?'color:var(--ok)':''}">${st.done[t.L]?'✓ Presented':'▶ Click when presenting'}</span></button>`).join('')}</div>`;
+        <span class="badge" style="align-self:flex-start;${st.done[t.L]?'color:var(--ok)':''}">${st.done[t.L]?`✓ Presented · 👍 ${v[0]} · 🤔 ${v[1]}`:'▶ Click when presenting'}</span></button>`; }).join('')}</div>`;
       $$('[data-t]',el).forEach(b=>b.onclick=()=>{ st.cur=b.dataset.t; st.t0=Date.now(); save(); SFX.pop(); draw(true); });
     } else {
-      const left=Math.max(0,60-Math.floor((Date.now()-(st.t0||Date.now()))/1000));
+      const v=votes(tm.L), left=Math.max(0,60-Math.floor((Date.now()-(st.t0||Date.now()))/1000));
       el.innerHTML=head+`<div class="spot mt">
-        <div class="team shown">${'<div class="th">'+av({e:cur.e,bg:cur.bg},72)+`<div><span>TEAM ${cur.L} · NOW PRESENTING</span><b>${esc(cur.name)}</b></div></div>`}
-          ${cur.facts.map(f=>`<div class="fact"><i class="${f[0]}">${f[0]==='p'?'PAST':'NOW'}</i><span>${esc(f[1])}</span></div>`).join('')}
+        <div class="team shown"><div class="th">${av({e:tm.e,bg:tm.bg},72)}<div><span>${esc(tm.L)} · NOW PRESENTING</span><b>${esc(tm.name)}</b></div></div>
+          <div class="members">👥 ${esc(tm.members.map(NAME).join(', '))}</div>
+          ${tm.facts.map(f=>`<div class="fact"><i class="${f[0]}">${f[0]==='p'?'PAST':'NOW'}</i><span>${esc(f[1])}</span></div>`).join('')}
           <div class="bar60"><i id="b60"></i></div><div class="small" id="t60">${left}s</div></div>
-        <div class="card">${S.work[cur.L]?workHTML(cur):`<div class="small">Listen to the team. Check: one <b style="color:var(--past)">Past</b> → <b style="color:var(--now)">Now</b> sentence and one <b style="color:var(--now)">Now</b> → <b style="color:var(--past)">Past</b> sentence.</div>`}
-          ${st.model?`<div class="exl mt lit">${cur.model.map(m=>`<div class="exi">${esc(m)}</div>`).join('')}</div>`:''}
-          <div class="row mt2"><button class="btn primary" id="dn">✓ Done — next team</button><button class="btn ghost" id="bk">▦ All teams</button>${!st.model?`<button class="btn sm ghost" id="md">Model answers</button>`:''}</div></div></div>`;
+        <div class="card">${S.work[tm.L]?workHTML(tm):`<div class="small">Listen. Check: one <b style="color:var(--past)">Past</b> → <b style="color:var(--now)">Now</b> sentence, one <b style="color:var(--now)">Now</b> → <b style="color:var(--past)">Past</b> sentence and a verdict.</div>`}
+          ${st.model?`<div class="exl mt lit">${tm.model.map(m=>`<div class="exi">${esc(m)}</div>`).join('')}</div>`:''}
+          <div class="verdict mt"><span class="small mono">CLASS REACTS</span><button class="vbtn ok" data-vv="0">👍 Timeline fixed <b>${v[0]}</b></button><button class="vbtn rep" data-vv="1">🤔 Needs repair <b>${v[1]}</b></button></div>
+          ${st.fb[tm.L]!=null?`<div class="peer pop"><b>👥 ${esc(NAME(st.fb[tm.L]))}:</b> “Which sentence was strongest?”</div>`:''}
+          <div class="row mt2"><button class="btn primary" id="dn">✓ Done — next</button><button class="btn ghost" id="bk">▦ All</button><button class="btn sm ghost" id="fb">🎲 Peer feedback</button>${!st.model?`<button class="btn sm ghost" id="md">Model answers</button>`:''}</div></div></div>`;
       const tick=()=>{ const b=$('#b60'); if(!b){ clearInterval(PRES_T); return; } const s=(Date.now()-st.t0)/1000; b.style.width=Math.min(100,s/60*100)+'%'; if(s>=60) b.style.background='var(--bad)'; $('#t60').textContent = s<60 ? Math.ceil(60-s)+'s' : '⏰ time!'; };
       clearInterval(PRES_T); PRES_T=setInterval(tick,500); requestAnimationFrame(tick);
-      $('#dn',el).onclick=()=>{ st.done[cur.L]=1; st.model=0; const nx=T.find(t=>!st.done[t.L]); st.cur=nx?nx.L:null; st.t0=Date.now(); save(); SFX.ok(); draw(true); };
+      $$('[data-vv]',el).forEach(b=>b.onclick=()=>{ const a=st.v[tm.L]=st.v[tm.L]||[0,0]; a[+b.dataset.vv]++; save(); SFX.pop(); draw(); });
+      $('#dn',el).onclick=()=>{ st.done[tm.L]=1; st.model=0; const nx=T.find(t=>!st.done[t.L]); st.cur=nx?nx.L:null; st.t0=Date.now(); save(); SFX.ok(); draw(true); };
       $('#bk',el).onclick=()=>{ st.cur=null; st.model=0; save(); draw(true); };
+      $('#fb',el).onclick=()=>{ st.fb[tm.L]=randStudent(tm.members.length<S.n?tm.members:null); save(); SFX.pop(); draw(); };
       const md=$('#md',el); if(md) md.onclick=()=>{ st.model=1; save(); draw(); };
-      CUR.reveal=()=>{ st.model=1; save(); draw(); };
+      CUR.reveal=CUR.answer=()=>{ st.model=1; save(); draw(); }; CUR.random=()=>$('#fb',el).click();
     }
   },
-  teach:{ goal:'Кожна команда говорить 45–60 секунд.',
-    notes:['Клацніть картку команди, коли вона починає. Смужка — орієнтир 60 секунд.','Питання-підказки вгорі — команда відповідає на них по черзі.','Після кожної команди: 1 похвала + 1 виправлення форми.','Якщо учні надіслали роботу з телефонів — вона з’явиться на картці.'],
-    answers:()=>TEAMS().flatMap(t=>[`TEAM ${t.L} · ${t.name}:`, ...t.model.map(m=>'   '+m)]) } },
+  teach:{ goal:'Кожна група говорить 45–60 секунд: WHO? · WHAT HAPPENED? · MC #1 · MC #2 · YOUR VERDICT.',
+    notes:['Клацніть картку групи, коли вона починає. Смужка — орієнтир 60 секунд.','Після виступу клас реагує: 👍 Timeline fixed / 🤔 Needs repair (клацайте, щоб рахувати; телефони голосують самі).','🎲 Peer feedback — учень з іншої групи каже, яке речення було найкращим.','Після кожної групи: 1 похвала + 1 виправлення форми.'],
+    answers:()=>TEAMS().flatMap(t=>[`${t.L} · ${t.name}:`, ...t.model.map(m=>'   '+m)]) } },
 
 /* ── 9a · FINAL STORY ── */
-{ id:'finale', m:9, name:'Final story', time:1, pct:100,
+{ id:'finale', sec:'final', m:9, name:'Final story', time:.5, pct:100,
   render(el){
     const st=sd('finale'); st.n=st.n||0;
     const L=LESSON.finalChat, all=st.n>=L.length, whole=st.restored;
@@ -1453,7 +2109,7 @@ const SCENES = [
           <p class="lead mt">One last conversation…</p>
           <div class="row mt2">${!all?`<button class="btn xl primary" id="nxm">Next message ›</button>`:`<button class="btn xl primary glow" id="fix">⚡ RESTORE THE TIMELINE</button>`}</div>`}</div></div>`;
     const nxm=$('#nxm',el); if(nxm) nxm.onclick=()=>{ if(st.typing) return; st.typing=true; draw(); setTimeout(()=>{ st.typing=false; st.n++; save(); SFX.msg(); draw(); },650); };
-    const fx=$('#fix',el); if(fx) fx.onclick=async()=>{ SFX.rise(); await wait(200); st.restored=1; award(100,true); save(); draw(); confetti(); };
+    const fx=$('#fix',el); if(fx) fx.onclick=()=>restoreFX(()=>{ st.restored=1; award(100,true); save(); draw(); confetti(); });
     CUR.reveal=()=>{ if(!all){ st.n=L.length; save(); draw(); } else if(fx) fx.click(); };
   },
   teach:{ goal:'Закрити історію і повернутись до головної думки.',
@@ -1461,63 +2117,167 @@ const SCENES = [
     say:['How did the old post change Mia?','Is that a bad thing?'] } },
 
 /* ── 9b · FINAL CHALLENGE ── */
-{ id:'last', m:9, name:'Final challenge', time:1, pct:100,
+{ id:'last', sec:'final', m:9, name:'Final challenge', time:1, pct:100,
   live:()=>({id:'final', kind:'text', q:'If I hadn’t made mistakes in the past, I ______ now.', ph:'wouldn’t be…'}),
   render(el){
     const st=sd('last');
     el.innerHTML=`<div class="sh"><div><span class="kick p">Final challenge</span><h2 class="dsp h2">Complete Mia’s message</h2>
-      <p class="lead">There is more than one correct answer — the grammar must be right and the idea must make sense.</p></div></div>
+      <p class="lead">Say it out loud. Many answers are correct — the grammar must be right and the idea must make sense.</p></div></div>
     <div class="card"><div class="row" style="margin-bottom:14px">${av('mia',48,'round')}<span class="small">Mia is typing a post…</span></div>
-      <form class="compose" id="cf">If I <span style="color:var(--past)">hadn’t made mistakes in the past</span>, I <input id="ci" autocomplete="off" placeholder="wouldn’t be …" aria-label="Your ending"> <span style="color:var(--now)">now</span>. <button class="btn primary" type="submit">Send ➤</button></form>
+      <div class="bigsent">If I <span style="color:var(--past)">hadn’t made mistakes in the past</span>, I <span class="gap2">__________</span> <span style="color:var(--now)">now</span>.</div>
+      ${picker(st, null, {ask:false})}
       <div class="row mt"><span class="badge" style="color:var(--ok)">✓ would + verb</span><span class="badge">✓ makes sense</span><span class="grow"></span>
-        ${st.ex?`<div class="chips">${LESSON.finalEx.map(x=>`<span class="chip pop">I ${esc(x)} now.</span>`).join('')}</div>`:`<button class="btn sm ghost" id="ex">💡 Show examples</button>`}</div>
+        ${st.ex?`<div class="chips">${LESSON.finalEx.map(x=>`<span class="chip pop">I ${esc(x)} now.</span>`).join('')}</div>`:`<button class="btn sm ghost" id="ex">💡 Show example</button>`}</div>
+      <details class="mt" ${S.finals.length?'open':''}><summary class="small">✍️ Type the best answers (optional)</summary>
+      <form class="compose mt" id="cf">If I hadn’t made mistakes, I <input id="ci" autocomplete="off" placeholder="wouldn’t be …" aria-label="Your ending"> now. <button class="btn sm primary" type="submit">Add ➤</button></form></details>
       <div class="sent-list">${S.finals.map((f,i)=>`<div class="okline"><span>✓ If I hadn’t made mistakes in the past, I <b style="color:var(--now)">${esc(f.text)}</b> now.</span><span class="from">${esc(f.by||'')}</span><button data-x="${i}" aria-label="Remove">✕</button></div>`).join('')}</div></div>`;
-    $('#cf',el).onsubmit=e=>{ e.preventDefault(); const v=cleanEnding($('#ci',el).value); if(!v) return; S.finals.push({text:v, by:'class'}); save(); SFX.ok(); draw(); setTimeout(()=>$('#ci')?.focus(),50); };
+    bindPicker(el, st);
+    $('#cf',el).onsubmit=e=>{ e.preventDefault(); const v=cleanEnding($('#ci',el).value); if(!v) return; S.finals.push({text:v, by:st.pick!=null?NAME(st.pick):'class'}); save(); SFX.ok(); draw(); setTimeout(()=>$('#ci')?.focus(),50); };
     const ex=$('#ex',el); if(ex) ex.onclick=()=>{ st.ex=1; save(); SFX.pop(); draw(); };
     $$('[data-x]',el).forEach(b=>b.onclick=()=>{ S.finals.splice(+b.dataset.x,1); save(); draw(); });
-    CUR.example=()=>{ st.ex=1; save(); draw(); };
+    CUR.example=CUR.answer=()=>{ st.ex=1; save(); draw(); };
   },
-  teach:{ goal:'Кожен учень завершує речення про себе / Мію.',
-    notes:['Учні пропонують кінцівку — ви друкуєте й тиснете Send.','Приймайте будь-яку граматично правильну ідею: wouldn’t be…, wouldn’t know…, would be…','Live: відповіді з телефонів приходять у панель Live (праворуч унизу) — натисніть Show, щоб вивести на екран.'] } },
+  teach:{ goal:'Кожен учень усно завершує речення. Один правильний варіант не потрібен.',
+    notes:['🎲 Random student — хто відповідає. Записувати не обов’язково.','Приймайте будь-яку граматично правильну ідею: wouldn’t be…, wouldn’t know…, would be…','Live: відповіді з телефонів приходять у панель Live (праворуч унизу) — «Show» виводить на екран.'],
+    mistake:'✗ …I wouldn’t have been who I am now → ✓ I wouldn’t be who I am now.' } },
 
 /* ── 9c · SUMMARY ── */
-{ id:'done', m:9, name:'Mission complete', time:1, pct:100,
+{ id:'done', sec:'final', m:9, name:'Core lesson complete', time:.5, pct:100,
   render(el){
-    el.innerHTML=`<div class="done-hero"><div class="duo" style="margin:0 0 10px">${av('mia',70)}${av('leo',70)}</div><span class="kick" style="color:var(--ok)">Mission 15 · Complete</span>
-      <h1 class="dsp mt" style="font-size:clamp(60px,9vw,130px)">Mission <span style="background:linear-gradient(90deg,var(--past),var(--now));-webkit-background-clip:text;background-clip:text;color:transparent">complete</span></h1>
+    el.innerHTML=`<div class="done-hero"><div class="duo" style="margin:0 0 10px">${av('mia',70)}${av('leo',70)}</div><span class="kick" style="color:var(--ok)">Lesson 15 · Mission complete</span>
+      <h1 class="dsp mt" style="font-size:clamp(54px,8vw,118px)">Core lesson <span style="background:linear-gradient(90deg,var(--past),var(--now));-webkit-background-clip:text;background-clip:text;color:transparent">complete</span></h1>
       <div class="bigpct mt">TIMELINE RESTORED: 100%</div>
       <div class="mbar whole" style="max-width:560px;margin:14px auto 0;height:14px"><i style="width:100%"></i></div>
       <div class="skills">${LESSON.skills.map((s,i)=>`<div class="sk" style="animation-delay:${i*.08}s"><span class="e">${s[0]}</span><b>${s[1]}</b></div>`).join('')}</div>
       <div class="today"><div style="grid-column:1/-1;font-family:var(--mono);color:var(--muted);letter-spacing:.14em;font-size:14px">TODAY YOU:</div>${LESSON.today.map(t=>`<div>${esc(t)}</div>`).join('')}</div>
-      <div class="row center mt2"><a class="btn primary" href="../../">← Back to the course</a><button class="btn ghost" id="again">↺ Replay</button></div></div>`;
-    $('#again',el).onclick=askReset;
+      <div class="row center mt2"><button class="btn xl primary glow" id="gz">🎮 Game Zone →</button><a class="btn ghost" href="../../">← Back to the course</a><button class="btn ghost" id="again">↺ Replay</button></div></div>`;
+    $('#again',el).onclick=askReset; $('#gz',el).onclick=next;
     if(!sd('done').boom){ sd('done').boom=1; save(); setTimeout(()=>{ confetti(); SFX.win(); },300); }
   },
-  teach:{ goal:'Підсумок і похвала.',
-    notes:['Пройдіться списком «Today you» — учні кажуть, що було найцікавішим.','Ідея домашнього: 3 речення про себе — 2 Past → Now і 1 Now → Past.'] } }
+  teach:{ goal:'Підсумок і похвала. Далі — Game Zone (Kahoot / Alias), якщо є час.',
+    notes:['Пройдіться списком «Today you» — учні кажуть, що було найцікавішим.','Ідея домашнього: 3 речення про себе — 2 Past → Now і 1 Now → Past.'] } },
+
+/* ── GAME ZONE (after the core lesson, outside the route) ── */
+{ id:'games', sec:'games', m:10, name:'Game Zone', time:0, pct:100, game:true,
+  live:()=>{ const st=sd('games'); if((st.tab||'kahoot')!=='kahoot') return null; const k=st.k||0, Q=KAHOOT[k]; return {id:'kh-'+k, kind:'choice', q:Q.q, opts:Q.o, lock:!!(st.rv||{})[k]}; },
+  render(el){
+    const st=sd('games'); st.tab=st.tab||'kahoot'; st.k=st.k||0; st.rv=st.rv||{};
+    const tabs=`<div class="tabs"><button class="tab ${st.tab==='kahoot'?'on':''}" data-g="kahoot">🟪 Kahoot</button><button class="tab ${st.tab==='alias'?'on':''}" data-g="alias">🃏 Alias</button><button class="tab ${st.tab==='bank'?'on':''}" data-g="bank">📚 Word bank</button></div>`;
+    let body='';
+    if(st.tab==='kahoot'){
+      const Q=KAHOOT[st.k], ok=!!st.rv[st.k], c=counts('kh-'+st.k,4), tot=c.reduce((a,b)=>a+b,0);
+      const sh=['▲','◆','●','■'];
+      body=`<div class="card"><div class="qhead"><span class="kick">${esc(Q.k)} · Question ${st.k+1} / ${KAHOOT.length}</span><div class="dots">${KAHOOT.map((_,i)=>`<i class="${st.rv[i]?'ok':''} ${i===st.k?'cur':''}"></i>`).join('')}</div></div>
+        <div class="qtext">${esc(Q.q)}</div>
+        <div class="kgrid">${Q.o.map((o,i)=>`<button class="kopt k${i} ${ok?(i===Q.a?'right':'dim'):''}" data-ko="${i}"><span>${sh[i]}</span>${esc(o)}${LIVE.on&&tot?`<b>${c[i]}</b>`:''}</button>`).join('')}</div>
+        <div class="row mt">${!ok?`<button class="btn sm" id="krv">👁 Reveal answer</button>`:''}<span class="grow"></span><button class="btn sm ghost" id="kp" ${st.k?'':'disabled'}>←</button><button class="btn sm primary" id="kn" ${st.k<KAHOOT.length-1?'':'disabled'}>Next question →</button></div></div>
+        <div class="row mt"><button class="btn sm ghost" id="kcopy">📋 Copy for Kahoot (paste into the Kahoot spreadsheet)</button><a class="btn sm ghost" href="https://create.kahoot.it" target="_blank" rel="noopener">↗ Open Kahoot</a></div>`;
+    } else if(st.tab==='alias'){
+      st.ai=st.ai==null?0:st.ai; st.sc=st.sc||[0,0]; st.team=st.team||0; st.deck=st.deck||BANK.map((_,i)=>i);
+      const W=BANK[st.deck[st.ai%st.deck.length]];
+      body=`<div class="alias">
+        <div class="acard ${st.hide?'hidden-card':''}"><small>EXPLAIN — DON’T SAY THE WORDS!</small><b>${st.hide?'🙈':esc(W.w)}</b>${!st.hide&&st.mean?`<span>${esc(W.m)}</span>`:''}</div>
+        <div class="row center mt"><button class="btn sm ghost" id="ahide">${st.hide?'👁 Show card':'🙈 Hide card'}</button><button class="btn sm ghost" id="amean">${st.mean?'Hide meaning':'💡 Meaning'}</button><button class="btn sm ghost" id="a60">⏱ 1 min</button></div>
+        <div class="ascore">${[0,1].map(t=>`<button class="ateam ${st.team===t?'on':''}" data-at="${t}">Team ${'AB'[t]}<b>${st.sc[t]}</b></button>`).join('')}</div>
+        <div class="row center mt"><button class="btn primary" id="aok">✓ Guessed (+1)</button><button class="btn ghost" id="askip">⏭ Skip</button><button class="btn sm ghost" id="ash">🔀 Shuffle</button><button class="btn sm ghost" id="ars">↺ Score</button></div>
+        <div class="row center mt"><a class="btn" href="${ALIAS_URL}" target="_blank" rel="noopener">🌐 OPEN ALIAS (online game)</a><button class="btn ghost" id="abank">📚 OPEN WORD BANK</button></div></div>`;
+    } else {
+      body=bankTable();
+    }
+    el.innerHTML=`<div class="sh"><div><span class="kick" style="color:var(--violet)">After the core lesson</span><h2 class="dsp h2">🎮 Game Zone</h2></div>${tabs}</div>${body}`;
+    $$('[data-g]',el).forEach(b=>b.onclick=()=>{ st.tab=b.dataset.g; save(); draw(); pubState(); });
+    if(st.tab==='kahoot'){
+      const rv=()=>{ st.rv[st.k]=1; SFX.ok(); save(); draw(); pubState(); };
+      $$('[data-ko]',el).forEach(b=>b.onclick=()=>{ if(st.rv[st.k]) return; +b.dataset.ko===KAHOOT[st.k].a ? rv() : (SFX.bad(), b.classList.add('shake')); });
+      const r=$('#krv',el); if(r) r.onclick=rv;
+      $('#kp',el).onclick=()=>{ st.k--; save(); draw(); pubState(); }; $('#kn',el).onclick=()=>{ st.k++; save(); draw(); pubState(); };
+      $('#kcopy',el).onclick=()=>copyText(KAHOOT.map(q=>[q.q,...q.o,20,q.a+1].join('\t')).join('\n'),'Kahoot questions copied (Question · 4 answers · 20 s · correct #)');
+      CUR.reveal=CUR.answer=rv;
+    }
+    if(st.tab==='alias'){
+      const nx=()=>{ st.ai++; save(); draw(); };
+      $('#ahide',el).onclick=()=>{ st.hide=!st.hide; save(); draw(); }; $('#amean',el).onclick=()=>{ st.mean=!st.mean; save(); draw(); };
+      $('#a60',el).onclick=()=>{ TIMER.set(60); TIMER.start(); };
+      $$('[data-at]',el).forEach(b=>b.onclick=()=>{ st.team=+b.dataset.at; save(); draw(); });
+      $('#aok',el).onclick=()=>{ st.sc[st.team]++; SFX.ok(); nx(); }; $('#askip',el).onclick=nx;
+      $('#ash',el).onclick=()=>{ const d=st.deck; for(let i=d.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [d[i],d[j]]=[d[j],d[i]]; } st.ai=0; save(); draw(); };
+      $('#ars',el).onclick=()=>{ st.sc=[0,0]; save(); draw(); }; $('#abank',el).onclick=()=>{ st.tab='bank'; save(); draw(); };
+      CUR.hint=()=>{ st.mean=1; save(); draw(); };
+    }
+  },
+  teach:{ goal:'Game Zone — після Core Lesson, не впливає на маршрут уроку.',
+    notes:['Kahoot: 10 питань (4 граматика, 3 лексика, 2 значення, 1 фан). Можна грати тут (телефони в Live відповідають) або скопіювати в Kahoot.','📋 Copy for Kahoot — рядки «питання · 4 відповіді · 20 с · № правильної» для вставки в шаблон Kahoot.','Alias: 🙈 Hide card — сховайте картку і надішліть слово учню в приватний чат Zoom. Або OPEN ALIAS — онлайн-гра курсу.'],
+    answers:()=>KAHOOT.map((q,i)=>`${i+1}. ${q.q} — ${q.o[q.a]}`) } }
 ];
 const BANKB = ['take it down','get over it','go for it','be into','be all about'];
 let PRES_T=null;
 function revealHints(st){ TEAMS().forEach(t=>st.hint[t.L]=1); save(); draw(); }
-function cleanEnding(v){ return String(v||'').trim().replace(/^if i hadn['’]t made mistakes in the past,?\s*/i,'').replace(/^i\s+/i,'').replace(/\s*now\.?$/i,'').replace(/[.!]+$/,'').trim().slice(0,90); }
-const MISSIONS = ['The message','Warm-up','Mia’s Feed','What happened?','Discovery','The rule','What if…?','Breakout','Timeline restored'];
-
+function cleanEnding(v){ return String(v||'').trim().replace(/^if i hadn['’]t made mistakes( in the past)?,?\s*/i,'').replace(/^i\s+/i,'').replace(/\s*now\.?$/i,'').replace(/[.!]+$/,'').trim().slice(0,90); }
+/* estimated minutes for a student-led section: units × rounds × minutes per turn */
+const tt = (sec, per, min) => Math.max(min, Math.round(units(S.modes[sec]).length*(S.rounds[sec]||1)*per*2)/2);
+function copyText(txt, msg){
+  const ok=()=>toast(msg||'Copied');
+  const fb=()=>openModal(`<h3>Copy this text</h3><textarea style="width:100%;min-height:300px;margin-top:12px;padding:12px;border-radius:12px;background:#0B0F2E;border:1px solid var(--edge2);color:var(--text)">${esc(txt)}</textarea><div class="row mt"><button class="btn" onclick="closeModal()">Close</button></div>`);
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(ok,fb); else fb();
+}
 function copyTasks(){
-  const lines=['BREAKOUT MISSION — FIX A BROKEN TIMELINE (5 min)','',
-    'Create:', ...LESSON.mission.map((m,i)=>`${i+1}) ${m.en}${m.f?' — '+m.f.map(x=>x[1]).join(', '):''}`),'',
-    LESSON.missionHelp,'',
-    ...TEAMS().map(t=>`TEAM ${t.L} — ${t.name.toUpperCase()}: ${t.facts.map(f=>f[1]).join(' ')}`)];
-  const txt=lines.join('\n');
-  const ok=()=>toast('📋 Copied — paste it into the Zoom chat');
-  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(ok,()=>fallback()); else fallback();
-  function fallback(){ openModal(`<h3>Copy this into the Zoom chat</h3><textarea style="width:100%;min-height:300px;margin-top:12px;padding:12px;border-radius:12px;background:#0B0F2E;border:1px solid var(--edge2);color:var(--text)">${esc(txt)}</textarea><div class="row mt"><button class="btn" onclick="closeModal()">Close</button></div>`); }
+  const g=S.modes.breakout==='pairs'?'PAIR':'TEAM';
+  const lines=['BREAKOUT MISSION — FIX A BROKEN TIMELINE (5 min)','','MISSION:',
+    ...LESSON.mission2.map((m,i)=>`${m.k==='o'?'★':i+1}) ${m.en}${m.f?' — '+m.f.map(x=>x[1]).join(', '):''}`),'',
+    'Say it together — writing is optional. Then one person presents (45–60 seconds).','',
+    ...TEAMS().map(t=>`${g} ${t.L} — ${t.name.toUpperCase()} (${t.members.map(NAME).join(', ')}): ${t.facts.map(f=>f[1]).join(' ')}`)];
+  copyText(lines.join('\n'),'📋 Copied — paste it into the Zoom chat');
+}
+function bankTable(){
+  return `<div class="card bankt"><table><tr><th>Expression</th><th>Simple meaning</th><th>Українською</th><th>Example</th></tr>${BANK.map(b=>`<tr><td><b>${esc(b.w)}</b></td><td>${esc(b.m)}</td><td class="uacol">${esc(b.ua)}</td><td><i>${esc(b.ex)}</i></td></tr>`).join('')}</table></div>`;
+}
+/* Grammar screens 2 and 3 — one screen, one focus */
+const TYPE2 = [
+  {ex:'If I {p|had gone to bed earlier}, I {n|wouldn’t be tired now}.', real:['I went to bed late.','So I’m tired now.'], tl:{dir:'pn', past:['🌙','went to bed late'], now:['🥱','tired now']},
+   more:[LESSON.types[0].ex, LESSON.types[0].more[1], LESSON.types[0].more[2]]},
+  {ex:'If I {n|were more organised}, I {p|wouldn’t have forgotten my homework}.', real:['I’m not very organised.','So I forgot my homework.'], tl:{dir:'np', now:['🗂️','not very organised'], past:['📓','forgot my homework']},
+   more:[LESSON.types[1].ex, LESSON.types[1].more[1], LESSON.types[1].more[2]]}
+];
+function typeScreen(el, k){
+  const T=LESSON.types[k], X=TYPE2[k], st=sd(k?'np':'pn'); st.more=st.more||0;
+  const title = k===0 ? '<span style="color:var(--past)">Past</span> → <span style="color:var(--now)">Now</span>' : '<span style="color:var(--now)">Now</span> → <span style="color:var(--past)">Past</span>';
+  el.innerHTML=`<div class="sh"><div><span class="kick">Grammar · ${k+2} of 3</span><h2 class="dsp h2">${title}</h2></div>${dirBadge(T.key)}</div>
+    <div class="gx"><div class="card lit"><p class="lead" style="color:var(--text);margin:0 0 14px">${esc(T.meaning)}</p>${formula(T.formula)}
+        <div class="sent mt" style="font-size:clamp(24px,2.6vw,36px)">${fmt(X.ex)}</div>
+        ${st.real?`<div class="real pop"><div class="small mono" style="letter-spacing:.14em">IN REAL LIFE</div>${X.real.map(r=>`<div>${esc(r)}</div>`).join('')}</div>`:''}
+        <div class="row mt">${!st.real?`<button class="btn sm ghost" data-real>🪞 In real life?</button>`:''}${!st.tl?`<button class="btn sm ghost" data-tl>🧭 Check timeline</button>`:''}</div></div>
+      <div>${st.tl?`<div class="card tight pop">${tlHTML(X.tl)}</div>`:`<div class="card tight tlph"><div class="tlq">⏳</div><div class="small">Where is the cause? Where is the result?</div></div>`}
+        <div class="exl mt lit">${X.more.slice(0,st.more).map(x=>`<div class="exi pop">${withFace(fmt(x),x,40)}</div>`).join('')}</div>
+        ${st.more<X.more.length?`<div class="row mt"><button class="btn sm" data-more>＋ Show example ${st.more+1}/${X.more.length}</button></div>`:''}</div></div>`;
+  kickArrows(el);
+  const r=$('[data-real]',el); if(r) r.onclick=()=>{ st.real=1; save(); SFX.pop(); draw(); };
+  const t=$('[data-tl]',el); if(t) t.onclick=()=>{ st.tl=1; save(); SFX.pop(); draw(); };
+  const m=$('[data-more]',el); if(m) m.onclick=()=>{ st.more++; save(); SFX.pop(); draw(); };
+  CUR.reveal=()=>{ if(!st.real) st.real=1; else st.tl=1; save(); draw(); };
+  CUR.answer=()=>{ st.real=1; st.tl=1; save(); draw(); };
+  CUR.example=()=>{ if(st.more<X.more.length){ st.more++; save(); draw(); } };
+  CUR.hint=()=>toast(k===0?'Find the past action. Is it true in real life?':'Is it true now / in general? What happened in the past?');
+}
+/* cinematic “timeline restored” */
+function restoreFX(done){
+  const o=$('#rfx');
+  o.innerHTML=`<div class="rfx-in"><div class="rfx-t">RESTORING MIA’S TIMELINE</div>
+    <svg viewBox="0 0 600 80" aria-hidden="true"><defs><linearGradient id="rfxg" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="580" y2="0"><stop offset="0" stop-color="#FFB547"/><stop offset="1" stop-color="#3EE8FF"/></linearGradient></defs><line x1="20" y1="40" x2="580" y2="40" class="rl"/>${[20,160,300,440,580].map((x,i)=>`<circle cx="${x}" cy="40" r="10" class="rn" style="animation-delay:${.25+i*.33}s"/>`).join('')}</svg>
+    <div class="rfx-l"><span>PAST</span><span>NOW</span></div><div class="rfx-n" id="rfxN">0%</div></div>`;
+  o.className='on'; SFX.rise();
+  const t0=performance.now(), D=REDUCED?300:2200;
+  const f=now=>{ const p=Math.min(1,(now-t0)/D); $('#rfxN').textContent=Math.round(p*100)+'%';
+    if(p<1) return requestAnimationFrame(f);
+    setTimeout(()=>{ done(); SFX.win(); o.className='on out'; setTimeout(()=>o.className='',800); },350); };
+  requestAnimationFrame(f);
 }
 </script>
 <script>
-/* ---------- 7 · navigation ---------- */
+/* ---------- 7 · navigation · routes · section progress · focus controls ---------- */
 const cur = ()=>SCENES[S.i];
 const visible = i => !(S.short && SCENES[i].opt);
-const MILESTONES = {15:'Warm-up complete', 35:'Words recovered', 65:'Grammar unlocked', 100:'Mia’s timeline is fixed'};
+const tm = s => typeof s.time==='function' ? s.time() : (s.time||0);
+const MILESTONES = {15:'Warm-up complete', 35:'Words recovered', 65:'Grammar unlocked', 80:'Your stories are back on track', 100:'Mia’s timeline is fixed'};
 
 function award(p, quiet){
   if(p<=S.pct) return;
@@ -1535,19 +2295,24 @@ function paintMeter(){
   $('#mfill').style.width=S.pct+'%'; $('#pctTxt').textContent=S.pct+'%';
   $('#mbar').classList.toggle('whole',S.pct>=100); $('#mbar').setAttribute('aria-valuenow',S.pct);
 }
-
 function go(j){
   if(j<0||j>=SCENES.length) return;
   if(PLAYER.playing) PLAYER.pause();
-  if(j>S.i){ let p=S.pct; for(let k=0;k<j;k++) p=Math.max(p, SCENES[k].pct); award(p); }
-  S.i=j; S.seen[cur().id]=1; save(); draw(true);
+  if(j>S.i){ let p=S.pct; for(let k=0;k<j;k++) if(!SCENES[k].game) p=Math.max(p, SCENES[k].pct); award(p); }
+  S.i=j; S.seen[cur().id]=1; QP.kind=null; save(); draw(true);
   $('#stage').scrollTop=0;
 }
 function next(){ for(let j=S.i+1;j<SCENES.length;j++) if(visible(j)) return go(j); }
 function back(){ for(let j=S.i-1;j>=0;j--) if(visible(j)) return go(j); }
-function skipOpt(){ const c=cur(); if(c.opt) return next(); for(let j=S.i+1;j<SCENES.length;j++){ if(!SCENES[j].opt){ return go(j); } } }
+function skipOpt(){ const c=cur(); if(c.opt) return next(); toast('This task is part of the core lesson'); }
+function totalTime(short){ return SCENES.filter(s=>!s.game && !(short&&s.opt)).reduce((a,s)=>a+tm(s),0); }
+const fmtMin = m => (Math.round(m*2)/2).toString().replace('.5','½');
 
-let lastDraw=0;
+function secStrip(){
+  const c=cur(), si=SECTIONS.findIndex(s=>s[0]===c.sec);
+  if(c.game) return `<span class="sec cur">🎮 Game Zone</span>`;
+  return SECTIONS.map((s,k)=>`<span class="sec ${k<si?'done':''} ${k===si?'cur':''}" title="${s[1]}">${k<si?'✓':s[2]} <em>${s[1]}</em></span>`).join('');
+}
 function draw(anim){
   const el=$('#scene'), c=cur(); CUR={};
   const y=$('#stage').scrollTop;
@@ -1556,24 +2321,30 @@ function draw(anim){
   FLASH=null;
   $$('.msgs',el).forEach(m=>m.scrollTop=m.scrollHeight);
   if(!anim){ $('#stage').scrollTop=y; const pops=$$('.pop',el); if(pops.length) pops[pops.length-1].scrollIntoView({block:'nearest',behavior:REDUCED?'auto':'smooth'}); }
-  // nav
   const vis=SCENES.map((_,i)=>i).filter(visible), pos=vis.indexOf(S.i);
-  const inM=SCENES.filter((s,i)=>s.m===c.m && visible(i)), k=inM.indexOf(c)+1;
-  $('#navInfo').innerHTML=`MISSION <b>${c.m}/9</b> · ${esc(c.name)}${inM.length>1?` · ${k}/${inM.length}`:''}${c.opt?' · <span class="optn">OPTIONAL</span>':''}`;
+  $('#secStrip').innerHTML=secStrip();
+  $('#navInfo').innerHTML=`<b>${esc(c.name)}</b>${c.opt?' · <span class="optn">OPTIONAL</span>':''}${c.game?' · <span class="optn">after the core lesson</span>':''} · ${pos+1}/${vis.length}`;
   $('#btnBack').disabled = pos<=0;
-  const last = pos===vis.length-1;
-  $('#btnNext').disabled = last;
-  $('#btnNext').innerHTML = c.id==='hook' && (sd('hook').ph||0)<2 ? 'Skip intro →' : 'Continue →';
-  paintMeter(); paintTeacher(); pubState(); paintDock();
+  $('#btnNext').disabled = pos===vis.length-1;
+  $('#btnNext').innerHTML = c.id==='hook' && (sd('hook').ph||0)<2 ? 'Skip intro →' : 'Next →';
+  const set=(id,on)=>{ const b=$(id); b.disabled=!on; };
+  set('#fHint', !!CUR.hint); set('#fReveal', !!(CUR.reveal||CUR.example)); set('#fAnswer', !!(CUR.answer||CUR.reveal)); set('#fSkip', !!(CUR.skip||c.opt));
+  $('#fSkip').innerHTML = CUR.skip ? '⏭ <span class="lb">Skip</span>' : '⏭ <span class="lb">Skip task</span>';
+  $('#fCCQ').classList.toggle('hidden', !c.ccq); $('#fICQ').classList.toggle('hidden', !c.icq);
+  $('#fCCQ').classList.toggle('on', QP.kind==='ccq'); $('#fICQ').classList.toggle('on', QP.kind==='icq');
+  $('#sN').textContent=S.n;
+  paintMeter(); paintQ(); paintWS(); pubState(); paintDock(); TIMER.paint();
 }
 function resetScene(){ const c=cur(); delete S.sd[c.id];
-  ({listen:['lq'], fix:['fq'], teams:[], present:[]}[c.id]||[]).forEach(k=>delete S.sd[k]);
-  if(c.id==='listen'){ delete S.sd.lq; PLAYER.pause(); PLAYER.idx=0; }
+  ({listen:['listen'], feedA:['feedA'], repair:['repair'], speak:['speak'], story:['story'], fix:['fq'], games:[]}[c.id]||[]).forEach(k=>{ delete S.turns[k]; delete S.sd[k]; });
+  if(c.id==='listen'){ PLAYER.pause(); PLAYER.idx=0; }
   if(c.id==='last') S.finals=[];
+  if(c.id==='present'||c.id==='teams') S.work={};
   save(); draw(true); toast('Scene reset'); }
+function setStudents(n){ n=Math.max(1,Math.min(12,n)); if(n===S.n) return; S.n=n; order(); save(); toast(`👥 ${n} student${n>1?'s':''} — finished turns kept, open turns redistributed`); draw(); }
 
-/* ---------- modal, confetti ---------- */
-function openModal(html){ $('#modalBox').innerHTML=html; $('#modal').classList.remove('hidden'); }
+/* ---------- modal, confetti, map, reset ---------- */
+function openModal(html){ $('#modalBox').classList.remove('wide'); $('#modalBox').innerHTML=html; $('#modal').classList.remove('hidden'); }
 function closeModal(){ $('#modal').classList.add('hidden'); }
 $('#modal').onclick=e=>{ if(e.target.id==='modal') closeModal(); };
 function confetti(){
@@ -1583,46 +2354,107 @@ function confetti(){
   let t=0; const f=()=>{ x.clearRect(0,0,cv.width,cv.height); P.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; p.a+=.1; x.save(); x.translate(p.x,p.y); x.rotate(p.a); x.fillStyle=p.c; x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2); x.restore(); }); if(++t<200) requestAnimationFrame(f); else x.clearRect(0,0,cv.width,cv.height); }; f();
 }
 function showMap(){
-  openModal(`<div class="row"><h2 class="dsp h2 grow">Mission map</h2><button class="btn sm ghost" onclick="closeModal()">✕</button></div>
-   <p class="small">Route: <b>${S.short?'Core ≈ 35 min':'Full ≈ 40 min'}</b> · optional scenes are marked.</p>
-   <div class="map">${SCENES.map((s,i)=>`<button class="mapi ${i===S.i?'cur':''} ${s.opt?'op':''} ${S.seen[s.id]?'seen':''}" data-go="${i}"><span class="k">MISSION ${s.m} · ${s.time} MIN${s.opt?' · OPTIONAL':''}</span><b>${esc(s.name)}</b></button>`).join('')}</div>`);
+  openModal(`<div class="row"><h2 class="dsp h2 grow">Lesson map</h2><button class="btn sm ghost" onclick="closeModal()">✕</button></div>
+   <p class="small">Route: <b>${S.short?'CORE':'EXTENDED'} ≈ ${fmtMin(totalTime(S.short))} min</b> for ${S.n} students · optional tasks are amber · Game Zone comes after the core lesson.</p>
+   ${SECTIONS.concat([['games','Game Zone','🎮']]).map(([k,n,e])=>{ const L=SCENES.map((s,i)=>[s,i]).filter(([s])=>s.sec===k); return `<div class="mapsec"><b>${e} ${n}</b><div class="map">${L.map(([s,i])=>`<button class="mapi ${i===S.i?'cur':''} ${s.opt?'op':''} ${S.seen[s.id]?'seen':''} ${!visible(i)?'off':''}" data-go="${i}"><span class="k">${s.game?'AFTER THE CORE':fmtMin(tm(s))+' MIN'}${s.opt?' · OPTIONAL':''}</span><b>${esc(s.name)}</b></button>`).join('')}</div></div>`; }).join('')}`);
   $$('[data-go]',$('#modalBox')).forEach(b=>b.onclick=()=>{ closeModal(); go(+b.dataset.go); });
 }
 function askReset(){
-  openModal(`<h2 class="dsp h2">Reset the whole lesson?</h2><p class="lead mt">All answers, votes and the timeline go back to 0%. The room code stays the same.</p>
+  openModal(`<h2 class="dsp h2">Reset the whole lesson?</h2><p class="lead mt">All answers, turns, votes and the timeline go back to 0%. Student names and the room code stay.</p>
    <div class="row mt2"><button class="btn primary" id="rsY">↺ Reset lesson</button><button class="btn ghost" onclick="closeModal()">Cancel</button></div>`);
-  $('#rsY').onclick=()=>{ const room=S.room, snd=S.sound, sh=S.short; S=FRESH(); S.room=room; S.sound=snd; S.short=sh; for(const k in LV) delete LV[k]; TIMER.reset(); PLAYER.pause(); PLAYER.idx=0; save(); closeModal(); go(0); toast('Lesson reset'); };
+  $('#rsY').onclick=()=>{ const keep={room:S.room, sound:S.sound, short:S.short, n:S.n, names:S.names, order:S.order, modes:S.modes}; S=Object.assign(FRESH(),keep); for(const k in LV) delete LV[k]; TIMER.set(300); PLAYER.pause(); PLAYER.idx=0; save(); closeModal(); go(0); toast('Lesson reset'); };
 }
+function toggleLen(){ S.short=!S.short; save(); $('#lenLbl').textContent=S.short?'Core':'Extended'; toast(S.short?`CORE route ≈ ${fmtMin(totalTime(true))} min · optional tasks hidden`:`EXTENDED route ≈ ${fmtMin(totalTime(false))} min · optional tasks on`); if(!visible(S.i)) next(); else draw(); }
 
-/* ---------- 8 · teacher mode ---------- */
-function totalTime(short){ return SCENES.filter(s=>!(short&&s.opt)).reduce((a,s)=>a+s.time,0); }
-function paintTeacher(){
-  if(!$('#teacher').classList.contains('on')) return;
-  const c=cur(), T=c.teach||{}, ans=T.answers?T.answers():null;
-  const nextOpt = SCENES.slice(S.i+1).find((s,i)=>visible(S.i+1+i));
-  $('#tBody').innerHTML=`
-   <div class="tsec"><h4>Now · Mission ${c.m} · ${c.time} min</h4><b style="font-size:19px">${esc(c.name)}</b> ${c.opt?'<span class="badge skip">optional</span>':''}<p class="small" style="margin:6px 0 0">${esc(T.goal||'')}</p></div>
-   <div class="tacts">
-     <button class="btn sm" id="tRev">👁 Reveal answer</button><button class="btn sm" id="tEx">💡 Show example</button>
-     <button class="btn sm ghost" id="tRst">↺ Reset scene</button><button class="btn sm ghost" id="tSkip" ${(c.opt||(nextOpt&&nextOpt.opt))?'':'disabled'}>⏭ Skip optional</button>
-     <button class="btn sm primary" id="tNext" style="grid-column:1/-1">Next scene →</button></div>
-   ${T.notes?`<div class="tsec"><h4>Steps</h4><ul>${T.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></div>`:''}
-   ${T.say?`<div class="tsec"><h4>Say / ask</h4>${T.say.map(s=>`<div class="say">“${esc(s)}”</div>`).join('')}</div>`:''}
-   ${T.tip?`<div class="tsec"><h4>Tip</h4>${esc(T.tip)}</div>`:''}
-   ${ans?`<div class="tsec"><h4>Answers</h4>${ans.map(a=>`<div style="white-space:pre-wrap">${esc(a)}</div>`).join('')}</div>`:''}
-   <div class="tsec"><h4>Route · ${S.short?'CORE':'FULL'} ≈ ${totalTime(S.short)} min</h4>
-     <div class="route">${SCENES.map((s,i)=>`<div class="${i===S.i?'cur':''} ${s.opt?'op':''} ${!visible(i)?'rsk':''}"><span>${s.m}. ${esc(s.name)}${s.opt?' ◦':''}</span><span>${s.time}′</span></div>`).join('')}</div>
-     <div class="row mt"><button class="btn sm ghost" id="tLen">Switch to ${S.short?'FULL ≈ '+totalTime(false):'CORE ≈ '+totalTime(true)} min</button></div></div>
-   <div class="tsec small"><h4>Keys</h4>→ / Space next · ← back · T teacher · M map · F full screen · R reveal · E example</div>
-   <div class="row"><button class="btn sm ghost" id="tAll">↺ Reset whole lesson</button></div>`;
-  $('#tRev').onclick=()=>CUR.reveal?CUR.reveal():toast('Nothing to reveal on this scene');
-  $('#tEx').onclick=()=>CUR.example?CUR.example():toast('No example on this scene');
-  $('#tRst').onclick=resetScene; $('#tSkip').onclick=skipOpt; $('#tNext').onclick=next;
-  $('#tLen').onclick=toggleLen; $('#tAll').onclick=askReset;
+/* ---------- 8 · HYBRID WORKSPACE (teacher drawer) ---------- */
+const WSTABS=[['notes','📝','Notes'],['students','👥','Students'],['words','📚','Words'],['grammar','🧩','Grammar'],['story','📱','Story'],['progress','📈','Progress'],['games','🎮','Games']];
+function openWS(tab){ S.ws=true; if(tab) S.wsTab=tab; save(); paintWS(); }
+function closeWS(){ S.ws=false; save(); paintWS(); }
+function paintWS(){
+  document.body.classList.toggle('wsOn', !!S.ws); $('#btnWS').classList.toggle('on',!!S.ws); $('#btnFocus').classList.toggle('on',!S.ws);
+  $('#ws').setAttribute('aria-hidden', !S.ws); if(!S.ws) return;
+  $('#wsTabs').innerHTML=WSTABS.map(([k,e,n])=>`<button class="${S.wsTab===k?'on':''}" data-wt="${k}">${e}<span>${n}</span></button>`).join('');
+  $$('[data-wt]',$('#wsTabs')).forEach(b=>b.onclick=()=>{ S.wsTab=b.dataset.wt; save(); paintWS(); });
+  const B=$('#wsBody'), y=B.scrollTop; B.innerHTML=(WS[S.wsTab]||WS.notes)(); B.scrollTop=y; (WSB[S.wsTab]||(()=>{}))(B);
 }
-function toggleTeacher(force){ const on = force ?? !$('#teacher').classList.contains('on'); $('#teacher').classList.toggle('on',on); $('#teacher').setAttribute('aria-hidden',!on); $('#btnTeacher').classList.toggle('on',on); paintTeacher(); }
-function toggleLen(){ S.short=!S.short; save(); $('#lenLbl').textContent=S.short?'Core':'Full'; toast(S.short?`Core route ≈ ${totalTime(true)} min · optional scenes skipped`:`Full route ≈ ${totalTime(false)} min`); if(!visible(S.i)) next(); else draw(); }
-
+const li = a => `<ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+const WS = {
+  notes(){
+    const c=cur(), T=c.teach||{}, ans=T.answers?T.answers():null;
+    const qa=(k,t)=>c[k]?`<div class="tsec"><h4>${t}</h4>${c[k].map(x=>`<div class="qa"><span>${esc(x[0])}</span><b>${esc(x[1])}</b></div>`).join('')}<button class="btn sm ghost mt" data-wq="${k}">Show ${k.toUpperCase()} to the class</button></div>`:'';
+    return `<div class="tsec"><h4>Now · ${esc((SECTIONS.find(s=>s[0]===c.sec)||['','Game Zone'])[1])} · ≈${fmtMin(tm(c))} min</h4><b style="font-size:19px">${esc(c.name)}</b> ${c.opt?'<span class="badge skip">optional</span>':''}<p class="small" style="margin:6px 0 0">${esc(T.goal||'')}</p></div>
+     <div class="tacts">
+       <button class="btn sm" data-wa="hint">💡 Hint</button><button class="btn sm" data-wa="reveal">👁 Reveal</button>
+       <button class="btn sm" data-wa="answer">✅ Answer</button><button class="btn sm" data-wa="example">💬 Example</button>
+       <button class="btn sm ghost" data-wa="reset">↺ Reset scene</button><button class="btn sm ghost" data-wa="skipopt" ${c.opt?'':'disabled'}>⏭ Skip optional</button>
+       <button class="btn sm primary" data-wa="next" style="grid-column:1/-1">Next scene →</button></div>
+     ${T.notes?`<div class="tsec"><h4>Steps</h4>${li(T.notes)}</div>`:''}
+     ${T.say?`<div class="tsec"><h4>Say / ask</h4>${T.say.map(s=>`<div class="say">“${esc(s)}”</div>`).join('')}</div>`:''}
+     ${T.mistake||T.pron||T.timing||T.skip||T.tip?`<div class="tsec"><h4>Teacher note</h4>${T.mistake?`<p>⚠️ <b>Common mistake:</b> ${esc(T.mistake)}</p>`:''}${T.pron?`<p>🔊 <b>Pronunciation:</b> ${esc(T.pron)}</p>`:''}${T.timing?`<p>⏱ <b>Timing:</b> ${esc(T.timing)}</p>`:''}${T.skip?`<p>⏭ <b>When to skip:</b> ${esc(T.skip)}</p>`:''}${T.tip?`<p>💡 ${esc(T.tip)}</p>`:''}</div>`:''}
+     ${qa('ccq','CCQ · concept check')}${qa('icq','ICQ · instruction check')}
+     ${ans?`<div class="tsec"><h4>Answers</h4>${ans.map(a=>`<div style="white-space:pre-wrap;margin:3px 0">${esc(a)}</div>`).join('')}</div>`:''}
+     <div class="tsec small"><h4>Keys</h4>→ next · ← back · H hint · R reveal · A answer · E example · S skip · W workspace · M map · F full screen · + / − students</div>`;
+  },
+  students(){
+    const o=order();
+    const row=(k)=>{ const m=S.modes[k]; return `<div class="wsrow"><span>${PRACTICE[k]}</span>${k==='breakout'?modeSwitch(k,['pairs','teams']):modeSwitch(k)}${S.rounds[k]!=null?`<div class="seg">${[1,2].map(r=>`<button class="${S.rounds[k]===r?'on':''}" data-rd="${k}:${r}">${r===1?'1 round':'2 rounds'}</button>`).join('')}</div>`:''}</div>`; };
+    const keys=[['feedA','Vocabulary'],['listen','Listening'],['repair','Grammar'],['speak','Speaking'],['story','Story']];
+    const cnt=i=>keys.reduce((a,[k])=>a+Object.values((S.turns[k]||{}).done||{}).filter(d=>d.by.split(' & ').includes(NAME(i))).length,0);
+    return `<div class="tsec"><h4>Students today</h4><div class="bigcount"><button class="btn" data-sn="-1">−</button><b>${S.n}</b><button class="btn" data-sn="1">+</button></div>
+      <p class="small">1–12 students. Changing the number keeps finished answers, turns and scores — only open turns move.</p></div>
+     <div class="tsec"><h4>Names (optional)</h4><div class="names">${Array.from({length:S.n},(_,i)=>`<label><span>${i+1}</span><input data-nm="${i}" value="${esc(S.names[i]||'')}" placeholder="Student ${i+1}" maxlength="16"></label>`).join('')}</div>
+      <div class="row mt"><button class="btn sm" data-shuf>🔀 Shuffle order</button><span class="small">Order: ${o.map(NAME).map(esc).join(' → ')}</span></div></div>
+     <div class="tsec"><h4>Mode & rounds per section</h4>${['vocab','listen','grammar','speak','breakout'].map(row).join('')}
+      <p class="small">Turns per round = number of ${'students / pairs / teams'}. Round 2 is optional practice.</p></div>
+     <div class="tsec"><h4>Turn balance</h4><div class="bal">${o.map(i=>`<div><span>${esc(NAME(i))}</span><b>${cnt(i)}</b></div>`).join('')}</div></div>`;
+  },
+  words(){ return `<div class="tsec"><h4>Vocabulary bank · Lesson 14 expressions</h4><button class="btn sm" data-showbank>🖥 Show to the class</button></div>${BANK.map(b=>`<div class="wcard"><b>${esc(b.w)}</b><div>${esc(b.m)}</div><div class="ua">${esc(b.ua)}</div><i>${esc(b.ex)}</i></div>`).join('')}`; },
+  grammar(){
+    return `<div class="tsec"><h4>Grammar map · Mixed Conditionals</h4><p><b>Two times in one conditional.</b> The if-part imagines the opposite of real life.</p></div>
+      <div class="tsec gm p"><h4>Past → Now</h4>${formula([['p','If + had + V3'],['n','would + verb']])}<p class="lit">${fmt(TYPE2[0].ex)}</p><p class="lit">${fmt(LESSON.types[0].ex)}</p><p class="small">Real life: past action happened → result is true now.</p></div>
+      <div class="tsec gm n"><h4>Now / general → Past</h4>${formula([['n','If + Past Simple (were)'],['p','would have + V3']])}<p class="lit">${fmt(TYPE2[1].ex)}</p><p class="lit">${fmt(LESSON.types[1].ex)}</p><p class="small">Real life: a fact about you now/in general explains a past result.</p></div>
+      <div class="tsec"><h4>Common mistakes</h4>${li(['✗ If I would have studied… → ✓ If I had studied…','✗ …I wouldn’t have been tired now → ✓ …I wouldn’t be tired now','✗ If I am more confident, I would have… → ✓ If I were…','✗ If I had went… → ✓ If I had gone…'])}</div>
+      <div class="tsec"><h4>Quick CCQ</h4>${li(['Is the if-part true in real life? → No.','Result now → would + verb.','Result in the past → would have + V3.'])}</div>`;
+  },
+  story(){
+    return `<div class="tsec"><h4>Storyline</h4><p>Mia finds an old post: a dance-challenge video. Someone shared it and made fun of her; she worried for weeks and took it down. Now she is careful online. Leo helps her see how the past shapes the present — and how who she is explains what happened. <b>The timeline is broken</b> — students repair it.</p></div>
+      <div class="tsec"><h4>Opening chat</h4>${LESSON.hook.filter(m=>m.t).map(m=>`<p><b>${m.w==='mia'?'MIA':'LEO'}:</b> ${esc(m.t)}</p>`).join('')}</div>
+      <div class="tsec"><h4>Listening script</h4>${LESSON.audio.map(([w,t])=>`<p><b>${w.toUpperCase()}:</b> ${esc(t)}</p>`).join('')}</div>
+      <div class="tsec"><h4>Final chat</h4>${LESSON.finalChat.map(m=>`<p><b>${m.w.toUpperCase()}:</b> ${esc(m.t)}</p>`).join('')}</div>`;
+  },
+  progress(){
+    const keys={feedA:['Vocabulary',VOC.length,'vocab'],listen:['Listening',LQ.length,'listen'],repair:['Grammar · Repair',RP.length,'grammar'],speak:['Speaking',SPK.length,'speak']};
+    const si=SECTIONS.findIndex(s=>s[0]===cur().sec);
+    return `<div class="tsec"><h4>Timeline restored</h4><div class="bigpct" style="font-size:34px">${S.pct}%</div><div class="mbar whole" style="height:10px"><i style="width:${S.pct}%"></i></div></div>
+      <div class="tsec"><h4>Sections</h4>${SECTIONS.map((s,k)=>`<div class="prow ${k<si?'done':''} ${k===si?'cur':''}"><span>${s[2]} ${s[1]}</span><b>${k<si?'✓ done':k===si?'● now':''}</b></div>`).join('')}</div>
+      <div class="tsec"><h4>Student turns</h4>${Object.entries(keys).map(([k,[n,len,sec]])=>{ const P=plan(k,sec,len); return `<div class="prow"><span>${n}</span><b>${P.items.filter(x=>x.done).length}/${P.total} · round ${P.R}</b></div>`; }).join('')}</div>
+      <div class="tsec"><h4>Route</h4><p>${S.short?'CORE':'EXTENDED'} ≈ <b>${fmtMin(totalTime(S.short))} min</b> for ${S.n} students (Core ≈ ${fmtMin(totalTime(true))} · Extended ≈ ${fmtMin(totalTime(false))}).</p><button class="btn sm" data-len>Switch to ${S.short?'EXTENDED':'CORE'}</button></div>`;
+  },
+  games(){
+    return `<div class="tsec"><h4>Game Zone</h4><p class="small">After the core lesson — it never changes the lesson route.</p><button class="btn sm primary" data-gz>🎮 Open Game Zone</button></div>
+      <div class="tsec"><h4>Kahoot · 10 questions</h4>${KAHOOT.map((q,i)=>`<div class="qa"><span>${i+1}. ${esc(q.q)}</span><b>${esc(q.o[q.a])}</b></div>`).join('')}<button class="btn sm mt" data-kc>📋 Copy for Kahoot</button></div>
+      <div class="tsec"><h4>Alias</h4><div class="row"><a class="btn sm" href="${ALIAS_URL}" target="_blank" rel="noopener">🌐 Open Alias</a><button class="btn sm ghost" data-showbank>📚 Open word bank</button></div></div>`;
+  }
+};
+const WSB = {
+  notes(B){ $$('[data-wa]',B).forEach(b=>b.onclick=()=>{ const a=b.dataset.wa;
+      if(a==='reset') return resetScene(); if(a==='skipopt') return skipOpt(); if(a==='next') return next();
+      const f=CUR[a]||(a==='answer'?CUR.reveal:null)||(a==='reveal'?CUR.example:null); f?f():toast('Nothing for “'+a+'” on this screen'); });
+    $$('[data-wq]',B).forEach(b=>b.onclick=()=>openQ(b.dataset.wq)); },
+  students(B){
+    $$('[data-sn]',B).forEach(b=>b.onclick=()=>setStudents(S.n+(+b.dataset.sn)));
+    $$('[data-nm]',B).forEach(inp=>{ inp.oninput=()=>{ S.names[+inp.dataset.nm]=inp.value; save(); }; inp.onchange=()=>draw(); });
+    $('[data-shuf]',B).onclick=()=>{ shuffleOrder(); draw(); };
+    bindModes(B);
+    $$('[data-rd]',B).forEach(b=>b.onclick=()=>{ const [k,r]=b.dataset.rd.split(':'); S.rounds[k]=+r; save(); draw(); });
+  },
+  words(B){ $$('[data-showbank]',B).forEach(b=>b.onclick=showBank); },
+  progress(B){ $('[data-len]',B).onclick=toggleLen; },
+  games(B){ $('[data-gz]',B).onclick=()=>go(SCENES.findIndex(s=>s.id==='games'));
+    $('[data-kc]',B).onclick=()=>copyText(KAHOOT.map(q=>[q.q,...q.o,20,q.a+1].join('\t')).join('\n'),'Kahoot questions copied');
+    $$('[data-showbank]',B).forEach(b=>b.onclick=showBank); }
+};
+function showBank(){ openModal(`<div class="row"><h2 class="dsp h2 grow">Word bank</h2><button class="btn sm ghost" onclick="closeModal()">✕</button></div>${bankTable()}`); $('#modalBox').classList.add('wide'); }
 /* ---------- 9 · live room (Supabase Realtime broadcast; BroadcastChannel fallback) ----------
    Той самий механізм, що в уроках 5, 13, 14: таблиці не потрібні, повідомлення летять
    через канал кімнати. SAVE_ANSWERS:true додатково пише відповіді в lesson_answers. */
@@ -1678,7 +2510,7 @@ function pubState(){
   if(!LIVE.on || ROLE!=='teacher') return;
   clearTimeout(pubT); pubT=setTimeout(()=>{
     const c=cur(); let task=null; try{ task=c.live?c.live():null; }catch(e){}
-    Net.send({t:'state', sc:c.name, m:c.m, task, pct:S.pct, timer:{left:Math.ceil(TIMER.left), run:TIMER.run, total:TIMER.total}});
+    Net.send({t:'state', sc:c.name, m:c.m, sec:(SECTIONS.find(s=>s[0]===c.sec)||['','Game Zone'])[1], task, pct:S.pct, timer:{left:Math.ceil(TIMER.left), run:TIMER.run, total:TIMER.total}});
   },120);
 }
 setInterval(()=>{ if(LIVE.on) pubState(); },6000);
@@ -1759,7 +2591,7 @@ function studentApp(){
   setInterval(()=>{ if(st&&st.timer&&st.timer.run&&st.timer.left>0){ st.timer.left--; paintT(); } },1000);
   const render=()=>{
     if(!st){ B.innerHTML=`<div class="stu-wait"><div class="big">👀</div><p>Hi ${esc(name)}! Waiting for your teacher…</p></div>`; return; }
-    const T=st.task, head=`<div class="small mono" style="letter-spacing:.12em;margin-bottom:10px">MISSION ${st.m}/9 · ${esc(st.sc)}</div>`;
+    const T=st.task, head=`<div class="small mono" style="letter-spacing:.12em;margin-bottom:10px">${esc((st.sec||'').toUpperCase())} · ${esc(st.sc)}</div>`;
     if(!T||T.kind==='react'){ B.innerHTML=head+`<div class="stu-wait card stu-card"><div class="big">${T?'🗣️':'👀'}</div><p><b>${T?esc(T.q):'Look at the main screen.'}</b></p><p class="small">${T?'Tap an emoji below.':'Your teacher will send a task soon.'}</p></div>`; return; }
     if(T.kind==='choice'){
       const my=sent[T.id];
@@ -1783,8 +2615,8 @@ function studentApp(){
         ${t.facts.map(f=>`<p class="mt" style="margin-bottom:0"><b style="color:${f[0]==='p'?'var(--past)':'var(--now)'}">${f[0]==='p'?'PAST':'NOW'}:</b> ${esc(f[1])}</p>`).join('')}
         <label>1 · Past → Now (If + had + V3, would + verb)</label><textarea id="w1">${esc(w.s1||'')}</textarea>
         <label>2 · Now → Past (If + Past Simple, would have + V3)</label><textarea id="w2">${esc(w.s2||'')}</textarea>
-        <label>3 · Advice</label><input id="w3" value="${esc(w.advice||'')}">
-        <label>4 · Title</label><input id="w4" value="${esc(w.title||'')}">
+        <label>3 · What should your character learn?</label><input id="w3" value="${esc(w.advice||'')}">
+        <label>4 · Funny title (optional)</label><input id="w4" value="${esc(w.title||'')}">
         <button class="btn primary mt" id="snd" style="width:100%">📨 Send to teacher</button><p class="small mt" id="ok">${w.sent?'✓ Sent. You can edit and send again.':'One person per team sends.'}</p></div>`;
       paintT();
       $('#chg').onclick=()=>{ myTeam=''; localStorage.removeItem('l15team-'+S.room); render(); };
@@ -1798,29 +2630,43 @@ function studentApp(){
 }
 
 /* ---------- 11 · boot ---------- */
+function syncQ(){ $('#fCCQ').classList.toggle('on',QP.kind==='ccq'); $('#fICQ').classList.toggle('on',QP.kind==='icq'); }
 if(ROLE==='student'){ studentApp(); }
 else {
   $('#btnNext').onclick=next; $('#btnBack').onclick=back;
-  $('#btnTeacher').onclick=()=>toggleTeacher(); $('#tClose').onclick=()=>toggleTeacher(false);
+  $('#btnWS').onclick=()=>S.ws?closeWS():openWS(); $('#btnFocus').onclick=closeWS; $('#wsClose').onclick=closeWS;
   $('#btnMap').onclick=showMap; $('#btnLen').onclick=toggleLen; $('#btnLive').onclick=openLive;
+  $('#sMinus').onclick=()=>setStudents(S.n-1); $('#sPlus').onclick=()=>setStudents(S.n+1); $('#sN').onclick=()=>openWS('students');
   $('#btnSound').onclick=()=>{ S.sound=!S.sound; save(); $('#btnSound').textContent=S.sound?'🔊':'🔇'; };
   $('#btnFull').onclick=()=>{ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); };
-  $('#btnSound').textContent=S.sound?'🔊':'🔇'; $('#lenLbl').textContent=S.short?'Core':'Full';
+  $('#fHint').onclick=()=>CUR.hint&&CUR.hint();
+  $('#fReveal').onclick=()=>(CUR.reveal||CUR.example||(()=>{}))();
+  $('#fAnswer').onclick=()=>(CUR.answer||CUR.reveal||(()=>{}))();
+  $('#fSkip').onclick=()=>CUR.skip?CUR.skip():skipOpt();
+  $('#fReset').onclick=resetScene;
+  $('#fCCQ').onclick=()=>{ openQ('ccq'); syncQ(); }; $('#fICQ').onclick=()=>{ openQ('icq'); syncQ(); };
+  $('#btnSound').textContent=S.sound?'🔊':'🔇'; $('#lenLbl').textContent=S.short?'Core':'Extended';
   document.addEventListener('keydown',e=>{
-    if(e.target.closest('input,textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
+    if(e.target.closest('input,textarea,select') || e.metaKey || e.ctrlKey || e.altKey) return;
     if(!$('#modal').classList.contains('hidden')){ if(e.key==='Escape') closeModal(); return; }
-    const k=e.key;
-    if(k==='ArrowRight'||k==='PageDown'||(k===' '&&!e.target.closest('button'))){ e.preventDefault(); next(); }
-    else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); back(); }
-    else if(k==='t'||k==='T') toggleTeacher();
-    else if(k==='m'||k==='M') showMap();
-    else if(k==='f'||k==='F') $('#btnFull').click();
-    else if(k==='r'||k==='R') CUR.reveal&&CUR.reveal();
-    else if(k==='e'||k==='E') CUR.example&&CUR.example();
-    else if(k==='Escape'){ toggleTeacher(false); $('#banner').classList.remove('on'); }
+    const k=e.key.toLowerCase();
+    if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&!e.target.closest('button'))){ e.preventDefault(); next(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); back(); }
+    else if(k==='w') S.ws?closeWS():openWS();
+    else if(k==='t') openWS('notes');
+    else if(k==='m') showMap();
+    else if(k==='f') $('#btnFull').click();
+    else if(k==='h') $('#fHint').click();
+    else if(k==='r') $('#fReveal').click();
+    else if(k==='a') $('#fAnswer').click();
+    else if(k==='e') CUR.example&&CUR.example();
+    else if(k==='s') $('#fSkip').click();
+    else if(k==='+'||k==='=') setStudents(S.n+1);
+    else if(k==='-') setStudents(S.n-1);
+    else if(e.key==='Escape'){ closeWS(); QP.kind=null; paintQ(); syncQ(); $('#banner').classList.remove('on'); $('#tpop').classList.remove('on'); }
   });
   if(S.i>=SCENES.length) S.i=0;
-  S.seen[cur().id]=1; TIMER.paint(); draw(true);
+  order(); S.seen[cur().id]=1; draw(true);
 }
 </script>
 </body>
